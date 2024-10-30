@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
-import 'package:firefit/features/auth/presentation/screens/profile_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
 import 'package:firefit/features/auth/providers/user_notifier.dart';
 import 'package:firefit/features/chat/ai_chat_screen.dart';
@@ -11,14 +10,14 @@ import 'package:firefit/features/commerce/presentation/screens/order_detail_scre
 import 'package:firefit/features/commerce/presentation/screens/order_history_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/order_tracking_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/shopping_cart_screen.dart';
-
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
-import 'package:firefit/features/common/presentation/screens/settings_screen.dart';
-import 'package:firefit/features/home/presentation/screens/ai_assisted_search_screen.dart';
-import 'package:firefit/features/home/presentation/screens/food_diary_screen.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
-import 'package:firefit/features/home/presentation/screens/meal_plans_screen.dart';
-
+import 'package:firefit/features/meals/presentation/screens/ai_assisted_search_screen.dart';
+import 'package:firefit/features/meals/presentation/screens/food_diary_screen.dart';
+import 'package:firefit/features/meals/presentation/screens/meal_plans_screen.dart';
+import 'package:firefit/features/media/presentation/screens/media_home_screen/media_home_screen.dart';
+import 'package:firefit/features/profiles/presentation/screens/profile_screen.dart';
+import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
 import 'package:firefit/utils/riverpod/build_context_x.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -39,6 +38,8 @@ part 'router.g.dart';
   TypedGoRoute<MealPlansRoute>(path: '/meal-plans'),
   TypedGoRoute<SearchRoute>(path: '/search'),
   TypedGoRoute<SettingsRoute>(path: '/settings'),
+  TypedGoRoute<ProvidersRoute>(path: '/providers'),
+  TypedGoRoute<MediaRoute>(path: '/media'),
 ])
 class HomeRoute extends GoRouteData {
   const HomeRoute();
@@ -271,3 +272,14 @@ final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
 final navigatorKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
+
+@TypedGoRoute<MediaRoute>(path: '/media', name: 'Media', routes: [])
+class MediaRoute extends GoRouteData {
+  const MediaRoute();
+  static String get routePath => '/media';
+  static String get routeName => 'Media';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const MediaHomeScreenPage();
+}

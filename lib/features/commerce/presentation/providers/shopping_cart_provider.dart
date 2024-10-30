@@ -1,17 +1,8 @@
+import 'package:firefit/features/commerce/domain/entities/shopping_cart_model.dart';
+import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final cartProvider = FutureProvider<CartModel>((ref) async {
-  // Simulate fetching cart data
-  await Future.delayed(Duration(seconds: 1));
-  return CartModel(items: []);
-});
-
-class CartModel {
-  final List<Item> items;
-
-  CartModel({required this.items});
-}
-
-class Item {
-  // Define item properties
-}
+final cartProvider =
+    AsyncNotifierProvider<ShoppingCartNotifier, ShoppingCartModel>(
+  () => ShoppingCartNotifier(),
+);

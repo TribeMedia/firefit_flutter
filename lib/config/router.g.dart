@@ -24,6 +24,7 @@ List<RouteBase> get $appRoutes => [
       $foodDiaryRoute,
       $mealPlansRoute,
       $searchRoute,
+      $mediaRoute,
     ];
 
 RouteBase get $homeRoute => GoRouteData.$route(
@@ -78,6 +79,14 @@ RouteBase get $homeRoute => GoRouteData.$route(
         GoRouteData.$route(
           path: '/settings',
           factory: $SettingsRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: '/providers',
+          factory: $ProvidersRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: '/media',
+          factory: $MediaRouteExtension._fromState,
         ),
       ],
     );
@@ -312,6 +321,41 @@ extension $SettingsRouteExtension on SettingsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $ProvidersRouteExtension on ProvidersRoute {
+  static ProvidersRoute _fromState(GoRouterState state) =>
+      const ProvidersRoute();
+
+  String get location => GoRouteData.$location(
+        '/providers',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $MediaRouteExtension on MediaRoute {
+  static MediaRoute _fromState(GoRouterState state) => const MediaRoute();
+
+  String get location => GoRouteData.$location(
+        '/media',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 RouteBase get $errorRoute => GoRouteData.$route(
       path: '/error',
       name: 'Error',
@@ -363,24 +407,6 @@ RouteBase get $providersRoute => GoRouteData.$route(
       name: 'Providers',
       factory: $ProvidersRouteExtension._fromState,
     );
-
-extension $ProvidersRouteExtension on ProvidersRoute {
-  static ProvidersRoute _fromState(GoRouterState state) =>
-      const ProvidersRoute();
-
-  String get location => GoRouteData.$location(
-        '/providers',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
 
 RouteBase get $chatRoute => GoRouteData.$route(
       path: '/chat',
@@ -434,4 +460,10 @@ RouteBase get $searchRoute => GoRouteData.$route(
       path: '/search',
       name: 'Search',
       factory: $SearchRouteExtension._fromState,
+    );
+
+RouteBase get $mediaRoute => GoRouteData.$route(
+      path: '/media',
+      name: 'Media',
+      factory: $MediaRouteExtension._fromState,
     );

@@ -6,26 +6,60 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+final currentIndexProvider = StateProvider<int>((ref) => 0);
+
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
+
+  static final GlobalKey<ScaffoldState> _scaffoldKey =
+      GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final homeState = ref.watch(homeStateProvider);
     final cartAsync = ref.watch(cartProvider);
+    final currentIndex = ref.watch(currentIndexProvider);
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: _buildAppBar(context, cartAsync),
       body: _buildBody(context, homeState),
-      bottomNavigationBar: _buildBottomNavigationBar(context),
+      bottomNavigationBar:
+          _buildBottomNavigationBar(context, ref, currentIndex),
       drawer: _buildDrawer(context),
     );
   }
 
   AppBar _buildAppBar(BuildContext context, AsyncValue cartAsync) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return AppBar(
-      leading: Image.asset('assets/images/fots-logo-color.png'),
-      title: Text('FireFit', style: Theme.of(context).textTheme.titleLarge),
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: GestureDetector(
+          onTap: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
+          child: ColorFiltered(
+            colorFilter: isDarkMode
+                ? ColorFilter.mode(Colors.white, BlendMode.srcATop)
+                : ColorFilter.mode(Colors.transparent, BlendMode.srcATop),
+            child: Image.asset(
+              'assets/images/fots-logo-favicon-100x100.png',
+              fit: BoxFit.contain,
+              width: 40,
+              height: 40,
+            ),
+          ),
+        ),
+      ),
+      title: Text(
+        'FireFit',
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontFamily: 'Geist Mono',
+              fontWeight: FontWeight.bold,
+            ),
+      ),
       actions: [
         IconButton(
           icon: Icon(Icons.notifications),
@@ -36,7 +70,7 @@ class HomeScreen extends ConsumerWidget {
         IconButton(
           icon: Icon(Icons.search),
           onPressed: () {
-            // Open food search
+            context.go('/search');
           },
         ),
         _buildCartIcon(context, cartAsync),
@@ -116,15 +150,24 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  BottomNavigationBar _buildBottomNavigationBar(BuildContext context) {
-    final brightness = MediaQuery.of(context).platformBrightness;
-    final iconBackground =
-        brightness == Brightness.light ? Color(0xFF1E293B) : Color(0xFFF8FAFC);
+  BottomNavigationBar _buildBottomNavigationBar(
+      BuildContext context, WidgetRef ref, int currentIndex) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final backgroundColor = Theme.of(context).appBarTheme.backgroundColor;
+    final selectedItemColor = isDarkMode ? Colors.lightBlueAccent : Colors.blue;
+    final unselectedItemColor = isDarkMode ? Colors.white70 : Colors.black54;
 
     return BottomNavigationBar(
-      currentIndex: 0,
+      currentIndex: currentIndex,
+      backgroundColor: backgroundColor,
+      selectedItemColor: selectedItemColor,
+      unselectedItemColor: unselectedItemColor,
       onTap: (index) {
+        ref.read(currentIndexProvider.notifier).state = index;
         switch (index) {
+          case 0:
+            context.go('/');
+            break;
           case 1:
             context.go('/food-diary');
             break;
@@ -132,40 +175,57 @@ class HomeScreen extends ConsumerWidget {
             context.go('/meal-plans');
             break;
           case 3:
-            context.go('/chat');
+            context.go('/providers');
             break;
           case 4:
+            context.go('/chat');
+            break;
+          case 5:
             context.go('/profile');
             break;
         }
       },
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: _buildIcon(Icons.home, currentIndex == 0, selectedItemColor),
           label: 'Home',
-          backgroundColor: iconBackground,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.book),
+          icon: _buildIcon(Icons.book, currentIndex == 1, selectedItemColor),
           label: 'Diary',
-          backgroundColor: iconBackground,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.restaurant_menu),
+          icon: _buildIcon(
+              Icons.restaurant_menu, currentIndex == 2, selectedItemColor),
           label: 'Meal Plans',
-          backgroundColor: iconBackground,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.chat),
+          icon: _buildIcon(
+              Icons.restaurant, currentIndex == 3, selectedItemColor),
+          label: 'Providers',
+        ),
+        BottomNavigationBarItem(
+          icon: _buildIcon(Icons.chat, currentIndex == 4, selectedItemColor),
           label: 'AI Chat',
-          backgroundColor: iconBackground,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: _buildIcon(Icons.person, currentIndex == 4, selectedItemColor),
           label: 'Profile',
-          backgroundColor: iconBackground,
         ),
       ],
+    );
+  }
+
+  Widget _buildIcon(IconData icon, bool isSelected, Color color) {
+    return Container(
+      decoration: isSelected
+          ? BoxDecoration(
+              color: color.withOpacity(0.2),
+              shape: BoxShape.circle,
+            )
+          : null,
+      padding: EdgeInsets.all(8),
+      child: Icon(icon),
     );
   }
 
@@ -175,21 +235,24 @@ class HomeScreen extends ConsumerWidget {
         children: [
           DrawerHeader(child: Text('More Options')),
           ListTile(
+            leading: Icon(Icons.settings),
             title: Text('Settings'),
             onTap: () {
               context.go('/settings');
             },
           ),
           ListTile(
-            title: Text('Educational Content'),
+            leading: Icon(Icons.play_circle),
+            title: Text('Media'),
             onTap: () {
-              // Navigate to educational content
+              context.go('/media');
             },
           ),
           ListTile(
-            title: Text('Food Ordering'),
+            leading: Icon(Icons.history),
+            title: Text('Order History'),
             onTap: () {
-              // Navigate to food ordering
+              context.go('/order-history');
             },
           ),
         ],
