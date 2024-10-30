@@ -18,6 +18,8 @@ class LightThemeData {
   static const Color mutedForeground = Color(0xFF64748B); // slate-500
   static const Color border = Color(0xFFE2E8F0); // slate-200
   static const Color ring = Color(0xFF94A3B8); // slate-400
+  static const Color iconColor =
+      Color(0xFF0F172A); // Adjusted to slate-900 for better visibility
 
   late final ThemeData _theme;
 
@@ -30,39 +32,42 @@ class LightThemeData {
         foregroundColor: onSurface,
         elevation: 0,
       ),
+      iconTheme: const IconThemeData(
+        color: iconColor,
+      ),
       textTheme: theme.textTheme.copyWith(
         displayLarge: const TextStyle(
-          fontFamily: 'Inter',
+          fontFamily: 'Geist',
           fontWeight: FontWeight.w800,
           fontSize: 36,
           color: onSurface,
         ),
         displayMedium: const TextStyle(
-          fontFamily: 'Inter',
+          fontFamily: 'Geist',
           fontWeight: FontWeight.w700,
           fontSize: 30,
           color: onSurface,
         ),
         displaySmall: const TextStyle(
-          fontFamily: 'Inter',
+          fontFamily: 'Geist',
           fontWeight: FontWeight.w600,
           fontSize: 24,
           color: onSurface,
         ),
         headlineLarge: const TextStyle(
-          fontFamily: 'Inter',
+          fontFamily: 'Geist',
           fontWeight: FontWeight.w700,
           fontSize: 20,
           color: onSurface,
         ),
         headlineMedium: const TextStyle(
-          fontFamily: 'Inter',
+          fontFamily: 'Geist',
           fontWeight: FontWeight.w600,
           fontSize: 18,
           color: onSurface,
         ),
         headlineSmall: const TextStyle(
-          fontFamily: 'Inter',
+          fontFamily: 'Geist',
           fontWeight: FontWeight.w600,
           fontSize: 16,
           color: onSurface,

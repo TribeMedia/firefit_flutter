@@ -16,10 +16,11 @@ final class _Env {
   static const String supabaseAnonKey =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0';
 
-  static const String openAiUrl =
-      'https://reveles-ai.openai.azure.com/openai/deployments';
+  static const String openAiUrl = 'https://reveles-ai.openai.azure.com';
 
-  static const String openAiModel = 'gpt-4o';
+  static const String openAiDeploymentName = 'gpt-4o';
+
+  static const String openAiApiVersion = '2024-08-01-preview';
 
   static const String openAiKey = 'e83e5769aa1e47d3a664c864d3e8a045';
 

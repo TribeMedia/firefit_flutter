@@ -24,7 +24,8 @@ class HomeScreen extends ConsumerWidget {
 
   AppBar _buildAppBar(BuildContext context, AsyncValue cartAsync) {
     return AppBar(
-      title: Text('FireFit'),
+      leading: Image.asset('assets/images/fots-logo-color.png'),
+      title: Text('FireFit', style: Theme.of(context).textTheme.titleLarge),
       actions: [
         IconButton(
           icon: Icon(Icons.notifications),
@@ -116,6 +117,10 @@ class HomeScreen extends ConsumerWidget {
   }
 
   BottomNavigationBar _buildBottomNavigationBar(BuildContext context) {
+    final brightness = MediaQuery.of(context).platformBrightness;
+    final iconBackground =
+        brightness == Brightness.light ? Color(0xFF1E293B) : Color(0xFFF8FAFC);
+
     return BottomNavigationBar(
       currentIndex: 0,
       onTap: (index) {
@@ -127,7 +132,7 @@ class HomeScreen extends ConsumerWidget {
             context.go('/meal-plans');
             break;
           case 3:
-            context.go('/ai-chat');
+            context.go('/chat');
             break;
           case 4:
             context.go('/profile');
@@ -135,11 +140,31 @@ class HomeScreen extends ConsumerWidget {
         }
       },
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Diary'),
-        BottomNavigationBarItem(icon: Icon(Icons.restaurant_menu), label: 'Meal Plans'),
-        BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'AI Chat'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+          backgroundColor: iconBackground,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.book),
+          label: 'Diary',
+          backgroundColor: iconBackground,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.restaurant_menu),
+          label: 'Meal Plans',
+          backgroundColor: iconBackground,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat),
+          label: 'AI Chat',
+          backgroundColor: iconBackground,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+          backgroundColor: iconBackground,
+        ),
       ],
     );
   }
@@ -176,7 +201,8 @@ class HomeScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Macronutrients', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text('Macronutrients',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         SizedBox(height: 8),
         _buildMacroProgressBar('Carbs', 0.8, Colors.blue),
         SizedBox(height: 8),
@@ -203,7 +229,8 @@ class HomeScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Quick Add', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text('Quick Add',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -237,7 +264,8 @@ class HomeScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Today\'s Meal Plan', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text('Today\'s Meal Plan',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         SizedBox(height: 8),
         Card(
           child: ListTile(

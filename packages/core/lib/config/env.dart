@@ -6,8 +6,9 @@ mixin EnvInterface {
 
   String get openAiApiKey;
 
-  String get openAiModel;
-
   String get ipfsUrl;
 
+  String get openAiDeploymentName;
+
+  String get openAiApiVersion;
 }

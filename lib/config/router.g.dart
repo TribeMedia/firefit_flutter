@@ -32,51 +32,51 @@ RouteBase get $homeRoute => GoRouteData.$route(
       factory: $HomeRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
-          path: 'login',
+          path: '/login',
           factory: $LoginRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'register',
+          path: '/register',
           factory: $RegisterRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'profile',
+          path: '/profile',
           factory: $ProfileRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'chat',
+          path: '/chat',
           factory: $ChatRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'shopping-cart',
+          path: '/shopping-cart',
           factory: $ShoppingCartRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'order-history',
+          path: '/order-history',
           factory: $OrderHistoryRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'order-detail/:orderId',
+          path: '/order-detail/:orderId',
           factory: $OrderDetailRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'order-tracking/:orderId',
+          path: '/order-tracking/:orderId',
           factory: $OrderTrackingRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'food-diary',
+          path: '/food-diary',
           factory: $FoodDiaryRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'meal-plans',
+          path: '/meal-plans',
           factory: $MealPlansRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'search',
+          path: '/search',
           factory: $SearchRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: 'settings',
+          path: '/settings',
           factory: $SettingsRouteExtension._fromState,
         ),
       ],

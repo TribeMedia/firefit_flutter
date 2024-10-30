@@ -27,18 +27,18 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 part 'router.g.dart';
 
 @TypedGoRoute<HomeRoute>(path: '/', name: 'Home', routes: [
-  TypedGoRoute<LoginRoute>(path: 'login'),
-  TypedGoRoute<RegisterRoute>(path: 'register'),
-  TypedGoRoute<ProfileRoute>(path: 'profile'),
-  TypedGoRoute<ChatRoute>(path: 'chat'),
-  TypedGoRoute<ShoppingCartRoute>(path: 'shopping-cart'),
-  TypedGoRoute<OrderHistoryRoute>(path: 'order-history'),
-  TypedGoRoute<OrderDetailRoute>(path: 'order-detail/:orderId'),
-  TypedGoRoute<OrderTrackingRoute>(path: 'order-tracking/:orderId'),
-  TypedGoRoute<FoodDiaryRoute>(path: 'food-diary'),
-  TypedGoRoute<MealPlansRoute>(path: 'meal-plans'),
-  TypedGoRoute<SearchRoute>(path: 'search'),
-  TypedGoRoute<SettingsRoute>(path: 'settings'),
+  TypedGoRoute<LoginRoute>(path: '/login'),
+  TypedGoRoute<RegisterRoute>(path: '/register'),
+  TypedGoRoute<ProfileRoute>(path: '/profile'),
+  TypedGoRoute<ChatRoute>(path: '/chat'),
+  TypedGoRoute<ShoppingCartRoute>(path: '/shopping-cart'),
+  TypedGoRoute<OrderHistoryRoute>(path: '/order-history'),
+  TypedGoRoute<OrderDetailRoute>(path: '/order-detail/:orderId'),
+  TypedGoRoute<OrderTrackingRoute>(path: '/order-tracking/:orderId'),
+  TypedGoRoute<FoodDiaryRoute>(path: '/food-diary'),
+  TypedGoRoute<MealPlansRoute>(path: '/meal-plans'),
+  TypedGoRoute<SearchRoute>(path: '/search'),
+  TypedGoRoute<SettingsRoute>(path: '/settings'),
 ])
 class HomeRoute extends GoRouteData {
   const HomeRoute();
@@ -76,8 +76,7 @@ class ErrorRoute extends GoRouteData {
   final String error;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      ErrorScreen(
+  Widget build(BuildContext context, GoRouterState state) => ErrorScreen(
         errorMessage: error,
         onRetry: () {
           // Define your retry logic here
@@ -203,7 +202,8 @@ class SettingsRoute extends GoRouteData {
   static String get routeName => 'Settings';
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const SettingsScreen();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const SettingsScreen();
 }
 
 @TypedGoRoute<OrderTrackingRoute>(
