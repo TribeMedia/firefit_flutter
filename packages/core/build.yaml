@@ -1,0 +1,34 @@
+targets:
+  $default:
+    sources:
+      - lib/schema.graphql
+      - lib/**
+    builders:
+      json_serializable:
+        options:
+          any_map: false
+      graphql_codegen:
+        options:
+          scalars:
+            UUID:
+              type: String
+            Date:
+              type: DateTime
+            Datetime:
+              type: DateTime
+            Time:
+              type: DateTime
+            JSON:
+              type: Map<String, dynamic>
+              import: package:core/scalars.dart
+              fromJsonFunctionName: jsonFieldFromJson
+              toJsonFunctionName: jsonFieldToJson
+            Cursor:
+              type: dynamic
+            BigInt:
+              type: int
+            BigFloat:
+              type: double
+          clients:
+            - graphql
+            - graphql_flutter
