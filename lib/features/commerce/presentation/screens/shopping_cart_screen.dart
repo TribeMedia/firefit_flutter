@@ -1,5 +1,6 @@
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -10,11 +11,11 @@ class ShoppingCartScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final modelValue = ref.watch(cartProvider);
 
-    return Scaffold(
-      appBar: AppBar(
+    return FScaffold(
+      header: FHeader(
         title: Text('Shopping Cart'),
       ),
-      body: modelValue.when(
+      content: modelValue.when(
         data: (model) {
           if (model.items.isEmpty) {
             return Center(child: Text('Your cart is empty'));
@@ -26,7 +27,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
             itemCount: cartItems.length,
             itemBuilder: (context, index) {
               final item = cartItems[index];
-              return ShadCard(
+              return FCard(
                 child: ListTile(
                   title: Text(item.name),
                   subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
@@ -64,7 +65,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
         loading: () => Center(child: CircularProgressIndicator()),
         error: (error, stack) => Center(child: Text('Error: $error')),
       ),
-      bottomNavigationBar: modelValue.when(
+      footer: modelValue.when(
         data: (model) {
           if (model.items.isEmpty) return SizedBox.shrink();
 

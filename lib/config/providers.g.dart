@@ -8,7 +8,8 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$lightThemeHash() => r'e1b29934432d3e5df0bb79b761ff32cb7e0b23ba';
+String _$lightThemeProviderHash() =>
+    r'07643d83a08e357b0ac049195b6957172d2bcca1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,27 +32,27 @@ class _SystemHash {
   }
 }
 
-/// See also [lightTheme].
-@ProviderFor(lightTheme)
-const lightThemeProvider = LightThemeFamily();
+/// See also [lightThemeProvider].
+@ProviderFor(lightThemeProvider)
+const lightThemeProviderProvider = LightThemeProviderFamily();
 
-/// See also [lightTheme].
-class LightThemeFamily extends Family<LightThemeData> {
-  /// See also [lightTheme].
-  const LightThemeFamily();
+/// See also [lightThemeProvider].
+class LightThemeProviderFamily extends Family<LightThemeData> {
+  /// See also [lightThemeProvider].
+  const LightThemeProviderFamily();
 
-  /// See also [lightTheme].
-  LightThemeProvider call(
+  /// See also [lightThemeProvider].
+  LightThemeProviderProvider call(
     ThemeData theme,
   ) {
-    return LightThemeProvider(
+    return LightThemeProviderProvider(
       theme,
     );
   }
 
   @override
-  LightThemeProvider getProviderOverride(
-    covariant LightThemeProvider provider,
+  LightThemeProviderProvider getProviderOverride(
+    covariant LightThemeProviderProvider provider,
   ) {
     return call(
       provider.theme,
@@ -70,32 +71,32 @@ class LightThemeFamily extends Family<LightThemeData> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'lightThemeProvider';
+  String? get name => r'lightThemeProviderProvider';
 }
 
-/// See also [lightTheme].
-class LightThemeProvider extends AutoDisposeProvider<LightThemeData> {
-  /// See also [lightTheme].
-  LightThemeProvider(
+/// See also [lightThemeProvider].
+class LightThemeProviderProvider extends AutoDisposeProvider<LightThemeData> {
+  /// See also [lightThemeProvider].
+  LightThemeProviderProvider(
     ThemeData theme,
   ) : this._internal(
-          (ref) => lightTheme(
-            ref as LightThemeRef,
+          (ref) => lightThemeProvider(
+            ref as LightThemeProviderRef,
             theme,
           ),
-          from: lightThemeProvider,
-          name: r'lightThemeProvider',
+          from: lightThemeProviderProvider,
+          name: r'lightThemeProviderProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$lightThemeHash,
-          dependencies: LightThemeFamily._dependencies,
+                  : _$lightThemeProviderHash,
+          dependencies: LightThemeProviderFamily._dependencies,
           allTransitiveDependencies:
-              LightThemeFamily._allTransitiveDependencies,
+              LightThemeProviderFamily._allTransitiveDependencies,
           theme: theme,
         );
 
-  LightThemeProvider._internal(
+  LightThemeProviderProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -109,12 +110,12 @@ class LightThemeProvider extends AutoDisposeProvider<LightThemeData> {
 
   @override
   Override overrideWith(
-    LightThemeData Function(LightThemeRef provider) create,
+    LightThemeData Function(LightThemeProviderRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: LightThemeProvider._internal(
-        (ref) => create(ref as LightThemeRef),
+      override: LightThemeProviderProvider._internal(
+        (ref) => create(ref as LightThemeProviderRef),
         from: from,
         name: null,
         dependencies: null,
@@ -127,12 +128,12 @@ class LightThemeProvider extends AutoDisposeProvider<LightThemeData> {
 
   @override
   AutoDisposeProviderElement<LightThemeData> createElement() {
-    return _LightThemeProviderElement(this);
+    return _LightThemeProviderProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is LightThemeProvider && other.theme == theme;
+    return other is LightThemeProviderProvider && other.theme == theme;
   }
 
   @override
@@ -146,42 +147,43 @@ class LightThemeProvider extends AutoDisposeProvider<LightThemeData> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin LightThemeRef on AutoDisposeProviderRef<LightThemeData> {
+mixin LightThemeProviderRef on AutoDisposeProviderRef<LightThemeData> {
   /// The parameter `theme` of this provider.
   ThemeData get theme;
 }
 
-class _LightThemeProviderElement
-    extends AutoDisposeProviderElement<LightThemeData> with LightThemeRef {
-  _LightThemeProviderElement(super.provider);
+class _LightThemeProviderProviderElement
+    extends AutoDisposeProviderElement<LightThemeData>
+    with LightThemeProviderRef {
+  _LightThemeProviderProviderElement(super.provider);
 
   @override
-  ThemeData get theme => (origin as LightThemeProvider).theme;
+  ThemeData get theme => (origin as LightThemeProviderProvider).theme;
 }
 
-String _$darkThemeHash() => r'd4602ec1300e305bfedf53144879237b07a37620';
+String _$darkThemeProviderHash() => r'9c519ff71bee83eacd85de7a0f76fbcd35a3e587';
 
-/// See also [darkTheme].
-@ProviderFor(darkTheme)
-const darkThemeProvider = DarkThemeFamily();
+/// See also [darkThemeProvider].
+@ProviderFor(darkThemeProvider)
+const darkThemeProviderProvider = DarkThemeProviderFamily();
 
-/// See also [darkTheme].
-class DarkThemeFamily extends Family<DarkThemeData> {
-  /// See also [darkTheme].
-  const DarkThemeFamily();
+/// See also [darkThemeProvider].
+class DarkThemeProviderFamily extends Family<DarkThemeData> {
+  /// See also [darkThemeProvider].
+  const DarkThemeProviderFamily();
 
-  /// See also [darkTheme].
-  DarkThemeProvider call(
+  /// See also [darkThemeProvider].
+  DarkThemeProviderProvider call(
     ThemeData theme,
   ) {
-    return DarkThemeProvider(
+    return DarkThemeProviderProvider(
       theme,
     );
   }
 
   @override
-  DarkThemeProvider getProviderOverride(
-    covariant DarkThemeProvider provider,
+  DarkThemeProviderProvider getProviderOverride(
+    covariant DarkThemeProviderProvider provider,
   ) {
     return call(
       provider.theme,
@@ -200,31 +202,32 @@ class DarkThemeFamily extends Family<DarkThemeData> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'darkThemeProvider';
+  String? get name => r'darkThemeProviderProvider';
 }
 
-/// See also [darkTheme].
-class DarkThemeProvider extends AutoDisposeProvider<DarkThemeData> {
-  /// See also [darkTheme].
-  DarkThemeProvider(
+/// See also [darkThemeProvider].
+class DarkThemeProviderProvider extends AutoDisposeProvider<DarkThemeData> {
+  /// See also [darkThemeProvider].
+  DarkThemeProviderProvider(
     ThemeData theme,
   ) : this._internal(
-          (ref) => darkTheme(
-            ref as DarkThemeRef,
+          (ref) => darkThemeProvider(
+            ref as DarkThemeProviderRef,
             theme,
           ),
-          from: darkThemeProvider,
-          name: r'darkThemeProvider',
+          from: darkThemeProviderProvider,
+          name: r'darkThemeProviderProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$darkThemeHash,
-          dependencies: DarkThemeFamily._dependencies,
-          allTransitiveDependencies: DarkThemeFamily._allTransitiveDependencies,
+                  : _$darkThemeProviderHash,
+          dependencies: DarkThemeProviderFamily._dependencies,
+          allTransitiveDependencies:
+              DarkThemeProviderFamily._allTransitiveDependencies,
           theme: theme,
         );
 
-  DarkThemeProvider._internal(
+  DarkThemeProviderProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -238,12 +241,12 @@ class DarkThemeProvider extends AutoDisposeProvider<DarkThemeData> {
 
   @override
   Override overrideWith(
-    DarkThemeData Function(DarkThemeRef provider) create,
+    DarkThemeData Function(DarkThemeProviderRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: DarkThemeProvider._internal(
-        (ref) => create(ref as DarkThemeRef),
+      override: DarkThemeProviderProvider._internal(
+        (ref) => create(ref as DarkThemeProviderRef),
         from: from,
         name: null,
         dependencies: null,
@@ -256,12 +259,12 @@ class DarkThemeProvider extends AutoDisposeProvider<DarkThemeData> {
 
   @override
   AutoDisposeProviderElement<DarkThemeData> createElement() {
-    return _DarkThemeProviderElement(this);
+    return _DarkThemeProviderProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is DarkThemeProvider && other.theme == theme;
+    return other is DarkThemeProviderProvider && other.theme == theme;
   }
 
   @override
@@ -275,17 +278,18 @@ class DarkThemeProvider extends AutoDisposeProvider<DarkThemeData> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin DarkThemeRef on AutoDisposeProviderRef<DarkThemeData> {
+mixin DarkThemeProviderRef on AutoDisposeProviderRef<DarkThemeData> {
   /// The parameter `theme` of this provider.
   ThemeData get theme;
 }
 
-class _DarkThemeProviderElement
-    extends AutoDisposeProviderElement<DarkThemeData> with DarkThemeRef {
-  _DarkThemeProviderElement(super.provider);
+class _DarkThemeProviderProviderElement
+    extends AutoDisposeProviderElement<DarkThemeData>
+    with DarkThemeProviderRef {
+  _DarkThemeProviderProviderElement(super.provider);
 
   @override
-  ThemeData get theme => (origin as DarkThemeProvider).theme;
+  ThemeData get theme => (origin as DarkThemeProviderProvider).theme;
 }
 
 String _$loggingHash() => r'1249cda802da9c99a31ed111f5621e0b1d22537e';

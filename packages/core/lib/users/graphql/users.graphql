@@ -1,0 +1,57 @@
+fragment Role on Role {
+  id
+  name
+  key
+  schema
+}
+
+fragment UserRole on UserRole {
+  id
+  roleId
+  role {
+    ...Role
+  }
+  userId
+}
+
+fragment User on User {
+  id
+  email
+  firstName
+  lastName
+  displayName
+  data
+  avatarUrl
+  kratosId
+  supabaseUserId
+  userRoleCollection {
+    edges {
+      node {
+        ...UserRole
+      }
+    }
+  }
+}
+
+query Users(
+  $first: Int
+  $last: Int
+  $before: Cursor
+  $after: Cursor
+  $filter: UserFilter
+  $orderBy: [UserOrderBy!]
+) {
+  userCollection(first: $first, last: $last, before: $before, after: $after, filter: $filter, orderBy: $orderBy) {
+    edges {
+      node {
+       ...User
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}

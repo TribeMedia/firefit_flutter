@@ -1,16 +1,16 @@
-import 'dart:async';
-
+import 'package:firefit/config/providers.dart';
 import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
-import 'package:firefit/features/auth/providers/user_notifier.dart';
 import 'package:firefit/features/chat/ai_chat_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/ecosystem_provider_search_screen.dart';
+import 'package:firefit/features/commerce/presentation/screens/menu_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/order_detail_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/order_history_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/order_tracking_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/shopping_cart_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
+import 'package:firefit/features/common/presentation/widgets/application_container.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
 import 'package:firefit/features/meals/presentation/screens/ai_assisted_search_screen.dart';
 import 'package:firefit/features/meals/presentation/screens/food_diary_screen.dart';
@@ -18,268 +18,222 @@ import 'package:firefit/features/meals/presentation/screens/meal_plans_screen.da
 import 'package:firefit/features/media/presentation/screens/media_home_screen/media_home_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/profile_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
-import 'package:firefit/utils/riverpod/build_context_x.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-part 'router.g.dart';
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-@TypedGoRoute<HomeRoute>(path: '/', name: 'Home', routes: [
-  TypedGoRoute<LoginRoute>(path: '/login'),
-  TypedGoRoute<RegisterRoute>(path: '/register'),
-  TypedGoRoute<ProfileRoute>(path: '/profile'),
-  TypedGoRoute<ChatRoute>(path: '/chat'),
-  TypedGoRoute<ShoppingCartRoute>(path: '/shopping-cart'),
-  TypedGoRoute<OrderHistoryRoute>(path: '/order-history'),
-  TypedGoRoute<OrderDetailRoute>(path: '/order-detail/:orderId'),
-  TypedGoRoute<OrderTrackingRoute>(path: '/order-tracking/:orderId'),
-  TypedGoRoute<FoodDiaryRoute>(path: '/food-diary'),
-  TypedGoRoute<MealPlansRoute>(path: '/meal-plans'),
-  TypedGoRoute<SearchRoute>(path: '/search'),
-  TypedGoRoute<SettingsRoute>(path: '/settings'),
-  TypedGoRoute<ProvidersRoute>(path: '/providers'),
-  TypedGoRoute<MediaRoute>(path: '/media'),
-])
-class HomeRoute extends GoRouteData {
-  const HomeRoute();
+final routerProvider = Provider<GoRouter>((ref) {
+  final logging = ref.read(loggingProvider);
+  logging.debug('Initializing router');
 
-  static String get routePath => '/';
-  static String get routeName => 'Home';
+  final routerNotifier = RouterNotifier(ref);
 
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return HookConsumer(
-      builder: (BuildContext context, WidgetRef ref, Widget? child) {
-        final userModelValue = ref.watch(userNotifierProvider);
-        return userModelValue.when(
-          data: (userModel) {
-            return const HomeScreen();
-          },
-          error: (e, s) => ErrorScreen(
-            errorMessage: e.toString(),
-            onRetry: () {
-              // Define your retry logic here
+  return GoRouter(
+    debugLogDiagnostics: true,
+    navigatorKey: navigatorKey,
+    initialLocation: '/',
+    refreshListenable: routerNotifier,
+    redirect: (BuildContext context, GoRouterState state) {
+      logging.debug('Router redirect called: ${state.matchedLocation}');
+
+      final isAuthenticated = routerNotifier.isAuthenticated;
+      final isLoginRoute = state.matchedLocation == '/login';
+      final isRegistrationRoute = state.matchedLocation == '/register';
+
+      // Allow access to login and registration without authentication
+      if (!isAuthenticated && (isLoginRoute || isRegistrationRoute)) {
+        return null;
+      }
+
+      // Redirect to login if not authenticated
+      if (!isAuthenticated) {
+        return '/login';
+      }
+
+      // Redirect to home if authenticated and trying to access login/register
+      if (isAuthenticated && (isLoginRoute || isRegistrationRoute)) {
+        return '/';
+      }
+
+      return null;
+    },
+    routes: [
+      GoRoute(
+        path: '/',
+        name: 'home',
+        builder: (BuildContext context, GoRouterState state) {
+          return const HomeScreen();
+        },
+        routes: [
+          GoRoute(
+            path: 'login',
+            name: 'login',
+            builder: (BuildContext context, GoRouterState state) {
+              return const LoginScreen();
             },
           ),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
+          GoRoute(
+            path: 'register',
+            name: 'register',
+            builder: (BuildContext context, GoRouterState state) {
+              return const RegistrationScreen();
+            },
           ),
-        );
-      },
-    );
-  }
-}
-
-@TypedGoRoute<ErrorRoute>(path: '/error', name: 'Error')
-class ErrorRoute extends GoRouteData {
-  ErrorRoute({required this.error});
-  final String error;
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) => ErrorScreen(
-        errorMessage: error,
+          GoRoute(
+            path: 'chat',
+            name: 'chat',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'chat',
+                child: AIChatScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'menu',
+            name: 'menu',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'menu',
+                child: MenuScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'ecosystem-provider-search',
+            name: 'ecosystemProviderSearch',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'ecosystemProviderSearch',
+                child: EcosystemProviderSearchScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'order-detail/:orderId',
+            name: 'orderDetail',
+            builder: (BuildContext context, GoRouterState state) {
+              final orderId = state.pathParameters['orderId']!;
+              return ApplicationContainer(
+                name: 'orderDetail',
+                child: OrderDetailScreen(orderId: orderId),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'order-history',
+            name: 'orderHistory',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'orderHistory',
+                child: OrderHistoryScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'order-tracking/:orderId',
+            name: 'orderTracking',
+            builder: (BuildContext context, GoRouterState state) {
+              final orderId = state.pathParameters['orderId']!;
+              return ApplicationContainer(
+                name: 'orderTracking',
+                child: OrderTrackingScreen(orderId: orderId),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'shopping-cart',
+            name: 'shoppingCart',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'shoppingCart',
+                child: ShoppingCartScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'ai-assisted-search',
+            name: 'aiAssistedSearch',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'aiAssistedSearch',
+                child: AIAssistedSearchScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'food-diary',
+            name: 'foodDiary',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'foodDiary',
+                child: FoodDiaryScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'meal-plans',
+            name: 'mealPlans',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'mealPlans',
+                child: MealPlansScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'media-home',
+            name: 'mediaHome',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'mediaHome',
+                child: MediaHomeScreenPage(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'profile',
+            name: 'profile',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'profile',
+                child: ProfileScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: 'settings',
+            name: 'settings',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ApplicationContainer(
+                name: 'settings',
+                child: SettingsScreen(),
+              );
+            },
+          ),
+        ],
+      ),
+    ],
+    errorBuilder: (BuildContext context, GoRouterState state) {
+      return ErrorScreen(
+        errorMessage: state.error?.toString() ?? 'Unknown error occurred',
         onRetry: () {
-          // Define your retry logic here
+          context.go('/');
         },
       );
-}
-
-final routerProvider = Provider((ref) {
-  final notifier = RouterNotifier(ref);
-  return GoRouter(
-    routes: $appRoutes,
-    errorBuilder: (context, state) =>
-        ErrorRoute(error: state.error!.message).build(context, state),
-    navigatorKey: navigatorKey,
-    refreshListenable: notifier,
+    },
   );
 });
 
-@TypedGoRoute<LoginRoute>(path: '/login', name: 'Login', routes: [])
-class LoginRoute extends GoRouteData {
-  const LoginRoute() : super();
-
-  static String get routePath => '/login';
-  static String get routeName => 'Login';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const LoginScreen();
-}
-
-@TypedGoRoute<RegisterRoute>(path: '/register', name: 'Register', routes: [])
-class RegisterRoute extends GoRouteData {
-  const RegisterRoute();
-
-  static String get routePath => '/register';
-  static String get routeName => 'Register';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const RegistrationScreen();
-}
-
-@TypedGoRoute<ProfileRoute>(path: '/profile', name: 'Profile', routes: [])
-class ProfileRoute extends GoRouteData {
-  const ProfileRoute();
-  static String get routePath => '/profile';
-  static String get routeName => 'Profile';
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const ProfileScreen();
-}
-
-@TypedGoRoute<ProvidersRoute>(path: '/providers', name: 'Providers', routes: [])
-class ProvidersRoute extends GoRouteData {
-  const ProvidersRoute();
-  static String get routePath => '/providers';
-  static String get routeName => 'Providers';
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const EcosystemProviderSearchScreen();
-}
-
-@TypedGoRoute<ChatRoute>(path: '/chat', name: 'Chat', routes: [])
-class ChatRoute extends GoRouteData {
-  const ChatRoute();
-  static String get routePath => '/chat';
-  static String get routeName => 'Chat';
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const AIChatScreen();
-}
-
-@TypedGoRoute<ShoppingCartRoute>(
-    path: '/shopping-cart', name: 'ShoppingCart', routes: [])
-class ShoppingCartRoute extends GoRouteData {
-  const ShoppingCartRoute();
-  static String get routePath => '/shopping-cart';
-  static String get routeName => 'ShoppingCart';
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      ShoppingCartScreen();
-}
-
-@TypedGoRoute<OrderHistoryRoute>(
-    path: '/order-history', name: 'OrderHistory', routes: [])
-class OrderHistoryRoute extends GoRouteData {
-  const OrderHistoryRoute();
-  static String get routePath => '/order-history';
-  static String get routeName => 'OrderHistory';
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const OrderHistoryScreen();
-}
-
-@TypedGoRoute<OrderDetailRoute>(
-    path: '/order-detail/:orderId', name: 'OrderDetail', routes: [])
-class OrderDetailRoute extends GoRouteData {
-  final String orderId;
-
-  OrderDetailRoute({required this.orderId});
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return OrderDetailScreen(orderId: orderId);
+// Extension methods for easier navigation (optional)
+extension GoRouterExtensions on BuildContext {
+  void pushNamedWithParams(String name, Map<String, String> params) {
+    goNamed(name, pathParameters: params);
   }
 
-  @override
-  FutureOr<String?> redirect(BuildContext context, GoRouterState state) async {
-    final userValue = context.ref.read(userNotifierProvider);
-
-    if (!userValue.hasValue) {
-      return const LoginRoute().location;
-    }
-    return null;
+  void pushNamedWithQuery(String name, Map<String, String> queryParams) {
+    goNamed(name, queryParameters: queryParams);
   }
-}
-
-@TypedGoRoute<SettingsRoute>(path: '/settings', name: 'Settings', routes: [])
-class SettingsRoute extends GoRouteData {
-  const SettingsRoute();
-
-  static String get routePath => '/settings';
-  static String get routeName => 'Settings';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const SettingsScreen();
-}
-
-@TypedGoRoute<OrderTrackingRoute>(
-    path: '/order-tracking/:orderId', name: 'OrderTracking', routes: [])
-class OrderTrackingRoute extends GoRouteData {
-  final String orderId;
-
-  OrderTrackingRoute({required this.orderId});
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return OrderTrackingScreen(orderId: orderId);
-  }
-
-  @override
-  FutureOr<String?> redirect(BuildContext context, GoRouterState state) async {
-    final userValue = context.ref.read(userNotifierProvider);
-
-    if (!userValue.hasValue) {
-      return const LoginRoute().location;
-    }
-    return null;
-  }
-}
-
-@TypedGoRoute<FoodDiaryRoute>(
-    path: '/food-diary', name: 'FoodDiary', routes: [])
-class FoodDiaryRoute extends GoRouteData {
-  const FoodDiaryRoute();
-
-  static String get routePath => '/food-diary';
-  static String get routeName => 'FoodDiary';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const FoodDiaryScreen();
-}
-
-@TypedGoRoute<MealPlansRoute>(
-    path: '/meal-plans', name: 'MealPlans', routes: [])
-class MealPlansRoute extends GoRouteData {
-  const MealPlansRoute();
-
-  static String get routePath => '/meal-plans';
-  static String get routeName => 'MealPlans';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const MealPlansScreen();
-}
-
-@TypedGoRoute<SearchRoute>(path: '/search', name: 'Search', routes: [])
-class SearchRoute extends GoRouteData {
-  const SearchRoute();
-
-  static String get routePath => '/search';
-  static String get routeName => 'Search';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const AIAssistedSearchScreen();
-}
-
-final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
-    GlobalKey<ScaffoldMessengerState>();
-
-final navigatorKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
-
-@TypedGoRoute<MediaRoute>(path: '/media', name: 'Media', routes: [])
-class MediaRoute extends GoRouteData {
-  const MediaRoute();
-  static String get routePath => '/media';
-  static String get routeName => 'Media';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const MediaHomeScreenPage();
 }

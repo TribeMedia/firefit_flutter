@@ -9,12 +9,12 @@ import 'package:talker_flutter/talker_flutter.dart';
 part 'providers.g.dart';
 
 @riverpod
-LightThemeData lightTheme(Ref ref, ThemeData theme) {
+LightThemeData lightThemeProvider(Ref ref, ThemeData theme) {
   return LightThemeData(theme: theme);
 }
 
 @riverpod
-DarkThemeData darkTheme(Ref ref, ThemeData theme) {
+DarkThemeData darkThemeProvider(Ref ref, ThemeData theme) {
   return DarkThemeData(theme: theme);
 }
 

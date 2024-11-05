@@ -21,7 +21,8 @@
             "name": "myapp (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "deviceId": "00008130-000C1CE022C1001C"
         },
         {
             "name": "core",

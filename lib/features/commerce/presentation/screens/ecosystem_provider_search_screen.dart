@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -110,8 +111,8 @@ class EcosystemProviderSearchScreen extends HookConsumerWidget {
     final searchQuery = ref.watch(searchQueryProvider);
     final viewMode = ref.watch(viewModeProvider);
 
-    return Scaffold(
-      appBar: AppBar(
+    return FScaffold(
+      header: FHeader(
         title: Text('Ecosystem Providers'),
         actions: [
           Padding(
@@ -138,7 +139,8 @@ class EcosystemProviderSearchScreen extends HookConsumerWidget {
           ),
         ],
       ),
-      body: Column(
+      contentPad: false,
+      content: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -263,7 +265,10 @@ class EcosystemProviderSearchScreen extends HookConsumerWidget {
 class EcosystemProviderDetailScreen extends HookConsumerWidget {
   final EcosystemProvider provider;
 
-  EcosystemProviderDetailScreen({required this.provider});
+  const EcosystemProviderDetailScreen({
+    super.key,
+    required this.provider,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -322,7 +327,8 @@ class EcosystemProviderDetailScreen extends HookConsumerWidget {
                               borderRadius: BorderRadius.circular(8.0),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
+                                  color: Colors.black
+                                      .withAlpha((0.1 * 255).round()),
                                   blurRadius: 5,
                                   spreadRadius: 1,
                                 ),

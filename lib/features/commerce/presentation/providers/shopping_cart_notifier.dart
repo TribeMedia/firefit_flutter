@@ -40,3 +40,7 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
     state = AsyncValue.data(ShoppingCartModel());
   }
 }
+
+final shoppingCartProvider =
+    AsyncNotifierProvider<ShoppingCartNotifier, ShoppingCartModel>(
+        () => ShoppingCartNotifier());

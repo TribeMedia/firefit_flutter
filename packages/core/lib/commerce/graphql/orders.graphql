@@ -1,0 +1,124 @@
+fragment OrderType on OrderType {
+  id
+  name
+  key
+  description
+  schema
+  iconUrl
+  coverUrl
+}
+
+fragment Order on Order {
+  id
+  orderTypeId
+  orderType {
+    ...OrderType
+  }
+  userId
+  user {
+    id
+    email
+    firstName
+    lastName
+    displayName
+    data
+    avatarUrl
+    kratosId
+    supabaseUserId
+    userRoleCollection {
+      edges {
+        node {
+          id
+          roleId
+          role {
+            id
+            name
+            key
+            schema
+          }
+          userId
+        }
+      }
+    }
+  }
+  orderStatusId
+  orderStatus {
+    id
+    name
+    key
+  }
+  orderItemCollection {
+    edges {
+      node {
+        id
+        orderItemMenuItemCollection {
+          edges {
+            node {
+              orderItemId
+              menuItemId
+              menuItem {
+                id
+                menuId
+                name
+                data
+                notes
+                imageUrl
+                coverUrl
+                price
+                isAvailable
+                categories
+              }
+              notes
+            }
+          }
+        }
+        units
+      }
+    }
+  }
+  data
+  notes
+  units
+  pricePerUnit
+  updatedAt
+}
+
+query OrderById($id: UUID!) {
+  orderCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...Order
+      }
+    }
+  }
+}
+
+query Orders(
+  $first: Int
+  $last: Int
+  $before: Cursor
+  $after: Cursor
+  $filter: OrderFilter
+  $orderBy: [OrderOrderBy!]
+) {
+  orderCollection(
+    first: $first
+    last: $last
+    before: $before
+    after: $after
+    filter: $filter
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...Order
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Providers for various settings
 final notificationsEnabledProvider = StateProvider<bool>((ref) => true);
-final dailyReminderTimeProvider = StateProvider<TimeOfDay>((ref) => TimeOfDay(hour: 9, minute: 0));
+final dailyReminderTimeProvider =
+    StateProvider<TimeOfDay>((ref) => TimeOfDay(hour: 9, minute: 0));
 final dietaryRestrictionsProvider = StateProvider<List<String>>((ref) => []);
 final darkModeProvider = StateProvider<bool>((ref) => false);
-final measurementUnitProvider = StateProvider<MeasurementUnit>((ref) => MeasurementUnit.metric);
+final measurementUnitProvider =
+    StateProvider<MeasurementUnit>((ref) => MeasurementUnit.metric);
 
 enum MeasurementUnit { metric, imperial }
 
@@ -21,17 +24,19 @@ class SettingsScreen extends HookConsumerWidget {
     final darkMode = ref.watch(darkModeProvider);
     final measurementUnit = ref.watch(measurementUnitProvider);
 
-    return Scaffold(
-      appBar: AppBar(
+    return FScaffold(
+      header: FHeader(
         title: Text('Settings'),
       ),
-      body: ListView(
+      contentPad: false,
+      content: ListView(
         children: [
           _buildSectionHeader(context, 'Notifications'),
           SwitchListTile(
             title: Text('Enable Notifications'),
             value: notificationsEnabled,
-            onChanged: (value) => ref.read(notificationsEnabledProvider.notifier).state = value,
+            onChanged: (value) =>
+                ref.read(notificationsEnabledProvider.notifier).state = value,
           ),
           ListTile(
             title: Text('Daily Reminder Time'),
@@ -53,13 +58,17 @@ class SettingsScreen extends HookConsumerWidget {
           SwitchListTile(
             title: Text('Dark Mode'),
             value: darkMode,
-            onChanged: (value) => ref.read(darkModeProvider.notifier).state = value,
+            onChanged: (value) =>
+                ref.read(darkModeProvider.notifier).state = value,
           ),
           ListTile(
             title: Text('Measurement Unit'),
-            subtitle: Text(measurementUnit == MeasurementUnit.metric ? 'Metric' : 'Imperial'),
+            subtitle: Text(measurementUnit == MeasurementUnit.metric
+                ? 'Metric'
+                : 'Imperial'),
             trailing: Icon(Icons.chevron_right),
-            onTap: () => _showMeasurementUnitDialog(context, ref, measurementUnit),
+            onTap: () =>
+                _showMeasurementUnitDialog(context, ref, measurementUnit),
           ),
           _buildSectionHeader(context, 'Account'),
           ListTile(
@@ -105,15 +114,22 @@ class SettingsScreen extends HookConsumerWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: Theme.of(context).primaryColor,
-          fontWeight: FontWeight.bold,
-        ),
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
       ),
     );
   }
 
-  Widget _buildDietaryRestrictions(BuildContext context, WidgetRef ref, List<String> dietaryRestrictions) {
-    final restrictions = ['Vegetarian', 'Vegan', 'Gluten-free', 'Dairy-free', 'Nut-free'];
+  Widget _buildDietaryRestrictions(
+      BuildContext context, WidgetRef ref, List<String> dietaryRestrictions) {
+    final restrictions = [
+      'Vegetarian',
+      'Vegan',
+      'Gluten-free',
+      'Dairy-free',
+      'Nut-free'
+    ];
 
     return Column(
       children: restrictions.map((restriction) {
@@ -122,9 +138,15 @@ class SettingsScreen extends HookConsumerWidget {
           value: dietaryRestrictions.contains(restriction),
           onChanged: (bool? value) {
             if (value == true) {
-              ref.read(dietaryRestrictionsProvider.notifier).state = [...dietaryRestrictions, restriction];
+              ref.read(dietaryRestrictionsProvider.notifier).state = [
+                ...dietaryRestrictions,
+                restriction
+              ];
             } else {
-              ref.read(dietaryRestrictionsProvider.notifier).state = dietaryRestrictions.where((item) => item != restriction).toList();
+              ref.read(dietaryRestrictionsProvider.notifier).state =
+                  dietaryRestrictions
+                      .where((item) => item != restriction)
+                      .toList();
             }
           },
         );
@@ -132,7 +154,8 @@ class SettingsScreen extends HookConsumerWidget {
     );
   }
 
-  void _showMeasurementUnitDialog(BuildContext context, WidgetRef ref, MeasurementUnit currentUnit) {
+  void _showMeasurementUnitDialog(
+      BuildContext context, WidgetRef ref, MeasurementUnit currentUnit) {
     showDialog(
       context: context,
       builder: (BuildContext context) {

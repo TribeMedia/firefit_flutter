@@ -1,7 +1,7 @@
 import 'package:firefit/features/commerce/presentation/screens/order_detail_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 final orderHistoryProvider = FutureProvider<List<Order>>((ref) async {
@@ -48,11 +48,11 @@ class OrderHistoryScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final orderHistory = ref.watch(orderHistoryProvider);
 
-    return Scaffold(
-      appBar: AppBar(
+    return FScaffold(
+      header: FHeader(
         title: Text('Order History'),
       ),
-      body: orderHistory.when(
+      content: orderHistory.when(
         data: (orders) => ListView.builder(
           itemCount: orders.length,
           itemBuilder: (context, index) {

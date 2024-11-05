@@ -1,17 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:forui/forui.dart';
 
 class MediaHomeScreenPage extends StatelessWidget {
   const MediaHomeScreenPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return FScaffold(
+      header: FHeader(
         title: const Text('Media Home'),
-        centerTitle: true,
       ),
-      body: Column(
+      contentPad: false,
+      content: Column(
         children: [
           // Carousel for featured content
           CarouselSlider(

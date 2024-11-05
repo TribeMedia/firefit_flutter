@@ -1,6 +1,7 @@
 targets:
   $default:
     sources:
+      - $package$
       - lib/schema.graphql
       - lib/**
     builders:
@@ -9,6 +10,7 @@ targets:
           any_map: false
       graphql_codegen:
         options:
+          schema: lib/schema.graphql
           scalars:
             UUID:
               type: String
@@ -23,12 +25,15 @@ targets:
               import: package:core/scalars.dart
               fromJsonFunctionName: jsonFieldFromJson
               toJsonFunctionName: jsonFieldToJson
-            Cursor:
-              type: dynamic
-            BigInt:
-              type: int
             BigFloat:
               type: double
+            BigInt:
+              type: int
+            Cursor:
+              type: dynamic
+            Opaque:
+              type: dynamic
           clients:
             - graphql
             - graphql_flutter
+    

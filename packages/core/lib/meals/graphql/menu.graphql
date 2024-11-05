@@ -1,0 +1,124 @@
+fragment MenuType on MenuType {
+  id
+  name
+  key
+  description
+  iconUrl
+  coverUrl
+  schema
+}
+
+fragment MenuItem on MenuItem {
+  id
+  menuId
+  name
+  data
+  notes
+  imageUrl
+  coverUrl
+  price
+  isAvailable
+  categories
+}
+
+fragment Menu on Menu {
+  id
+  menuTypeId
+  menuType {
+    ...MenuType
+  }
+  name
+  description
+  providerId
+  provider {
+    id
+    name
+    description
+    iconUrl
+    coverUrl
+  }
+  menuItemCollection {
+    edges {
+      node {
+        ...MenuItem
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+
+}
+
+query MenuById($id: UUID!) {
+  menuCollection(filter: {id: {eq: $id}}) {
+    edges {
+      node {
+        ...Menu
+      }
+    }
+  }
+}
+
+query Menus(
+  $first: Int
+  $last: Int
+  $before: Cursor
+  $after: Cursor
+  $filter: MenuFilter
+  $orderBy: [MenuOrderBy!]
+) {
+  menuCollection(
+    first: $first
+    last: $last
+    before: $before
+    after: $after
+    filter: $filter
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...Menu
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
+
+query MenuItems(
+  $first: Int
+  $last: Int
+  $before: Cursor
+  $after: Cursor
+  $filter: MenuItemFilter
+  $orderBy: [MenuItemOrderBy!]
+) {
+  menuItemCollection(
+    first: $first
+    last: $last
+    before: $before
+    after: $after
+    filter: $filter
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...MenuItem
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}

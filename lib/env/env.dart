@@ -25,6 +25,18 @@ abstract class Env {
 
   @EnviedField(varName: 'IPFS_URL')
   static const String ipfsUrl = _Env.ipfsUrl;
+
+  @EnviedField(varName: 'LLAMA_DEFAULT_REPO')
+  static const String llamaDefaultRepo = _Env.llamaDefaultRepo;
+
+  @EnviedField(varName: 'LLAMA_DEFAULT_FILENAME')
+  static const String llamaDefaultFilename = _Env.llamaDefaultFilename;
+
+  @EnviedField(varName: 'LLAMA_DEFAULT_MODEL')
+  static const String llamaDefaultModel = _Env.llamaDefaultModel;
+
+  @EnviedField(varName: 'ELECTRIC_SERVICE_URL')
+  static const String electricServiceUrl = _Env.electricServiceUrl;
 }
 
 class Environment with EnvInterface {
@@ -48,6 +60,18 @@ class Environment with EnvInterface {
 
   @override
   String get ipfsUrl => _Env.ipfsUrl;
+
+  @override
+  String get llamaDefaultRepo => _Env.llamaDefaultRepo;
+
+  @override
+  String get llamaDefaultFilename => _Env.llamaDefaultFilename;
+
+  @override
+  String get llamaDefaultModel => _Env.llamaDefaultModel;
+
+  @override
+  String get electricServiceUrl => _Env.electricServiceUrl;
 
   static final Environment _instance = Environment._internal();
 

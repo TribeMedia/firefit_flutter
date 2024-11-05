@@ -1,5 +1,3 @@
-import 'package:firefit/theme/dark_theme.dart';
-import 'package:firefit/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -19,23 +17,24 @@ class ThemeNotifier extends ChangeNotifier {
   ThemeNotifier({
     required ThemeData lightTheme,
     required ThemeData darkTheme,
-}) {
-    _lightThemeData = LightThemeData(theme: lightTheme);
-    _darkThemeData = DarkThemeData(theme: darkTheme);
+  }) {
+    _lightTheme = lightTheme;
+    _darkTheme = darkTheme;
   }
 
-  late final LightThemeData _lightThemeData;
-  late final DarkThemeData _darkThemeData;
+  late final ThemeData _lightTheme;
+  late final ThemeData _darkTheme;
 
   ThemeBrightness brightness = ThemeBrightness.light;
 
-  LightThemeData get lightTheme => _lightThemeData;
+  ThemeData get lightTheme => _lightTheme;
 
-  DarkThemeData get darkTheme => _darkThemeData;
+  ThemeData get darkTheme => _darkTheme;
 }
 
-final themeNotifierProvider = ChangeNotifierProvider.family<ThemeNotifier, ThemeInput>(
+final themeNotifierProvider =
+    ChangeNotifierProvider.family<ThemeNotifier, ThemeInput>(
         (ref, input) => ThemeNotifier(
-          lightTheme: input.lightTheme,
-          darkTheme: input.darkTheme,
-        ));
+              lightTheme: input.lightTheme,
+              darkTheme: input.darkTheme,
+            ));

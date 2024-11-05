@@ -25,4 +25,12 @@ final class _Env {
   static const String openAiKey = 'e83e5769aa1e47d3a664c864d3e8a045';
 
   static const String ipfsUrl = 'https://ipfs.tribemedia.io';
+
+  static const String llamaDefaultRepo = 'QuantFactory/stablelm-zephyr-3b-GGUF';
+
+  static const String llamaDefaultFilename = 'stablelm-zephyr-3b.Q4_K_M.gguf';
+
+  static const String llamaDefaultModel = 'stablelm-zephyr-3b';
+
+  static const String electricServiceUrl = 'http://localhost:5133';
 }

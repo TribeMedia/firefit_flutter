@@ -1,26 +1,26 @@
-import 'package:firefit/features/chat/message.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firefit/features/chat/database/message.dart' as db_message;
+import 'package:flutter/material.dart';
 
 class ChatController extends ChangeNotifier {
-  final List<Message> _messages = [];
+  final List<db_message.Message> _messages = [];
 
-  List<Message> get messages => List.unmodifiable(_messages);
+  List<db_message.Message> get messages => _messages;
 
-  void addMessage(Message message) {
-    _messages.insert(0, message);
+  void addMessage(db_message.Message message) {
+    _messages.add(message);
     notifyListeners();
   }
 
-  void updateMessage(Message updatedMessage) {
-    final index = _messages.indexWhere((m) => m.id == updatedMessage.id);
+  void updateMessage(int id, db_message.Message updatedMessage) {
+    final index = _messages.indexWhere((msg) => msg.id == id);
     if (index != -1) {
       _messages[index] = updatedMessage;
       notifyListeners();
     }
   }
 
-  void removeMessage(String messageId) {
-    _messages.removeWhere((m) => m.id == messageId);
+  void removeMessage(int id) {
+    _messages.removeWhere((msg) => msg.id == id);
     notifyListeners();
   }
 

@@ -1,7 +1,7 @@
 import 'package:firefit/features/chat/chat_controller.dart';
 import 'package:firefit/features/chat/chat_theme.dart';
-import 'package:firefit/features/chat/message.dart';
-import 'package:firefit/features/chat/user.dart';
+import 'package:firefit/features/chat/database/message.dart';
+import 'package:firefit/features/chat/database/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
@@ -89,7 +89,7 @@ class _MessageBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.read<ChatTheme>();
     final user = context.read<User>();
-    final isUserMessage = message.author.id == user.id;
+    final isUserMessage = message.author?.userId == user.userId;
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Padding(
@@ -114,8 +114,8 @@ class _MessageBubble extends StatelessWidget {
                     onPressed: () => _shareContent(message.text, context),
                     tooltip: 'Share message',
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
-                      minimumSize: MaterialStateProperty.all(Size(24, 24)),
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      minimumSize: WidgetStateProperty.all(Size(24, 24)),
                     ),
                   ),
                   IconButton(
@@ -123,8 +123,8 @@ class _MessageBubble extends StatelessWidget {
                     onPressed: () => _copyToClipboard(message.text, context),
                     tooltip: 'Copy message',
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
-                      minimumSize: MaterialStateProperty.all(Size(24, 24)),
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      minimumSize: WidgetStateProperty.all(Size(24, 24)),
                     ),
                   ),
                 ] else ...[
@@ -133,8 +133,8 @@ class _MessageBubble extends StatelessWidget {
                     onPressed: () => _copyToClipboard(message.text, context),
                     tooltip: 'Copy message',
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
-                      minimumSize: MaterialStateProperty.all(Size(24, 24)),
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      minimumSize: WidgetStateProperty.all(Size(24, 24)),
                     ),
                   ),
                   IconButton(
@@ -142,8 +142,8 @@ class _MessageBubble extends StatelessWidget {
                     onPressed: () => _shareContent(message.text, context),
                     tooltip: 'Share message',
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
-                      minimumSize: MaterialStateProperty.all(Size(24, 24)),
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      minimumSize: WidgetStateProperty.all(Size(24, 24)),
                     ),
                   ),
                 ],
@@ -284,8 +284,8 @@ class CustomCodeBlockBuilder extends MarkdownElementBuilder {
                 onPressed: () => onShare(code),
                 tooltip: 'Share code',
                 style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.zero),
-                  minimumSize: MaterialStateProperty.all(Size(24, 24)),
+                  padding: WidgetStateProperty.all(EdgeInsets.zero),
+                  minimumSize: WidgetStateProperty.all(Size(24, 24)),
                 ),
               ),
               IconButton(
@@ -293,8 +293,8 @@ class CustomCodeBlockBuilder extends MarkdownElementBuilder {
                 onPressed: () => onCopy(code),
                 tooltip: 'Copy code',
                 style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.zero),
-                  minimumSize: MaterialStateProperty.all(Size(24, 24)),
+                  padding: WidgetStateProperty.all(EdgeInsets.zero),
+                  minimumSize: WidgetStateProperty.all(Size(24, 24)),
                 ),
               ),
             ],

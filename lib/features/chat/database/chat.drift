@@ -1,0 +1,33 @@
+-- Create users table
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id TEXT NOT NULL UNIQUE,
+  first_name TEXT,
+  last_name TEXT,
+  embedding BLOB
+);
+
+-- Create messages table with vector support
+CREATE TABLE messages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  message_id TEXT NOT NULL UNIQUE,
+  author_id INTEGER NOT NULL REFERENCES users(id),
+  text TEXT NOT NULL,
+  created_at INTEGER NOT NULL,
+  embedding BLOB,
+  context_hash TEXT,
+  FOREIGN KEY (author_id) REFERENCES users (id)
+);
+
+-- Custom queries
+getMessagesByUser: 
+SELECT m.*, u.* FROM messages m
+INNER JOIN users u ON m.author_id = u.id
+WHERE u.user_id = :userId
+ORDER BY m.created_at DESC;
+
+getLatestMessages:
+SELECT m.*, u.* FROM messages m
+INNER JOIN users u ON m.author_id = u.id
+ORDER BY m.created_at DESC
+LIMIT :limit;

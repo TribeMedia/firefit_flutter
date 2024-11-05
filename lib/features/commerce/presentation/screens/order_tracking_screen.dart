@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -66,17 +67,17 @@ enum OrderStatus { inProgress, delivered }
 class OrderTrackingScreen extends HookConsumerWidget {
   final String orderId;
 
-  OrderTrackingScreen({required this.orderId});
+  const OrderTrackingScreen({required this.orderId, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final orderTracking = ref.watch(orderTrackingProvider(orderId));
 
-    return Scaffold(
-      appBar: AppBar(
+    return FScaffold(
+      header: FHeader(
         title: Text('Order Tracking'),
       ),
-      body: orderTracking.when(
+      content: orderTracking.when(
         data: (order) => SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -79,11 +80,11 @@ class OrderDetailScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final orderDetail = ref.watch(orderDetailProvider(orderId));
 
-    return Scaffold(
-      appBar: AppBar(
+    return FScaffold(
+      header: FHeader(
         title: Text('Order Details'),
       ),
-      body: orderDetail.when(
+      content: orderDetail.when(
         data: (order) => SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),

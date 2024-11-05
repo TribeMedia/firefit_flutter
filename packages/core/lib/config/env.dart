@@ -11,4 +11,12 @@ mixin EnvInterface {
   String get openAiDeploymentName;
 
   String get openAiApiVersion;
+
+  String get llamaDefaultRepo;
+
+  String get llamaDefaultFilename;
+
+  String get llamaDefaultModel;
+
+  String get electricServiceUrl;
 }

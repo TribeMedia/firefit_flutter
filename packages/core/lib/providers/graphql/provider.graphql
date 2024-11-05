@@ -1,0 +1,64 @@
+fragment ProviderType on ProviderType {
+  id
+  name
+  key
+  description
+  iconUrl
+  coverUrl
+  schema
+}
+
+fragment Provider on Provider {
+  id
+  providerTypeId
+  providerType {
+    ...ProviderType
+  }
+  name
+  description
+  longDescriptionMarkdown
+  siteUrl
+  data
+  iconUrl
+  coverUrl
+}
+
+query ProviderById($id: UUID!) {
+  providerCollection(filter: {id: {eq: $id}}) {
+    edges {
+      node {
+        ...Provider
+      }
+    }
+  }
+}
+
+query Providers(
+  $first: Int
+  $last: Int
+  $before: Cursor
+  $after: Cursor
+  $filter: ProviderFilter
+  $orderBy: [ProviderOrderBy!]
+) {
+  providerCollection(
+    first: $first
+    last: $last
+    before: $before
+    after: $after
+    filter: $filter
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...Provider
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
