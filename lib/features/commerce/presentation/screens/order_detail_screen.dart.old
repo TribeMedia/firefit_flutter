@@ -1,0 +1,121 @@
+import 'package:flutter/material.dart';
+import 'package:forui/forui.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+
+
+
+class OrderDetailScreen extends HookConsumerWidget {
+  final String orderId;
+
+  const OrderDetailScreen({required this.orderId, super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final orderDetail = ref.watch(orderDetailProvider(orderId));
+
+    return FScaffold(
+      header: FHeader(
+        title: Text('Order Details'),
+      ),
+      content: orderDetail.when(
+        data: (order) => SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Order #${order.id}',
+                    style: Theme.of(context).textTheme.titleLarge),
+                SizedBox(height: 8),
+                Text(
+                    'Placed on ${DateFormat('MMM d, y - h:mm a').format(order.date)}'),
+                SizedBox(height: 16),
+                Text(
+                    'Status: ${order.status == OrderStatus.inProgress ? 'In Progress' : 'Delivered'}'),
+                SizedBox(height: 24),
+                Text('Order Timeline',
+                    style: Theme.of(context).textTheme.titleLarge),
+                SizedBox(height: 8),
+                _buildTrackingTimeline(context, order.trackingSteps),
+                SizedBox(height: 24),
+                Text('Order Items',
+                    style: Theme.of(context).textTheme.titleLarge),
+                SizedBox(height: 8),
+                ...order.items.map((item) => _buildOrderItemTile(item)),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Total:',
+                        style: Theme.of(context).textTheme.titleMedium),
+                    Text('\$${order.total.toStringAsFixed(2)}',
+                        style: Theme.of(context).textTheme.titleMedium),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        loading: () => Center(child: CircularProgressIndicator()),
+        error: (error, stack) => Center(child: Text('Error: $error')),
+      ),
+    );
+  }
+
+  Widget _buildTrackingTimeline(
+      BuildContext context, List<TrackingStep> steps) {
+    return Column(
+      children: steps.asMap().entries.map((entry) {
+        final index = entry.key;
+        final step = entry.value;
+        final isLast = index == steps.length - 1;
+
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              children: [
+                Container(
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: Icon(Icons.check, size: 12, color: Colors.white),
+                ),
+                if (!isLast)
+                  Container(
+                    width: 2,
+                    height: 40,
+                    color: Theme.of(context).primaryColor,
+                  ),
+              ],
+            ),
+            SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(step.status,
+                      style: Theme.of(context).textTheme.titleMedium),
+                  Text(DateFormat('MMM d, y - h:mm a').format(step.timestamp)),
+                  SizedBox(height: isLast ? 0 : 24),
+                ],
+              ),
+            ),
+          ],
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildOrderItemTile(OrderItem item) {
+    return ListTile(
+      title: Text(item.name),
+      subtitle: Text('Quantity: ${item.quantity}'),
+      trailing: Text('\$${(item.price * item.quantity).toStringAsFixed(2)}'),
+    );
+  }
+}

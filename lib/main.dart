@@ -1,9 +1,11 @@
 import 'package:firefit/config/providers.dart';
+import 'package:firefit/env/env.dart';
 import 'package:firefit/features/application/application.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,10 +24,10 @@ Future<void> main() async {
 
   try {
     // Initialize other services
-    /*await Supabase.initialize(
+    await Supabase.initialize(
       url: Env.supabaseUrl,
       anonKey: Env.supabaseAnonKey,
-    );*/
+    );
     //talker.debug('Supabase initialized successfully');
 
     runApp(

@@ -1,16 +1,18 @@
-import 'package:core/meals/domain/models/menu.dart';
-import 'package:core/meals/domain/repositories/meal_repository.dart';
-import 'package:core/meals/domain/repositories/mock_meal_repository.dart';
+import 'package:core/core.dart';
+import 'package:firefit/config/providers.dart';
+import 'package:firefit/env/env.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const globalProviderId = '9944860d-6de0-421a-a409-9fd169913480';
 
-final mealRepositoryProvider = Provider((ref) => MockMealRepository());
+final menuRepositoryProvider = Provider((ref) =>
+    MenuRepository(talker: ref.read(loggingProvider), env: Environment()));
 
 class MenuScreenViewModel {
   final List<Menu> breakfastMenus;
   final List<Menu> lunchMenus;
   final List<Menu> dinnerMenus;
+  final List<MenuItem> menuItems;
   final bool isLoading;
   final String? error;
 
@@ -18,41 +20,56 @@ class MenuScreenViewModel {
       {required this.breakfastMenus,
       required this.lunchMenus,
       required this.dinnerMenus,
+      required this.menuItems,
       required this.isLoading,
       required this.error});
 }
 
 class MenuNotifier extends AsyncNotifier<MenuScreenViewModel> {
-  late final MealRepository _mealRepository;
   @override
   Future<MenuScreenViewModel> build() async {
     state = const AsyncLoading();
-    _mealRepository = ref.read(mealRepositoryProvider);
-    final providerMenusResult =
-        await _mealRepository.getProviderMenus(globalProviderId);
-
-    final viewModel = providerMenusResult.fold(
-      (l) => MenuScreenViewModel(
-          breakfastMenus: [],
-          lunchMenus: [],
-          dinnerMenus: [],
-          isLoading: false,
-          error: l.error),
-      (r) => MenuScreenViewModel(
-          breakfastMenus: r
-              .where((menu) => menu.type == getMenuTypeByKey('breakfast')!)
-              .toList(),
-          lunchMenus: r
-              .where((menu) => menu.type == getMenuTypeByKey('lunch')!)
-              .toList(),
-          dinnerMenus: r
-              .where((menu) => menu.type == getMenuTypeByKey('dinner')!)
-              .toList(),
-          isLoading: false,
-          error: null),
+    final menuRepository = ref.read(menuRepositoryProvider);
+    final providerMenusResult = await menuRepository.queryMenus(
+      filter:
+          Input$MenuFilter(providerId: Input$UUIDFilter(eq: globalProviderId)),
     );
-    state = AsyncData(viewModel);
-    return viewModel;
+
+    return providerMenusResult.fold(
+      (l) {
+        final viewModel = MenuScreenViewModel(
+            breakfastMenus: [],
+            lunchMenus: [],
+            dinnerMenus: [],
+            menuItems: [],
+            isLoading: false,
+            error: l.error);
+        state = AsyncData(viewModel);
+        return viewModel;
+      },
+      (r) {
+        final viewModel = MenuScreenViewModel(
+            breakfastMenus:
+                r.where((menu) => menu.menuType.key == 'breakfast').toList(),
+            lunchMenus:
+                r.where((menu) => menu.menuType.key == 'lunch').toList(),
+            dinnerMenus:
+                r.where((menu) => menu.menuType.key == 'dinner').toList(),
+            menuItems: r
+                .map((menu) =>
+                    menu.menuItemCollection?.edges
+                        .map((edge) => edge.node)
+                        .toList() ??
+                    [])
+                .toList()
+                .expand((x) => x)
+                .toList(),
+            isLoading: false,
+            error: null);
+        state = AsyncData(viewModel);
+        return viewModel;
+      },
+    );
   }
 }
 

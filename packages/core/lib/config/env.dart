@@ -19,4 +19,8 @@ mixin EnvInterface {
   String get llamaDefaultModel;
 
   String get electricServiceUrl;
+
+  String get stationId;
+
+  String get applicationId;
 }

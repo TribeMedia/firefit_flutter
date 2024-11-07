@@ -1,0 +1,82 @@
+fragment FirstResponderType on FirstResponderType {
+  id
+  name
+  key
+  schema
+  createdAt
+}
+
+fragment FirstResponder on FirstResponder {
+  id
+  userId
+  user {
+    ...User
+  }
+  firstResponderTypeId
+  firstResponderType {
+    ...FirstResponderType
+  }
+  currentStationId
+  currentStation {
+    ...Station
+  }
+  firstResponderStationCollection {
+    edges {
+      node {
+        ...Station
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+  imageUrl
+  badgeNumber
+  data
+  createdAt
+  updatedAt
+}
+
+query FirstResponder($id: UUID!) {
+  firstResponderCollection(filter: { id: $id }) {
+    edges {
+      node {
+        ...FirstResponder
+      }
+    }
+  }
+}
+
+query FirstResponderCollection(
+  $first: Int,
+  $last: Int,
+  $before: String,
+  $after: String,
+  $filter: FirstResponderFilter,
+  $orderBy: [FirstResponderOrderBy!],
+) {
+  firstResponderCollection(
+    first: $first,
+    last: $last,
+    before: $before,
+    after: $after,
+    filter: $filter,
+    orderBy: $orderBy,
+  ) {
+    edges {
+      node {
+        ...FirstResponder
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+

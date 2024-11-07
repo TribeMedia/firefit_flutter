@@ -14,7 +14,7 @@ final class _Env {
   static const String supabaseUrl = 'https://supabase.tribemedia.io';
 
   static const String supabaseAnonKey =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0';
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0cmliZW1lZGlhLmlvIiwiZXhwIjoxODcxMDA4NjcwLCJ1c2VybmFtZSI6ImFub24iLCJyb2xlIjoiYW5vbiIsImlzX3VzZXIiOiJmYWxzZSJ9.Ir5lZu4OTRTsavHareIBmOP4P6sddHo3neYO0UEDebg';
 
   static const String openAiUrl = 'https://reveles-ai.openai.azure.com';
 
@@ -33,4 +33,8 @@ final class _Env {
   static const String llamaDefaultModel = 'stablelm-zephyr-3b';
 
   static const String electricServiceUrl = 'http://localhost:5133';
+
+  static const String stationId = 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2';
+
+  static const String applicationId = '917669e4-601b-401c-8f9f-98a5ac2c20ff';
 }

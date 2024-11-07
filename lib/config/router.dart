@@ -3,19 +3,13 @@ import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
 import 'package:firefit/features/chat/ai_chat_screen.dart';
-import 'package:firefit/features/commerce/presentation/screens/ecosystem_provider_search_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/menu_screen.dart';
-import 'package:firefit/features/commerce/presentation/screens/order_detail_screen.dart';
-import 'package:firefit/features/commerce/presentation/screens/order_history_screen.dart';
-import 'package:firefit/features/commerce/presentation/screens/order_tracking_screen.dart';
+//import 'package:firefit/features/commerce/presentation/screens/order_detail_screen.dart.old';
 import 'package:firefit/features/commerce/presentation/screens/shopping_cart_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
-import 'package:firefit/features/meals/presentation/screens/ai_assisted_search_screen.dart';
-import 'package:firefit/features/meals/presentation/screens/food_diary_screen.dart';
-import 'package:firefit/features/meals/presentation/screens/meal_plans_screen.dart';
-import 'package:firefit/features/media/presentation/screens/media_home_screen/media_home_screen.dart';
+//import 'package:firefit/features/meals/presentation/screens/ai_assisted_search_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/profile_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
@@ -101,17 +95,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               );
             },
           ),
-          GoRoute(
-            path: 'ecosystem-provider-search',
-            name: 'ecosystemProviderSearch',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ApplicationContainer(
-                name: 'ecosystemProviderSearch',
-                child: EcosystemProviderSearchScreen(),
-              );
-            },
-          ),
-          GoRoute(
+          /*GoRoute(
             path: 'order-detail/:orderId',
             name: 'orderDetail',
             builder: (BuildContext context, GoRouterState state) {
@@ -121,8 +105,8 @@ final routerProvider = Provider<GoRouter>((ref) {
                 child: OrderDetailScreen(orderId: orderId),
               );
             },
-          ),
-          GoRoute(
+          ),*/
+          /*GoRoute(
             path: 'order-history',
             name: 'orderHistory',
             builder: (BuildContext context, GoRouterState state) {
@@ -131,18 +115,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 child: OrderHistoryScreen(),
               );
             },
-          ),
-          GoRoute(
-            path: 'order-tracking/:orderId',
-            name: 'orderTracking',
-            builder: (BuildContext context, GoRouterState state) {
-              final orderId = state.pathParameters['orderId']!;
-              return ApplicationContainer(
-                name: 'orderTracking',
-                child: OrderTrackingScreen(orderId: orderId),
-              );
-            },
-          ),
+          ),*/
           GoRoute(
             path: 'shopping-cart',
             name: 'shoppingCart',
@@ -153,7 +126,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               );
             },
           ),
-          GoRoute(
+          /*GoRoute(
             path: 'ai-assisted-search',
             name: 'aiAssistedSearch',
             builder: (BuildContext context, GoRouterState state) {
@@ -162,37 +135,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 child: AIAssistedSearchScreen(),
               );
             },
-          ),
-          GoRoute(
-            path: 'food-diary',
-            name: 'foodDiary',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ApplicationContainer(
-                name: 'foodDiary',
-                child: FoodDiaryScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: 'meal-plans',
-            name: 'mealPlans',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ApplicationContainer(
-                name: 'mealPlans',
-                child: MealPlansScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: 'media-home',
-            name: 'mediaHome',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ApplicationContainer(
-                name: 'mediaHome',
-                child: MediaHomeScreenPage(),
-              );
-            },
-          ),
+          ),*/
           GoRoute(
             path: 'profile',
             name: 'profile',

@@ -361,6 +361,7 @@ class Fragment$MenuItem {
     required this.price,
     required this.isAvailable,
     required this.categories,
+    required this.createdAt,
     this.$__typename = 'MenuItem',
   });
 
@@ -375,6 +376,7 @@ class Fragment$MenuItem {
     final l$price = json['price'];
     final l$isAvailable = json['isAvailable'];
     final l$categories = json['categories'];
+    final l$createdAt = json['createdAt'];
     final l$$__typename = json['__typename'];
     return Fragment$MenuItem(
       id: (l$id as String),
@@ -388,6 +390,7 @@ class Fragment$MenuItem {
       isAvailable: (l$isAvailable as bool),
       categories:
           (l$categories as List<dynamic>).map((e) => (e as String?)).toList(),
+      createdAt: DateTime.parse((l$createdAt as String)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -411,6 +414,8 @@ class Fragment$MenuItem {
   final bool isAvailable;
 
   final List<String?> categories;
+
+  final DateTime createdAt;
 
   final String $__typename;
 
@@ -436,6 +441,8 @@ class Fragment$MenuItem {
     _resultData['isAvailable'] = l$isAvailable;
     final l$categories = categories;
     _resultData['categories'] = l$categories.map((e) => e).toList();
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -453,6 +460,7 @@ class Fragment$MenuItem {
     final l$price = price;
     final l$isAvailable = isAvailable;
     final l$categories = categories;
+    final l$createdAt = createdAt;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -465,6 +473,7 @@ class Fragment$MenuItem {
       l$price,
       l$isAvailable,
       Object.hashAll(l$categories.map((v) => v)),
+      l$createdAt,
       l$$__typename,
     ]);
   }
@@ -534,6 +543,11 @@ class Fragment$MenuItem {
         return false;
       }
     }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -571,6 +585,7 @@ abstract class CopyWith$Fragment$MenuItem<TRes> {
     double? price,
     bool? isAvailable,
     List<String?>? categories,
+    DateTime? createdAt,
     String? $__typename,
   });
 }
@@ -599,6 +614,7 @@ class _CopyWithImpl$Fragment$MenuItem<TRes>
     Object? price = _undefined,
     Object? isAvailable = _undefined,
     Object? categories = _undefined,
+    Object? createdAt = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$MenuItem(
@@ -624,6 +640,9 @@ class _CopyWithImpl$Fragment$MenuItem<TRes>
         categories: categories == _undefined || categories == null
             ? _instance.categories
             : (categories as List<String?>),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -647,6 +666,7 @@ class _CopyWithStubImpl$Fragment$MenuItem<TRes>
     double? price,
     bool? isAvailable,
     List<String?>? categories,
+    DateTime? createdAt,
     String? $__typename,
   }) =>
       _res;
@@ -732,6 +752,13 @@ const fragmentDefinitionMenuItem = FragmentDefinitionNode(
       selectionSet: null,
     ),
     FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
       name: NameNode(value: '__typename'),
       alias: null,
       arguments: [],
@@ -789,6 +816,7 @@ class Fragment$Menu {
     required this.providerId,
     required this.provider,
     this.menuItemCollection,
+    required this.createdAt,
     this.$__typename = 'Menu',
   });
 
@@ -801,6 +829,7 @@ class Fragment$Menu {
     final l$providerId = json['providerId'];
     final l$provider = json['provider'];
     final l$menuItemCollection = json['menuItemCollection'];
+    final l$createdAt = json['createdAt'];
     final l$$__typename = json['__typename'];
     return Fragment$Menu(
       id: (l$id as String),
@@ -816,6 +845,7 @@ class Fragment$Menu {
           ? null
           : Fragment$Menu$menuItemCollection.fromJson(
               (l$menuItemCollection as Map<String, dynamic>)),
+      createdAt: DateTime.parse((l$createdAt as String)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -835,6 +865,8 @@ class Fragment$Menu {
   final Fragment$Menu$provider provider;
 
   final Fragment$Menu$menuItemCollection? menuItemCollection;
+
+  final DateTime createdAt;
 
   final String $__typename;
 
@@ -856,6 +888,8 @@ class Fragment$Menu {
     _resultData['provider'] = l$provider.toJson();
     final l$menuItemCollection = menuItemCollection;
     _resultData['menuItemCollection'] = l$menuItemCollection?.toJson();
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -871,6 +905,7 @@ class Fragment$Menu {
     final l$providerId = providerId;
     final l$provider = provider;
     final l$menuItemCollection = menuItemCollection;
+    final l$createdAt = createdAt;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -881,6 +916,7 @@ class Fragment$Menu {
       l$providerId,
       l$provider,
       l$menuItemCollection,
+      l$createdAt,
       l$$__typename,
     ]);
   }
@@ -933,6 +969,11 @@ class Fragment$Menu {
     if (l$menuItemCollection != lOther$menuItemCollection) {
       return false;
     }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -967,6 +1008,7 @@ abstract class CopyWith$Fragment$Menu<TRes> {
     String? providerId,
     Fragment$Menu$provider? provider,
     Fragment$Menu$menuItemCollection? menuItemCollection,
+    DateTime? createdAt,
     String? $__typename,
   });
   CopyWith$Fragment$MenuType<TRes> get menuType;
@@ -996,6 +1038,7 @@ class _CopyWithImpl$Fragment$Menu<TRes>
     Object? providerId = _undefined,
     Object? provider = _undefined,
     Object? menuItemCollection = _undefined,
+    Object? createdAt = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$Menu(
@@ -1021,6 +1064,9 @@ class _CopyWithImpl$Fragment$Menu<TRes>
         menuItemCollection: menuItemCollection == _undefined
             ? _instance.menuItemCollection
             : (menuItemCollection as Fragment$Menu$menuItemCollection?),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -1061,6 +1107,7 @@ class _CopyWithStubImpl$Fragment$Menu<TRes>
     String? providerId,
     Fragment$Menu$provider? provider,
     Fragment$Menu$menuItemCollection? menuItemCollection,
+    DateTime? createdAt,
     String? $__typename,
   }) =>
       _res;
@@ -1279,6 +1326,13 @@ const fragmentDefinitionMenu = FragmentDefinitionNode(
           selectionSet: null,
         ),
       ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
     ),
     FieldNode(
       name: NameNode(value: '__typename'),

@@ -1,0 +1,75 @@
+fragment TeamUpdateType on TeamUpdateType {
+  id
+  name
+  key
+  schema
+  createdAt
+}
+
+fragment TeamUpdate on TeamUpdate {
+  id
+  teamUpdateTypeId
+  teamUpdateType {
+    ...TeamUpdateType
+  }
+  contentId
+  content {
+    ...Content
+  }
+  metadata
+  isUrgent
+  createdAt
+}
+
+query TeamUpdateTypeCollection($filter: TeamUpdateTypeFilter, $orderBy: [TeamUpdateTypeOrderBy!], $first: Int, $last: Int, $before: String, $after: String, $offset: Int) {
+  teamUpdateTypeCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...TeamUpdateType
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query TeamUpdateType($id: UUID!) {
+  teamUpdateTypeCollection(filter: { id: $id }) {
+    edges {
+      node {
+        ...TeamUpdateType
+      }
+    }
+  }
+}
+
+query TeamUpdateCollection($filter: TeamUpdateFilter, $orderBy: [TeamUpdateOrderBy!], $first: Int, $last: Int, $before: String, $after: String, $offset: Int) {
+  teamUpdateCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...TeamUpdate
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query TeamUpdate($id: UUID!) {
+  teamUpdateCollection(filter: { id: $id }) {
+    edges {
+      node {
+        ...TeamUpdate
+      }
+    }
+  }
+}
+

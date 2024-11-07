@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
-import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
-import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart';
+//import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
+//import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart.old';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -25,7 +25,7 @@ class MenuItemListTile extends StatelessWidget {
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: Image.network(
-            menuItem.imageUrl,
+            menuItem.imageUrl ?? '',
             width: 60,
             height: 60,
             fit: BoxFit.cover,
@@ -33,7 +33,7 @@ class MenuItemListTile extends StatelessWidget {
         ),
         title: Text(menuItem.name),
         subtitle: Text(
-          '\$${menuItem.price?.toStringAsFixed(2) ?? 'N/A'}',
+          '\$${menuItem.price.toStringAsFixed(2)}',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         trailing: Row(
@@ -59,7 +59,7 @@ class MenuItemListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  menuItem.description,
+                  menuItem.notes ?? '',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 SizedBox(height: 16),
@@ -67,11 +67,11 @@ class MenuItemListTile extends StatelessWidget {
                   'Nutrition Information',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                SizedBox(height: 8),
+                /*SizedBox(height: 8),
                 if (menuItem.nutrition != null)
                   NutritionInfoWidget(nutrition: menuItem.nutrition!)
                 else
-                  Text('Nutrition information not available'),
+                  Text('Nutrition information not available'),*/
               ],
             ),
           ),

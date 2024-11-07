@@ -33,7 +33,7 @@ fragment User on User {
   }
 }
 
-query Users(
+query UserCollection(
   $first: Int
   $last: Int
   $before: Cursor
@@ -55,3 +55,36 @@ query Users(
     }
   }
 }
+
+query User($id: UUID!) {
+  userCollection(filter: { id: { eq: $id } } ) {
+    edges {
+      node {
+        ...User
+      }
+    }
+  }
+}
+
+mutation CreateUser($input: UserInsertInput!) {
+  insertIntoUserCollection(objects: [$input]) {
+    records {
+      ...User
+    }
+  }
+}
+
+mutation UpdateUser($id: UUID!, $user: UserUpdateInput!) {
+  updateUserCollection(
+    filter: {
+      id: { eq: $id }
+    }
+    set: $user
+  ) {
+    records {
+      ...User
+    }
+    affectedCount
+  }
+}
+

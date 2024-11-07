@@ -19,6 +19,7 @@ fragment MenuItem on MenuItem {
   price
   isAvailable
   categories
+  createdAt
 }
 
 fragment Menu on Menu {
@@ -50,7 +51,7 @@ fragment Menu on Menu {
       hasPreviousPage
     }
   }
-
+  createdAt
 }
 
 query MenuById($id: UUID!) {

@@ -1,0 +1,492 @@
+import 'package:core/meals/domain/models/mock_menu.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:core/meals/domain/repositories/meal_repository.dart';
+import 'package:core/common/failures/failure.dart';
+
+// Global mock data for menu items
+final List<Menu> mockMenuData = [
+  Menu(
+    id: 'breakfast-menu',
+    name: 'Breakfast Menu',
+    providerId: 'food-on-the-stove',
+    type: getMenuTypeByKey('breakfast')!,
+    description: 'Start your day with our nutritious breakfast options',
+    items: [
+      MenuItem(
+        id: 'breakfast-1',
+        name: 'Oatmeal with Fresh Berries',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmdBLZFtvC7rjzehiE7uHfCTSweq9Ncxx3pvNRPnKJrUio',
+        description:
+            'A hearty and nutritious breakfast option, oatmeal provides a good source of fiber and energy.',
+        isAvailable: true,
+        data: {
+          'mealId': 'breakfast1',
+          'name': 'Oatmeal with Fresh Berries',
+          'servingSize': {'amount': 1, 'unit': 'cups'},
+          'totalNutrition': {
+            'calories': 250,
+            'macronutrients': {
+              'protein': {'total': 6, 'complete': false},
+              'carbohydrates': {
+                'total': 45,
+                'breakdown': {'fiber': 8, 'sugar': 12},
+                'glycemicIndex': 55,
+                'glycemicLoad': 12
+              },
+              'fats': {
+                'total': 5,
+                'breakdown': {'saturated': 1}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminC': 10, 'vitaminK': 5},
+              'minerals': {'iron': 2, 'magnesium': 30}
+            }
+          },
+          'components': [],
+          'allergens': ['gluten'],
+          'dietaryInfo': ['vegetarian']
+        },
+      ),
+      MenuItem(
+        id: 'breakfast-2',
+        name: 'Avocado Toast with Poached Egg',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmWnLqUDBwu7mTuXQ6kFfVGyCTA8x1MyG5QEB8v66QG2FG',
+        description:
+            'A modern classic, avocado toast is rich in healthy fats and fiber.',
+        isAvailable: true,
+        data: {
+          'mealId': 'breakfast2',
+          'name': 'Avocado Toast with Poached Egg',
+          'servingSize': {'amount': 1, 'unit': 'serving'},
+          'totalNutrition': {
+            'calories': 300,
+            'macronutrients': {
+              'protein': {'total': 10, 'complete': true},
+              'carbohydrates': {
+                'total': 30,
+                'breakdown': {'fiber': 10, 'sugar': 2},
+                'glycemicIndex': 50,
+                'glycemicLoad': 15
+              },
+              'fats': {
+                'total': 20,
+                'breakdown': {'saturated': 3}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminE': 5, 'vitaminB6': 0.5},
+              'minerals': {'potassium': 400, 'iron': 2}
+            }
+          },
+          'components': [],
+          'allergens': ['gluten', 'eggs'],
+          'dietaryInfo': ['vegetarian']
+        },
+      ),
+      MenuItem(
+        id: 'breakfast-3',
+        name: 'Greek Yogurt with Honey and Nuts',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmPT9VbeqkJRtQxUQNkSVzZwXXkdLDjdX8VTynSxwtjCHY',
+        description:
+            'Greek yogurt is high in protein and probiotics, promoting gut health.',
+        isAvailable: true,
+        data: {
+          'mealId': 'breakfast3',
+          'name': 'Greek Yogurt with Honey and Nuts',
+          'servingSize': {'amount': 1, 'unit': 'cup'},
+          'totalNutrition': {
+            'calories': 200,
+            'macronutrients': {
+              'protein': {'total': 15, 'complete': true},
+              'carbohydrates': {
+                'total': 20,
+                'breakdown': {'sugar': 15}
+              },
+              'fats': {
+                'total': 8,
+                'breakdown': {'saturated': 2}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminB12': 1},
+              'minerals': {'calcium': 150, 'magnesium': 20}
+            }
+          },
+          'components': [],
+          'allergens': ['dairy', 'nuts'],
+          'dietaryInfo': ['vegetarian']
+        },
+      ),
+    ],
+  ),
+  Menu(
+    id: 'lunch-menu',
+    name: 'Lunch Menu',
+    providerId: 'food-on-the-stove',
+    type: getMenuTypeByKey('lunch')!,
+    description: 'Delicious and nutritious lunch options',
+    items: [
+      MenuItem(
+        id: 'lunch-1',
+        name: 'Grilled Chicken Salad',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmYLbPxN1moNcRV4BrvDK45PyQRCeZNXbJbazijr8z7FpL',
+        description:
+            'A light yet filling option, packed with lean protein and vegetables.',
+        isAvailable: true,
+        data: {
+          'mealId': 'lunch1',
+          'name': 'Grilled Chicken Salad',
+          'servingSize': {'amount': 1, 'unit': 'serving'},
+          'totalNutrition': {
+            'calories': 350,
+            'macronutrients': {
+              'protein': {'total': 30, 'complete': true},
+              'carbohydrates': {
+                'total': 20,
+                'breakdown': {'fiber': 5, 'sugar': 5},
+                'glycemicIndex': 40,
+                'glycemicLoad': 8
+              },
+              'fats': {
+                'total': 15,
+                'breakdown': {'saturated': 2}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminA': 500, 'vitaminC': 20},
+              'minerals': {'calcium': 100, 'iron': 3}
+            }
+          },
+          'components': [],
+          'allergens': ['nuts'],
+          'dietaryInfo': ['gluten-free']
+        },
+      ),
+      MenuItem(
+        id: 'lunch-2',
+        name: 'Quinoa and Black Bean Bowl',
+        imageUrl: 'https://ipfs.tribemedia.io/ipfs/',
+        description: 'A vegetarian option rich in protein and fiber.',
+        isAvailable: true,
+        data: {
+          'mealId': 'lunch2',
+          'name': 'Quinoa and Black Bean Bowl',
+          'servingSize': {'amount': 1, 'unit': 'bowl'},
+          'totalNutrition': {
+            'calories': 400,
+            'macronutrients': {
+              'protein': {'total': 18, 'complete': true},
+              'carbohydrates': {
+                'total': 60,
+                'breakdown': {'fiber': 12, 'sugar': 5},
+                'glycemicIndex': 45,
+                'glycemicLoad': 15
+              },
+              'fats': {
+                'total': 10,
+                'breakdown': {'saturated': 1}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminC': 10, 'folate': 50},
+              'minerals': {'iron': 4, 'magnesium': 40}
+            }
+          },
+          'components': [],
+          'allergens': ['nuts'],
+          'dietaryInfo': ['vegan', 'gluten-free']
+        },
+      ),
+      MenuItem(
+        id: 'lunch-3',
+        name: 'Turkey and Avocado Wrap',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmeufKxx2jxsUpB33zTkzAV3p792Ca4BK3TZvAayURYhkF',
+        description: 'A lean protein option with healthy fats.',
+        isAvailable: true,
+        data: {
+          'mealId': 'lunch3',
+          'name': 'Turkey and Avocado Wrap',
+          'servingSize': {'amount': 1, 'unit': 'wrap'},
+          'totalNutrition': {
+            'calories': 350,
+            'macronutrients': {
+              'protein': {'total': 25, 'complete': true},
+              'carbohydrates': {
+                'total': 30,
+                'breakdown': {'fiber': 5, 'sugar': 3},
+                'glycemicIndex': 50,
+                'glycemicLoad': 12
+              },
+              'fats': {
+                'total': 15,
+                'breakdown': {'saturated': 3}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminB6': 1, 'vitaminE': 2},
+              'minerals': {'potassium': 300, 'iron': 2}
+            }
+          },
+          'components': [],
+          'allergens': ['gluten'],
+          'dietaryInfo': ['dairy-free']
+        },
+      ),
+    ],
+  ),
+  Menu(
+    id: 'dinner-menu',
+    name: 'Dinner Menu',
+    providerId: 'food-on-the-stove',
+    type: getMenuTypeByKey('dinner')!,
+    description: 'Complete your day with our satisfying dinner options',
+    items: [
+      MenuItem(
+        id: 'dinner-1',
+        name: 'Baked Salmon with Quinoa and Asparagus',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmcTSTAoJJH4Psg3ihMmWXXj2dEe4EazhcE33Zb1g5F9pm',
+        description:
+            'Rich in omega-3 fatty acids, salmon is a heart-healthy choice.',
+        isAvailable: true,
+        data: {
+          'mealId': 'dinner1',
+          'name': 'Baked Salmon with Quinoa and Asparagus',
+          'servingSize': {'amount': 1, 'unit': 'serving'},
+          'totalNutrition': {
+            'calories': 450,
+            'macronutrients': {
+              'protein': {'total': 35, 'complete': true},
+              'carbohydrates': {
+                'total': 40,
+                'breakdown': {'fiber': 7, 'sugar': 3},
+                'glycemicIndex': 45,
+                'glycemicLoad': 10
+              },
+              'fats': {
+                'total': 20,
+                'breakdown': {'saturated': 3, 'omega3': 2}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminD': 10, 'vitaminB12': 2},
+              'minerals': {'selenium': 50, 'magnesium': 60}
+            }
+          },
+          'components': [],
+          'allergens': ['fish'],
+          'dietaryInfo': ['gluten-free']
+        },
+      ),
+      MenuItem(
+        id: 'dinner-2',
+        name: 'Chicken Stir Fry with Vegetables',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmVJVofavc8MqAFp22i4DCrWh758EbW65nyfpSpaXDwBAL',
+        description: 'A quick and easy dinner option packed with protein.',
+        isAvailable: true,
+        data: {
+          'mealId': 'dinner2',
+          'name': 'Chicken Stir Fry with Vegetables',
+          'servingSize': {'amount': 1, 'unit': 'serving'},
+          'totalNutrition': {
+            'calories': 400,
+            'macronutrients': {
+              'protein': {'total': 30, 'complete': true},
+              'carbohydrates': {
+                'total': 35,
+                'breakdown': {'fiber': 5, 'sugar': 8},
+                'glycemicIndex': 50,
+                'glycemicLoad': 12
+              },
+              'fats': {
+                'total': 15,
+                'breakdown': {'saturated': 2}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminA': 500, 'vitaminC': 20},
+              'minerals': {'iron': 3, 'calcium': 100}
+            }
+          },
+          'components': [],
+          'allergens': ['soy'],
+          'dietaryInfo': ['dairy-free']
+        },
+      ),
+      MenuItem(
+        id: 'dinner-3',
+        name: 'Lentil Soup with Spinach',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmTEuW3mwB6Kfvtjt7SU3meL3gYpgaHo7yNj4JjFLcPnqJ',
+        description: 'A hearty and warming option rich in protein and fiber.',
+        isAvailable: true,
+        data: {
+          'mealId': 'dinner3',
+          'name': 'Lentil Soup with Spinach',
+          'servingSize': {'amount': 1, 'unit': 'bowl'},
+          'totalNutrition': {
+            'calories': 300,
+            'macronutrients': {
+              'protein': {'total': 20, 'complete': true},
+              'carbohydrates': {
+                'total': 45,
+                'breakdown': {'fiber': 15, 'sugar': 5},
+                'glycemicIndex': 40,
+                'glycemicLoad': 10
+              },
+              'fats': {
+                'total': 5,
+                'breakdown': {'saturated': 1}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminA': 500, 'vitaminC': 20},
+              'minerals': {'iron': 4, 'magnesium': 40}
+            }
+          },
+          'components': [],
+          'allergens': [],
+          'dietaryInfo': ['vegan', 'gluten-free']
+        },
+      ),
+    ],
+  ),
+  Menu(
+    id: 'thanksgiving-menu',
+    name: 'Thanksgiving Special',
+    providerId: 'food-on-the-stove',
+    type: getMenuTypeByKey('thanksgiving')!,
+    description: 'Celebrate Thanksgiving with our special holiday menu',
+    items: [
+      MenuItem(
+        id: 'thanksgiving-1',
+        name: 'Roast Turkey with Cranberry Sauce',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmRS5jausCh1B5LBijgEdZbKAMuBrKM8vQoBu3YMrbY6C4',
+        description: 'A traditional Thanksgiving dish with cranberry sauce.',
+        isAvailable: true,
+        data: {
+          'mealId': 'thanksgiving1',
+          'name': 'Roast Turkey with Cranberry Sauce',
+          'servingSize': {'amount': 1, 'unit': 'serving'},
+          'totalNutrition': {
+            'calories': 500,
+            'macronutrients': {
+              'protein': {'total': 40, 'complete': true},
+              'carbohydrates': {
+                'total': 50,
+                'breakdown': {'fiber': 5, 'sugar': 20},
+                'glycemicIndex': 60,
+                'glycemicLoad': 20
+              },
+              'fats': {
+                'total': 15,
+                'breakdown': {'saturated': 4}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminB6': 1, 'vitaminC': 15},
+              'minerals': {'iron': 3, 'zinc': 5}
+            }
+          },
+          'components': [],
+          'allergens': [],
+          'dietaryInfo': ['gluten-free']
+        },
+      ),
+      MenuItem(
+        id: 'thanksgiving-2',
+        name: 'Sweet Potato Casserole',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmUrKbQeep8qHszmvfAwyhL5cC4AHuT9T6QsyPbJ17DijV',
+        description: 'A sweet and savory side dish rich in vitamins.',
+        isAvailable: true,
+        data: {
+          'mealId': 'thanksgiving2',
+          'name': 'Sweet Potato Casserole',
+          'servingSize': {'amount': 1, 'unit': 'serving'},
+          'totalNutrition': {
+            'calories': 350,
+            'macronutrients': {
+              'protein': {'total': 5, 'complete': true},
+              'carbohydrates': {
+                'total': 60,
+                'breakdown': {'fiber': 8, 'sugar': 20},
+                'glycemicIndex': 50,
+                'glycemicLoad': 15
+              },
+              'fats': {
+                'total': 10,
+                'breakdown': {'saturated': 3}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminA': 1000, 'vitaminC': 20},
+              'minerals': {'potassium': 400, 'magnesium': 30}
+            }
+          },
+          'components': [],
+          'allergens': ['nuts'],
+          'dietaryInfo': ['vegetarian']
+        },
+      ),
+      MenuItem(
+        id: 'thanksgiving-3',
+        name: 'Green Bean Almondine',
+        imageUrl:
+            'https://ipfs.tribemedia.io/ipfs/QmS8BKKz9VjYCXfcDSQD92cBH8yRt3K2WzJAQJMxxcnkBA',
+        description:
+            'A light and healthy side dish with green beans and almonds.',
+        isAvailable: true,
+        data: {
+          'mealId': 'thanksgiving3',
+          'name': 'Green Bean Almondine',
+          'servingSize': {'amount': 1, 'unit': 'serving'},
+          'totalNutrition': {
+            'calories': 150,
+            'macronutrients': {
+              'protein': {'total': 4, 'complete': true},
+              'carbohydrates': {
+                'total': 15,
+                'breakdown': {'fiber': 5, 'sugar': 3},
+                'glycemicIndex': 30,
+                'glycemicLoad': 5
+              },
+              'fats': {
+                'total': 8,
+                'breakdown': {'saturated': 1}
+              }
+            },
+            'micronutrients': {
+              'vitamins': {'vitaminC': 10, 'vitaminK': 20},
+              'minerals': {'calcium': 50, 'iron': 2}
+            }
+          },
+          'components': [],
+          'allergens': ['nuts'],
+          'dietaryInfo': ['vegan', 'gluten-free']
+        },
+      ),
+    ],
+  ),
+];
+
+// Implementation of the MockMealRepository
+class MockMealRepository implements MealRepository {
+  @override
+  Future<Either<Failure, List<Menu>>> getProviderMenus(
+      String providerId) async {
+    // Simulate network delay
+    await Future.delayed(const Duration(milliseconds: 300));
+
+    // Return the mock data
+    return Right(mockMenuData);
+  }
+}
