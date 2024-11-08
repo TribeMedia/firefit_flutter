@@ -1744,7 +1744,12 @@ const documentNodeQueryStation = DocumentNode(definitions: [
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
                 name: NameNode(value: 'id'),
-                value: VariableNode(name: NameNode(value: 'id')),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
               )
             ]),
           )

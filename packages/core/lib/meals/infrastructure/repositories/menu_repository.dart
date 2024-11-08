@@ -55,7 +55,7 @@ class MenuRepository extends MenuRepositoryInterface {
         return Right(List<Menu>.from(
             response.parsedData!.menuCollection!.edges.map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));

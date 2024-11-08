@@ -58,7 +58,7 @@ class StationRepository extends StationRepositoryInterface {
         return Right(List<Station>.from(
             response.parsedData!.stationCollection!.edges.map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));
@@ -101,7 +101,7 @@ class StationRepository extends StationRepositoryInterface {
             .parsedData!.firstResponderCollection!.edges
             .map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));
@@ -144,7 +144,7 @@ class StationRepository extends StationRepositoryInterface {
             .parsedData!.teamUpdateCollection!.edges
             .map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));

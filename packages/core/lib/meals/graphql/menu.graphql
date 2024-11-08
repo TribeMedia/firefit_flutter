@@ -18,6 +18,7 @@ fragment MenuItem on MenuItem {
   coverUrl
   price
   isAvailable
+  isFeatured
   categories
   createdAt
 }

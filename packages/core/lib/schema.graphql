@@ -4722,6 +4722,7 @@ type MenuItem implements Node {
   price: Float!
   isAvailable: Boolean!
   categories: [String]!
+  isFeatured: Boolean!
   menu: Menu
   shoppingCartMenuItemCollection(
     # Query the first `n` records in the collection
@@ -4785,6 +4786,7 @@ input MenuItemFilter {
   price: FloatFilter
   isAvailable: BooleanFilter
   categories: StringListFilter
+  isFeatured: BooleanFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [MenuItemFilter!]
@@ -4806,6 +4808,7 @@ input MenuItemInsertInput {
   price: Float
   isAvailable: Boolean
   categories: [String]
+  isFeatured: Boolean
 }
 
 type MenuItemInsertResponse {
@@ -4825,6 +4828,7 @@ input MenuItemOrderBy {
   coverUrl: OrderByDirection
   price: OrderByDirection
   isAvailable: OrderByDirection
+  isFeatured: OrderByDirection
 }
 
 input MenuItemUpdateInput {
@@ -4839,6 +4843,7 @@ input MenuItemUpdateInput {
   price: Float
   isAvailable: Boolean
   categories: [String]
+  isFeatured: Boolean
 }
 
 type MenuItemUpdateResponse {

@@ -302,6 +302,330 @@ extension ClientExtension$Fragment$FirstResponderType on graphql.GraphQLClient {
   }
 }
 
+class Fragment$FirstResponderStation {
+  Fragment$FirstResponderStation({
+    required this.id,
+    required this.firstResponderId,
+    required this.stationId,
+    required this.station,
+    required this.createdAt,
+    this.$__typename = 'FirstResponderStation',
+  });
+
+  factory Fragment$FirstResponderStation.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$firstResponderId = json['firstResponderId'];
+    final l$stationId = json['stationId'];
+    final l$station = json['station'];
+    final l$createdAt = json['createdAt'];
+    final l$$__typename = json['__typename'];
+    return Fragment$FirstResponderStation(
+      id: (l$id as String),
+      firstResponderId: (l$firstResponderId as String),
+      stationId: (l$stationId as String),
+      station: Fragment$Station.fromJson((l$station as Map<String, dynamic>)),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String firstResponderId;
+
+  final String stationId;
+
+  final Fragment$Station station;
+
+  final DateTime createdAt;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$firstResponderId = firstResponderId;
+    _resultData['firstResponderId'] = l$firstResponderId;
+    final l$stationId = stationId;
+    _resultData['stationId'] = l$stationId;
+    final l$station = station;
+    _resultData['station'] = l$station.toJson();
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$firstResponderId = firstResponderId;
+    final l$stationId = stationId;
+    final l$station = station;
+    final l$createdAt = createdAt;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$firstResponderId,
+      l$stationId,
+      l$station,
+      l$createdAt,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$FirstResponderStation) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$firstResponderId = firstResponderId;
+    final lOther$firstResponderId = other.firstResponderId;
+    if (l$firstResponderId != lOther$firstResponderId) {
+      return false;
+    }
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    final l$station = station;
+    final lOther$station = other.station;
+    if (l$station != lOther$station) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$FirstResponderStation
+    on Fragment$FirstResponderStation {
+  CopyWith$Fragment$FirstResponderStation<Fragment$FirstResponderStation>
+      get copyWith => CopyWith$Fragment$FirstResponderStation(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$FirstResponderStation<TRes> {
+  factory CopyWith$Fragment$FirstResponderStation(
+    Fragment$FirstResponderStation instance,
+    TRes Function(Fragment$FirstResponderStation) then,
+  ) = _CopyWithImpl$Fragment$FirstResponderStation;
+
+  factory CopyWith$Fragment$FirstResponderStation.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$FirstResponderStation;
+
+  TRes call({
+    String? id,
+    String? firstResponderId,
+    String? stationId,
+    Fragment$Station? station,
+    DateTime? createdAt,
+    String? $__typename,
+  });
+  CopyWith$Fragment$Station<TRes> get station;
+}
+
+class _CopyWithImpl$Fragment$FirstResponderStation<TRes>
+    implements CopyWith$Fragment$FirstResponderStation<TRes> {
+  _CopyWithImpl$Fragment$FirstResponderStation(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$FirstResponderStation _instance;
+
+  final TRes Function(Fragment$FirstResponderStation) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? firstResponderId = _undefined,
+    Object? stationId = _undefined,
+    Object? station = _undefined,
+    Object? createdAt = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$FirstResponderStation(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        firstResponderId:
+            firstResponderId == _undefined || firstResponderId == null
+                ? _instance.firstResponderId
+                : (firstResponderId as String),
+        stationId: stationId == _undefined || stationId == null
+            ? _instance.stationId
+            : (stationId as String),
+        station: station == _undefined || station == null
+            ? _instance.station
+            : (station as Fragment$Station),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$Station<TRes> get station {
+    final local$station = _instance.station;
+    return CopyWith$Fragment$Station(local$station, (e) => call(station: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$FirstResponderStation<TRes>
+    implements CopyWith$Fragment$FirstResponderStation<TRes> {
+  _CopyWithStubImpl$Fragment$FirstResponderStation(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? firstResponderId,
+    String? stationId,
+    Fragment$Station? station,
+    DateTime? createdAt,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$Station<TRes> get station =>
+      CopyWith$Fragment$Station.stub(_res);
+}
+
+const fragmentDefinitionFirstResponderStation = FragmentDefinitionNode(
+  name: NameNode(value: 'FirstResponderStation'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'FirstResponderStation'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'firstResponderId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'stationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'station'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Station'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentFirstResponderStation = DocumentNode(definitions: [
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+]);
+
+extension ClientExtension$Fragment$FirstResponderStation
+    on graphql.GraphQLClient {
+  void writeFragment$FirstResponderStation({
+    required Fragment$FirstResponderStation data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'FirstResponderStation',
+            document: documentNodeFragmentFirstResponderStation,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$FirstResponderStation? readFragment$FirstResponderStation({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'FirstResponderStation',
+          document: documentNodeFragmentFirstResponderStation,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Fragment$FirstResponderStation.fromJson(result);
+  }
+}
+
 class Fragment$FirstResponder {
   Fragment$FirstResponder({
     required this.id,
@@ -849,7 +1173,7 @@ const fragmentDefinitionFirstResponder = FragmentDefinitionNode(
               directives: [],
               selectionSet: SelectionSetNode(selections: [
                 FragmentSpreadNode(
-                  name: NameNode(value: 'Station'),
+                  name: NameNode(value: 'FirstResponderStation'),
                   directives: [],
                 ),
                 FieldNode(
@@ -976,6 +1300,7 @@ const documentNodeFragmentFirstResponder = DocumentNode(definitions: [
   fragmentDefinitionStationProvider,
   fragmentDefinitionProvider,
   fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
 ]);
 
 extension ClientExtension$Fragment$FirstResponder on graphql.GraphQLClient {
@@ -1232,13 +1557,13 @@ class Fragment$FirstResponder$firstResponderStationCollection$edges {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
     return Fragment$FirstResponder$firstResponderStationCollection$edges(
-      node: Fragment$FirstResponder$firstResponderStationCollection$edges$node
-          .fromJson((l$node as Map<String, dynamic>)),
+      node: Fragment$FirstResponderStation.fromJson(
+          (l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Fragment$FirstResponder$firstResponderStationCollection$edges$node node;
+  final Fragment$FirstResponderStation node;
 
   final String $__typename;
 
@@ -1309,11 +1634,10 @@ abstract class CopyWith$Fragment$FirstResponder$firstResponderStationCollection$
       _CopyWithStubImpl$Fragment$FirstResponder$firstResponderStationCollection$edges;
 
   TRes call({
-    Fragment$FirstResponder$firstResponderStationCollection$edges$node? node,
+    Fragment$FirstResponderStation? node,
     String? $__typename,
   });
-  CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-      TRes> get node;
+  CopyWith$Fragment$FirstResponderStation<TRes> get node;
 }
 
 class _CopyWithImpl$Fragment$FirstResponder$firstResponderStationCollection$edges<
@@ -1340,17 +1664,15 @@ class _CopyWithImpl$Fragment$FirstResponder$firstResponderStationCollection$edge
       _then(Fragment$FirstResponder$firstResponderStationCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
-            : (node
-                as Fragment$FirstResponder$firstResponderStationCollection$edges$node),
+            : (node as Fragment$FirstResponderStation),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-      TRes> get node {
+  CopyWith$Fragment$FirstResponderStation<TRes> get node {
     final local$node = _instance.node;
-    return CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node(
+    return CopyWith$Fragment$FirstResponderStation(
         local$node, (e) => call(node: e));
   }
 }
@@ -1366,126 +1688,13 @@ class _CopyWithStubImpl$Fragment$FirstResponder$firstResponderStationCollection$
   TRes _res;
 
   call({
-    Fragment$FirstResponder$firstResponderStationCollection$edges$node? node,
+    Fragment$FirstResponderStation? node,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-          TRes>
-      get node =>
-          CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node
-              .stub(_res);
-}
-
-class Fragment$FirstResponder$firstResponderStationCollection$edges$node {
-  Fragment$FirstResponder$firstResponderStationCollection$edges$node(
-      {this.$__typename = 'FirstResponderStation'});
-
-  factory Fragment$FirstResponder$firstResponderStationCollection$edges$node.fromJson(
-      Map<String, dynamic> json) {
-    final l$$__typename = json['__typename'];
-    return Fragment$FirstResponder$firstResponderStationCollection$edges$node(
-        $__typename: (l$$__typename as String));
-  }
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other
-            is Fragment$FirstResponder$firstResponderStationCollection$edges$node) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Fragment$FirstResponder$firstResponderStationCollection$edges$node
-    on Fragment$FirstResponder$firstResponderStationCollection$edges$node {
-  CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-          Fragment$FirstResponder$firstResponderStationCollection$edges$node>
-      get copyWith =>
-          CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-    TRes> {
-  factory CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node(
-    Fragment$FirstResponder$firstResponderStationCollection$edges$node instance,
-    TRes Function(
-            Fragment$FirstResponder$firstResponderStationCollection$edges$node)
-        then,
-  ) = _CopyWithImpl$Fragment$FirstResponder$firstResponderStationCollection$edges$node;
-
-  factory CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$FirstResponder$firstResponderStationCollection$edges$node;
-
-  TRes call({String? $__typename});
-}
-
-class _CopyWithImpl$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-        TRes>
-    implements
-        CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-            TRes> {
-  _CopyWithImpl$Fragment$FirstResponder$firstResponderStationCollection$edges$node(
-    this._instance,
-    this._then,
-  );
-
-  final Fragment$FirstResponder$firstResponderStationCollection$edges$node
-      _instance;
-
-  final TRes Function(
-      Fragment$FirstResponder$firstResponderStationCollection$edges$node) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({Object? $__typename = _undefined}) =>
-      _then(Fragment$FirstResponder$firstResponderStationCollection$edges$node(
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-        TRes>
-    implements
-        CopyWith$Fragment$FirstResponder$firstResponderStationCollection$edges$node<
-            TRes> {
-  _CopyWithStubImpl$Fragment$FirstResponder$firstResponderStationCollection$edges$node(
-      this._res);
-
-  TRes _res;
-
-  call({String? $__typename}) => _res;
+  CopyWith$Fragment$FirstResponderStation<TRes> get node =>
+      CopyWith$Fragment$FirstResponderStation.stub(_res);
 }
 
 class Fragment$FirstResponder$firstResponderStationCollection$pageInfo {
@@ -1959,7 +2168,12 @@ const documentNodeQueryFirstResponder = DocumentNode(definitions: [
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
                 name: NameNode(value: 'id'),
-                value: VariableNode(name: NameNode(value: 'id')),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
               )
             ]),
           )
@@ -2027,6 +2241,7 @@ const documentNodeQueryFirstResponder = DocumentNode(definitions: [
   fragmentDefinitionStationProvider,
   fragmentDefinitionProvider,
   fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
 ]);
 Query$FirstResponder _parserFn$Query$FirstResponder(
         Map<String, dynamic> data) =>
@@ -2490,8 +2705,8 @@ class Variables$Query$FirstResponderCollection {
   factory Variables$Query$FirstResponderCollection({
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     Input$FirstResponderFilter? filter,
     List<Input$FirstResponderOrderBy>? orderBy,
   }) =>
@@ -2519,11 +2734,11 @@ class Variables$Query$FirstResponderCollection {
     }
     if (data.containsKey('before')) {
       final l$before = data['before'];
-      result$data['before'] = (l$before as String?);
+      result$data['before'] = (l$before as dynamic?);
     }
     if (data.containsKey('after')) {
       final l$after = data['after'];
-      result$data['after'] = (l$after as String?);
+      result$data['after'] = (l$after as dynamic?);
     }
     if (data.containsKey('filter')) {
       final l$filter = data['filter'];
@@ -2548,9 +2763,9 @@ class Variables$Query$FirstResponderCollection {
 
   int? get last => (_$data['last'] as int?);
 
-  String? get before => (_$data['before'] as String?);
+  dynamic? get before => (_$data['before'] as dynamic?);
 
-  String? get after => (_$data['after'] as String?);
+  dynamic? get after => (_$data['after'] as dynamic?);
 
   Input$FirstResponderFilter? get filter =>
       (_$data['filter'] as Input$FirstResponderFilter?);
@@ -2700,8 +2915,8 @@ abstract class CopyWith$Variables$Query$FirstResponderCollection<TRes> {
   TRes call({
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     Input$FirstResponderFilter? filter,
     List<Input$FirstResponderOrderBy>? orderBy,
   });
@@ -2732,8 +2947,8 @@ class _CopyWithImpl$Variables$Query$FirstResponderCollection<TRes>
         ..._instance._$data,
         if (first != _undefined) 'first': (first as int?),
         if (last != _undefined) 'last': (last as int?),
-        if (before != _undefined) 'before': (before as String?),
-        if (after != _undefined) 'after': (after as String?),
+        if (before != _undefined) 'before': (before as dynamic?),
+        if (after != _undefined) 'after': (after as dynamic?),
         if (filter != _undefined)
           'filter': (filter as Input$FirstResponderFilter?),
         if (orderBy != _undefined)
@@ -2750,8 +2965,8 @@ class _CopyWithStubImpl$Variables$Query$FirstResponderCollection<TRes>
   call({
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     Input$FirstResponderFilter? filter,
     List<Input$FirstResponderOrderBy>? orderBy,
   }) =>
@@ -2935,7 +3150,7 @@ const documentNodeQueryFirstResponderCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'before')),
         type: NamedTypeNode(
-          name: NameNode(value: 'String'),
+          name: NameNode(value: 'Cursor'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -2944,7 +3159,7 @@ const documentNodeQueryFirstResponderCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'after')),
         type: NamedTypeNode(
-          name: NameNode(value: 'String'),
+          name: NameNode(value: 'Cursor'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -3109,6 +3324,7 @@ const documentNodeQueryFirstResponderCollection = DocumentNode(definitions: [
   fragmentDefinitionStationProvider,
   fragmentDefinitionProvider,
   fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
 ]);
 Query$FirstResponderCollection _parserFn$Query$FirstResponderCollection(
         Map<String, dynamic> data) =>

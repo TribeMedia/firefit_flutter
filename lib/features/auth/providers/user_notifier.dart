@@ -23,7 +23,7 @@ final initialUser = User(
   lastName: 'James',
   firstName: 'Travis',
   displayName: 'Travis James',
-  avatarUrl: 'https://via.placeholder.com/150',
+  avatarUrl: 'https://ipfs.tribemedia.io/ipfs/QmewGTYVkaHVAsynxF7x8CPeRH8iZUBQ7PTYj8Ab9shXpj',
 );
 
 class UserNotifier extends AsyncNotifier<UserState> {

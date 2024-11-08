@@ -189,7 +189,7 @@ class OrderRepository extends OrderRepositoryInterface {
         return fp.Right(List<Order>.from(
             response.parsedData!.orderCollection!.edges.map((e) => e.node)));
       }
-      return const fp.Left(Failure.empty());
+      return const fp.Right([]);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
@@ -232,7 +232,7 @@ class OrderRepository extends OrderRepositoryInterface {
             .map((e) => e.node)));
       }
 
-      return const fp.Left(Failure.empty());
+      return const fp.Right([]);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
@@ -275,7 +275,7 @@ class OrderRepository extends OrderRepositoryInterface {
             .map((e) => e.node)));
       }
 
-      return const fp.Left(Failure.empty());
+      return const fp.Right([]);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));

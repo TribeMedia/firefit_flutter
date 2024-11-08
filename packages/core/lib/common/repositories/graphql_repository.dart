@@ -15,7 +15,7 @@ class GraphQLRepository {
       getToken: () => env.supabaseKey,
     );
 
-    HttpLink httpLink = HttpLink('${env.supabaseBaseUrl}graphql/v1',
+    HttpLink httpLink = HttpLink('${env.supabaseBaseUrl}/graphql/v1',
         defaultHeaders: {
           'apiKey': env.supabaseKey,
           'Content-Type': 'application/json; charset=utf-8'

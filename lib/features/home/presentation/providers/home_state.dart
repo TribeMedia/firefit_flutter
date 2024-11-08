@@ -13,18 +13,14 @@ sealed class HomeStateData {
 
 class HomeStateModel {
   HomeStateModel({
-    this.station,
+    this.firstResponder,
     this.user,
-    required this.teamUpdates,
-    required this.orders,
     this.error,
     this.isLoading = false,
   });
 
-  final Station? station;
+  final FirstResponder? firstResponder;
   final User? user;
-  final List<TeamUpdate> teamUpdates;
-  final List<Order> orders;
   final String? error;
   final bool isLoading;
 }
@@ -35,72 +31,44 @@ class HomeStateNotifier extends AsyncNotifier<HomeStateModel> {
   }
 
   FutureOr<HomeStateModel> load() async {
+    state = const AsyncLoading();
     final logging = ref.read(loggingProvider);
     final currentUser =
         ref.read(userNotifierProvider.notifier).state.value?.user;
-    logging.debug('HomeStateNotifier loading data...');
-    final orderRepository = ref.read(orderRepositoryProvider);
+
     final stationRepository = ref.read(stationRepositoryProvider);
-    final stationResult = await stationRepository.queryStations(
-      filter: Input$StationFilter(
-        id: Input$UUIDFilter(
-          eq: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2',
-        ),
-      ),
-    );
 
     if (currentUser == null) {
       final model = HomeStateModel(
-        teamUpdates: [],
-        orders: [],
+        error: 'No user found',
       );
       state = AsyncValue.data(model);
       return model;
     }
 
-    final orderResult = await orderRepository.queryOrders(
-      filter: Input$OrderFilter(
-        stationId: Input$UUIDFilter(eq: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2'),
+    final firstResponderResult = await stationRepository.queryFirstResponders(
+      filter: Input$FirstResponderFilter(
         userId: Input$UUIDFilter(eq: currentUser.id),
       ),
     );
 
-    return orderResult.fold(
-      (failure) => HomeStateModel(
-        error: failure.error,
-        teamUpdates: [],
-        orders: [],
-      ),
-      (orders) async {
-        final teamUpdatesValue = await stationRepository.queryTeamUpdates(
-          filter: Input$TeamUpdateFilter(
-            stationId:
-                Input$UUIDFilter(eq: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2'),
-          ),
-        );
-
-        return teamUpdatesValue.fold(
-          (failure) => HomeStateModel(
-            error: failure.error,
-            teamUpdates: [],
-            orders: orders,
-          ),
-          (teamUpdates) {
-            return stationResult.fold(
-              (failure) => HomeStateModel(
-                error: failure.error,
-                teamUpdates: teamUpdates,
-                orders: orders,
-              ),
-              (stations) => HomeStateModel(
-                station: stations.first,
-                teamUpdates: teamUpdates,
-                orders: orders,
-              ),
-            );
-          },
-        );
-      },
+    return firstResponderResult.fold(
+        (l) {
+          final model = HomeStateModel(
+            error: l.error,
+          );
+          state = AsyncValue.data(model);
+          return model;
+        },
+        (r) {
+          final responder = r.first;
+          final model = HomeStateModel(
+            firstResponder: responder,
+            user: currentUser,
+          );
+          state = AsyncValue.data(model);
+          return model;
+        },
     );
   }
 

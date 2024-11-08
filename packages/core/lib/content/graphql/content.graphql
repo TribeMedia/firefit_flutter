@@ -100,7 +100,7 @@ fragment ContentTemplateVariable on ContentTemplateVariable {
   id
   templateVariableTypeId
   templateVariableType {
-    ...TemplateVariable
+    ...TemplateVariableType
   }
   contentTemplateId
   data

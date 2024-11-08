@@ -1,10 +1,10 @@
-import 'package:core/core.dart';
+
 import 'package:firefit/features/commerce/domain/entities/cart_item.dart';
 import 'package:firefit/features/commerce/domain/entities/shopping_cart_model.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/commerce/presentation/widgets/menu_item_list_tile.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
-import 'package:firefit/features/meals/providers/providers.dart';
+import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +16,7 @@ class MenuScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final menuAsyncValue = ref.watch(menuNotifierProvider);
+    final menuAsyncValue = ref.watch(menuControllerProvider(globalProviderId));
     final cart = ref.watch(shoppingCartProvider);
     final cartNotifier = ref.read(shoppingCartProvider.notifier);
 
@@ -50,7 +50,7 @@ class MenuScreen extends HookConsumerWidget {
                 SliverPadding(
                   padding: const EdgeInsets.all(16.0),
                   sliver:
-                      _buildListView(menuViewModel, cartModel, cartNotifier),
+                      _buildListView(menuViewModel, cartModel, cartNotifier, ref),
                 ),
               ],
             ),
@@ -68,19 +68,22 @@ class MenuScreen extends HookConsumerWidget {
   }
 
   Widget _buildListView(
-    MenuScreenViewModel menuViewModel,
+    MenuViewModel menuViewModel,
     ShoppingCartModel cartModel,
     ShoppingCartNotifier cartNotifier,
+      WidgetRef ref,
   ) {
+    final controller = ref.watch(menuControllerProvider(globalProviderId).notifier);
     final allMenus = [
-      ...menuViewModel.breakfastMenus,
-      ...menuViewModel.lunchMenus,
-      ...menuViewModel.dinnerMenus,
+      controller.breakfastMenuItems,
+      controller.lunchMenuItems,
+      controller.dinnerMenuItems,
     ];
+
     final allItems = allMenus
         .expand(
-            (menu) => menu.menuItemCollection?.edges.map((e) => e.node) ?? [])
-        .toList() as List<MenuItem>;
+            (menuItems) => menuItems.map((e) => e))
+        .toList();
 
     int getItemQuantity(String itemId) {
       return cartModel.items.where((item) => item.id == itemId).length;

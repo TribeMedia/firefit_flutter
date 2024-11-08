@@ -55,7 +55,7 @@ class UserRepository extends UserRepositoryInterface {
         return Right(List<User>.from(
             response.parsedData!.userCollection!.edges.map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));

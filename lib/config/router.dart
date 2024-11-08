@@ -76,16 +76,6 @@ final routerProvider = Provider<GoRouter>((ref) {
             },
           ),
           GoRoute(
-            path: 'chat',
-            name: 'chat',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ApplicationContainer(
-                name: 'chat',
-                child: AIChatScreen(),
-              );
-            },
-          ),
-          GoRoute(
             path: 'menu',
             name: 'menu',
             builder: (BuildContext context, GoRouterState state) {

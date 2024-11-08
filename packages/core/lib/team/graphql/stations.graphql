@@ -38,7 +38,7 @@ fragment Station on Station {
 }
 
 query Station($id: UUID!) {
-  stationCollection(filter: { id: $id }) {
+  stationCollection(filter: { id: { eq: $id } }) {
     edges {
       node {
         ...Station

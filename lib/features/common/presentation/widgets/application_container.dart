@@ -3,9 +3,9 @@ import 'package:firefit/features/chat/ai_chat_screen.dart';
 import 'package:firefit/features/common/presentation/providers.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_icon.dart';
 import 'package:firefit/features/home/presentation/widgets/navigation/app_drawer.dart';
-import 'package:firefit/features/home/presentation/widgets/navigation/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final scaffoldKeyProvider = Provider.family<GlobalKey<ScaffoldState>, String>(
@@ -91,18 +91,73 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
         ],
       ),
       key: scaffoldKey,
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: 15.0, vertical: 20.0),
+          child: GNav(
+            selectedIndex: currentIndex,
+            gap: 8,
+            activeColor: Colors.blue,
+            iconSize: 24,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            duration: Duration(milliseconds: 400),
+            tabBackgroundColor: Colors.grey[100]!,
+            color: Colors.grey,
+            tabs: [
+              GButton(
+                icon: Icons.home,
+                text: 'Home',
+                onPressed: () {
+                  context.go('/');
+                },
+              ),
+              GButton(
+                icon: Icons.restaurant_menu,
+                text: 'Menu',
+                onPressed: () {
+                  context.go('/menu');
+                },
+              ),
+              GButton(
+                icon: Icons.chat,
+                text: 'Chat',
+                onPressed: () {
+                  context.go('/chat');
+                },
+              ),
+              GButton(
+                icon: Icons.business,
+                text: 'Station',
+                onPressed: () {
+                  context.go('/station');
+                },
+              ),
+              GButton(
+                icon: Icons.person,
+                text: 'Profile',
+                onPressed: () {
+                  context.go('/profile');
+                },
+              ),
+              GButton(
+                icon: Icons.settings,
+                text: 'Settings',
+                onPressed: () {
+                  context.go('/settings');
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Column(
             children: [
               Expanded(
                 child: widget.child,
-              ),
-              FireFitBottomNavBar(
-                currentIndex: currentIndex,
-                onTabSelected: (index) {
-                  ref.read(currentIndexProvider.notifier).state = index;
-                },
               ),
             ],
           ),
@@ -139,7 +194,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
             ),
         ],
       ),
-      drawer: AppDrawer(),
+      //drawer: AppDrawer(),
     );
   }
 }

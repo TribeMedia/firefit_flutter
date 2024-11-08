@@ -3,7 +3,7 @@ import 'package:firefit/features/commerce/domain/entities/cart_item.dart';
 import 'package:firefit/features/commerce/domain/entities/shopping_cart_model.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/common/presentation/widgets/shad_list_item.dart';
-import 'package:firefit/features/meals/providers/providers.dart';
+import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart' as shad;
@@ -14,7 +14,7 @@ class MenuScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final menuState = ref.watch(menuNotifierProvider);
+    final menuController = ref.watch(menuControllerProvider(globalProviderId));
     final shadTheme = ShadTheme.of(context);
 
     return Scaffold(
@@ -22,26 +22,32 @@ class MenuScreen extends HookConsumerWidget {
         title: Text('Menu', style: shadTheme.textTheme.h2),
         centerTitle: true,
       ),
-      body: menuState.when(
+      body: menuController.when(
         loading: () => Center(child: CircularProgressIndicator()),
         error: (error, _) =>
             Center(child: Text('Error: $error', style: shadTheme.textTheme.p)),
-        data: (viewModel) => _buildMenuList(context, ref, viewModel),
+        data: (viewModel) => _buildMenuList(context, ref),
       ),
     );
   }
 
   Widget _buildMenuList(
-      BuildContext context, WidgetRef ref, MenuScreenViewModel viewModel) {
+      BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(menuControllerProvider(globalProviderId).notifier);
+    // Now you can access the getters directly
+    final breakfastItems = controller.breakfastMenus;
+    final lunchItems = controller.lunchMenus;
+    final dinnerItems = controller.dinnerMenus;
+
     return ListView(
       children: [
-        if (viewModel.breakfastMenus.isNotEmpty)
+        if (breakfastItems.isNotEmpty)
           _buildMealTypeSection(
-              context, ref, 'Breakfast', viewModel.breakfastMenus),
-        if (viewModel.lunchMenus.isNotEmpty)
-          _buildMealTypeSection(context, ref, 'Lunch', viewModel.lunchMenus),
-        if (viewModel.dinnerMenus.isNotEmpty)
-          _buildMealTypeSection(context, ref, 'Dinner', viewModel.dinnerMenus),
+              context, ref, 'Breakfast', breakfastItems),
+        if (lunchItems.isNotEmpty)
+          _buildMealTypeSection(context, ref, 'Lunch', lunchItems),
+        if (dinnerItems.isNotEmpty)
+          _buildMealTypeSection(context, ref, 'Dinner', dinnerItems),
       ],
     );
   }

@@ -1537,7 +1537,7 @@ class Fragment$ContentTemplateVariable {
       templateVariableTypeId: (l$templateVariableTypeId as String?),
       templateVariableType: l$templateVariableType == null
           ? null
-          : Fragment$ContentTemplateVariable$templateVariableType.fromJson(
+          : Fragment$TemplateVariableType.fromJson(
               (l$templateVariableType as Map<String, dynamic>)),
       contentTemplateId: (l$contentTemplateId as String),
       data: l$data == null ? null : jsonFieldFromJson(l$data),
@@ -1550,8 +1550,7 @@ class Fragment$ContentTemplateVariable {
 
   final String? templateVariableTypeId;
 
-  final Fragment$ContentTemplateVariable$templateVariableType?
-      templateVariableType;
+  final Fragment$TemplateVariableType? templateVariableType;
 
   final String contentTemplateId;
 
@@ -1669,14 +1668,13 @@ abstract class CopyWith$Fragment$ContentTemplateVariable<TRes> {
   TRes call({
     String? id,
     String? templateVariableTypeId,
-    Fragment$ContentTemplateVariable$templateVariableType? templateVariableType,
+    Fragment$TemplateVariableType? templateVariableType,
     String? contentTemplateId,
     Map<String, dynamic>? data,
     DateTime? createdAt,
     String? $__typename,
   });
-  CopyWith$Fragment$ContentTemplateVariable$templateVariableType<TRes>
-      get templateVariableType;
+  CopyWith$Fragment$TemplateVariableType<TRes> get templateVariableType;
 }
 
 class _CopyWithImpl$Fragment$ContentTemplateVariable<TRes>
@@ -1708,8 +1706,7 @@ class _CopyWithImpl$Fragment$ContentTemplateVariable<TRes>
             : (templateVariableTypeId as String?),
         templateVariableType: templateVariableType == _undefined
             ? _instance.templateVariableType
-            : (templateVariableType
-                as Fragment$ContentTemplateVariable$templateVariableType?),
+            : (templateVariableType as Fragment$TemplateVariableType?),
         contentTemplateId:
             contentTemplateId == _undefined || contentTemplateId == null
                 ? _instance.contentTemplateId
@@ -1725,13 +1722,11 @@ class _CopyWithImpl$Fragment$ContentTemplateVariable<TRes>
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$ContentTemplateVariable$templateVariableType<TRes>
-      get templateVariableType {
+  CopyWith$Fragment$TemplateVariableType<TRes> get templateVariableType {
     final local$templateVariableType = _instance.templateVariableType;
     return local$templateVariableType == null
-        ? CopyWith$Fragment$ContentTemplateVariable$templateVariableType.stub(
-            _then(_instance))
-        : CopyWith$Fragment$ContentTemplateVariable$templateVariableType(
+        ? CopyWith$Fragment$TemplateVariableType.stub(_then(_instance))
+        : CopyWith$Fragment$TemplateVariableType(
             local$templateVariableType, (e) => call(templateVariableType: e));
   }
 }
@@ -1745,7 +1740,7 @@ class _CopyWithStubImpl$Fragment$ContentTemplateVariable<TRes>
   call({
     String? id,
     String? templateVariableTypeId,
-    Fragment$ContentTemplateVariable$templateVariableType? templateVariableType,
+    Fragment$TemplateVariableType? templateVariableType,
     String? contentTemplateId,
     Map<String, dynamic>? data,
     DateTime? createdAt,
@@ -1753,10 +1748,8 @@ class _CopyWithStubImpl$Fragment$ContentTemplateVariable<TRes>
   }) =>
       _res;
 
-  CopyWith$Fragment$ContentTemplateVariable$templateVariableType<TRes>
-      get templateVariableType =>
-          CopyWith$Fragment$ContentTemplateVariable$templateVariableType.stub(
-              _res);
+  CopyWith$Fragment$TemplateVariableType<TRes> get templateVariableType =>
+      CopyWith$Fragment$TemplateVariableType.stub(_res);
 }
 
 const fragmentDefinitionContentTemplateVariable = FragmentDefinitionNode(
@@ -1789,7 +1782,7 @@ const fragmentDefinitionContentTemplateVariable = FragmentDefinitionNode(
       directives: [],
       selectionSet: SelectionSetNode(selections: [
         FragmentSpreadNode(
-          name: NameNode(value: 'TemplateVariable'),
+          name: NameNode(value: 'TemplateVariableType'),
           directives: [],
         ),
         FieldNode(
@@ -1833,7 +1826,7 @@ const fragmentDefinitionContentTemplateVariable = FragmentDefinitionNode(
 );
 const documentNodeFragmentContentTemplateVariable = DocumentNode(definitions: [
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
 ]);
 
 extension ClientExtension$Fragment$ContentTemplateVariable
@@ -1872,109 +1865,6 @@ extension ClientExtension$Fragment$ContentTemplateVariable
         ? null
         : Fragment$ContentTemplateVariable.fromJson(result);
   }
-}
-
-class Fragment$ContentTemplateVariable$templateVariableType {
-  Fragment$ContentTemplateVariable$templateVariableType(
-      {this.$__typename = 'TemplateVariableType'});
-
-  factory Fragment$ContentTemplateVariable$templateVariableType.fromJson(
-      Map<String, dynamic> json) {
-    final l$$__typename = json['__typename'];
-    return Fragment$ContentTemplateVariable$templateVariableType(
-        $__typename: (l$$__typename as String));
-  }
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Fragment$ContentTemplateVariable$templateVariableType) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Fragment$ContentTemplateVariable$templateVariableType
-    on Fragment$ContentTemplateVariable$templateVariableType {
-  CopyWith$Fragment$ContentTemplateVariable$templateVariableType<
-          Fragment$ContentTemplateVariable$templateVariableType>
-      get copyWith =>
-          CopyWith$Fragment$ContentTemplateVariable$templateVariableType(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Fragment$ContentTemplateVariable$templateVariableType<
-    TRes> {
-  factory CopyWith$Fragment$ContentTemplateVariable$templateVariableType(
-    Fragment$ContentTemplateVariable$templateVariableType instance,
-    TRes Function(Fragment$ContentTemplateVariable$templateVariableType) then,
-  ) = _CopyWithImpl$Fragment$ContentTemplateVariable$templateVariableType;
-
-  factory CopyWith$Fragment$ContentTemplateVariable$templateVariableType.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ContentTemplateVariable$templateVariableType;
-
-  TRes call({String? $__typename});
-}
-
-class _CopyWithImpl$Fragment$ContentTemplateVariable$templateVariableType<TRes>
-    implements
-        CopyWith$Fragment$ContentTemplateVariable$templateVariableType<TRes> {
-  _CopyWithImpl$Fragment$ContentTemplateVariable$templateVariableType(
-    this._instance,
-    this._then,
-  );
-
-  final Fragment$ContentTemplateVariable$templateVariableType _instance;
-
-  final TRes Function(Fragment$ContentTemplateVariable$templateVariableType)
-      _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({Object? $__typename = _undefined}) =>
-      _then(Fragment$ContentTemplateVariable$templateVariableType(
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Fragment$ContentTemplateVariable$templateVariableType<
-        TRes>
-    implements
-        CopyWith$Fragment$ContentTemplateVariable$templateVariableType<TRes> {
-  _CopyWithStubImpl$Fragment$ContentTemplateVariable$templateVariableType(
-      this._res);
-
-  TRes _res;
-
-  call({String? $__typename}) => _res;
 }
 
 class Fragment$ContentTemplate {
@@ -2640,7 +2530,7 @@ const documentNodeFragmentContentTemplate = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionContentType,
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
 ]);
 
 extension ClientExtension$Fragment$ContentTemplate on graphql.GraphQLClient {
@@ -4891,7 +4781,7 @@ const documentNodeFragmentContent = DocumentNode(definitions: [
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
   fragmentDefinitionCreationType,
   fragmentDefinitionContentContentPart,
   fragmentDefinitionContentPart,
@@ -10425,7 +10315,7 @@ const documentNodeQueryContent = DocumentNode(definitions: [
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
   fragmentDefinitionCreationType,
   fragmentDefinitionContentContentPart,
   fragmentDefinitionContentPart,
@@ -11522,7 +11412,7 @@ const documentNodeQueryContentCollection = DocumentNode(definitions: [
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
   fragmentDefinitionCreationType,
   fragmentDefinitionContentContentPart,
   fragmentDefinitionContentPart,
@@ -13647,7 +13537,7 @@ const documentNodeMutationCreateContent = DocumentNode(definitions: [
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
   fragmentDefinitionCreationType,
   fragmentDefinitionContentContentPart,
   fragmentDefinitionContentPart,
@@ -14418,7 +14308,7 @@ const documentNodeMutationUpdateContent = DocumentNode(definitions: [
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
   fragmentDefinitionCreationType,
   fragmentDefinitionContentContentPart,
   fragmentDefinitionContentPart,
@@ -15147,7 +15037,7 @@ const documentNodeMutationDeleteContent = DocumentNode(definitions: [
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
   fragmentDefinitionContentTemplateVariable,
-  fragmentDefinitionTemplateVariable,
+  fragmentDefinitionTemplateVariableType,
   fragmentDefinitionCreationType,
   fragmentDefinitionContentContentPart,
   fragmentDefinitionContentPart,

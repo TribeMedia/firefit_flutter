@@ -360,6 +360,7 @@ class Fragment$MenuItem {
     this.coverUrl,
     required this.price,
     required this.isAvailable,
+    required this.isFeatured,
     required this.categories,
     required this.createdAt,
     this.$__typename = 'MenuItem',
@@ -375,6 +376,7 @@ class Fragment$MenuItem {
     final l$coverUrl = json['coverUrl'];
     final l$price = json['price'];
     final l$isAvailable = json['isAvailable'];
+    final l$isFeatured = json['isFeatured'];
     final l$categories = json['categories'];
     final l$createdAt = json['createdAt'];
     final l$$__typename = json['__typename'];
@@ -388,6 +390,7 @@ class Fragment$MenuItem {
       coverUrl: (l$coverUrl as String?),
       price: (l$price as num).toDouble(),
       isAvailable: (l$isAvailable as bool),
+      isFeatured: (l$isFeatured as bool),
       categories:
           (l$categories as List<dynamic>).map((e) => (e as String?)).toList(),
       createdAt: DateTime.parse((l$createdAt as String)),
@@ -412,6 +415,8 @@ class Fragment$MenuItem {
   final double price;
 
   final bool isAvailable;
+
+  final bool isFeatured;
 
   final List<String?> categories;
 
@@ -439,6 +444,8 @@ class Fragment$MenuItem {
     _resultData['price'] = l$price;
     final l$isAvailable = isAvailable;
     _resultData['isAvailable'] = l$isAvailable;
+    final l$isFeatured = isFeatured;
+    _resultData['isFeatured'] = l$isFeatured;
     final l$categories = categories;
     _resultData['categories'] = l$categories.map((e) => e).toList();
     final l$createdAt = createdAt;
@@ -459,6 +466,7 @@ class Fragment$MenuItem {
     final l$coverUrl = coverUrl;
     final l$price = price;
     final l$isAvailable = isAvailable;
+    final l$isFeatured = isFeatured;
     final l$categories = categories;
     final l$createdAt = createdAt;
     final l$$__typename = $__typename;
@@ -472,6 +480,7 @@ class Fragment$MenuItem {
       l$coverUrl,
       l$price,
       l$isAvailable,
+      l$isFeatured,
       Object.hashAll(l$categories.map((v) => v)),
       l$createdAt,
       l$$__typename,
@@ -531,6 +540,11 @@ class Fragment$MenuItem {
     if (l$isAvailable != lOther$isAvailable) {
       return false;
     }
+    final l$isFeatured = isFeatured;
+    final lOther$isFeatured = other.isFeatured;
+    if (l$isFeatured != lOther$isFeatured) {
+      return false;
+    }
     final l$categories = categories;
     final lOther$categories = other.categories;
     if (l$categories.length != lOther$categories.length) {
@@ -584,6 +598,7 @@ abstract class CopyWith$Fragment$MenuItem<TRes> {
     String? coverUrl,
     double? price,
     bool? isAvailable,
+    bool? isFeatured,
     List<String?>? categories,
     DateTime? createdAt,
     String? $__typename,
@@ -613,6 +628,7 @@ class _CopyWithImpl$Fragment$MenuItem<TRes>
     Object? coverUrl = _undefined,
     Object? price = _undefined,
     Object? isAvailable = _undefined,
+    Object? isFeatured = _undefined,
     Object? categories = _undefined,
     Object? createdAt = _undefined,
     Object? $__typename = _undefined,
@@ -637,6 +653,9 @@ class _CopyWithImpl$Fragment$MenuItem<TRes>
         isAvailable: isAvailable == _undefined || isAvailable == null
             ? _instance.isAvailable
             : (isAvailable as bool),
+        isFeatured: isFeatured == _undefined || isFeatured == null
+            ? _instance.isFeatured
+            : (isFeatured as bool),
         categories: categories == _undefined || categories == null
             ? _instance.categories
             : (categories as List<String?>),
@@ -665,6 +684,7 @@ class _CopyWithStubImpl$Fragment$MenuItem<TRes>
     String? coverUrl,
     double? price,
     bool? isAvailable,
+    bool? isFeatured,
     List<String?>? categories,
     DateTime? createdAt,
     String? $__typename,
@@ -739,6 +759,13 @@ const fragmentDefinitionMenuItem = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'isAvailable'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'isFeatured'),
       alias: null,
       arguments: [],
       directives: [],

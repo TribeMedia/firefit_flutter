@@ -55,7 +55,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface {
             .parsedData!.applicationCollection!.edges
             .map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));
@@ -97,7 +97,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface {
             .parsedData!.applicationTypeCollection!.edges
             .map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));
@@ -139,7 +139,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface {
             .parsedData!.notificationTypeCollection!.edges
             .map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));
@@ -181,7 +181,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface {
             .parsedData!.notificationCollection!.edges
             .map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));

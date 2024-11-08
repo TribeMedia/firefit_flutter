@@ -6,6 +6,16 @@ fragment FirstResponderType on FirstResponderType {
   createdAt
 }
 
+fragment FirstResponderStation on FirstResponderStation {
+  id
+  firstResponderId
+  stationId
+  station {
+    ...Station
+  }
+  createdAt
+}
+
 fragment FirstResponder on FirstResponder {
   id
   userId
@@ -23,7 +33,7 @@ fragment FirstResponder on FirstResponder {
   firstResponderStationCollection {
     edges {
       node {
-        ...Station
+        ...FirstResponderStation
       }
     }
     pageInfo {
@@ -41,7 +51,7 @@ fragment FirstResponder on FirstResponder {
 }
 
 query FirstResponder($id: UUID!) {
-  firstResponderCollection(filter: { id: $id }) {
+  firstResponderCollection(filter: { id: { eq: $id } }) {
     edges {
       node {
         ...FirstResponder
@@ -53,8 +63,8 @@ query FirstResponder($id: UUID!) {
 query FirstResponderCollection(
   $first: Int,
   $last: Int,
-  $before: String,
-  $after: String,
+  $before: Cursor,
+  $after: Cursor,
   $filter: FirstResponderFilter,
   $orderBy: [FirstResponderOrderBy!],
 ) {

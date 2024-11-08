@@ -14,7 +14,7 @@ final class _Env {
   static const String supabaseUrl = 'https://supabase.tribemedia.io';
 
   static const String supabaseAnonKey =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0cmliZW1lZGlhLmlvIiwiZXhwIjoxODcxMDA4NjcwLCJ1c2VybmFtZSI6ImFub24iLCJyb2xlIjoiYW5vbiIsImlzX3VzZXIiOiJmYWxzZSJ9.Ir5lZu4OTRTsavHareIBmOP4P6sddHo3neYO0UEDebg';
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzE0OTc1MjAwLCJleHAiOjE4NzI3NDE2MDB9.YpNMQhW8t8_VOeBMAfcTA5X7R_EWz2GCqLZ2zIOWJ6s';
 
   static const String openAiUrl = 'https://reveles-ai.openai.azure.com';
 

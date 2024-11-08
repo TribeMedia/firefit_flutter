@@ -103,30 +103,7 @@ fragment Order on Order {
   }
   userId
   user {
-    id
-    email
-    firstName
-    lastName
-    displayName
-    data
-    avatarUrl
-    kratosId
-    supabaseUserId
-    userRoleCollection {
-      edges {
-        node {
-          id
-          roleId
-          role {
-            id
-            name
-            key
-            schema
-          }
-          userId
-        }
-      }
-    }
+    ...User
   }
   orderStatusId
   orderStatus {

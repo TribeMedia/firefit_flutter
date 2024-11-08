@@ -61,7 +61,7 @@ class ContentRepository extends ContentRepositoryInterface {
       ) {
         return Right(List<ContentType>.from(response.parsedData!.contentTypeCollection!.edges.map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));
@@ -102,7 +102,7 @@ class ContentRepository extends ContentRepositoryInterface {
       ) {
         return Right(List<Content>.from(response.parsedData!.contentCollection!.edges.map((e) => e.node)));
       }
-      return const Left(Failure.empty());
+      return const Right([]);
     } catch (e) {
       debugPrint('$e');
       return Left(Failure.unprocessableEntity(message: e.toString()));
