@@ -26,42 +26,46 @@ class ShadListItem extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: Padding(
-        padding: contentPadding,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (leading != null) ...[
-              leading!,
-              SizedBox(width: 16),
-            ],
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  DefaultTextStyle(
-                    style: shadTheme.textTheme.h4,
-                    child: title,
-                  ),
-                  if (subtitle != null) ...[
-                    SizedBox(height: 4),
-                    DefaultTextStyle(
-                      style: shadTheme.textTheme.small.copyWith(
-                        color: shadTheme.colorScheme.mutedForeground,
-                      ),
-                      child: subtitle!,
-                    ),
-                  ],
+      child: Column(
+        children: [
+          Padding(
+            padding: contentPadding,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (leading != null) ...[
+                  leading!,
+                  SizedBox(width: 16),
                 ],
-              ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      DefaultTextStyle(
+                        style: shadTheme.textTheme.h4,
+                        child: title,
+                      ),
+                      if (subtitle != null) ...[
+                        SizedBox(height: 4),
+                        DefaultTextStyle(
+                          style: shadTheme.textTheme.small.copyWith(
+                            color: shadTheme.colorScheme.mutedForeground,
+                          ),
+                          child: subtitle!,
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
             ),
-            if (trailing != null) ...[
-              SizedBox(width: 16),
-              trailing!,
-            ],
-          ],
-        ),
+          ),
+          trailing != null ?
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+              child: trailing!) : SizedBox.shrink()
+        ],
       ),
     );
   }

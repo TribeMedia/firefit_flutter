@@ -33,16 +33,6 @@ class ChatDatabaseNotifier extends AsyncNotifier<ChatDatabase> {
     final executor = ref.watch(databaseConnectionProvider);
     final db = ChatDatabase(executor);
 
-    // Initialize Electric if needed
-    try {
-      await db.initializeElectric(
-        serviceUrl: Env.electricServiceUrl, // Replace with your service URL
-      );
-    } catch (e) {
-      debugPrint('Electric initialization failed: $e');
-      // Continue without Electric
-    }
-
     return db;
   }
 

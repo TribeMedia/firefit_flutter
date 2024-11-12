@@ -2,13 +2,13 @@
 
 // ignore_for_file: always_specify_types, public_member_api_docs
 
-part of 'providers.dart';
+part of 'home_sliver_app_bar.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$menuControllerHash() => r'0052364a52dcb2b6947b17a20157c5b25c5832a1';
+String _$homeAppBarHash() => r'88b7a6d744ec33bcb2e98f8868363c6e19628d86';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,38 +31,39 @@ class _SystemHash {
   }
 }
 
-abstract class _$MenuController extends BuildlessAsyncNotifier<MenuViewModel> {
-  late final String providerId;
+abstract class _$HomeAppBar
+    extends BuildlessAutoDisposeAsyncNotifier<HomeAppBarState> {
+  late final HomeAppBarInput input;
 
-  FutureOr<MenuViewModel> build(
-    String providerId,
+  FutureOr<HomeAppBarState> build(
+    HomeAppBarInput input,
   );
 }
 
-/// See also [MenuController].
-@ProviderFor(MenuController)
-const menuControllerProvider = MenuControllerFamily();
+/// See also [HomeAppBar].
+@ProviderFor(HomeAppBar)
+const homeAppBarProvider = HomeAppBarFamily();
 
-/// See also [MenuController].
-class MenuControllerFamily extends Family<AsyncValue<MenuViewModel>> {
-  /// See also [MenuController].
-  const MenuControllerFamily();
+/// See also [HomeAppBar].
+class HomeAppBarFamily extends Family<AsyncValue<HomeAppBarState>> {
+  /// See also [HomeAppBar].
+  const HomeAppBarFamily();
 
-  /// See also [MenuController].
-  MenuControllerProvider call(
-    String providerId,
+  /// See also [HomeAppBar].
+  HomeAppBarProvider call(
+    HomeAppBarInput input,
   ) {
-    return MenuControllerProvider(
-      providerId,
+    return HomeAppBarProvider(
+      input,
     );
   }
 
   @override
-  MenuControllerProvider getProviderOverride(
-    covariant MenuControllerProvider provider,
+  HomeAppBarProvider getProviderOverride(
+    covariant HomeAppBarProvider provider,
   ) {
     return call(
-      provider.providerId,
+      provider.input,
     );
   }
 
@@ -78,80 +79,81 @@ class MenuControllerFamily extends Family<AsyncValue<MenuViewModel>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'menuControllerProvider';
+  String? get name => r'homeAppBarProvider';
 }
 
-/// See also [MenuController].
-class MenuControllerProvider
-    extends AsyncNotifierProviderImpl<MenuController, MenuViewModel> {
-  /// See also [MenuController].
-  MenuControllerProvider(
-    String providerId,
+/// See also [HomeAppBar].
+class HomeAppBarProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<HomeAppBar, HomeAppBarState> {
+  /// See also [HomeAppBar].
+  HomeAppBarProvider(
+    HomeAppBarInput input,
   ) : this._internal(
-          () => MenuController()..providerId = providerId,
-          from: menuControllerProvider,
-          name: r'menuControllerProvider',
+          () => HomeAppBar()..input = input,
+          from: homeAppBarProvider,
+          name: r'homeAppBarProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$menuControllerHash,
-          dependencies: MenuControllerFamily._dependencies,
+                  : _$homeAppBarHash,
+          dependencies: HomeAppBarFamily._dependencies,
           allTransitiveDependencies:
-              MenuControllerFamily._allTransitiveDependencies,
-          providerId: providerId,
+              HomeAppBarFamily._allTransitiveDependencies,
+          input: input,
         );
 
-  MenuControllerProvider._internal(
+  HomeAppBarProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.providerId,
+    required this.input,
   }) : super.internal();
 
-  final String providerId;
+  final HomeAppBarInput input;
 
   @override
-  FutureOr<MenuViewModel> runNotifierBuild(
-    covariant MenuController notifier,
+  FutureOr<HomeAppBarState> runNotifierBuild(
+    covariant HomeAppBar notifier,
   ) {
     return notifier.build(
-      providerId,
+      input,
     );
   }
 
   @override
-  Override overrideWith(MenuController Function() create) {
+  Override overrideWith(HomeAppBar Function() create) {
     return ProviderOverride(
       origin: this,
-      override: MenuControllerProvider._internal(
-        () => create()..providerId = providerId,
+      override: HomeAppBarProvider._internal(
+        () => create()..input = input,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        providerId: providerId,
+        input: input,
       ),
     );
   }
 
   @override
-  AsyncNotifierProviderElement<MenuController, MenuViewModel> createElement() {
-    return _MenuControllerProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<HomeAppBar, HomeAppBarState>
+      createElement() {
+    return _HomeAppBarProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MenuControllerProvider && other.providerId == providerId;
+    return other is HomeAppBarProvider && other.input == input;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, providerId.hashCode);
+    hash = _SystemHash.combine(hash, input.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -159,18 +161,18 @@ class MenuControllerProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin MenuControllerRef on AsyncNotifierProviderRef<MenuViewModel> {
-  /// The parameter `providerId` of this provider.
-  String get providerId;
+mixin HomeAppBarRef on AutoDisposeAsyncNotifierProviderRef<HomeAppBarState> {
+  /// The parameter `input` of this provider.
+  HomeAppBarInput get input;
 }
 
-class _MenuControllerProviderElement
-    extends AsyncNotifierProviderElement<MenuController, MenuViewModel>
-    with MenuControllerRef {
-  _MenuControllerProviderElement(super.provider);
+class _HomeAppBarProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<HomeAppBar, HomeAppBarState>
+    with HomeAppBarRef {
+  _HomeAppBarProviderElement(super.provider);
 
   @override
-  String get providerId => (origin as MenuControllerProvider).providerId;
+  HomeAppBarInput get input => (origin as HomeAppBarProvider).input;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

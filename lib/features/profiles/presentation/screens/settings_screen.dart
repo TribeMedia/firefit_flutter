@@ -16,6 +16,8 @@ enum MeasurementUnit { metric, imperial }
 class SettingsScreen extends HookConsumerWidget {
   const SettingsScreen({super.key});
 
+  static const int IndexValue = 3;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notificationsEnabled = ref.watch(notificationsEnabledProvider);

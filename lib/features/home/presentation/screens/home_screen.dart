@@ -1,17 +1,30 @@
 import 'package:core/core.dart';
-import 'package:firefit/features/commerce/providers/providers.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/initials_avatar.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
-import 'package:firefit/features/menu/presentation/widgets/featured_item_menu_card.dart';
+import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
 import 'package:firefit/features/menu/providers.dart';
 import 'package:firefit/features/teams/presentation/widgets/team_update_card.dart';
 import 'package:firefit/features/teams/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+
+part 'home_screen.g.dart';
+
+@riverpod
+class HomeAppBarScrollController extends _$HomeAppBarScrollController {
+  @override
+  ScrollController build() {
+    final controller = ScrollController();
+    ref.onDispose(() {
+      controller.dispose();
+    });
+    return controller;
+  }
+}
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
@@ -20,23 +33,33 @@ class HomeScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final homeState = ref.watch(homeStateProvider);
     final menuState = ref.watch(menuControllerProvider(globalProviderId));
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     return homeState.when(
       data: (homeStateModel) {
         if (homeStateModel.isLoading) {
-          return const Scaffold(body: Center(child: CircularProgressIndicator()));
-        } else if (homeStateModel.error != null) {
-          return Scaffold(body: Center(child: Text('Error: ${homeStateModel.error}')));
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        if (homeStateModel.error != null) {
+          return Scaffold(
+            body: Center(child: Text('Error: ${homeStateModel.error}')),
+          );
         }
 
         return menuState.when(
           data: (menuScreenViewModel) {
             if (menuScreenViewModel.isLoading) {
-              return const Scaffold(body: Center(child: CircularProgressIndicator()));
-            } else if (menuScreenViewModel.error != null) {
-              return Scaffold(body: Center(child: Text('Error: ${menuScreenViewModel.error}')));
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            if (menuScreenViewModel.error != null) {
+              return Scaffold(
+                body: Center(child: Text('Error: ${menuScreenViewModel.error}')),
+              );
             }
 
             return Scaffold(
@@ -44,103 +67,42 @@ class HomeScreen extends HookConsumerWidget {
                 homeStateModel: homeStateModel,
                 menuScreenViewModel: menuScreenViewModel,
               ),
-              bottomNavigationBar: Container(
-                decoration: BoxDecoration(
-                  color: theme.scaffoldBackgroundColor,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 20,
-                      color: Colors.black.withOpacity(.1),
-                    )
-                  ],
-                ),
-                child: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-                    child: GNav(
-                      rippleColor: theme.colorScheme.primary.withOpacity(0.2),
-                      hoverColor: theme.colorScheme.primary.withOpacity(0.1),
-                      gap: 8,
-                      activeColor: theme.colorScheme.primary,
-                      iconSize: 24,
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                      duration: Duration(milliseconds: 400),
-                      tabBackgroundColor: theme.colorScheme.primary.withOpacity(0.1),
-                      color: theme.textTheme.bodyLarge?.color,
-                      tabs: [
-                        GButton(
-                          icon: Icons.home,
-                          text: 'Home',
-                        ),
-                        GButton(
-                          icon: Icons.restaurant_menu,
-                          text: 'Menu',
-                        ),
-                        GButton(
-                          icon: Icons.business,
-                          text: 'Station',
-                        ),
-                        GButton(
-                          icon: Icons.person,
-                          text: 'Profile',
-                        ),
-                        GButton(
-                          icon: Icons.settings,
-                          text: 'Settings',
-                        ),
-                      ],
-                      selectedIndex: 0,
-                      onTabChange: (index) {
-                        switch (index) {
-                          case 0:
-                            context.go('/');
-                            break;
-                          case 1:
-                            context.go('/menu');
-                            break;
-                          case 3:
-                            context.go('/station');
-                            break;
-                          case 4:
-                            context.go('/profile');
-                            break;
-                          case 5:
-                            context.go('/settings');
-                            break;
-                        }
-                      },
-                    ),
-                  ),
-                ),
-              ),
             );
           },
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (error, stack) => Center(child: Text('Error: $error')),
+          loading: () => const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          ),
+          error: (error, stackTrace) => Scaffold(
+            body: Center(child: Text('Error: $error')),
+          ),
         );
       },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      loading: () => const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      ),
+      error: (error, stackTrace) => Scaffold(
+        body: Center(child: Text('Error: $error')),
+      ),
     );
   }
 }
 
 class HomeContent extends HookConsumerWidget {
-  final HomeStateModel homeStateModel;
-  final MenuViewModel menuScreenViewModel;
-
   const HomeContent({
     super.key,
     required this.homeStateModel,
     required this.menuScreenViewModel,
   });
 
+  final HomeStateModel homeStateModel;
+  final MenuViewModel menuScreenViewModel;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(menuControllerProvider(globalProviderId).notifier);
-    final featuredMenuItems = controller.featuredMenuItems
-      ..sort((a, b) => b.createdAt.compareTo(a.createdAt))
-      ..take(5);
+    final menuController = ref.watch(menuControllerProvider(globalProviderId).notifier);
+    final List<MenuItem> featuredMenuItems = menuController.featuredMenuItems
+      ..sort((MenuItem a, MenuItem b) => b.createdAt.compareTo(a.createdAt))
+      ..take(5).toList();
 
     if (homeStateModel.firstResponder == null) {
       return ErrorScreen(
@@ -156,92 +118,35 @@ class HomeContent extends HookConsumerWidget {
       );
     }
 
-    return CustomScrollView(
-      slivers: [
-        _buildSliverAppBar(context,
-            homeStateModel.firstResponder!.currentStation!,
-            homeStateModel.user!),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildFeaturedMenuItems(context, featuredMenuItems),
-                const SizedBox(height: 24),
-                _buildTeamUpdates(context, ref),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+    final ScrollController scrollController = ref.watch(homeAppBarScrollControllerProvider);
 
-  Widget _buildSliverAppBar(BuildContext context, Station station, User user) {
-    return SliverAppBar(
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.notifications),
-          onPressed: () {
-            // Handle notifications
-          },
+    return CustomScrollView(
+      controller: scrollController,
+      slivers: [
+        HomeSliverAppBar(
+          station: homeStateModel.firstResponder!.currentStation!,
+          user: homeStateModel.user!,
+          parentScrollController: scrollController,
         ),
-        user.avatarUrl != null ? ShadAvatar(user.avatarUrl!) : InitialsAvatar(name: user.displayName!),
-      ],
-      leading: Padding(
-        padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
-        child: ColorFiltered(
-            colorFilter: ColorFilter.mode(
-                Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white
-                    : Colors.black,
-                BlendMode.srcATop
-            ),
-            child: IconButton(
-                onPressed: (){},
-                icon: Image.asset('assets/images/fots-logo-favicon-100x100.png', height: 60, width: 60,),
-            )),
-      ),
-      expandedHeight: 200.0,
-      floating: false,
-      pinned: true,
-      flexibleSpace: FlexibleSpaceBar(
-        title: Text(
-          station.name,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+        SliverPadding(
+          padding: const EdgeInsets.all(16.0),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
+              _buildFeaturedMenuItems(context, featuredMenuItems),
+              const SizedBox(height: 24),
+              _buildTeamUpdates(context, ref),
+            ]),
           ),
         ),
-        background: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.network(
-              station.coverUrl ?? '',
-              fit: BoxFit.cover,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.7),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 
   Widget _buildFeaturedMenuItems(BuildContext context, List<MenuItem> featuredItems) {
     if (featuredItems.isEmpty) {
-      return const Center(child: Text('No featured items found'));
+      return const Center(
+        child: Text('No featured items found'),
+      );
     }
 
     return Column(
@@ -252,82 +157,81 @@ class HomeContent extends HookConsumerWidget {
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         const SizedBox(height: 16),
-        ListView.builder(
+        ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: featuredItems.length,
-          itemBuilder: (context, index) {
-            final item = featuredItems[index];
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: GestureDetector(
-                onTap: () => context.go('/menu/item/${item.id}'),
-                child: Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.black,
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.network(
-                        item.imageUrl ?? '',
-                        fit: BoxFit.cover,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black.withOpacity(0.7),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 16,
-                        right: 16,
-                        bottom: 16,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              item.name,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              item.notes ?? '',
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
-                                fontSize: 14,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              '\$${item.price.toStringAsFixed(2)}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+          separatorBuilder: (BuildContext context, int index) =>
+          const SizedBox(height: 16),
+          itemBuilder: (BuildContext context, int index) {
+            final MenuItem menuItem = featuredItems[index];
+            return GestureDetector(
+              onTap: () => context.go('/menu/item/${menuItem.id}'),
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.black,
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.network(
+                      menuItem.imageUrl ?? '',
+                      fit: BoxFit.cover,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withOpacity(0.7),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                      left: 16,
+                      right: 16,
+                      bottom: 16,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            menuItem.name,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            menuItem.notes ?? '',
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.8),
+                              fontSize: 14,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '\$${menuItem.price.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );
@@ -338,12 +242,16 @@ class HomeContent extends HookConsumerWidget {
   }
 
   Widget _buildTeamUpdates(BuildContext context, WidgetRef ref) {
-    final stationController = ref.watch(stationControllerProvider(homeStateModel.user!.id));
+    final stationController = ref.watch(
+      stationControllerProvider(homeStateModel.user!.id),
+    );
 
     return stationController.when(
       data: (stationViewModel) {
         if (stationViewModel.teamUpdates.isEmpty) {
-          return const Center(child: Text('No team updates found'));
+          return const Center(
+            child: Text('No team updates found'),
+          );
         }
 
         return Column(
@@ -354,24 +262,27 @@ class HomeContent extends HookConsumerWidget {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 16),
-            ListView.builder(
+            ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: stationViewModel.teamUpdates.length.clamp(0, 5),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: TeamUpdateCard(
-                    teamUpdate: stationViewModel.teamUpdates[index],
-                  ),
+              separatorBuilder: (BuildContext context, int index) =>
+              const SizedBox(height: 8),
+              itemBuilder: (BuildContext context, int index) {
+                return TeamUpdateCard(
+                  teamUpdate: stationViewModel.teamUpdates[index],
                 );
               },
             ),
           ],
         );
       },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      error: (error, stackTrace) => Center(
+        child: Text('Error: $error'),
+      ),
     );
   }
 }
