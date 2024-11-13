@@ -16612,3 +16612,1337 @@ class _CopyWithStubImpl$Mutation$DeleteShoppingCart$deleteFromShoppingCartCollec
 
   records(_fn) => _res;
 }
+
+class Variables$Query$ShoppingCartCollection {
+  factory Variables$Query$ShoppingCartCollection({
+    int? first,
+    int? last,
+    dynamic? before,
+    dynamic? after,
+    Input$ShoppingCartFilter? filter,
+    List<Input$ShoppingCartOrderBy>? orderBy,
+  }) =>
+      Variables$Query$ShoppingCartCollection._({
+        if (first != null) r'first': first,
+        if (last != null) r'last': last,
+        if (before != null) r'before': before,
+        if (after != null) r'after': after,
+        if (filter != null) r'filter': filter,
+        if (orderBy != null) r'orderBy': orderBy,
+      });
+
+  Variables$Query$ShoppingCartCollection._(this._$data);
+
+  factory Variables$Query$ShoppingCartCollection.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('first')) {
+      final l$first = data['first'];
+      result$data['first'] = (l$first as int?);
+    }
+    if (data.containsKey('last')) {
+      final l$last = data['last'];
+      result$data['last'] = (l$last as int?);
+    }
+    if (data.containsKey('before')) {
+      final l$before = data['before'];
+      result$data['before'] = (l$before as dynamic?);
+    }
+    if (data.containsKey('after')) {
+      final l$after = data['after'];
+      result$data['after'] = (l$after as dynamic?);
+    }
+    if (data.containsKey('filter')) {
+      final l$filter = data['filter'];
+      result$data['filter'] = l$filter == null
+          ? null
+          : Input$ShoppingCartFilter.fromJson(
+              (l$filter as Map<String, dynamic>));
+    }
+    if (data.containsKey('orderBy')) {
+      final l$orderBy = data['orderBy'];
+      result$data['orderBy'] = (l$orderBy as List<dynamic>?)
+          ?.map((e) =>
+              Input$ShoppingCartOrderBy.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    return Variables$Query$ShoppingCartCollection._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get first => (_$data['first'] as int?);
+
+  int? get last => (_$data['last'] as int?);
+
+  dynamic? get before => (_$data['before'] as dynamic?);
+
+  dynamic? get after => (_$data['after'] as dynamic?);
+
+  Input$ShoppingCartFilter? get filter =>
+      (_$data['filter'] as Input$ShoppingCartFilter?);
+
+  List<Input$ShoppingCartOrderBy>? get orderBy =>
+      (_$data['orderBy'] as List<Input$ShoppingCartOrderBy>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('first')) {
+      final l$first = first;
+      result$data['first'] = l$first;
+    }
+    if (_$data.containsKey('last')) {
+      final l$last = last;
+      result$data['last'] = l$last;
+    }
+    if (_$data.containsKey('before')) {
+      final l$before = before;
+      result$data['before'] = l$before;
+    }
+    if (_$data.containsKey('after')) {
+      final l$after = after;
+      result$data['after'] = l$after;
+    }
+    if (_$data.containsKey('filter')) {
+      final l$filter = filter;
+      result$data['filter'] = l$filter?.toJson();
+    }
+    if (_$data.containsKey('orderBy')) {
+      final l$orderBy = orderBy;
+      result$data['orderBy'] = l$orderBy?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$ShoppingCartCollection<
+          Variables$Query$ShoppingCartCollection>
+      get copyWith => CopyWith$Variables$Query$ShoppingCartCollection(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$ShoppingCartCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$first = first;
+    final lOther$first = other.first;
+    if (_$data.containsKey('first') != other._$data.containsKey('first')) {
+      return false;
+    }
+    if (l$first != lOther$first) {
+      return false;
+    }
+    final l$last = last;
+    final lOther$last = other.last;
+    if (_$data.containsKey('last') != other._$data.containsKey('last')) {
+      return false;
+    }
+    if (l$last != lOther$last) {
+      return false;
+    }
+    final l$before = before;
+    final lOther$before = other.before;
+    if (_$data.containsKey('before') != other._$data.containsKey('before')) {
+      return false;
+    }
+    if (l$before != lOther$before) {
+      return false;
+    }
+    final l$after = after;
+    final lOther$after = other.after;
+    if (_$data.containsKey('after') != other._$data.containsKey('after')) {
+      return false;
+    }
+    if (l$after != lOther$after) {
+      return false;
+    }
+    final l$filter = filter;
+    final lOther$filter = other.filter;
+    if (_$data.containsKey('filter') != other._$data.containsKey('filter')) {
+      return false;
+    }
+    if (l$filter != lOther$filter) {
+      return false;
+    }
+    final l$orderBy = orderBy;
+    final lOther$orderBy = other.orderBy;
+    if (_$data.containsKey('orderBy') != other._$data.containsKey('orderBy')) {
+      return false;
+    }
+    if (l$orderBy != null && lOther$orderBy != null) {
+      if (l$orderBy.length != lOther$orderBy.length) {
+        return false;
+      }
+      for (int i = 0; i < l$orderBy.length; i++) {
+        final l$orderBy$entry = l$orderBy[i];
+        final lOther$orderBy$entry = lOther$orderBy[i];
+        if (l$orderBy$entry != lOther$orderBy$entry) {
+          return false;
+        }
+      }
+    } else if (l$orderBy != lOther$orderBy) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$first = first;
+    final l$last = last;
+    final l$before = before;
+    final l$after = after;
+    final l$filter = filter;
+    final l$orderBy = orderBy;
+    return Object.hashAll([
+      _$data.containsKey('first') ? l$first : const {},
+      _$data.containsKey('last') ? l$last : const {},
+      _$data.containsKey('before') ? l$before : const {},
+      _$data.containsKey('after') ? l$after : const {},
+      _$data.containsKey('filter') ? l$filter : const {},
+      _$data.containsKey('orderBy')
+          ? l$orderBy == null
+              ? null
+              : Object.hashAll(l$orderBy.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$ShoppingCartCollection<TRes> {
+  factory CopyWith$Variables$Query$ShoppingCartCollection(
+    Variables$Query$ShoppingCartCollection instance,
+    TRes Function(Variables$Query$ShoppingCartCollection) then,
+  ) = _CopyWithImpl$Variables$Query$ShoppingCartCollection;
+
+  factory CopyWith$Variables$Query$ShoppingCartCollection.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$ShoppingCartCollection;
+
+  TRes call({
+    int? first,
+    int? last,
+    dynamic? before,
+    dynamic? after,
+    Input$ShoppingCartFilter? filter,
+    List<Input$ShoppingCartOrderBy>? orderBy,
+  });
+}
+
+class _CopyWithImpl$Variables$Query$ShoppingCartCollection<TRes>
+    implements CopyWith$Variables$Query$ShoppingCartCollection<TRes> {
+  _CopyWithImpl$Variables$Query$ShoppingCartCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$ShoppingCartCollection _instance;
+
+  final TRes Function(Variables$Query$ShoppingCartCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? first = _undefined,
+    Object? last = _undefined,
+    Object? before = _undefined,
+    Object? after = _undefined,
+    Object? filter = _undefined,
+    Object? orderBy = _undefined,
+  }) =>
+      _then(Variables$Query$ShoppingCartCollection._({
+        ..._instance._$data,
+        if (first != _undefined) 'first': (first as int?),
+        if (last != _undefined) 'last': (last as int?),
+        if (before != _undefined) 'before': (before as dynamic?),
+        if (after != _undefined) 'after': (after as dynamic?),
+        if (filter != _undefined)
+          'filter': (filter as Input$ShoppingCartFilter?),
+        if (orderBy != _undefined)
+          'orderBy': (orderBy as List<Input$ShoppingCartOrderBy>?),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$ShoppingCartCollection<TRes>
+    implements CopyWith$Variables$Query$ShoppingCartCollection<TRes> {
+  _CopyWithStubImpl$Variables$Query$ShoppingCartCollection(this._res);
+
+  TRes _res;
+
+  call({
+    int? first,
+    int? last,
+    dynamic? before,
+    dynamic? after,
+    Input$ShoppingCartFilter? filter,
+    List<Input$ShoppingCartOrderBy>? orderBy,
+  }) =>
+      _res;
+}
+
+class Query$ShoppingCartCollection {
+  Query$ShoppingCartCollection({
+    this.shoppingCartCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$ShoppingCartCollection.fromJson(Map<String, dynamic> json) {
+    final l$shoppingCartCollection = json['shoppingCartCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$ShoppingCartCollection(
+      shoppingCartCollection: l$shoppingCartCollection == null
+          ? null
+          : Query$ShoppingCartCollection$shoppingCartCollection.fromJson(
+              (l$shoppingCartCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$ShoppingCartCollection$shoppingCartCollection?
+      shoppingCartCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$shoppingCartCollection = shoppingCartCollection;
+    _resultData['shoppingCartCollection'] = l$shoppingCartCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$shoppingCartCollection = shoppingCartCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$shoppingCartCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$ShoppingCartCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$shoppingCartCollection = shoppingCartCollection;
+    final lOther$shoppingCartCollection = other.shoppingCartCollection;
+    if (l$shoppingCartCollection != lOther$shoppingCartCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ShoppingCartCollection
+    on Query$ShoppingCartCollection {
+  CopyWith$Query$ShoppingCartCollection<Query$ShoppingCartCollection>
+      get copyWith => CopyWith$Query$ShoppingCartCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ShoppingCartCollection<TRes> {
+  factory CopyWith$Query$ShoppingCartCollection(
+    Query$ShoppingCartCollection instance,
+    TRes Function(Query$ShoppingCartCollection) then,
+  ) = _CopyWithImpl$Query$ShoppingCartCollection;
+
+  factory CopyWith$Query$ShoppingCartCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$ShoppingCartCollection;
+
+  TRes call({
+    Query$ShoppingCartCollection$shoppingCartCollection? shoppingCartCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection<TRes>
+      get shoppingCartCollection;
+}
+
+class _CopyWithImpl$Query$ShoppingCartCollection<TRes>
+    implements CopyWith$Query$ShoppingCartCollection<TRes> {
+  _CopyWithImpl$Query$ShoppingCartCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ShoppingCartCollection _instance;
+
+  final TRes Function(Query$ShoppingCartCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? shoppingCartCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ShoppingCartCollection(
+        shoppingCartCollection: shoppingCartCollection == _undefined
+            ? _instance.shoppingCartCollection
+            : (shoppingCartCollection
+                as Query$ShoppingCartCollection$shoppingCartCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection<TRes>
+      get shoppingCartCollection {
+    final local$shoppingCartCollection = _instance.shoppingCartCollection;
+    return local$shoppingCartCollection == null
+        ? CopyWith$Query$ShoppingCartCollection$shoppingCartCollection.stub(
+            _then(_instance))
+        : CopyWith$Query$ShoppingCartCollection$shoppingCartCollection(
+            local$shoppingCartCollection,
+            (e) => call(shoppingCartCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$ShoppingCartCollection<TRes>
+    implements CopyWith$Query$ShoppingCartCollection<TRes> {
+  _CopyWithStubImpl$Query$ShoppingCartCollection(this._res);
+
+  TRes _res;
+
+  call({
+    Query$ShoppingCartCollection$shoppingCartCollection? shoppingCartCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection<TRes>
+      get shoppingCartCollection =>
+          CopyWith$Query$ShoppingCartCollection$shoppingCartCollection.stub(
+              _res);
+}
+
+const documentNodeQueryShoppingCartCollection = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'ShoppingCartCollection'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'first')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'last')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'before')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Cursor'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'after')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Cursor'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'filter')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ShoppingCartFilter'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'orderBy')),
+        type: ListTypeNode(
+          type: NamedTypeNode(
+            name: NameNode(value: 'ShoppingCartOrderBy'),
+            isNonNull: true,
+          ),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'shoppingCartCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'first'),
+            value: VariableNode(name: NameNode(value: 'first')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'last'),
+            value: VariableNode(name: NameNode(value: 'last')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'before'),
+            value: VariableNode(name: NameNode(value: 'before')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'after'),
+            value: VariableNode(name: NameNode(value: 'after')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: VariableNode(name: NameNode(value: 'filter')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'orderBy'),
+            value: VariableNode(name: NameNode(value: 'orderBy')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'ShoppingCart'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'pageInfo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'startCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'endCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hasNextPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hasPreviousPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartMenuItem,
+  fragmentDefinitionMenuItem,
+]);
+Query$ShoppingCartCollection _parserFn$Query$ShoppingCartCollection(
+        Map<String, dynamic> data) =>
+    Query$ShoppingCartCollection.fromJson(data);
+typedef OnQueryComplete$Query$ShoppingCartCollection = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$ShoppingCartCollection?,
+);
+
+class Options$Query$ShoppingCartCollection
+    extends graphql.QueryOptions<Query$ShoppingCartCollection> {
+  Options$Query$ShoppingCartCollection({
+    String? operationName,
+    Variables$Query$ShoppingCartCollection? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$ShoppingCartCollection? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$ShoppingCartCollection? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$ShoppingCartCollection(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryShoppingCartCollection,
+          parserFn: _parserFn$Query$ShoppingCartCollection,
+        );
+
+  final OnQueryComplete$Query$ShoppingCartCollection? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$ShoppingCartCollection
+    extends graphql.WatchQueryOptions<Query$ShoppingCartCollection> {
+  WatchOptions$Query$ShoppingCartCollection({
+    String? operationName,
+    Variables$Query$ShoppingCartCollection? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$ShoppingCartCollection? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryShoppingCartCollection,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$ShoppingCartCollection,
+        );
+}
+
+class FetchMoreOptions$Query$ShoppingCartCollection
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$ShoppingCartCollection({
+    required graphql.UpdateQuery updateQuery,
+    Variables$Query$ShoppingCartCollection? variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables?.toJson() ?? {},
+          document: documentNodeQueryShoppingCartCollection,
+        );
+}
+
+extension ClientExtension$Query$ShoppingCartCollection
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$ShoppingCartCollection>>
+      query$ShoppingCartCollection(
+              [Options$Query$ShoppingCartCollection? options]) async =>
+          await this.query(options ?? Options$Query$ShoppingCartCollection());
+  graphql.ObservableQuery<
+      Query$ShoppingCartCollection> watchQuery$ShoppingCartCollection(
+          [WatchOptions$Query$ShoppingCartCollection? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$ShoppingCartCollection());
+  void writeQuery$ShoppingCartCollection({
+    required Query$ShoppingCartCollection data,
+    Variables$Query$ShoppingCartCollection? variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(
+              document: documentNodeQueryShoppingCartCollection),
+          variables: variables?.toJson() ?? const {},
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$ShoppingCartCollection? readQuery$ShoppingCartCollection({
+    Variables$Query$ShoppingCartCollection? variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(
+            document: documentNodeQueryShoppingCartCollection),
+        variables: variables?.toJson() ?? const {},
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Query$ShoppingCartCollection.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$ShoppingCartCollection>
+    useQuery$ShoppingCartCollection(
+            [Options$Query$ShoppingCartCollection? options]) =>
+        graphql_flutter
+            .useQuery(options ?? Options$Query$ShoppingCartCollection());
+graphql.ObservableQuery<Query$ShoppingCartCollection>
+    useWatchQuery$ShoppingCartCollection(
+            [WatchOptions$Query$ShoppingCartCollection? options]) =>
+        graphql_flutter.useWatchQuery(
+            options ?? WatchOptions$Query$ShoppingCartCollection());
+
+class Query$ShoppingCartCollection$Widget
+    extends graphql_flutter.Query<Query$ShoppingCartCollection> {
+  Query$ShoppingCartCollection$Widget({
+    widgets.Key? key,
+    Options$Query$ShoppingCartCollection? options,
+    required graphql_flutter.QueryBuilder<Query$ShoppingCartCollection> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$ShoppingCartCollection(),
+          builder: builder,
+        );
+}
+
+class Query$ShoppingCartCollection$shoppingCartCollection {
+  Query$ShoppingCartCollection$shoppingCartCollection({
+    required this.edges,
+    required this.pageInfo,
+    this.$__typename = 'ShoppingCartConnection',
+  });
+
+  factory Query$ShoppingCartCollection$shoppingCartCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$ShoppingCartCollection$shoppingCartCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Query$ShoppingCartCollection$shoppingCartCollection$edges
+              .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo:
+          Query$ShoppingCartCollection$shoppingCartCollection$pageInfo.fromJson(
+              (l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$ShoppingCartCollection$shoppingCartCollection$edges> edges;
+
+  final Query$ShoppingCartCollection$shoppingCartCollection$pageInfo pageInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$ShoppingCartCollection$shoppingCartCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ShoppingCartCollection$shoppingCartCollection
+    on Query$ShoppingCartCollection$shoppingCartCollection {
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection<
+          Query$ShoppingCartCollection$shoppingCartCollection>
+      get copyWith =>
+          CopyWith$Query$ShoppingCartCollection$shoppingCartCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ShoppingCartCollection$shoppingCartCollection<
+    TRes> {
+  factory CopyWith$Query$ShoppingCartCollection$shoppingCartCollection(
+    Query$ShoppingCartCollection$shoppingCartCollection instance,
+    TRes Function(Query$ShoppingCartCollection$shoppingCartCollection) then,
+  ) = _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection;
+
+  factory CopyWith$Query$ShoppingCartCollection$shoppingCartCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection;
+
+  TRes call({
+    List<Query$ShoppingCartCollection$shoppingCartCollection$edges>? edges,
+    Query$ShoppingCartCollection$shoppingCartCollection$pageInfo? pageInfo,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$ShoppingCartCollection$shoppingCartCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+                      Query$ShoppingCartCollection$shoppingCartCollection$edges>>)
+          _fn);
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<TRes>
+      get pageInfo;
+}
+
+class _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection<TRes>
+    implements
+        CopyWith$Query$ShoppingCartCollection$shoppingCartCollection<TRes> {
+  _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ShoppingCartCollection$shoppingCartCollection _instance;
+
+  final TRes Function(Query$ShoppingCartCollection$shoppingCartCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ShoppingCartCollection$shoppingCartCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<
+                Query$ShoppingCartCollection$shoppingCartCollection$edges>),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo
+                as Query$ShoppingCartCollection$shoppingCartCollection$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$ShoppingCartCollection$shoppingCartCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+                          Query$ShoppingCartCollection$shoppingCartCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<TRes>
+      get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection<
+        TRes>
+    implements
+        CopyWith$Query$ShoppingCartCollection$shoppingCartCollection<TRes> {
+  _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$ShoppingCartCollection$shoppingCartCollection$edges>? edges,
+    Query$ShoppingCartCollection$shoppingCartCollection$pageInfo? pageInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<TRes>
+      get pageInfo =>
+          CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo
+              .stub(_res);
+}
+
+class Query$ShoppingCartCollection$shoppingCartCollection$edges {
+  Query$ShoppingCartCollection$shoppingCartCollection$edges({
+    required this.node,
+    this.$__typename = 'ShoppingCartEdge',
+  });
+
+  factory Query$ShoppingCartCollection$shoppingCartCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$ShoppingCartCollection$shoppingCartCollection$edges(
+      node: Fragment$ShoppingCart.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$ShoppingCart node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$ShoppingCartCollection$shoppingCartCollection$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ShoppingCartCollection$shoppingCartCollection$edges
+    on Query$ShoppingCartCollection$shoppingCartCollection$edges {
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+          Query$ShoppingCartCollection$shoppingCartCollection$edges>
+      get copyWith =>
+          CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+    TRes> {
+  factory CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges(
+    Query$ShoppingCartCollection$shoppingCartCollection$edges instance,
+    TRes Function(Query$ShoppingCartCollection$shoppingCartCollection$edges)
+        then,
+  ) = _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection$edges;
+
+  factory CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection$edges;
+
+  TRes call({
+    Fragment$ShoppingCart? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$ShoppingCart<TRes> get node;
+}
+
+class _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+            TRes> {
+  _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ShoppingCartCollection$shoppingCartCollection$edges _instance;
+
+  final TRes Function(Query$ShoppingCartCollection$shoppingCartCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ShoppingCartCollection$shoppingCartCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$ShoppingCart),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$ShoppingCart<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$ShoppingCart(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$edges<
+            TRes> {
+  _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$ShoppingCart? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$ShoppingCart<TRes> get node =>
+      CopyWith$Fragment$ShoppingCart.stub(_res);
+}
+
+class Query$ShoppingCartCollection$shoppingCartCollection$pageInfo {
+  Query$ShoppingCartCollection$shoppingCartCollection$pageInfo({
+    this.startCursor,
+    this.endCursor,
+    required this.hasNextPage,
+    required this.hasPreviousPage,
+    this.$__typename = 'PageInfo',
+  });
+
+  factory Query$ShoppingCartCollection$shoppingCartCollection$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$startCursor = json['startCursor'];
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$hasPreviousPage = json['hasPreviousPage'];
+    final l$$__typename = json['__typename'];
+    return Query$ShoppingCartCollection$shoppingCartCollection$pageInfo(
+      startCursor: (l$startCursor as String?),
+      endCursor: (l$endCursor as String?),
+      hasNextPage: (l$hasNextPage as bool),
+      hasPreviousPage: (l$hasPreviousPage as bool),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String? startCursor;
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  final bool hasPreviousPage;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$startCursor = startCursor;
+    _resultData['startCursor'] = l$startCursor;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    _resultData['hasPreviousPage'] = l$hasPreviousPage;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$startCursor = startCursor;
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$startCursor,
+      l$endCursor,
+      l$hasNextPage,
+      l$hasPreviousPage,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Query$ShoppingCartCollection$shoppingCartCollection$pageInfo) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$startCursor = startCursor;
+    final lOther$startCursor = other.startCursor;
+    if (l$startCursor != lOther$startCursor) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$hasPreviousPage = hasPreviousPage;
+    final lOther$hasPreviousPage = other.hasPreviousPage;
+    if (l$hasPreviousPage != lOther$hasPreviousPage) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo
+    on Query$ShoppingCartCollection$shoppingCartCollection$pageInfo {
+  CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<
+          Query$ShoppingCartCollection$shoppingCartCollection$pageInfo>
+      get copyWith =>
+          CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<
+    TRes> {
+  factory CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo(
+    Query$ShoppingCartCollection$shoppingCartCollection$pageInfo instance,
+    TRes Function(Query$ShoppingCartCollection$shoppingCartCollection$pageInfo)
+        then,
+  ) = _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo;
+
+  factory CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo;
+
+  TRes call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<
+            TRes> {
+  _CopyWithImpl$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ShoppingCartCollection$shoppingCartCollection$pageInfo _instance;
+
+  final TRes Function(
+      Query$ShoppingCartCollection$shoppingCartCollection$pageInfo) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? startCursor = _undefined,
+    Object? endCursor = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? hasPreviousPage = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ShoppingCartCollection$shoppingCartCollection$pageInfo(
+        startCursor: startCursor == _undefined
+            ? _instance.startCursor
+            : (startCursor as String?),
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        hasPreviousPage:
+            hasPreviousPage == _undefined || hasPreviousPage == null
+                ? _instance.hasPreviousPage
+                : (hasPreviousPage as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo<
+            TRes> {
+  _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection$pageInfo(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  }) =>
+      _res;
+}

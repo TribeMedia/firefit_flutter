@@ -616,6 +616,8 @@ type Application implements Node {
   createdAt: Datetime!
   iconUrl: String
   coverUrl: String
+  ownerOrganizationId: UUID
+  ownerOrganization: Organization
   owner: User
   applicationType: ApplicationType!
   applicationAgentCollection(
@@ -890,6 +892,22 @@ type Application implements Node {
     # Sort order to apply to the collection
     orderBy: [PersonaOrderBy!]
   ): PersonaConnection
+  applicationOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrganizationOrderBy!]
+  ): ApplicationOrganizationConnection
 }
 
 type ApplicationAgent implements Node {
@@ -996,6 +1014,7 @@ input ApplicationFilter {
   createdAt: DatetimeFilter
   iconUrl: StringFilter
   coverUrl: StringFilter
+  ownerOrganizationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [ApplicationFilter!]
@@ -1015,6 +1034,7 @@ input ApplicationInsertInput {
   createdAt: Datetime
   iconUrl: String
   coverUrl: String
+  ownerOrganizationId: UUID
 }
 
 type ApplicationInsertResponse {
@@ -1034,6 +1054,84 @@ input ApplicationOrderBy {
   createdAt: OrderByDirection
   iconUrl: OrderByDirection
   coverUrl: OrderByDirection
+  ownerOrganizationId: OrderByDirection
+}
+
+type ApplicationOrganization implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  applicationId: UUID!
+  organizationId: UUID!
+  createdAt: Datetime!
+  organization: Organization!
+  application: Application!
+}
+
+type ApplicationOrganizationConnection {
+  edges: [ApplicationOrganizationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ApplicationOrganizationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ApplicationOrganization!]!
+}
+
+type ApplicationOrganizationEdge {
+  cursor: String!
+  node: ApplicationOrganization!
+}
+
+input ApplicationOrganizationFilter {
+  id: UUIDFilter
+  applicationId: UUIDFilter
+  organizationId: UUIDFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ApplicationOrganizationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ApplicationOrganizationFilter!]
+  # Negates a filter
+  not: ApplicationOrganizationFilter
+}
+
+input ApplicationOrganizationInsertInput {
+  id: UUID
+  applicationId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type ApplicationOrganizationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ApplicationOrganization!]!
+}
+
+input ApplicationOrganizationOrderBy {
+  id: OrderByDirection
+  applicationId: OrderByDirection
+  organizationId: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input ApplicationOrganizationUpdateInput {
+  id: UUID
+  applicationId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type ApplicationOrganizationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ApplicationOrganization!]!
 }
 
 type ApplicationTable implements Node {
@@ -1298,6 +1396,7 @@ input ApplicationUpdateInput {
   createdAt: Datetime
   iconUrl: String
   coverUrl: String
+  ownerOrganizationId: UUID
 }
 
 type ApplicationUpdateResponse {
@@ -5181,6 +5280,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): ApplicationDeleteResponse!
+  # Deletes zero or more records from the `ApplicationOrganization` collection
+  deleteFromApplicationOrganizationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ApplicationOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ApplicationOrganizationDeleteResponse!
   # Deletes zero or more records from the `ApplicationTable` collection
   deleteFromApplicationTableCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -5524,6 +5630,20 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): OrderTypeDeleteResponse!
+  # Deletes zero or more records from the `Organization` collection
+  deleteFromOrganizationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationDeleteResponse!
+  # Deletes zero or more records from the `OrganizationType` collection
+  deleteFromOrganizationTypeCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationTypeDeleteResponse!
   # Deletes zero or more records from the `Partner` collection
   deleteFromPartnerCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -5811,6 +5931,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): UserOnboardingStepDeleteResponse!
+  # Deletes zero or more records from the `UserOrganization` collection
+  deleteFromUserOrganizationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: UserOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): UserOrganizationDeleteResponse!
   # Deletes zero or more records from the `UserPersona` collection
   deleteFromUserPersonaCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -5883,6 +6010,10 @@ type Mutation {
   insertIntoApplicationCollection(
     objects: [ApplicationInsertInput!]!
   ): ApplicationInsertResponse
+  # Adds one or more `ApplicationOrganization` records to the collection
+  insertIntoApplicationOrganizationCollection(
+    objects: [ApplicationOrganizationInsertInput!]!
+  ): ApplicationOrganizationInsertResponse
   # Adds one or more `ApplicationTable` records to the collection
   insertIntoApplicationTableCollection(
     objects: [ApplicationTableInsertInput!]!
@@ -6071,6 +6202,14 @@ type Mutation {
   insertIntoOrderTypeCollection(
     objects: [OrderTypeInsertInput!]!
   ): OrderTypeInsertResponse
+  # Adds one or more `Organization` records to the collection
+  insertIntoOrganizationCollection(
+    objects: [OrganizationInsertInput!]!
+  ): OrganizationInsertResponse
+  # Adds one or more `OrganizationType` records to the collection
+  insertIntoOrganizationTypeCollection(
+    objects: [OrganizationTypeInsertInput!]!
+  ): OrganizationTypeInsertResponse
   # Adds one or more `Partner` records to the collection
   insertIntoPartnerCollection(
     objects: [PartnerInsertInput!]!
@@ -6227,6 +6366,10 @@ type Mutation {
   insertIntoUserOnboardingStepCollection(
     objects: [UserOnboardingStepInsertInput!]!
   ): UserOnboardingStepInsertResponse
+  # Adds one or more `UserOrganization` records to the collection
+  insertIntoUserOrganizationCollection(
+    objects: [UserOrganizationInsertInput!]!
+  ): UserOrganizationInsertResponse
   # Adds one or more `UserPersona` records to the collection
   insertIntoUserPersonaCollection(
     objects: [UserPersonaInsertInput!]!
@@ -6323,6 +6466,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): ApplicationUpdateResponse!
+  # Updates zero or more records in the `ApplicationOrganization` collection
+  updateApplicationOrganizationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ApplicationOrganizationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ApplicationOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ApplicationOrganizationUpdateResponse!
   # Updates zero or more records in the `ApplicationTable` collection
   updateApplicationTableCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -6764,6 +6916,24 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): OrderTypeUpdateResponse!
+  # Updates zero or more records in the `Organization` collection
+  updateOrganizationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: OrganizationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationUpdateResponse!
+  # Updates zero or more records in the `OrganizationType` collection
+  updateOrganizationTypeCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: OrganizationTypeUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationTypeUpdateResponse!
   # Updates zero or more records in the `Partner` collection
   updatePartnerCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -7133,6 +7303,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): UserOnboardingStepUpdateResponse!
+  # Updates zero or more records in the `UserOrganization` collection
+  updateUserOrganizationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: UserOrganizationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: UserOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): UserOrganizationUpdateResponse!
   # Updates zero or more records in the `UserPersona` collection
   updateUserPersonaCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -8631,6 +8810,283 @@ type OrderUpdateResponse {
   affectedCount: Int!
   # Array of records impacted by the mutation
   records: [Order!]!
+}
+
+type Organization implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  organizationTypeId: UUID!
+  name: String!
+  key: String!
+  data: JSON
+  createdAt: Datetime!
+  iconUrl: String
+  coverUrl: String
+  longDescriptionMarkdown: String
+  description: String
+  updatedAt: Datetime
+  organizationType: OrganizationType!
+  applicationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrderBy!]
+  ): ApplicationConnection
+  userCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrderBy!]
+  ): UserConnection
+  userOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrganizationOrderBy!]
+  ): UserOrganizationConnection
+  applicationOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrganizationOrderBy!]
+  ): ApplicationOrganizationConnection
+}
+
+type OrganizationConnection {
+  edges: [OrganizationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type OrganizationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Organization!]!
+}
+
+type OrganizationEdge {
+  cursor: String!
+  node: Organization!
+}
+
+input OrganizationFilter {
+  id: UUIDFilter
+  organizationTypeId: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  iconUrl: StringFilter
+  coverUrl: StringFilter
+  longDescriptionMarkdown: StringFilter
+  description: StringFilter
+  updatedAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [OrganizationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [OrganizationFilter!]
+  # Negates a filter
+  not: OrganizationFilter
+}
+
+input OrganizationInsertInput {
+  id: UUID
+  organizationTypeId: UUID
+  name: String
+  key: String
+  data: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+  longDescriptionMarkdown: String
+  description: String
+  updatedAt: Datetime
+}
+
+type OrganizationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Organization!]!
+}
+
+input OrganizationOrderBy {
+  id: OrderByDirection
+  organizationTypeId: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+  iconUrl: OrderByDirection
+  coverUrl: OrderByDirection
+  longDescriptionMarkdown: OrderByDirection
+  description: OrderByDirection
+  updatedAt: OrderByDirection
+}
+
+type OrganizationType implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  schema: JSON
+  createdAt: Datetime!
+  iconUrl: String
+  coverUrl: String
+  organizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [OrganizationOrderBy!]
+  ): OrganizationConnection
+}
+
+type OrganizationTypeConnection {
+  edges: [OrganizationTypeEdge!]!
+  pageInfo: PageInfo!
+}
+
+type OrganizationTypeDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrganizationType!]!
+}
+
+type OrganizationTypeEdge {
+  cursor: String!
+  node: OrganizationType!
+}
+
+input OrganizationTypeFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  iconUrl: StringFilter
+  coverUrl: StringFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [OrganizationTypeFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [OrganizationTypeFilter!]
+  # Negates a filter
+  not: OrganizationTypeFilter
+}
+
+input OrganizationTypeInsertInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+}
+
+type OrganizationTypeInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrganizationType!]!
+}
+
+input OrganizationTypeOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+  iconUrl: OrderByDirection
+  coverUrl: OrderByDirection
+}
+
+input OrganizationTypeUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+}
+
+type OrganizationTypeUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrganizationType!]!
+}
+
+input OrganizationUpdateInput {
+  id: UUID
+  organizationTypeId: UUID
+  name: String
+  key: String
+  data: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+  longDescriptionMarkdown: String
+  description: String
+  updatedAt: Datetime
+}
+
+type OrganizationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Organization!]!
 }
 
 type PageInfo {
@@ -10174,6 +10630,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [ApplicationOrderBy!]
   ): ApplicationConnection
+  # A pagable collection of type `ApplicationOrganization`
+  applicationOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrganizationOrderBy!]
+  ): ApplicationOrganizationConnection
   # A pagable collection of type `ApplicationTable`
   applicationTableCollection(
     # Query the first `n` records in the collection
@@ -11012,6 +11485,40 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [OrderTypeOrderBy!]
   ): OrderTypeConnection
+  # A pagable collection of type `Organization`
+  organizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [OrganizationOrderBy!]
+  ): OrganizationConnection
+  # A pagable collection of type `OrganizationType`
+  organizationTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrganizationTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [OrganizationTypeOrderBy!]
+  ): OrganizationTypeConnection
   # A pagable collection of type `Partner`
   partnerCollection(
     # Query the first `n` records in the collection
@@ -11709,6 +12216,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [UserOnboardingStepOrderBy!]
   ): UserOnboardingStepConnection
+  # A pagable collection of type `UserOrganization`
+  userOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrganizationOrderBy!]
+  ): UserOrganizationConnection
   # A pagable collection of type `UserPersona`
   userPersonaCollection(
     # Query the first `n` records in the collection
@@ -14302,6 +14826,8 @@ type User implements Node {
   updatedAt: Datetime
   kratosId: UUID
   supabaseUserId: UUID
+  primaryOrganizationId: UUID
+  primaryOrganization: Organization
   shoppingCartCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -14654,6 +15180,22 @@ type User implements Node {
     # Sort order to apply to the collection
     orderBy: [PaymentInfoOrderBy!]
   ): PaymentInfoConnection
+  userOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrganizationOrderBy!]
+  ): UserOrganizationConnection
 }
 
 type UserAnswerChoice implements Node {
@@ -14769,6 +15311,7 @@ input UserFilter {
   updatedAt: DatetimeFilter
   kratosId: UUIDFilter
   supabaseUserId: UUIDFilter
+  primaryOrganizationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [UserFilter!]
@@ -14990,6 +15533,7 @@ input UserInsertInput {
   updatedAt: Datetime
   kratosId: UUID
   supabaseUserId: UUID
+  primaryOrganizationId: UUID
 }
 
 type UserInsertResponse {
@@ -15235,6 +15779,84 @@ input UserOrderBy {
   updatedAt: OrderByDirection
   kratosId: OrderByDirection
   supabaseUserId: OrderByDirection
+  primaryOrganizationId: OrderByDirection
+}
+
+type UserOrganization implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  userId: UUID!
+  organizationId: UUID!
+  createdAt: Datetime!
+  organization: Organization!
+  user: User
+}
+
+type UserOrganizationConnection {
+  edges: [UserOrganizationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type UserOrganizationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [UserOrganization!]!
+}
+
+type UserOrganizationEdge {
+  cursor: String!
+  node: UserOrganization!
+}
+
+input UserOrganizationFilter {
+  id: UUIDFilter
+  userId: UUIDFilter
+  organizationId: UUIDFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [UserOrganizationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [UserOrganizationFilter!]
+  # Negates a filter
+  not: UserOrganizationFilter
+}
+
+input UserOrganizationInsertInput {
+  id: UUID
+  userId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type UserOrganizationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [UserOrganization!]!
+}
+
+input UserOrganizationOrderBy {
+  id: OrderByDirection
+  userId: OrderByDirection
+  organizationId: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input UserOrganizationUpdateInput {
+  id: UUID
+  userId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type UserOrganizationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [UserOrganization!]!
 }
 
 type UserPersona implements Node {
@@ -15737,6 +16359,7 @@ input UserUpdateInput {
   updatedAt: Datetime
   kratosId: UUID
   supabaseUserId: UUID
+  primaryOrganizationId: UUID
 }
 
 type UserUpdateResponse {

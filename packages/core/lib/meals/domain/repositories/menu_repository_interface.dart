@@ -13,4 +13,13 @@ abstract class MenuRepositoryInterface {
     Input$MenuFilter? filter,
     List<Input$MenuOrderBy>? orderBy,
   });
+
+  Future<Either<Failure, List<MenuItem>>> queryMenuItems({
+    int? first,
+    int? last,
+    String? before,
+    String? after,
+    Input$MenuItemFilter? filter,
+    List<Input$MenuItemOrderBy>? orderBy,
+  });
 }

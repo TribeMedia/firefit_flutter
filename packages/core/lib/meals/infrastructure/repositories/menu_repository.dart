@@ -61,4 +61,45 @@ class MenuRepository extends MenuRepositoryInterface {
       return Left(Failure.unprocessableEntity(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MenuItem>>> queryMenuItems({
+    int? first,
+    int? last,
+    String? before,
+    String? after,
+    Input$MenuItemFilter? filter,
+    List<Input$MenuItemOrderBy>? orderBy,
+  }) async {
+    try {
+      final response = await graphqlClient.query$MenuItems(
+        Options$Query$MenuItems(
+          variables: Variables$Query$MenuItems(
+            first: first,
+            last: last,
+            before: before,
+            after: after,
+            filter: filter,
+            orderBy: orderBy,
+          ),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      if (response.parsedData != null &&
+          response.parsedData!.menuItemCollection != null &&
+          response.parsedData!.menuItemCollection!.edges.isNotEmpty) {
+        return Right(response.parsedData!.menuItemCollection!.edges.map((e) => e.node).toList());
+      }
+      return const Left(Failure.empty());
+    } catch (e) {
+      debugPrint('$e');
+      return Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
 }

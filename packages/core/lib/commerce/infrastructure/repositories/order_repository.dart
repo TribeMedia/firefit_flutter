@@ -281,4 +281,47 @@ class OrderRepository extends OrderRepositoryInterface {
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
     }
   }
+
+  @override
+  Future<fp.Either<Failure, List<ShoppingCart>>> queryShoppingCarts({
+    int? first,
+    int? last,
+    String? before,
+    String? after,
+    Input$ShoppingCartFilter? filter,
+    List<Input$ShoppingCartOrderBy>? orderBy,
+  }) async {
+    try {
+      final response = await graphqlClient.query$ShoppingCartCollection(
+        Options$Query$ShoppingCartCollection(
+          variables: Variables$Query$ShoppingCartCollection(
+            first: first,
+            last: last,
+            before: before,
+            after: after,
+            filter: filter,
+            orderBy: orderBy,
+          ),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      if (response.parsedData != null &&
+          response.parsedData!.shoppingCartCollection != null &&
+          response.parsedData!.shoppingCartCollection!.edges.isNotEmpty) {
+        return fp.Right(List<ShoppingCart>.from(response
+            .parsedData!.shoppingCartCollection!.edges
+            .map((e) => e.node)));
+      }
+      return const fp.Right([]);
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
 }

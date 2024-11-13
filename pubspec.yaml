@@ -77,12 +77,9 @@ dependencies:
   openai_dart: ^0.4.4
   flutter_highlight: ^0.7.0
   share_plus: ^10.1.2
-  flutter_share: ^2.0.0
   path_provider: ^2.1.5
   timeago: ^3.7.0
   drift: ^2.21.0
-  # electricsql: ^0.8.2
-  # electricsql_flutter: ^0.8.0
   loading_animation_widget: ^1.3.0
   flutter_animate: ^4.5.0
   google_nav_bar: ^5.0.7
@@ -140,5 +137,3 @@ flutter:
           weight: 500
         - asset: assets/fonts/GeistMono/otf/GeistMono-Bold.otf
           weight: 700
-
-

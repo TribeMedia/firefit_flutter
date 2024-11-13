@@ -1,16 +1,11 @@
-import 'package:firefit/config/providers.dart';
 import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
-//import 'package:firefit/features/commerce/presentation/screens/order_detail_screen.dart.old';
-import 'package:firefit/features/commerce/presentation/screens/shopping_cart_screen.dart';
-import 'package:firefit/features/common/presentation/providers.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
+import 'package:firefit/features/menu/presentation/screens/menu_item_detail_page.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_screen.dart';
-//import 'package:firefit/features/meals/presentation/screens/ai_assisted_search_screen.dart';
-import 'package:firefit/features/profiles/presentation/screens/profile_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
 import 'package:firefit/features/teams/presentation/screens/station_screen.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +47,17 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/menu',
             builder: (context, state) => const MenuScreen(),
+            routes: [
+              GoRoute(
+                path: 'item/:id',
+                builder: (context, state) {
+                  final id = state.pathParameters['id'];
+                  return MenuItemDetailPage(
+                    menuItemId: id!,
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: '/station',

@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:firefit/config/router.dart';
 import 'package:firefit/features/commerce/domain/entities/cart_item.dart';
 import 'package:firefit/features/commerce/domain/entities/shopping_cart_model.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
@@ -6,13 +7,12 @@ import 'package:firefit/features/common/presentation/widgets/shad_list_item.dart
 import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class MenuScreen extends HookConsumerWidget {
   const MenuScreen({super.key});
-
-  static const int IndexValue = 1;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,13 +23,52 @@ class MenuScreen extends HookConsumerWidget {
       header: FHeader(
         title: Text('Menu', style: shadTheme.textTheme.h2),
       ),
-      content: SingleChildScrollView(
-        child: menuController.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (error, _) => Center(
-            child: Text('Error: $error', style: shadTheme.textTheme.p),
-          ),
-          data: (viewModel) => _buildMenuContent(context, ref),
+      content: menuController.when(
+        loading: () => Center(child: CircularProgressIndicator()),
+        error: (error, _) => Center(child: Text('Error: $error', style: shadTheme.textTheme.p)),
+        data: (viewModel) => _buildMenuContent(context, ref),
+      ),
+    );
+  }
+
+  /*Widget _buildMenuList(BuildContext context, WidgetRef ref, MenuViewModel viewModel) {
+    final controller = ref.watch(menuControllerProvider(globalProviderId).notifier);
+    final breakfastItems = controller.breakfastMenus;
+    final lunchItems = controller.lunchMenus;
+    final dinnerItems = controller.dinnerMenus;
+    return ListView(
+      children: [
+        if (breakfastItems.isNotEmpty)
+          _buildMealTypeSection(context, ref, 'Breakfast', breakfastItems),
+        if (lunchItems.isNotEmpty)
+          _buildMealTypeSection(context, ref, 'Lunch', lunchItems),
+        if (dinnerItems.isNotEmpty)
+          _buildMealTypeSection(context, ref, 'Dinner', dinnerItems),
+      ],
+    );
+  }*/
+
+  Widget _buildMealTypeSection(
+      BuildContext context,
+      WidgetRef ref,
+      String mealType,
+      List<Menu> menus,
+      ) {
+    final shadTheme = ShadTheme.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ShadCard(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(mealType, style: shadTheme.textTheme.h3),
+            ),
+            ...menus.map((menu) => _buildMenuItems(context, ref, menu)),
+          ],
         ),
       ),
     );
@@ -51,32 +90,6 @@ class MenuScreen extends HookConsumerWidget {
         if (dinnerItems.isNotEmpty)
           _buildMealTypeSection(context, ref, 'Dinner', dinnerItems),
       ],
-    );
-  }
-
-  Widget _buildMealTypeSection(
-      BuildContext context,
-      WidgetRef ref,
-      String mealType,
-      List<Menu> menus,
-      ) {
-    final shadTheme = ShadTheme.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ShadCard(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(mealType, style: shadTheme.textTheme.h3),
-            ),
-            ...menus.map((menu) => _buildMenuItems(context, ref, menu)).toList(),
-          ],
-        ),
-      ),
     );
   }
 
@@ -142,6 +155,30 @@ class MenuScreen extends HookConsumerWidget {
           _buildCartButton(context, ref, item, cartNotifier, cartState),
         ],
       ),
+      onTap: () async {
+        final repository = ref.read(menuRepositoryProvider);
+        final result = await repository.queryMenuItems(
+          filter: Input$MenuItemFilter(
+            id: Input$UUIDFilter(eq: item.id),
+          ),
+        );
+
+        final menuItem = result.fold(
+          (failure) => null,
+          (menuItems) {
+            if (menuItems.isEmpty) {
+              return null;
+            }
+            return menuItems.first;
+          },
+        );
+
+        if (menuItem != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.go('/menu/item/${menuItem.id}', extra: menuItem);
+          });
+        }
+      },
     );
   }
 

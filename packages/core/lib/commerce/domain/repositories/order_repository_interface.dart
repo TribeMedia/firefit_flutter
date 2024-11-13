@@ -53,6 +53,15 @@ abstract class OrderRepositoryInterface {
     List<Input$PaymentTypeOrderBy>? orderBy,
   });
 
+  Future<fp.Either<Failure, List<ShoppingCart>>> queryShoppingCarts({
+    int? first,
+    int? last,
+    String? before,
+    String? after,
+    Input$ShoppingCartFilter? filter,
+    List<Input$ShoppingCartOrderBy>? orderBy,
+  });
+
   Future<fp.Either<Failure, PaymentInfo>> createPaymentInfo(
       {required Input$PaymentInfoInsertInput input});
 }
