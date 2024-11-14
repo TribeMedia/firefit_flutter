@@ -1,4 +1,5 @@
 import 'package:firefit/features/chat/ai_chat_screen.dart';
+import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_icon.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
@@ -40,7 +41,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
         return 0;
       case '/menu':
         return 1;
-      case '/station':
+      case '/orders':
         return 2;
       case '/settings':
         return 3;
@@ -96,11 +97,11 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                   // Handle notifications
                 },
               ),
-              IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () => context.go('/search'),
+              CartIcon(
+                onPressed: () {
+                  showCart(context);
+                },
               ),
-              const CartIcon(),
             ],
           ) : null,
           bottomNavigationBar: Container(
@@ -130,9 +131,9 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                   onPressed: () => context.go('/menu'),
                 ),
                 GButton(
-                  icon: Icons.business,
-                  text: 'Station',
-                  onPressed: () => context.go('/station'),
+                  icon: Icons.receipt,
+                  text: 'Orders',
+                  onPressed: () => context.go('/orders'),
                 ),
                 GButton(
                   icon: Icons.settings,
@@ -191,6 +192,33 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
           errorMessage: error.toString(),
           onRetry: () => context.go('/'),
         ),
+    );
+  }
+
+  void showCart(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      enableDrag: true,
+      backgroundColor: Colors.transparent,
+      transitionAnimationController: AnimationController(
+        vsync: Navigator.of(context),
+        duration: const Duration(milliseconds: 300),
+      ),
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.85,
+        minChildSize: 0.5,
+        maxChildSize: 0.95,
+        builder: (context, scrollController) => AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          child: CartOverlay(),
+        ),
+      ),
     );
   }
 }

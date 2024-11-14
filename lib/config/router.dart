@@ -1,6 +1,7 @@
 import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
+import 'package:firefit/features/commerce/presentation/screens/orders_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
@@ -60,8 +61,8 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
           GoRoute(
-            path: '/station',
-            builder: (context, state) => const StationScreen(),
+            path: '/orders',
+            builder: (context, state) => const OrdersScreen(),
           ),
           GoRoute(
             path: '/settings',

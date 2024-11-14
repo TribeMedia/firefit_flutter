@@ -917,10 +917,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: ce89c5a993ca5eea74535f798478502c30a625ecb10a1de4d7fef5cd1bcac2a4
+      sha256: "8ae664a70174163b9f65ea68dd8673e29db8f9095de7b5cd00e167c621f4fef5"
       url: "https://pub.dev"
     source: hosted
-    version: "14.4.1"
+    version: "14.6.0"
   go_router_builder:
     dependency: "direct dev"
     description:
@@ -1770,7 +1770,7 @@ packages:
     source: hosted
     version: "3.0.1"
   sembast:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: sembast
       sha256: "61f893e50fe2fa7d14529d275d45ac31871d7ad2ae3a745f9aa3afc0b447d75b"
@@ -2091,34 +2091,34 @@ packages:
     dependency: transitive
     description:
       name: talker
-      sha256: "30bbc526bb2e7d465c630f087479616b6b84570728539fde536a3b652acad2f6"
+      sha256: "34e874c756bf9f8b5543c419426d554117d137601a0cc733d8f7ef980ba0b2fa"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.1"
+    version: "4.4.3"
   talker_dio_logger:
     dependency: "direct main"
     description:
       name: talker_dio_logger
-      sha256: "310f7d1eec2c890183b726f8b4c4e5dcb9104034aefd10e8c5f13686acac305b"
+      sha256: e49391efe7419a88032e5115cef913839b7ee5fa86a78054dd680cb9d3d518bc
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.1"
+    version: "4.4.3"
   talker_flutter:
     dependency: "direct main"
     description:
       name: talker_flutter
-      sha256: "51e1f26a726dced6952c2070ae2bc7e23393c319e2f98def2009fdbcdfbda7aa"
+      sha256: "61d5fb523157a694386d890313b254480962c7bbdbd67f1e08db7f7dc7ba068d"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.1"
+    version: "4.4.3"
   talker_logger:
     dependency: transitive
     description:
       name: talker_logger
-      sha256: "515d2e5803928b2bab42108f710c814743965f939be2b4261f9c3045ef8a3fba"
+      sha256: ae73f6a9b1d58af7bd5a64267e00b72183b77e9f9e34b38a1e74211144c7fec1
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.1"
+    version: "4.4.3"
   term_glyph:
     dependency: transitive
     description:

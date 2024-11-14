@@ -1,11 +1,15 @@
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_provider.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_badge.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CartIcon extends ConsumerWidget {
-  const CartIcon({super.key});
+  const CartIcon({
+    super.key,
+    this.onPressed,
+  });
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,7 +22,9 @@ class CartIcon extends ConsumerWidget {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              context.go('/shopping-cart');
+              if (onPressed != null) {
+                onPressed!();
+              }
             },
           ),
           if (model.items.isNotEmpty)
