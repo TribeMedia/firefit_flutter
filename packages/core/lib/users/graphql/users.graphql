@@ -31,6 +31,30 @@ fragment User on User {
       }
     }
   }
+  firstResponderCollection{
+    edges{
+      node{
+        ...FirstResponder
+      }
+    }
+  }
+  primaryOrganizationId
+  primaryOrganization{
+    ...Organization
+  }
+  userOrganizationCollection{
+    edges{
+      node{
+        ...Organization
+      }
+    }
+    pageInfo{
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
 }
 
 query UserCollection(
@@ -87,4 +111,3 @@ mutation UpdateUser($id: UUID!, $user: UserUpdateInput!) {
     affectedCount
   }
 }
-

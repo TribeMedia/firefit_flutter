@@ -1,13 +1,17 @@
 import '../../common/graphql/application.graphql.dart';
 import '../../content/graphql/content.graphql.dart';
+import '../../providers/graphql/provider.graphql.dart';
 import '../../schema.graphql.dart';
+import '../../users/graphql/organizations.graphql.dart';
 import '../../users/graphql/users.graphql.dart';
 import 'dart:async';
+import 'first_responders.graphql.dart';
 import 'package:core/scalars.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
+import 'stations.graphql.dart';
 
 class Fragment$TeamUpdateType {
   Fragment$TeamUpdateType({
@@ -691,6 +695,15 @@ const documentNodeFragmentTeamUpdate = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -3559,6 +3572,15 @@ const documentNodeQueryTeamUpdateCollection = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -4602,6 +4624,15 @@ const documentNodeQueryTeamUpdate = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,

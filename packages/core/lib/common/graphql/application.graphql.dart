@@ -1,4 +1,8 @@
+import '../../providers/graphql/provider.graphql.dart';
 import '../../schema.graphql.dart';
+import '../../team/graphql/first_responders.graphql.dart';
+import '../../team/graphql/stations.graphql.dart';
+import '../../users/graphql/organizations.graphql.dart';
 import '../../users/graphql/users.graphql.dart';
 import 'dart:async';
 import 'package:core/scalars.dart';
@@ -767,6 +771,15 @@ const documentNodeFragmentApplication = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 
 extension ClientExtension$Fragment$Application on graphql.GraphQLClient {
@@ -1457,6 +1470,15 @@ const documentNodeQueryApplicationCollection = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 Query$ApplicationCollection _parserFn$Query$ApplicationCollection(
         Map<String, dynamic> data) =>
@@ -2504,6 +2526,15 @@ const documentNodeQueryApplication = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 Query$Application _parserFn$Query$Application(Map<String, dynamic> data) =>
     Query$Application.fromJson(data);

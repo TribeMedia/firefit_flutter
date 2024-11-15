@@ -98,6 +98,7 @@ class MenuItemDetailScreen extends HookConsumerWidget {
                               id: menuItem.id,
                               name: menuItem.name,
                               price: menuItem.price,
+                              imageUrl: menuItem.imageUrl,
                             )),
                           ),
                         ],

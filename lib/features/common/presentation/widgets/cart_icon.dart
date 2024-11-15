@@ -7,9 +7,11 @@ class CartIcon extends ConsumerWidget {
   const CartIcon({
     super.key,
     this.onPressed,
+    this.count = 0,
   });
 
   final VoidCallback? onPressed;
+  final int count;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +22,11 @@ class CartIcon extends ConsumerWidget {
         alignment: Alignment.center,
         children: [
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: count > 0 ? Badge(label: Text(count.toString()), child: Icon(
+                Icons.shopping_cart,
+            )) : Icon(
+                Icons.shopping_cart,
+            ),
             onPressed: () {
               if (onPressed != null) {
                 onPressed!();

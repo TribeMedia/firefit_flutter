@@ -1,5 +1,9 @@
+import '../../providers/graphql/provider.graphql.dart';
 import '../../schema.graphql.dart';
+import '../../team/graphql/first_responders.graphql.dart';
+import '../../team/graphql/stations.graphql.dart';
 import 'dart:async';
+import 'organizations.graphql.dart';
 import 'package:core/scalars.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
@@ -568,6 +572,10 @@ class Fragment$User {
     this.kratosId,
     this.supabaseUserId,
     this.userRoleCollection,
+    this.firstResponderCollection,
+    this.primaryOrganizationId,
+    this.primaryOrganization,
+    this.userOrganizationCollection,
     this.$__typename = 'User',
   });
 
@@ -582,6 +590,10 @@ class Fragment$User {
     final l$kratosId = json['kratosId'];
     final l$supabaseUserId = json['supabaseUserId'];
     final l$userRoleCollection = json['userRoleCollection'];
+    final l$firstResponderCollection = json['firstResponderCollection'];
+    final l$primaryOrganizationId = json['primaryOrganizationId'];
+    final l$primaryOrganization = json['primaryOrganization'];
+    final l$userOrganizationCollection = json['userOrganizationCollection'];
     final l$$__typename = json['__typename'];
     return Fragment$User(
       id: (l$id as String),
@@ -597,6 +609,19 @@ class Fragment$User {
           ? null
           : Fragment$User$userRoleCollection.fromJson(
               (l$userRoleCollection as Map<String, dynamic>)),
+      firstResponderCollection: l$firstResponderCollection == null
+          ? null
+          : Fragment$User$firstResponderCollection.fromJson(
+              (l$firstResponderCollection as Map<String, dynamic>)),
+      primaryOrganizationId: (l$primaryOrganizationId as String?),
+      primaryOrganization: l$primaryOrganization == null
+          ? null
+          : Fragment$Organization.fromJson(
+              (l$primaryOrganization as Map<String, dynamic>)),
+      userOrganizationCollection: l$userOrganizationCollection == null
+          ? null
+          : Fragment$User$userOrganizationCollection.fromJson(
+              (l$userOrganizationCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -620,6 +645,14 @@ class Fragment$User {
   final String? supabaseUserId;
 
   final Fragment$User$userRoleCollection? userRoleCollection;
+
+  final Fragment$User$firstResponderCollection? firstResponderCollection;
+
+  final String? primaryOrganizationId;
+
+  final Fragment$Organization? primaryOrganization;
+
+  final Fragment$User$userOrganizationCollection? userOrganizationCollection;
 
   final String $__typename;
 
@@ -645,6 +678,16 @@ class Fragment$User {
     _resultData['supabaseUserId'] = l$supabaseUserId;
     final l$userRoleCollection = userRoleCollection;
     _resultData['userRoleCollection'] = l$userRoleCollection?.toJson();
+    final l$firstResponderCollection = firstResponderCollection;
+    _resultData['firstResponderCollection'] =
+        l$firstResponderCollection?.toJson();
+    final l$primaryOrganizationId = primaryOrganizationId;
+    _resultData['primaryOrganizationId'] = l$primaryOrganizationId;
+    final l$primaryOrganization = primaryOrganization;
+    _resultData['primaryOrganization'] = l$primaryOrganization?.toJson();
+    final l$userOrganizationCollection = userOrganizationCollection;
+    _resultData['userOrganizationCollection'] =
+        l$userOrganizationCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -662,6 +705,10 @@ class Fragment$User {
     final l$kratosId = kratosId;
     final l$supabaseUserId = supabaseUserId;
     final l$userRoleCollection = userRoleCollection;
+    final l$firstResponderCollection = firstResponderCollection;
+    final l$primaryOrganizationId = primaryOrganizationId;
+    final l$primaryOrganization = primaryOrganization;
+    final l$userOrganizationCollection = userOrganizationCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -674,6 +721,10 @@ class Fragment$User {
       l$kratosId,
       l$supabaseUserId,
       l$userRoleCollection,
+      l$firstResponderCollection,
+      l$primaryOrganizationId,
+      l$primaryOrganization,
+      l$userOrganizationCollection,
       l$$__typename,
     ]);
   }
@@ -736,6 +787,26 @@ class Fragment$User {
     if (l$userRoleCollection != lOther$userRoleCollection) {
       return false;
     }
+    final l$firstResponderCollection = firstResponderCollection;
+    final lOther$firstResponderCollection = other.firstResponderCollection;
+    if (l$firstResponderCollection != lOther$firstResponderCollection) {
+      return false;
+    }
+    final l$primaryOrganizationId = primaryOrganizationId;
+    final lOther$primaryOrganizationId = other.primaryOrganizationId;
+    if (l$primaryOrganizationId != lOther$primaryOrganizationId) {
+      return false;
+    }
+    final l$primaryOrganization = primaryOrganization;
+    final lOther$primaryOrganization = other.primaryOrganization;
+    if (l$primaryOrganization != lOther$primaryOrganization) {
+      return false;
+    }
+    final l$userOrganizationCollection = userOrganizationCollection;
+    final lOther$userOrganizationCollection = other.userOrganizationCollection;
+    if (l$userOrganizationCollection != lOther$userOrganizationCollection) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -772,9 +843,18 @@ abstract class CopyWith$Fragment$User<TRes> {
     String? kratosId,
     String? supabaseUserId,
     Fragment$User$userRoleCollection? userRoleCollection,
+    Fragment$User$firstResponderCollection? firstResponderCollection,
+    String? primaryOrganizationId,
+    Fragment$Organization? primaryOrganization,
+    Fragment$User$userOrganizationCollection? userOrganizationCollection,
     String? $__typename,
   });
   CopyWith$Fragment$User$userRoleCollection<TRes> get userRoleCollection;
+  CopyWith$Fragment$User$firstResponderCollection<TRes>
+      get firstResponderCollection;
+  CopyWith$Fragment$Organization<TRes> get primaryOrganization;
+  CopyWith$Fragment$User$userOrganizationCollection<TRes>
+      get userOrganizationCollection;
 }
 
 class _CopyWithImpl$Fragment$User<TRes>
@@ -801,6 +881,10 @@ class _CopyWithImpl$Fragment$User<TRes>
     Object? kratosId = _undefined,
     Object? supabaseUserId = _undefined,
     Object? userRoleCollection = _undefined,
+    Object? firstResponderCollection = _undefined,
+    Object? primaryOrganizationId = _undefined,
+    Object? primaryOrganization = _undefined,
+    Object? userOrganizationCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$User(
@@ -830,6 +914,20 @@ class _CopyWithImpl$Fragment$User<TRes>
         userRoleCollection: userRoleCollection == _undefined
             ? _instance.userRoleCollection
             : (userRoleCollection as Fragment$User$userRoleCollection?),
+        firstResponderCollection: firstResponderCollection == _undefined
+            ? _instance.firstResponderCollection
+            : (firstResponderCollection
+                as Fragment$User$firstResponderCollection?),
+        primaryOrganizationId: primaryOrganizationId == _undefined
+            ? _instance.primaryOrganizationId
+            : (primaryOrganizationId as String?),
+        primaryOrganization: primaryOrganization == _undefined
+            ? _instance.primaryOrganization
+            : (primaryOrganization as Fragment$Organization?),
+        userOrganizationCollection: userOrganizationCollection == _undefined
+            ? _instance.userOrganizationCollection
+            : (userOrganizationCollection
+                as Fragment$User$userOrganizationCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -841,6 +939,36 @@ class _CopyWithImpl$Fragment$User<TRes>
         ? CopyWith$Fragment$User$userRoleCollection.stub(_then(_instance))
         : CopyWith$Fragment$User$userRoleCollection(
             local$userRoleCollection, (e) => call(userRoleCollection: e));
+  }
+
+  CopyWith$Fragment$User$firstResponderCollection<TRes>
+      get firstResponderCollection {
+    final local$firstResponderCollection = _instance.firstResponderCollection;
+    return local$firstResponderCollection == null
+        ? CopyWith$Fragment$User$firstResponderCollection.stub(_then(_instance))
+        : CopyWith$Fragment$User$firstResponderCollection(
+            local$firstResponderCollection,
+            (e) => call(firstResponderCollection: e));
+  }
+
+  CopyWith$Fragment$Organization<TRes> get primaryOrganization {
+    final local$primaryOrganization = _instance.primaryOrganization;
+    return local$primaryOrganization == null
+        ? CopyWith$Fragment$Organization.stub(_then(_instance))
+        : CopyWith$Fragment$Organization(
+            local$primaryOrganization, (e) => call(primaryOrganization: e));
+  }
+
+  CopyWith$Fragment$User$userOrganizationCollection<TRes>
+      get userOrganizationCollection {
+    final local$userOrganizationCollection =
+        _instance.userOrganizationCollection;
+    return local$userOrganizationCollection == null
+        ? CopyWith$Fragment$User$userOrganizationCollection.stub(
+            _then(_instance))
+        : CopyWith$Fragment$User$userOrganizationCollection(
+            local$userOrganizationCollection,
+            (e) => call(userOrganizationCollection: e));
   }
 }
 
@@ -861,12 +989,27 @@ class _CopyWithStubImpl$Fragment$User<TRes>
     String? kratosId,
     String? supabaseUserId,
     Fragment$User$userRoleCollection? userRoleCollection,
+    Fragment$User$firstResponderCollection? firstResponderCollection,
+    String? primaryOrganizationId,
+    Fragment$Organization? primaryOrganization,
+    Fragment$User$userOrganizationCollection? userOrganizationCollection,
     String? $__typename,
   }) =>
       _res;
 
   CopyWith$Fragment$User$userRoleCollection<TRes> get userRoleCollection =>
       CopyWith$Fragment$User$userRoleCollection.stub(_res);
+
+  CopyWith$Fragment$User$firstResponderCollection<TRes>
+      get firstResponderCollection =>
+          CopyWith$Fragment$User$firstResponderCollection.stub(_res);
+
+  CopyWith$Fragment$Organization<TRes> get primaryOrganization =>
+      CopyWith$Fragment$Organization.stub(_res);
+
+  CopyWith$Fragment$User$userOrganizationCollection<TRes>
+      get userOrganizationCollection =>
+          CopyWith$Fragment$User$userOrganizationCollection.stub(_res);
 }
 
 const fragmentDefinitionUser = FragmentDefinitionNode(
@@ -991,6 +1134,173 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
+      name: NameNode(value: 'firstResponderCollection'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'edges'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'node'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'FirstResponder'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ]),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'primaryOrganizationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'primaryOrganization'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Organization'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'userOrganizationCollection'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'edges'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'node'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'Organization'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ]),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: 'pageInfo'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'startCursor'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'endCursor'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'hasNextPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'hasPreviousPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
       name: NameNode(value: '__typename'),
       alias: null,
       arguments: [],
@@ -1003,6 +1313,15 @@ const documentNodeFragmentUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 
 extension ClientExtension$Fragment$User on graphql.GraphQLClient {
@@ -1330,6 +1649,927 @@ class _CopyWithStubImpl$Fragment$User$userRoleCollection$edges<TRes>
 
   CopyWith$Fragment$UserRole<TRes> get node =>
       CopyWith$Fragment$UserRole.stub(_res);
+}
+
+class Fragment$User$firstResponderCollection {
+  Fragment$User$firstResponderCollection({
+    required this.edges,
+    this.$__typename = 'FirstResponderConnection',
+  });
+
+  factory Fragment$User$firstResponderCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$firstResponderCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Fragment$User$firstResponderCollection$edges.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$User$firstResponderCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$firstResponderCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$firstResponderCollection
+    on Fragment$User$firstResponderCollection {
+  CopyWith$Fragment$User$firstResponderCollection<
+          Fragment$User$firstResponderCollection>
+      get copyWith => CopyWith$Fragment$User$firstResponderCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$firstResponderCollection<TRes> {
+  factory CopyWith$Fragment$User$firstResponderCollection(
+    Fragment$User$firstResponderCollection instance,
+    TRes Function(Fragment$User$firstResponderCollection) then,
+  ) = _CopyWithImpl$Fragment$User$firstResponderCollection;
+
+  factory CopyWith$Fragment$User$firstResponderCollection.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$firstResponderCollection;
+
+  TRes call({
+    List<Fragment$User$firstResponderCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Fragment$User$firstResponderCollection$edges> Function(
+              Iterable<
+                  CopyWith$Fragment$User$firstResponderCollection$edges<
+                      Fragment$User$firstResponderCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Fragment$User$firstResponderCollection<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection<TRes> {
+  _CopyWithImpl$Fragment$User$firstResponderCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$firstResponderCollection _instance;
+
+  final TRes Function(Fragment$User$firstResponderCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$firstResponderCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<Fragment$User$firstResponderCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Fragment$User$firstResponderCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Fragment$User$firstResponderCollection$edges<
+                          Fragment$User$firstResponderCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges
+              .map((e) => CopyWith$Fragment$User$firstResponderCollection$edges(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Fragment$User$firstResponderCollection<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection<TRes> {
+  _CopyWithStubImpl$Fragment$User$firstResponderCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$User$firstResponderCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Fragment$User$firstResponderCollection$edges {
+  Fragment$User$firstResponderCollection$edges({
+    required this.node,
+    this.$__typename = 'FirstResponderEdge',
+  });
+
+  factory Fragment$User$firstResponderCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$firstResponderCollection$edges(
+      node: Fragment$FirstResponder.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$FirstResponder node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$firstResponderCollection$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$firstResponderCollection$edges
+    on Fragment$User$firstResponderCollection$edges {
+  CopyWith$Fragment$User$firstResponderCollection$edges<
+          Fragment$User$firstResponderCollection$edges>
+      get copyWith => CopyWith$Fragment$User$firstResponderCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
+  factory CopyWith$Fragment$User$firstResponderCollection$edges(
+    Fragment$User$firstResponderCollection$edges instance,
+    TRes Function(Fragment$User$firstResponderCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$User$firstResponderCollection$edges;
+
+  factory CopyWith$Fragment$User$firstResponderCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges;
+
+  TRes call({
+    Fragment$FirstResponder? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$FirstResponder<TRes> get node;
+}
+
+class _CopyWithImpl$Fragment$User$firstResponderCollection$edges<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$User$firstResponderCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$firstResponderCollection$edges _instance;
+
+  final TRes Function(Fragment$User$firstResponderCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$firstResponderCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$FirstResponder),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$FirstResponder<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$FirstResponder(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$FirstResponder? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$FirstResponder<TRes> get node =>
+      CopyWith$Fragment$FirstResponder.stub(_res);
+}
+
+class Fragment$User$userOrganizationCollection {
+  Fragment$User$userOrganizationCollection({
+    required this.edges,
+    required this.pageInfo,
+    this.$__typename = 'UserOrganizationConnection',
+  });
+
+  factory Fragment$User$userOrganizationCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$userOrganizationCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Fragment$User$userOrganizationCollection$edges.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo: Fragment$User$userOrganizationCollection$pageInfo.fromJson(
+          (l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$User$userOrganizationCollection$edges> edges;
+
+  final Fragment$User$userOrganizationCollection$pageInfo pageInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$userOrganizationCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$userOrganizationCollection
+    on Fragment$User$userOrganizationCollection {
+  CopyWith$Fragment$User$userOrganizationCollection<
+          Fragment$User$userOrganizationCollection>
+      get copyWith => CopyWith$Fragment$User$userOrganizationCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$userOrganizationCollection<TRes> {
+  factory CopyWith$Fragment$User$userOrganizationCollection(
+    Fragment$User$userOrganizationCollection instance,
+    TRes Function(Fragment$User$userOrganizationCollection) then,
+  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection;
+
+  factory CopyWith$Fragment$User$userOrganizationCollection.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$userOrganizationCollection;
+
+  TRes call({
+    List<Fragment$User$userOrganizationCollection$edges>? edges,
+    Fragment$User$userOrganizationCollection$pageInfo? pageInfo,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Fragment$User$userOrganizationCollection$edges> Function(
+              Iterable<
+                  CopyWith$Fragment$User$userOrganizationCollection$edges<
+                      Fragment$User$userOrganizationCollection$edges>>)
+          _fn);
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> get pageInfo;
+}
+
+class _CopyWithImpl$Fragment$User$userOrganizationCollection<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection<TRes> {
+  _CopyWithImpl$Fragment$User$userOrganizationCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$userOrganizationCollection _instance;
+
+  final TRes Function(Fragment$User$userOrganizationCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$userOrganizationCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<Fragment$User$userOrganizationCollection$edges>),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo as Fragment$User$userOrganizationCollection$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Fragment$User$userOrganizationCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Fragment$User$userOrganizationCollection$edges<
+                          Fragment$User$userOrganizationCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map(
+              (e) => CopyWith$Fragment$User$userOrganizationCollection$edges(
+                    e,
+                    (i) => i,
+                  ))).toList());
+
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+      get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$userOrganizationCollection<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection<TRes> {
+  _CopyWithStubImpl$Fragment$User$userOrganizationCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$User$userOrganizationCollection$edges>? edges,
+    Fragment$User$userOrganizationCollection$pageInfo? pageInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+      get pageInfo =>
+          CopyWith$Fragment$User$userOrganizationCollection$pageInfo.stub(_res);
+}
+
+class Fragment$User$userOrganizationCollection$edges {
+  Fragment$User$userOrganizationCollection$edges({
+    required this.node,
+    this.$__typename = 'UserOrganizationEdge',
+  });
+
+  factory Fragment$User$userOrganizationCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$userOrganizationCollection$edges(
+      node: Fragment$User$userOrganizationCollection$edges$node.fromJson(
+          (l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$User$userOrganizationCollection$edges$node node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$userOrganizationCollection$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$userOrganizationCollection$edges
+    on Fragment$User$userOrganizationCollection$edges {
+  CopyWith$Fragment$User$userOrganizationCollection$edges<
+          Fragment$User$userOrganizationCollection$edges>
+      get copyWith => CopyWith$Fragment$User$userOrganizationCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
+  factory CopyWith$Fragment$User$userOrganizationCollection$edges(
+    Fragment$User$userOrganizationCollection$edges instance,
+    TRes Function(Fragment$User$userOrganizationCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection$edges;
+
+  factory CopyWith$Fragment$User$userOrganizationCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges;
+
+  TRes call({
+    Fragment$User$userOrganizationCollection$edges$node? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$User$userOrganizationCollection$edges$node<TRes> get node;
+}
+
+class _CopyWithImpl$Fragment$User$userOrganizationCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$User$userOrganizationCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$userOrganizationCollection$edges _instance;
+
+  final TRes Function(Fragment$User$userOrganizationCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$userOrganizationCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$User$userOrganizationCollection$edges$node),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$User$userOrganizationCollection$edges$node<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$User$userOrganizationCollection$edges$node(
+        local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$User$userOrganizationCollection$edges$node? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$User$userOrganizationCollection$edges$node<TRes> get node =>
+      CopyWith$Fragment$User$userOrganizationCollection$edges$node.stub(_res);
+}
+
+class Fragment$User$userOrganizationCollection$edges$node {
+  Fragment$User$userOrganizationCollection$edges$node(
+      {this.$__typename = 'UserOrganization'});
+
+  factory Fragment$User$userOrganizationCollection$edges$node.fromJson(
+      Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
+    return Fragment$User$userOrganizationCollection$edges$node(
+        $__typename: (l$$__typename as String));
+  }
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$userOrganizationCollection$edges$node) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$userOrganizationCollection$edges$node
+    on Fragment$User$userOrganizationCollection$edges$node {
+  CopyWith$Fragment$User$userOrganizationCollection$edges$node<
+          Fragment$User$userOrganizationCollection$edges$node>
+      get copyWith =>
+          CopyWith$Fragment$User$userOrganizationCollection$edges$node(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$userOrganizationCollection$edges$node<
+    TRes> {
+  factory CopyWith$Fragment$User$userOrganizationCollection$edges$node(
+    Fragment$User$userOrganizationCollection$edges$node instance,
+    TRes Function(Fragment$User$userOrganizationCollection$edges$node) then,
+  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection$edges$node;
+
+  factory CopyWith$Fragment$User$userOrganizationCollection$edges$node.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges$node;
+
+  TRes call({String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$User$userOrganizationCollection$edges$node<TRes>
+    implements
+        CopyWith$Fragment$User$userOrganizationCollection$edges$node<TRes> {
+  _CopyWithImpl$Fragment$User$userOrganizationCollection$edges$node(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$userOrganizationCollection$edges$node _instance;
+
+  final TRes Function(Fragment$User$userOrganizationCollection$edges$node)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? $__typename = _undefined}) =>
+      _then(Fragment$User$userOrganizationCollection$edges$node(
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges$node<
+        TRes>
+    implements
+        CopyWith$Fragment$User$userOrganizationCollection$edges$node<TRes> {
+  _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges$node(
+      this._res);
+
+  TRes _res;
+
+  call({String? $__typename}) => _res;
+}
+
+class Fragment$User$userOrganizationCollection$pageInfo {
+  Fragment$User$userOrganizationCollection$pageInfo({
+    this.startCursor,
+    this.endCursor,
+    required this.hasNextPage,
+    required this.hasPreviousPage,
+    this.$__typename = 'PageInfo',
+  });
+
+  factory Fragment$User$userOrganizationCollection$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$startCursor = json['startCursor'];
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$hasPreviousPage = json['hasPreviousPage'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$userOrganizationCollection$pageInfo(
+      startCursor: (l$startCursor as String?),
+      endCursor: (l$endCursor as String?),
+      hasNextPage: (l$hasNextPage as bool),
+      hasPreviousPage: (l$hasPreviousPage as bool),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String? startCursor;
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  final bool hasPreviousPage;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$startCursor = startCursor;
+    _resultData['startCursor'] = l$startCursor;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    _resultData['hasPreviousPage'] = l$hasPreviousPage;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$startCursor = startCursor;
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$startCursor,
+      l$endCursor,
+      l$hasNextPage,
+      l$hasPreviousPage,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$userOrganizationCollection$pageInfo) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$startCursor = startCursor;
+    final lOther$startCursor = other.startCursor;
+    if (l$startCursor != lOther$startCursor) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$hasPreviousPage = hasPreviousPage;
+    final lOther$hasPreviousPage = other.hasPreviousPage;
+    if (l$hasPreviousPage != lOther$hasPreviousPage) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$userOrganizationCollection$pageInfo
+    on Fragment$User$userOrganizationCollection$pageInfo {
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<
+          Fragment$User$userOrganizationCollection$pageInfo>
+      get copyWith =>
+          CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$userOrganizationCollection$pageInfo<
+    TRes> {
+  factory CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
+    Fragment$User$userOrganizationCollection$pageInfo instance,
+    TRes Function(Fragment$User$userOrganizationCollection$pageInfo) then,
+  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo;
+
+  factory CopyWith$Fragment$User$userOrganizationCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo;
+
+  TRes call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+    implements
+        CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> {
+  _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$userOrganizationCollection$pageInfo _instance;
+
+  final TRes Function(Fragment$User$userOrganizationCollection$pageInfo) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? startCursor = _undefined,
+    Object? endCursor = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? hasPreviousPage = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$userOrganizationCollection$pageInfo(
+        startCursor: startCursor == _undefined
+            ? _instance.startCursor
+            : (startCursor as String?),
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        hasPreviousPage:
+            hasPreviousPage == _undefined || hasPreviousPage == null
+                ? _instance.hasPreviousPage
+                : (hasPreviousPage as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+    implements
+        CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> {
+  _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Variables$Query$UserCollection {
@@ -1930,6 +3170,15 @@ const documentNodeQueryUserCollection = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 Query$UserCollection _parserFn$Query$UserCollection(
         Map<String, dynamic> data) =>
@@ -2918,6 +4167,15 @@ const documentNodeQueryUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 Query$User _parserFn$Query$User(Map<String, dynamic> data) =>
     Query$User.fromJson(data);
@@ -3670,6 +4928,15 @@ const documentNodeMutationCreateUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 Mutation$CreateUser _parserFn$Mutation$CreateUser(Map<String, dynamic> data) =>
     Mutation$CreateUser.fromJson(data);
@@ -4396,6 +5663,15 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
 ]);
 Mutation$UpdateUser _parserFn$Mutation$UpdateUser(Map<String, dynamic> data) =>
     Mutation$UpdateUser.fromJson(data);

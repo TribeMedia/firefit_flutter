@@ -1,7 +1,9 @@
 import '../../meals/graphql/menu.graphql.dart';
 import '../../providers/graphql/provider.graphql.dart';
 import '../../schema.graphql.dart';
+import '../../team/graphql/first_responders.graphql.dart';
 import '../../team/graphql/stations.graphql.dart';
+import '../../users/graphql/organizations.graphql.dart';
 import '../../users/graphql/users.graphql.dart';
 import 'dart:async';
 import 'package:core/scalars.dart';
@@ -3593,8 +3595,6 @@ class Fragment$Order {
     this.orderTransactionCollection,
     this.data,
     this.notes,
-    required this.units,
-    required this.pricePerUnit,
     this.updatedAt,
     required this.createdAt,
     this.$__typename = 'Order',
@@ -3615,8 +3615,6 @@ class Fragment$Order {
     final l$orderTransactionCollection = json['orderTransactionCollection'];
     final l$data = json['data'];
     final l$notes = json['notes'];
-    final l$units = json['units'];
-    final l$pricePerUnit = json['pricePerUnit'];
     final l$updatedAt = json['updatedAt'];
     final l$createdAt = json['createdAt'];
     final l$$__typename = json['__typename'];
@@ -3645,8 +3643,6 @@ class Fragment$Order {
               (l$orderTransactionCollection as Map<String, dynamic>)),
       data: l$data == null ? null : jsonFieldFromJson(l$data),
       notes: (l$notes as String?),
-      units: (l$units as int),
-      pricePerUnit: (l$pricePerUnit as num).toDouble(),
       updatedAt:
           l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String)),
       createdAt: DateTime.parse((l$createdAt as String)),
@@ -3681,10 +3677,6 @@ class Fragment$Order {
   final Map<String, dynamic>? data;
 
   final String? notes;
-
-  final int units;
-
-  final double pricePerUnit;
 
   final DateTime? updatedAt;
 
@@ -3723,10 +3715,6 @@ class Fragment$Order {
     _resultData['data'] = l$data == null ? null : jsonFieldToJson(l$data);
     final l$notes = notes;
     _resultData['notes'] = l$notes;
-    final l$units = units;
-    _resultData['units'] = l$units;
-    final l$pricePerUnit = pricePerUnit;
-    _resultData['pricePerUnit'] = l$pricePerUnit;
     final l$updatedAt = updatedAt;
     _resultData['updatedAt'] = l$updatedAt?.toIso8601String();
     final l$createdAt = createdAt;
@@ -3752,8 +3740,6 @@ class Fragment$Order {
     final l$orderTransactionCollection = orderTransactionCollection;
     final l$data = data;
     final l$notes = notes;
-    final l$units = units;
-    final l$pricePerUnit = pricePerUnit;
     final l$updatedAt = updatedAt;
     final l$createdAt = createdAt;
     final l$$__typename = $__typename;
@@ -3772,8 +3758,6 @@ class Fragment$Order {
       l$orderTransactionCollection,
       l$data,
       l$notes,
-      l$units,
-      l$pricePerUnit,
       l$updatedAt,
       l$createdAt,
       l$$__typename,
@@ -3858,16 +3842,6 @@ class Fragment$Order {
     if (l$notes != lOther$notes) {
       return false;
     }
-    final l$units = units;
-    final lOther$units = other.units;
-    if (l$units != lOther$units) {
-      return false;
-    }
-    final l$pricePerUnit = pricePerUnit;
-    final lOther$pricePerUnit = other.pricePerUnit;
-    if (l$pricePerUnit != lOther$pricePerUnit) {
-      return false;
-    }
     final l$updatedAt = updatedAt;
     final lOther$updatedAt = other.updatedAt;
     if (l$updatedAt != lOther$updatedAt) {
@@ -3919,8 +3893,6 @@ abstract class CopyWith$Fragment$Order<TRes> {
     Fragment$Order$orderTransactionCollection? orderTransactionCollection,
     Map<String, dynamic>? data,
     String? notes,
-    int? units,
-    double? pricePerUnit,
     DateTime? updatedAt,
     DateTime? createdAt,
     String? $__typename,
@@ -3962,8 +3934,6 @@ class _CopyWithImpl$Fragment$Order<TRes>
     Object? orderTransactionCollection = _undefined,
     Object? data = _undefined,
     Object? notes = _undefined,
-    Object? units = _undefined,
-    Object? pricePerUnit = _undefined,
     Object? updatedAt = _undefined,
     Object? createdAt = _undefined,
     Object? $__typename = _undefined,
@@ -4006,12 +3976,6 @@ class _CopyWithImpl$Fragment$Order<TRes>
             ? _instance.data
             : (data as Map<String, dynamic>?),
         notes: notes == _undefined ? _instance.notes : (notes as String?),
-        units: units == _undefined || units == null
-            ? _instance.units
-            : (units as int),
-        pricePerUnit: pricePerUnit == _undefined || pricePerUnit == null
-            ? _instance.pricePerUnit
-            : (pricePerUnit as double),
         updatedAt: updatedAt == _undefined
             ? _instance.updatedAt
             : (updatedAt as DateTime?),
@@ -4089,8 +4053,6 @@ class _CopyWithStubImpl$Fragment$Order<TRes>
     Fragment$Order$orderTransactionCollection? orderTransactionCollection,
     Map<String, dynamic>? data,
     String? notes,
-    int? units,
-    double? pricePerUnit,
     DateTime? updatedAt,
     DateTime? createdAt,
     String? $__typename,
@@ -4518,20 +4480,6 @@ const fragmentDefinitionOrder = FragmentDefinitionNode(
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'units'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'pricePerUnit'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
       name: NameNode(value: 'updatedAt'),
       alias: null,
       arguments: [],
@@ -4564,6 +4512,11 @@ const documentNodeFragmentOrder = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,
@@ -6698,6 +6651,11 @@ const documentNodeQueryOrder = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,
@@ -7746,6 +7704,11 @@ const documentNodeQueryOrderCollection = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,
@@ -8749,6 +8712,11 @@ const documentNodeMutationCreateOrder = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,
@@ -17945,4 +17913,789 @@ class _CopyWithStubImpl$Query$ShoppingCartCollection$shoppingCartCollection$page
     String? $__typename,
   }) =>
       _res;
+}
+
+class Variables$Mutation$UpdateShoppingCart {
+  factory Variables$Mutation$UpdateShoppingCart({
+    required String id,
+    required Input$ShoppingCartUpdateInput input,
+  }) =>
+      Variables$Mutation$UpdateShoppingCart._({
+        r'id': id,
+        r'input': input,
+      });
+
+  Variables$Mutation$UpdateShoppingCart._(this._$data);
+
+  factory Variables$Mutation$UpdateShoppingCart.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as String);
+    final l$input = data['input'];
+    result$data['input'] = Input$ShoppingCartUpdateInput.fromJson(
+        (l$input as Map<String, dynamic>));
+    return Variables$Mutation$UpdateShoppingCart._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get id => (_$data['id'] as String);
+
+  Input$ShoppingCartUpdateInput get input =>
+      (_$data['input'] as Input$ShoppingCartUpdateInput);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
+    final l$input = input;
+    result$data['input'] = l$input.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$UpdateShoppingCart<
+          Variables$Mutation$UpdateShoppingCart>
+      get copyWith => CopyWith$Variables$Mutation$UpdateShoppingCart(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$UpdateShoppingCart) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input != lOther$input) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$input = input;
+    return Object.hashAll([
+      l$id,
+      l$input,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$UpdateShoppingCart<TRes> {
+  factory CopyWith$Variables$Mutation$UpdateShoppingCart(
+    Variables$Mutation$UpdateShoppingCart instance,
+    TRes Function(Variables$Mutation$UpdateShoppingCart) then,
+  ) = _CopyWithImpl$Variables$Mutation$UpdateShoppingCart;
+
+  factory CopyWith$Variables$Mutation$UpdateShoppingCart.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$UpdateShoppingCart;
+
+  TRes call({
+    String? id,
+    Input$ShoppingCartUpdateInput? input,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$UpdateShoppingCart<TRes>
+    implements CopyWith$Variables$Mutation$UpdateShoppingCart<TRes> {
+  _CopyWithImpl$Variables$Mutation$UpdateShoppingCart(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$UpdateShoppingCart _instance;
+
+  final TRes Function(Variables$Mutation$UpdateShoppingCart) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? input = _undefined,
+  }) =>
+      _then(Variables$Mutation$UpdateShoppingCart._({
+        ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as String),
+        if (input != _undefined && input != null)
+          'input': (input as Input$ShoppingCartUpdateInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$UpdateShoppingCart<TRes>
+    implements CopyWith$Variables$Mutation$UpdateShoppingCart<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$UpdateShoppingCart(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    Input$ShoppingCartUpdateInput? input,
+  }) =>
+      _res;
+}
+
+class Mutation$UpdateShoppingCart {
+  Mutation$UpdateShoppingCart({
+    required this.updateShoppingCartCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$UpdateShoppingCart.fromJson(Map<String, dynamic> json) {
+    final l$updateShoppingCartCollection = json['updateShoppingCartCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateShoppingCart(
+      updateShoppingCartCollection:
+          Mutation$UpdateShoppingCart$updateShoppingCartCollection.fromJson(
+              (l$updateShoppingCartCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$UpdateShoppingCart$updateShoppingCartCollection
+      updateShoppingCartCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$updateShoppingCartCollection = updateShoppingCartCollection;
+    _resultData['updateShoppingCartCollection'] =
+        l$updateShoppingCartCollection.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$updateShoppingCartCollection = updateShoppingCartCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$updateShoppingCartCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateShoppingCart) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$updateShoppingCartCollection = updateShoppingCartCollection;
+    final lOther$updateShoppingCartCollection =
+        other.updateShoppingCartCollection;
+    if (l$updateShoppingCartCollection != lOther$updateShoppingCartCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateShoppingCart
+    on Mutation$UpdateShoppingCart {
+  CopyWith$Mutation$UpdateShoppingCart<Mutation$UpdateShoppingCart>
+      get copyWith => CopyWith$Mutation$UpdateShoppingCart(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$UpdateShoppingCart<TRes> {
+  factory CopyWith$Mutation$UpdateShoppingCart(
+    Mutation$UpdateShoppingCart instance,
+    TRes Function(Mutation$UpdateShoppingCart) then,
+  ) = _CopyWithImpl$Mutation$UpdateShoppingCart;
+
+  factory CopyWith$Mutation$UpdateShoppingCart.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateShoppingCart;
+
+  TRes call({
+    Mutation$UpdateShoppingCart$updateShoppingCartCollection?
+        updateShoppingCartCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection<TRes>
+      get updateShoppingCartCollection;
+}
+
+class _CopyWithImpl$Mutation$UpdateShoppingCart<TRes>
+    implements CopyWith$Mutation$UpdateShoppingCart<TRes> {
+  _CopyWithImpl$Mutation$UpdateShoppingCart(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$UpdateShoppingCart _instance;
+
+  final TRes Function(Mutation$UpdateShoppingCart) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? updateShoppingCartCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$UpdateShoppingCart(
+        updateShoppingCartCollection: updateShoppingCartCollection ==
+                    _undefined ||
+                updateShoppingCartCollection == null
+            ? _instance.updateShoppingCartCollection
+            : (updateShoppingCartCollection
+                as Mutation$UpdateShoppingCart$updateShoppingCartCollection),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection<TRes>
+      get updateShoppingCartCollection {
+    final local$updateShoppingCartCollection =
+        _instance.updateShoppingCartCollection;
+    return CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection(
+        local$updateShoppingCartCollection,
+        (e) => call(updateShoppingCartCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UpdateShoppingCart<TRes>
+    implements CopyWith$Mutation$UpdateShoppingCart<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateShoppingCart(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$UpdateShoppingCart$updateShoppingCartCollection?
+        updateShoppingCartCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection<TRes>
+      get updateShoppingCartCollection =>
+          CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection
+              .stub(_res);
+}
+
+const documentNodeMutationUpdateShoppingCart = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'UpdateShoppingCart'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ShoppingCartUpdateInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'updateShoppingCartCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'id'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
+              )
+            ]),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'set'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'ShoppingCart'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'affectedCount'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartMenuItem,
+  fragmentDefinitionMenuItem,
+]);
+Mutation$UpdateShoppingCart _parserFn$Mutation$UpdateShoppingCart(
+        Map<String, dynamic> data) =>
+    Mutation$UpdateShoppingCart.fromJson(data);
+typedef OnMutationCompleted$Mutation$UpdateShoppingCart = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Mutation$UpdateShoppingCart?,
+);
+
+class Options$Mutation$UpdateShoppingCart
+    extends graphql.MutationOptions<Mutation$UpdateShoppingCart> {
+  Options$Mutation$UpdateShoppingCart({
+    String? operationName,
+    required Variables$Mutation$UpdateShoppingCart variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$UpdateShoppingCart? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateShoppingCart? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateShoppingCart>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$UpdateShoppingCart(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateShoppingCart,
+          parserFn: _parserFn$Mutation$UpdateShoppingCart,
+        );
+
+  final OnMutationCompleted$Mutation$UpdateShoppingCart? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$UpdateShoppingCart
+    extends graphql.WatchQueryOptions<Mutation$UpdateShoppingCart> {
+  WatchOptions$Mutation$UpdateShoppingCart({
+    String? operationName,
+    required Variables$Mutation$UpdateShoppingCart variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$UpdateShoppingCart? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationUpdateShoppingCart,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$UpdateShoppingCart,
+        );
+}
+
+extension ClientExtension$Mutation$UpdateShoppingCart on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$UpdateShoppingCart>>
+      mutate$UpdateShoppingCart(
+              Options$Mutation$UpdateShoppingCart options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$UpdateShoppingCart>
+      watchMutation$UpdateShoppingCart(
+              WatchOptions$Mutation$UpdateShoppingCart options) =>
+          this.watchMutation(options);
+}
+
+class Mutation$UpdateShoppingCart$HookResult {
+  Mutation$UpdateShoppingCart$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$UpdateShoppingCart runMutation;
+
+  final graphql.QueryResult<Mutation$UpdateShoppingCart> result;
+}
+
+Mutation$UpdateShoppingCart$HookResult useMutation$UpdateShoppingCart(
+    [WidgetOptions$Mutation$UpdateShoppingCart? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$UpdateShoppingCart());
+  return Mutation$UpdateShoppingCart$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$UpdateShoppingCart>
+    useWatchMutation$UpdateShoppingCart(
+            WatchOptions$Mutation$UpdateShoppingCart options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$UpdateShoppingCart
+    extends graphql.MutationOptions<Mutation$UpdateShoppingCart> {
+  WidgetOptions$Mutation$UpdateShoppingCart({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$UpdateShoppingCart? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateShoppingCart? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateShoppingCart>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$UpdateShoppingCart(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateShoppingCart,
+          parserFn: _parserFn$Mutation$UpdateShoppingCart,
+        );
+
+  final OnMutationCompleted$Mutation$UpdateShoppingCart? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$UpdateShoppingCart
+    = graphql.MultiSourceResult<Mutation$UpdateShoppingCart> Function(
+  Variables$Mutation$UpdateShoppingCart, {
+  Object? optimisticResult,
+  Mutation$UpdateShoppingCart? typedOptimisticResult,
+});
+typedef Builder$Mutation$UpdateShoppingCart = widgets.Widget Function(
+  RunMutation$Mutation$UpdateShoppingCart,
+  graphql.QueryResult<Mutation$UpdateShoppingCart>?,
+);
+
+class Mutation$UpdateShoppingCart$Widget
+    extends graphql_flutter.Mutation<Mutation$UpdateShoppingCart> {
+  Mutation$UpdateShoppingCart$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$UpdateShoppingCart? options,
+    required Builder$Mutation$UpdateShoppingCart builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$UpdateShoppingCart(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$UpdateShoppingCart$updateShoppingCartCollection {
+  Mutation$UpdateShoppingCart$updateShoppingCartCollection({
+    required this.records,
+    required this.affectedCount,
+    this.$__typename = 'ShoppingCartUpdateResponse',
+  });
+
+  factory Mutation$UpdateShoppingCart$updateShoppingCartCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$records = json['records'];
+    final l$affectedCount = json['affectedCount'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateShoppingCart$updateShoppingCartCollection(
+      records: (l$records as List<dynamic>)
+          .map((e) =>
+              Fragment$ShoppingCart.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      affectedCount: (l$affectedCount as int),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$ShoppingCart> records;
+
+  final int affectedCount;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$affectedCount = affectedCount;
+    _resultData['affectedCount'] = l$affectedCount;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$records = records;
+    final l$affectedCount = affectedCount;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$records.map((v) => v)),
+      l$affectedCount,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateShoppingCart$updateShoppingCartCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$affectedCount = affectedCount;
+    final lOther$affectedCount = other.affectedCount;
+    if (l$affectedCount != lOther$affectedCount) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateShoppingCart$updateShoppingCartCollection
+    on Mutation$UpdateShoppingCart$updateShoppingCartCollection {
+  CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection<
+          Mutation$UpdateShoppingCart$updateShoppingCartCollection>
+      get copyWith =>
+          CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection<
+    TRes> {
+  factory CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection(
+    Mutation$UpdateShoppingCart$updateShoppingCartCollection instance,
+    TRes Function(Mutation$UpdateShoppingCart$updateShoppingCartCollection)
+        then,
+  ) = _CopyWithImpl$Mutation$UpdateShoppingCart$updateShoppingCartCollection;
+
+  factory CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateShoppingCart$updateShoppingCartCollection;
+
+  TRes call({
+    List<Fragment$ShoppingCart>? records,
+    int? affectedCount,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$ShoppingCart> Function(
+              Iterable<CopyWith$Fragment$ShoppingCart<Fragment$ShoppingCart>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$UpdateShoppingCart$updateShoppingCartCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection<
+            TRes> {
+  _CopyWithImpl$Mutation$UpdateShoppingCart$updateShoppingCartCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$UpdateShoppingCart$updateShoppingCartCollection _instance;
+
+  final TRes Function(Mutation$UpdateShoppingCart$updateShoppingCartCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? records = _undefined,
+    Object? affectedCount = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$UpdateShoppingCart$updateShoppingCartCollection(
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$ShoppingCart>),
+        affectedCount: affectedCount == _undefined || affectedCount == null
+            ? _instance.affectedCount
+            : (affectedCount as int),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$ShoppingCart> Function(
+                  Iterable<
+                      CopyWith$Fragment$ShoppingCart<Fragment$ShoppingCart>>)
+              _fn) =>
+      call(
+          records:
+              _fn(_instance.records.map((e) => CopyWith$Fragment$ShoppingCart(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$UpdateShoppingCart$updateShoppingCartCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$UpdateShoppingCart$updateShoppingCartCollection<
+            TRes> {
+  _CopyWithStubImpl$Mutation$UpdateShoppingCart$updateShoppingCartCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$ShoppingCart>? records,
+    int? affectedCount,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
 }

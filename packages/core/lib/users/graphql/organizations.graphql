@@ -1,0 +1,88 @@
+
+fragment Organization on Organization {
+  id
+    organizationTypeId
+    organizationType {
+      ...OrganizationType
+    }
+    name
+    description
+    iconUrl
+    coverUrl
+    createdAt
+}
+
+fragment OrganizationType on OrganizationType {
+  id
+  name
+  schema
+  key
+  iconUrl
+  coverUrl
+  createdAt
+}
+
+query OrganizationCollection(
+  $first: Int,
+  $last: Int,
+  $before: Cursor,
+  $after: Cursor,
+  $filter: OrganizationFilter,
+  $orderBy: [OrganizationOrderBy!],
+) {
+  organizationCollection(
+    first: $first,
+    last: $last,
+    before: $before,
+    after: $after,
+    filter: $filter,
+    orderBy: $orderBy,
+  ) {
+    edges {
+      node {
+        ...Organization
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
+
+
+mutation CreateOrganization($input: OrganizationInsertInput!) {
+    insertIntoOrganizationCollection(objects: [$input]) {
+        records {
+            ...Organization
+        }
+        affectedCount
+    }
+}
+
+mutation UpdateOrganization($id: UUID!, $organization: OrganizationUpdateInput!) {
+    updateOrganizationCollection(
+        filter: {
+            id: { eq: $id }
+        }
+        set: $organization
+    ) {
+        records {
+            ...Organization
+        }
+        affectedCount
+    }
+}
+
+mutation DeleteOrganization($id: UUID!) {
+    deleteFromOrganizationCollection(
+        filter: { id: { eq: $id}}
+    ) {
+        records {
+            ...Organization
+        }
+        affectedCount
+    }
+}

@@ -85,7 +85,9 @@ class MenuScreen extends HookConsumerWidget {
             if (itemInCart) {
               cartNotifier.removeItem(item.id);
             } else {
-              cartNotifier.addItem(CartItem(id:
+              cartNotifier.addItem(CartItem(
+                  imageUrl: item.imageUrl,
+                  id:
               item.id, name:
               item.name, price:
               item.price, quantity:

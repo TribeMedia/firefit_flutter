@@ -20,7 +20,30 @@ fragment FirstResponder on FirstResponder {
   id
   userId
   user {
-    ...User
+    id
+    email
+    firstName
+    lastName
+    displayName
+    data
+    avatarUrl
+    kratosId
+    supabaseUserId
+    userRoleCollection {
+      edges {
+        node {
+          id
+          roleId
+          role {
+            id
+            name
+            key
+            schema
+          }
+          userId
+        }
+      }
+    }
   }
   firstResponderTypeId
   firstResponderType {

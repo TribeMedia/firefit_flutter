@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core/users/graphql/users.graphql.dart';
 import 'package:firefit/config/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -23,7 +24,42 @@ final initialUser = User(
   lastName: 'James',
   firstName: 'Travis',
   displayName: 'Travis James',
-  avatarUrl: 'https://ipfs.tribemedia.io/ipfs/QmewGTYVkaHVAsynxF7x8CPeRH8iZUBQ7PTYj8Ab9shXpj',
+  avatarUrl:
+      'https://ipfs.tribemedia.io/ipfs/QmewGTYVkaHVAsynxF7x8CPeRH8iZUBQ7PTYj8Ab9shXpj',
+  firstResponderCollection: Fragment$User$firstResponderCollection(
+    edges: [
+      Fragment$User$firstResponderCollection$edges(
+        node: FirstResponder(
+          id: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+          userId: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+          firstResponderTypeId: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+          firstResponderType: Fragment$FirstResponderType(
+            id: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+            key: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+            name: 'Station',
+            schema: null,
+            createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),
+          ),
+          currentStationId: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2',
+          currentStation: Fragment$Station(
+            id: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+            name: 'Engine Company',
+            number: 6,
+            description: 'DC Fire & EMS Department',
+            longDescriptionMarkdown: '',
+            address: '2000 14th Street, NW',
+            address1: '5th Floor',
+            city: 'Washington',
+            state: 'DC',
+            zip: '20001',
+            iconUrl: 'https://ipfs.tribemedia.io/ipfs/QmWM3Dp8D4NjQxco8P3RPpb6eDwVkhYe9jKkRubPs1BCoR',
+            coverUrl: 'https://ipfs.tribemedia.io/ipfs/QmbWBc8tRN6fBP5Y6BMZm1TmAzzj3bSWQvz6C1dQQA7jug',
+            createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),
+        ), createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),
+      ),
+      ),
+    ],
+  ),
 );
 
 class UserNotifier extends AsyncNotifier<UserState> {

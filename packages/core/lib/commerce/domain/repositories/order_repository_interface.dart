@@ -27,6 +27,9 @@ abstract class OrderRepositoryInterface {
   Future<fp.Either<Failure, ShoppingCart>> deleteShoppingCart(
       {required String id});
 
+  Future<fp.Either<Failure, ShoppingCart>> updateShoppingCart(
+      {required String id, required Input$ShoppingCartUpdateInput input});
+
   Future<fp.Either<Failure, ShoppingCartMenuItem>> deleteShoppingCartMenuItem(
       {required String id});
 

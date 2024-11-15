@@ -1,4 +1,5 @@
 import 'package:firefit/features/chat/ai_chat_screen.dart';
+import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_icon.dart';
@@ -56,6 +57,13 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
     final scaffoldKey = ref.watch(scaffoldKeyProvider(widget.name));
     int currentIndex = _getCurrentIndex(context);
     final homeStateValue = ref.watch(homeStateProvider);
+    final cartValue = ref.watch(shoppingCartProvider);
+
+    final cartButton = CartIcon(
+      onPressed: () {
+        showCart(context);
+      },
+    );
 
     return homeStateValue.when(
       data: (homeState){
@@ -97,9 +105,23 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                   // Handle notifications
                 },
               ),
-              CartIcon(
-                onPressed: () {
-                  showCart(context);
+              cartValue.when(
+                data: (cartModel){
+                  if (cartModel.items.isNotEmpty) {
+                    return CartIcon(
+                      onPressed: () {
+                        showCart(context);
+                      },
+                      count: cartModel.items.length,
+                    );
+                  }
+                  return cartButton;
+                },
+                loading: (){
+                  return cartButton;
+                },
+                error: (error, stackTrace){
+                  return cartButton;
                 },
               ),
             ],

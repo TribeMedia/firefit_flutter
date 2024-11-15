@@ -324,4 +324,32 @@ class OrderRepository extends OrderRepositoryInterface {
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
     }
   }
+
+  @override
+  Future<fp.Either<Failure, ShoppingCart>> updateShoppingCart({required String id, required Input$ShoppingCartUpdateInput input}) async {
+    try {
+      final response = await graphqlClient.mutate$UpdateShoppingCart(
+        Options$Mutation$UpdateShoppingCart(
+          variables: Variables$Mutation$UpdateShoppingCart(
+            id: id,
+            input: input,
+          ),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      if (response.parsedData != null) {
+        return fp.Right(response.parsedData!.updateShoppingCartCollection.records.first);
+      }
+      return const fp.Left(Failure.empty());
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
 }

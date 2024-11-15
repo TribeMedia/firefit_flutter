@@ -8160,8 +8160,6 @@ type Order implements Node {
   orderTypeId: UUID!
   userId: UUID!
   createdAt: Datetime!
-  units: BigInt!
-  pricePerUnit: Float!
   notes: String
   data: JSON
   updatedAt: Datetime
@@ -8258,8 +8256,6 @@ input OrderFilter {
   orderTypeId: UUIDFilter
   userId: UUIDFilter
   createdAt: DatetimeFilter
-  units: BigIntFilter
-  pricePerUnit: FloatFilter
   notes: StringFilter
   updatedAt: DatetimeFilter
   orderStatusId: UUIDFilter
@@ -8280,8 +8276,6 @@ input OrderInsertInput {
   orderTypeId: UUID
   userId: UUID
   createdAt: Datetime
-  units: BigInt
-  pricePerUnit: Float
   notes: String
   data: JSON
   updatedAt: Datetime
@@ -8492,8 +8486,6 @@ input OrderOrderBy {
   orderTypeId: OrderByDirection
   userId: OrderByDirection
   createdAt: OrderByDirection
-  units: OrderByDirection
-  pricePerUnit: OrderByDirection
   notes: OrderByDirection
   updatedAt: OrderByDirection
   orderStatusId: OrderByDirection
@@ -8794,8 +8786,6 @@ input OrderUpdateInput {
   orderTypeId: UUID
   userId: UUID
   createdAt: Datetime
-  units: BigInt
-  pricePerUnit: Float
   notes: String
   data: JSON
   updatedAt: Datetime

@@ -1,6 +1,5 @@
 import '../../providers/graphql/provider.graphql.dart';
 import '../../schema.graphql.dart';
-import '../../users/graphql/users.graphql.dart';
 import 'dart:async';
 import 'package:core/scalars.dart';
 import 'package:flutter/widgets.dart' as widgets;
@@ -665,7 +664,8 @@ class Fragment$FirstResponder {
       userId: (l$userId as String),
       user: l$user == null
           ? null
-          : Fragment$User.fromJson((l$user as Map<String, dynamic>)),
+          : Fragment$FirstResponder$user.fromJson(
+              (l$user as Map<String, dynamic>)),
       firstResponderTypeId: (l$firstResponderTypeId as String),
       firstResponderType: l$firstResponderType == null
           ? null
@@ -694,7 +694,7 @@ class Fragment$FirstResponder {
 
   final String userId;
 
-  final Fragment$User? user;
+  final Fragment$FirstResponder$user? user;
 
   final String firstResponderTypeId;
 
@@ -892,7 +892,7 @@ abstract class CopyWith$Fragment$FirstResponder<TRes> {
   TRes call({
     String? id,
     String? userId,
-    Fragment$User? user,
+    Fragment$FirstResponder$user? user,
     String? firstResponderTypeId,
     Fragment$FirstResponderType? firstResponderType,
     String? currentStationId,
@@ -906,7 +906,7 @@ abstract class CopyWith$Fragment$FirstResponder<TRes> {
     DateTime? updatedAt,
     String? $__typename,
   });
-  CopyWith$Fragment$User<TRes> get user;
+  CopyWith$Fragment$FirstResponder$user<TRes> get user;
   CopyWith$Fragment$FirstResponderType<TRes> get firstResponderType;
   CopyWith$Fragment$Station<TRes> get currentStation;
   CopyWith$Fragment$FirstResponder$firstResponderStationCollection<TRes>
@@ -947,7 +947,9 @@ class _CopyWithImpl$Fragment$FirstResponder<TRes>
         userId: userId == _undefined || userId == null
             ? _instance.userId
             : (userId as String),
-        user: user == _undefined ? _instance.user : (user as Fragment$User?),
+        user: user == _undefined
+            ? _instance.user
+            : (user as Fragment$FirstResponder$user?),
         firstResponderTypeId:
             firstResponderTypeId == _undefined || firstResponderTypeId == null
                 ? _instance.firstResponderTypeId
@@ -985,11 +987,12 @@ class _CopyWithImpl$Fragment$FirstResponder<TRes>
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$User<TRes> get user {
+  CopyWith$Fragment$FirstResponder$user<TRes> get user {
     final local$user = _instance.user;
     return local$user == null
-        ? CopyWith$Fragment$User.stub(_then(_instance))
-        : CopyWith$Fragment$User(local$user, (e) => call(user: e));
+        ? CopyWith$Fragment$FirstResponder$user.stub(_then(_instance))
+        : CopyWith$Fragment$FirstResponder$user(
+            local$user, (e) => call(user: e));
   }
 
   CopyWith$Fragment$FirstResponderType<TRes> get firstResponderType {
@@ -1030,7 +1033,7 @@ class _CopyWithStubImpl$Fragment$FirstResponder<TRes>
   call({
     String? id,
     String? userId,
-    Fragment$User? user,
+    Fragment$FirstResponder$user? user,
     String? firstResponderTypeId,
     Fragment$FirstResponderType? firstResponderType,
     String? currentStationId,
@@ -1046,7 +1049,8 @@ class _CopyWithStubImpl$Fragment$FirstResponder<TRes>
   }) =>
       _res;
 
-  CopyWith$Fragment$User<TRes> get user => CopyWith$Fragment$User.stub(_res);
+  CopyWith$Fragment$FirstResponder$user<TRes> get user =>
+      CopyWith$Fragment$FirstResponder$user.stub(_res);
 
   CopyWith$Fragment$FirstResponderType<TRes> get firstResponderType =>
       CopyWith$Fragment$FirstResponderType.stub(_res);
@@ -1089,9 +1093,177 @@ const fragmentDefinitionFirstResponder = FragmentDefinitionNode(
       arguments: [],
       directives: [],
       selectionSet: SelectionSetNode(selections: [
-        FragmentSpreadNode(
-          name: NameNode(value: 'User'),
+        FieldNode(
+          name: NameNode(value: 'id'),
+          alias: null,
+          arguments: [],
           directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'email'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'firstName'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'lastName'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'displayName'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'data'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'avatarUrl'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'kratosId'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'supabaseUserId'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'userRoleCollection'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'edges'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                  name: NameNode(value: 'node'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                      name: NameNode(value: 'id'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: null,
+                    ),
+                    FieldNode(
+                      name: NameNode(value: 'roleId'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: null,
+                    ),
+                    FieldNode(
+                      name: NameNode(value: 'role'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: SelectionSetNode(selections: [
+                        FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'key'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'schema'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: '__typename'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                      ]),
+                    ),
+                    FieldNode(
+                      name: NameNode(value: 'userId'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: null,
+                    ),
+                    FieldNode(
+                      name: NameNode(value: '__typename'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: null,
+                    ),
+                  ]),
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ]),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
         ),
         FieldNode(
           name: NameNode(value: '__typename'),
@@ -1292,9 +1464,6 @@ const fragmentDefinitionFirstResponder = FragmentDefinitionNode(
 );
 const documentNodeFragmentFirstResponder = DocumentNode(definitions: [
   fragmentDefinitionFirstResponder,
-  fragmentDefinitionUser,
-  fragmentDefinitionUserRole,
-  fragmentDefinitionRole,
   fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
   fragmentDefinitionStationProvider,
@@ -1336,6 +1505,1051 @@ extension ClientExtension$Fragment$FirstResponder on graphql.GraphQLClient {
     );
     return result == null ? null : Fragment$FirstResponder.fromJson(result);
   }
+}
+
+class Fragment$FirstResponder$user {
+  Fragment$FirstResponder$user({
+    required this.id,
+    required this.email,
+    this.firstName,
+    this.lastName,
+    this.displayName,
+    this.data,
+    this.avatarUrl,
+    this.kratosId,
+    this.supabaseUserId,
+    this.userRoleCollection,
+    this.$__typename = 'User',
+  });
+
+  factory Fragment$FirstResponder$user.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$email = json['email'];
+    final l$firstName = json['firstName'];
+    final l$lastName = json['lastName'];
+    final l$displayName = json['displayName'];
+    final l$data = json['data'];
+    final l$avatarUrl = json['avatarUrl'];
+    final l$kratosId = json['kratosId'];
+    final l$supabaseUserId = json['supabaseUserId'];
+    final l$userRoleCollection = json['userRoleCollection'];
+    final l$$__typename = json['__typename'];
+    return Fragment$FirstResponder$user(
+      id: (l$id as String),
+      email: (l$email as String),
+      firstName: (l$firstName as String?),
+      lastName: (l$lastName as String?),
+      displayName: (l$displayName as String?),
+      data: l$data == null ? null : jsonFieldFromJson(l$data),
+      avatarUrl: (l$avatarUrl as String?),
+      kratosId: (l$kratosId as String?),
+      supabaseUserId: (l$supabaseUserId as String?),
+      userRoleCollection: l$userRoleCollection == null
+          ? null
+          : Fragment$FirstResponder$user$userRoleCollection.fromJson(
+              (l$userRoleCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String email;
+
+  final String? firstName;
+
+  final String? lastName;
+
+  final String? displayName;
+
+  final Map<String, dynamic>? data;
+
+  final String? avatarUrl;
+
+  final String? kratosId;
+
+  final String? supabaseUserId;
+
+  final Fragment$FirstResponder$user$userRoleCollection? userRoleCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$email = email;
+    _resultData['email'] = l$email;
+    final l$firstName = firstName;
+    _resultData['firstName'] = l$firstName;
+    final l$lastName = lastName;
+    _resultData['lastName'] = l$lastName;
+    final l$displayName = displayName;
+    _resultData['displayName'] = l$displayName;
+    final l$data = data;
+    _resultData['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    final l$avatarUrl = avatarUrl;
+    _resultData['avatarUrl'] = l$avatarUrl;
+    final l$kratosId = kratosId;
+    _resultData['kratosId'] = l$kratosId;
+    final l$supabaseUserId = supabaseUserId;
+    _resultData['supabaseUserId'] = l$supabaseUserId;
+    final l$userRoleCollection = userRoleCollection;
+    _resultData['userRoleCollection'] = l$userRoleCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$email = email;
+    final l$firstName = firstName;
+    final l$lastName = lastName;
+    final l$displayName = displayName;
+    final l$data = data;
+    final l$avatarUrl = avatarUrl;
+    final l$kratosId = kratosId;
+    final l$supabaseUserId = supabaseUserId;
+    final l$userRoleCollection = userRoleCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$email,
+      l$firstName,
+      l$lastName,
+      l$displayName,
+      l$data,
+      l$avatarUrl,
+      l$kratosId,
+      l$supabaseUserId,
+      l$userRoleCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$FirstResponder$user) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$email = email;
+    final lOther$email = other.email;
+    if (l$email != lOther$email) {
+      return false;
+    }
+    final l$firstName = firstName;
+    final lOther$firstName = other.firstName;
+    if (l$firstName != lOther$firstName) {
+      return false;
+    }
+    final l$lastName = lastName;
+    final lOther$lastName = other.lastName;
+    if (l$lastName != lOther$lastName) {
+      return false;
+    }
+    final l$displayName = displayName;
+    final lOther$displayName = other.displayName;
+    if (l$displayName != lOther$displayName) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$avatarUrl = avatarUrl;
+    final lOther$avatarUrl = other.avatarUrl;
+    if (l$avatarUrl != lOther$avatarUrl) {
+      return false;
+    }
+    final l$kratosId = kratosId;
+    final lOther$kratosId = other.kratosId;
+    if (l$kratosId != lOther$kratosId) {
+      return false;
+    }
+    final l$supabaseUserId = supabaseUserId;
+    final lOther$supabaseUserId = other.supabaseUserId;
+    if (l$supabaseUserId != lOther$supabaseUserId) {
+      return false;
+    }
+    final l$userRoleCollection = userRoleCollection;
+    final lOther$userRoleCollection = other.userRoleCollection;
+    if (l$userRoleCollection != lOther$userRoleCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$FirstResponder$user
+    on Fragment$FirstResponder$user {
+  CopyWith$Fragment$FirstResponder$user<Fragment$FirstResponder$user>
+      get copyWith => CopyWith$Fragment$FirstResponder$user(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$FirstResponder$user<TRes> {
+  factory CopyWith$Fragment$FirstResponder$user(
+    Fragment$FirstResponder$user instance,
+    TRes Function(Fragment$FirstResponder$user) then,
+  ) = _CopyWithImpl$Fragment$FirstResponder$user;
+
+  factory CopyWith$Fragment$FirstResponder$user.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$FirstResponder$user;
+
+  TRes call({
+    String? id,
+    String? email,
+    String? firstName,
+    String? lastName,
+    String? displayName,
+    Map<String, dynamic>? data,
+    String? avatarUrl,
+    String? kratosId,
+    String? supabaseUserId,
+    Fragment$FirstResponder$user$userRoleCollection? userRoleCollection,
+    String? $__typename,
+  });
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection<TRes>
+      get userRoleCollection;
+}
+
+class _CopyWithImpl$Fragment$FirstResponder$user<TRes>
+    implements CopyWith$Fragment$FirstResponder$user<TRes> {
+  _CopyWithImpl$Fragment$FirstResponder$user(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$FirstResponder$user _instance;
+
+  final TRes Function(Fragment$FirstResponder$user) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? email = _undefined,
+    Object? firstName = _undefined,
+    Object? lastName = _undefined,
+    Object? displayName = _undefined,
+    Object? data = _undefined,
+    Object? avatarUrl = _undefined,
+    Object? kratosId = _undefined,
+    Object? supabaseUserId = _undefined,
+    Object? userRoleCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$FirstResponder$user(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        email: email == _undefined || email == null
+            ? _instance.email
+            : (email as String),
+        firstName: firstName == _undefined
+            ? _instance.firstName
+            : (firstName as String?),
+        lastName:
+            lastName == _undefined ? _instance.lastName : (lastName as String?),
+        displayName: displayName == _undefined
+            ? _instance.displayName
+            : (displayName as String?),
+        data: data == _undefined
+            ? _instance.data
+            : (data as Map<String, dynamic>?),
+        avatarUrl: avatarUrl == _undefined
+            ? _instance.avatarUrl
+            : (avatarUrl as String?),
+        kratosId:
+            kratosId == _undefined ? _instance.kratosId : (kratosId as String?),
+        supabaseUserId: supabaseUserId == _undefined
+            ? _instance.supabaseUserId
+            : (supabaseUserId as String?),
+        userRoleCollection: userRoleCollection == _undefined
+            ? _instance.userRoleCollection
+            : (userRoleCollection
+                as Fragment$FirstResponder$user$userRoleCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection<TRes>
+      get userRoleCollection {
+    final local$userRoleCollection = _instance.userRoleCollection;
+    return local$userRoleCollection == null
+        ? CopyWith$Fragment$FirstResponder$user$userRoleCollection.stub(
+            _then(_instance))
+        : CopyWith$Fragment$FirstResponder$user$userRoleCollection(
+            local$userRoleCollection, (e) => call(userRoleCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$FirstResponder$user<TRes>
+    implements CopyWith$Fragment$FirstResponder$user<TRes> {
+  _CopyWithStubImpl$Fragment$FirstResponder$user(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? email,
+    String? firstName,
+    String? lastName,
+    String? displayName,
+    Map<String, dynamic>? data,
+    String? avatarUrl,
+    String? kratosId,
+    String? supabaseUserId,
+    Fragment$FirstResponder$user$userRoleCollection? userRoleCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection<TRes>
+      get userRoleCollection =>
+          CopyWith$Fragment$FirstResponder$user$userRoleCollection.stub(_res);
+}
+
+class Fragment$FirstResponder$user$userRoleCollection {
+  Fragment$FirstResponder$user$userRoleCollection({
+    required this.edges,
+    this.$__typename = 'UserRoleConnection',
+  });
+
+  factory Fragment$FirstResponder$user$userRoleCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Fragment$FirstResponder$user$userRoleCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Fragment$FirstResponder$user$userRoleCollection$edges.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$FirstResponder$user$userRoleCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$FirstResponder$user$userRoleCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$FirstResponder$user$userRoleCollection
+    on Fragment$FirstResponder$user$userRoleCollection {
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection<
+          Fragment$FirstResponder$user$userRoleCollection>
+      get copyWith => CopyWith$Fragment$FirstResponder$user$userRoleCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$FirstResponder$user$userRoleCollection<TRes> {
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection(
+    Fragment$FirstResponder$user$userRoleCollection instance,
+    TRes Function(Fragment$FirstResponder$user$userRoleCollection) then,
+  ) = _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection;
+
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection;
+
+  TRes call({
+    List<Fragment$FirstResponder$user$userRoleCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Fragment$FirstResponder$user$userRoleCollection$edges> Function(
+              Iterable<
+                  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges<
+                      Fragment$FirstResponder$user$userRoleCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection<TRes>
+    implements CopyWith$Fragment$FirstResponder$user$userRoleCollection<TRes> {
+  _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$FirstResponder$user$userRoleCollection _instance;
+
+  final TRes Function(Fragment$FirstResponder$user$userRoleCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$FirstResponder$user$userRoleCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges
+                as List<Fragment$FirstResponder$user$userRoleCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Fragment$FirstResponder$user$userRoleCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges<
+                          Fragment$FirstResponder$user$userRoleCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection<TRes>
+    implements CopyWith$Fragment$FirstResponder$user$userRoleCollection<TRes> {
+  _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$FirstResponder$user$userRoleCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Fragment$FirstResponder$user$userRoleCollection$edges {
+  Fragment$FirstResponder$user$userRoleCollection$edges({
+    required this.node,
+    this.$__typename = 'UserRoleEdge',
+  });
+
+  factory Fragment$FirstResponder$user$userRoleCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Fragment$FirstResponder$user$userRoleCollection$edges(
+      node: Fragment$FirstResponder$user$userRoleCollection$edges$node.fromJson(
+          (l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$FirstResponder$user$userRoleCollection$edges$node node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$FirstResponder$user$userRoleCollection$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$FirstResponder$user$userRoleCollection$edges
+    on Fragment$FirstResponder$user$userRoleCollection$edges {
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges<
+          Fragment$FirstResponder$user$userRoleCollection$edges>
+      get copyWith =>
+          CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges<
+    TRes> {
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges(
+    Fragment$FirstResponder$user$userRoleCollection$edges instance,
+    TRes Function(Fragment$FirstResponder$user$userRoleCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges;
+
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges;
+
+  TRes call({
+    Fragment$FirstResponder$user$userRoleCollection$edges$node? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node<TRes>
+      get node;
+}
+
+class _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges<TRes>
+    implements
+        CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$FirstResponder$user$userRoleCollection$edges _instance;
+
+  final TRes Function(Fragment$FirstResponder$user$userRoleCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$FirstResponder$user$userRoleCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node
+                as Fragment$FirstResponder$user$userRoleCollection$edges$node),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node<TRes>
+      get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node(
+        local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges<
+        TRes>
+    implements
+        CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$FirstResponder$user$userRoleCollection$edges$node? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node<TRes>
+      get node =>
+          CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node
+              .stub(_res);
+}
+
+class Fragment$FirstResponder$user$userRoleCollection$edges$node {
+  Fragment$FirstResponder$user$userRoleCollection$edges$node({
+    required this.id,
+    required this.roleId,
+    required this.role,
+    required this.userId,
+    this.$__typename = 'UserRole',
+  });
+
+  factory Fragment$FirstResponder$user$userRoleCollection$edges$node.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$roleId = json['roleId'];
+    final l$role = json['role'];
+    final l$userId = json['userId'];
+    final l$$__typename = json['__typename'];
+    return Fragment$FirstResponder$user$userRoleCollection$edges$node(
+      id: (l$id as String),
+      roleId: (l$roleId as String),
+      role: Fragment$FirstResponder$user$userRoleCollection$edges$node$role
+          .fromJson((l$role as Map<String, dynamic>)),
+      userId: (l$userId as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String roleId;
+
+  final Fragment$FirstResponder$user$userRoleCollection$edges$node$role role;
+
+  final String userId;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$roleId = roleId;
+    _resultData['roleId'] = l$roleId;
+    final l$role = role;
+    _resultData['role'] = l$role.toJson();
+    final l$userId = userId;
+    _resultData['userId'] = l$userId;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$roleId = roleId;
+    final l$role = role;
+    final l$userId = userId;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$roleId,
+      l$role,
+      l$userId,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Fragment$FirstResponder$user$userRoleCollection$edges$node) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$roleId = roleId;
+    final lOther$roleId = other.roleId;
+    if (l$roleId != lOther$roleId) {
+      return false;
+    }
+    final l$role = role;
+    final lOther$role = other.role;
+    if (l$role != lOther$role) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$FirstResponder$user$userRoleCollection$edges$node
+    on Fragment$FirstResponder$user$userRoleCollection$edges$node {
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node<
+          Fragment$FirstResponder$user$userRoleCollection$edges$node>
+      get copyWith =>
+          CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node<
+    TRes> {
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node(
+    Fragment$FirstResponder$user$userRoleCollection$edges$node instance,
+    TRes Function(Fragment$FirstResponder$user$userRoleCollection$edges$node)
+        then,
+  ) = _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node;
+
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node;
+
+  TRes call({
+    String? id,
+    String? roleId,
+    Fragment$FirstResponder$user$userRoleCollection$edges$node$role? role,
+    String? userId,
+    String? $__typename,
+  });
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<TRes>
+      get role;
+}
+
+class _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node<
+        TRes>
+    implements
+        CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node<
+            TRes> {
+  _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$FirstResponder$user$userRoleCollection$edges$node _instance;
+
+  final TRes Function(
+      Fragment$FirstResponder$user$userRoleCollection$edges$node) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? roleId = _undefined,
+    Object? role = _undefined,
+    Object? userId = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$FirstResponder$user$userRoleCollection$edges$node(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        roleId: roleId == _undefined || roleId == null
+            ? _instance.roleId
+            : (roleId as String),
+        role: role == _undefined || role == null
+            ? _instance.role
+            : (role
+                as Fragment$FirstResponder$user$userRoleCollection$edges$node$role),
+        userId: userId == _undefined || userId == null
+            ? _instance.userId
+            : (userId as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<TRes>
+      get role {
+    final local$role = _instance.role;
+    return CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role(
+        local$role, (e) => call(role: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node<
+        TRes>
+    implements
+        CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node<
+            TRes> {
+  _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? roleId,
+    Fragment$FirstResponder$user$userRoleCollection$edges$node$role? role,
+    String? userId,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<TRes>
+      get role =>
+          CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role
+              .stub(_res);
+}
+
+class Fragment$FirstResponder$user$userRoleCollection$edges$node$role {
+  Fragment$FirstResponder$user$userRoleCollection$edges$node$role({
+    required this.id,
+    required this.name,
+    required this.key,
+    this.schema,
+    this.$__typename = 'Role',
+  });
+
+  factory Fragment$FirstResponder$user$userRoleCollection$edges$node$role.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$key = json['key'];
+    final l$schema = json['schema'];
+    final l$$__typename = json['__typename'];
+    return Fragment$FirstResponder$user$userRoleCollection$edges$node$role(
+      id: (l$id as String),
+      name: (l$name as String),
+      key: (l$key as String),
+      schema: l$schema == null ? null : jsonFieldFromJson(l$schema),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String name;
+
+  final String key;
+
+  final Map<String, dynamic>? schema;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$key = key;
+    _resultData['key'] = l$key;
+    final l$schema = schema;
+    _resultData['schema'] = l$schema == null ? null : jsonFieldToJson(l$schema);
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$key,
+      l$schema,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Fragment$FirstResponder$user$userRoleCollection$edges$node$role) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$FirstResponder$user$userRoleCollection$edges$node$role
+    on Fragment$FirstResponder$user$userRoleCollection$edges$node$role {
+  CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<
+          Fragment$FirstResponder$user$userRoleCollection$edges$node$role>
+      get copyWith =>
+          CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<
+    TRes> {
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role(
+    Fragment$FirstResponder$user$userRoleCollection$edges$node$role instance,
+    TRes Function(
+            Fragment$FirstResponder$user$userRoleCollection$edges$node$role)
+        then,
+  ) = _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node$role;
+
+  factory CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node$role;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<
+        TRes>
+    implements
+        CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<
+            TRes> {
+  _CopyWithImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node$role(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$FirstResponder$user$userRoleCollection$edges$node$role
+      _instance;
+
+  final TRes Function(
+      Fragment$FirstResponder$user$userRoleCollection$edges$node$role) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$FirstResponder$user$userRoleCollection$edges$node$role(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        key: key == _undefined || key == null ? _instance.key : (key as String),
+        schema: schema == _undefined
+            ? _instance.schema
+            : (schema as Map<String, dynamic>?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<
+        TRes>
+    implements
+        CopyWith$Fragment$FirstResponder$user$userRoleCollection$edges$node$role<
+            TRes> {
+  _CopyWithStubImpl$Fragment$FirstResponder$user$userRoleCollection$edges$node$role(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Fragment$FirstResponder$firstResponderStationCollection {
@@ -2233,9 +3447,6 @@ const documentNodeQueryFirstResponder = DocumentNode(definitions: [
     ]),
   ),
   fragmentDefinitionFirstResponder,
-  fragmentDefinitionUser,
-  fragmentDefinitionUserRole,
-  fragmentDefinitionRole,
   fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
   fragmentDefinitionStationProvider,
@@ -3316,9 +4527,6 @@ const documentNodeQueryFirstResponderCollection = DocumentNode(definitions: [
     ]),
   ),
   fragmentDefinitionFirstResponder,
-  fragmentDefinitionUser,
-  fragmentDefinitionUserRole,
-  fragmentDefinitionRole,
   fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
   fragmentDefinitionStationProvider,

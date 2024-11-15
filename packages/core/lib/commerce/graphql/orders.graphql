@@ -148,8 +148,6 @@ fragment Order on Order {
   }
   data
   notes
-  units
-  pricePerUnit
   updatedAt
   createdAt
 }
@@ -360,5 +358,17 @@ query ShoppingCartCollection(
       hasNextPage
       hasPreviousPage
     }
+  }
+}
+
+mutation UpdateShoppingCart($id: UUID!, $input: ShoppingCartUpdateInput!) {
+  updateShoppingCartCollection(
+    filter: { id: { eq: $id } }
+    set: $input
+  ) {
+    records {
+      ...ShoppingCart
+    }
+    affectedCount
   }
 }
