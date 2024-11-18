@@ -1,4 +1,4 @@
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_provider.dart';
+import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -9,7 +9,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final modelValue = ref.watch(cartProvider);
+    final modelValue = ref.watch(shoppingCartProvider);
 
     return FScaffold(
       header: FHeader(
@@ -39,10 +39,10 @@ class ShoppingCartScreen extends HookConsumerWidget {
                         onPressed: () {
                           if (item.quantity > 1) {
                             ref
-                                .read(cartProvider.notifier)
+                                .read(shoppingCartProvider.notifier)
                                 .updateQuantity(item.id, item.quantity - 1);
                           } else {
-                            ref.read(cartProvider.notifier).removeItem(item.id);
+                            ref.read(shoppingCartProvider.notifier).removeItem(item.id);
                           }
                         },
                       ),
@@ -51,7 +51,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
                         icon: Icon(Icons.add),
                         onPressed: () {
                           ref
-                              .read(cartProvider.notifier)
+                              .read(shoppingCartProvider.notifier)
                               .updateQuantity(item.id, item.quantity + 1);
                         },
                       ),

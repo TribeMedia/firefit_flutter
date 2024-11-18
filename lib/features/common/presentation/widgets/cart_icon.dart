@@ -1,4 +1,4 @@
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_provider.dart';
+import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,7 +15,7 @@ class CartIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartAsync = ref.watch(cartProvider);
+    final cartAsync = ref.watch(shoppingCartProvider);
 
     return cartAsync.when(
       data: (model) => Stack(

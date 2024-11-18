@@ -681,6 +681,7 @@ const documentNodeFragmentContentType = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 
 extension ClientExtension$Fragment$ContentType on graphql.GraphQLClient {
@@ -2550,6 +2551,7 @@ const documentNodeFragmentContentTemplate = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionContentTemplateVariable,
   fragmentDefinitionTemplateVariableType,
@@ -3376,6 +3378,7 @@ const documentNodeFragmentContentPart = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 
 extension ClientExtension$Fragment$ContentPart on graphql.GraphQLClient {
@@ -3737,6 +3740,7 @@ const documentNodeFragmentContentContentPart = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 
 extension ClientExtension$Fragment$ContentContentPart on graphql.GraphQLClient {
@@ -4826,6 +4830,7 @@ const documentNodeFragmentContent = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -8545,6 +8550,7 @@ const documentNodeQueryContentTypeCollection = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 Query$ContentTypeCollection _parserFn$Query$ContentTypeCollection(
         Map<String, dynamic> data) =>
@@ -9602,6 +9608,7 @@ const documentNodeQueryContentType = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 Query$ContentType _parserFn$Query$ContentType(Map<String, dynamic> data) =>
     Query$ContentType.fromJson(data);
@@ -10387,6 +10394,7 @@ const documentNodeQueryContent = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -11493,6 +11501,7 @@ const documentNodeQueryContentCollection = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -13627,6 +13636,7 @@ const documentNodeMutationCreateContent = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -14407,6 +14417,7 @@ const documentNodeMutationUpdateContent = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -15145,6 +15156,7 @@ const documentNodeMutationDeleteContent = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,

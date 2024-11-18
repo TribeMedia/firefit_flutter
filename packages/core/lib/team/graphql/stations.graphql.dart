@@ -339,6 +339,7 @@ class Fragment$Station {
     this.zip,
     this.iconUrl,
     this.coverUrl,
+    required this.registrationCode,
     required this.createdAt,
     this.stationProviderCollection,
     this.$__typename = 'Station',
@@ -357,6 +358,7 @@ class Fragment$Station {
     final l$zip = json['zip'];
     final l$iconUrl = json['iconUrl'];
     final l$coverUrl = json['coverUrl'];
+    final l$registrationCode = json['registrationCode'];
     final l$createdAt = json['createdAt'];
     final l$stationProviderCollection = json['stationProviderCollection'];
     final l$$__typename = json['__typename'];
@@ -373,6 +375,7 @@ class Fragment$Station {
       zip: (l$zip as String?),
       iconUrl: (l$iconUrl as String?),
       coverUrl: (l$coverUrl as String?),
+      registrationCode: (l$registrationCode as String),
       createdAt: DateTime.parse((l$createdAt as String)),
       stationProviderCollection: l$stationProviderCollection == null
           ? null
@@ -406,6 +409,8 @@ class Fragment$Station {
 
   final String? coverUrl;
 
+  final String registrationCode;
+
   final DateTime createdAt;
 
   final Fragment$Station$stationProviderCollection? stationProviderCollection;
@@ -438,6 +443,8 @@ class Fragment$Station {
     _resultData['iconUrl'] = l$iconUrl;
     final l$coverUrl = coverUrl;
     _resultData['coverUrl'] = l$coverUrl;
+    final l$registrationCode = registrationCode;
+    _resultData['registrationCode'] = l$registrationCode;
     final l$createdAt = createdAt;
     _resultData['createdAt'] = l$createdAt.toIso8601String();
     final l$stationProviderCollection = stationProviderCollection;
@@ -462,6 +469,7 @@ class Fragment$Station {
     final l$zip = zip;
     final l$iconUrl = iconUrl;
     final l$coverUrl = coverUrl;
+    final l$registrationCode = registrationCode;
     final l$createdAt = createdAt;
     final l$stationProviderCollection = stationProviderCollection;
     final l$$__typename = $__typename;
@@ -478,6 +486,7 @@ class Fragment$Station {
       l$zip,
       l$iconUrl,
       l$coverUrl,
+      l$registrationCode,
       l$createdAt,
       l$stationProviderCollection,
       l$$__typename,
@@ -552,6 +561,11 @@ class Fragment$Station {
     if (l$coverUrl != lOther$coverUrl) {
       return false;
     }
+    final l$registrationCode = registrationCode;
+    final lOther$registrationCode = other.registrationCode;
+    if (l$registrationCode != lOther$registrationCode) {
+      return false;
+    }
     final l$createdAt = createdAt;
     final lOther$createdAt = other.createdAt;
     if (l$createdAt != lOther$createdAt) {
@@ -601,6 +615,7 @@ abstract class CopyWith$Fragment$Station<TRes> {
     String? zip,
     String? iconUrl,
     String? coverUrl,
+    String? registrationCode,
     DateTime? createdAt,
     Fragment$Station$stationProviderCollection? stationProviderCollection,
     String? $__typename,
@@ -635,6 +650,7 @@ class _CopyWithImpl$Fragment$Station<TRes>
     Object? zip = _undefined,
     Object? iconUrl = _undefined,
     Object? coverUrl = _undefined,
+    Object? registrationCode = _undefined,
     Object? createdAt = _undefined,
     Object? stationProviderCollection = _undefined,
     Object? $__typename = _undefined,
@@ -662,6 +678,10 @@ class _CopyWithImpl$Fragment$Station<TRes>
             iconUrl == _undefined ? _instance.iconUrl : (iconUrl as String?),
         coverUrl:
             coverUrl == _undefined ? _instance.coverUrl : (coverUrl as String?),
+        registrationCode:
+            registrationCode == _undefined || registrationCode == null
+                ? _instance.registrationCode
+                : (registrationCode as String),
         createdAt: createdAt == _undefined || createdAt == null
             ? _instance.createdAt
             : (createdAt as DateTime),
@@ -705,6 +725,7 @@ class _CopyWithStubImpl$Fragment$Station<TRes>
     String? zip,
     String? iconUrl,
     String? coverUrl,
+    String? registrationCode,
     DateTime? createdAt,
     Fragment$Station$stationProviderCollection? stationProviderCollection,
     String? $__typename,
@@ -804,6 +825,13 @@ const fragmentDefinitionStation = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'coverUrl'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'registrationCode'),
       alias: null,
       arguments: [],
       directives: [],

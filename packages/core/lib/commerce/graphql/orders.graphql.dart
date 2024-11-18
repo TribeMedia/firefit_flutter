@@ -362,6 +362,7 @@ class Fragment$OrderItemMenuItem {
     required this.menuItemId,
     required this.menuItem,
     this.notes,
+    required this.count,
     this.$__typename = 'OrderItemMenuItem',
   });
 
@@ -371,6 +372,7 @@ class Fragment$OrderItemMenuItem {
     final l$menuItemId = json['menuItemId'];
     final l$menuItem = json['menuItem'];
     final l$notes = json['notes'];
+    final l$count = json['count'];
     final l$$__typename = json['__typename'];
     return Fragment$OrderItemMenuItem(
       id: (l$id as String),
@@ -379,6 +381,7 @@ class Fragment$OrderItemMenuItem {
       menuItem:
           Fragment$MenuItem.fromJson((l$menuItem as Map<String, dynamic>)),
       notes: (l$notes as String?),
+      count: (l$count as int),
       $__typename: (l$$__typename as String),
     );
   }
@@ -392,6 +395,8 @@ class Fragment$OrderItemMenuItem {
   final Fragment$MenuItem menuItem;
 
   final String? notes;
+
+  final int count;
 
   final String $__typename;
 
@@ -407,6 +412,8 @@ class Fragment$OrderItemMenuItem {
     _resultData['menuItem'] = l$menuItem.toJson();
     final l$notes = notes;
     _resultData['notes'] = l$notes;
+    final l$count = count;
+    _resultData['count'] = l$count;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -419,6 +426,7 @@ class Fragment$OrderItemMenuItem {
     final l$menuItemId = menuItemId;
     final l$menuItem = menuItem;
     final l$notes = notes;
+    final l$count = count;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -426,6 +434,7 @@ class Fragment$OrderItemMenuItem {
       l$menuItemId,
       l$menuItem,
       l$notes,
+      l$count,
       l$$__typename,
     ]);
   }
@@ -464,6 +473,11 @@ class Fragment$OrderItemMenuItem {
     if (l$notes != lOther$notes) {
       return false;
     }
+    final l$count = count;
+    final lOther$count = other.count;
+    if (l$count != lOther$count) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -497,6 +511,7 @@ abstract class CopyWith$Fragment$OrderItemMenuItem<TRes> {
     String? menuItemId,
     Fragment$MenuItem? menuItem,
     String? notes,
+    int? count,
     String? $__typename,
   });
   CopyWith$Fragment$MenuItem<TRes> get menuItem;
@@ -521,6 +536,7 @@ class _CopyWithImpl$Fragment$OrderItemMenuItem<TRes>
     Object? menuItemId = _undefined,
     Object? menuItem = _undefined,
     Object? notes = _undefined,
+    Object? count = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$OrderItemMenuItem(
@@ -535,6 +551,9 @@ class _CopyWithImpl$Fragment$OrderItemMenuItem<TRes>
             ? _instance.menuItem
             : (menuItem as Fragment$MenuItem),
         notes: notes == _undefined ? _instance.notes : (notes as String?),
+        count: count == _undefined || count == null
+            ? _instance.count
+            : (count as int),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -558,6 +577,7 @@ class _CopyWithStubImpl$Fragment$OrderItemMenuItem<TRes>
     String? menuItemId,
     Fragment$MenuItem? menuItem,
     String? notes,
+    int? count,
     String? $__typename,
   }) =>
       _res;
@@ -617,6 +637,13 @@ const fragmentDefinitionOrderItemMenuItem = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'notes'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'count'),
       alias: null,
       arguments: [],
       directives: [],
@@ -1650,6 +1677,7 @@ class Fragment$ShoppingCartMenuItem {
     required this.shoppingCartId,
     required this.menuItemId,
     required this.menuItem,
+    required this.count,
     this.$__typename = 'ShoppingCartMenuItem',
   });
 
@@ -1658,6 +1686,7 @@ class Fragment$ShoppingCartMenuItem {
     final l$shoppingCartId = json['shoppingCartId'];
     final l$menuItemId = json['menuItemId'];
     final l$menuItem = json['menuItem'];
+    final l$count = json['count'];
     final l$$__typename = json['__typename'];
     return Fragment$ShoppingCartMenuItem(
       id: (l$id as String),
@@ -1665,6 +1694,7 @@ class Fragment$ShoppingCartMenuItem {
       menuItemId: (l$menuItemId as String),
       menuItem:
           Fragment$MenuItem.fromJson((l$menuItem as Map<String, dynamic>)),
+      count: (l$count as int),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1676,6 +1706,8 @@ class Fragment$ShoppingCartMenuItem {
   final String menuItemId;
 
   final Fragment$MenuItem menuItem;
+
+  final int count;
 
   final String $__typename;
 
@@ -1689,6 +1721,8 @@ class Fragment$ShoppingCartMenuItem {
     _resultData['menuItemId'] = l$menuItemId;
     final l$menuItem = menuItem;
     _resultData['menuItem'] = l$menuItem.toJson();
+    final l$count = count;
+    _resultData['count'] = l$count;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1700,12 +1734,14 @@ class Fragment$ShoppingCartMenuItem {
     final l$shoppingCartId = shoppingCartId;
     final l$menuItemId = menuItemId;
     final l$menuItem = menuItem;
+    final l$count = count;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
       l$shoppingCartId,
       l$menuItemId,
       l$menuItem,
+      l$count,
       l$$__typename,
     ]);
   }
@@ -1737,6 +1773,11 @@ class Fragment$ShoppingCartMenuItem {
     final l$menuItem = menuItem;
     final lOther$menuItem = other.menuItem;
     if (l$menuItem != lOther$menuItem) {
+      return false;
+    }
+    final l$count = count;
+    final lOther$count = other.count;
+    if (l$count != lOther$count) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1771,6 +1812,7 @@ abstract class CopyWith$Fragment$ShoppingCartMenuItem<TRes> {
     String? shoppingCartId,
     String? menuItemId,
     Fragment$MenuItem? menuItem,
+    int? count,
     String? $__typename,
   });
   CopyWith$Fragment$MenuItem<TRes> get menuItem;
@@ -1794,6 +1836,7 @@ class _CopyWithImpl$Fragment$ShoppingCartMenuItem<TRes>
     Object? shoppingCartId = _undefined,
     Object? menuItemId = _undefined,
     Object? menuItem = _undefined,
+    Object? count = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$ShoppingCartMenuItem(
@@ -1807,6 +1850,9 @@ class _CopyWithImpl$Fragment$ShoppingCartMenuItem<TRes>
         menuItem: menuItem == _undefined || menuItem == null
             ? _instance.menuItem
             : (menuItem as Fragment$MenuItem),
+        count: count == _undefined || count == null
+            ? _instance.count
+            : (count as int),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -1829,6 +1875,7 @@ class _CopyWithStubImpl$Fragment$ShoppingCartMenuItem<TRes>
     String? shoppingCartId,
     String? menuItemId,
     Fragment$MenuItem? menuItem,
+    int? count,
     String? $__typename,
   }) =>
       _res;
@@ -1885,6 +1932,13 @@ const fragmentDefinitionShoppingCartMenuItem = FragmentDefinitionNode(
           selectionSet: null,
         ),
       ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'count'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
     ),
     FieldNode(
       name: NameNode(value: '__typename'),
@@ -4517,6 +4571,7 @@ const documentNodeFragmentOrder = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,
@@ -6656,6 +6711,7 @@ const documentNodeQueryOrder = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,
@@ -7709,6 +7765,7 @@ const documentNodeQueryOrderCollection = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,
@@ -8717,6 +8774,7 @@ const documentNodeMutationCreateOrder = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionOrderItemMenuItem,
   fragmentDefinitionMenuItem,
   fragmentDefinitionOrderTransaction,

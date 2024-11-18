@@ -41,18 +41,19 @@ class MenuController extends _$MenuController {
       filter: Input$MenuFilter(
         providerId: Input$UUIDFilter(eq: providerId),
       ),
+      orderBy: [Input$MenuOrderBy(index: Enum$OrderByDirection.AscNullsLast)],
     );
     return menuResult.fold(
-          (l) {
-            final viewModel = MenuViewModel(providerId: providerId, error: l.error);
-            state = AsyncData(viewModel);
-            return viewModel;
-          },
-          (r) {
-            final viewModel = MenuViewModel(providerId: providerId, menus: r);
-            state = AsyncData(viewModel);
-            return viewModel;
-          },
+      (l) {
+        final viewModel = MenuViewModel(providerId: providerId, error: l.error);
+        state = AsyncData(viewModel);
+        return viewModel;
+      },
+      (r) {
+        final viewModel = MenuViewModel(providerId: providerId, menus: r);
+        state = AsyncData(viewModel);
+        return viewModel;
+      },
     );
   }
 
@@ -60,29 +61,38 @@ class MenuController extends _$MenuController {
     if (!state.hasValue) {
       return [];
     }
-    return state.value!.menus.where((menu) => menu.menuType.key == 'breakfast').toList();
+    return state.value!.menus
+        .where((menu) => menu.menuType.key == 'breakfast')
+        .toList();
   }
 
   List<Menu> get lunchMenus {
     if (!state.hasValue) {
       return [];
     }
-    return state.value!.menus.where((menu) => menu.menuType.key == 'lunch').toList();
+    return state.value!.menus
+        .where((menu) => menu.menuType.key == 'lunch')
+        .toList();
   }
 
   List<Menu> get dinnerMenus {
     if (!state.hasValue) {
       return [];
     }
-    return state.value!.menus.where((menu) => menu.menuType.key == 'dinner').toList();
+    return state.value!.menus
+        .where((menu) => menu.menuType.key == 'dinner')
+        .toList();
   }
 
   List<MenuItem> get breakfastMenuItems {
     if (!state.hasValue) {
       return [];
     }
-    final menu = state.value!.menus.firstWhereOrNull((menu) => menu.menuType.key == 'breakfast');
-    if (menu == null || menu.menuItemCollection == null || menu.menuItemCollection!.edges.isEmpty) {
+    final menu = state.value!.menus
+        .firstWhereOrNull((menu) => menu.menuType.key == 'breakfast');
+    if (menu == null ||
+        menu.menuItemCollection == null ||
+        menu.menuItemCollection!.edges.isEmpty) {
       return [];
     }
     return menu.menuItemCollection!.edges.map((edge) => edge.node).toList();
@@ -92,8 +102,11 @@ class MenuController extends _$MenuController {
     if (!state.hasValue) {
       return [];
     }
-    final menu = state.value!.menus.firstWhereOrNull((menu) => menu.menuType.key == 'lunch');
-    if (menu == null || menu.menuItemCollection == null || menu.menuItemCollection!.edges.isEmpty) {
+    final menu = state.value!.menus
+        .firstWhereOrNull((menu) => menu.menuType.key == 'lunch');
+    if (menu == null ||
+        menu.menuItemCollection == null ||
+        menu.menuItemCollection!.edges.isEmpty) {
       return [];
     }
     return menu.menuItemCollection!.edges.map((edge) => edge.node).toList();
@@ -103,8 +116,11 @@ class MenuController extends _$MenuController {
     if (!state.hasValue) {
       return [];
     }
-    final menu = state.value!.menus.firstWhereOrNull((menu) => menu.menuType.key == 'dinner');
-    if (menu == null || menu.menuItemCollection == null || menu.menuItemCollection!.edges.isEmpty) {
+    final menu = state.value!.menus
+        .firstWhereOrNull((menu) => menu.menuType.key == 'dinner');
+    if (menu == null ||
+        menu.menuItemCollection == null ||
+        menu.menuItemCollection!.edges.isEmpty) {
       return [];
     }
     return menu.menuItemCollection!.edges.map((edge) => edge.node).toList();
@@ -114,6 +130,14 @@ class MenuController extends _$MenuController {
     if (!state.hasValue) {
       return [];
     }
-    return state.value!.menus.where((menu) => menu.menuItemCollection?.edges.any((edge) => edge.node.isFeatured == true) ?? false).map((menu) => menu.menuItemCollection!.edges.map((edge) => edge.node).toList()).expand((x) => x).toList();
+    return state.value!.menus
+        .where((menu) =>
+            menu.menuItemCollection?.edges
+                .any((edge) => edge.node.isFeatured == true) ??
+            false)
+        .map((menu) =>
+            menu.menuItemCollection!.edges.map((edge) => edge.node).toList())
+        .expand((x) => x)
+        .toList();
   }
 }

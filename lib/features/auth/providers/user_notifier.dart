@@ -30,19 +30,19 @@ final initialUser = User(
     edges: [
       Fragment$User$firstResponderCollection$edges(
         node: FirstResponder(
-          id: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+          id: '036adc2b-abe7-4037-b61c-9fb54046718f',
           userId: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
           firstResponderTypeId: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
           firstResponderType: Fragment$FirstResponderType(
-            id: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
-            key: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
-            name: 'Station',
+            id: '231324ab-38a2-42c7-a22f-849d195f42d1',
+            key: 'firefighter',
+            name: 'Firefighter',
             schema: null,
             createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),
           ),
           currentStationId: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2',
           currentStation: Fragment$Station(
-            id: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
+            id: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2',
             name: 'Engine Company',
             number: 6,
             description: 'DC Fire & EMS Department',
@@ -52,6 +52,7 @@ final initialUser = User(
             city: 'Washington',
             state: 'DC',
             zip: '20001',
+            registrationCode: 'STATION6',
             iconUrl: 'https://ipfs.tribemedia.io/ipfs/QmWM3Dp8D4NjQxco8P3RPpb6eDwVkhYe9jKkRubPs1BCoR',
             coverUrl: 'https://ipfs.tribemedia.io/ipfs/QmbWBc8tRN6fBP5Y6BMZm1TmAzzj3bSWQvz6C1dQQA7jug',
             createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),

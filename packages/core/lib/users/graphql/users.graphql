@@ -14,6 +14,16 @@ fragment UserRole on UserRole {
   userId
 }
 
+fragment UserOrganization on UserOrganization {
+  id
+  userId
+  organizationId
+  organization {
+    ...Organization
+  }
+  createdAt
+}
+
 fragment User on User {
   id
   email
@@ -45,7 +55,7 @@ fragment User on User {
   userOrganizationCollection{
     edges{
       node{
-        ...Organization
+        ...UserOrganization
       }
     }
     pageInfo{

@@ -16,6 +16,7 @@ fragment OrderItemMenuItem on OrderItemMenuItem {
     ...MenuItem
   }
   notes
+  count
 }
 
 fragment OrderItem on OrderItem {
@@ -46,6 +47,7 @@ fragment ShoppingCartMenuItem on ShoppingCartMenuItem {
   menuItem {
     ...MenuItem
   }
+  count
 }
 
 fragment ShoppingCart on ShoppingCart {

@@ -704,6 +704,7 @@ const documentNodeFragmentTeamUpdate = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -755,8 +756,8 @@ class Variables$Query$TeamUpdateTypeCollection {
     List<Input$TeamUpdateTypeOrderBy>? orderBy,
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     int? offset,
   }) =>
       Variables$Query$TeamUpdateTypeCollection._({
@@ -798,11 +799,11 @@ class Variables$Query$TeamUpdateTypeCollection {
     }
     if (data.containsKey('before')) {
       final l$before = data['before'];
-      result$data['before'] = (l$before as String?);
+      result$data['before'] = (l$before as dynamic?);
     }
     if (data.containsKey('after')) {
       final l$after = data['after'];
-      result$data['after'] = (l$after as String?);
+      result$data['after'] = (l$after as dynamic?);
     }
     if (data.containsKey('offset')) {
       final l$offset = data['offset'];
@@ -823,9 +824,9 @@ class Variables$Query$TeamUpdateTypeCollection {
 
   int? get last => (_$data['last'] as int?);
 
-  String? get before => (_$data['before'] as String?);
+  dynamic? get before => (_$data['before'] as dynamic?);
 
-  String? get after => (_$data['after'] as String?);
+  dynamic? get after => (_$data['after'] as dynamic?);
 
   int? get offset => (_$data['offset'] as int?);
 
@@ -987,8 +988,8 @@ abstract class CopyWith$Variables$Query$TeamUpdateTypeCollection<TRes> {
     List<Input$TeamUpdateTypeOrderBy>? orderBy,
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     int? offset,
   });
 }
@@ -1023,8 +1024,8 @@ class _CopyWithImpl$Variables$Query$TeamUpdateTypeCollection<TRes>
           'orderBy': (orderBy as List<Input$TeamUpdateTypeOrderBy>?),
         if (first != _undefined) 'first': (first as int?),
         if (last != _undefined) 'last': (last as int?),
-        if (before != _undefined) 'before': (before as String?),
-        if (after != _undefined) 'after': (after as String?),
+        if (before != _undefined) 'before': (before as dynamic?),
+        if (after != _undefined) 'after': (after as dynamic?),
         if (offset != _undefined) 'offset': (offset as int?),
       }));
 }
@@ -1040,8 +1041,8 @@ class _CopyWithStubImpl$Variables$Query$TeamUpdateTypeCollection<TRes>
     List<Input$TeamUpdateTypeOrderBy>? orderBy,
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     int? offset,
   }) =>
       _res;
@@ -1245,7 +1246,7 @@ const documentNodeQueryTeamUpdateTypeCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'before')),
         type: NamedTypeNode(
-          name: NameNode(value: 'String'),
+          name: NameNode(value: 'Cursor'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -1254,7 +1255,7 @@ const documentNodeQueryTeamUpdateTypeCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'after')),
         type: NamedTypeNode(
-          name: NameNode(value: 'String'),
+          name: NameNode(value: 'Cursor'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -2400,7 +2401,12 @@ const documentNodeQueryTeamUpdateType = DocumentNode(definitions: [
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
                 name: NameNode(value: 'id'),
-                value: VariableNode(name: NameNode(value: 'id')),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
               )
             ]),
           )
@@ -2925,8 +2931,8 @@ class Variables$Query$TeamUpdateCollection {
     List<Input$TeamUpdateOrderBy>? orderBy,
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     int? offset,
   }) =>
       Variables$Query$TeamUpdateCollection._({
@@ -2967,11 +2973,11 @@ class Variables$Query$TeamUpdateCollection {
     }
     if (data.containsKey('before')) {
       final l$before = data['before'];
-      result$data['before'] = (l$before as String?);
+      result$data['before'] = (l$before as dynamic?);
     }
     if (data.containsKey('after')) {
       final l$after = data['after'];
-      result$data['after'] = (l$after as String?);
+      result$data['after'] = (l$after as dynamic?);
     }
     if (data.containsKey('offset')) {
       final l$offset = data['offset'];
@@ -2992,9 +2998,9 @@ class Variables$Query$TeamUpdateCollection {
 
   int? get last => (_$data['last'] as int?);
 
-  String? get before => (_$data['before'] as String?);
+  dynamic? get before => (_$data['before'] as dynamic?);
 
-  String? get after => (_$data['after'] as String?);
+  dynamic? get after => (_$data['after'] as dynamic?);
 
   int? get offset => (_$data['offset'] as int?);
 
@@ -3156,8 +3162,8 @@ abstract class CopyWith$Variables$Query$TeamUpdateCollection<TRes> {
     List<Input$TeamUpdateOrderBy>? orderBy,
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     int? offset,
   });
 }
@@ -3191,8 +3197,8 @@ class _CopyWithImpl$Variables$Query$TeamUpdateCollection<TRes>
           'orderBy': (orderBy as List<Input$TeamUpdateOrderBy>?),
         if (first != _undefined) 'first': (first as int?),
         if (last != _undefined) 'last': (last as int?),
-        if (before != _undefined) 'before': (before as String?),
-        if (after != _undefined) 'after': (after as String?),
+        if (before != _undefined) 'before': (before as dynamic?),
+        if (after != _undefined) 'after': (after as dynamic?),
         if (offset != _undefined) 'offset': (offset as int?),
       }));
 }
@@ -3208,8 +3214,8 @@ class _CopyWithStubImpl$Variables$Query$TeamUpdateCollection<TRes>
     List<Input$TeamUpdateOrderBy>? orderBy,
     int? first,
     int? last,
-    String? before,
-    String? after,
+    dynamic? before,
+    dynamic? after,
     int? offset,
   }) =>
       _res;
@@ -3407,7 +3413,7 @@ const documentNodeQueryTeamUpdateCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'before')),
         type: NamedTypeNode(
-          name: NameNode(value: 'String'),
+          name: NameNode(value: 'Cursor'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -3416,7 +3422,7 @@ const documentNodeQueryTeamUpdateCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'after')),
         type: NamedTypeNode(
-          name: NameNode(value: 'String'),
+          name: NameNode(value: 'Cursor'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -3581,6 +3587,7 @@ const documentNodeQueryTeamUpdateCollection = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,
@@ -4557,7 +4564,12 @@ const documentNodeQueryTeamUpdate = DocumentNode(definitions: [
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
                 name: NameNode(value: 'id'),
-                value: VariableNode(name: NameNode(value: 'id')),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
               )
             ]),
           )
@@ -4633,6 +4645,7 @@ const documentNodeQueryTeamUpdate = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
   fragmentDefinitionContentType,
   fragmentDefinitionPublicationState,
   fragmentDefinitionContentTemplate,

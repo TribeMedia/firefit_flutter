@@ -15,7 +15,7 @@ class DarkThemeData {
   // Background Colors
   static const Color background = Color(0xFF121212); // Dark background
   static const Color surface = Color(0xFF1E1E1E); // Slightly lighter dark
-  static const Color surfaceContainer = Color(0xFF2C2C2C); // Medium dark gray
+  static const Color surfaceContainer = Color(0xFF2D2D2D); // Adjusted for better contrast
 
   // Text Colors
   static const Color onPrimary = Color(0xFFFFFFFF); // White
@@ -275,7 +275,10 @@ class DarkThemeData {
 
       // List Tile Theme
       listTileTheme: ListTileThemeData(
-        tileColor: surface,
+        tileColor: surfaceContainer,
+        iconColor: onSurface,
+        textColor: onSurface,
+        selectedTileColor: primaryContainer,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),

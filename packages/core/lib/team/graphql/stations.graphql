@@ -21,6 +21,7 @@ fragment Station on Station {
   zip
   iconUrl
   coverUrl
+  registrationCode
   createdAt
   stationProviderCollection {
     edges {

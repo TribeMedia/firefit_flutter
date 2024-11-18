@@ -1,5 +1,5 @@
 import 'package:firefit/features/commerce/domain/entities/shopping_cart_model.dart';
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_provider.dart';
+import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/common/presentation/theme/app_spacing.dart';
 import 'package:firefit/features/common/presentation/widgets/app_logo.dart';
 import 'package:firefit/features/notifications/providers/providers.dart' as np;
@@ -25,7 +25,7 @@ class AppHeader extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final notificationsValue = ref.watch(np.notificationProvider);
-    final cart = ref.watch(cartProvider);
+    final cart = ref.watch(shoppingCartProvider);
     final isDarkMode = theme.brightness == Brightness.dark;
 
     return notificationsValue.when(

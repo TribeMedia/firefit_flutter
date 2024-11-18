@@ -780,6 +780,7 @@ const documentNodeFragmentApplication = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 
 extension ClientExtension$Fragment$Application on graphql.GraphQLClient {
@@ -1479,6 +1480,7 @@ const documentNodeQueryApplicationCollection = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 Query$ApplicationCollection _parserFn$Query$ApplicationCollection(
         Map<String, dynamic> data) =>
@@ -2535,6 +2537,7 @@ const documentNodeQueryApplication = DocumentNode(definitions: [
   fragmentDefinitionFirstResponderStation,
   fragmentDefinitionOrganization,
   fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 Query$Application _parserFn$Query$Application(Map<String, dynamic> data) =>
     Query$Application.fromJson(data);

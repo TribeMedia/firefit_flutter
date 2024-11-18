@@ -21,7 +21,7 @@ fragment TeamUpdate on TeamUpdate {
   createdAt
 }
 
-query TeamUpdateTypeCollection($filter: TeamUpdateTypeFilter, $orderBy: [TeamUpdateTypeOrderBy!], $first: Int, $last: Int, $before: String, $after: String, $offset: Int) {
+query TeamUpdateTypeCollection($filter: TeamUpdateTypeFilter, $orderBy: [TeamUpdateTypeOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
   teamUpdateTypeCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
     edges {
       node {
@@ -38,7 +38,7 @@ query TeamUpdateTypeCollection($filter: TeamUpdateTypeFilter, $orderBy: [TeamUpd
 }
 
 query TeamUpdateType($id: UUID!) {
-  teamUpdateTypeCollection(filter: { id: $id }) {
+  teamUpdateTypeCollection(filter: { id: { eq: $id } }) {
     edges {
       node {
         ...TeamUpdateType
@@ -47,7 +47,7 @@ query TeamUpdateType($id: UUID!) {
   }
 }
 
-query TeamUpdateCollection($filter: TeamUpdateFilter, $orderBy: [TeamUpdateOrderBy!], $first: Int, $last: Int, $before: String, $after: String, $offset: Int) {
+query TeamUpdateCollection($filter: TeamUpdateFilter, $orderBy: [TeamUpdateOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
   teamUpdateCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
     edges {
       node {
@@ -64,7 +64,7 @@ query TeamUpdateCollection($filter: TeamUpdateFilter, $orderBy: [TeamUpdateOrder
 }
 
 query TeamUpdate($id: UUID!) {
-  teamUpdateCollection(filter: { id: $id }) {
+  teamUpdateCollection(filter: { id: { eq: $id } }) {
     edges {
       node {
         ...TeamUpdate
