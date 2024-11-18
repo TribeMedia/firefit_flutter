@@ -1,8 +1,7 @@
-import 'package:core/users/users.dart';
 import 'package:core/common/common.dart';
+import 'package:core/schema.graphql.dart';
+import 'package:core/users/users.dart';
 import 'package:fpdart/fpdart.dart';
-
-import '../../../schema.graphql.dart';
 
 abstract class UserRepositoryInterface {
   Future<Either<Failure, List<User>>> queryUsers({

@@ -1,6 +1,5 @@
 import 'package:core/core.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
-import 'package:firefit/features/common/presentation/widgets/initials_avatar.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
 import 'package:firefit/features/menu/providers.dart';
@@ -10,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
 part 'home_screen.g.dart';
 
@@ -188,7 +186,10 @@ class HomeContent extends HookConsumerWidget {
                           end: Alignment.bottomCenter,
                           colors: [
                             Colors.transparent,
-                            Colors.black.withOpacity(0.7),
+                            Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withAlpha((255 * 0.1).round()),
                           ],
                         ),
                       ),
@@ -213,7 +214,7 @@ class HomeContent extends HookConsumerWidget {
                           Text(
                             menuItem.notes ?? '',
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withAlpha((255 * 0.8).round()),
                               fontSize: 14,
                             ),
                             maxLines: 2,

@@ -2,6 +2,7 @@
 
 import 'package:core/common/failures/failure.dart';
 import 'package:core/common/repositories/graphql_repository.dart';
+import 'package:core/config/env.dart';
 import 'package:core/content/domain/models/content.dart';
 import 'package:core/content/domain/repositories/content_repository_interface.dart';
 import 'package:core/content/graphql/content.graphql.dart';
@@ -10,8 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:graphql/client.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-
-import '../../../config/env.dart';
 
 
 class ContentRepository extends ContentRepositoryInterface {

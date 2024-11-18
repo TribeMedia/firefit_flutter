@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:core/core.dart';
-import 'package:firefit/config/providers.dart';
 import 'package:firefit/features/auth/providers/user_notifier.dart';
-import 'package:firefit/features/commerce/presentation/providers/providers.dart';
 import 'package:firefit/features/common/providers/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -32,7 +30,6 @@ class HomeStateNotifier extends AsyncNotifier<HomeStateModel> {
 
   FutureOr<HomeStateModel> load() async {
     state = const AsyncLoading();
-    final logging = ref.read(loggingProvider);
     final currentUser =
         ref.read(userNotifierProvider.notifier).state.value?.user;
 

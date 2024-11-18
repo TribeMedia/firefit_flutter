@@ -1,4 +1,3 @@
-import 'package:event_bus/event_bus.dart';
 import 'package:firefit/theme/dark_theme.dart';
 import 'package:firefit/theme/light_theme.dart';
 import 'package:flutter/material.dart';
@@ -29,4 +28,3 @@ Future<void> initializeProviders(ProviderContainer container) async {
   container.read(loggingProvider);
 }
 
-final eventBusProvider = Provider<EventBus>((ref) => EventBus());

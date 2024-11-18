@@ -1,9 +1,8 @@
 import 'package:core/commerce/commerce.dart';
 import 'package:core/commerce/domain/models/order.dart';
 import 'package:core/common/common.dart';
+import 'package:core/schema.graphql.dart';
 import 'package:fpdart/fpdart.dart' as fp;
-
-import '../../../schema.graphql.dart';
 
 abstract class OrderRepositoryInterface {
   Future<fp.Either<Failure, List<Order>>> queryOrders({

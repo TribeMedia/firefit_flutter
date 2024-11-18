@@ -1,8 +1,7 @@
 import 'package:core/common/common.dart';
-import 'package:fpdart/fpdart.dart';
+import 'package:core/schema.graphql.dart';
 import 'package:core/team/domain/models/station.dart';
-
-import '../../../schema.graphql.dart';
+import 'package:fpdart/fpdart.dart';
 
 abstract class StationRepositoryInterface {
   Future<Either<Failure, List<Station>>> queryStations({

@@ -1,7 +1,7 @@
 // packages/core/lib/src/common/models/address.dart
 
-import 'package:flutter/material.dart';
 import 'package:core/common/models/location.dart';
+import 'package:flutter/material.dart';
 
 class Address {
   final String id;

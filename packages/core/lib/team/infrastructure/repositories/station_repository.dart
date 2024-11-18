@@ -1,17 +1,16 @@
 import 'package:core/common/failures/failure.dart';
 import 'package:core/common/repositories/graphql_repository.dart';
+import 'package:core/config/env.dart';
+import 'package:core/schema.graphql.dart';
 import 'package:core/team/domain/models/station.dart';
 import 'package:core/team/domain/repositories/station_repository_interface.dart';
 import 'package:core/team/graphql/first_responders.graphql.dart';
 import 'package:core/team/graphql/stations.graphql.dart';
-import 'package:core/schema.graphql.dart';
 import 'package:core/team/graphql/teams.graphql.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:graphql/client.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-
-import '../../../config/env.dart';
 
 class StationRepository extends StationRepositoryInterface {
   StationRepository({required this.talker, required this.env}) {

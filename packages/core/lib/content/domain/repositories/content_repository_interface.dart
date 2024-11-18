@@ -1,10 +1,9 @@
 
 
-import 'package:core/content/content.dart';
 import 'package:core/common/common.dart';
+import 'package:core/content/content.dart';
+import 'package:core/schema.graphql.dart';
 import 'package:fpdart/fpdart.dart';
-
-import '../../../schema.graphql.dart';
 
 abstract class ContentRepositoryInterface {
 

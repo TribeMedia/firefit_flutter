@@ -167,7 +167,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
               padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  brightness == Brightness.dark ? Colors.white : Colors.black,
+                  Theme.of(context).colorScheme.primary.withAlpha((255 * 0.1).round()),
                   BlendMode.srcATop,
                 ),
                 child: IconButton(
@@ -205,7 +205,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          Colors.black.withOpacity(0.7),
+                          Colors.black.withAlpha((255 * 0.7).round()),
                         ],
                       ),
                     ),

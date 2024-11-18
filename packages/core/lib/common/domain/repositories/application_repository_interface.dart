@@ -1,7 +1,6 @@
 import 'package:core/common/common.dart';
+import 'package:core/schema.graphql.dart';
 import 'package:fpdart/fpdart.dart';
-
-import '../../../schema.graphql.dart';
 
 abstract class ApplicationRepositoryInterface {
   Future<Either<Failure, List<ApplicationType>>> queryApplicationType({

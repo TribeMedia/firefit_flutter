@@ -14,19 +14,6 @@ class InitialsAvatar extends StatelessWidget {
     this.textColor,
   });
 
-  String getInitials() {
-    List<String> names = name.split(' ');
-    String initials = "";
-    if (names.length > 0) {
-      if (names.length >= 2) {
-        initials = names[0][0] + names[1][0];
-      } else {
-        initials = names[0][0];
-      }
-    }
-    return initials.toUpperCase();
-  }
-
   Color getBackgroundColor() {
     if (backgroundColor != null) return backgroundColor!;
 
@@ -54,10 +41,10 @@ class InitialsAvatar extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          getInitials(),
-          style: TextStyle(
-            color: textColor ?? Colors.white,
-            fontSize: size * 0.4,
+          name.split(' ').map((e) => e.isNotEmpty ? e[0] : '').join(),
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),

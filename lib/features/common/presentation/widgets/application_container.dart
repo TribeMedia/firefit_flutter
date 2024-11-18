@@ -1,4 +1,3 @@
-import 'package:firefit/features/chat/ai_chat_screen.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
@@ -30,14 +29,6 @@ class ApplicationContainer extends ConsumerStatefulWidget {
 }
 
 class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
-  bool _showChat = false;
-
-  void _toggleChat() {
-    setState(() {
-      _showChat = !_showChat;
-    });
-  }
-
   int _getCurrentIndex(BuildContext context) {
     final String location =
         GoRouter.of(context).routerDelegate.currentConfiguration.uri.path;
@@ -57,10 +48,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final themeData = isDarkMode ?
-      DarkThemeData(theme: theme).theme : LightThemeData(theme: theme).theme;
     final scaffoldKey = ref.watch(scaffoldKeyProvider(widget.name));
     int currentIndex = _getCurrentIndex(context);
     final homeStateValue = ref.watch(homeStateProvider);
@@ -181,47 +169,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
               ],
             ),
           ),
-          body: Stack(
-            children: [
-              Column(
-                children: [
-                  Expanded(child: widget.child),
-                ],
-              ),
-              if (_showChat)
-                TweenAnimationBuilder<double>(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutExpo,
-                  tween: Tween(begin: 1.0, end: 0.0),
-                  builder: (context, value, child) {
-                    return Transform.translate(
-                      offset: Offset(
-                          0.0, value * MediaQuery.of(context).size.height),
-                      child: child,
-                    );
-                  },
-                  child: Positioned.fill(
-                    child: Material(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      elevation: 8.0,
-                      child: Stack(
-                        children: [
-                          const AIChatScreen(),
-                          Positioned(
-                            top: 8.0,
-                            right: 8.0,
-                            child: IconButton(
-                              icon: const Icon(Icons.close),
-                              onPressed: _toggleChat,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+          body: widget.child,
         );
       },
       loading: () => const Scaffold(

@@ -1,14 +1,13 @@
 import 'package:core/common/failures/failure.dart';
 import 'package:core/common/repositories/graphql_repository.dart';
-import 'package:core/meals/meals.dart'; // Import the meals.dart file to use the Menu type alias
+import 'package:core/config/env.dart';
 import 'package:core/meals/graphql/menu.graphql.dart';
+import 'package:core/meals/meals.dart'; // Import the meals.dart file to use the Menu type alias
 import 'package:core/schema.graphql.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:graphql/client.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-
-import '../../../config/env.dart';
 
 class MenuRepository extends MenuRepositoryInterface {
   MenuRepository({required this.talker, required this.env}) {

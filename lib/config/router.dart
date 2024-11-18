@@ -8,7 +8,6 @@ import 'package:firefit/features/home/presentation/screens/home_screen.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_item_detail_page.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
-import 'package:firefit/features/teams/presentation/screens/station_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

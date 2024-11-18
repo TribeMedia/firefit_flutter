@@ -1,6 +1,6 @@
-import 'package:core/common/failures/failure.dart';
 import 'package:core/common/domain/models/common.dart';
 import 'package:core/common/domain/repositories/application_repository_interface.dart';
+import 'package:core/common/failures/failure.dart';
 import 'package:core/common/graphql/application.graphql.dart';
 import 'package:core/common/graphql/notifications.graphql.dart';
 //import 'package:core/common/graphql/notifications.graphql.dart';

@@ -1,15 +1,15 @@
 import 'package:core/common/failures/failure.dart';
 import 'package:core/common/repositories/graphql_repository.dart';
+import 'package:core/config/env.dart';
+import 'package:core/schema.graphql.dart';
 import 'package:core/users/domain/models/user.dart';
 import 'package:core/users/domain/repositories/user_repository_interface.dart';
 import 'package:core/users/graphql/users.graphql.dart';
-import 'package:core/schema.graphql.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:graphql/client.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-
-import '../../../config/env.dart';
 
 class UserRepository extends UserRepositoryInterface {
   UserRepository({required this.talker, required this.env}) {

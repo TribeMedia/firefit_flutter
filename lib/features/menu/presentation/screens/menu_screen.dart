@@ -23,8 +23,7 @@ class MenuScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final menuController = ref.watch(menuControllerProvider(globalProviderId));
-    final processingItem = ref.watch(processingItemProvider);
-    final errorItem = ref.watch(errorItemProvider);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -145,10 +144,10 @@ class MenuScreen extends HookConsumerWidget {
                               Container(
                             width: kImageSize,
                             height: kImageSize,
-                            color: theme.colorScheme.surfaceVariant,
+                            color: theme.colorScheme.surfaceContainerHighest,
                             child: Icon(
                               Icons.image_not_supported,
-                              color: theme.colorScheme.onSurfaceVariant,
+                              color: theme.colorScheme.onSurface,
                             ),
                           ),
                         ),

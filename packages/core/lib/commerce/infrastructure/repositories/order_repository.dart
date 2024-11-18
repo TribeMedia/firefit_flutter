@@ -1,14 +1,13 @@
+import 'package:core/commerce/commerce.dart';
 import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/common/failures/failure.dart';
+import 'package:core/common/repositories/graphql_repository.dart';
+import 'package:core/config/env.dart';
 import 'package:core/schema.graphql.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 import 'package:graphql/client.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-import 'package:core/common/repositories/graphql_repository.dart';
-import 'package:core/commerce/commerce.dart';
-
-import '../../../config/env.dart';
 
 class OrderRepository extends OrderRepositoryInterface {
   OrderRepository({required this.talker, required this.env}) {

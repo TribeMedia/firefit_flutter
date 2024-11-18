@@ -1,7 +1,7 @@
+import 'package:core/common/failures/failure.dart';
 import 'package:core/common/models/notification.dart';
 import 'package:core/common/services/notification_service.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:core/common/failures/failure.dart';
 
 class NotificationServiceImpl implements NotificationService {
   @override
@@ -16,72 +16,74 @@ class NotificationServiceImpl implements NotificationService {
 
   @override
   Future<Either<Failure, void>> deleteMultipleNotifications(
-      List<String> notificationIds) {
-    // TODO: implement deleteMultipleNotifications
-    throw UnimplementedError();
+      List<String> notificationIds) async {
+    try {
+      return right(null);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
-  Future<Either<Failure, void>> deleteNotification(String notificationId) {
-    // TODO: implement deleteNotification
-    throw UnimplementedError();
+  Future<Either<Failure, void>> deleteNotification(String notificationId) async {
+    try {
+      return right(null);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
-  Future<void> dispose() {
-    // TODO: implement dispose
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Map<String, bool>>> getNotificationPreferences() {
-    // TODO: implement getNotificationPreferences
-    throw UnimplementedError();
+  Future<Either<Failure, Map<String, bool>>> getNotificationPreferences() async {
+    try {
+      return right(const {});
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
   Future<Either<Failure, List<Notification>>> getNotificationsByDateRange(
-      {required DateTime startDate, required DateTime endDate}) {
-    // TODO: implement getNotificationsByDateRange
-    throw UnimplementedError();
+      {required DateTime startDate, required DateTime endDate}) async {
+    try {
+      return right(const []);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }         
   }
 
   @override
-  Future<Either<Failure, List<Notification>>> getNotificationsByType(
-      NotificationType type) {
-    // TODO: implement getNotificationsByType
-    throw UnimplementedError();
+  Future<Either<Failure, int>> getUnreadCount() async {
+    try {
+      return right(0);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
-  Future<Either<Failure, int>> getUnreadCount() {
-    // TODO: implement getUnreadCount
-    throw UnimplementedError();
+  Future<Either<Failure, void>> initialize() async {
+    try {
+      return right(null);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
-  Future<Either<Failure, void>> initialize() {
-    // TODO: implement initialize
-    throw UnimplementedError();
+  Future<Either<Failure, void>> markAllAsSeen() async {
+    return right(null);
   }
 
   @override
-  Future<Either<Failure, void>> markAllAsSeen() {
-    // TODO: implement markAllAsSeen
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, void>> markAsSeen(String notificationId) {
-    // TODO: implement markAsSeen
-    throw UnimplementedError();
+  Future<Either<Failure, void>> markAsSeen(String notificationId) async {
+    return right(null);
   }
 
   @override
   Future<Either<Failure, void>> markMultipleAsSeen(
-      List<String> notificationIds) {
-    // TODO: implement markMultipleAsSeen
-    throw UnimplementedError();
+      List<String> notificationIds)  async {
+    return right(null);
   }
 
   @override
@@ -94,27 +96,53 @@ class NotificationServiceImpl implements NotificationService {
     Duration? duration,
     bool? dismissible,
     Map<String, dynamic>? metadata,
-  }) {
-    // TODO: implement sendNotification
-    throw UnimplementedError();
+  }) async {
+    try {
+      throw UnimplementedError();
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
-  Future<Either<Failure, void>> subscribeToTopics(List<String> topics) {
-    // TODO: implement subscribeToTopics
-    throw UnimplementedError();
+  Future<Either<Failure, void>> subscribeToTopics(List<String> topics) async {
+    try {
+      return right(null);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
-  Future<Either<Failure, void>> unsubscribeFromTopics(List<String> topics) {
-    // TODO: implement unsubscribeFromTopics
-    throw UnimplementedError();
+  Future<Either<Failure, void>> unsubscribeFromTopics(List<String> topics) async {
+    try {
+      return right(null);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 
   @override
   Future<Either<Failure, void>> updateNotificationPreferences(
-      {required Map<String, bool> preferences}) {
-    // TODO: implement updateNotificationPreferences
-    throw UnimplementedError();
+      {required Map<String, bool> preferences}) async {
+    try {
+      return right(null);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+  
+  @override
+  Future<void> dispose() async {
+    return Future.value();
+  }
+  
+  @override
+  Future<Either<Failure, List<Notification>>> getNotificationsByType(NotificationType type) async {
+    try {
+      return right([]);
+    } catch (e) {
+      return left(Failure.unprocessableEntity(message: e.toString()));
+    }
   }
 }

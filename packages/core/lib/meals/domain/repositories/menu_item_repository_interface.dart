@@ -1,8 +1,7 @@
 import 'package:core/common/common.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:core/meals/meals.dart'; // Import the meals.dart file to use the MenuItem type alias
-
-import '../../../schema.graphql.dart';
+import 'package:core/schema.graphql.dart';
+import 'package:fpdart/fpdart.dart';
 
 abstract class MenuItemRepositoryInterface {
   Future<Either<Failure, List<MenuItem>>> queryMenuItems({
