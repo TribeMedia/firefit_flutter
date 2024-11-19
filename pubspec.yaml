@@ -17,9 +17,9 @@ dependencies:
   core:
     path: ./packages/core
   riverpod_annotation: ^2.6.1
-  talker_flutter: ^4.4.3
+  talker_flutter: ^4.4.7
   dio: ^5.7.0
-  envied: ^0.5.4+1
+  envied: ^1.0.0
   flutter_markdown: ^0.7.4+1
   reactive_dropdown_search: ^5.0.5
   lottie: ^3.1.3
@@ -27,7 +27,7 @@ dependencies:
   file_picker: ^8.1.4
   awesome_snackbar_content: ^0.1.4
   equatable: ^2.0.5
-  supabase_flutter: ^2.8.0
+  supabase_flutter: ^2.8.1
   reactive_forms: ^17.0.1
   reactive_forms_annotations: ^5.0.0
   flutter_gravatar: ^2.0.2
@@ -41,14 +41,14 @@ dependencies:
   json_annotation: ^4.9.0
   freezed_annotation: ^2.4.4
   flutter_svg: ^2.0.14
-  flutter_secure_storage: ^9.0.0
+  flutter_secure_storage: ^9.2.2
   collection: ^1.19.0
   badges: ^3.1.2
   auto_size_text: ^3.0.0
   cached_network_image: ^3.4.1
   path: ^1.9.0
   fpdart: ^1.1.1
-  talker_dio_logger: ^4.4.3
+  talker_dio_logger: ^4.4.7
   supabase_auth_ui: ^0.5.4
   uuid: ^4.5.1
   awesome_flutter_extensions: ^1.2.0
@@ -58,7 +58,7 @@ dependencies:
   carousel_slider: ^5.0.0
   toggle_list: ^0.3.1
   toggle_switch: ^2.3.0
-  forui: ^0.6.1
+  forui: ^0.7.0
   logging: ^1.3.0
   provider: ^6.1.2
   openai_dart: ^0.4.4
@@ -72,6 +72,7 @@ dependencies:
   graphql: ^5.2.0-beta.9
   graphql_flutter: ^5.2.0-beta.7
   skeletonizer: ^1.4.2
+  connectivity_plus: ^6.1.0
 
 dependency_overrides:
   collection: ^1.19.0
@@ -87,10 +88,9 @@ dev_dependencies:
   go_router_builder: ^2.7.1
   json_serializable: ^6.8.0
   melos: ^6.2.0
-  riverpod_generator: ^2.6.2
-  envied_generator: ^0.5.4+1
+  riverpod_generator: ^2.6.3
+  envied_generator: ^1.0.0
   reactive_forms_generator: ^5.0.5
-  drift_dev: ^2.21.2
 
 flutter:
   uses-material-design: true

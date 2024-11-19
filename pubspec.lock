@@ -311,7 +311,7 @@ packages:
     source: hosted
     version: "1.19.1"
   connectivity_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: connectivity_plus
       sha256: "876849631b0c7dc20f8b471a2a03142841b482438e3b707955464f5ffca3e4c3"
@@ -421,22 +421,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  drift:
-    dependency: transitive
-    description:
-      name: drift
-      sha256: df027d168a2985a2e9da900adeba2ab0136f0d84436592cf3cd5135f82c8579c
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.21.0"
-  drift_dev:
-    dependency: "direct dev"
-    description:
-      name: drift_dev
-      sha256: "623649abe932fc17bd32e578e7e05f7ac5e7dd0b33e6c8669a0634105d1389bf"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.21.2"
   dropdown_button2:
     dependency: "direct main"
     description:
@@ -465,18 +449,18 @@ packages:
     dependency: "direct main"
     description:
       name: envied
-      sha256: bbff9c76120e4dc5e2e36a46690cf0a26feb65e7765633f4e8d916bcd173a450
+      sha256: "129a0dbf32b90344fa2e9d6943569fdec8f17904e66161e0a1f09ee3416508ae"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.4+1"
+    version: "1.0.0"
   envied_generator:
     dependency: "direct dev"
     description:
       name: envied_generator
-      sha256: "517b70de08d13dcd40e97b4e5347e216a0b1c75c99e704f3c85c0474a392d14a"
+      sha256: "76aec98907872ce8488f021e68d213bd0d9bf224eb393a094be1708cc3180d41"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.4+1"
+    version: "1.0.0"
   equatable:
     dependency: "direct main"
     description:
@@ -741,18 +725,18 @@ packages:
     dependency: "direct main"
     description:
       name: forui
-      sha256: b3b4652aaf7e6e3f8165a234a05a53cd80e13b805ae78004b8e5ef35dd67e51c
+      sha256: "6d2488aa910da0f50b257acf6d8181b5878538f76c1cbee6d1d1525d302d41d9"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.1"
+    version: "0.7.0"
   forui_assets:
     dependency: transitive
     description:
       name: forui_assets
-      sha256: "48a036b329a855db9a18ebb3db98d5e9d1320479d747b48efd4e698ec7b1f178"
+      sha256: "17ade05cbb501faf95390f5c71f2eb1aea3e426afcc7aa1eb4289268a089da70"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.7.0"
   fpdart:
     dependency: "direct main"
     description:
@@ -885,10 +869,10 @@ packages:
     dependency: transitive
     description:
       name: gotrue
-      sha256: "74b29f10ef7239e254847d52ecce1eac2a08c2cfced6a78280859391f5157e8b"
+      sha256: b9541c62edc0ee1fddf2c95364251b8076a93bcdbc3ad27f14a633d187e89ccc
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.0"
+    version: "2.11.0"
   gql:
     dependency: transitive
     description:
@@ -1445,10 +1429,10 @@ packages:
     dependency: transitive
     description:
       name: postgrest
-      sha256: c6ddc0a2c238c5a686b00094edad728a49645579bf5868a06e1ad95c4918fe2c
+      sha256: "9f759ac497a24839addbed69d9569ea6d51d2e4834c672b8c2a73752fb6945c8"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.4.0"
   process:
     dependency: transitive
     description:
@@ -1581,10 +1565,10 @@ packages:
     dependency: transitive
     description:
       name: riverpod_analyzer_utils
-      sha256: dc53a659cb543b203cdc35cd4e942ed08ea893eb6ef12029301323bdf18c5d95
+      sha256: c6b8222b2b483cb87ae77ad147d6408f400c64f060df7a225b127f4afef4f8c8
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.7"
+    version: "0.5.8"
   riverpod_annotation:
     dependency: "direct main"
     description:
@@ -1597,10 +1581,10 @@ packages:
     dependency: "direct dev"
     description:
       name: riverpod_generator
-      sha256: "54458dac2fea976990dc9ed379060db6ae5c8790143f1963fedd0fb99980a326"
+      sha256: "63546d70952015f0981361636bf8f356d9cfd9d7f6f0815e3c07789a41233188"
       url: "https://pub.dev"
     source: hosted
-    version: "2.6.2"
+    version: "2.6.3"
   rxdart:
     dependency: transitive
     description:
@@ -1823,22 +1807,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
-  sqlite3:
-    dependency: transitive
-    description:
-      name: sqlite3
-      sha256: bb174b3ec2527f9c5f680f73a89af8149dd99782fbb56ea88ad0807c5638f2ed
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.7"
-  sqlparser:
-    dependency: transitive
-    description:
-      name: sqlparser
-      sha256: d77749237609784e337ec36c979d41f6f38a7b279df98622ae23929c8eb954a4
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.39.2"
   stack_trace:
     dependency: transitive
     description:
@@ -1899,10 +1867,10 @@ packages:
     dependency: transitive
     description:
       name: supabase
-      sha256: dccda29b5bda0a04f6725480e180353486dfd5d9dd2b8b17a30a7a7d094f7042
+      sha256: ecdfb226c483f05fd10425304de744144dfdda2f33d14151d2604cebe8c6d077
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.0"
   supabase_auth_ui:
     dependency: "direct main"
     description:
@@ -1915,10 +1883,10 @@ packages:
     dependency: "direct main"
     description:
       name: supabase_flutter
-      sha256: "8c056c83e9163c287e031cdd6fa34a452bad4ec7342a27b12190613f77c358e9"
+      sha256: bdbc6770e0e91db0b9d931f41ea4ee311d8819f539743f47e8cc795b492be75a
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.0"
+    version: "2.8.1"
   synchronized:
     dependency: transitive
     description:
@@ -1931,34 +1899,34 @@ packages:
     dependency: transitive
     description:
       name: talker
-      sha256: "34e874c756bf9f8b5543c419426d554117d137601a0cc733d8f7ef980ba0b2fa"
+      sha256: "9d1c777f12ac49db3bf7b3e3977a09041a23da0fc65b7c12f0530c2045128104"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.3"
+    version: "4.4.7"
   talker_dio_logger:
     dependency: "direct main"
     description:
       name: talker_dio_logger
-      sha256: e49391efe7419a88032e5115cef913839b7ee5fa86a78054dd680cb9d3d518bc
+      sha256: "9f63452dac8f7ab544b19f7b1f58bf5a5a94ed2e159e3fdb7a010e9db35339f6"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.3"
+    version: "4.4.7"
   talker_flutter:
     dependency: "direct main"
     description:
       name: talker_flutter
-      sha256: "61d5fb523157a694386d890313b254480962c7bbdbd67f1e08db7f7dc7ba068d"
+      sha256: "7557c3088dbf341d1f9b6aac12ed1a15663e5e6a0165a29787070320c7edaa4e"
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.3"
+    version: "4.4.7"
   talker_logger:
     dependency: transitive
     description:
       name: talker_logger
-      sha256: ae73f6a9b1d58af7bd5a64267e00b72183b77e9f9e34b38a1e74211144c7fec1
+      sha256: e2b59c1708c2677d15017c1b248357a6f55c68bd4c415e878ff5addaba8aaab4
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.3"
+    version: "4.4.7"
   term_glyph:
     dependency: transitive
     description:

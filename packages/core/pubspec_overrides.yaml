@@ -1,3 +1,0 @@
-# melos_managed_dependency_overrides: web_socket_channel
-dependency_overrides:
-  web_socket_channel: ^3.0.1
