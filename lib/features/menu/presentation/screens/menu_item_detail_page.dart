@@ -6,6 +6,7 @@ import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 final menuItemProvider = FutureProvider.family<MenuItem?, String>(
         (ref, id) async {
@@ -52,11 +53,11 @@ class MenuItemDetailPage extends HookConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.network(
-                  menuItem.imageUrl ?? 'https://via.placeholder.com/400x200',
-                  width: double.infinity,
-                  height: 200,
+                CachedNetworkImage(
+                  imageUrl: menuItem.imageUrl ?? '',
                   fit: BoxFit.cover,
+                  placeholder: (context, url) => const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),

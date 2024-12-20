@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:firefit/features/commerce/domain/entities/cart_item.dart';
 import 'package:firefit/features/commerce/domain/entities/shopping_cart_model.dart';
@@ -50,11 +51,11 @@ class MenuItemDetailScreen extends HookConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              menuItem.imageUrl ?? '',
-              height: 200,
-              width: double.infinity,
+            CachedNetworkImage(
+              imageUrl: menuItem.imageUrl ?? '',
               fit: BoxFit.cover,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),

@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
@@ -175,9 +176,11 @@ class HomeContent extends HookConsumerWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.network(
-                      menuItem.imageUrl ?? '',
+                    CachedNetworkImage(
+                      imageUrl: menuItem.imageUrl ?? '',
                       fit: BoxFit.cover,
+                      placeholder: (context, url) => const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
                     ),
                     Container(
                       decoration: BoxDecoration(

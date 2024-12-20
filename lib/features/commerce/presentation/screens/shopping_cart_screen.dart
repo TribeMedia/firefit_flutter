@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ShoppingCartScreen extends HookConsumerWidget {
   const ShoppingCartScreen({super.key});
@@ -12,9 +13,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
     final modelValue = ref.watch(shoppingCartProvider);
 
     return FScaffold(
-      header: FHeader(
-        title: Text('Shopping Cart'),
-      ),
+      header: FHeader(title: Text('Shopping Cart')),
       content: modelValue.when(
         data: (model) {
           if (model.items.isEmpty) {
@@ -29,6 +28,27 @@ class ShoppingCartScreen extends HookConsumerWidget {
               final item = cartItems[index];
               return FCard(
                 child: ListTile(
+                  leading:
+                      item.imageUrl != null
+                          ? ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: SizedBox(
+                              width: 80,
+                              height: 45, // 16:9 aspect ratio (80 * 9/16)
+                              child: CachedNetworkImage(
+                                imageUrl: item.imageUrl!,
+                                fit: BoxFit.cover,
+                                placeholder:
+                                    (context, url) => const Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                errorWidget:
+                                    (context, url, error) =>
+                                        const Icon(Icons.error),
+                              ),
+                            ),
+                          )
+                          : null,
                   title: Text(item.name),
                   subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
                   trailing: Row(
@@ -42,7 +62,9 @@ class ShoppingCartScreen extends HookConsumerWidget {
                                 .read(shoppingCartProvider.notifier)
                                 .updateQuantity(item.id, item.quantity - 1);
                           } else {
-                            ref.read(shoppingCartProvider.notifier).removeItem(item.id);
+                            ref
+                                .read(shoppingCartProvider.notifier)
+                                .removeItem(item.id);
                           }
                         },
                       ),
@@ -71,7 +93,9 @@ class ShoppingCartScreen extends HookConsumerWidget {
 
           final cartItems = model.items;
           final totalAmount = cartItems.fold(
-              0.0, (sum, item) => sum + (item.price * item.quantity));
+            0.0,
+            (sum, item) => sum + (item.price * item.quantity),
+          );
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -81,16 +105,20 @@ class ShoppingCartScreen extends HookConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Total:',
-                        style: Theme.of(context).textTheme.titleLarge),
-                    Text('\$${totalAmount.toStringAsFixed(2)}',
-                        style: Theme.of(context).textTheme.titleLarge),
+                    Text(
+                      'Total:',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    Text(
+                      '\$${totalAmount.toStringAsFixed(2)}',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   ],
                 ),
                 SizedBox(height: 16),
                 ShadButton(
-                  onPressed: () =>
-                      _showCheckoutDialog(context, ref, totalAmount),
+                  onPressed:
+                      () => _showCheckoutDialog(context, ref, totalAmount),
                   child: Text('Proceed to Checkout'),
                 ),
               ],
@@ -104,7 +132,10 @@ class ShoppingCartScreen extends HookConsumerWidget {
   }
 
   void _showCheckoutDialog(
-      BuildContext context, WidgetRef ref, double totalAmount) {
+    BuildContext context,
+    WidgetRef ref,
+    double totalAmount,
+  ) {
     // Checkout dialog implementation (unchanged)
   }
 }

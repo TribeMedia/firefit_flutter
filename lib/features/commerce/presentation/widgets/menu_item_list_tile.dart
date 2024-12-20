@@ -3,6 +3,7 @@ import 'package:core/core.dart';
 //import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart.old';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MenuItemListTile extends StatelessWidget {
   final MenuItem menuItem;
@@ -24,11 +25,11 @@ class MenuItemListTile extends StatelessWidget {
       child: ExpansionTile(
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(
-            menuItem.imageUrl ?? '',
-            width: 60,
-            height: 60,
+          child: CachedNetworkImage(
+            imageUrl: menuItem.imageUrl ?? '',
             fit: BoxFit.cover,
+            placeholder: (context, url) => const CircularProgressIndicator(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
         title: Text(menuItem.name),

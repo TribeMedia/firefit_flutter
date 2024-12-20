@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:firefit/features/commerce/domain/entities/cart_item.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
@@ -24,57 +25,57 @@ class MenuScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final menuController = ref.watch(menuControllerProvider(globalProviderId));
 
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'Menu',
-          style: ShadTheme.of(context).textTheme.h1.copyWith(
-                fontWeight: FontWeight.w600,
-                fontSize: 24,
-              ),
+          style: ShadTheme.of(
+            context,
+          ).textTheme.h1.copyWith(fontWeight: FontWeight.w600, fontSize: 24),
         ),
         elevation: 0,
       ),
       body: menuController.when(
-        loading: () => const SafeArea(
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-        ),
-        error: (error, _) => SafeArea(
-          child: ErrorScreen(
-            errorMessage: error.toString(),
-            onRetry: () =>
-                ref.refresh(menuControllerProvider(globalProviderId)),
-          ),
-        ),
-        data: (menuViewModel) => menuViewModel.menus.isEmpty
-            ? const EmptyViewState(
-                title: 'No Menu Items Available',
-                message: 'There are currently no items on the menu.',
-                lottieAssetFile: 'empty_menu.json',
-              )
-            : SafeArea(
-                child: ListView.builder(
-                  padding: const EdgeInsets.all(kPagePadding),
-                  itemCount: menuViewModel.menus.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (index > 0) SizedBox(height: kSectionSpacing),
-                        _buildMealTypeSection(
-                          context,
-                          ref,
-                          menuViewModel.menus[index],
-                        ),
-                      ],
-                    );
-                  },
-                ),
+        loading:
+            () => const SafeArea(
+              child: Center(child: CircularProgressIndicator()),
+            ),
+        error:
+            (error, _) => SafeArea(
+              child: ErrorScreen(
+                errorMessage: error.toString(),
+                onRetry:
+                    () => ref.refresh(menuControllerProvider(globalProviderId)),
               ),
+            ),
+        data:
+            (menuViewModel) =>
+                menuViewModel.menus.isEmpty
+                    ? const EmptyViewState(
+                      title: 'No Menu Items Available',
+                      message: 'There are currently no items on the menu.',
+                      lottieAssetFile: 'empty_menu.json',
+                    )
+                    : SafeArea(
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(kPagePadding),
+                        itemCount: menuViewModel.menus.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (index > 0) SizedBox(height: kSectionSpacing),
+                              _buildMealTypeSection(
+                                context,
+                                ref,
+                                menuViewModel.menus[index],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
       ),
     );
   }
@@ -95,10 +96,12 @@ class MenuScreen extends HookConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ...menu.menuItemCollection?.edges
-                  .map((e) => Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: _buildMenuItem(context, ref, e.node),
-                      ))
+                  .map(
+                    (e) => Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: _buildMenuItem(context, ref, e.node),
+                    ),
+                  )
                   .toList() ??
               [],
         ],
@@ -115,9 +118,10 @@ class MenuScreen extends HookConsumerWidget {
 
     return cartState.when(
       data: (cartModel) {
-        final itemInCart = cartModel.items
-            .where((cartItem) => cartItem.id == item.id)
-            .isNotEmpty;
+        final itemInCart =
+            cartModel.items
+                .where((cartItem) => cartItem.id == item.id)
+                .isNotEmpty;
         final isProcessing = processingItem == item.id;
         final hasError = errorItem == item.id;
 
@@ -135,20 +139,19 @@ class MenuScreen extends HookConsumerWidget {
                     if (item.imageUrl != null)
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          item.imageUrl!,
-                          width: kImageSize,
-                          height: kImageSize,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) =>
-                              Container(
-                            width: kImageSize,
-                            height: kImageSize,
-                            color: theme.colorScheme.surfaceContainerHighest,
-                            child: Icon(
-                              Icons.image_not_supported,
-                              color: theme.colorScheme.onSurface,
-                            ),
+                        child: SizedBox(
+                          width: 120,
+                          height: 67.5, // 16:9 aspect ratio (120 * 9/16)
+                          child: CachedNetworkImage(
+                            imageUrl: item.imageUrl ?? '',
+                            fit: BoxFit.cover,
+                            placeholder:
+                                (context, url) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                            errorWidget:
+                                (context, url, error) =>
+                                    const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -202,22 +205,24 @@ class MenuScreen extends HookConsumerWidget {
                       )
                     else if (hasError)
                       ShadButton.destructive(
-                        onPressed: () => _handleAddToCart(
-                          context,
-                          ref,
-                          cartNotifier,
-                          item,
-                        ),
+                        onPressed:
+                            () => _handleAddToCart(
+                              context,
+                              ref,
+                              cartNotifier,
+                              item,
+                            ),
                         child: const Icon(Icons.add_shopping_cart),
                       )
                     else
                       ShadButton(
-                        onPressed: () => _handleAddToCart(
-                          context,
-                          ref,
-                          cartNotifier,
-                          item,
-                        ),
+                        onPressed:
+                            () => _handleAddToCart(
+                              context,
+                              ref,
+                              cartNotifier,
+                              item,
+                            ),
                         child: const Icon(Icons.add_shopping_cart),
                       ),
                   ],
@@ -227,14 +232,10 @@ class MenuScreen extends HookConsumerWidget {
           ),
         );
       },
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
+      loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stack) {
         // Only show loading indicator for initial load errors
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }
@@ -249,13 +250,15 @@ class MenuScreen extends HookConsumerWidget {
       ref.read(processingItemProvider.notifier).state = item.id;
       ref.read(errorItemProvider.notifier).state = null;
 
-      await cartNotifier.addItem(CartItem(
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: 1,
-        imageUrl: item.imageUrl,
-      ));
+      await cartNotifier.addItem(
+        CartItem(
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: 1,
+          imageUrl: item.imageUrl,
+        ),
+      );
 
       if (context.mounted) {
         ShadToaster.of(context).show(
@@ -290,8 +293,9 @@ class MenuScreen extends HookConsumerWidget {
         ShadToaster.of(context).show(
           ShadToast.destructive(
             title: Text('Error'),
-            description:
-                Text('Failed to navigate to item details: ${e.toString()}'),
+            description: Text(
+              'Failed to navigate to item details: ${e.toString()}',
+            ),
             duration: const Duration(seconds: 2),
           ),
         );

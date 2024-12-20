@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class OrderHistoryMenuItemCard extends HookConsumerWidget {
   final MenuItem menuItem;
@@ -26,19 +27,11 @@ class OrderHistoryMenuItemCard extends HookConsumerWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
             child: Stack(
               children: [
-                Image.network(
-                  menuItem.imageUrl ?? 'https://via.placeholder.com/300x200',
-                  height: 150,
-                  width: double.infinity,
+                CachedNetworkImage(
+                  imageUrl: menuItem.imageUrl ?? '',
                   fit: BoxFit.cover,
-                  semanticLabel: 'Image of ${menuItem.name}',
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      height: 150,
-                      color: Colors.grey[300],
-                      child: Center(child: Icon(Icons.error)),
-                    );
-                  },
+                  placeholder: (context, url) => const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
                 Positioned(
                   bottom: 10,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/initials_avatar.dart';
@@ -18,10 +19,7 @@ class HomeAppBarState {
     required this.startTextColor,
     required this.endTextColor,
   }) {
-    textColorTween = ColorTween(
-      begin: startTextColor,
-      end: endTextColor,
-    );
+    textColorTween = ColorTween(begin: startTextColor, end: endTextColor);
   }
 
   final ScrollController scrollController;
@@ -76,32 +74,40 @@ class HomeAppBar extends _$HomeAppBar {
       if (!state.hasValue || !input.scrollController.hasClients) return;
 
       final double scrollPercentage = (input.scrollController.offset /
-          (expandedHeight - kToolbarHeight)).clamp(0.0, 1.0);
+              (expandedHeight - kToolbarHeight))
+          .clamp(0.0, 1.0);
 
-      final Color newTextColor = Color.lerp(
-        input.startTextColor,
-        input.endTextColor,
-        scrollPercentage,
-      ) ?? input.startTextColor;
+      final Color newTextColor =
+          Color.lerp(
+            input.startTextColor,
+            input.endTextColor,
+            scrollPercentage,
+          ) ??
+          input.startTextColor;
 
       // Only update if color has changed
       if (state.value!.currentTextColor != newTextColor) {
-        state = AsyncValue.data(state.value!.copyWith(
-          currentTextColor: newTextColor,
-        ));
+        state = AsyncValue.data(
+          state.value!.copyWith(currentTextColor: newTextColor),
+        );
       }
     });
 
     // Calculate initial color based on current scroll position
-    final double initialScrollPercentage = input.scrollController.hasClients
-        ? (input.scrollController.offset / (expandedHeight - kToolbarHeight)).clamp(0.0, 1.0)
-        : 0.0;
+    final double initialScrollPercentage =
+        input.scrollController.hasClients
+            ? (input.scrollController.offset /
+                    (expandedHeight - kToolbarHeight))
+                .clamp(0.0, 1.0)
+            : 0.0;
 
-    final Color initialColor = Color.lerp(
-      input.startTextColor,
-      input.endTextColor,
-      initialScrollPercentage,
-    ) ?? input.startTextColor;
+    final Color initialColor =
+        Color.lerp(
+          input.startTextColor,
+          input.endTextColor,
+          initialScrollPercentage,
+        ) ??
+        input.startTextColor;
 
     return HomeAppBarState(
       scrollController: input.scrollController,
@@ -132,9 +138,11 @@ class HomeSliverAppBar extends HookConsumerWidget {
     // Always start with white for expanded state
     final Color startTextColor = Colors.white;
     // End color depends on brightness mode
-    final Color endTextColor = brightness == Brightness.dark
-        ? Colors.white  // Stay white in dark mode
-        : Colors.black; // Transition to black in light mode
+    final Color endTextColor =
+        brightness == Brightness.dark
+            ? Colors
+                .white // Stay white in dark mode
+            : Colors.black; // Transition to black in light mode
 
     return SliverLayoutBuilder(
       builder: (BuildContext context, SliverConstraints constraints) {
@@ -150,90 +158,96 @@ class HomeSliverAppBar extends HookConsumerWidget {
         );
 
         return homeAppBarState.when(
-          data: (HomeAppBarState state) => SliverAppBar(
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              Padding(
-                  padding: EdgeInsets.only(right: 8),
-                child: user.avatarUrl != null
-                    ? ShadAvatar(user.avatarUrl!)
-                    : InitialsAvatar(name: user.displayName!),
-              ),
-            ],
-            leading: Padding(
-              padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
-              child: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.primary.withAlpha((255 * 0.1).round()),
-                  BlendMode.srcATop,
-                ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/fots-logo-favicon-100x100.png',
-                    height: 60,
-                    width: 60,
+          data:
+              (HomeAppBarState state) => SliverAppBar(
+                actions: [
+                  IconButton(
+                    icon: const Icon(Icons.notifications),
+                    onPressed: () {},
                   ),
-                ),
-              ),
-            ),
-            expandedHeight: 200.0,
-            floating: false,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                station.name,
-                style: TextStyle(
-                  color: state.currentTextColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              background: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.network(
-                    station.coverUrl ?? '',
-                    fit: BoxFit.cover,
+                  Padding(
+                    padding: EdgeInsets.only(right: 8),
+                    child:
+                        user.avatarUrl != null
+                            ? ShadAvatar(user.avatarUrl!)
+                            : InitialsAvatar(name: user.displayName!),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withAlpha((255 * 0.7).round()),
-                        ],
+                ],
+                leading: Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(
+                        context,
+                      ).colorScheme.primary.withAlpha((255 * 0.1).round()),
+                      BlendMode.srcATop,
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: CachedNetworkImage(
+                        imageUrl: user.avatarUrl ?? '',
+                        fit: BoxFit.cover,
+                        placeholder:
+                            (context, url) => const CircularProgressIndicator(),
+                        errorWidget:
+                            (context, url, error) => const Icon(Icons.error),
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-          loading: () => SliverAppBar(
-            expandedHeight: 200.0,
-            floating: false,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                station.name,
-                style: TextStyle(
-                  color: startTextColor,
-                  fontWeight: FontWeight.bold,
+                ),
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text(
+                    station.name,
+                    style: TextStyle(
+                      color: state.currentTextColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.network(station.coverUrl ?? '', fit: BoxFit.cover),
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.transparent,
+                              Colors.black.withAlpha((255 * 0.7).round()),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ),
-          error: (Object error, StackTrace stackTrace) => SliverToBoxAdapter(
-            child: ErrorScreen(
-              errorMessage: error.toString(),
-              onRetry: () => context.go('/'),
-            ),
-          ),
+          loading:
+              () => SliverAppBar(
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text(
+                    station.name,
+                    style: TextStyle(
+                      color: startTextColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+          error:
+              (Object error, StackTrace stackTrace) => SliverToBoxAdapter(
+                child: ErrorScreen(
+                  errorMessage: error.toString(),
+                  onRetry: () => context.go('/'),
+                ),
+              ),
         );
       },
     );
