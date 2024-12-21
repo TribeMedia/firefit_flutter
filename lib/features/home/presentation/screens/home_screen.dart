@@ -1,194 +1,292 @@
-import 'package:firefit/features/common/presentation/providers.dart';
+import 'package:core/core.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
-import 'package:firefit/features/home/domain/models/mock_provider.dart';
-import 'package:firefit/features/home/domain/models/mock_types.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
-import 'package:firefit/features/home/presentation/widgets/app_header.dart';
-import 'package:firefit/features/home/presentation/widgets/local_providers_panel.dart';
-import 'package:firefit/features/home/presentation/widgets/meal_schedule.dart';
-import 'package:firefit/features/home/presentation/widgets/navigation/app_drawer.dart';
-import 'package:firefit/features/home/presentation/widgets/navigation/bottom_nav_bar.dart';
-import 'package:firefit/features/home/presentation/widgets/nutrition_summary.dart';
-import 'package:firefit/features/home/presentation/widgets/quick_actions_carousel.dart';
-import 'package:firefit/features/home/presentation/widgets/shift_status_panel.dart';
-import 'package:firefit/features/home/presentation/widgets/team_updates.dart';
+import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
+import 'package:firefit/features/menu/providers.dart';
+import 'package:firefit/features/teams/presentation/widgets/team_update_card.dart';
+import 'package:firefit/features/teams/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class HomeScreen extends ConsumerWidget {
+part 'home_screen.g.dart';
+
+@riverpod
+class HomeAppBarScrollController extends _$HomeAppBarScrollController {
+  @override
+  ScrollController build() {
+    final controller = ScrollController();
+    ref.onDispose(() {
+      controller.dispose();
+    });
+    return controller;
+  }
+}
+
+class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
-
-  static final GlobalKey<ScaffoldState> _scaffoldKey =
-      GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homeStateValue = ref.watch(homeStateProvider);
-    final currentIndex = ref.watch(currentIndexProvider);
+    final homeState = ref.watch(homeStateProvider);
+    final menuState = ref.watch(menuControllerProvider(globalProviderId));
 
-    return homeStateValue.when(
-      data: (homeState) {
-        final homeLoading = homeState as HomeStateLoaded;
-        final nutritionSummary = homeLoading.nutritionSummary;
-        final mealSchedule = homeLoading.mealSchedule;
-        final teamUpdates = homeLoading.teamUpdates;
-        final localProviders = homeLoading.localProviders;
+    return homeState.when(
+      data: (homeStateModel) {
+        if (homeStateModel.isLoading) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
 
-        return Scaffold(
-          key: _scaffoldKey,
-          appBar: AppHeader(
-            scaffoldKey: _scaffoldKey,
-            onNotificationTap: () => _handleNotifications(context),
-            onSearchTap: () => _handleSearch(context),
+        if (homeStateModel.error != null) {
+          return Scaffold(
+            body: Center(child: Text('Error: ${homeStateModel.error}')),
+          );
+        }
+
+        return menuState.when(
+          data: (menuScreenViewModel) {
+            if (menuScreenViewModel.isLoading) {
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            if (menuScreenViewModel.error != null) {
+              return Scaffold(
+                body: Center(child: Text('Error: ${menuScreenViewModel.error}')),
+              );
+            }
+
+            return Scaffold(
+              body: HomeContent(
+                homeStateModel: homeStateModel,
+                menuScreenViewModel: menuScreenViewModel,
+              ),
+            );
+          },
+          loading: () => const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
           ),
-          body: RefreshIndicator(
-            onRefresh: () => _refreshHomeData(ref),
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 16),
-                        ShiftStatusPanel(
-                          shiftStatus: ShiftStatus.onDuty,
-                          nextShiftTime:
-                              DateTime.now().add(const Duration(hours: 8)),
-                          onStatusChange: (status) =>
-                              _handleShiftStatusChange(ref, status),
-                        ),
-                        const SizedBox(height: 24),
-                        QuickActionsCarousel(
-                          onActionSelected: (action) =>
-                              _handleQuickAction(context, action),
-                        ),
-                        const SizedBox(height: 24),
-                        NutritionSummary(
-                          caloriesRemaining: 700,
-                          macros: MacroNutrients(
-                            carbs: nutritionSummary['carbs'],
-                            protein: nutritionSummary['protein'],
-                            fat: nutritionSummary['fat'],
-                            carbsGoal: nutritionSummary['carbsGoal'],
-                            proteinGoal: nutritionSummary['proteinGoal'],
-                            fatGoal: nutritionSummary['fatGoal'],
-                          ),
-                          onDetailsPressed: () =>
-                              _showNutritionDetails(context),
-                        ),
-                        const SizedBox(height: 24),
-                        MealSchedule(
-                          meals: mealSchedule
-                              .map((m) => Meal(
-                                    id: m['id'],
-                                    name: m['name'],
-                                    mealType: m['mealType'],
-                                    calories: m['calories'],
-                                    time: m['time'],
-                                    isCompleted: m['isCompleted'],
-                                  ))
-                              .toList(),
-                          onMealTap: (meal) => _handleMealTap(context, meal),
-                          onAddMeal: () => _handleAddMeal(context),
-                        ),
-                        const SizedBox(height: 24),
-                        TeamUpdates(
-                          updates: teamUpdates
-                              .map((u) => TeamUpdate(
-                                    id: u['id'],
-                                    title: u['title'],
-                                    description: u['description'],
-                                    timestamp: u['timestamp'],
-                                    type: TeamUpdateType.mealPlan,
-                                    authorName: u['authorName'],
-                                    authorImageUrl: u['imageUrl'],
-                                  ))
-                              .toList(),
-                          onUpdateTap: (update) =>
-                              _handleTeamUpdate(context, update),
-                        ),
-                        const SizedBox(height: 24),
-                        LocalProvidersPanel(
-                          providers: localProviders
-                              .map((p) => MockProvider(
-                                    id: p['id'],
-                                    name: p['name'],
-                                    type: p['type'],
-                                    imageUrl: p['imageUrl'],
-                                    rating: p['rating'],
-                                    numberOfRatings: p['numberOfRatings'],
-                                    distance: p['distance'],
-                                    isOpen: p['isOpen'],
-                                    tags: List<String>.from(p['tags']),
-                                  ))
-                              .toList(),
-                          onProviderTap: (provider) =>
-                              _handleProviderTap(context, provider),
-                        ),
-                        const SizedBox(height: 32),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          error: (error, stackTrace) => Scaffold(
+            body: Center(child: Text('Error: $error')),
           ),
-          bottomNavigationBar: FireFitBottomNavBar(
-            currentIndex: currentIndex,
-            onTabSelected: (index) => _handleTabSelection(context, ref, index),
-          ),
-          drawer: AppDrawer(),
         );
       },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) =>
-          ErrorScreen(errorMessage: error.toString(), onRetry: () {}),
+      loading: () => const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      ),
+      error: (error, stackTrace) => Scaffold(
+        body: Center(child: Text('Error: $error')),
+      ),
+    );
+  }
+}
+
+class HomeContent extends HookConsumerWidget {
+  const HomeContent({
+    super.key,
+    required this.homeStateModel,
+    required this.menuScreenViewModel,
+  });
+
+  final HomeStateModel homeStateModel;
+  final MenuViewModel menuScreenViewModel;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final menuController = ref.watch(menuControllerProvider(globalProviderId).notifier);
+    final List<MenuItem> featuredMenuItems = menuController.featuredMenuItems
+      ..sort((MenuItem a, MenuItem b) => b.createdAt.compareTo(a.createdAt))
+      ..take(5).toList();
+
+    if (homeStateModel.firstResponder == null) {
+      return ErrorScreen(
+        errorMessage: 'No first responder found',
+        onRetry: () => context.go('/'),
+      );
+    }
+
+    if (homeStateModel.firstResponder!.currentStation == null) {
+      return ErrorScreen(
+        errorMessage: 'No current station found',
+        onRetry: () => context.go('/'),
+      );
+    }
+
+    final ScrollController scrollController = ref.watch(homeAppBarScrollControllerProvider);
+
+    return CustomScrollView(
+      controller: scrollController,
+      slivers: [
+        HomeSliverAppBar(
+          station: homeStateModel.firstResponder!.currentStation!,
+          user: homeStateModel.user!,
+          parentScrollController: scrollController,
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.all(16.0),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
+              _buildFeaturedMenuItems(context, featuredMenuItems),
+              const SizedBox(height: 24),
+              _buildTeamUpdates(context, ref),
+            ]),
+          ),
+        ),
+      ],
     );
   }
 
-  Future<void> _refreshHomeData(WidgetRef ref) async {
-    await ref.read(homeStateProvider.notifier).refreshData();
+  Widget _buildFeaturedMenuItems(BuildContext context, List<MenuItem> featuredItems) {
+    if (featuredItems.isEmpty) {
+      return const Center(
+        child: Text('No featured items found'),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Featured Menu Items',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        const SizedBox(height: 16),
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: featuredItems.length,
+          separatorBuilder: (BuildContext context, int index) =>
+          const SizedBox(height: 16),
+          itemBuilder: (BuildContext context, int index) {
+            final MenuItem menuItem = featuredItems[index];
+            return GestureDetector(
+              onTap: () => context.go('/menu/item/${menuItem.id}'),
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.black,
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    CachedNetworkImage(
+                      imageUrl: menuItem.imageUrl ?? '',
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withAlpha((255 * 0.1).round()),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 16,
+                      right: 16,
+                      bottom: 16,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            menuItem.name,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            menuItem.notes ?? '',
+                            style: TextStyle(
+                              color: Colors.white.withAlpha((255 * 0.8).round()),
+                              fontSize: 14,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '\$${menuItem.price.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ],
+    );
   }
 
-  void _handleShiftStatusChange(WidgetRef ref, ShiftStatus status) {
-    ref.read(homeStateProvider.notifier).updateShiftStatus(status);
-  }
+  Widget _buildTeamUpdates(BuildContext context, WidgetRef ref) {
+    final stationController = ref.watch(
+      stationControllerProvider(homeStateModel.user!.id),
+    );
 
-  void _handleQuickAction(BuildContext context, QuickAction action) {
-    // Handle quick action selection
-  }
+    return stationController.when(
+      data: (stationViewModel) {
+        if (stationViewModel.teamUpdates.isEmpty) {
+          return const Center(
+            child: Text('No team updates found'),
+          );
+        }
 
-  void _showNutritionDetails(BuildContext context) {
-    // Show nutrition details modal
-  }
-
-  void _handleMealTap(BuildContext context, Meal meal) {
-    // Navigate to meal details
-  }
-
-  void _handleAddMeal(BuildContext context) {
-    // Show add meal dialog
-  }
-
-  void _handleTeamUpdate(BuildContext context, TeamUpdate update) {
-    // Handle team update interaction
-  }
-
-  void _handleProviderTap(BuildContext context, MockProvider provider) {
-    // Navigate to provider details
-  }
-
-  void _handleTabSelection(BuildContext context, WidgetRef ref, int index) {
-    // Handle bottom navigation tab selection
-  }
-
-  void _handleNotifications(BuildContext context) {
-    // Show notifications
-  }
-
-  void _handleSearch(BuildContext context) {
-    // Show search interface
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Team Updates',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            const SizedBox(height: 16),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: stationViewModel.teamUpdates.length.clamp(0, 5),
+              separatorBuilder: (BuildContext context, int index) =>
+              const SizedBox(height: 8),
+              itemBuilder: (BuildContext context, int index) {
+                return TeamUpdateCard(
+                  teamUpdate: stationViewModel.teamUpdates[index],
+                );
+              },
+            ),
+          ],
+        );
+      },
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      error: (error, stackTrace) => Center(
+        child: Text('Error: $error'),
+      ),
+    );
   }
 }

@@ -1,0 +1,85 @@
+fragment NotificationType on NotificationType {
+id
+  key
+  name
+  iconUrl
+  schema
+  createdAt
+}
+
+fragment Notification on Notification {
+  id
+  applicationId
+  userId
+  notificationTypeId
+  notificationType {
+    ...NotificationType
+  }
+  title
+  subtitle
+  iconUrl
+  isRead
+  messageMarkdown
+  data
+  createdAt
+}
+
+query NotificationCollection(
+  $first: Int, 
+  $last: Int, 
+  $after: Cursor, 
+  $before: Cursor, 
+  $filter: NotificationFilter, 
+  $orderBy: [NotificationOrderBy!]
+) {
+  notificationCollection(
+    first: $first, 
+    last: $last, 
+    after: $after, 
+    before: $before, 
+    filter: $filter, 
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...Notification
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query NotificationTypesCollection(
+  $first: Int, 
+  $last: Int, 
+  $after: Cursor, 
+  $before: Cursor, 
+  $filter: NotificationTypeFilter, 
+  $orderBy: [NotificationTypeOrderBy!]
+) {
+  notificationTypeCollection(
+    first: $first, 
+    last: $last, 
+    after: $after, 
+    before: $before, 
+    filter: $filter, 
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...NotificationType
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

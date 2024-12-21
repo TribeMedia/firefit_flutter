@@ -33,7 +33,7 @@ query ProviderById($id: UUID!) {
   }
 }
 
-query Providers(
+query ProviderCollection(
   $first: Int
   $last: Int
   $before: Cursor

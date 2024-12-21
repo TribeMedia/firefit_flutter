@@ -1570,8 +1570,8 @@ class _CopyWithStubImpl$Query$ProviderById$providerCollection$edges<TRes>
       CopyWith$Fragment$Provider.stub(_res);
 }
 
-class Variables$Query$Providers {
-  factory Variables$Query$Providers({
+class Variables$Query$ProviderCollection {
+  factory Variables$Query$ProviderCollection({
     int? first,
     int? last,
     dynamic? before,
@@ -1579,7 +1579,7 @@ class Variables$Query$Providers {
     Input$ProviderFilter? filter,
     List<Input$ProviderOrderBy>? orderBy,
   }) =>
-      Variables$Query$Providers._({
+      Variables$Query$ProviderCollection._({
         if (first != null) r'first': first,
         if (last != null) r'last': last,
         if (before != null) r'before': before,
@@ -1588,9 +1588,10 @@ class Variables$Query$Providers {
         if (orderBy != null) r'orderBy': orderBy,
       });
 
-  Variables$Query$Providers._(this._$data);
+  Variables$Query$ProviderCollection._(this._$data);
 
-  factory Variables$Query$Providers.fromJson(Map<String, dynamic> data) {
+  factory Variables$Query$ProviderCollection.fromJson(
+      Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     if (data.containsKey('first')) {
       final l$first = data['first'];
@@ -1621,7 +1622,7 @@ class Variables$Query$Providers {
               Input$ProviderOrderBy.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
-    return Variables$Query$Providers._(result$data);
+    return Variables$Query$ProviderCollection._(result$data);
   }
 
   Map<String, dynamic> _$data;
@@ -1669,18 +1670,19 @@ class Variables$Query$Providers {
     return result$data;
   }
 
-  CopyWith$Variables$Query$Providers<Variables$Query$Providers> get copyWith =>
-      CopyWith$Variables$Query$Providers(
-        this,
-        (i) => i,
-      );
+  CopyWith$Variables$Query$ProviderCollection<
+          Variables$Query$ProviderCollection>
+      get copyWith => CopyWith$Variables$Query$ProviderCollection(
+            this,
+            (i) => i,
+          );
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$Providers) ||
+    if (!(other is Variables$Query$ProviderCollection) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1769,14 +1771,14 @@ class Variables$Query$Providers {
   }
 }
 
-abstract class CopyWith$Variables$Query$Providers<TRes> {
-  factory CopyWith$Variables$Query$Providers(
-    Variables$Query$Providers instance,
-    TRes Function(Variables$Query$Providers) then,
-  ) = _CopyWithImpl$Variables$Query$Providers;
+abstract class CopyWith$Variables$Query$ProviderCollection<TRes> {
+  factory CopyWith$Variables$Query$ProviderCollection(
+    Variables$Query$ProviderCollection instance,
+    TRes Function(Variables$Query$ProviderCollection) then,
+  ) = _CopyWithImpl$Variables$Query$ProviderCollection;
 
-  factory CopyWith$Variables$Query$Providers.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Query$Providers;
+  factory CopyWith$Variables$Query$ProviderCollection.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$ProviderCollection;
 
   TRes call({
     int? first,
@@ -1788,16 +1790,16 @@ abstract class CopyWith$Variables$Query$Providers<TRes> {
   });
 }
 
-class _CopyWithImpl$Variables$Query$Providers<TRes>
-    implements CopyWith$Variables$Query$Providers<TRes> {
-  _CopyWithImpl$Variables$Query$Providers(
+class _CopyWithImpl$Variables$Query$ProviderCollection<TRes>
+    implements CopyWith$Variables$Query$ProviderCollection<TRes> {
+  _CopyWithImpl$Variables$Query$ProviderCollection(
     this._instance,
     this._then,
   );
 
-  final Variables$Query$Providers _instance;
+  final Variables$Query$ProviderCollection _instance;
 
-  final TRes Function(Variables$Query$Providers) _then;
+  final TRes Function(Variables$Query$ProviderCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1809,7 +1811,7 @@ class _CopyWithImpl$Variables$Query$Providers<TRes>
     Object? filter = _undefined,
     Object? orderBy = _undefined,
   }) =>
-      _then(Variables$Query$Providers._({
+      _then(Variables$Query$ProviderCollection._({
         ..._instance._$data,
         if (first != _undefined) 'first': (first as int?),
         if (last != _undefined) 'last': (last as int?),
@@ -1821,9 +1823,9 @@ class _CopyWithImpl$Variables$Query$Providers<TRes>
       }));
 }
 
-class _CopyWithStubImpl$Variables$Query$Providers<TRes>
-    implements CopyWith$Variables$Query$Providers<TRes> {
-  _CopyWithStubImpl$Variables$Query$Providers(this._res);
+class _CopyWithStubImpl$Variables$Query$ProviderCollection<TRes>
+    implements CopyWith$Variables$Query$ProviderCollection<TRes> {
+  _CopyWithStubImpl$Variables$Query$ProviderCollection(this._res);
 
   TRes _res;
 
@@ -1838,25 +1840,25 @@ class _CopyWithStubImpl$Variables$Query$Providers<TRes>
       _res;
 }
 
-class Query$Providers {
-  Query$Providers({
+class Query$ProviderCollection {
+  Query$ProviderCollection({
     this.providerCollection,
     this.$__typename = 'Query',
   });
 
-  factory Query$Providers.fromJson(Map<String, dynamic> json) {
+  factory Query$ProviderCollection.fromJson(Map<String, dynamic> json) {
     final l$providerCollection = json['providerCollection'];
     final l$$__typename = json['__typename'];
-    return Query$Providers(
+    return Query$ProviderCollection(
       providerCollection: l$providerCollection == null
           ? null
-          : Query$Providers$providerCollection.fromJson(
+          : Query$ProviderCollection$providerCollection.fromJson(
               (l$providerCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$Providers$providerCollection? providerCollection;
+  final Query$ProviderCollection$providerCollection? providerCollection;
 
   final String $__typename;
 
@@ -1884,7 +1886,8 @@ class Query$Providers {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Providers) || runtimeType != other.runtimeType) {
+    if (!(other is Query$ProviderCollection) ||
+        runtimeType != other.runtimeType) {
       return false;
     }
     final l$providerCollection = providerCollection;
@@ -1901,40 +1904,42 @@ class Query$Providers {
   }
 }
 
-extension UtilityExtension$Query$Providers on Query$Providers {
-  CopyWith$Query$Providers<Query$Providers> get copyWith =>
-      CopyWith$Query$Providers(
+extension UtilityExtension$Query$ProviderCollection
+    on Query$ProviderCollection {
+  CopyWith$Query$ProviderCollection<Query$ProviderCollection> get copyWith =>
+      CopyWith$Query$ProviderCollection(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Query$Providers<TRes> {
-  factory CopyWith$Query$Providers(
-    Query$Providers instance,
-    TRes Function(Query$Providers) then,
-  ) = _CopyWithImpl$Query$Providers;
+abstract class CopyWith$Query$ProviderCollection<TRes> {
+  factory CopyWith$Query$ProviderCollection(
+    Query$ProviderCollection instance,
+    TRes Function(Query$ProviderCollection) then,
+  ) = _CopyWithImpl$Query$ProviderCollection;
 
-  factory CopyWith$Query$Providers.stub(TRes res) =
-      _CopyWithStubImpl$Query$Providers;
+  factory CopyWith$Query$ProviderCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$ProviderCollection;
 
   TRes call({
-    Query$Providers$providerCollection? providerCollection,
+    Query$ProviderCollection$providerCollection? providerCollection,
     String? $__typename,
   });
-  CopyWith$Query$Providers$providerCollection<TRes> get providerCollection;
+  CopyWith$Query$ProviderCollection$providerCollection<TRes>
+      get providerCollection;
 }
 
-class _CopyWithImpl$Query$Providers<TRes>
-    implements CopyWith$Query$Providers<TRes> {
-  _CopyWithImpl$Query$Providers(
+class _CopyWithImpl$Query$ProviderCollection<TRes>
+    implements CopyWith$Query$ProviderCollection<TRes> {
+  _CopyWithImpl$Query$ProviderCollection(
     this._instance,
     this._then,
   );
 
-  final Query$Providers _instance;
+  final Query$ProviderCollection _instance;
 
-  final TRes Function(Query$Providers) _then;
+  final TRes Function(Query$ProviderCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1942,44 +1947,48 @@ class _CopyWithImpl$Query$Providers<TRes>
     Object? providerCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Providers(
+      _then(Query$ProviderCollection(
         providerCollection: providerCollection == _undefined
             ? _instance.providerCollection
-            : (providerCollection as Query$Providers$providerCollection?),
+            : (providerCollection
+                as Query$ProviderCollection$providerCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$Providers$providerCollection<TRes> get providerCollection {
+  CopyWith$Query$ProviderCollection$providerCollection<TRes>
+      get providerCollection {
     final local$providerCollection = _instance.providerCollection;
     return local$providerCollection == null
-        ? CopyWith$Query$Providers$providerCollection.stub(_then(_instance))
-        : CopyWith$Query$Providers$providerCollection(
+        ? CopyWith$Query$ProviderCollection$providerCollection.stub(
+            _then(_instance))
+        : CopyWith$Query$ProviderCollection$providerCollection(
             local$providerCollection, (e) => call(providerCollection: e));
   }
 }
 
-class _CopyWithStubImpl$Query$Providers<TRes>
-    implements CopyWith$Query$Providers<TRes> {
-  _CopyWithStubImpl$Query$Providers(this._res);
+class _CopyWithStubImpl$Query$ProviderCollection<TRes>
+    implements CopyWith$Query$ProviderCollection<TRes> {
+  _CopyWithStubImpl$Query$ProviderCollection(this._res);
 
   TRes _res;
 
   call({
-    Query$Providers$providerCollection? providerCollection,
+    Query$ProviderCollection$providerCollection? providerCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$Providers$providerCollection<TRes> get providerCollection =>
-      CopyWith$Query$Providers$providerCollection.stub(_res);
+  CopyWith$Query$ProviderCollection$providerCollection<TRes>
+      get providerCollection =>
+          CopyWith$Query$ProviderCollection$providerCollection.stub(_res);
 }
 
-const documentNodeQueryProviders = DocumentNode(definitions: [
+const documentNodeQueryProviderCollection = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
-    name: NameNode(value: 'Providers'),
+    name: NameNode(value: 'ProviderCollection'),
     variableDefinitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'first')),
@@ -2170,25 +2179,27 @@ const documentNodeQueryProviders = DocumentNode(definitions: [
   fragmentDefinitionProvider,
   fragmentDefinitionProviderType,
 ]);
-Query$Providers _parserFn$Query$Providers(Map<String, dynamic> data) =>
-    Query$Providers.fromJson(data);
-typedef OnQueryComplete$Query$Providers = FutureOr<void> Function(
+Query$ProviderCollection _parserFn$Query$ProviderCollection(
+        Map<String, dynamic> data) =>
+    Query$ProviderCollection.fromJson(data);
+typedef OnQueryComplete$Query$ProviderCollection = FutureOr<void> Function(
   Map<String, dynamic>?,
-  Query$Providers?,
+  Query$ProviderCollection?,
 );
 
-class Options$Query$Providers extends graphql.QueryOptions<Query$Providers> {
-  Options$Query$Providers({
+class Options$Query$ProviderCollection
+    extends graphql.QueryOptions<Query$ProviderCollection> {
+  Options$Query$ProviderCollection({
     String? operationName,
-    Variables$Query$Providers? variables,
+    Variables$Query$ProviderCollection? variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$Providers? typedOptimisticResult,
+    Query$ProviderCollection? typedOptimisticResult,
     Duration? pollInterval,
     graphql.Context? context,
-    OnQueryComplete$Query$Providers? onComplete,
+    OnQueryComplete$Query$ProviderCollection? onComplete,
     graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
@@ -2204,14 +2215,16 @@ class Options$Query$Providers extends graphql.QueryOptions<Query$Providers> {
               ? null
               : (data) => onComplete(
                     data,
-                    data == null ? null : _parserFn$Query$Providers(data),
+                    data == null
+                        ? null
+                        : _parserFn$Query$ProviderCollection(data),
                   ),
           onError: onError,
-          document: documentNodeQueryProviders,
-          parserFn: _parserFn$Query$Providers,
+          document: documentNodeQueryProviderCollection,
+          parserFn: _parserFn$Query$ProviderCollection,
         );
 
-  final OnQueryComplete$Query$Providers? onCompleteWithParsed;
+  final OnQueryComplete$Query$ProviderCollection? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -2222,16 +2235,16 @@ class Options$Query$Providers extends graphql.QueryOptions<Query$Providers> {
       ];
 }
 
-class WatchOptions$Query$Providers
-    extends graphql.WatchQueryOptions<Query$Providers> {
-  WatchOptions$Query$Providers({
+class WatchOptions$Query$ProviderCollection
+    extends graphql.WatchQueryOptions<Query$ProviderCollection> {
+  WatchOptions$Query$ProviderCollection({
     String? operationName,
-    Variables$Query$Providers? variables,
+    Variables$Query$ProviderCollection? variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$Providers? typedOptimisticResult,
+    Query$ProviderCollection? typedOptimisticResult,
     graphql.Context? context,
     Duration? pollInterval,
     bool? eagerlyFetchResults,
@@ -2245,106 +2258,115 @@ class WatchOptions$Query$Providers
           cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
           context: context,
-          document: documentNodeQueryProviders,
+          document: documentNodeQueryProviderCollection,
           pollInterval: pollInterval,
           eagerlyFetchResults: eagerlyFetchResults,
           carryForwardDataOnException: carryForwardDataOnException,
           fetchResults: fetchResults,
-          parserFn: _parserFn$Query$Providers,
+          parserFn: _parserFn$Query$ProviderCollection,
         );
 }
 
-class FetchMoreOptions$Query$Providers extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$Providers({
+class FetchMoreOptions$Query$ProviderCollection
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$ProviderCollection({
     required graphql.UpdateQuery updateQuery,
-    Variables$Query$Providers? variables,
+    Variables$Query$ProviderCollection? variables,
   }) : super(
           updateQuery: updateQuery,
           variables: variables?.toJson() ?? {},
-          document: documentNodeQueryProviders,
+          document: documentNodeQueryProviderCollection,
         );
 }
 
-extension ClientExtension$Query$Providers on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$Providers>> query$Providers(
-          [Options$Query$Providers? options]) async =>
-      await this.query(options ?? Options$Query$Providers());
-  graphql.ObservableQuery<Query$Providers> watchQuery$Providers(
-          [WatchOptions$Query$Providers? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$Providers());
-  void writeQuery$Providers({
-    required Query$Providers data,
-    Variables$Query$Providers? variables,
+extension ClientExtension$Query$ProviderCollection on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$ProviderCollection>>
+      query$ProviderCollection(
+              [Options$Query$ProviderCollection? options]) async =>
+          await this.query(options ?? Options$Query$ProviderCollection());
+  graphql.ObservableQuery<Query$ProviderCollection>
+      watchQuery$ProviderCollection(
+              [WatchOptions$Query$ProviderCollection? options]) =>
+          this.watchQuery(options ?? WatchOptions$Query$ProviderCollection());
+  void writeQuery$ProviderCollection({
+    required Query$ProviderCollection data,
+    Variables$Query$ProviderCollection? variables,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
-          operation: graphql.Operation(document: documentNodeQueryProviders),
+          operation:
+              graphql.Operation(document: documentNodeQueryProviderCollection),
           variables: variables?.toJson() ?? const {},
         ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Query$Providers? readQuery$Providers({
-    Variables$Query$Providers? variables,
+  Query$ProviderCollection? readQuery$ProviderCollection({
+    Variables$Query$ProviderCollection? variables,
     bool optimistic = true,
   }) {
     final result = this.readQuery(
       graphql.Request(
-        operation: graphql.Operation(document: documentNodeQueryProviders),
+        operation:
+            graphql.Operation(document: documentNodeQueryProviderCollection),
         variables: variables?.toJson() ?? const {},
       ),
       optimistic: optimistic,
     );
-    return result == null ? null : Query$Providers.fromJson(result);
+    return result == null ? null : Query$ProviderCollection.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$Providers> useQuery$Providers(
-        [Options$Query$Providers? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$Providers());
-graphql.ObservableQuery<Query$Providers> useWatchQuery$Providers(
-        [WatchOptions$Query$Providers? options]) =>
-    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$Providers());
+graphql_flutter.QueryHookResult<Query$ProviderCollection>
+    useQuery$ProviderCollection([Options$Query$ProviderCollection? options]) =>
+        graphql_flutter.useQuery(options ?? Options$Query$ProviderCollection());
+graphql.ObservableQuery<Query$ProviderCollection>
+    useWatchQuery$ProviderCollection(
+            [WatchOptions$Query$ProviderCollection? options]) =>
+        graphql_flutter
+            .useWatchQuery(options ?? WatchOptions$Query$ProviderCollection());
 
-class Query$Providers$Widget extends graphql_flutter.Query<Query$Providers> {
-  Query$Providers$Widget({
+class Query$ProviderCollection$Widget
+    extends graphql_flutter.Query<Query$ProviderCollection> {
+  Query$ProviderCollection$Widget({
     widgets.Key? key,
-    Options$Query$Providers? options,
-    required graphql_flutter.QueryBuilder<Query$Providers> builder,
+    Options$Query$ProviderCollection? options,
+    required graphql_flutter.QueryBuilder<Query$ProviderCollection> builder,
   }) : super(
           key: key,
-          options: options ?? Options$Query$Providers(),
+          options: options ?? Options$Query$ProviderCollection(),
           builder: builder,
         );
 }
 
-class Query$Providers$providerCollection {
-  Query$Providers$providerCollection({
+class Query$ProviderCollection$providerCollection {
+  Query$ProviderCollection$providerCollection({
     required this.edges,
     required this.pageInfo,
     this.$__typename = 'ProviderConnection',
   });
 
-  factory Query$Providers$providerCollection.fromJson(
+  factory Query$ProviderCollection$providerCollection.fromJson(
       Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
-    return Query$Providers$providerCollection(
+    return Query$ProviderCollection$providerCollection(
       edges: (l$edges as List<dynamic>)
-          .map((e) => Query$Providers$providerCollection$edges.fromJson(
-              (e as Map<String, dynamic>)))
+          .map((e) =>
+              Query$ProviderCollection$providerCollection$edges.fromJson(
+                  (e as Map<String, dynamic>)))
           .toList(),
-      pageInfo: Query$Providers$providerCollection$pageInfo.fromJson(
+      pageInfo: Query$ProviderCollection$providerCollection$pageInfo.fromJson(
           (l$pageInfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$Providers$providerCollection$edges> edges;
+  final List<Query$ProviderCollection$providerCollection$edges> edges;
 
-  final Query$Providers$providerCollection$pageInfo pageInfo;
+  final Query$ProviderCollection$providerCollection$pageInfo pageInfo;
 
   final String $__typename;
 
@@ -2376,7 +2398,7 @@ class Query$Providers$providerCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Providers$providerCollection) ||
+    if (!(other is Query$ProviderCollection$providerCollection) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2406,49 +2428,50 @@ class Query$Providers$providerCollection {
   }
 }
 
-extension UtilityExtension$Query$Providers$providerCollection
-    on Query$Providers$providerCollection {
-  CopyWith$Query$Providers$providerCollection<
-          Query$Providers$providerCollection>
-      get copyWith => CopyWith$Query$Providers$providerCollection(
+extension UtilityExtension$Query$ProviderCollection$providerCollection
+    on Query$ProviderCollection$providerCollection {
+  CopyWith$Query$ProviderCollection$providerCollection<
+          Query$ProviderCollection$providerCollection>
+      get copyWith => CopyWith$Query$ProviderCollection$providerCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$Providers$providerCollection<TRes> {
-  factory CopyWith$Query$Providers$providerCollection(
-    Query$Providers$providerCollection instance,
-    TRes Function(Query$Providers$providerCollection) then,
-  ) = _CopyWithImpl$Query$Providers$providerCollection;
+abstract class CopyWith$Query$ProviderCollection$providerCollection<TRes> {
+  factory CopyWith$Query$ProviderCollection$providerCollection(
+    Query$ProviderCollection$providerCollection instance,
+    TRes Function(Query$ProviderCollection$providerCollection) then,
+  ) = _CopyWithImpl$Query$ProviderCollection$providerCollection;
 
-  factory CopyWith$Query$Providers$providerCollection.stub(TRes res) =
-      _CopyWithStubImpl$Query$Providers$providerCollection;
+  factory CopyWith$Query$ProviderCollection$providerCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$ProviderCollection$providerCollection;
 
   TRes call({
-    List<Query$Providers$providerCollection$edges>? edges,
-    Query$Providers$providerCollection$pageInfo? pageInfo,
+    List<Query$ProviderCollection$providerCollection$edges>? edges,
+    Query$ProviderCollection$providerCollection$pageInfo? pageInfo,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$Providers$providerCollection$edges> Function(
+      Iterable<Query$ProviderCollection$providerCollection$edges> Function(
               Iterable<
-                  CopyWith$Query$Providers$providerCollection$edges<
-                      Query$Providers$providerCollection$edges>>)
+                  CopyWith$Query$ProviderCollection$providerCollection$edges<
+                      Query$ProviderCollection$providerCollection$edges>>)
           _fn);
-  CopyWith$Query$Providers$providerCollection$pageInfo<TRes> get pageInfo;
+  CopyWith$Query$ProviderCollection$providerCollection$pageInfo<TRes>
+      get pageInfo;
 }
 
-class _CopyWithImpl$Query$Providers$providerCollection<TRes>
-    implements CopyWith$Query$Providers$providerCollection<TRes> {
-  _CopyWithImpl$Query$Providers$providerCollection(
+class _CopyWithImpl$Query$ProviderCollection$providerCollection<TRes>
+    implements CopyWith$Query$ProviderCollection$providerCollection<TRes> {
+  _CopyWithImpl$Query$ProviderCollection$providerCollection(
     this._instance,
     this._then,
   );
 
-  final Query$Providers$providerCollection _instance;
+  final Query$ProviderCollection$providerCollection _instance;
 
-  final TRes Function(Query$Providers$providerCollection) _then;
+  final TRes Function(Query$ProviderCollection$providerCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2457,68 +2480,73 @@ class _CopyWithImpl$Query$Providers$providerCollection<TRes>
     Object? pageInfo = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Providers$providerCollection(
+      _then(Query$ProviderCollection$providerCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
-            : (edges as List<Query$Providers$providerCollection$edges>),
+            : (edges
+                as List<Query$ProviderCollection$providerCollection$edges>),
         pageInfo: pageInfo == _undefined || pageInfo == null
             ? _instance.pageInfo
-            : (pageInfo as Query$Providers$providerCollection$pageInfo),
+            : (pageInfo
+                as Query$ProviderCollection$providerCollection$pageInfo),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$Providers$providerCollection$edges> Function(
+          Iterable<Query$ProviderCollection$providerCollection$edges> Function(
                   Iterable<
-                      CopyWith$Query$Providers$providerCollection$edges<
-                          Query$Providers$providerCollection$edges>>)
+                      CopyWith$Query$ProviderCollection$providerCollection$edges<
+                          Query$ProviderCollection$providerCollection$edges>>)
               _fn) =>
       call(
-          edges: _fn(_instance.edges
-              .map((e) => CopyWith$Query$Providers$providerCollection$edges(
+          edges: _fn(_instance.edges.map(
+              (e) => CopyWith$Query$ProviderCollection$providerCollection$edges(
                     e,
                     (i) => i,
                   ))).toList());
 
-  CopyWith$Query$Providers$providerCollection$pageInfo<TRes> get pageInfo {
+  CopyWith$Query$ProviderCollection$providerCollection$pageInfo<TRes>
+      get pageInfo {
     final local$pageInfo = _instance.pageInfo;
-    return CopyWith$Query$Providers$providerCollection$pageInfo(
+    return CopyWith$Query$ProviderCollection$providerCollection$pageInfo(
         local$pageInfo, (e) => call(pageInfo: e));
   }
 }
 
-class _CopyWithStubImpl$Query$Providers$providerCollection<TRes>
-    implements CopyWith$Query$Providers$providerCollection<TRes> {
-  _CopyWithStubImpl$Query$Providers$providerCollection(this._res);
+class _CopyWithStubImpl$Query$ProviderCollection$providerCollection<TRes>
+    implements CopyWith$Query$ProviderCollection$providerCollection<TRes> {
+  _CopyWithStubImpl$Query$ProviderCollection$providerCollection(this._res);
 
   TRes _res;
 
   call({
-    List<Query$Providers$providerCollection$edges>? edges,
-    Query$Providers$providerCollection$pageInfo? pageInfo,
+    List<Query$ProviderCollection$providerCollection$edges>? edges,
+    Query$ProviderCollection$providerCollection$pageInfo? pageInfo,
     String? $__typename,
   }) =>
       _res;
 
   edges(_fn) => _res;
 
-  CopyWith$Query$Providers$providerCollection$pageInfo<TRes> get pageInfo =>
-      CopyWith$Query$Providers$providerCollection$pageInfo.stub(_res);
+  CopyWith$Query$ProviderCollection$providerCollection$pageInfo<TRes>
+      get pageInfo =>
+          CopyWith$Query$ProviderCollection$providerCollection$pageInfo.stub(
+              _res);
 }
 
-class Query$Providers$providerCollection$edges {
-  Query$Providers$providerCollection$edges({
+class Query$ProviderCollection$providerCollection$edges {
+  Query$ProviderCollection$providerCollection$edges({
     required this.node,
     this.$__typename = 'ProviderEdge',
   });
 
-  factory Query$Providers$providerCollection$edges.fromJson(
+  factory Query$ProviderCollection$providerCollection$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$Providers$providerCollection$edges(
+    return Query$ProviderCollection$providerCollection$edges(
       node: Fragment$Provider.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -2552,7 +2580,7 @@ class Query$Providers$providerCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Providers$providerCollection$edges) ||
+    if (!(other is Query$ProviderCollection$providerCollection$edges) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2570,24 +2598,27 @@ class Query$Providers$providerCollection$edges {
   }
 }
 
-extension UtilityExtension$Query$Providers$providerCollection$edges
-    on Query$Providers$providerCollection$edges {
-  CopyWith$Query$Providers$providerCollection$edges<
-          Query$Providers$providerCollection$edges>
-      get copyWith => CopyWith$Query$Providers$providerCollection$edges(
+extension UtilityExtension$Query$ProviderCollection$providerCollection$edges
+    on Query$ProviderCollection$providerCollection$edges {
+  CopyWith$Query$ProviderCollection$providerCollection$edges<
+          Query$ProviderCollection$providerCollection$edges>
+      get copyWith =>
+          CopyWith$Query$ProviderCollection$providerCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$Providers$providerCollection$edges<TRes> {
-  factory CopyWith$Query$Providers$providerCollection$edges(
-    Query$Providers$providerCollection$edges instance,
-    TRes Function(Query$Providers$providerCollection$edges) then,
-  ) = _CopyWithImpl$Query$Providers$providerCollection$edges;
+abstract class CopyWith$Query$ProviderCollection$providerCollection$edges<
+    TRes> {
+  factory CopyWith$Query$ProviderCollection$providerCollection$edges(
+    Query$ProviderCollection$providerCollection$edges instance,
+    TRes Function(Query$ProviderCollection$providerCollection$edges) then,
+  ) = _CopyWithImpl$Query$ProviderCollection$providerCollection$edges;
 
-  factory CopyWith$Query$Providers$providerCollection$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$Providers$providerCollection$edges;
+  factory CopyWith$Query$ProviderCollection$providerCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ProviderCollection$providerCollection$edges;
 
   TRes call({
     Fragment$Provider? node,
@@ -2596,16 +2627,17 @@ abstract class CopyWith$Query$Providers$providerCollection$edges<TRes> {
   CopyWith$Fragment$Provider<TRes> get node;
 }
 
-class _CopyWithImpl$Query$Providers$providerCollection$edges<TRes>
-    implements CopyWith$Query$Providers$providerCollection$edges<TRes> {
-  _CopyWithImpl$Query$Providers$providerCollection$edges(
+class _CopyWithImpl$Query$ProviderCollection$providerCollection$edges<TRes>
+    implements
+        CopyWith$Query$ProviderCollection$providerCollection$edges<TRes> {
+  _CopyWithImpl$Query$ProviderCollection$providerCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Query$Providers$providerCollection$edges _instance;
+  final Query$ProviderCollection$providerCollection$edges _instance;
 
-  final TRes Function(Query$Providers$providerCollection$edges) _then;
+  final TRes Function(Query$ProviderCollection$providerCollection$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2613,7 +2645,7 @@ class _CopyWithImpl$Query$Providers$providerCollection$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Providers$providerCollection$edges(
+      _then(Query$ProviderCollection$providerCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$Provider),
@@ -2628,9 +2660,11 @@ class _CopyWithImpl$Query$Providers$providerCollection$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$Providers$providerCollection$edges<TRes>
-    implements CopyWith$Query$Providers$providerCollection$edges<TRes> {
-  _CopyWithStubImpl$Query$Providers$providerCollection$edges(this._res);
+class _CopyWithStubImpl$Query$ProviderCollection$providerCollection$edges<TRes>
+    implements
+        CopyWith$Query$ProviderCollection$providerCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$ProviderCollection$providerCollection$edges(
+      this._res);
 
   TRes _res;
 
@@ -2644,8 +2678,8 @@ class _CopyWithStubImpl$Query$Providers$providerCollection$edges<TRes>
       CopyWith$Fragment$Provider.stub(_res);
 }
 
-class Query$Providers$providerCollection$pageInfo {
-  Query$Providers$providerCollection$pageInfo({
+class Query$ProviderCollection$providerCollection$pageInfo {
+  Query$ProviderCollection$providerCollection$pageInfo({
     this.startCursor,
     this.endCursor,
     required this.hasNextPage,
@@ -2653,14 +2687,14 @@ class Query$Providers$providerCollection$pageInfo {
     this.$__typename = 'PageInfo',
   });
 
-  factory Query$Providers$providerCollection$pageInfo.fromJson(
+  factory Query$ProviderCollection$providerCollection$pageInfo.fromJson(
       Map<String, dynamic> json) {
     final l$startCursor = json['startCursor'];
     final l$endCursor = json['endCursor'];
     final l$hasNextPage = json['hasNextPage'];
     final l$hasPreviousPage = json['hasPreviousPage'];
     final l$$__typename = json['__typename'];
-    return Query$Providers$providerCollection$pageInfo(
+    return Query$ProviderCollection$providerCollection$pageInfo(
       startCursor: (l$startCursor as String?),
       endCursor: (l$endCursor as String?),
       hasNextPage: (l$hasNextPage as bool),
@@ -2715,7 +2749,7 @@ class Query$Providers$providerCollection$pageInfo {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Providers$providerCollection$pageInfo) ||
+    if (!(other is Query$ProviderCollection$providerCollection$pageInfo) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2748,24 +2782,27 @@ class Query$Providers$providerCollection$pageInfo {
   }
 }
 
-extension UtilityExtension$Query$Providers$providerCollection$pageInfo
-    on Query$Providers$providerCollection$pageInfo {
-  CopyWith$Query$Providers$providerCollection$pageInfo<
-          Query$Providers$providerCollection$pageInfo>
-      get copyWith => CopyWith$Query$Providers$providerCollection$pageInfo(
+extension UtilityExtension$Query$ProviderCollection$providerCollection$pageInfo
+    on Query$ProviderCollection$providerCollection$pageInfo {
+  CopyWith$Query$ProviderCollection$providerCollection$pageInfo<
+          Query$ProviderCollection$providerCollection$pageInfo>
+      get copyWith =>
+          CopyWith$Query$ProviderCollection$providerCollection$pageInfo(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$Providers$providerCollection$pageInfo<TRes> {
-  factory CopyWith$Query$Providers$providerCollection$pageInfo(
-    Query$Providers$providerCollection$pageInfo instance,
-    TRes Function(Query$Providers$providerCollection$pageInfo) then,
-  ) = _CopyWithImpl$Query$Providers$providerCollection$pageInfo;
+abstract class CopyWith$Query$ProviderCollection$providerCollection$pageInfo<
+    TRes> {
+  factory CopyWith$Query$ProviderCollection$providerCollection$pageInfo(
+    Query$ProviderCollection$providerCollection$pageInfo instance,
+    TRes Function(Query$ProviderCollection$providerCollection$pageInfo) then,
+  ) = _CopyWithImpl$Query$ProviderCollection$providerCollection$pageInfo;
 
-  factory CopyWith$Query$Providers$providerCollection$pageInfo.stub(TRes res) =
-      _CopyWithStubImpl$Query$Providers$providerCollection$pageInfo;
+  factory CopyWith$Query$ProviderCollection$providerCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ProviderCollection$providerCollection$pageInfo;
 
   TRes call({
     String? startCursor,
@@ -2776,16 +2813,18 @@ abstract class CopyWith$Query$Providers$providerCollection$pageInfo<TRes> {
   });
 }
 
-class _CopyWithImpl$Query$Providers$providerCollection$pageInfo<TRes>
-    implements CopyWith$Query$Providers$providerCollection$pageInfo<TRes> {
-  _CopyWithImpl$Query$Providers$providerCollection$pageInfo(
+class _CopyWithImpl$Query$ProviderCollection$providerCollection$pageInfo<TRes>
+    implements
+        CopyWith$Query$ProviderCollection$providerCollection$pageInfo<TRes> {
+  _CopyWithImpl$Query$ProviderCollection$providerCollection$pageInfo(
     this._instance,
     this._then,
   );
 
-  final Query$Providers$providerCollection$pageInfo _instance;
+  final Query$ProviderCollection$providerCollection$pageInfo _instance;
 
-  final TRes Function(Query$Providers$providerCollection$pageInfo) _then;
+  final TRes Function(Query$ProviderCollection$providerCollection$pageInfo)
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2796,7 +2835,7 @@ class _CopyWithImpl$Query$Providers$providerCollection$pageInfo<TRes>
     Object? hasPreviousPage = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Providers$providerCollection$pageInfo(
+      _then(Query$ProviderCollection$providerCollection$pageInfo(
         startCursor: startCursor == _undefined
             ? _instance.startCursor
             : (startCursor as String?),
@@ -2816,9 +2855,12 @@ class _CopyWithImpl$Query$Providers$providerCollection$pageInfo<TRes>
       ));
 }
 
-class _CopyWithStubImpl$Query$Providers$providerCollection$pageInfo<TRes>
-    implements CopyWith$Query$Providers$providerCollection$pageInfo<TRes> {
-  _CopyWithStubImpl$Query$Providers$providerCollection$pageInfo(this._res);
+class _CopyWithStubImpl$Query$ProviderCollection$providerCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$ProviderCollection$providerCollection$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$ProviderCollection$providerCollection$pageInfo(
+      this._res);
 
   TRes _res;
 

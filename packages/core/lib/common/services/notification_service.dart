@@ -1,5 +1,5 @@
-import 'package:core/common/models/notification.dart';
 import 'package:core/common/failures/failure.dart';
+import 'package:core/common/models/notification.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract class NotificationService {

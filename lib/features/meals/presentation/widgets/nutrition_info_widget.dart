@@ -18,12 +18,11 @@ class NutritionInfoWidget extends StatelessWidget {
         _buildMacronutrients(context),
         SizedBox(height: 16),
         _buildMicronutrients(context),
-        if (nutrition.allergens != null && nutrition.allergens!.isNotEmpty) ...[
+        if (nutrition.allergens?.isNotEmpty ?? false) ...[
           SizedBox(height: 16),
           _buildAllergens(context),
         ],
-        if (nutrition.dietaryInfo != null &&
-            nutrition.dietaryInfo!.isNotEmpty) ...[
+        if (nutrition.dietaryInfo?.isNotEmpty ?? false) ...[
           SizedBox(height: 16),
           _buildDietaryInfo(context),
         ],
@@ -48,11 +47,10 @@ class NutritionInfoWidget extends StatelessWidget {
       children: [
         Text('Macronutrients', style: Theme.of(context).textTheme.titleSmall),
         SizedBox(height: 4),
+        _buildNutritionRow('Protein', '${macros.protein.toStringAsFixed(1)}g'),
         _buildNutritionRow(
-            'Protein', '${macros.protein.total.toStringAsFixed(1)}g'),
-        _buildNutritionRow('Carbohydrates',
-            '${macros.carbohydrates.total.toStringAsFixed(1)}g'),
-        _buildNutritionRow('Fat', '${macros.fats.total.toStringAsFixed(1)}g'),
+            'Carbohydrates', '${macros.carbohydrates.toStringAsFixed(1)}g'),
+        _buildNutritionRow('Fat', '${macros.fats.toStringAsFixed(1)}g'),
       ],
     );
   }
@@ -66,22 +64,14 @@ class NutritionInfoWidget extends StatelessWidget {
         SizedBox(height: 4),
         if (micros.vitamins != null) ...[
           Text('Vitamins:', style: TextStyle(fontWeight: FontWeight.bold)),
-          ...micros.vitamins!
-              .toJson()
-              .entries
-              .where((entry) => entry.value != null)
-              .map((entry) => _buildNutritionRow(entry.key.capitalize(),
-                  '${entry.value.toStringAsFixed(1)}mg')),
+          ...micros.vitamins!.entries.map((entry) => _buildNutritionRow(
+              entry.key.capitalize(), '${entry.value.toStringAsFixed(1)}mg')),
         ],
         SizedBox(height: 8),
         if (micros.minerals != null) ...[
           Text('Minerals:', style: TextStyle(fontWeight: FontWeight.bold)),
-          ...micros.minerals!
-              .toJson()
-              .entries
-              .where((entry) => entry.value != null)
-              .map((entry) => _buildNutritionRow(entry.key.capitalize(),
-                  '${entry.value.toStringAsFixed(1)}mg')),
+          ...micros.minerals!.entries.map((entry) => _buildNutritionRow(
+              entry.key.capitalize(), '${entry.value.toStringAsFixed(1)}mg')),
         ],
       ],
     );

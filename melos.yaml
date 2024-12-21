@@ -1,0 +1,15 @@
+name: firefit
+
+packages:
+  - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .
+    description: Run dart analyze
+  format:
+    exec: dart format .
+    description: Run dart format
+  test:
+    exec: dart test
+    description: Run dart test

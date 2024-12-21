@@ -1,0 +1,115 @@
+fragment FirstResponderType on FirstResponderType {
+  id
+  name
+  key
+  schema
+  createdAt
+}
+
+fragment FirstResponderStation on FirstResponderStation {
+  id
+  firstResponderId
+  stationId
+  station {
+    ...Station
+  }
+  createdAt
+}
+
+fragment FirstResponder on FirstResponder {
+  id
+  userId
+  user {
+    id
+    email
+    firstName
+    lastName
+    displayName
+    data
+    avatarUrl
+    kratosId
+    supabaseUserId
+    userRoleCollection {
+      edges {
+        node {
+          id
+          roleId
+          role {
+            id
+            name
+            key
+            schema
+          }
+          userId
+        }
+      }
+    }
+  }
+  firstResponderTypeId
+  firstResponderType {
+    ...FirstResponderType
+  }
+  currentStationId
+  currentStation {
+    ...Station
+  }
+  firstResponderStationCollection {
+    edges {
+      node {
+        ...FirstResponderStation
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+  imageUrl
+  badgeNumber
+  data
+  createdAt
+  updatedAt
+}
+
+query FirstResponder($id: UUID!) {
+  firstResponderCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...FirstResponder
+      }
+    }
+  }
+}
+
+query FirstResponderCollection(
+  $first: Int,
+  $last: Int,
+  $before: Cursor,
+  $after: Cursor,
+  $filter: FirstResponderFilter,
+  $orderBy: [FirstResponderOrderBy!],
+) {
+  firstResponderCollection(
+    first: $first,
+    last: $last,
+    before: $before,
+    after: $after,
+    filter: $filter,
+    orderBy: $orderBy,
+  ) {
+    edges {
+      node {
+        ...FirstResponder
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+

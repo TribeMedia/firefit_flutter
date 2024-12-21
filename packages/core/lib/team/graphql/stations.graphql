@@ -1,0 +1,87 @@
+fragment StationProvider on StationProvider {
+  id
+  stationId
+  providerId
+  provider {
+    ...Provider
+  }
+  createdAt
+}
+
+fragment Station on Station {
+  id
+  name
+  number
+  description
+  longDescriptionMarkdown
+  address
+  address1
+  city
+  state
+  zip
+  iconUrl
+  coverUrl
+  registrationCode
+  createdAt
+  stationProviderCollection {
+    edges {
+      node {
+        ...StationProvider
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query Station($id: UUID!) {
+  stationCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...Station
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query StationCollection(
+  $first: Int,
+  $last: Int,
+  $before: Cursor,
+  $after: Cursor,
+  $offset: Int,
+  $filter: StationFilter,
+  $orderBy: [StationOrderBy!],
+) {
+  stationCollection(
+    filter: $filter,
+    orderBy: $orderBy,
+    first: $first,
+    last: $last,
+    before: $before,
+    after: $after,
+    offset: $offset,
+  ) {
+    edges {
+      node {
+        ...Station
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}

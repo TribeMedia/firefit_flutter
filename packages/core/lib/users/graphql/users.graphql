@@ -14,6 +14,16 @@ fragment UserRole on UserRole {
   userId
 }
 
+fragment UserOrganization on UserOrganization {
+  id
+  userId
+  organizationId
+  organization {
+    ...Organization
+  }
+  createdAt
+}
+
 fragment User on User {
   id
   email
@@ -31,9 +41,33 @@ fragment User on User {
       }
     }
   }
+  firstResponderCollection{
+    edges{
+      node{
+        ...FirstResponder
+      }
+    }
+  }
+  primaryOrganizationId
+  primaryOrganization{
+    ...Organization
+  }
+  userOrganizationCollection{
+    edges{
+      node{
+        ...UserOrganization
+      }
+    }
+    pageInfo{
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
 }
 
-query Users(
+query UserCollection(
   $first: Int
   $last: Int
   $before: Cursor
@@ -53,5 +87,37 @@ query Users(
       hasNextPage
       hasPreviousPage
     }
+  }
+}
+
+query User($id: UUID!) {
+  userCollection(filter: { id: { eq: $id } } ) {
+    edges {
+      node {
+        ...User
+      }
+    }
+  }
+}
+
+mutation CreateUser($input: UserInsertInput!) {
+  insertIntoUserCollection(objects: [$input]) {
+    records {
+      ...User
+    }
+  }
+}
+
+mutation UpdateUser($id: UUID!, $user: UserUpdateInput!) {
+  updateUserCollection(
+    filter: {
+      id: { eq: $id }
+    }
+    set: $user
+  ) {
+    records {
+      ...User
+    }
+    affectedCount
   }
 }

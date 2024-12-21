@@ -1,79 +1,81 @@
 import 'dart:async';
 
-import 'package:firefit/config/providers.dart';
-import 'package:firefit/features/home/domain/models/mock_models.dart';
-import 'package:firefit/features/home/domain/models/mock_types.dart';
+import 'package:core/core.dart';
+import 'package:firefit/features/auth/providers/user_notifier.dart';
+import 'package:firefit/features/common/providers/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 sealed class HomeStateData {
   const HomeStateData();
 }
 
-class HomeStateLoading extends HomeStateData {
-  const HomeStateLoading();
-}
-
-class HomeStateError extends HomeStateData {
-  final String message;
-  final StackTrace? stackTrace;
-
-  const HomeStateError(this.message, [this.stackTrace]);
-}
-
-class HomeStateLoaded extends HomeStateData {
-  final List<Map<String, dynamic>> teamUpdates;
-  final List<Map<String, dynamic>> mealSchedule;
-  final Map<String, dynamic> nutritionSummary;
-  final List<Map<String, dynamic>> localProviders;
-
-  const HomeStateLoaded({
-    required this.teamUpdates,
-    required this.mealSchedule,
-    required this.nutritionSummary,
-    required this.localProviders,
+class HomeStateModel {
+  HomeStateModel({
+    this.firstResponder,
+    this.user,
+    this.error,
+    this.isLoading = false,
   });
+
+  final FirstResponder? firstResponder;
+  final User? user;
+  final String? error;
+  final bool isLoading;
 }
 
-class HomeStateNotifier extends AsyncNotifier<HomeStateData> {
+class HomeStateNotifier extends AsyncNotifier<HomeStateModel> {
   Future<void> refreshData() async {
     await load();
   }
 
-  FutureOr<HomeStateData> load() async {
-    final logging = ref.read(loggingProvider);
-    logging.debug('HomeStateNotifier loading data...');
+  FutureOr<HomeStateModel> load() async {
+    state = const AsyncLoading();
+    final currentUser =
+        ref.read(userNotifierProvider.notifier).state.value?.user;
 
-    try {
-      final loadedState = HomeStateLoaded(
-        teamUpdates: MockData.getTeamUpdates(),
-        mealSchedule: MockData.getMealSchedule(),
-        nutritionSummary: MockData.getNutritionSummary(),
-        localProviders: MockData.getLocalProviders(),
+    final stationRepository = ref.read(stationRepositoryProvider);
+
+    if (currentUser == null) {
+      final model = HomeStateModel(
+        error: 'No user found',
       );
-      logging.debug('HomeStateNotifier data loaded successfully');
-      return loadedState;
-    } catch (e, stackTrace) {
-      logging.error('Error loading data in HomeStateNotifier: $e');
-      return HomeStateError(e.toString(), stackTrace);
+      state = AsyncValue.data(model);
+      return model;
     }
-  }
 
-  void updateShiftStatus(ShiftStatus status) {
-    state = AsyncValue.data(HomeStateLoaded(
-      teamUpdates: MockData.getTeamUpdates(),
-      mealSchedule: MockData.getMealSchedule(),
-      nutritionSummary: MockData.getNutritionSummary(),
-      localProviders: MockData.getLocalProviders(),
-    ));
+    final firstResponderResult = await stationRepository.queryFirstResponders(
+      filter: Input$FirstResponderFilter(
+        userId: Input$UUIDFilter(eq: currentUser.id),
+      ),
+    );
+
+    return firstResponderResult.fold(
+        (l) {
+          final model = HomeStateModel(
+            error: l.error,
+          );
+          state = AsyncValue.data(model);
+          return model;
+        },
+        (r) {
+          final responder = r.first;
+          final model = HomeStateModel(
+            firstResponder: responder,
+            user: currentUser,
+          );
+          state = AsyncValue.data(model);
+          return model;
+        },
+    );
   }
 
   @override
-  FutureOr<HomeStateData> build() async {
+  FutureOr<HomeStateModel> build() async {
     return await load();
   }
 }
 
 final homeStateProvider =
-    AsyncNotifierProvider<HomeStateNotifier, HomeStateData>(() {
+    AsyncNotifierProvider<HomeStateNotifier, HomeStateModel>(() {
   return HomeStateNotifier();
 });

@@ -16,6 +16,12 @@ _$ShoppingCartModelImpl _$$ShoppingCartModelImplFromJson(
               .toList() ??
           const [],
       totalPrice: (json['totalPrice'] as num?)?.toDouble() ?? 0.0,
+      shoppingCarts: (json['shoppingCarts'] as List<dynamic>?)
+              ?.map((e) =>
+                  ShoppingCartViewModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      currentCartId: json['currentCartId'] as String?,
     );
 
 Map<String, dynamic> _$$ShoppingCartModelImplToJson(
@@ -23,4 +29,6 @@ Map<String, dynamic> _$$ShoppingCartModelImplToJson(
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
       'totalPrice': instance.totalPrice,
+      'shoppingCarts': instance.shoppingCarts.map((e) => e.toJson()).toList(),
+      'currentCartId': instance.currentCartId,
     };

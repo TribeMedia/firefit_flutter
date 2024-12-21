@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firefit/features/common/presentation/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 
@@ -183,27 +184,11 @@ class MealSchedule extends StatelessWidget {
                     topLeft: Radius.circular(12),
                     bottomLeft: Radius.circular(12),
                   ),
-                  child: Image.network(
-                    meal.imageUrl!,
-                    width: 80,
-                    height: 80,
+                  child: CachedNetworkImage(
+                    imageUrl: meal.imageUrl ?? '',
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        width: 80,
-                        height: 80,
-                        color: theme.colorScheme.surface,
-                        child: Icon(
-                          Icons.restaurant,
-                          color: theme.colorScheme.onSurface.withValues(
-                            red: theme.colorScheme.onSurface.r.toDouble(),
-                            green: theme.colorScheme.onSurface.g.toDouble(),
-                            blue: theme.colorScheme.onSurface.b.toDouble(),
-                            alpha: 128.0, // 0.5 * 255 ≈ 128
-                          ),
-                        ),
-                      );
-                    },
+                    placeholder: (context, url) => const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
               Expanded(

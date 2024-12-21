@@ -1,0 +1,73 @@
+FROM ubuntu:22.04
+
+# Set ARG for platform
+# ARG TARGETPLATFORM=linux/arm64
+
+# Prevent interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Set environment variables
+ENV ANDROID_SDK_ROOT=/opt/android-sdk
+ENV FLUTTER_HOME=/opt/flutter
+ENV PATH=$PATH:$FLUTTER_HOME/bin:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools
+
+# Install required packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    unzip \
+    xz-utils \
+    zip \
+    libglu1-mesa \
+    openjdk-17-jdk \
+    wget \
+    clang \
+    cmake \
+    ninja-build \
+    pkg-config \
+    libgtk-3-dev \
+    liblzma-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download and install Android SDK
+RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    wget -q https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O android-sdk.zip && \
+    unzip -q android-sdk.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    mv ${ANDROID_SDK_ROOT}/cmdline-tools/cmdline-tools ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    rm android-sdk.zip
+
+# Accept Android SDK licenses
+RUN yes | sdkmanager --licenses
+
+# Install Android SDK components
+RUN sdkmanager --install \
+    "platform-tools" \
+    "platforms;android-34" \
+    "build-tools;34.0.0" \
+    "ndk;25.1.8937393" \
+    "cmake;3.22.1"
+
+# Download Flutter SDK
+RUN git clone https://github.com/flutter/flutter.git $FLUTTER_HOME && \
+    cd $FLUTTER_HOME && \
+    git fetch --tags && \
+    flutter channel master && \
+    flutter upgrade
+
+# Pre-download Flutter artifacts
+RUN flutter precache && \
+    flutter doctor --android-licenses && \
+    flutter config --no-analytics && \
+    flutter config --enable-android && \
+    flutter doctor -v
+
+# Create workspace directory
+WORKDIR /app
+
+# Create volume mount points
+VOLUME ["/app/source", "/app/output"]
+
+# Set the entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

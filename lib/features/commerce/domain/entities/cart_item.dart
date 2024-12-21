@@ -10,6 +10,7 @@ class CartItem with _$CartItem {
     required String name,
     required double price,
     @Default(1) int quantity,
+    String? imageUrl,
   }) = _CartItem;
 
   factory CartItem.fromJson(Map<String, dynamic> json) =>

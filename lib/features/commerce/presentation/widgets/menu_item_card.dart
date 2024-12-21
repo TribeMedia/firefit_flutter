@@ -1,8 +1,9 @@
 import 'package:core/core.dart';
-import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
-import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart';
+//import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
+//import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart.old';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MenuItemCard extends StatelessWidget {
   final MenuItem menuItem;
@@ -26,11 +27,11 @@ class MenuItemCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.network(
-              menuItem.imageUrl,
-              height: 120,
-              width: double.infinity,
+            child: CachedNetworkImage(
+              imageUrl: menuItem.imageUrl ?? '',
               fit: BoxFit.cover,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
           Padding(
@@ -46,14 +47,14 @@ class MenuItemCard extends StatelessWidget {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  menuItem.description,
+                  menuItem.notes ?? '',
                   style: Theme.of(context).textTheme.bodySmall,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 8),
                 Text(
-                  '\$${menuItem.price?.toStringAsFixed(2) ?? 'N/A'}',
+                  '\$${menuItem.price.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 SizedBox(height: 8),
@@ -72,7 +73,7 @@ class MenuItemCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                /*SizedBox(height: 8),
                 ExpansionTile(
                   title: Text('Nutrition Info'),
                   children: [
@@ -81,7 +82,7 @@ class MenuItemCard extends StatelessWidget {
                     else
                       Text('Nutrition information not available'),
                   ],
-                ),
+                ),*/
               ],
             ),
           ),

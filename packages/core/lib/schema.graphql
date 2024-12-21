@@ -7,22 +7,6 @@ type Agent implements Node {
   shortDescription: String
   longDescriptionMarkdown: String
   metadata: JSON
-  agentToolCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: AgentToolFilter
-    # Sort order to apply to the collection
-    orderBy: [AgentToolOrderBy!]
-  ): AgentToolConnection
   applicationAgentCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -39,6 +23,22 @@ type Agent implements Node {
     # Sort order to apply to the collection
     orderBy: [ApplicationAgentOrderBy!]
   ): ApplicationAgentConnection
+  agentToolCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: AgentToolFilter
+    # Sort order to apply to the collection
+    orderBy: [AgentToolOrderBy!]
+  ): AgentToolConnection
 }
 
 type AgentConnection {
@@ -104,8 +104,8 @@ type AgentTool implements Node {
   createdAt: Datetime!
   agentId: UUID!
   toolId: UUID!
-  agent: Agent!
   tool: Tool!
+  agent: Agent!
 }
 
 type AgentToolConnection {
@@ -203,8 +203,8 @@ type AiConfig implements Node {
   name: String!
   key: String!
   applicationId: UUID!
-  aiConfigType: AiConfigType!
   application: Application!
+  aiConfigType: AiConfigType!
 }
 
 type AiConfigConnection {
@@ -399,38 +399,6 @@ type AnswerChoice implements Node {
   metadata: JSON
   createdAt: Datetime!
   question: Question!
-  userSurveyAnswerCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserSurveyAnswerFilter
-    # Sort order to apply to the collection
-    orderBy: [UserSurveyAnswerOrderBy!]
-  ): UserSurveyAnswerConnection
-  userFormQuestionAnswerCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserFormQuestionAnswerFilter
-    # Sort order to apply to the collection
-    orderBy: [UserFormQuestionAnswerOrderBy!]
-  ): UserFormQuestionAnswerConnection
   questionAnwserChoiceCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -447,6 +415,38 @@ type AnswerChoice implements Node {
     # Sort order to apply to the collection
     orderBy: [QuestionAnwserChoiceOrderBy!]
   ): QuestionAnwserChoiceConnection
+  userFormQuestionAnswerCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserFormQuestionAnswerFilter
+    # Sort order to apply to the collection
+    orderBy: [UserFormQuestionAnswerOrderBy!]
+  ): UserFormQuestionAnswerConnection
+  userSurveyAnswerCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserSurveyAnswerFilter
+    # Sort order to apply to the collection
+    orderBy: [UserSurveyAnswerOrderBy!]
+  ): UserSurveyAnswerConnection
 }
 
 type AnswerChoiceConnection {
@@ -616,9 +616,11 @@ type Application implements Node {
   createdAt: Datetime!
   iconUrl: String
   coverUrl: String
-  applicationType: ApplicationType!
+  ownerOrganizationId: UUID
+  ownerOrganization: Organization
   owner: User
-  aiConfigCollection(
+  applicationType: ApplicationType!
+  applicationAgentCollection(
     # Query the first `n` records in the collection
     first: Int
     # Query the last `n` records in the collection
@@ -630,74 +632,10 @@ type Application implements Node {
     # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
     offset: Int
     # Filters to apply to the results set when querying from the collection
-    filter: AiConfigFilter
+    filter: ApplicationAgentFilter
     # Sort order to apply to the collection
-    orderBy: [AiConfigOrderBy!]
-  ): AiConfigConnection
-  chatSessionCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ChatSessionFilter
-    # Sort order to apply to the collection
-    orderBy: [ChatSessionOrderBy!]
-  ): ChatSessionConnection
-  personaCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: PersonaFilter
-    # Sort order to apply to the collection
-    orderBy: [PersonaOrderBy!]
-  ): PersonaConnection
-  applicationUserRoleCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ApplicationUserRoleFilter
-    # Sort order to apply to the collection
-    orderBy: [ApplicationUserRoleOrderBy!]
-  ): ApplicationUserRoleConnection
-  applicationUserCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ApplicationUserFilter
-    # Sort order to apply to the collection
-    orderBy: [ApplicationUserOrderBy!]
-  ): ApplicationUserConnection
+    orderBy: [ApplicationAgentOrderBy!]
+  ): ApplicationAgentConnection
   applicationToolCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -730,7 +668,7 @@ type Application implements Node {
     # Sort order to apply to the collection
     orderBy: [ApplicationTableOrderBy!]
   ): ApplicationTableConnection
-  applicationAgentCollection(
+  aiConfigCollection(
     # Query the first `n` records in the collection
     first: Int
     # Query the last `n` records in the collection
@@ -742,10 +680,74 @@ type Application implements Node {
     # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
     offset: Int
     # Filters to apply to the results set when querying from the collection
-    filter: ApplicationAgentFilter
+    filter: AiConfigFilter
     # Sort order to apply to the collection
-    orderBy: [ApplicationAgentOrderBy!]
-  ): ApplicationAgentConnection
+    orderBy: [AiConfigOrderBy!]
+  ): AiConfigConnection
+  chatSessionCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ChatSessionFilter
+    # Sort order to apply to the collection
+    orderBy: [ChatSessionOrderBy!]
+  ): ChatSessionConnection
+  contentTemplateCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ContentTemplateFilter
+    # Sort order to apply to the collection
+    orderBy: [ContentTemplateOrderBy!]
+  ): ContentTemplateConnection
+  assetTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: AssetTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [AssetTypeOrderBy!]
+  ): AssetTypeConnection
+  assetCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: AssetFilter
+    # Sort order to apply to the collection
+    orderBy: [AssetOrderBy!]
+  ): AssetConnection
   contentCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -762,6 +764,22 @@ type Application implements Node {
     # Sort order to apply to the collection
     orderBy: [ContentOrderBy!]
   ): ContentConnection
+  applicationUserCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationUserFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationUserOrderBy!]
+  ): ApplicationUserConnection
   notificationCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -778,6 +796,70 @@ type Application implements Node {
     # Sort order to apply to the collection
     orderBy: [NotificationOrderBy!]
   ): NotificationConnection
+  documentTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: DocumentTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [DocumentTypeOrderBy!]
+  ): DocumentTypeConnection
+  contentTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ContentTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [ContentTypeOrderBy!]
+  ): ContentTypeConnection
+  applicationUserRoleCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationUserRoleFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationUserRoleOrderBy!]
+  ): ApplicationUserRoleConnection
+  documentCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: DocumentFilter
+    # Sort order to apply to the collection
+    orderBy: [DocumentOrderBy!]
+  ): DocumentConnection
   onboardingCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -794,6 +876,38 @@ type Application implements Node {
     # Sort order to apply to the collection
     orderBy: [OnboardingOrderBy!]
   ): OnboardingConnection
+  personaCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: PersonaFilter
+    # Sort order to apply to the collection
+    orderBy: [PersonaOrderBy!]
+  ): PersonaConnection
+  applicationOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrganizationOrderBy!]
+  ): ApplicationOrganizationConnection
 }
 
 type ApplicationAgent implements Node {
@@ -803,8 +917,8 @@ type ApplicationAgent implements Node {
   createdAt: Datetime!
   applicationId: UUID!
   agentId: UUID!
-  agent: Agent!
   application: Application!
+  agent: Agent!
 }
 
 type ApplicationAgentConnection {
@@ -900,6 +1014,7 @@ input ApplicationFilter {
   createdAt: DatetimeFilter
   iconUrl: StringFilter
   coverUrl: StringFilter
+  ownerOrganizationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [ApplicationFilter!]
@@ -919,6 +1034,7 @@ input ApplicationInsertInput {
   createdAt: Datetime
   iconUrl: String
   coverUrl: String
+  ownerOrganizationId: UUID
 }
 
 type ApplicationInsertResponse {
@@ -938,6 +1054,84 @@ input ApplicationOrderBy {
   createdAt: OrderByDirection
   iconUrl: OrderByDirection
   coverUrl: OrderByDirection
+  ownerOrganizationId: OrderByDirection
+}
+
+type ApplicationOrganization implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  applicationId: UUID!
+  organizationId: UUID!
+  createdAt: Datetime!
+  organization: Organization!
+  application: Application!
+}
+
+type ApplicationOrganizationConnection {
+  edges: [ApplicationOrganizationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ApplicationOrganizationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ApplicationOrganization!]!
+}
+
+type ApplicationOrganizationEdge {
+  cursor: String!
+  node: ApplicationOrganization!
+}
+
+input ApplicationOrganizationFilter {
+  id: UUIDFilter
+  applicationId: UUIDFilter
+  organizationId: UUIDFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ApplicationOrganizationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ApplicationOrganizationFilter!]
+  # Negates a filter
+  not: ApplicationOrganizationFilter
+}
+
+input ApplicationOrganizationInsertInput {
+  id: UUID
+  applicationId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type ApplicationOrganizationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ApplicationOrganization!]!
+}
+
+input ApplicationOrganizationOrderBy {
+  id: OrderByDirection
+  applicationId: OrderByDirection
+  organizationId: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input ApplicationOrganizationUpdateInput {
+  id: UUID
+  applicationId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type ApplicationOrganizationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ApplicationOrganization!]!
 }
 
 type ApplicationTable implements Node {
@@ -1028,8 +1222,8 @@ type ApplicationTool implements Node {
   createdAt: Datetime!
   applicationId: UUID!
   toolId: UUID!
-  application: Application!
   tool: Tool!
+  application: Application!
 }
 
 type ApplicationToolConnection {
@@ -1202,6 +1396,7 @@ input ApplicationUpdateInput {
   createdAt: Datetime
   iconUrl: String
   coverUrl: String
+  ownerOrganizationId: UUID
 }
 
 type ApplicationUpdateResponse {
@@ -1218,8 +1413,8 @@ type ApplicationUser implements Node {
   createdAt: Datetime!
   applicationId: UUID!
   userId: UUID!
+  user: User
   application: Application!
-  user: User!
 }
 
 type ApplicationUserConnection {
@@ -1282,9 +1477,9 @@ type ApplicationUserRole implements Node {
   applicationId: UUID!
   userId: UUID!
   roleId: UUID!
-  application: Application!
+  user: User
   role: Role!
-  user: User!
+  application: Application!
 }
 
 type ApplicationUserRoleConnection {
@@ -1398,12 +1593,14 @@ type Asset implements Node {
   statusId: UUID
   promptId: UUID
   creationTypeId: UUID
-  creationType: CreationType
-  mimeType: MimeType!
-  assetType: AssetType!
-  prompt: Prompt
+  applicationId: UUID!
   status: AssetStatus
+  prompt: Prompt
   owner: User
+  mimeType: MimeType!
+  creationType: CreationType
+  assetType: AssetType!
+  application: Application!
 }
 
 type AssetConnection {
@@ -1447,6 +1644,7 @@ input AssetFilter {
   statusId: UUIDFilter
   promptId: UUIDFilter
   creationTypeId: UUIDFilter
+  applicationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [AssetFilter!]
@@ -1481,6 +1679,7 @@ input AssetInsertInput {
   statusId: UUID
   promptId: UUID
   creationTypeId: UUID
+  applicationId: UUID
 }
 
 type AssetInsertResponse {
@@ -1514,6 +1713,7 @@ input AssetOrderBy {
   statusId: OrderByDirection
   promptId: OrderByDirection
   creationTypeId: OrderByDirection
+  applicationId: OrderByDirection
 }
 
 type AssetStatus implements Node {
@@ -1616,6 +1816,8 @@ type AssetType implements Node {
   description: String
   schema: JSON
   createdAt: Datetime!
+  applicationId: UUID
+  application: Application
   assetTypeMimeTypeCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -1673,6 +1875,7 @@ input AssetTypeFilter {
   key: StringFilter
   description: StringFilter
   createdAt: DatetimeFilter
+  applicationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [AssetTypeFilter!]
@@ -1689,6 +1892,7 @@ input AssetTypeInsertInput {
   description: String
   schema: JSON
   createdAt: Datetime
+  applicationId: UUID
 }
 
 type AssetTypeInsertResponse {
@@ -1705,8 +1909,8 @@ type AssetTypeMimeType implements Node {
   assetTypeId: UUID!
   mimeTypeId: UUID
   createdAt: Datetime!
-  assetType: AssetType!
   mimeType: MimeType
+  assetType: AssetType!
 }
 
 type AssetTypeMimeTypeConnection {
@@ -1781,6 +1985,7 @@ input AssetTypeOrderBy {
   key: OrderByDirection
   description: OrderByDirection
   createdAt: OrderByDirection
+  applicationId: OrderByDirection
 }
 
 input AssetTypeUpdateInput {
@@ -1790,6 +1995,7 @@ input AssetTypeUpdateInput {
   description: String
   schema: JSON
   createdAt: Datetime
+  applicationId: UUID
 }
 
 type AssetTypeUpdateResponse {
@@ -1824,6 +2030,7 @@ input AssetUpdateInput {
   statusId: UUID
   promptId: UUID
   creationTypeId: UUID
+  applicationId: UUID
 }
 
 type AssetUpdateResponse {
@@ -1848,6 +2055,15 @@ input BigFloatFilter {
   neq: BigFloat
 }
 
+# Boolean expression comparing fields on type "BigFloatList"
+input BigFloatListFilter {
+  containedBy: [BigFloat!]
+  contains: [BigFloat!]
+  eq: [BigFloat!]
+  is: FilterIs
+  overlaps: [BigFloat!]
+}
+
 # An arbitrary size integer represented as a string
 scalar BigInt
 
@@ -1863,10 +2079,28 @@ input BigIntFilter {
   neq: BigInt
 }
 
+# Boolean expression comparing fields on type "BigIntList"
+input BigIntListFilter {
+  containedBy: [BigInt!]
+  contains: [BigInt!]
+  eq: [BigInt!]
+  is: FilterIs
+  overlaps: [BigInt!]
+}
+
 # Boolean expression comparing fields on type "Boolean"
 input BooleanFilter {
   eq: Boolean
   is: FilterIs
+}
+
+# Boolean expression comparing fields on type "BooleanList"
+input BooleanListFilter {
+  containedBy: [Boolean!]
+  contains: [Boolean!]
+  eq: [Boolean!]
+  is: FilterIs
+  overlaps: [Boolean!]
 }
 
 type ChatMessage implements Node {
@@ -1880,9 +2114,9 @@ type ChatMessage implements Node {
   chatSessionId: UUID
   index: BigInt!
   previousMessageId: UUID
-  chatSession: ChatSession
-  previousMessage: ChatMessage
   role: ChatRole
+  previousMessage: ChatMessage
+  chatSession: ChatSession
   chatMessageCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -2085,8 +2319,8 @@ type ChatSession implements Node {
   title: String
   notes: String
   applicationId: UUID!
-  application: Application!
   user: User
+  application: Application!
   chatMessageCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -2214,10 +2448,13 @@ type Content implements Node {
   contentTemplateId: UUID
   publicationUrl: String
   bodyMarkdown: String
-  application: Application!
-  author: User
-  contentType: ContentType!
+  creationTypeId: UUID
   publicationState: PublicationState!
+  creationType: CreationType
+  contentType: ContentType!
+  contentTemplate: ContentTemplate
+  author: User
+  application: Application!
   contentContentPartCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -2234,6 +2471,22 @@ type Content implements Node {
     # Sort order to apply to the collection
     orderBy: [ContentContentPartOrderBy!]
   ): ContentContentPartConnection
+  teamUpdateCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: TeamUpdateFilter
+    # Sort order to apply to the collection
+    orderBy: [TeamUpdateOrderBy!]
+  ): TeamUpdateConnection
   contentTemplateVariableValueCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -2265,8 +2518,8 @@ type ContentContentPart implements Node {
   contentPartId: UUID!
   index: Int!
   createdAt: Datetime!
-  content: Content!
   contentPart: ContentPart!
+  content: Content!
 }
 
 type ContentContentPartConnection {
@@ -2369,6 +2622,7 @@ input ContentFilter {
   contentTemplateId: UUIDFilter
   publicationUrl: StringFilter
   bodyMarkdown: StringFilter
+  creationTypeId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [ContentFilter!]
@@ -2397,6 +2651,7 @@ input ContentInsertInput {
   contentTemplateId: UUID
   publicationUrl: String
   bodyMarkdown: String
+  creationTypeId: UUID
 }
 
 type ContentInsertResponse {
@@ -2424,6 +2679,7 @@ input ContentOrderBy {
   contentTemplateId: OrderByDirection
   publicationUrl: OrderByDirection
   bodyMarkdown: OrderByDirection
+  creationTypeId: OrderByDirection
 }
 
 type ContentPart implements Node {
@@ -2438,23 +2694,8 @@ type ContentPart implements Node {
   updatedAt: Datetime
   aiContext: String
   bodyMarkdown: String
+  data: JSON
   contentType: ContentType!
-  contentPartContentPartCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ContentPartContentPartFilter
-    # Sort order to apply to the collection
-    orderBy: [ContentPartContentPartOrderBy!]
-  ): ContentPartContentPartConnection
   contentContentPartCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -2471,6 +2712,22 @@ type ContentPart implements Node {
     # Sort order to apply to the collection
     orderBy: [ContentContentPartOrderBy!]
   ): ContentContentPartConnection
+  contentPartContentPartCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ContentPartContentPartFilter
+    # Sort order to apply to the collection
+    orderBy: [ContentPartContentPartOrderBy!]
+  ): ContentPartContentPartConnection
 }
 
 type ContentPartConnection {
@@ -2486,8 +2743,8 @@ type ContentPartContentPart implements Node {
   childContentPartId: UUID!
   index: Int!
   createdAt: Datetime!
-  childContentPart: ContentPart!
   parentContentPart: ContentPart!
+  childContentPart: ContentPart!
 }
 
 type ContentPartContentPartConnection {
@@ -2601,6 +2858,7 @@ input ContentPartInsertInput {
   updatedAt: Datetime
   aiContext: String
   bodyMarkdown: String
+  data: JSON
 }
 
 type ContentPartInsertResponse {
@@ -2632,6 +2890,7 @@ input ContentPartUpdateInput {
   updatedAt: Datetime
   aiContext: String
   bodyMarkdown: String
+  data: JSON
 }
 
 type ContentPartUpdateResponse {
@@ -2659,8 +2918,10 @@ type ContentTemplate implements Node {
   isArchived: Boolean
   archivedAt: Datetime
   ownerId: UUID
-  contentType: ContentType!
+  applicationId: UUID!
   owner: User
+  contentType: ContentType!
+  application: Application!
   contentTemplateVariableCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -2677,6 +2938,22 @@ type ContentTemplate implements Node {
     # Sort order to apply to the collection
     orderBy: [ContentTemplateVariableOrderBy!]
   ): ContentTemplateVariableConnection
+  contentCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ContentFilter
+    # Sort order to apply to the collection
+    orderBy: [ContentOrderBy!]
+  ): ContentConnection
 }
 
 type ContentTemplateConnection {
@@ -2711,6 +2988,7 @@ input ContentTemplateFilter {
   isArchived: BooleanFilter
   archivedAt: DatetimeFilter
   ownerId: UUIDFilter
+  applicationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [ContentTemplateFilter!]
@@ -2736,6 +3014,7 @@ input ContentTemplateInsertInput {
   isArchived: Boolean
   archivedAt: Datetime
   ownerId: UUID
+  applicationId: UUID
 }
 
 type ContentTemplateInsertResponse {
@@ -2760,6 +3039,7 @@ input ContentTemplateOrderBy {
   isArchived: OrderByDirection
   archivedAt: OrderByDirection
   ownerId: OrderByDirection
+  applicationId: OrderByDirection
 }
 
 input ContentTemplateUpdateInput {
@@ -2778,6 +3058,7 @@ input ContentTemplateUpdateInput {
   isArchived: Boolean
   archivedAt: Datetime
   ownerId: UUID
+  applicationId: UUID
 }
 
 type ContentTemplateUpdateResponse {
@@ -2795,8 +3076,8 @@ type ContentTemplateVariable implements Node {
   contentTemplateId: UUID!
   createdAt: Datetime!
   data: JSON
+  templateVariableType: TemplateVariableType
   contentTemplate: ContentTemplate!
-  templateVariableType: TemplateVariable
 }
 
 type ContentTemplateVariableConnection {
@@ -2976,22 +3257,8 @@ type ContentType implements Node {
   schema: JSON
   createdAt: Datetime!
   requiresApproval: Boolean
-  contentCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ContentFilter
-    # Sort order to apply to the collection
-    orderBy: [ContentOrderBy!]
-  ): ContentConnection
+  applicationId: UUID
+  application: Application
   contentPartCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -3024,6 +3291,22 @@ type ContentType implements Node {
     # Sort order to apply to the collection
     orderBy: [ContentTemplateOrderBy!]
   ): ContentTemplateConnection
+  contentCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ContentFilter
+    # Sort order to apply to the collection
+    orderBy: [ContentOrderBy!]
+  ): ContentConnection
 }
 
 type ContentTypeConnection {
@@ -3050,6 +3333,7 @@ input ContentTypeFilter {
   description: StringFilter
   createdAt: DatetimeFilter
   requiresApproval: BooleanFilter
+  applicationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [ContentTypeFilter!]
@@ -3067,6 +3351,7 @@ input ContentTypeInsertInput {
   schema: JSON
   createdAt: Datetime
   requiresApproval: Boolean
+  applicationId: UUID
 }
 
 type ContentTypeInsertResponse {
@@ -3083,6 +3368,7 @@ input ContentTypeOrderBy {
   description: OrderByDirection
   createdAt: OrderByDirection
   requiresApproval: OrderByDirection
+  applicationId: OrderByDirection
 }
 
 input ContentTypeUpdateInput {
@@ -3093,6 +3379,7 @@ input ContentTypeUpdateInput {
   schema: JSON
   createdAt: Datetime
   requiresApproval: Boolean
+  applicationId: UUID
 }
 
 type ContentTypeUpdateResponse {
@@ -3121,6 +3408,7 @@ input ContentUpdateInput {
   contentTemplateId: UUID
   publicationUrl: String
   bodyMarkdown: String
+  creationTypeId: UUID
 }
 
 type ContentUpdateResponse {
@@ -3153,6 +3441,22 @@ type CreationType implements Node {
     # Sort order to apply to the collection
     orderBy: [AssetOrderBy!]
   ): AssetConnection
+  contentCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ContentFilter
+    # Sort order to apply to the collection
+    orderBy: [ContentOrderBy!]
+  ): ContentConnection
 }
 
 type CreationTypeConnection {
@@ -3239,6 +3543,15 @@ input DateFilter {
   neq: Date
 }
 
+# Boolean expression comparing fields on type "DateList"
+input DateListFilter {
+  containedBy: [Date!]
+  contains: [Date!]
+  eq: [Date!]
+  is: FilterIs
+  overlaps: [Date!]
+}
+
 # A date and time
 scalar Datetime
 
@@ -3252,6 +3565,15 @@ input DatetimeFilter {
   lt: Datetime
   lte: Datetime
   neq: Datetime
+}
+
+# Boolean expression comparing fields on type "DatetimeList"
+input DatetimeListFilter {
+  containedBy: [Datetime!]
+  contains: [Datetime!]
+  eq: [Datetime!]
+  is: FilterIs
+  overlaps: [Datetime!]
 }
 
 type Document implements Node {
@@ -3268,9 +3590,11 @@ type Document implements Node {
   userId: UUID
   documentTypeId: UUID
   contentMarkdown: String
-  documentType: DocumentType
-  mimeType: MimeType!
+  applicationId: UUID!
   user: User
+  mimeType: MimeType!
+  documentType: DocumentType
+  application: Application!
 }
 
 type DocumentConnection {
@@ -3302,6 +3626,7 @@ input DocumentFilter {
   userId: UUIDFilter
   documentTypeId: UUIDFilter
   contentMarkdown: StringFilter
+  applicationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [DocumentFilter!]
@@ -3323,6 +3648,7 @@ input DocumentInsertInput {
   userId: UUID
   documentTypeId: UUID
   contentMarkdown: String
+  applicationId: UUID
 }
 
 type DocumentInsertResponse {
@@ -3344,6 +3670,7 @@ input DocumentOrderBy {
   userId: OrderByDirection
   documentTypeId: OrderByDirection
   contentMarkdown: OrderByDirection
+  applicationId: OrderByDirection
 }
 
 type DocumentTemplate implements Node {
@@ -3438,6 +3765,8 @@ type DocumentType implements Node {
   createdAt: Datetime!
   requiresApproval: Boolean
   intentKeywords: [String]
+  applicationId: UUID
+  application: Application
   documentTemplateCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -3496,6 +3825,8 @@ input DocumentTypeFilter {
   description: StringFilter
   createdAt: DatetimeFilter
   requiresApproval: BooleanFilter
+  intentKeywords: StringListFilter
+  applicationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [DocumentTypeFilter!]
@@ -3514,6 +3845,7 @@ input DocumentTypeInsertInput {
   createdAt: Datetime
   requiresApproval: Boolean
   intentKeywords: [String]
+  applicationId: UUID
 }
 
 type DocumentTypeInsertResponse {
@@ -3530,6 +3862,7 @@ input DocumentTypeOrderBy {
   description: OrderByDirection
   createdAt: OrderByDirection
   requiresApproval: OrderByDirection
+  applicationId: OrderByDirection
 }
 
 input DocumentTypeUpdateInput {
@@ -3541,6 +3874,7 @@ input DocumentTypeUpdateInput {
   createdAt: Datetime
   requiresApproval: Boolean
   intentKeywords: [String]
+  applicationId: UUID
 }
 
 type DocumentTypeUpdateResponse {
@@ -3562,6 +3896,7 @@ input DocumentUpdateInput {
   userId: UUID
   documentTypeId: UUID
   contentMarkdown: String
+  applicationId: UUID
 }
 
 type DocumentUpdateResponse {
@@ -3661,6 +3996,369 @@ enum FilterIs {
   NOT_NULL
 }
 
+type FirefighterStatus implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  createdAt: Datetime!
+}
+
+type FirefighterStatusConnection {
+  edges: [FirefighterStatusEdge!]!
+  pageInfo: PageInfo!
+}
+
+type FirefighterStatusDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirefighterStatus!]!
+}
+
+type FirefighterStatusEdge {
+  cursor: String!
+  node: FirefighterStatus!
+}
+
+input FirefighterStatusFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [FirefighterStatusFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [FirefighterStatusFilter!]
+  # Negates a filter
+  not: FirefighterStatusFilter
+}
+
+input FirefighterStatusInsertInput {
+  id: UUID
+  name: String
+  key: String
+  createdAt: Datetime
+}
+
+type FirefighterStatusInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirefighterStatus!]!
+}
+
+input FirefighterStatusOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input FirefighterStatusUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  createdAt: Datetime
+}
+
+type FirefighterStatusUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirefighterStatus!]!
+}
+
+type FirstResponder implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  userId: UUID!
+  badgeNumber: String
+  currentStationId: UUID
+  imageUrl: String
+  data: JSON
+  createdAt: Datetime!
+  updatedAt: Datetime
+  firstResponderTypeId: UUID!
+  firstResponderType: FirstResponderType
+  currentStation: Station
+  user: User
+  firstResponderStationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderStationFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderStationOrderBy!]
+  ): FirstResponderStationConnection
+}
+
+type FirstResponderConnection {
+  edges: [FirstResponderEdge!]!
+  pageInfo: PageInfo!
+}
+
+type FirstResponderDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponder!]!
+}
+
+type FirstResponderEdge {
+  cursor: String!
+  node: FirstResponder!
+}
+
+input FirstResponderFilter {
+  id: UUIDFilter
+  userId: UUIDFilter
+  badgeNumber: StringFilter
+  currentStationId: UUIDFilter
+  imageUrl: StringFilter
+  createdAt: DatetimeFilter
+  updatedAt: DatetimeFilter
+  firstResponderTypeId: UUIDFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [FirstResponderFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [FirstResponderFilter!]
+  # Negates a filter
+  not: FirstResponderFilter
+}
+
+input FirstResponderInsertInput {
+  id: UUID
+  userId: UUID
+  badgeNumber: String
+  currentStationId: UUID
+  imageUrl: String
+  data: JSON
+  createdAt: Datetime
+  updatedAt: Datetime
+  firstResponderTypeId: UUID
+}
+
+type FirstResponderInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponder!]!
+}
+
+input FirstResponderOrderBy {
+  id: OrderByDirection
+  userId: OrderByDirection
+  badgeNumber: OrderByDirection
+  currentStationId: OrderByDirection
+  imageUrl: OrderByDirection
+  createdAt: OrderByDirection
+  updatedAt: OrderByDirection
+  firstResponderTypeId: OrderByDirection
+}
+
+type FirstResponderStation implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  firstResponderId: UUID!
+  stationId: UUID!
+  createdAt: Datetime!
+  station: Station!
+  firstResponder: FirstResponder!
+}
+
+type FirstResponderStationConnection {
+  edges: [FirstResponderStationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type FirstResponderStationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponderStation!]!
+}
+
+type FirstResponderStationEdge {
+  cursor: String!
+  node: FirstResponderStation!
+}
+
+input FirstResponderStationFilter {
+  id: UUIDFilter
+  firstResponderId: UUIDFilter
+  stationId: UUIDFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [FirstResponderStationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [FirstResponderStationFilter!]
+  # Negates a filter
+  not: FirstResponderStationFilter
+}
+
+input FirstResponderStationInsertInput {
+  id: UUID
+  firstResponderId: UUID
+  stationId: UUID
+  createdAt: Datetime
+}
+
+type FirstResponderStationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponderStation!]!
+}
+
+input FirstResponderStationOrderBy {
+  id: OrderByDirection
+  firstResponderId: OrderByDirection
+  stationId: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input FirstResponderStationUpdateInput {
+  id: UUID
+  firstResponderId: UUID
+  stationId: UUID
+  createdAt: Datetime
+}
+
+type FirstResponderStationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponderStation!]!
+}
+
+type FirstResponderType implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  schema: JSON
+  createdAt: Datetime!
+  firstResponderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderOrderBy!]
+  ): FirstResponderConnection
+}
+
+type FirstResponderTypeConnection {
+  edges: [FirstResponderTypeEdge!]!
+  pageInfo: PageInfo!
+}
+
+type FirstResponderTypeDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponderType!]!
+}
+
+type FirstResponderTypeEdge {
+  cursor: String!
+  node: FirstResponderType!
+}
+
+input FirstResponderTypeFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [FirstResponderTypeFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [FirstResponderTypeFilter!]
+  # Negates a filter
+  not: FirstResponderTypeFilter
+}
+
+input FirstResponderTypeInsertInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type FirstResponderTypeInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponderType!]!
+}
+
+input FirstResponderTypeOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input FirstResponderTypeUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type FirstResponderTypeUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponderType!]!
+}
+
+input FirstResponderUpdateInput {
+  id: UUID
+  userId: UUID
+  badgeNumber: String
+  currentStationId: UUID
+  imageUrl: String
+  data: JSON
+  createdAt: Datetime
+  updatedAt: Datetime
+  firstResponderTypeId: UUID
+}
+
+type FirstResponderUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [FirstResponder!]!
+}
+
 # Boolean expression comparing fields on type "Float"
 input FloatFilter {
   eq: Float
@@ -3673,6 +4371,15 @@ input FloatFilter {
   neq: Float
 }
 
+# Boolean expression comparing fields on type "FloatList"
+input FloatListFilter {
+  containedBy: [Float!]
+  contains: [Float!]
+  eq: [Float!]
+  is: FilterIs
+  overlaps: [Float!]
+}
+
 type Form implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -3680,54 +4387,6 @@ type Form implements Node {
   name: String!
   description: String
   createdAt: Datetime!
-  formQuestionCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: FormQuestionFilter
-    # Sort order to apply to the collection
-    orderBy: [FormQuestionOrderBy!]
-  ): FormQuestionConnection
-  userFormCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserFormFilter
-    # Sort order to apply to the collection
-    orderBy: [UserFormOrderBy!]
-  ): UserFormConnection
-  onboardingFormCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: OnboardingFormFilter
-    # Sort order to apply to the collection
-    orderBy: [OnboardingFormOrderBy!]
-  ): OnboardingFormConnection
   onboardingStepCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -3744,6 +4403,54 @@ type Form implements Node {
     # Sort order to apply to the collection
     orderBy: [OnboardingStepOrderBy!]
   ): OnboardingStepConnection
+  userFormCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserFormFilter
+    # Sort order to apply to the collection
+    orderBy: [UserFormOrderBy!]
+  ): UserFormConnection
+  formQuestionCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FormQuestionFilter
+    # Sort order to apply to the collection
+    orderBy: [FormQuestionOrderBy!]
+  ): FormQuestionConnection
+  onboardingFormCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OnboardingFormFilter
+    # Sort order to apply to the collection
+    orderBy: [OnboardingFormOrderBy!]
+  ): OnboardingFormConnection
 }
 
 type FormConnection {
@@ -3806,8 +4513,8 @@ type FormQuestion implements Node {
   questionId: UUID!
   index: Int!
   createdAt: Datetime!
-  form: Form!
   question: Question!
+  form: Form!
 }
 
 type FormQuestionConnection {
@@ -3996,6 +4703,15 @@ input IntFilter {
   neq: Int
 }
 
+# Boolean expression comparing fields on type "IntList"
+input IntListFilter {
+  containedBy: [Int!]
+  contains: [Int!]
+  eq: [Int!]
+  is: FilterIs
+  overlaps: [Int!]
+}
+
 # A Javascript Object Notation value serialized as a string
 scalar JSON
 
@@ -4013,8 +4729,9 @@ type Menu implements Node {
   iconUrl: String
   coverUrl: String
   description: String
-  menuType: MenuType!
+  index: Int!
   provider: Provider!
+  menuType: MenuType!
   menuItemCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -4061,6 +4778,7 @@ input MenuFilter {
   iconUrl: StringFilter
   coverUrl: StringFilter
   description: StringFilter
+  index: IntFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [MenuFilter!]
@@ -4082,6 +4800,7 @@ input MenuInsertInput {
   iconUrl: String
   coverUrl: String
   description: String
+  index: Int
 }
 
 type MenuInsertResponse {
@@ -4105,7 +4824,24 @@ type MenuItem implements Node {
   price: Float!
   isAvailable: Boolean!
   categories: [String]!
+  isFeatured: Boolean!
   menu: Menu
+  shoppingCartMenuItemCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShoppingCartMenuItemFilter
+    # Sort order to apply to the collection
+    orderBy: [ShoppingCartMenuItemOrderBy!]
+  ): ShoppingCartMenuItemConnection
   orderItemMenuItemCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -4151,6 +4887,8 @@ input MenuItemFilter {
   coverUrl: StringFilter
   price: FloatFilter
   isAvailable: BooleanFilter
+  categories: StringListFilter
+  isFeatured: BooleanFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [MenuItemFilter!]
@@ -4172,6 +4910,7 @@ input MenuItemInsertInput {
   price: Float
   isAvailable: Boolean
   categories: [String]
+  isFeatured: Boolean
 }
 
 type MenuItemInsertResponse {
@@ -4191,6 +4930,7 @@ input MenuItemOrderBy {
   coverUrl: OrderByDirection
   price: OrderByDirection
   isAvailable: OrderByDirection
+  isFeatured: OrderByDirection
 }
 
 input MenuItemUpdateInput {
@@ -4205,6 +4945,7 @@ input MenuItemUpdateInput {
   price: Float
   isAvailable: Boolean
   categories: [String]
+  isFeatured: Boolean
 }
 
 type MenuItemUpdateResponse {
@@ -4225,6 +4966,7 @@ input MenuOrderBy {
   iconUrl: OrderByDirection
   coverUrl: OrderByDirection
   description: OrderByDirection
+  index: OrderByDirection
 }
 
 type MenuType implements Node {
@@ -4348,6 +5090,7 @@ input MenuUpdateInput {
   iconUrl: String
   coverUrl: String
   description: String
+  index: Int
 }
 
 type MenuUpdateResponse {
@@ -4436,6 +5179,7 @@ input MimeTypeFilter {
   id: UUIDFilter
   mime: StringFilter
   name: StringFilter
+  extensions: StringListFilter
   createdAt: DatetimeFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
@@ -4541,6 +5285,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): ApplicationDeleteResponse!
+  # Deletes zero or more records from the `ApplicationOrganization` collection
+  deleteFromApplicationOrganizationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ApplicationOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ApplicationOrganizationDeleteResponse!
   # Deletes zero or more records from the `ApplicationTable` collection
   deleteFromApplicationTableCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -4716,6 +5467,34 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): FeatureDeleteResponse!
+  # Deletes zero or more records from the `FirefighterStatus` collection
+  deleteFromFirefighterStatusCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirefighterStatusFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirefighterStatusDeleteResponse!
+  # Deletes zero or more records from the `FirstResponder` collection
+  deleteFromFirstResponderCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirstResponderFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirstResponderDeleteResponse!
+  # Deletes zero or more records from the `FirstResponderStation` collection
+  deleteFromFirstResponderStationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirstResponderStationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirstResponderStationDeleteResponse!
+  # Deletes zero or more records from the `FirstResponderType` collection
+  deleteFromFirstResponderTypeCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirstResponderTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirstResponderTypeDeleteResponse!
   # Deletes zero or more records from the `Form` collection
   deleteFromFormCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -4842,6 +5621,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): OrderStatusDeleteResponse!
+  # Deletes zero or more records from the `OrderTransaction` collection
+  deleteFromOrderTransactionCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrderTransactionFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrderTransactionDeleteResponse!
   # Deletes zero or more records from the `OrderType` collection
   deleteFromOrderTypeCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -4849,6 +5635,20 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): OrderTypeDeleteResponse!
+  # Deletes zero or more records from the `Organization` collection
+  deleteFromOrganizationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationDeleteResponse!
+  # Deletes zero or more records from the `OrganizationType` collection
+  deleteFromOrganizationTypeCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationTypeDeleteResponse!
   # Deletes zero or more records from the `Partner` collection
   deleteFromPartnerCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -4863,6 +5663,20 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): PartnerTypeDeleteResponse!
+  # Deletes zero or more records from the `PaymentInfo` collection
+  deleteFromPaymentInfoCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: PaymentInfoFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): PaymentInfoDeleteResponse!
+  # Deletes zero or more records from the `PaymentType` collection
+  deleteFromPaymentTypeCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: PaymentTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): PaymentTypeDeleteResponse!
   # Deletes zero or more records from the `Persona` collection
   deleteFromPersonaCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -4954,6 +5768,48 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): RoleDeleteResponse!
+  # Deletes zero or more records from the `SchemaMigrations` collection
+  deleteFromSchemaMigrationsCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: SchemaMigrationsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): SchemaMigrationsDeleteResponse!
+  # Deletes zero or more records from the `Shift` collection
+  deleteFromShiftCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShiftFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShiftDeleteResponse!
+  # Deletes zero or more records from the `ShiftScheduleStatus` collection
+  deleteFromShiftScheduleStatusCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShiftScheduleStatusFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShiftScheduleStatusDeleteResponse!
+  # Deletes zero or more records from the `ShiftType` collection
+  deleteFromShiftTypeCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShiftTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShiftTypeDeleteResponse!
+  # Deletes zero or more records from the `ShoppingCart` collection
+  deleteFromShoppingCartCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShoppingCartFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShoppingCartDeleteResponse!
+  # Deletes zero or more records from the `ShoppingCartMenuItem` collection
+  deleteFromShoppingCartMenuItemCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShoppingCartMenuItemFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShoppingCartMenuItemDeleteResponse!
   # Deletes zero or more records from the `Station` collection
   deleteFromStationCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -4968,6 +5824,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): StationPartnerDeleteResponse!
+  # Deletes zero or more records from the `StationProvider` collection
+  deleteFromStationProviderCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: StationProviderFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): StationProviderDeleteResponse!
   # Deletes zero or more records from the `Survey` collection
   deleteFromSurveyCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -4982,6 +5845,20 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): SurveyQuestionDeleteResponse!
+  # Deletes zero or more records from the `TeamUpdate` collection
+  deleteFromTeamUpdateCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: TeamUpdateFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): TeamUpdateDeleteResponse!
+  # Deletes zero or more records from the `TeamUpdateType` collection
+  deleteFromTeamUpdateTypeCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: TeamUpdateTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): TeamUpdateTypeDeleteResponse!
   # Deletes zero or more records from the `TemplateVariable` collection
   deleteFromTemplateVariableCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -5059,6 +5936,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): UserOnboardingStepDeleteResponse!
+  # Deletes zero or more records from the `UserOrganization` collection
+  deleteFromUserOrganizationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: UserOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): UserOrganizationDeleteResponse!
   # Deletes zero or more records from the `UserPersona` collection
   deleteFromUserPersonaCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -5131,6 +6015,10 @@ type Mutation {
   insertIntoApplicationCollection(
     objects: [ApplicationInsertInput!]!
   ): ApplicationInsertResponse
+  # Adds one or more `ApplicationOrganization` records to the collection
+  insertIntoApplicationOrganizationCollection(
+    objects: [ApplicationOrganizationInsertInput!]!
+  ): ApplicationOrganizationInsertResponse
   # Adds one or more `ApplicationTable` records to the collection
   insertIntoApplicationTableCollection(
     objects: [ApplicationTableInsertInput!]!
@@ -5229,6 +6117,22 @@ type Mutation {
   insertIntoFeatureCollection(
     objects: [FeatureInsertInput!]!
   ): FeatureInsertResponse
+  # Adds one or more `FirefighterStatus` records to the collection
+  insertIntoFirefighterStatusCollection(
+    objects: [FirefighterStatusInsertInput!]!
+  ): FirefighterStatusInsertResponse
+  # Adds one or more `FirstResponder` records to the collection
+  insertIntoFirstResponderCollection(
+    objects: [FirstResponderInsertInput!]!
+  ): FirstResponderInsertResponse
+  # Adds one or more `FirstResponderStation` records to the collection
+  insertIntoFirstResponderStationCollection(
+    objects: [FirstResponderStationInsertInput!]!
+  ): FirstResponderStationInsertResponse
+  # Adds one or more `FirstResponderType` records to the collection
+  insertIntoFirstResponderTypeCollection(
+    objects: [FirstResponderTypeInsertInput!]!
+  ): FirstResponderTypeInsertResponse
   # Adds one or more `Form` records to the collection
   insertIntoFormCollection(objects: [FormInsertInput!]!): FormInsertResponse
   # Adds one or more `FormQuestion` records to the collection
@@ -5295,10 +6199,22 @@ type Mutation {
   insertIntoOrderStatusCollection(
     objects: [OrderStatusInsertInput!]!
   ): OrderStatusInsertResponse
+  # Adds one or more `OrderTransaction` records to the collection
+  insertIntoOrderTransactionCollection(
+    objects: [OrderTransactionInsertInput!]!
+  ): OrderTransactionInsertResponse
   # Adds one or more `OrderType` records to the collection
   insertIntoOrderTypeCollection(
     objects: [OrderTypeInsertInput!]!
   ): OrderTypeInsertResponse
+  # Adds one or more `Organization` records to the collection
+  insertIntoOrganizationCollection(
+    objects: [OrganizationInsertInput!]!
+  ): OrganizationInsertResponse
+  # Adds one or more `OrganizationType` records to the collection
+  insertIntoOrganizationTypeCollection(
+    objects: [OrganizationTypeInsertInput!]!
+  ): OrganizationTypeInsertResponse
   # Adds one or more `Partner` records to the collection
   insertIntoPartnerCollection(
     objects: [PartnerInsertInput!]!
@@ -5307,6 +6223,14 @@ type Mutation {
   insertIntoPartnerTypeCollection(
     objects: [PartnerTypeInsertInput!]!
   ): PartnerTypeInsertResponse
+  # Adds one or more `PaymentInfo` records to the collection
+  insertIntoPaymentInfoCollection(
+    objects: [PaymentInfoInsertInput!]!
+  ): PaymentInfoInsertResponse
+  # Adds one or more `PaymentType` records to the collection
+  insertIntoPaymentTypeCollection(
+    objects: [PaymentTypeInsertInput!]!
+  ): PaymentTypeInsertResponse
   # Adds one or more `Persona` records to the collection
   insertIntoPersonaCollection(
     objects: [PersonaInsertInput!]!
@@ -5357,6 +6281,28 @@ type Mutation {
   ): QuestionTypeInsertResponse
   # Adds one or more `Role` records to the collection
   insertIntoRoleCollection(objects: [RoleInsertInput!]!): RoleInsertResponse
+  # Adds one or more `SchemaMigrations` records to the collection
+  insertIntoSchemaMigrationsCollection(
+    objects: [SchemaMigrationsInsertInput!]!
+  ): SchemaMigrationsInsertResponse
+  # Adds one or more `Shift` records to the collection
+  insertIntoShiftCollection(objects: [ShiftInsertInput!]!): ShiftInsertResponse
+  # Adds one or more `ShiftScheduleStatus` records to the collection
+  insertIntoShiftScheduleStatusCollection(
+    objects: [ShiftScheduleStatusInsertInput!]!
+  ): ShiftScheduleStatusInsertResponse
+  # Adds one or more `ShiftType` records to the collection
+  insertIntoShiftTypeCollection(
+    objects: [ShiftTypeInsertInput!]!
+  ): ShiftTypeInsertResponse
+  # Adds one or more `ShoppingCart` records to the collection
+  insertIntoShoppingCartCollection(
+    objects: [ShoppingCartInsertInput!]!
+  ): ShoppingCartInsertResponse
+  # Adds one or more `ShoppingCartMenuItem` records to the collection
+  insertIntoShoppingCartMenuItemCollection(
+    objects: [ShoppingCartMenuItemInsertInput!]!
+  ): ShoppingCartMenuItemInsertResponse
   # Adds one or more `Station` records to the collection
   insertIntoStationCollection(
     objects: [StationInsertInput!]!
@@ -5365,6 +6311,10 @@ type Mutation {
   insertIntoStationPartnerCollection(
     objects: [StationPartnerInsertInput!]!
   ): StationPartnerInsertResponse
+  # Adds one or more `StationProvider` records to the collection
+  insertIntoStationProviderCollection(
+    objects: [StationProviderInsertInput!]!
+  ): StationProviderInsertResponse
   # Adds one or more `Survey` records to the collection
   insertIntoSurveyCollection(
     objects: [SurveyInsertInput!]!
@@ -5373,6 +6323,14 @@ type Mutation {
   insertIntoSurveyQuestionCollection(
     objects: [SurveyQuestionInsertInput!]!
   ): SurveyQuestionInsertResponse
+  # Adds one or more `TeamUpdate` records to the collection
+  insertIntoTeamUpdateCollection(
+    objects: [TeamUpdateInsertInput!]!
+  ): TeamUpdateInsertResponse
+  # Adds one or more `TeamUpdateType` records to the collection
+  insertIntoTeamUpdateTypeCollection(
+    objects: [TeamUpdateTypeInsertInput!]!
+  ): TeamUpdateTypeInsertResponse
   # Adds one or more `TemplateVariable` records to the collection
   insertIntoTemplateVariableCollection(
     objects: [TemplateVariableInsertInput!]!
@@ -5413,6 +6371,10 @@ type Mutation {
   insertIntoUserOnboardingStepCollection(
     objects: [UserOnboardingStepInsertInput!]!
   ): UserOnboardingStepInsertResponse
+  # Adds one or more `UserOrganization` records to the collection
+  insertIntoUserOrganizationCollection(
+    objects: [UserOrganizationInsertInput!]!
+  ): UserOrganizationInsertResponse
   # Adds one or more `UserPersona` records to the collection
   insertIntoUserPersonaCollection(
     objects: [UserPersonaInsertInput!]!
@@ -5509,6 +6471,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): ApplicationUpdateResponse!
+  # Updates zero or more records in the `ApplicationOrganization` collection
+  updateApplicationOrganizationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ApplicationOrganizationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ApplicationOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ApplicationOrganizationUpdateResponse!
   # Updates zero or more records in the `ApplicationTable` collection
   updateApplicationTableCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -5734,6 +6705,42 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): FeatureUpdateResponse!
+  # Updates zero or more records in the `FirefighterStatus` collection
+  updateFirefighterStatusCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: FirefighterStatusUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirefighterStatusFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirefighterStatusUpdateResponse!
+  # Updates zero or more records in the `FirstResponder` collection
+  updateFirstResponderCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: FirstResponderUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirstResponderFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirstResponderUpdateResponse!
+  # Updates zero or more records in the `FirstResponderStation` collection
+  updateFirstResponderStationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: FirstResponderStationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirstResponderStationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirstResponderStationUpdateResponse!
+  # Updates zero or more records in the `FirstResponderType` collection
+  updateFirstResponderTypeCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: FirstResponderTypeUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: FirstResponderTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): FirstResponderTypeUpdateResponse!
   # Updates zero or more records in the `Form` collection
   updateFormCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -5896,6 +6903,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): OrderStatusUpdateResponse!
+  # Updates zero or more records in the `OrderTransaction` collection
+  updateOrderTransactionCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: OrderTransactionUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrderTransactionFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrderTransactionUpdateResponse!
   # Updates zero or more records in the `OrderType` collection
   updateOrderTypeCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -5905,6 +6921,24 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): OrderTypeUpdateResponse!
+  # Updates zero or more records in the `Organization` collection
+  updateOrganizationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: OrganizationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationUpdateResponse!
+  # Updates zero or more records in the `OrganizationType` collection
+  updateOrganizationTypeCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: OrganizationTypeUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: OrganizationTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): OrganizationTypeUpdateResponse!
   # Updates zero or more records in the `Partner` collection
   updatePartnerCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -5923,6 +6957,24 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): PartnerTypeUpdateResponse!
+  # Updates zero or more records in the `PaymentInfo` collection
+  updatePaymentInfoCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: PaymentInfoUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: PaymentInfoFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): PaymentInfoUpdateResponse!
+  # Updates zero or more records in the `PaymentType` collection
+  updatePaymentTypeCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: PaymentTypeUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: PaymentTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): PaymentTypeUpdateResponse!
   # Updates zero or more records in the `Persona` collection
   updatePersonaCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -6040,6 +7092,60 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): RoleUpdateResponse!
+  # Updates zero or more records in the `SchemaMigrations` collection
+  updateSchemaMigrationsCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: SchemaMigrationsUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: SchemaMigrationsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): SchemaMigrationsUpdateResponse!
+  # Updates zero or more records in the `Shift` collection
+  updateShiftCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ShiftUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShiftFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShiftUpdateResponse!
+  # Updates zero or more records in the `ShiftScheduleStatus` collection
+  updateShiftScheduleStatusCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ShiftScheduleStatusUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShiftScheduleStatusFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShiftScheduleStatusUpdateResponse!
+  # Updates zero or more records in the `ShiftType` collection
+  updateShiftTypeCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ShiftTypeUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShiftTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShiftTypeUpdateResponse!
+  # Updates zero or more records in the `ShoppingCart` collection
+  updateShoppingCartCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ShoppingCartUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShoppingCartFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShoppingCartUpdateResponse!
+  # Updates zero or more records in the `ShoppingCartMenuItem` collection
+  updateShoppingCartMenuItemCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ShoppingCartMenuItemUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ShoppingCartMenuItemFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ShoppingCartMenuItemUpdateResponse!
   # Updates zero or more records in the `Station` collection
   updateStationCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -6058,6 +7164,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): StationPartnerUpdateResponse!
+  # Updates zero or more records in the `StationProvider` collection
+  updateStationProviderCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: StationProviderUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: StationProviderFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): StationProviderUpdateResponse!
   # Updates zero or more records in the `Survey` collection
   updateSurveyCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -6076,6 +7191,24 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): SurveyQuestionUpdateResponse!
+  # Updates zero or more records in the `TeamUpdate` collection
+  updateTeamUpdateCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: TeamUpdateUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: TeamUpdateFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): TeamUpdateUpdateResponse!
+  # Updates zero or more records in the `TeamUpdateType` collection
+  updateTeamUpdateTypeCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: TeamUpdateTypeUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: TeamUpdateTypeFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): TeamUpdateTypeUpdateResponse!
   # Updates zero or more records in the `TemplateVariable` collection
   updateTemplateVariableCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -6175,6 +7308,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): UserOnboardingStepUpdateResponse!
+  # Updates zero or more records in the `UserOrganization` collection
+  updateUserOrganizationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: UserOrganizationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: UserOrganizationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): UserOrganizationUpdateResponse!
   # Updates zero or more records in the `UserPersona` collection
   updateUserPersonaCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -6250,8 +7392,8 @@ type Notification implements Node {
   isRead: Boolean!
   iconUrl: String
   applicationId: UUID!
-  notificationType: NotificationType!
   user: User
+  notificationType: NotificationType!
   application: Application!
 }
 
@@ -6456,24 +7598,8 @@ type Onboarding implements Node {
   description: String
   createdAt: Datetime!
   data: JSON
-  application: Application
   onboardingType: OnboardingType!
-  userOnboardingCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserOnboardingFilter
-    # Sort order to apply to the collection
-    orderBy: [UserOnboardingOrderBy!]
-  ): UserOnboardingConnection
+  application: Application
   personaOnboardingCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -6490,22 +7616,6 @@ type Onboarding implements Node {
     # Sort order to apply to the collection
     orderBy: [PersonaOnboardingOrderBy!]
   ): PersonaOnboardingConnection
-  onboardingFormCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: OnboardingFormFilter
-    # Sort order to apply to the collection
-    orderBy: [OnboardingFormOrderBy!]
-  ): OnboardingFormConnection
   onboardingSurveyCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -6538,6 +7648,38 @@ type Onboarding implements Node {
     # Sort order to apply to the collection
     orderBy: [OnboardingStepOrderBy!]
   ): OnboardingStepConnection
+  userOnboardingCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOnboardingFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOnboardingOrderBy!]
+  ): UserOnboardingConnection
+  onboardingFormCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OnboardingFormFilter
+    # Sort order to apply to the collection
+    orderBy: [OnboardingFormOrderBy!]
+  ): OnboardingFormConnection
 }
 
 type OnboardingConnection {
@@ -6696,9 +7838,9 @@ type OnboardingStep implements Node {
   formId: UUID
   surveyId: UUID
   onboardingId: UUID!
-  form: Form
   survey: Survey
   onboarding: Onboarding!
+  form: Form
   userOnboardingStepCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -6810,7 +7952,7 @@ type OnboardingSurvey implements Node {
   isRequired: Boolean!
   data: JSON
   onboardingId: UUID!
-  survey: Survey!
+  survey: Survey
   onboarding: Onboarding!
 }
 
@@ -7023,15 +8165,34 @@ type Order implements Node {
   orderTypeId: UUID!
   userId: UUID!
   createdAt: Datetime!
-  units: BigInt!
-  pricePerUnit: Float!
   notes: String
   data: JSON
   updatedAt: Datetime
   orderStatusId: UUID!
+  stationId: UUID!
+  paymentInfoId: UUID
+  isPaid: Boolean!
+  paymentInfo: PaymentInfo
+  station: Station!
+  user: User
   orderType: OrderType!
-  user: User!
   orderStatus: OrderStatus!
+  orderTransactionCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrderTransactionFilter
+    # Sort order to apply to the collection
+    orderBy: [OrderTransactionOrderBy!]
+  ): OrderTransactionConnection
   orderItemCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -7048,6 +8209,22 @@ type Order implements Node {
     # Sort order to apply to the collection
     orderBy: [OrderItemOrderBy!]
   ): OrderItemConnection
+  shoppingCartCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShoppingCartFilter
+    # Sort order to apply to the collection
+    orderBy: [ShoppingCartOrderBy!]
+  ): ShoppingCartConnection
 }
 
 # Defines a per-field sorting order
@@ -7084,11 +8261,12 @@ input OrderFilter {
   orderTypeId: UUIDFilter
   userId: UUIDFilter
   createdAt: DatetimeFilter
-  units: BigIntFilter
-  pricePerUnit: FloatFilter
   notes: StringFilter
   updatedAt: DatetimeFilter
   orderStatusId: UUIDFilter
+  stationId: UUIDFilter
+  paymentInfoId: UUIDFilter
+  isPaid: BooleanFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [OrderFilter!]
@@ -7103,12 +8281,13 @@ input OrderInsertInput {
   orderTypeId: UUID
   userId: UUID
   createdAt: Datetime
-  units: BigInt
-  pricePerUnit: Float
   notes: String
   data: JSON
   updatedAt: Datetime
   orderStatusId: UUID
+  stationId: UUID
+  paymentInfoId: UUID
+  isPaid: Boolean
 }
 
 type OrderInsertResponse {
@@ -7206,6 +8385,7 @@ type OrderItemMenuItem implements Node {
   createdAt: Datetime!
   menuItemId: UUID!
   notes: String
+  count: Int!
   orderItem: OrderItem!
   menuItem: MenuItem!
 }
@@ -7233,6 +8413,7 @@ input OrderItemMenuItemFilter {
   createdAt: DatetimeFilter
   menuItemId: UUIDFilter
   notes: StringFilter
+  count: IntFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [OrderItemMenuItemFilter!]
@@ -7248,6 +8429,7 @@ input OrderItemMenuItemInsertInput {
   createdAt: Datetime
   menuItemId: UUID
   notes: String
+  count: Int
 }
 
 type OrderItemMenuItemInsertResponse {
@@ -7263,6 +8445,7 @@ input OrderItemMenuItemOrderBy {
   createdAt: OrderByDirection
   menuItemId: OrderByDirection
   notes: OrderByDirection
+  count: OrderByDirection
 }
 
 input OrderItemMenuItemUpdateInput {
@@ -7271,6 +8454,7 @@ input OrderItemMenuItemUpdateInput {
   createdAt: Datetime
   menuItemId: UUID
   notes: String
+  count: Int
 }
 
 type OrderItemMenuItemUpdateResponse {
@@ -7312,11 +8496,12 @@ input OrderOrderBy {
   orderTypeId: OrderByDirection
   userId: OrderByDirection
   createdAt: OrderByDirection
-  units: OrderByDirection
-  pricePerUnit: OrderByDirection
   notes: OrderByDirection
   updatedAt: OrderByDirection
   orderStatusId: OrderByDirection
+  stationId: OrderByDirection
+  paymentInfoId: OrderByDirection
+  isPaid: OrderByDirection
 }
 
 type OrderStatus implements Node {
@@ -7408,6 +8593,93 @@ type OrderStatusUpdateResponse {
   affectedCount: Int!
   # Array of records impacted by the mutation
   records: [OrderStatus!]!
+}
+
+type OrderTransaction implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  orderId: UUID!
+  paymentInfoId: UUID!
+  amount: Float!
+  payerTransactionId: String
+  createdAt: Datetime!
+  paymentInfo: PaymentInfo!
+  order: Order!
+}
+
+type OrderTransactionConnection {
+  edges: [OrderTransactionEdge!]!
+  pageInfo: PageInfo!
+}
+
+type OrderTransactionDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrderTransaction!]!
+}
+
+type OrderTransactionEdge {
+  cursor: String!
+  node: OrderTransaction!
+}
+
+input OrderTransactionFilter {
+  id: UUIDFilter
+  orderId: UUIDFilter
+  paymentInfoId: UUIDFilter
+  amount: FloatFilter
+  payerTransactionId: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [OrderTransactionFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [OrderTransactionFilter!]
+  # Negates a filter
+  not: OrderTransactionFilter
+}
+
+input OrderTransactionInsertInput {
+  id: UUID
+  orderId: UUID
+  paymentInfoId: UUID
+  amount: Float
+  payerTransactionId: String
+  createdAt: Datetime
+}
+
+type OrderTransactionInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrderTransaction!]!
+}
+
+input OrderTransactionOrderBy {
+  id: OrderByDirection
+  orderId: OrderByDirection
+  paymentInfoId: OrderByDirection
+  amount: OrderByDirection
+  payerTransactionId: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input OrderTransactionUpdateInput {
+  id: UUID
+  orderId: UUID
+  paymentInfoId: UUID
+  amount: Float
+  payerTransactionId: String
+  createdAt: Datetime
+}
+
+type OrderTransactionUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrderTransaction!]!
 }
 
 type OrderType implements Node {
@@ -7524,12 +8796,13 @@ input OrderUpdateInput {
   orderTypeId: UUID
   userId: UUID
   createdAt: Datetime
-  units: BigInt
-  pricePerUnit: Float
   notes: String
   data: JSON
   updatedAt: Datetime
   orderStatusId: UUID
+  stationId: UUID
+  paymentInfoId: UUID
+  isPaid: Boolean
 }
 
 type OrderUpdateResponse {
@@ -7537,6 +8810,283 @@ type OrderUpdateResponse {
   affectedCount: Int!
   # Array of records impacted by the mutation
   records: [Order!]!
+}
+
+type Organization implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  organizationTypeId: UUID!
+  name: String!
+  key: String!
+  data: JSON
+  createdAt: Datetime!
+  iconUrl: String
+  coverUrl: String
+  longDescriptionMarkdown: String
+  description: String
+  updatedAt: Datetime
+  organizationType: OrganizationType!
+  applicationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrderBy!]
+  ): ApplicationConnection
+  userCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrderBy!]
+  ): UserConnection
+  userOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrganizationOrderBy!]
+  ): UserOrganizationConnection
+  applicationOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrganizationOrderBy!]
+  ): ApplicationOrganizationConnection
+}
+
+type OrganizationConnection {
+  edges: [OrganizationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type OrganizationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Organization!]!
+}
+
+type OrganizationEdge {
+  cursor: String!
+  node: Organization!
+}
+
+input OrganizationFilter {
+  id: UUIDFilter
+  organizationTypeId: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  iconUrl: StringFilter
+  coverUrl: StringFilter
+  longDescriptionMarkdown: StringFilter
+  description: StringFilter
+  updatedAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [OrganizationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [OrganizationFilter!]
+  # Negates a filter
+  not: OrganizationFilter
+}
+
+input OrganizationInsertInput {
+  id: UUID
+  organizationTypeId: UUID
+  name: String
+  key: String
+  data: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+  longDescriptionMarkdown: String
+  description: String
+  updatedAt: Datetime
+}
+
+type OrganizationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Organization!]!
+}
+
+input OrganizationOrderBy {
+  id: OrderByDirection
+  organizationTypeId: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+  iconUrl: OrderByDirection
+  coverUrl: OrderByDirection
+  longDescriptionMarkdown: OrderByDirection
+  description: OrderByDirection
+  updatedAt: OrderByDirection
+}
+
+type OrganizationType implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  schema: JSON
+  createdAt: Datetime!
+  iconUrl: String
+  coverUrl: String
+  organizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [OrganizationOrderBy!]
+  ): OrganizationConnection
+}
+
+type OrganizationTypeConnection {
+  edges: [OrganizationTypeEdge!]!
+  pageInfo: PageInfo!
+}
+
+type OrganizationTypeDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrganizationType!]!
+}
+
+type OrganizationTypeEdge {
+  cursor: String!
+  node: OrganizationType!
+}
+
+input OrganizationTypeFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  iconUrl: StringFilter
+  coverUrl: StringFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [OrganizationTypeFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [OrganizationTypeFilter!]
+  # Negates a filter
+  not: OrganizationTypeFilter
+}
+
+input OrganizationTypeInsertInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+}
+
+type OrganizationTypeInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrganizationType!]!
+}
+
+input OrganizationTypeOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+  iconUrl: OrderByDirection
+  coverUrl: OrderByDirection
+}
+
+input OrganizationTypeUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+}
+
+type OrganizationTypeUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [OrganizationType!]!
+}
+
+input OrganizationUpdateInput {
+  id: UUID
+  organizationTypeId: UUID
+  name: String
+  key: String
+  data: JSON
+  createdAt: Datetime
+  iconUrl: String
+  coverUrl: String
+  longDescriptionMarkdown: String
+  description: String
+  updatedAt: Datetime
+}
+
+type OrganizationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Organization!]!
 }
 
 type PageInfo {
@@ -7561,7 +9111,7 @@ type Partner implements Node {
   updatedAt: Datetime
   webSiteUrl: String
   phone: String
-  partnerType: PartnerType!
+  partnerType: PartnerType
   stationPartnerCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -7780,6 +9330,217 @@ type PartnerUpdateResponse {
   records: [Partner!]!
 }
 
+type PaymentInfo implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  paymentTypeId: UUID!
+  name: String!
+  data: JSON
+  createdAt: Datetime!
+  userId: UUID!
+  user: User
+  paymentType: PaymentType!
+  orderTransactionCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrderTransactionFilter
+    # Sort order to apply to the collection
+    orderBy: [OrderTransactionOrderBy!]
+  ): OrderTransactionConnection
+  orderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrderFilter
+    # Sort order to apply to the collection
+    orderBy: [OrderOrderBy!]
+  ): OrderConnection
+}
+
+type PaymentInfoConnection {
+  edges: [PaymentInfoEdge!]!
+  pageInfo: PageInfo!
+}
+
+type PaymentInfoDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [PaymentInfo!]!
+}
+
+type PaymentInfoEdge {
+  cursor: String!
+  node: PaymentInfo!
+}
+
+input PaymentInfoFilter {
+  id: UUIDFilter
+  paymentTypeId: UUIDFilter
+  name: StringFilter
+  createdAt: DatetimeFilter
+  userId: UUIDFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [PaymentInfoFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [PaymentInfoFilter!]
+  # Negates a filter
+  not: PaymentInfoFilter
+}
+
+input PaymentInfoInsertInput {
+  id: UUID
+  paymentTypeId: UUID
+  name: String
+  data: JSON
+  createdAt: Datetime
+  userId: UUID
+}
+
+type PaymentInfoInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [PaymentInfo!]!
+}
+
+input PaymentInfoOrderBy {
+  id: OrderByDirection
+  paymentTypeId: OrderByDirection
+  name: OrderByDirection
+  createdAt: OrderByDirection
+  userId: OrderByDirection
+}
+
+input PaymentInfoUpdateInput {
+  id: UUID
+  paymentTypeId: UUID
+  name: String
+  data: JSON
+  createdAt: Datetime
+  userId: UUID
+}
+
+type PaymentInfoUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [PaymentInfo!]!
+}
+
+type PaymentType implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  schema: JSON
+  createdAt: Datetime!
+  paymentInfoCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: PaymentInfoFilter
+    # Sort order to apply to the collection
+    orderBy: [PaymentInfoOrderBy!]
+  ): PaymentInfoConnection
+}
+
+type PaymentTypeConnection {
+  edges: [PaymentTypeEdge!]!
+  pageInfo: PageInfo!
+}
+
+type PaymentTypeDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [PaymentType!]!
+}
+
+type PaymentTypeEdge {
+  cursor: String!
+  node: PaymentType!
+}
+
+input PaymentTypeFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [PaymentTypeFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [PaymentTypeFilter!]
+  # Negates a filter
+  not: PaymentTypeFilter
+}
+
+input PaymentTypeInsertInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type PaymentTypeInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [PaymentType!]!
+}
+
+input PaymentTypeOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input PaymentTypeUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type PaymentTypeUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [PaymentType!]!
+}
+
 type Persona implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -7794,38 +9555,6 @@ type Persona implements Node {
   iconUrl: String
   coverUrl: String
   application: Application!
-  userPersonaCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserPersonaFilter
-    # Sort order to apply to the collection
-    orderBy: [UserPersonaOrderBy!]
-  ): UserPersonaConnection
-  profileTypeCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ProfileTypeFilter
-    # Sort order to apply to the collection
-    orderBy: [ProfileTypeOrderBy!]
-  ): ProfileTypeConnection
   personaOnboardingCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -7842,6 +9571,38 @@ type Persona implements Node {
     # Sort order to apply to the collection
     orderBy: [PersonaOnboardingOrderBy!]
   ): PersonaOnboardingConnection
+  profileTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ProfileTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [ProfileTypeOrderBy!]
+  ): ProfileTypeConnection
+  userPersonaCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserPersonaFilter
+    # Sort order to apply to the collection
+    orderBy: [UserPersonaOrderBy!]
+  ): UserPersonaConnection
 }
 
 type PersonaConnection {
@@ -8405,6 +10166,22 @@ type Provider implements Node {
   updatedAt: Datetime
   data: JSON
   providerType: ProviderType!
+  stationProviderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationProviderFilter
+    # Sort order to apply to the collection
+    orderBy: [StationProviderOrderBy!]
+  ): StationProviderConnection
   menuCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -8853,6 +10630,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [ApplicationOrderBy!]
   ): ApplicationConnection
+  # A pagable collection of type `ApplicationOrganization`
+  applicationOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationOrganizationOrderBy!]
+  ): ApplicationOrganizationConnection
   # A pagable collection of type `ApplicationTable`
   applicationTableCollection(
     # Query the first `n` records in the collection
@@ -9278,6 +11072,74 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [FeatureOrderBy!]
   ): FeatureConnection
+  # A pagable collection of type `FirefighterStatus`
+  firefighterStatusCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirefighterStatusFilter
+    # Sort order to apply to the collection
+    orderBy: [FirefighterStatusOrderBy!]
+  ): FirefighterStatusConnection
+  # A pagable collection of type `FirstResponder`
+  firstResponderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderOrderBy!]
+  ): FirstResponderConnection
+  # A pagable collection of type `FirstResponderStation`
+  firstResponderStationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderStationFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderStationOrderBy!]
+  ): FirstResponderStationConnection
+  # A pagable collection of type `FirstResponderType`
+  firstResponderTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderTypeOrderBy!]
+  ): FirstResponderTypeConnection
   # A pagable collection of type `Form`
   formCollection(
     # Query the first `n` records in the collection
@@ -9589,6 +11451,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [OrderStatusOrderBy!]
   ): OrderStatusConnection
+  # A pagable collection of type `OrderTransaction`
+  orderTransactionCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrderTransactionFilter
+    # Sort order to apply to the collection
+    orderBy: [OrderTransactionOrderBy!]
+  ): OrderTransactionConnection
   # A pagable collection of type `OrderType`
   orderTypeCollection(
     # Query the first `n` records in the collection
@@ -9606,6 +11485,40 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [OrderTypeOrderBy!]
   ): OrderTypeConnection
+  # A pagable collection of type `Organization`
+  organizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [OrganizationOrderBy!]
+  ): OrganizationConnection
+  # A pagable collection of type `OrganizationType`
+  organizationTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrganizationTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [OrganizationTypeOrderBy!]
+  ): OrganizationTypeConnection
   # A pagable collection of type `Partner`
   partnerCollection(
     # Query the first `n` records in the collection
@@ -9640,6 +11553,40 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [PartnerTypeOrderBy!]
   ): PartnerTypeConnection
+  # A pagable collection of type `PaymentInfo`
+  paymentInfoCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: PaymentInfoFilter
+    # Sort order to apply to the collection
+    orderBy: [PaymentInfoOrderBy!]
+  ): PaymentInfoConnection
+  # A pagable collection of type `PaymentType`
+  paymentTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: PaymentTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [PaymentTypeOrderBy!]
+  ): PaymentTypeConnection
   # A pagable collection of type `Persona`
   personaCollection(
     # Query the first `n` records in the collection
@@ -9861,6 +11808,108 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [RoleOrderBy!]
   ): RoleConnection
+  # A pagable collection of type `SchemaMigrations`
+  schemaMigrationsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: SchemaMigrationsFilter
+    # Sort order to apply to the collection
+    orderBy: [SchemaMigrationsOrderBy!]
+  ): SchemaMigrationsConnection
+  # A pagable collection of type `Shift`
+  shiftCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShiftFilter
+    # Sort order to apply to the collection
+    orderBy: [ShiftOrderBy!]
+  ): ShiftConnection
+  # A pagable collection of type `ShiftScheduleStatus`
+  shiftScheduleStatusCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShiftScheduleStatusFilter
+    # Sort order to apply to the collection
+    orderBy: [ShiftScheduleStatusOrderBy!]
+  ): ShiftScheduleStatusConnection
+  # A pagable collection of type `ShiftType`
+  shiftTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShiftTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [ShiftTypeOrderBy!]
+  ): ShiftTypeConnection
+  # A pagable collection of type `ShoppingCart`
+  shoppingCartCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShoppingCartFilter
+    # Sort order to apply to the collection
+    orderBy: [ShoppingCartOrderBy!]
+  ): ShoppingCartConnection
+  # A pagable collection of type `ShoppingCartMenuItem`
+  shoppingCartMenuItemCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShoppingCartMenuItemFilter
+    # Sort order to apply to the collection
+    orderBy: [ShoppingCartMenuItemOrderBy!]
+  ): ShoppingCartMenuItemConnection
   # A pagable collection of type `Station`
   stationCollection(
     # Query the first `n` records in the collection
@@ -9895,6 +11944,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [StationPartnerOrderBy!]
   ): StationPartnerConnection
+  # A pagable collection of type `StationProvider`
+  stationProviderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationProviderFilter
+    # Sort order to apply to the collection
+    orderBy: [StationProviderOrderBy!]
+  ): StationProviderConnection
   # A pagable collection of type `Survey`
   surveyCollection(
     # Query the first `n` records in the collection
@@ -9929,6 +11995,40 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [SurveyQuestionOrderBy!]
   ): SurveyQuestionConnection
+  # A pagable collection of type `TeamUpdate`
+  teamUpdateCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: TeamUpdateFilter
+    # Sort order to apply to the collection
+    orderBy: [TeamUpdateOrderBy!]
+  ): TeamUpdateConnection
+  # A pagable collection of type `TeamUpdateType`
+  teamUpdateTypeCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: TeamUpdateTypeFilter
+    # Sort order to apply to the collection
+    orderBy: [TeamUpdateTypeOrderBy!]
+  ): TeamUpdateTypeConnection
   # A pagable collection of type `TemplateVariable`
   templateVariableCollection(
     # Query the first `n` records in the collection
@@ -10116,6 +12216,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [UserOnboardingStepOrderBy!]
   ): UserOnboardingStepConnection
+  # A pagable collection of type `UserOrganization`
+  userOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrganizationOrderBy!]
+  ): UserOrganizationConnection
   # A pagable collection of type `UserPersona`
   userPersonaCollection(
     # Query the first `n` records in the collection
@@ -10229,7 +12346,7 @@ type Question implements Node {
   data: JSON
   createdAt: Datetime!
   isUserAnswerChoice: Boolean!
-  questionType: QuestionType!
+  questionType: QuestionType
   answerChoiceCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -10246,6 +12363,54 @@ type Question implements Node {
     # Sort order to apply to the collection
     orderBy: [AnswerChoiceOrderBy!]
   ): AnswerChoiceConnection
+  questionAnwserChoiceCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: QuestionAnwserChoiceFilter
+    # Sort order to apply to the collection
+    orderBy: [QuestionAnwserChoiceOrderBy!]
+  ): QuestionAnwserChoiceConnection
+  userFormQuestionAnswerCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserFormQuestionAnswerFilter
+    # Sort order to apply to the collection
+    orderBy: [UserFormQuestionAnswerOrderBy!]
+  ): UserFormQuestionAnswerConnection
+  userAnswerChoiceCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserAnswerChoiceFilter
+    # Sort order to apply to the collection
+    orderBy: [UserAnswerChoiceOrderBy!]
+  ): UserAnswerChoiceConnection
   surveyQuestionCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -10278,54 +12443,6 @@ type Question implements Node {
     # Sort order to apply to the collection
     orderBy: [FormQuestionOrderBy!]
   ): FormQuestionConnection
-  userFormQuestionAnswerCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserFormQuestionAnswerFilter
-    # Sort order to apply to the collection
-    orderBy: [UserFormQuestionAnswerOrderBy!]
-  ): UserFormQuestionAnswerConnection
-  questionAnwserChoiceCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: QuestionAnwserChoiceFilter
-    # Sort order to apply to the collection
-    orderBy: [QuestionAnwserChoiceOrderBy!]
-  ): QuestionAnwserChoiceConnection
-  userAnswerChoiceCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserAnswerChoiceFilter
-    # Sort order to apply to the collection
-    orderBy: [UserAnswerChoiceOrderBy!]
-  ): UserAnswerChoiceConnection
 }
 
 type QuestionAnwserChoice implements Node {
@@ -10579,22 +12696,6 @@ type Role implements Node {
   name: String!
   key: String!
   schema: JSON
-  userRoleCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserRoleFilter
-    # Sort order to apply to the collection
-    orderBy: [UserRoleOrderBy!]
-  ): UserRoleConnection
   applicationUserRoleCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -10611,6 +12712,22 @@ type Role implements Node {
     # Sort order to apply to the collection
     orderBy: [ApplicationUserRoleOrderBy!]
   ): ApplicationUserRoleConnection
+  userRoleCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserRoleFilter
+    # Sort order to apply to the collection
+    orderBy: [UserRoleOrderBy!]
+  ): UserRoleConnection
 }
 
 type RoleConnection {
@@ -10681,6 +12798,532 @@ type RoleUpdateResponse {
   records: [Role!]!
 }
 
+type SchemaMigrations implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  version: String!
+  appliedAt: Datetime
+}
+
+type SchemaMigrationsConnection {
+  edges: [SchemaMigrationsEdge!]!
+  pageInfo: PageInfo!
+}
+
+type SchemaMigrationsDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [SchemaMigrations!]!
+}
+
+type SchemaMigrationsEdge {
+  cursor: String!
+  node: SchemaMigrations!
+}
+
+input SchemaMigrationsFilter {
+  version: StringFilter
+  appliedAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [SchemaMigrationsFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [SchemaMigrationsFilter!]
+  # Negates a filter
+  not: SchemaMigrationsFilter
+}
+
+input SchemaMigrationsInsertInput {
+  version: String
+  appliedAt: Datetime
+}
+
+type SchemaMigrationsInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [SchemaMigrations!]!
+}
+
+input SchemaMigrationsOrderBy {
+  version: OrderByDirection
+  appliedAt: OrderByDirection
+}
+
+input SchemaMigrationsUpdateInput {
+  version: String
+  appliedAt: Datetime
+}
+
+type SchemaMigrationsUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [SchemaMigrations!]!
+}
+
+type Shift implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String
+  shiftTypeId: UUID!
+  shiftScheduleStatusId: UUID!
+  stationId: UUID
+  createdAt: Datetime!
+  startTime: Datetime
+  endTime: Datetime
+  station: Station
+  shiftType: ShiftType!
+  shiftScheduleStatus: ShiftScheduleStatus!
+}
+
+type ShiftConnection {
+  edges: [ShiftEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ShiftDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Shift!]!
+}
+
+type ShiftEdge {
+  cursor: String!
+  node: Shift!
+}
+
+input ShiftFilter {
+  id: UUIDFilter
+  name: StringFilter
+  shiftTypeId: UUIDFilter
+  shiftScheduleStatusId: UUIDFilter
+  stationId: UUIDFilter
+  createdAt: DatetimeFilter
+  startTime: DatetimeFilter
+  endTime: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ShiftFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ShiftFilter!]
+  # Negates a filter
+  not: ShiftFilter
+}
+
+input ShiftInsertInput {
+  id: UUID
+  name: String
+  shiftTypeId: UUID
+  shiftScheduleStatusId: UUID
+  stationId: UUID
+  createdAt: Datetime
+  startTime: Datetime
+  endTime: Datetime
+}
+
+type ShiftInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Shift!]!
+}
+
+input ShiftOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  shiftTypeId: OrderByDirection
+  shiftScheduleStatusId: OrderByDirection
+  stationId: OrderByDirection
+  createdAt: OrderByDirection
+  startTime: OrderByDirection
+  endTime: OrderByDirection
+}
+
+type ShiftScheduleStatus implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  schema: JSON
+  createdAt: Datetime!
+  shiftCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShiftFilter
+    # Sort order to apply to the collection
+    orderBy: [ShiftOrderBy!]
+  ): ShiftConnection
+}
+
+type ShiftScheduleStatusConnection {
+  edges: [ShiftScheduleStatusEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ShiftScheduleStatusDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShiftScheduleStatus!]!
+}
+
+type ShiftScheduleStatusEdge {
+  cursor: String!
+  node: ShiftScheduleStatus!
+}
+
+input ShiftScheduleStatusFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ShiftScheduleStatusFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ShiftScheduleStatusFilter!]
+  # Negates a filter
+  not: ShiftScheduleStatusFilter
+}
+
+input ShiftScheduleStatusInsertInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type ShiftScheduleStatusInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShiftScheduleStatus!]!
+}
+
+input ShiftScheduleStatusOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input ShiftScheduleStatusUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type ShiftScheduleStatusUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShiftScheduleStatus!]!
+}
+
+type ShiftType implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  schema: JSON
+  createdAt: Datetime!
+  shiftCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShiftFilter
+    # Sort order to apply to the collection
+    orderBy: [ShiftOrderBy!]
+  ): ShiftConnection
+}
+
+type ShiftTypeConnection {
+  edges: [ShiftTypeEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ShiftTypeDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShiftType!]!
+}
+
+type ShiftTypeEdge {
+  cursor: String!
+  node: ShiftType!
+}
+
+input ShiftTypeFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ShiftTypeFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ShiftTypeFilter!]
+  # Negates a filter
+  not: ShiftTypeFilter
+}
+
+input ShiftTypeInsertInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type ShiftTypeInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShiftType!]!
+}
+
+input ShiftTypeOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input ShiftTypeUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type ShiftTypeUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShiftType!]!
+}
+
+input ShiftUpdateInput {
+  id: UUID
+  name: String
+  shiftTypeId: UUID
+  shiftScheduleStatusId: UUID
+  stationId: UUID
+  createdAt: Datetime
+  startTime: Datetime
+  endTime: Datetime
+}
+
+type ShiftUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Shift!]!
+}
+
+type ShoppingCart implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  userId: UUID!
+  createdAt: Datetime!
+  orderId: UUID
+  order: Order
+  user: User
+  shoppingCartMenuItemCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShoppingCartMenuItemFilter
+    # Sort order to apply to the collection
+    orderBy: [ShoppingCartMenuItemOrderBy!]
+  ): ShoppingCartMenuItemConnection
+}
+
+type ShoppingCartConnection {
+  edges: [ShoppingCartEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ShoppingCartDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShoppingCart!]!
+}
+
+type ShoppingCartEdge {
+  cursor: String!
+  node: ShoppingCart!
+}
+
+input ShoppingCartFilter {
+  id: UUIDFilter
+  userId: UUIDFilter
+  createdAt: DatetimeFilter
+  orderId: UUIDFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ShoppingCartFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ShoppingCartFilter!]
+  # Negates a filter
+  not: ShoppingCartFilter
+}
+
+input ShoppingCartInsertInput {
+  id: UUID
+  userId: UUID
+  createdAt: Datetime
+  orderId: UUID
+}
+
+type ShoppingCartInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShoppingCart!]!
+}
+
+type ShoppingCartMenuItem implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  shoppingCartId: UUID!
+  menuItemId: UUID!
+  count: Int!
+  createdAt: Datetime!
+  menuItem: MenuItem!
+  shoppingCart: ShoppingCart!
+}
+
+type ShoppingCartMenuItemConnection {
+  edges: [ShoppingCartMenuItemEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ShoppingCartMenuItemDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShoppingCartMenuItem!]!
+}
+
+type ShoppingCartMenuItemEdge {
+  cursor: String!
+  node: ShoppingCartMenuItem!
+}
+
+input ShoppingCartMenuItemFilter {
+  id: UUIDFilter
+  shoppingCartId: UUIDFilter
+  menuItemId: UUIDFilter
+  count: IntFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ShoppingCartMenuItemFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ShoppingCartMenuItemFilter!]
+  # Negates a filter
+  not: ShoppingCartMenuItemFilter
+}
+
+input ShoppingCartMenuItemInsertInput {
+  id: UUID
+  shoppingCartId: UUID
+  menuItemId: UUID
+  count: Int
+  createdAt: Datetime
+}
+
+type ShoppingCartMenuItemInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShoppingCartMenuItem!]!
+}
+
+input ShoppingCartMenuItemOrderBy {
+  id: OrderByDirection
+  shoppingCartId: OrderByDirection
+  menuItemId: OrderByDirection
+  count: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input ShoppingCartMenuItemUpdateInput {
+  id: UUID
+  shoppingCartId: UUID
+  menuItemId: UUID
+  count: Int
+  createdAt: Datetime
+}
+
+type ShoppingCartMenuItemUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShoppingCartMenuItem!]!
+}
+
+input ShoppingCartOrderBy {
+  id: OrderByDirection
+  userId: OrderByDirection
+  createdAt: OrderByDirection
+  orderId: OrderByDirection
+}
+
+input ShoppingCartUpdateInput {
+  id: UUID
+  userId: UUID
+  createdAt: Datetime
+  orderId: UUID
+}
+
+type ShoppingCartUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ShoppingCart!]!
+}
+
 type Station implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -10701,6 +13344,55 @@ type Station implements Node {
   number: Int
   iconUrl: String
   coverUrl: String
+  registrationCode: String!
+  stationProviderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationProviderFilter
+    # Sort order to apply to the collection
+    orderBy: [StationProviderOrderBy!]
+  ): StationProviderConnection
+  orderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrderFilter
+    # Sort order to apply to the collection
+    orderBy: [OrderOrderBy!]
+  ): OrderConnection
+  shiftCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ShiftFilter
+    # Sort order to apply to the collection
+    orderBy: [ShiftOrderBy!]
+  ): ShiftConnection
   stationPartnerCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -10717,6 +13409,54 @@ type Station implements Node {
     # Sort order to apply to the collection
     orderBy: [StationPartnerOrderBy!]
   ): StationPartnerConnection
+  teamUpdateCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: TeamUpdateFilter
+    # Sort order to apply to the collection
+    orderBy: [TeamUpdateOrderBy!]
+  ): TeamUpdateConnection
+  firstResponderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderOrderBy!]
+  ): FirstResponderConnection
+  firstResponderStationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderStationFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderStationOrderBy!]
+  ): FirstResponderStationConnection
 }
 
 type StationConnection {
@@ -10754,6 +13494,7 @@ input StationFilter {
   number: IntFilter
   iconUrl: StringFilter
   coverUrl: StringFilter
+  registrationCode: StringFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [StationFilter!]
@@ -10781,6 +13522,7 @@ input StationInsertInput {
   number: Int
   iconUrl: String
   coverUrl: String
+  registrationCode: String
 }
 
 type StationInsertResponse {
@@ -10808,6 +13550,7 @@ input StationOrderBy {
   number: OrderByDirection
   iconUrl: OrderByDirection
   coverUrl: OrderByDirection
+  registrationCode: OrderByDirection
 }
 
 type StationPartner implements Node {
@@ -10817,8 +13560,8 @@ type StationPartner implements Node {
   createdAt: Datetime!
   stationId: UUID!
   partnerId: UUID!
+  partner: Partner
   station: Station!
-  partner: Partner!
 }
 
 type StationPartnerConnection {
@@ -10887,6 +13630,83 @@ type StationPartnerUpdateResponse {
   records: [StationPartner!]!
 }
 
+type StationProvider implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  stationId: UUID!
+  createdAt: Datetime!
+  providerId: UUID!
+  station: Station!
+  provider: Provider!
+}
+
+type StationProviderConnection {
+  edges: [StationProviderEdge!]!
+  pageInfo: PageInfo!
+}
+
+type StationProviderDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationProvider!]!
+}
+
+type StationProviderEdge {
+  cursor: String!
+  node: StationProvider!
+}
+
+input StationProviderFilter {
+  id: UUIDFilter
+  stationId: UUIDFilter
+  createdAt: DatetimeFilter
+  providerId: UUIDFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [StationProviderFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [StationProviderFilter!]
+  # Negates a filter
+  not: StationProviderFilter
+}
+
+input StationProviderInsertInput {
+  id: UUID
+  stationId: UUID
+  createdAt: Datetime
+  providerId: UUID
+}
+
+type StationProviderInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationProvider!]!
+}
+
+input StationProviderOrderBy {
+  id: OrderByDirection
+  stationId: OrderByDirection
+  createdAt: OrderByDirection
+  providerId: OrderByDirection
+}
+
+input StationProviderUpdateInput {
+  id: UUID
+  stationId: UUID
+  createdAt: Datetime
+  providerId: UUID
+}
+
+type StationProviderUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationProvider!]!
+}
+
 input StationUpdateInput {
   id: UUID
   name: String
@@ -10905,6 +13725,7 @@ input StationUpdateInput {
   number: Int
   iconUrl: String
   coverUrl: String
+  registrationCode: String
 }
 
 type StationUpdateResponse {
@@ -10931,6 +13752,15 @@ input StringFilter {
   startsWith: String
 }
 
+# Boolean expression comparing fields on type "StringList"
+input StringListFilter {
+  containedBy: [String!]
+  contains: [String!]
+  eq: [String!]
+  is: FilterIs
+  overlaps: [String!]
+}
+
 type Survey implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -10940,38 +13770,6 @@ type Survey implements Node {
   key: String!
   schema: JSON
   createdAt: Datetime!
-  surveyQuestionCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: SurveyQuestionFilter
-    # Sort order to apply to the collection
-    orderBy: [SurveyQuestionOrderBy!]
-  ): SurveyQuestionConnection
-  userSurveyCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserSurveyFilter
-    # Sort order to apply to the collection
-    orderBy: [UserSurveyOrderBy!]
-  ): UserSurveyConnection
   onboardingSurveyCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -11004,6 +13802,38 @@ type Survey implements Node {
     # Sort order to apply to the collection
     orderBy: [OnboardingStepOrderBy!]
   ): OnboardingStepConnection
+  surveyQuestionCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: SurveyQuestionFilter
+    # Sort order to apply to the collection
+    orderBy: [SurveyQuestionOrderBy!]
+  ): SurveyQuestionConnection
+  userSurveyCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserSurveyFilter
+    # Sort order to apply to the collection
+    orderBy: [UserSurveyOrderBy!]
+  ): UserSurveyConnection
 }
 
 type SurveyConnection {
@@ -11071,7 +13901,7 @@ type SurveyQuestion implements Node {
   index: Int!
   isRequired: Boolean!
   createdAt: Datetime!
-  survey: Survey!
+  survey: Survey
   question: Question!
   userSurveyAnswerCollection(
     # Query the first `n` records in the collection
@@ -11181,6 +14011,197 @@ type SurveyUpdateResponse {
   records: [Survey!]!
 }
 
+type TeamUpdate implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  stationId: UUID
+  contentId: UUID!
+  authorId: UUID
+  metadata: JSON
+  createdAt: Datetime!
+  isUrgent: Boolean!
+  teamUpdateTypeId: UUID!
+  teamUpdateType: TeamUpdateType!
+  station: Station
+  content: Content!
+  author: User
+}
+
+type TeamUpdateConnection {
+  edges: [TeamUpdateEdge!]!
+  pageInfo: PageInfo!
+}
+
+type TeamUpdateDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [TeamUpdate!]!
+}
+
+type TeamUpdateEdge {
+  cursor: String!
+  node: TeamUpdate!
+}
+
+input TeamUpdateFilter {
+  id: UUIDFilter
+  stationId: UUIDFilter
+  contentId: UUIDFilter
+  authorId: UUIDFilter
+  createdAt: DatetimeFilter
+  isUrgent: BooleanFilter
+  teamUpdateTypeId: UUIDFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [TeamUpdateFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [TeamUpdateFilter!]
+  # Negates a filter
+  not: TeamUpdateFilter
+}
+
+input TeamUpdateInsertInput {
+  id: UUID
+  stationId: UUID
+  contentId: UUID
+  authorId: UUID
+  metadata: JSON
+  createdAt: Datetime
+  isUrgent: Boolean
+  teamUpdateTypeId: UUID
+}
+
+type TeamUpdateInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [TeamUpdate!]!
+}
+
+input TeamUpdateOrderBy {
+  id: OrderByDirection
+  stationId: OrderByDirection
+  contentId: OrderByDirection
+  authorId: OrderByDirection
+  createdAt: OrderByDirection
+  isUrgent: OrderByDirection
+  teamUpdateTypeId: OrderByDirection
+}
+
+type TeamUpdateType implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  schema: JSON
+  createdAt: Datetime!
+  teamUpdateCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: TeamUpdateFilter
+    # Sort order to apply to the collection
+    orderBy: [TeamUpdateOrderBy!]
+  ): TeamUpdateConnection
+}
+
+type TeamUpdateTypeConnection {
+  edges: [TeamUpdateTypeEdge!]!
+  pageInfo: PageInfo!
+}
+
+type TeamUpdateTypeDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [TeamUpdateType!]!
+}
+
+type TeamUpdateTypeEdge {
+  cursor: String!
+  node: TeamUpdateType!
+}
+
+input TeamUpdateTypeFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [TeamUpdateTypeFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [TeamUpdateTypeFilter!]
+  # Negates a filter
+  not: TeamUpdateTypeFilter
+}
+
+input TeamUpdateTypeInsertInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type TeamUpdateTypeInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [TeamUpdateType!]!
+}
+
+input TeamUpdateTypeOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input TeamUpdateTypeUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  schema: JSON
+  createdAt: Datetime
+}
+
+type TeamUpdateTypeUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [TeamUpdateType!]!
+}
+
+input TeamUpdateUpdateInput {
+  id: UUID
+  stationId: UUID
+  contentId: UUID
+  authorId: UUID
+  metadata: JSON
+  createdAt: Datetime
+  isUrgent: Boolean
+  teamUpdateTypeId: UUID
+}
+
+type TeamUpdateUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [TeamUpdate!]!
+}
+
 type TemplateVariable implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -11288,22 +14309,7 @@ type TemplateVariableType implements Node {
   isDate: Boolean!
   isBool: Boolean!
   isObject: Boolean!
-  templateVariableCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: TemplateVariableFilter
-    # Sort order to apply to the collection
-    orderBy: [TemplateVariableOrderBy!]
-  ): TemplateVariableConnection
+  isArray: Boolean!
   contentTemplateVariableCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -11320,6 +14326,22 @@ type TemplateVariableType implements Node {
     # Sort order to apply to the collection
     orderBy: [ContentTemplateVariableOrderBy!]
   ): ContentTemplateVariableConnection
+  templateVariableCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: TemplateVariableFilter
+    # Sort order to apply to the collection
+    orderBy: [TemplateVariableOrderBy!]
+  ): TemplateVariableConnection
 }
 
 type TemplateVariableTypeConnection {
@@ -11351,6 +14373,7 @@ input TemplateVariableTypeFilter {
   isDate: BooleanFilter
   isBool: BooleanFilter
   isObject: BooleanFilter
+  isArray: BooleanFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [TemplateVariableTypeFilter!]
@@ -11373,6 +14396,7 @@ input TemplateVariableTypeInsertInput {
   isDate: Boolean
   isBool: Boolean
   isObject: Boolean
+  isArray: Boolean
 }
 
 type TemplateVariableTypeInsertResponse {
@@ -11394,6 +14418,7 @@ input TemplateVariableTypeOrderBy {
   isDate: OrderByDirection
   isBool: OrderByDirection
   isObject: OrderByDirection
+  isArray: OrderByDirection
 }
 
 input TemplateVariableTypeUpdateInput {
@@ -11409,6 +14434,7 @@ input TemplateVariableTypeUpdateInput {
   isDate: Boolean
   isBool: Boolean
   isObject: Boolean
+  isArray: Boolean
 }
 
 type TemplateVariableTypeUpdateResponse {
@@ -11541,6 +14567,15 @@ input TimeFilter {
   neq: Time
 }
 
+# Boolean expression comparing fields on type "TimeList"
+input TimeListFilter {
+  containedBy: [Time!]
+  contains: [Time!]
+  eq: [Time!]
+  is: FilterIs
+  overlaps: [Time!]
+}
+
 type Tool implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -11554,8 +14589,8 @@ type Tool implements Node {
   ownerId: UUID!
   createdAt: Datetime!
   updatedAt: Datetime!
-  owner: User!
   toolType: ToolType!
+  owner: User
   applicationToolCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -11796,7 +14831,9 @@ type User implements Node {
   updatedAt: Datetime
   kratosId: UUID
   supabaseUserId: UUID
-  userRoleCollection(
+  primaryOrganizationId: UUID
+  primaryOrganization: Organization
+  shoppingCartCollection(
     # Query the first `n` records in the collection
     first: Int
     # Query the last `n` records in the collection
@@ -11808,10 +14845,10 @@ type User implements Node {
     # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
     offset: Int
     # Filters to apply to the results set when querying from the collection
-    filter: UserRoleFilter
+    filter: ShoppingCartFilter
     # Sort order to apply to the collection
-    orderBy: [UserRoleOrderBy!]
-  ): UserRoleConnection
+    orderBy: [ShoppingCartOrderBy!]
+  ): ShoppingCartConnection
   applicationCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -11844,102 +14881,6 @@ type User implements Node {
     # Sort order to apply to the collection
     orderBy: [ChatSessionOrderBy!]
   ): ChatSessionConnection
-  userPersonaCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserPersonaFilter
-    # Sort order to apply to the collection
-    orderBy: [UserPersonaOrderBy!]
-  ): UserPersonaConnection
-  userProfileCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserProfileFilter
-    # Sort order to apply to the collection
-    orderBy: [UserProfileOrderBy!]
-  ): UserProfileConnection
-  toolCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ToolFilter
-    # Sort order to apply to the collection
-    orderBy: [ToolOrderBy!]
-  ): ToolConnection
-  applicationUserRoleCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ApplicationUserRoleFilter
-    # Sort order to apply to the collection
-    orderBy: [ApplicationUserRoleOrderBy!]
-  ): ApplicationUserRoleConnection
-  applicationUserCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ApplicationUserFilter
-    # Sort order to apply to the collection
-    orderBy: [ApplicationUserOrderBy!]
-  ): ApplicationUserConnection
-  contentCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ContentFilter
-    # Sort order to apply to the collection
-    orderBy: [ContentOrderBy!]
-  ): ContentConnection
   contentTemplateCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -11972,7 +14913,7 @@ type User implements Node {
     # Sort order to apply to the collection
     orderBy: [AssetOrderBy!]
   ): AssetConnection
-  documentCollection(
+  contentCollection(
     # Query the first `n` records in the collection
     first: Int
     # Query the last `n` records in the collection
@@ -11984,10 +14925,26 @@ type User implements Node {
     # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
     offset: Int
     # Filters to apply to the results set when querying from the collection
-    filter: DocumentFilter
+    filter: ContentFilter
     # Sort order to apply to the collection
-    orderBy: [DocumentOrderBy!]
-  ): DocumentConnection
+    orderBy: [ContentOrderBy!]
+  ): ContentConnection
+  applicationUserCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationUserFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationUserOrderBy!]
+  ): ApplicationUserConnection
   notificationCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -12004,54 +14961,6 @@ type User implements Node {
     # Sort order to apply to the collection
     orderBy: [NotificationOrderBy!]
   ): NotificationConnection
-  userSurveyCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserSurveyFilter
-    # Sort order to apply to the collection
-    orderBy: [UserSurveyOrderBy!]
-  ): UserSurveyConnection
-  userOnboardingCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserOnboardingFilter
-    # Sort order to apply to the collection
-    orderBy: [UserOnboardingOrderBy!]
-  ): UserOnboardingConnection
-  userFormCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserFormFilter
-    # Sort order to apply to the collection
-    orderBy: [UserFormOrderBy!]
-  ): UserFormConnection
   userAnswerChoiceCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -12068,6 +14977,54 @@ type User implements Node {
     # Sort order to apply to the collection
     orderBy: [UserAnswerChoiceOrderBy!]
   ): UserAnswerChoiceConnection
+  toolCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ToolFilter
+    # Sort order to apply to the collection
+    orderBy: [ToolOrderBy!]
+  ): ToolConnection
+  userFormCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserFormFilter
+    # Sort order to apply to the collection
+    orderBy: [UserFormOrderBy!]
+  ): UserFormConnection
+  userOnboardingCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOnboardingFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOnboardingOrderBy!]
+  ): UserOnboardingConnection
   orderCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -12084,6 +15041,166 @@ type User implements Node {
     # Sort order to apply to the collection
     orderBy: [OrderOrderBy!]
   ): OrderConnection
+  teamUpdateCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: TeamUpdateFilter
+    # Sort order to apply to the collection
+    orderBy: [TeamUpdateOrderBy!]
+  ): TeamUpdateConnection
+  applicationUserRoleCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ApplicationUserRoleFilter
+    # Sort order to apply to the collection
+    orderBy: [ApplicationUserRoleOrderBy!]
+  ): ApplicationUserRoleConnection
+  documentCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: DocumentFilter
+    # Sort order to apply to the collection
+    orderBy: [DocumentOrderBy!]
+  ): DocumentConnection
+  userSurveyCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserSurveyFilter
+    # Sort order to apply to the collection
+    orderBy: [UserSurveyOrderBy!]
+  ): UserSurveyConnection
+  userPersonaCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserPersonaFilter
+    # Sort order to apply to the collection
+    orderBy: [UserPersonaOrderBy!]
+  ): UserPersonaConnection
+  userProfileCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserProfileFilter
+    # Sort order to apply to the collection
+    orderBy: [UserProfileOrderBy!]
+  ): UserProfileConnection
+  userRoleCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserRoleFilter
+    # Sort order to apply to the collection
+    orderBy: [UserRoleOrderBy!]
+  ): UserRoleConnection
+  firstResponderCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: FirstResponderFilter
+    # Sort order to apply to the collection
+    orderBy: [FirstResponderOrderBy!]
+  ): FirstResponderConnection
+  paymentInfoCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: PaymentInfoFilter
+    # Sort order to apply to the collection
+    orderBy: [PaymentInfoOrderBy!]
+  ): PaymentInfoConnection
+  userOrganizationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserOrganizationFilter
+    # Sort order to apply to the collection
+    orderBy: [UserOrganizationOrderBy!]
+  ): UserOrganizationConnection
 }
 
 type UserAnswerChoice implements Node {
@@ -12095,7 +15212,7 @@ type UserAnswerChoice implements Node {
   createdAt: Datetime!
   choiceText: String!
   metadata: JSON
-  user: User!
+  user: User
   question: Question!
 }
 
@@ -12199,6 +15316,7 @@ input UserFilter {
   updatedAt: DatetimeFilter
   kratosId: UUIDFilter
   supabaseUserId: UUIDFilter
+  primaryOrganizationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [UserFilter!]
@@ -12215,7 +15333,7 @@ type UserForm implements Node {
   userId: UUID!
   formId: UUID!
   createdAt: Datetime!
-  user: User!
+  user: User
   form: Form!
   userFormQuestionAnswerCollection(
     # Query the first `n` records in the collection
@@ -12313,7 +15431,7 @@ type UserFormQuestionAnswer implements Node {
   createdAt: Datetime!
   answerText: String
   data: JSON
-  userForm: UserForm!
+  userForm: UserForm
   question: Question!
   answerChoice: AnswerChoice!
 }
@@ -12420,6 +15538,7 @@ input UserInsertInput {
   updatedAt: Datetime
   kratosId: UUID
   supabaseUserId: UUID
+  primaryOrganizationId: UUID
 }
 
 type UserInsertResponse {
@@ -12441,7 +15560,7 @@ type UserOnboarding implements Node {
   isCompleted: Boolean!
   completedAt: Datetime
   data: JSON
-  user: User!
+  user: User
   onboarding: Onboarding!
   userOnboardingStepCollection(
     # Query the first `n` records in the collection
@@ -12539,10 +15658,10 @@ type UserOnboardingStep implements Node {
   startedAt: Datetime
   userFormId: UUID
   completedAt: Datetime
-  userOnboarding: UserOnboarding
-  onboardingStep: OnboardingStep!
   userSurvey: UserSurvey
+  userOnboarding: UserOnboarding
   userForm: UserForm
+  onboardingStep: OnboardingStep!
 }
 
 type UserOnboardingStepConnection {
@@ -12665,6 +15784,84 @@ input UserOrderBy {
   updatedAt: OrderByDirection
   kratosId: OrderByDirection
   supabaseUserId: OrderByDirection
+  primaryOrganizationId: OrderByDirection
+}
+
+type UserOrganization implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  userId: UUID!
+  organizationId: UUID!
+  createdAt: Datetime!
+  organization: Organization!
+  user: User
+}
+
+type UserOrganizationConnection {
+  edges: [UserOrganizationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type UserOrganizationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [UserOrganization!]!
+}
+
+type UserOrganizationEdge {
+  cursor: String!
+  node: UserOrganization!
+}
+
+input UserOrganizationFilter {
+  id: UUIDFilter
+  userId: UUIDFilter
+  organizationId: UUIDFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [UserOrganizationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [UserOrganizationFilter!]
+  # Negates a filter
+  not: UserOrganizationFilter
+}
+
+input UserOrganizationInsertInput {
+  id: UUID
+  userId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type UserOrganizationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [UserOrganization!]!
+}
+
+input UserOrganizationOrderBy {
+  id: OrderByDirection
+  userId: OrderByDirection
+  organizationId: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input UserOrganizationUpdateInput {
+  id: UUID
+  userId: UUID
+  organizationId: UUID
+  createdAt: Datetime
+}
+
+type UserOrganizationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [UserOrganization!]!
 }
 
 type UserPersona implements Node {
@@ -12675,8 +15872,8 @@ type UserPersona implements Node {
   personaId: UUID!
   createdAt: Datetime!
   data: JSON
+  user: User
   persona: Persona!
-  user: User!
 }
 
 type UserPersonaConnection {
@@ -12756,8 +15953,8 @@ type UserProfile implements Node {
   data: JSON
   createdAt: Datetime!
   updatedAt: Datetime
+  user: User
   profileType: ProfileType!
-  user: User!
 }
 
 type UserProfileConnection {
@@ -12840,8 +16037,8 @@ type UserRole implements Node {
   userId: UUID!
   roleId: UUID!
   data: JSON
+  user: User
   role: Role!
-  user: User!
 }
 
 type UserRoleConnection {
@@ -12927,24 +16124,8 @@ type UserSurvey implements Node {
   abandonedAt: Datetime
   updatedAt: Datetime
   data: JSON
-  user: User!
-  survey: Survey!
-  userSurveyAnswerCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: UserSurveyAnswerFilter
-    # Sort order to apply to the collection
-    orderBy: [UserSurveyAnswerOrderBy!]
-  ): UserSurveyAnswerConnection
+  user: User
+  survey: Survey
   userOnboardingStepCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -12961,6 +16142,22 @@ type UserSurvey implements Node {
     # Sort order to apply to the collection
     orderBy: [UserOnboardingStepOrderBy!]
   ): UserOnboardingStepConnection
+  userSurveyAnswerCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: UserSurveyAnswerFilter
+    # Sort order to apply to the collection
+    orderBy: [UserSurveyAnswerOrderBy!]
+  ): UserSurveyAnswerConnection
 }
 
 type UserSurveyAnswer implements Node {
@@ -12975,7 +16172,7 @@ type UserSurveyAnswer implements Node {
   answerText: String
   updatedAt: Datetime
   userSurvey: UserSurvey
-  surveyQuestion: SurveyQuestion!
+  surveyQuestion: SurveyQuestion
   answerChoice: AnswerChoice
 }
 
@@ -13167,6 +16364,7 @@ input UserUpdateInput {
   updatedAt: Datetime
   kratosId: UUID
   supabaseUserId: UUID
+  primaryOrganizationId: UUID
 }
 
 type UserUpdateResponse {
@@ -13185,6 +16383,15 @@ input UUIDFilter {
   in: [UUID!]
   is: FilterIs
   neq: UUID
+}
+
+# Boolean expression comparing fields on type "UUIDList"
+input UUIDListFilter {
+  containedBy: [UUID!]
+  contains: [UUID!]
+  eq: [UUID!]
+  is: FilterIs
+  overlaps: [UUID!]
 }
 
 type VectorDatabase implements Node {

@@ -1,0 +1,67 @@
+fragment ApplicationType on ApplicationType {
+  id
+  name
+  key
+  schema
+  createdAt
+}
+
+fragment Application on Application {
+  id
+  applicationTypeId
+  applicationType {
+    ...ApplicationType
+  }
+  name
+  shortDescription
+  longDescriptionMarkdown
+  iconUrl
+  coverUrl
+  ownerId
+  owner {
+    ...User
+  }
+  createdAt
+}
+
+query ApplicationCollection($filter: ApplicationFilter, $orderBy: [ApplicationOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
+  applicationCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...Application
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query Application($id: UUID!) {
+  applicationCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...Application
+      }
+    }
+  }
+}
+
+query ApplicationTypeCollection($filter: ApplicationTypeFilter, $orderBy: [ApplicationTypeOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
+  applicationTypeCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...ApplicationType
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}

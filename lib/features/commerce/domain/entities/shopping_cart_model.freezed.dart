@@ -22,6 +22,9 @@ ShoppingCartModel _$ShoppingCartModelFromJson(Map<String, dynamic> json) {
 mixin _$ShoppingCartModel {
   List<CartItem> get items => throw _privateConstructorUsedError;
   double get totalPrice => throw _privateConstructorUsedError;
+  List<ShoppingCartViewModel> get shoppingCarts =>
+      throw _privateConstructorUsedError;
+  String? get currentCartId => throw _privateConstructorUsedError;
 
   /// Serializes this ShoppingCartModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +42,11 @@ abstract class $ShoppingCartModelCopyWith<$Res> {
           ShoppingCartModel value, $Res Function(ShoppingCartModel) then) =
       _$ShoppingCartModelCopyWithImpl<$Res, ShoppingCartModel>;
   @useResult
-  $Res call({List<CartItem> items, double totalPrice});
+  $Res call(
+      {List<CartItem> items,
+      double totalPrice,
+      List<ShoppingCartViewModel> shoppingCarts,
+      String? currentCartId});
 }
 
 /// @nodoc
@@ -59,6 +66,8 @@ class _$ShoppingCartModelCopyWithImpl<$Res, $Val extends ShoppingCartModel>
   $Res call({
     Object? items = null,
     Object? totalPrice = null,
+    Object? shoppingCarts = null,
+    Object? currentCartId = freezed,
   }) {
     return _then(_value.copyWith(
       items: null == items
@@ -69,6 +78,14 @@ class _$ShoppingCartModelCopyWithImpl<$Res, $Val extends ShoppingCartModel>
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
               as double,
+      shoppingCarts: null == shoppingCarts
+          ? _value.shoppingCarts
+          : shoppingCarts // ignore: cast_nullable_to_non_nullable
+              as List<ShoppingCartViewModel>,
+      currentCartId: freezed == currentCartId
+          ? _value.currentCartId
+          : currentCartId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +98,11 @@ abstract class _$$ShoppingCartModelImplCopyWith<$Res>
       __$$ShoppingCartModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CartItem> items, double totalPrice});
+  $Res call(
+      {List<CartItem> items,
+      double totalPrice,
+      List<ShoppingCartViewModel> shoppingCarts,
+      String? currentCartId});
 }
 
 /// @nodoc
@@ -99,6 +120,8 @@ class __$$ShoppingCartModelImplCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
     Object? totalPrice = null,
+    Object? shoppingCarts = null,
+    Object? currentCartId = freezed,
   }) {
     return _then(_$ShoppingCartModelImpl(
       items: null == items
@@ -109,6 +132,14 @@ class __$$ShoppingCartModelImplCopyWithImpl<$Res>
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
               as double,
+      shoppingCarts: null == shoppingCarts
+          ? _value._shoppingCarts
+          : shoppingCarts // ignore: cast_nullable_to_non_nullable
+              as List<ShoppingCartViewModel>,
+      currentCartId: freezed == currentCartId
+          ? _value.currentCartId
+          : currentCartId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -117,8 +148,12 @@ class __$$ShoppingCartModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ShoppingCartModelImpl implements _ShoppingCartModel {
   const _$ShoppingCartModelImpl(
-      {final List<CartItem> items = const [], this.totalPrice = 0.0})
-      : _items = items;
+      {final List<CartItem> items = const [],
+      this.totalPrice = 0.0,
+      final List<ShoppingCartViewModel> shoppingCarts = const [],
+      this.currentCartId})
+      : _items = items,
+        _shoppingCarts = shoppingCarts;
 
   factory _$ShoppingCartModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShoppingCartModelImplFromJson(json);
@@ -135,10 +170,21 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
   @override
   @JsonKey()
   final double totalPrice;
+  final List<ShoppingCartViewModel> _shoppingCarts;
+  @override
+  @JsonKey()
+  List<ShoppingCartViewModel> get shoppingCarts {
+    if (_shoppingCarts is EqualUnmodifiableListView) return _shoppingCarts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_shoppingCarts);
+  }
+
+  @override
+  final String? currentCartId;
 
   @override
   String toString() {
-    return 'ShoppingCartModel(items: $items, totalPrice: $totalPrice)';
+    return 'ShoppingCartModel(items: $items, totalPrice: $totalPrice, shoppingCarts: $shoppingCarts, currentCartId: $currentCartId)';
   }
 
   @override
@@ -148,13 +194,21 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
             other is _$ShoppingCartModelImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice));
+                other.totalPrice == totalPrice) &&
+            const DeepCollectionEquality()
+                .equals(other._shoppingCarts, _shoppingCarts) &&
+            (identical(other.currentCartId, currentCartId) ||
+                other.currentCartId == currentCartId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_items), totalPrice);
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      totalPrice,
+      const DeepCollectionEquality().hash(_shoppingCarts),
+      currentCartId);
 
   /// Create a copy of ShoppingCartModel
   /// with the given fields replaced by the non-null parameter values.
@@ -176,7 +230,9 @@ class _$ShoppingCartModelImpl implements _ShoppingCartModel {
 abstract class _ShoppingCartModel implements ShoppingCartModel {
   const factory _ShoppingCartModel(
       {final List<CartItem> items,
-      final double totalPrice}) = _$ShoppingCartModelImpl;
+      final double totalPrice,
+      final List<ShoppingCartViewModel> shoppingCarts,
+      final String? currentCartId}) = _$ShoppingCartModelImpl;
 
   factory _ShoppingCartModel.fromJson(Map<String, dynamic> json) =
       _$ShoppingCartModelImpl.fromJson;
@@ -185,6 +241,10 @@ abstract class _ShoppingCartModel implements ShoppingCartModel {
   List<CartItem> get items;
   @override
   double get totalPrice;
+  @override
+  List<ShoppingCartViewModel> get shoppingCarts;
+  @override
+  String? get currentCartId;
 
   /// Create a copy of ShoppingCartModel
   /// with the given fields replaced by the non-null parameter values.

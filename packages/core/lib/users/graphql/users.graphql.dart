@@ -1,5 +1,9 @@
+import '../../providers/graphql/provider.graphql.dart';
 import '../../schema.graphql.dart';
+import '../../team/graphql/first_responders.graphql.dart';
+import '../../team/graphql/stations.graphql.dart';
 import 'dart:async';
+import 'organizations.graphql.dart';
 import 'package:core/scalars.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
@@ -556,6 +560,326 @@ extension ClientExtension$Fragment$UserRole on graphql.GraphQLClient {
   }
 }
 
+class Fragment$UserOrganization {
+  Fragment$UserOrganization({
+    required this.id,
+    required this.userId,
+    required this.organizationId,
+    required this.organization,
+    required this.createdAt,
+    this.$__typename = 'UserOrganization',
+  });
+
+  factory Fragment$UserOrganization.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$userId = json['userId'];
+    final l$organizationId = json['organizationId'];
+    final l$organization = json['organization'];
+    final l$createdAt = json['createdAt'];
+    final l$$__typename = json['__typename'];
+    return Fragment$UserOrganization(
+      id: (l$id as String),
+      userId: (l$userId as String),
+      organizationId: (l$organizationId as String),
+      organization: Fragment$Organization.fromJson(
+          (l$organization as Map<String, dynamic>)),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String userId;
+
+  final String organizationId;
+
+  final Fragment$Organization organization;
+
+  final DateTime createdAt;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$userId = userId;
+    _resultData['userId'] = l$userId;
+    final l$organizationId = organizationId;
+    _resultData['organizationId'] = l$organizationId;
+    final l$organization = organization;
+    _resultData['organization'] = l$organization.toJson();
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$organization = organization;
+    final l$createdAt = createdAt;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$userId,
+      l$organizationId,
+      l$organization,
+      l$createdAt,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$UserOrganization) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$organization = organization;
+    final lOther$organization = other.organization;
+    if (l$organization != lOther$organization) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$UserOrganization
+    on Fragment$UserOrganization {
+  CopyWith$Fragment$UserOrganization<Fragment$UserOrganization> get copyWith =>
+      CopyWith$Fragment$UserOrganization(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Fragment$UserOrganization<TRes> {
+  factory CopyWith$Fragment$UserOrganization(
+    Fragment$UserOrganization instance,
+    TRes Function(Fragment$UserOrganization) then,
+  ) = _CopyWithImpl$Fragment$UserOrganization;
+
+  factory CopyWith$Fragment$UserOrganization.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$UserOrganization;
+
+  TRes call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Fragment$Organization? organization,
+    DateTime? createdAt,
+    String? $__typename,
+  });
+  CopyWith$Fragment$Organization<TRes> get organization;
+}
+
+class _CopyWithImpl$Fragment$UserOrganization<TRes>
+    implements CopyWith$Fragment$UserOrganization<TRes> {
+  _CopyWithImpl$Fragment$UserOrganization(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$UserOrganization _instance;
+
+  final TRes Function(Fragment$UserOrganization) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? organization = _undefined,
+    Object? createdAt = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$UserOrganization(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        userId: userId == _undefined || userId == null
+            ? _instance.userId
+            : (userId as String),
+        organizationId: organizationId == _undefined || organizationId == null
+            ? _instance.organizationId
+            : (organizationId as String),
+        organization: organization == _undefined || organization == null
+            ? _instance.organization
+            : (organization as Fragment$Organization),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$Organization<TRes> get organization {
+    final local$organization = _instance.organization;
+    return CopyWith$Fragment$Organization(
+        local$organization, (e) => call(organization: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$UserOrganization<TRes>
+    implements CopyWith$Fragment$UserOrganization<TRes> {
+  _CopyWithStubImpl$Fragment$UserOrganization(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Fragment$Organization? organization,
+    DateTime? createdAt,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$Organization<TRes> get organization =>
+      CopyWith$Fragment$Organization.stub(_res);
+}
+
+const fragmentDefinitionUserOrganization = FragmentDefinitionNode(
+  name: NameNode(value: 'UserOrganization'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'UserOrganization'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'userId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'organizationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'organization'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Organization'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentUserOrganization = DocumentNode(definitions: [
+  fragmentDefinitionUserOrganization,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
+]);
+
+extension ClientExtension$Fragment$UserOrganization on graphql.GraphQLClient {
+  void writeFragment$UserOrganization({
+    required Fragment$UserOrganization data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'UserOrganization',
+            document: documentNodeFragmentUserOrganization,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$UserOrganization? readFragment$UserOrganization({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'UserOrganization',
+          document: documentNodeFragmentUserOrganization,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Fragment$UserOrganization.fromJson(result);
+  }
+}
+
 class Fragment$User {
   Fragment$User({
     required this.id,
@@ -568,6 +892,10 @@ class Fragment$User {
     this.kratosId,
     this.supabaseUserId,
     this.userRoleCollection,
+    this.firstResponderCollection,
+    this.primaryOrganizationId,
+    this.primaryOrganization,
+    this.userOrganizationCollection,
     this.$__typename = 'User',
   });
 
@@ -582,6 +910,10 @@ class Fragment$User {
     final l$kratosId = json['kratosId'];
     final l$supabaseUserId = json['supabaseUserId'];
     final l$userRoleCollection = json['userRoleCollection'];
+    final l$firstResponderCollection = json['firstResponderCollection'];
+    final l$primaryOrganizationId = json['primaryOrganizationId'];
+    final l$primaryOrganization = json['primaryOrganization'];
+    final l$userOrganizationCollection = json['userOrganizationCollection'];
     final l$$__typename = json['__typename'];
     return Fragment$User(
       id: (l$id as String),
@@ -597,6 +929,19 @@ class Fragment$User {
           ? null
           : Fragment$User$userRoleCollection.fromJson(
               (l$userRoleCollection as Map<String, dynamic>)),
+      firstResponderCollection: l$firstResponderCollection == null
+          ? null
+          : Fragment$User$firstResponderCollection.fromJson(
+              (l$firstResponderCollection as Map<String, dynamic>)),
+      primaryOrganizationId: (l$primaryOrganizationId as String?),
+      primaryOrganization: l$primaryOrganization == null
+          ? null
+          : Fragment$Organization.fromJson(
+              (l$primaryOrganization as Map<String, dynamic>)),
+      userOrganizationCollection: l$userOrganizationCollection == null
+          ? null
+          : Fragment$User$userOrganizationCollection.fromJson(
+              (l$userOrganizationCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -620,6 +965,14 @@ class Fragment$User {
   final String? supabaseUserId;
 
   final Fragment$User$userRoleCollection? userRoleCollection;
+
+  final Fragment$User$firstResponderCollection? firstResponderCollection;
+
+  final String? primaryOrganizationId;
+
+  final Fragment$Organization? primaryOrganization;
+
+  final Fragment$User$userOrganizationCollection? userOrganizationCollection;
 
   final String $__typename;
 
@@ -645,6 +998,16 @@ class Fragment$User {
     _resultData['supabaseUserId'] = l$supabaseUserId;
     final l$userRoleCollection = userRoleCollection;
     _resultData['userRoleCollection'] = l$userRoleCollection?.toJson();
+    final l$firstResponderCollection = firstResponderCollection;
+    _resultData['firstResponderCollection'] =
+        l$firstResponderCollection?.toJson();
+    final l$primaryOrganizationId = primaryOrganizationId;
+    _resultData['primaryOrganizationId'] = l$primaryOrganizationId;
+    final l$primaryOrganization = primaryOrganization;
+    _resultData['primaryOrganization'] = l$primaryOrganization?.toJson();
+    final l$userOrganizationCollection = userOrganizationCollection;
+    _resultData['userOrganizationCollection'] =
+        l$userOrganizationCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -662,6 +1025,10 @@ class Fragment$User {
     final l$kratosId = kratosId;
     final l$supabaseUserId = supabaseUserId;
     final l$userRoleCollection = userRoleCollection;
+    final l$firstResponderCollection = firstResponderCollection;
+    final l$primaryOrganizationId = primaryOrganizationId;
+    final l$primaryOrganization = primaryOrganization;
+    final l$userOrganizationCollection = userOrganizationCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -674,6 +1041,10 @@ class Fragment$User {
       l$kratosId,
       l$supabaseUserId,
       l$userRoleCollection,
+      l$firstResponderCollection,
+      l$primaryOrganizationId,
+      l$primaryOrganization,
+      l$userOrganizationCollection,
       l$$__typename,
     ]);
   }
@@ -736,6 +1107,26 @@ class Fragment$User {
     if (l$userRoleCollection != lOther$userRoleCollection) {
       return false;
     }
+    final l$firstResponderCollection = firstResponderCollection;
+    final lOther$firstResponderCollection = other.firstResponderCollection;
+    if (l$firstResponderCollection != lOther$firstResponderCollection) {
+      return false;
+    }
+    final l$primaryOrganizationId = primaryOrganizationId;
+    final lOther$primaryOrganizationId = other.primaryOrganizationId;
+    if (l$primaryOrganizationId != lOther$primaryOrganizationId) {
+      return false;
+    }
+    final l$primaryOrganization = primaryOrganization;
+    final lOther$primaryOrganization = other.primaryOrganization;
+    if (l$primaryOrganization != lOther$primaryOrganization) {
+      return false;
+    }
+    final l$userOrganizationCollection = userOrganizationCollection;
+    final lOther$userOrganizationCollection = other.userOrganizationCollection;
+    if (l$userOrganizationCollection != lOther$userOrganizationCollection) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -772,9 +1163,18 @@ abstract class CopyWith$Fragment$User<TRes> {
     String? kratosId,
     String? supabaseUserId,
     Fragment$User$userRoleCollection? userRoleCollection,
+    Fragment$User$firstResponderCollection? firstResponderCollection,
+    String? primaryOrganizationId,
+    Fragment$Organization? primaryOrganization,
+    Fragment$User$userOrganizationCollection? userOrganizationCollection,
     String? $__typename,
   });
   CopyWith$Fragment$User$userRoleCollection<TRes> get userRoleCollection;
+  CopyWith$Fragment$User$firstResponderCollection<TRes>
+      get firstResponderCollection;
+  CopyWith$Fragment$Organization<TRes> get primaryOrganization;
+  CopyWith$Fragment$User$userOrganizationCollection<TRes>
+      get userOrganizationCollection;
 }
 
 class _CopyWithImpl$Fragment$User<TRes>
@@ -801,6 +1201,10 @@ class _CopyWithImpl$Fragment$User<TRes>
     Object? kratosId = _undefined,
     Object? supabaseUserId = _undefined,
     Object? userRoleCollection = _undefined,
+    Object? firstResponderCollection = _undefined,
+    Object? primaryOrganizationId = _undefined,
+    Object? primaryOrganization = _undefined,
+    Object? userOrganizationCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$User(
@@ -830,6 +1234,20 @@ class _CopyWithImpl$Fragment$User<TRes>
         userRoleCollection: userRoleCollection == _undefined
             ? _instance.userRoleCollection
             : (userRoleCollection as Fragment$User$userRoleCollection?),
+        firstResponderCollection: firstResponderCollection == _undefined
+            ? _instance.firstResponderCollection
+            : (firstResponderCollection
+                as Fragment$User$firstResponderCollection?),
+        primaryOrganizationId: primaryOrganizationId == _undefined
+            ? _instance.primaryOrganizationId
+            : (primaryOrganizationId as String?),
+        primaryOrganization: primaryOrganization == _undefined
+            ? _instance.primaryOrganization
+            : (primaryOrganization as Fragment$Organization?),
+        userOrganizationCollection: userOrganizationCollection == _undefined
+            ? _instance.userOrganizationCollection
+            : (userOrganizationCollection
+                as Fragment$User$userOrganizationCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -841,6 +1259,36 @@ class _CopyWithImpl$Fragment$User<TRes>
         ? CopyWith$Fragment$User$userRoleCollection.stub(_then(_instance))
         : CopyWith$Fragment$User$userRoleCollection(
             local$userRoleCollection, (e) => call(userRoleCollection: e));
+  }
+
+  CopyWith$Fragment$User$firstResponderCollection<TRes>
+      get firstResponderCollection {
+    final local$firstResponderCollection = _instance.firstResponderCollection;
+    return local$firstResponderCollection == null
+        ? CopyWith$Fragment$User$firstResponderCollection.stub(_then(_instance))
+        : CopyWith$Fragment$User$firstResponderCollection(
+            local$firstResponderCollection,
+            (e) => call(firstResponderCollection: e));
+  }
+
+  CopyWith$Fragment$Organization<TRes> get primaryOrganization {
+    final local$primaryOrganization = _instance.primaryOrganization;
+    return local$primaryOrganization == null
+        ? CopyWith$Fragment$Organization.stub(_then(_instance))
+        : CopyWith$Fragment$Organization(
+            local$primaryOrganization, (e) => call(primaryOrganization: e));
+  }
+
+  CopyWith$Fragment$User$userOrganizationCollection<TRes>
+      get userOrganizationCollection {
+    final local$userOrganizationCollection =
+        _instance.userOrganizationCollection;
+    return local$userOrganizationCollection == null
+        ? CopyWith$Fragment$User$userOrganizationCollection.stub(
+            _then(_instance))
+        : CopyWith$Fragment$User$userOrganizationCollection(
+            local$userOrganizationCollection,
+            (e) => call(userOrganizationCollection: e));
   }
 }
 
@@ -861,12 +1309,27 @@ class _CopyWithStubImpl$Fragment$User<TRes>
     String? kratosId,
     String? supabaseUserId,
     Fragment$User$userRoleCollection? userRoleCollection,
+    Fragment$User$firstResponderCollection? firstResponderCollection,
+    String? primaryOrganizationId,
+    Fragment$Organization? primaryOrganization,
+    Fragment$User$userOrganizationCollection? userOrganizationCollection,
     String? $__typename,
   }) =>
       _res;
 
   CopyWith$Fragment$User$userRoleCollection<TRes> get userRoleCollection =>
       CopyWith$Fragment$User$userRoleCollection.stub(_res);
+
+  CopyWith$Fragment$User$firstResponderCollection<TRes>
+      get firstResponderCollection =>
+          CopyWith$Fragment$User$firstResponderCollection.stub(_res);
+
+  CopyWith$Fragment$Organization<TRes> get primaryOrganization =>
+      CopyWith$Fragment$Organization.stub(_res);
+
+  CopyWith$Fragment$User$userOrganizationCollection<TRes>
+      get userOrganizationCollection =>
+          CopyWith$Fragment$User$userOrganizationCollection.stub(_res);
 }
 
 const fragmentDefinitionUser = FragmentDefinitionNode(
@@ -991,6 +1454,173 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
+      name: NameNode(value: 'firstResponderCollection'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'edges'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'node'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'FirstResponder'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ]),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'primaryOrganizationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'primaryOrganization'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Organization'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'userOrganizationCollection'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'edges'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'node'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'UserOrganization'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ]),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: 'pageInfo'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'startCursor'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'endCursor'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'hasNextPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'hasPreviousPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
       name: NameNode(value: '__typename'),
       alias: null,
       arguments: [],
@@ -1003,6 +1633,16 @@ const documentNodeFragmentUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
 
 extension ClientExtension$Fragment$User on graphql.GraphQLClient {
@@ -1332,8 +1972,825 @@ class _CopyWithStubImpl$Fragment$User$userRoleCollection$edges<TRes>
       CopyWith$Fragment$UserRole.stub(_res);
 }
 
-class Variables$Query$Users {
-  factory Variables$Query$Users({
+class Fragment$User$firstResponderCollection {
+  Fragment$User$firstResponderCollection({
+    required this.edges,
+    this.$__typename = 'FirstResponderConnection',
+  });
+
+  factory Fragment$User$firstResponderCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$firstResponderCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Fragment$User$firstResponderCollection$edges.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$User$firstResponderCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$firstResponderCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$firstResponderCollection
+    on Fragment$User$firstResponderCollection {
+  CopyWith$Fragment$User$firstResponderCollection<
+          Fragment$User$firstResponderCollection>
+      get copyWith => CopyWith$Fragment$User$firstResponderCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$firstResponderCollection<TRes> {
+  factory CopyWith$Fragment$User$firstResponderCollection(
+    Fragment$User$firstResponderCollection instance,
+    TRes Function(Fragment$User$firstResponderCollection) then,
+  ) = _CopyWithImpl$Fragment$User$firstResponderCollection;
+
+  factory CopyWith$Fragment$User$firstResponderCollection.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$firstResponderCollection;
+
+  TRes call({
+    List<Fragment$User$firstResponderCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Fragment$User$firstResponderCollection$edges> Function(
+              Iterable<
+                  CopyWith$Fragment$User$firstResponderCollection$edges<
+                      Fragment$User$firstResponderCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Fragment$User$firstResponderCollection<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection<TRes> {
+  _CopyWithImpl$Fragment$User$firstResponderCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$firstResponderCollection _instance;
+
+  final TRes Function(Fragment$User$firstResponderCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$firstResponderCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<Fragment$User$firstResponderCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Fragment$User$firstResponderCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Fragment$User$firstResponderCollection$edges<
+                          Fragment$User$firstResponderCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges
+              .map((e) => CopyWith$Fragment$User$firstResponderCollection$edges(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Fragment$User$firstResponderCollection<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection<TRes> {
+  _CopyWithStubImpl$Fragment$User$firstResponderCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$User$firstResponderCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Fragment$User$firstResponderCollection$edges {
+  Fragment$User$firstResponderCollection$edges({
+    required this.node,
+    this.$__typename = 'FirstResponderEdge',
+  });
+
+  factory Fragment$User$firstResponderCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$firstResponderCollection$edges(
+      node: Fragment$FirstResponder.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$FirstResponder node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$firstResponderCollection$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$firstResponderCollection$edges
+    on Fragment$User$firstResponderCollection$edges {
+  CopyWith$Fragment$User$firstResponderCollection$edges<
+          Fragment$User$firstResponderCollection$edges>
+      get copyWith => CopyWith$Fragment$User$firstResponderCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
+  factory CopyWith$Fragment$User$firstResponderCollection$edges(
+    Fragment$User$firstResponderCollection$edges instance,
+    TRes Function(Fragment$User$firstResponderCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$User$firstResponderCollection$edges;
+
+  factory CopyWith$Fragment$User$firstResponderCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges;
+
+  TRes call({
+    Fragment$FirstResponder? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$FirstResponder<TRes> get node;
+}
+
+class _CopyWithImpl$Fragment$User$firstResponderCollection$edges<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$User$firstResponderCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$firstResponderCollection$edges _instance;
+
+  final TRes Function(Fragment$User$firstResponderCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$firstResponderCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$FirstResponder),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$FirstResponder<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$FirstResponder(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges<TRes>
+    implements CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$FirstResponder? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$FirstResponder<TRes> get node =>
+      CopyWith$Fragment$FirstResponder.stub(_res);
+}
+
+class Fragment$User$userOrganizationCollection {
+  Fragment$User$userOrganizationCollection({
+    required this.edges,
+    required this.pageInfo,
+    this.$__typename = 'UserOrganizationConnection',
+  });
+
+  factory Fragment$User$userOrganizationCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$userOrganizationCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Fragment$User$userOrganizationCollection$edges.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo: Fragment$User$userOrganizationCollection$pageInfo.fromJson(
+          (l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$User$userOrganizationCollection$edges> edges;
+
+  final Fragment$User$userOrganizationCollection$pageInfo pageInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$userOrganizationCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$userOrganizationCollection
+    on Fragment$User$userOrganizationCollection {
+  CopyWith$Fragment$User$userOrganizationCollection<
+          Fragment$User$userOrganizationCollection>
+      get copyWith => CopyWith$Fragment$User$userOrganizationCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$userOrganizationCollection<TRes> {
+  factory CopyWith$Fragment$User$userOrganizationCollection(
+    Fragment$User$userOrganizationCollection instance,
+    TRes Function(Fragment$User$userOrganizationCollection) then,
+  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection;
+
+  factory CopyWith$Fragment$User$userOrganizationCollection.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$userOrganizationCollection;
+
+  TRes call({
+    List<Fragment$User$userOrganizationCollection$edges>? edges,
+    Fragment$User$userOrganizationCollection$pageInfo? pageInfo,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Fragment$User$userOrganizationCollection$edges> Function(
+              Iterable<
+                  CopyWith$Fragment$User$userOrganizationCollection$edges<
+                      Fragment$User$userOrganizationCollection$edges>>)
+          _fn);
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> get pageInfo;
+}
+
+class _CopyWithImpl$Fragment$User$userOrganizationCollection<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection<TRes> {
+  _CopyWithImpl$Fragment$User$userOrganizationCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$userOrganizationCollection _instance;
+
+  final TRes Function(Fragment$User$userOrganizationCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$userOrganizationCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<Fragment$User$userOrganizationCollection$edges>),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo as Fragment$User$userOrganizationCollection$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Fragment$User$userOrganizationCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Fragment$User$userOrganizationCollection$edges<
+                          Fragment$User$userOrganizationCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map(
+              (e) => CopyWith$Fragment$User$userOrganizationCollection$edges(
+                    e,
+                    (i) => i,
+                  ))).toList());
+
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+      get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$userOrganizationCollection<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection<TRes> {
+  _CopyWithStubImpl$Fragment$User$userOrganizationCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$User$userOrganizationCollection$edges>? edges,
+    Fragment$User$userOrganizationCollection$pageInfo? pageInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+      get pageInfo =>
+          CopyWith$Fragment$User$userOrganizationCollection$pageInfo.stub(_res);
+}
+
+class Fragment$User$userOrganizationCollection$edges {
+  Fragment$User$userOrganizationCollection$edges({
+    required this.node,
+    this.$__typename = 'UserOrganizationEdge',
+  });
+
+  factory Fragment$User$userOrganizationCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$userOrganizationCollection$edges(
+      node:
+          Fragment$UserOrganization.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$UserOrganization node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$userOrganizationCollection$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$userOrganizationCollection$edges
+    on Fragment$User$userOrganizationCollection$edges {
+  CopyWith$Fragment$User$userOrganizationCollection$edges<
+          Fragment$User$userOrganizationCollection$edges>
+      get copyWith => CopyWith$Fragment$User$userOrganizationCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
+  factory CopyWith$Fragment$User$userOrganizationCollection$edges(
+    Fragment$User$userOrganizationCollection$edges instance,
+    TRes Function(Fragment$User$userOrganizationCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection$edges;
+
+  factory CopyWith$Fragment$User$userOrganizationCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges;
+
+  TRes call({
+    Fragment$UserOrganization? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$UserOrganization<TRes> get node;
+}
+
+class _CopyWithImpl$Fragment$User$userOrganizationCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$User$userOrganizationCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$userOrganizationCollection$edges _instance;
+
+  final TRes Function(Fragment$User$userOrganizationCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$userOrganizationCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$UserOrganization),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$UserOrganization<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$UserOrganization(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$UserOrganization? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$UserOrganization<TRes> get node =>
+      CopyWith$Fragment$UserOrganization.stub(_res);
+}
+
+class Fragment$User$userOrganizationCollection$pageInfo {
+  Fragment$User$userOrganizationCollection$pageInfo({
+    this.startCursor,
+    this.endCursor,
+    required this.hasNextPage,
+    required this.hasPreviousPage,
+    this.$__typename = 'PageInfo',
+  });
+
+  factory Fragment$User$userOrganizationCollection$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$startCursor = json['startCursor'];
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$hasPreviousPage = json['hasPreviousPage'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$userOrganizationCollection$pageInfo(
+      startCursor: (l$startCursor as String?),
+      endCursor: (l$endCursor as String?),
+      hasNextPage: (l$hasNextPage as bool),
+      hasPreviousPage: (l$hasPreviousPage as bool),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String? startCursor;
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  final bool hasPreviousPage;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$startCursor = startCursor;
+    _resultData['startCursor'] = l$startCursor;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    _resultData['hasPreviousPage'] = l$hasPreviousPage;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$startCursor = startCursor;
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$startCursor,
+      l$endCursor,
+      l$hasNextPage,
+      l$hasPreviousPage,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$User$userOrganizationCollection$pageInfo) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$startCursor = startCursor;
+    final lOther$startCursor = other.startCursor;
+    if (l$startCursor != lOther$startCursor) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$hasPreviousPage = hasPreviousPage;
+    final lOther$hasPreviousPage = other.hasPreviousPage;
+    if (l$hasPreviousPage != lOther$hasPreviousPage) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$userOrganizationCollection$pageInfo
+    on Fragment$User$userOrganizationCollection$pageInfo {
+  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<
+          Fragment$User$userOrganizationCollection$pageInfo>
+      get copyWith =>
+          CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$userOrganizationCollection$pageInfo<
+    TRes> {
+  factory CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
+    Fragment$User$userOrganizationCollection$pageInfo instance,
+    TRes Function(Fragment$User$userOrganizationCollection$pageInfo) then,
+  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo;
+
+  factory CopyWith$Fragment$User$userOrganizationCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo;
+
+  TRes call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+    implements
+        CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> {
+  _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$userOrganizationCollection$pageInfo _instance;
+
+  final TRes Function(Fragment$User$userOrganizationCollection$pageInfo) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? startCursor = _undefined,
+    Object? endCursor = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? hasPreviousPage = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$userOrganizationCollection$pageInfo(
+        startCursor: startCursor == _undefined
+            ? _instance.startCursor
+            : (startCursor as String?),
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        hasPreviousPage:
+            hasPreviousPage == _undefined || hasPreviousPage == null
+                ? _instance.hasPreviousPage
+                : (hasPreviousPage as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo<TRes>
+    implements
+        CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> {
+  _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Variables$Query$UserCollection {
+  factory Variables$Query$UserCollection({
     int? first,
     int? last,
     dynamic? before,
@@ -1341,7 +2798,7 @@ class Variables$Query$Users {
     Input$UserFilter? filter,
     List<Input$UserOrderBy>? orderBy,
   }) =>
-      Variables$Query$Users._({
+      Variables$Query$UserCollection._({
         if (first != null) r'first': first,
         if (last != null) r'last': last,
         if (before != null) r'before': before,
@@ -1350,9 +2807,9 @@ class Variables$Query$Users {
         if (orderBy != null) r'orderBy': orderBy,
       });
 
-  Variables$Query$Users._(this._$data);
+  Variables$Query$UserCollection._(this._$data);
 
-  factory Variables$Query$Users.fromJson(Map<String, dynamic> data) {
+  factory Variables$Query$UserCollection.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     if (data.containsKey('first')) {
       final l$first = data['first'];
@@ -1382,7 +2839,7 @@ class Variables$Query$Users {
           ?.map((e) => Input$UserOrderBy.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
-    return Variables$Query$Users._(result$data);
+    return Variables$Query$UserCollection._(result$data);
   }
 
   Map<String, dynamic> _$data;
@@ -1429,18 +2886,19 @@ class Variables$Query$Users {
     return result$data;
   }
 
-  CopyWith$Variables$Query$Users<Variables$Query$Users> get copyWith =>
-      CopyWith$Variables$Query$Users(
-        this,
-        (i) => i,
-      );
+  CopyWith$Variables$Query$UserCollection<Variables$Query$UserCollection>
+      get copyWith => CopyWith$Variables$Query$UserCollection(
+            this,
+            (i) => i,
+          );
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$Users) || runtimeType != other.runtimeType) {
+    if (!(other is Variables$Query$UserCollection) ||
+        runtimeType != other.runtimeType) {
       return false;
     }
     final l$first = first;
@@ -1528,14 +2986,14 @@ class Variables$Query$Users {
   }
 }
 
-abstract class CopyWith$Variables$Query$Users<TRes> {
-  factory CopyWith$Variables$Query$Users(
-    Variables$Query$Users instance,
-    TRes Function(Variables$Query$Users) then,
-  ) = _CopyWithImpl$Variables$Query$Users;
+abstract class CopyWith$Variables$Query$UserCollection<TRes> {
+  factory CopyWith$Variables$Query$UserCollection(
+    Variables$Query$UserCollection instance,
+    TRes Function(Variables$Query$UserCollection) then,
+  ) = _CopyWithImpl$Variables$Query$UserCollection;
 
-  factory CopyWith$Variables$Query$Users.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Query$Users;
+  factory CopyWith$Variables$Query$UserCollection.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$UserCollection;
 
   TRes call({
     int? first,
@@ -1547,16 +3005,16 @@ abstract class CopyWith$Variables$Query$Users<TRes> {
   });
 }
 
-class _CopyWithImpl$Variables$Query$Users<TRes>
-    implements CopyWith$Variables$Query$Users<TRes> {
-  _CopyWithImpl$Variables$Query$Users(
+class _CopyWithImpl$Variables$Query$UserCollection<TRes>
+    implements CopyWith$Variables$Query$UserCollection<TRes> {
+  _CopyWithImpl$Variables$Query$UserCollection(
     this._instance,
     this._then,
   );
 
-  final Variables$Query$Users _instance;
+  final Variables$Query$UserCollection _instance;
 
-  final TRes Function(Variables$Query$Users) _then;
+  final TRes Function(Variables$Query$UserCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1568,7 +3026,7 @@ class _CopyWithImpl$Variables$Query$Users<TRes>
     Object? filter = _undefined,
     Object? orderBy = _undefined,
   }) =>
-      _then(Variables$Query$Users._({
+      _then(Variables$Query$UserCollection._({
         ..._instance._$data,
         if (first != _undefined) 'first': (first as int?),
         if (last != _undefined) 'last': (last as int?),
@@ -1580,9 +3038,9 @@ class _CopyWithImpl$Variables$Query$Users<TRes>
       }));
 }
 
-class _CopyWithStubImpl$Variables$Query$Users<TRes>
-    implements CopyWith$Variables$Query$Users<TRes> {
-  _CopyWithStubImpl$Variables$Query$Users(this._res);
+class _CopyWithStubImpl$Variables$Query$UserCollection<TRes>
+    implements CopyWith$Variables$Query$UserCollection<TRes> {
+  _CopyWithStubImpl$Variables$Query$UserCollection(this._res);
 
   TRes _res;
 
@@ -1597,25 +3055,25 @@ class _CopyWithStubImpl$Variables$Query$Users<TRes>
       _res;
 }
 
-class Query$Users {
-  Query$Users({
+class Query$UserCollection {
+  Query$UserCollection({
     this.userCollection,
     this.$__typename = 'Query',
   });
 
-  factory Query$Users.fromJson(Map<String, dynamic> json) {
+  factory Query$UserCollection.fromJson(Map<String, dynamic> json) {
     final l$userCollection = json['userCollection'];
     final l$$__typename = json['__typename'];
-    return Query$Users(
+    return Query$UserCollection(
       userCollection: l$userCollection == null
           ? null
-          : Query$Users$userCollection.fromJson(
+          : Query$UserCollection$userCollection.fromJson(
               (l$userCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$Users$userCollection? userCollection;
+  final Query$UserCollection$userCollection? userCollection;
 
   final String $__typename;
 
@@ -1643,7 +3101,7 @@ class Query$Users {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Users) || runtimeType != other.runtimeType) {
+    if (!(other is Query$UserCollection) || runtimeType != other.runtimeType) {
       return false;
     }
     final l$userCollection = userCollection;
@@ -1660,37 +3118,40 @@ class Query$Users {
   }
 }
 
-extension UtilityExtension$Query$Users on Query$Users {
-  CopyWith$Query$Users<Query$Users> get copyWith => CopyWith$Query$Users(
+extension UtilityExtension$Query$UserCollection on Query$UserCollection {
+  CopyWith$Query$UserCollection<Query$UserCollection> get copyWith =>
+      CopyWith$Query$UserCollection(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Query$Users<TRes> {
-  factory CopyWith$Query$Users(
-    Query$Users instance,
-    TRes Function(Query$Users) then,
-  ) = _CopyWithImpl$Query$Users;
+abstract class CopyWith$Query$UserCollection<TRes> {
+  factory CopyWith$Query$UserCollection(
+    Query$UserCollection instance,
+    TRes Function(Query$UserCollection) then,
+  ) = _CopyWithImpl$Query$UserCollection;
 
-  factory CopyWith$Query$Users.stub(TRes res) = _CopyWithStubImpl$Query$Users;
+  factory CopyWith$Query$UserCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$UserCollection;
 
   TRes call({
-    Query$Users$userCollection? userCollection,
+    Query$UserCollection$userCollection? userCollection,
     String? $__typename,
   });
-  CopyWith$Query$Users$userCollection<TRes> get userCollection;
+  CopyWith$Query$UserCollection$userCollection<TRes> get userCollection;
 }
 
-class _CopyWithImpl$Query$Users<TRes> implements CopyWith$Query$Users<TRes> {
-  _CopyWithImpl$Query$Users(
+class _CopyWithImpl$Query$UserCollection<TRes>
+    implements CopyWith$Query$UserCollection<TRes> {
+  _CopyWithImpl$Query$UserCollection(
     this._instance,
     this._then,
   );
 
-  final Query$Users _instance;
+  final Query$UserCollection _instance;
 
-  final TRes Function(Query$Users) _then;
+  final TRes Function(Query$UserCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1698,44 +3159,44 @@ class _CopyWithImpl$Query$Users<TRes> implements CopyWith$Query$Users<TRes> {
     Object? userCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Users(
+      _then(Query$UserCollection(
         userCollection: userCollection == _undefined
             ? _instance.userCollection
-            : (userCollection as Query$Users$userCollection?),
+            : (userCollection as Query$UserCollection$userCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$Users$userCollection<TRes> get userCollection {
+  CopyWith$Query$UserCollection$userCollection<TRes> get userCollection {
     final local$userCollection = _instance.userCollection;
     return local$userCollection == null
-        ? CopyWith$Query$Users$userCollection.stub(_then(_instance))
-        : CopyWith$Query$Users$userCollection(
+        ? CopyWith$Query$UserCollection$userCollection.stub(_then(_instance))
+        : CopyWith$Query$UserCollection$userCollection(
             local$userCollection, (e) => call(userCollection: e));
   }
 }
 
-class _CopyWithStubImpl$Query$Users<TRes>
-    implements CopyWith$Query$Users<TRes> {
-  _CopyWithStubImpl$Query$Users(this._res);
+class _CopyWithStubImpl$Query$UserCollection<TRes>
+    implements CopyWith$Query$UserCollection<TRes> {
+  _CopyWithStubImpl$Query$UserCollection(this._res);
 
   TRes _res;
 
   call({
-    Query$Users$userCollection? userCollection,
+    Query$UserCollection$userCollection? userCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$Users$userCollection<TRes> get userCollection =>
-      CopyWith$Query$Users$userCollection.stub(_res);
+  CopyWith$Query$UserCollection$userCollection<TRes> get userCollection =>
+      CopyWith$Query$UserCollection$userCollection.stub(_res);
 }
 
-const documentNodeQueryUsers = DocumentNode(definitions: [
+const documentNodeQueryUserCollection = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
-    name: NameNode(value: 'Users'),
+    name: NameNode(value: 'UserCollection'),
     variableDefinitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'first')),
@@ -1926,26 +3387,38 @@ const documentNodeQueryUsers = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
 ]);
-Query$Users _parserFn$Query$Users(Map<String, dynamic> data) =>
-    Query$Users.fromJson(data);
-typedef OnQueryComplete$Query$Users = FutureOr<void> Function(
+Query$UserCollection _parserFn$Query$UserCollection(
+        Map<String, dynamic> data) =>
+    Query$UserCollection.fromJson(data);
+typedef OnQueryComplete$Query$UserCollection = FutureOr<void> Function(
   Map<String, dynamic>?,
-  Query$Users?,
+  Query$UserCollection?,
 );
 
-class Options$Query$Users extends graphql.QueryOptions<Query$Users> {
-  Options$Query$Users({
+class Options$Query$UserCollection
+    extends graphql.QueryOptions<Query$UserCollection> {
+  Options$Query$UserCollection({
     String? operationName,
-    Variables$Query$Users? variables,
+    Variables$Query$UserCollection? variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$Users? typedOptimisticResult,
+    Query$UserCollection? typedOptimisticResult,
     Duration? pollInterval,
     graphql.Context? context,
-    OnQueryComplete$Query$Users? onComplete,
+    OnQueryComplete$Query$UserCollection? onComplete,
     graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
@@ -1961,14 +3434,14 @@ class Options$Query$Users extends graphql.QueryOptions<Query$Users> {
               ? null
               : (data) => onComplete(
                     data,
-                    data == null ? null : _parserFn$Query$Users(data),
+                    data == null ? null : _parserFn$Query$UserCollection(data),
                   ),
           onError: onError,
-          document: documentNodeQueryUsers,
-          parserFn: _parserFn$Query$Users,
+          document: documentNodeQueryUserCollection,
+          parserFn: _parserFn$Query$UserCollection,
         );
 
-  final OnQueryComplete$Query$Users? onCompleteWithParsed;
+  final OnQueryComplete$Query$UserCollection? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -1979,15 +3452,16 @@ class Options$Query$Users extends graphql.QueryOptions<Query$Users> {
       ];
 }
 
-class WatchOptions$Query$Users extends graphql.WatchQueryOptions<Query$Users> {
-  WatchOptions$Query$Users({
+class WatchOptions$Query$UserCollection
+    extends graphql.WatchQueryOptions<Query$UserCollection> {
+  WatchOptions$Query$UserCollection({
     String? operationName,
-    Variables$Query$Users? variables,
+    Variables$Query$UserCollection? variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Query$Users? typedOptimisticResult,
+    Query$UserCollection? typedOptimisticResult,
     graphql.Context? context,
     Duration? pollInterval,
     bool? eagerlyFetchResults,
@@ -2001,105 +3475,109 @@ class WatchOptions$Query$Users extends graphql.WatchQueryOptions<Query$Users> {
           cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
           context: context,
-          document: documentNodeQueryUsers,
+          document: documentNodeQueryUserCollection,
           pollInterval: pollInterval,
           eagerlyFetchResults: eagerlyFetchResults,
           carryForwardDataOnException: carryForwardDataOnException,
           fetchResults: fetchResults,
-          parserFn: _parserFn$Query$Users,
+          parserFn: _parserFn$Query$UserCollection,
         );
 }
 
-class FetchMoreOptions$Query$Users extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$Users({
+class FetchMoreOptions$Query$UserCollection extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$UserCollection({
     required graphql.UpdateQuery updateQuery,
-    Variables$Query$Users? variables,
+    Variables$Query$UserCollection? variables,
   }) : super(
           updateQuery: updateQuery,
           variables: variables?.toJson() ?? {},
-          document: documentNodeQueryUsers,
+          document: documentNodeQueryUserCollection,
         );
 }
 
-extension ClientExtension$Query$Users on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$Users>> query$Users(
-          [Options$Query$Users? options]) async =>
-      await this.query(options ?? Options$Query$Users());
-  graphql.ObservableQuery<Query$Users> watchQuery$Users(
-          [WatchOptions$Query$Users? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$Users());
-  void writeQuery$Users({
-    required Query$Users data,
-    Variables$Query$Users? variables,
+extension ClientExtension$Query$UserCollection on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$UserCollection>> query$UserCollection(
+          [Options$Query$UserCollection? options]) async =>
+      await this.query(options ?? Options$Query$UserCollection());
+  graphql.ObservableQuery<Query$UserCollection> watchQuery$UserCollection(
+          [WatchOptions$Query$UserCollection? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$UserCollection());
+  void writeQuery$UserCollection({
+    required Query$UserCollection data,
+    Variables$Query$UserCollection? variables,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
-          operation: graphql.Operation(document: documentNodeQueryUsers),
+          operation:
+              graphql.Operation(document: documentNodeQueryUserCollection),
           variables: variables?.toJson() ?? const {},
         ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Query$Users? readQuery$Users({
-    Variables$Query$Users? variables,
+  Query$UserCollection? readQuery$UserCollection({
+    Variables$Query$UserCollection? variables,
     bool optimistic = true,
   }) {
     final result = this.readQuery(
       graphql.Request(
-        operation: graphql.Operation(document: documentNodeQueryUsers),
+        operation: graphql.Operation(document: documentNodeQueryUserCollection),
         variables: variables?.toJson() ?? const {},
       ),
       optimistic: optimistic,
     );
-    return result == null ? null : Query$Users.fromJson(result);
+    return result == null ? null : Query$UserCollection.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$Users> useQuery$Users(
-        [Options$Query$Users? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$Users());
-graphql.ObservableQuery<Query$Users> useWatchQuery$Users(
-        [WatchOptions$Query$Users? options]) =>
-    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$Users());
+graphql_flutter.QueryHookResult<Query$UserCollection> useQuery$UserCollection(
+        [Options$Query$UserCollection? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$UserCollection());
+graphql.ObservableQuery<Query$UserCollection> useWatchQuery$UserCollection(
+        [WatchOptions$Query$UserCollection? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$UserCollection());
 
-class Query$Users$Widget extends graphql_flutter.Query<Query$Users> {
-  Query$Users$Widget({
+class Query$UserCollection$Widget
+    extends graphql_flutter.Query<Query$UserCollection> {
+  Query$UserCollection$Widget({
     widgets.Key? key,
-    Options$Query$Users? options,
-    required graphql_flutter.QueryBuilder<Query$Users> builder,
+    Options$Query$UserCollection? options,
+    required graphql_flutter.QueryBuilder<Query$UserCollection> builder,
   }) : super(
           key: key,
-          options: options ?? Options$Query$Users(),
+          options: options ?? Options$Query$UserCollection(),
           builder: builder,
         );
 }
 
-class Query$Users$userCollection {
-  Query$Users$userCollection({
+class Query$UserCollection$userCollection {
+  Query$UserCollection$userCollection({
     required this.edges,
     required this.pageInfo,
     this.$__typename = 'UserConnection',
   });
 
-  factory Query$Users$userCollection.fromJson(Map<String, dynamic> json) {
+  factory Query$UserCollection$userCollection.fromJson(
+      Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
-    return Query$Users$userCollection(
+    return Query$UserCollection$userCollection(
       edges: (l$edges as List<dynamic>)
-          .map((e) => Query$Users$userCollection$edges.fromJson(
+          .map((e) => Query$UserCollection$userCollection$edges.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
-      pageInfo: Query$Users$userCollection$pageInfo.fromJson(
+      pageInfo: Query$UserCollection$userCollection$pageInfo.fromJson(
           (l$pageInfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$Users$userCollection$edges> edges;
+  final List<Query$UserCollection$userCollection$edges> edges;
 
-  final Query$Users$userCollection$pageInfo pageInfo;
+  final Query$UserCollection$userCollection$pageInfo pageInfo;
 
   final String $__typename;
 
@@ -2131,7 +3609,7 @@ class Query$Users$userCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Users$userCollection) ||
+    if (!(other is Query$UserCollection$userCollection) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2161,48 +3639,49 @@ class Query$Users$userCollection {
   }
 }
 
-extension UtilityExtension$Query$Users$userCollection
-    on Query$Users$userCollection {
-  CopyWith$Query$Users$userCollection<Query$Users$userCollection>
-      get copyWith => CopyWith$Query$Users$userCollection(
+extension UtilityExtension$Query$UserCollection$userCollection
+    on Query$UserCollection$userCollection {
+  CopyWith$Query$UserCollection$userCollection<
+          Query$UserCollection$userCollection>
+      get copyWith => CopyWith$Query$UserCollection$userCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$Users$userCollection<TRes> {
-  factory CopyWith$Query$Users$userCollection(
-    Query$Users$userCollection instance,
-    TRes Function(Query$Users$userCollection) then,
-  ) = _CopyWithImpl$Query$Users$userCollection;
+abstract class CopyWith$Query$UserCollection$userCollection<TRes> {
+  factory CopyWith$Query$UserCollection$userCollection(
+    Query$UserCollection$userCollection instance,
+    TRes Function(Query$UserCollection$userCollection) then,
+  ) = _CopyWithImpl$Query$UserCollection$userCollection;
 
-  factory CopyWith$Query$Users$userCollection.stub(TRes res) =
-      _CopyWithStubImpl$Query$Users$userCollection;
+  factory CopyWith$Query$UserCollection$userCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$UserCollection$userCollection;
 
   TRes call({
-    List<Query$Users$userCollection$edges>? edges,
-    Query$Users$userCollection$pageInfo? pageInfo,
+    List<Query$UserCollection$userCollection$edges>? edges,
+    Query$UserCollection$userCollection$pageInfo? pageInfo,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$Users$userCollection$edges> Function(
+      Iterable<Query$UserCollection$userCollection$edges> Function(
               Iterable<
-                  CopyWith$Query$Users$userCollection$edges<
-                      Query$Users$userCollection$edges>>)
+                  CopyWith$Query$UserCollection$userCollection$edges<
+                      Query$UserCollection$userCollection$edges>>)
           _fn);
-  CopyWith$Query$Users$userCollection$pageInfo<TRes> get pageInfo;
+  CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> get pageInfo;
 }
 
-class _CopyWithImpl$Query$Users$userCollection<TRes>
-    implements CopyWith$Query$Users$userCollection<TRes> {
-  _CopyWithImpl$Query$Users$userCollection(
+class _CopyWithImpl$Query$UserCollection$userCollection<TRes>
+    implements CopyWith$Query$UserCollection$userCollection<TRes> {
+  _CopyWithImpl$Query$UserCollection$userCollection(
     this._instance,
     this._then,
   );
 
-  final Query$Users$userCollection _instance;
+  final Query$UserCollection$userCollection _instance;
 
-  final TRes Function(Query$Users$userCollection) _then;
+  final TRes Function(Query$UserCollection$userCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2211,67 +3690,68 @@ class _CopyWithImpl$Query$Users$userCollection<TRes>
     Object? pageInfo = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Users$userCollection(
+      _then(Query$UserCollection$userCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
-            : (edges as List<Query$Users$userCollection$edges>),
+            : (edges as List<Query$UserCollection$userCollection$edges>),
         pageInfo: pageInfo == _undefined || pageInfo == null
             ? _instance.pageInfo
-            : (pageInfo as Query$Users$userCollection$pageInfo),
+            : (pageInfo as Query$UserCollection$userCollection$pageInfo),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$Users$userCollection$edges> Function(
+          Iterable<Query$UserCollection$userCollection$edges> Function(
                   Iterable<
-                      CopyWith$Query$Users$userCollection$edges<
-                          Query$Users$userCollection$edges>>)
+                      CopyWith$Query$UserCollection$userCollection$edges<
+                          Query$UserCollection$userCollection$edges>>)
               _fn) =>
       call(
           edges: _fn(_instance.edges
-              .map((e) => CopyWith$Query$Users$userCollection$edges(
+              .map((e) => CopyWith$Query$UserCollection$userCollection$edges(
                     e,
                     (i) => i,
                   ))).toList());
 
-  CopyWith$Query$Users$userCollection$pageInfo<TRes> get pageInfo {
+  CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> get pageInfo {
     final local$pageInfo = _instance.pageInfo;
-    return CopyWith$Query$Users$userCollection$pageInfo(
+    return CopyWith$Query$UserCollection$userCollection$pageInfo(
         local$pageInfo, (e) => call(pageInfo: e));
   }
 }
 
-class _CopyWithStubImpl$Query$Users$userCollection<TRes>
-    implements CopyWith$Query$Users$userCollection<TRes> {
-  _CopyWithStubImpl$Query$Users$userCollection(this._res);
+class _CopyWithStubImpl$Query$UserCollection$userCollection<TRes>
+    implements CopyWith$Query$UserCollection$userCollection<TRes> {
+  _CopyWithStubImpl$Query$UserCollection$userCollection(this._res);
 
   TRes _res;
 
   call({
-    List<Query$Users$userCollection$edges>? edges,
-    Query$Users$userCollection$pageInfo? pageInfo,
+    List<Query$UserCollection$userCollection$edges>? edges,
+    Query$UserCollection$userCollection$pageInfo? pageInfo,
     String? $__typename,
   }) =>
       _res;
 
   edges(_fn) => _res;
 
-  CopyWith$Query$Users$userCollection$pageInfo<TRes> get pageInfo =>
-      CopyWith$Query$Users$userCollection$pageInfo.stub(_res);
+  CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$UserCollection$userCollection$pageInfo.stub(_res);
 }
 
-class Query$Users$userCollection$edges {
-  Query$Users$userCollection$edges({
+class Query$UserCollection$userCollection$edges {
+  Query$UserCollection$userCollection$edges({
     required this.node,
     this.$__typename = 'UserEdge',
   });
 
-  factory Query$Users$userCollection$edges.fromJson(Map<String, dynamic> json) {
+  factory Query$UserCollection$userCollection$edges.fromJson(
+      Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$Users$userCollection$edges(
+    return Query$UserCollection$userCollection$edges(
       node: Fragment$User.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -2305,7 +3785,7 @@ class Query$Users$userCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Users$userCollection$edges) ||
+    if (!(other is Query$UserCollection$userCollection$edges) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2323,23 +3803,24 @@ class Query$Users$userCollection$edges {
   }
 }
 
-extension UtilityExtension$Query$Users$userCollection$edges
-    on Query$Users$userCollection$edges {
-  CopyWith$Query$Users$userCollection$edges<Query$Users$userCollection$edges>
-      get copyWith => CopyWith$Query$Users$userCollection$edges(
+extension UtilityExtension$Query$UserCollection$userCollection$edges
+    on Query$UserCollection$userCollection$edges {
+  CopyWith$Query$UserCollection$userCollection$edges<
+          Query$UserCollection$userCollection$edges>
+      get copyWith => CopyWith$Query$UserCollection$userCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$Users$userCollection$edges<TRes> {
-  factory CopyWith$Query$Users$userCollection$edges(
-    Query$Users$userCollection$edges instance,
-    TRes Function(Query$Users$userCollection$edges) then,
-  ) = _CopyWithImpl$Query$Users$userCollection$edges;
+abstract class CopyWith$Query$UserCollection$userCollection$edges<TRes> {
+  factory CopyWith$Query$UserCollection$userCollection$edges(
+    Query$UserCollection$userCollection$edges instance,
+    TRes Function(Query$UserCollection$userCollection$edges) then,
+  ) = _CopyWithImpl$Query$UserCollection$userCollection$edges;
 
-  factory CopyWith$Query$Users$userCollection$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$Users$userCollection$edges;
+  factory CopyWith$Query$UserCollection$userCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$UserCollection$userCollection$edges;
 
   TRes call({
     Fragment$User? node,
@@ -2348,16 +3829,16 @@ abstract class CopyWith$Query$Users$userCollection$edges<TRes> {
   CopyWith$Fragment$User<TRes> get node;
 }
 
-class _CopyWithImpl$Query$Users$userCollection$edges<TRes>
-    implements CopyWith$Query$Users$userCollection$edges<TRes> {
-  _CopyWithImpl$Query$Users$userCollection$edges(
+class _CopyWithImpl$Query$UserCollection$userCollection$edges<TRes>
+    implements CopyWith$Query$UserCollection$userCollection$edges<TRes> {
+  _CopyWithImpl$Query$UserCollection$userCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Query$Users$userCollection$edges _instance;
+  final Query$UserCollection$userCollection$edges _instance;
 
-  final TRes Function(Query$Users$userCollection$edges) _then;
+  final TRes Function(Query$UserCollection$userCollection$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2365,7 +3846,7 @@ class _CopyWithImpl$Query$Users$userCollection$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Users$userCollection$edges(
+      _then(Query$UserCollection$userCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$User),
@@ -2380,9 +3861,9 @@ class _CopyWithImpl$Query$Users$userCollection$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$Users$userCollection$edges<TRes>
-    implements CopyWith$Query$Users$userCollection$edges<TRes> {
-  _CopyWithStubImpl$Query$Users$userCollection$edges(this._res);
+class _CopyWithStubImpl$Query$UserCollection$userCollection$edges<TRes>
+    implements CopyWith$Query$UserCollection$userCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$UserCollection$userCollection$edges(this._res);
 
   TRes _res;
 
@@ -2395,8 +3876,8 @@ class _CopyWithStubImpl$Query$Users$userCollection$edges<TRes>
   CopyWith$Fragment$User<TRes> get node => CopyWith$Fragment$User.stub(_res);
 }
 
-class Query$Users$userCollection$pageInfo {
-  Query$Users$userCollection$pageInfo({
+class Query$UserCollection$userCollection$pageInfo {
+  Query$UserCollection$userCollection$pageInfo({
     this.startCursor,
     this.endCursor,
     required this.hasNextPage,
@@ -2404,14 +3885,14 @@ class Query$Users$userCollection$pageInfo {
     this.$__typename = 'PageInfo',
   });
 
-  factory Query$Users$userCollection$pageInfo.fromJson(
+  factory Query$UserCollection$userCollection$pageInfo.fromJson(
       Map<String, dynamic> json) {
     final l$startCursor = json['startCursor'];
     final l$endCursor = json['endCursor'];
     final l$hasNextPage = json['hasNextPage'];
     final l$hasPreviousPage = json['hasPreviousPage'];
     final l$$__typename = json['__typename'];
-    return Query$Users$userCollection$pageInfo(
+    return Query$UserCollection$userCollection$pageInfo(
       startCursor: (l$startCursor as String?),
       endCursor: (l$endCursor as String?),
       hasNextPage: (l$hasNextPage as bool),
@@ -2466,7 +3947,7 @@ class Query$Users$userCollection$pageInfo {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$Users$userCollection$pageInfo) ||
+    if (!(other is Query$UserCollection$userCollection$pageInfo) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2499,24 +3980,24 @@ class Query$Users$userCollection$pageInfo {
   }
 }
 
-extension UtilityExtension$Query$Users$userCollection$pageInfo
-    on Query$Users$userCollection$pageInfo {
-  CopyWith$Query$Users$userCollection$pageInfo<
-          Query$Users$userCollection$pageInfo>
-      get copyWith => CopyWith$Query$Users$userCollection$pageInfo(
+extension UtilityExtension$Query$UserCollection$userCollection$pageInfo
+    on Query$UserCollection$userCollection$pageInfo {
+  CopyWith$Query$UserCollection$userCollection$pageInfo<
+          Query$UserCollection$userCollection$pageInfo>
+      get copyWith => CopyWith$Query$UserCollection$userCollection$pageInfo(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$Users$userCollection$pageInfo<TRes> {
-  factory CopyWith$Query$Users$userCollection$pageInfo(
-    Query$Users$userCollection$pageInfo instance,
-    TRes Function(Query$Users$userCollection$pageInfo) then,
-  ) = _CopyWithImpl$Query$Users$userCollection$pageInfo;
+abstract class CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> {
+  factory CopyWith$Query$UserCollection$userCollection$pageInfo(
+    Query$UserCollection$userCollection$pageInfo instance,
+    TRes Function(Query$UserCollection$userCollection$pageInfo) then,
+  ) = _CopyWithImpl$Query$UserCollection$userCollection$pageInfo;
 
-  factory CopyWith$Query$Users$userCollection$pageInfo.stub(TRes res) =
-      _CopyWithStubImpl$Query$Users$userCollection$pageInfo;
+  factory CopyWith$Query$UserCollection$userCollection$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$UserCollection$userCollection$pageInfo;
 
   TRes call({
     String? startCursor,
@@ -2527,16 +4008,16 @@ abstract class CopyWith$Query$Users$userCollection$pageInfo<TRes> {
   });
 }
 
-class _CopyWithImpl$Query$Users$userCollection$pageInfo<TRes>
-    implements CopyWith$Query$Users$userCollection$pageInfo<TRes> {
-  _CopyWithImpl$Query$Users$userCollection$pageInfo(
+class _CopyWithImpl$Query$UserCollection$userCollection$pageInfo<TRes>
+    implements CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> {
+  _CopyWithImpl$Query$UserCollection$userCollection$pageInfo(
     this._instance,
     this._then,
   );
 
-  final Query$Users$userCollection$pageInfo _instance;
+  final Query$UserCollection$userCollection$pageInfo _instance;
 
-  final TRes Function(Query$Users$userCollection$pageInfo) _then;
+  final TRes Function(Query$UserCollection$userCollection$pageInfo) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2547,7 +4028,7 @@ class _CopyWithImpl$Query$Users$userCollection$pageInfo<TRes>
     Object? hasPreviousPage = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$Users$userCollection$pageInfo(
+      _then(Query$UserCollection$userCollection$pageInfo(
         startCursor: startCursor == _undefined
             ? _instance.startCursor
             : (startCursor as String?),
@@ -2567,9 +4048,9 @@ class _CopyWithImpl$Query$Users$userCollection$pageInfo<TRes>
       ));
 }
 
-class _CopyWithStubImpl$Query$Users$userCollection$pageInfo<TRes>
-    implements CopyWith$Query$Users$userCollection$pageInfo<TRes> {
-  _CopyWithStubImpl$Query$Users$userCollection$pageInfo(this._res);
+class _CopyWithStubImpl$Query$UserCollection$userCollection$pageInfo<TRes>
+    implements CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$UserCollection$userCollection$pageInfo(this._res);
 
   TRes _res;
 
@@ -2581,4 +4062,2213 @@ class _CopyWithStubImpl$Query$Users$userCollection$pageInfo<TRes>
     String? $__typename,
   }) =>
       _res;
+}
+
+class Variables$Query$User {
+  factory Variables$Query$User({required String id}) => Variables$Query$User._({
+        r'id': id,
+      });
+
+  Variables$Query$User._(this._$data);
+
+  factory Variables$Query$User.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as String);
+    return Variables$Query$User._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get id => (_$data['id'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$User<Variables$Query$User> get copyWith =>
+      CopyWith$Variables$Query$User(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$User) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    return Object.hashAll([l$id]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$User<TRes> {
+  factory CopyWith$Variables$Query$User(
+    Variables$Query$User instance,
+    TRes Function(Variables$Query$User) then,
+  ) = _CopyWithImpl$Variables$Query$User;
+
+  factory CopyWith$Variables$Query$User.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$User;
+
+  TRes call({String? id});
+}
+
+class _CopyWithImpl$Variables$Query$User<TRes>
+    implements CopyWith$Variables$Query$User<TRes> {
+  _CopyWithImpl$Variables$Query$User(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$User _instance;
+
+  final TRes Function(Variables$Query$User) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? id = _undefined}) => _then(Variables$Query$User._({
+        ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$User<TRes>
+    implements CopyWith$Variables$Query$User<TRes> {
+  _CopyWithStubImpl$Variables$Query$User(this._res);
+
+  TRes _res;
+
+  call({String? id}) => _res;
+}
+
+class Query$User {
+  Query$User({
+    this.userCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$User.fromJson(Map<String, dynamic> json) {
+    final l$userCollection = json['userCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$User(
+      userCollection: l$userCollection == null
+          ? null
+          : Query$User$userCollection.fromJson(
+              (l$userCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$User$userCollection? userCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$userCollection = userCollection;
+    _resultData['userCollection'] = l$userCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$userCollection = userCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$userCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$User) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userCollection = userCollection;
+    final lOther$userCollection = other.userCollection;
+    if (l$userCollection != lOther$userCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$User on Query$User {
+  CopyWith$Query$User<Query$User> get copyWith => CopyWith$Query$User(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$User<TRes> {
+  factory CopyWith$Query$User(
+    Query$User instance,
+    TRes Function(Query$User) then,
+  ) = _CopyWithImpl$Query$User;
+
+  factory CopyWith$Query$User.stub(TRes res) = _CopyWithStubImpl$Query$User;
+
+  TRes call({
+    Query$User$userCollection? userCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$User$userCollection<TRes> get userCollection;
+}
+
+class _CopyWithImpl$Query$User<TRes> implements CopyWith$Query$User<TRes> {
+  _CopyWithImpl$Query$User(
+    this._instance,
+    this._then,
+  );
+
+  final Query$User _instance;
+
+  final TRes Function(Query$User) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? userCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$User(
+        userCollection: userCollection == _undefined
+            ? _instance.userCollection
+            : (userCollection as Query$User$userCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$User$userCollection<TRes> get userCollection {
+    final local$userCollection = _instance.userCollection;
+    return local$userCollection == null
+        ? CopyWith$Query$User$userCollection.stub(_then(_instance))
+        : CopyWith$Query$User$userCollection(
+            local$userCollection, (e) => call(userCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$User<TRes> implements CopyWith$Query$User<TRes> {
+  _CopyWithStubImpl$Query$User(this._res);
+
+  TRes _res;
+
+  call({
+    Query$User$userCollection? userCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$User$userCollection<TRes> get userCollection =>
+      CopyWith$Query$User$userCollection.stub(_res);
+}
+
+const documentNodeQueryUser = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'User'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'userCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'id'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
+              )
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'User'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUser,
+  fragmentDefinitionUserRole,
+  fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
+]);
+Query$User _parserFn$Query$User(Map<String, dynamic> data) =>
+    Query$User.fromJson(data);
+typedef OnQueryComplete$Query$User = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$User?,
+);
+
+class Options$Query$User extends graphql.QueryOptions<Query$User> {
+  Options$Query$User({
+    String? operationName,
+    required Variables$Query$User variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$User? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$User? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$User(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryUser,
+          parserFn: _parserFn$Query$User,
+        );
+
+  final OnQueryComplete$Query$User? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$User extends graphql.WatchQueryOptions<Query$User> {
+  WatchOptions$Query$User({
+    String? operationName,
+    required Variables$Query$User variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$User? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$User,
+        );
+}
+
+class FetchMoreOptions$Query$User extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$User({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$User variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryUser,
+        );
+}
+
+extension ClientExtension$Query$User on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$User>> query$User(
+          Options$Query$User options) async =>
+      await this.query(options);
+  graphql.ObservableQuery<Query$User> watchQuery$User(
+          WatchOptions$Query$User options) =>
+      this.watchQuery(options);
+  void writeQuery$User({
+    required Query$User data,
+    required Variables$Query$User variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(document: documentNodeQueryUser),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$User? readQuery$User({
+    required Variables$Query$User variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(document: documentNodeQueryUser),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$User.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$User> useQuery$User(
+        Options$Query$User options) =>
+    graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$User> useWatchQuery$User(
+        WatchOptions$Query$User options) =>
+    graphql_flutter.useWatchQuery(options);
+
+class Query$User$Widget extends graphql_flutter.Query<Query$User> {
+  Query$User$Widget({
+    widgets.Key? key,
+    required Options$Query$User options,
+    required graphql_flutter.QueryBuilder<Query$User> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
+}
+
+class Query$User$userCollection {
+  Query$User$userCollection({
+    required this.edges,
+    this.$__typename = 'UserConnection',
+  });
+
+  factory Query$User$userCollection.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$User$userCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Query$User$userCollection$edges.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$User$userCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$User$userCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$User$userCollection
+    on Query$User$userCollection {
+  CopyWith$Query$User$userCollection<Query$User$userCollection> get copyWith =>
+      CopyWith$Query$User$userCollection(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$User$userCollection<TRes> {
+  factory CopyWith$Query$User$userCollection(
+    Query$User$userCollection instance,
+    TRes Function(Query$User$userCollection) then,
+  ) = _CopyWithImpl$Query$User$userCollection;
+
+  factory CopyWith$Query$User$userCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$User$userCollection;
+
+  TRes call({
+    List<Query$User$userCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$User$userCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$User$userCollection$edges<
+                      Query$User$userCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$User$userCollection<TRes>
+    implements CopyWith$Query$User$userCollection<TRes> {
+  _CopyWithImpl$Query$User$userCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$User$userCollection _instance;
+
+  final TRes Function(Query$User$userCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$User$userCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<Query$User$userCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$User$userCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$User$userCollection$edges<
+                          Query$User$userCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges
+              .map((e) => CopyWith$Query$User$userCollection$edges(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Query$User$userCollection<TRes>
+    implements CopyWith$Query$User$userCollection<TRes> {
+  _CopyWithStubImpl$Query$User$userCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$User$userCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Query$User$userCollection$edges {
+  Query$User$userCollection$edges({
+    required this.node,
+    this.$__typename = 'UserEdge',
+  });
+
+  factory Query$User$userCollection$edges.fromJson(Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$User$userCollection$edges(
+      node: Fragment$User.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$User node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$User$userCollection$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$User$userCollection$edges
+    on Query$User$userCollection$edges {
+  CopyWith$Query$User$userCollection$edges<Query$User$userCollection$edges>
+      get copyWith => CopyWith$Query$User$userCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$User$userCollection$edges<TRes> {
+  factory CopyWith$Query$User$userCollection$edges(
+    Query$User$userCollection$edges instance,
+    TRes Function(Query$User$userCollection$edges) then,
+  ) = _CopyWithImpl$Query$User$userCollection$edges;
+
+  factory CopyWith$Query$User$userCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$User$userCollection$edges;
+
+  TRes call({
+    Fragment$User? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$User<TRes> get node;
+}
+
+class _CopyWithImpl$Query$User$userCollection$edges<TRes>
+    implements CopyWith$Query$User$userCollection$edges<TRes> {
+  _CopyWithImpl$Query$User$userCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$User$userCollection$edges _instance;
+
+  final TRes Function(Query$User$userCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$User$userCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$User),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$User<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$User(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$User$userCollection$edges<TRes>
+    implements CopyWith$Query$User$userCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$User$userCollection$edges(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$User? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$User<TRes> get node => CopyWith$Fragment$User.stub(_res);
+}
+
+class Variables$Mutation$CreateUser {
+  factory Variables$Mutation$CreateUser(
+          {required Input$UserInsertInput input}) =>
+      Variables$Mutation$CreateUser._({
+        r'input': input,
+      });
+
+  Variables$Mutation$CreateUser._(this._$data);
+
+  factory Variables$Mutation$CreateUser.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$input = data['input'];
+    result$data['input'] =
+        Input$UserInsertInput.fromJson((l$input as Map<String, dynamic>));
+    return Variables$Mutation$CreateUser._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UserInsertInput get input => (_$data['input'] as Input$UserInsertInput);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$input = input;
+    result$data['input'] = l$input.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$CreateUser<Variables$Mutation$CreateUser>
+      get copyWith => CopyWith$Variables$Mutation$CreateUser(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$CreateUser) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input != lOther$input) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$input = input;
+    return Object.hashAll([l$input]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$CreateUser<TRes> {
+  factory CopyWith$Variables$Mutation$CreateUser(
+    Variables$Mutation$CreateUser instance,
+    TRes Function(Variables$Mutation$CreateUser) then,
+  ) = _CopyWithImpl$Variables$Mutation$CreateUser;
+
+  factory CopyWith$Variables$Mutation$CreateUser.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$CreateUser;
+
+  TRes call({Input$UserInsertInput? input});
+}
+
+class _CopyWithImpl$Variables$Mutation$CreateUser<TRes>
+    implements CopyWith$Variables$Mutation$CreateUser<TRes> {
+  _CopyWithImpl$Variables$Mutation$CreateUser(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$CreateUser _instance;
+
+  final TRes Function(Variables$Mutation$CreateUser) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? input = _undefined}) =>
+      _then(Variables$Mutation$CreateUser._({
+        ..._instance._$data,
+        if (input != _undefined && input != null)
+          'input': (input as Input$UserInsertInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$CreateUser<TRes>
+    implements CopyWith$Variables$Mutation$CreateUser<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$CreateUser(this._res);
+
+  TRes _res;
+
+  call({Input$UserInsertInput? input}) => _res;
+}
+
+class Mutation$CreateUser {
+  Mutation$CreateUser({
+    this.insertIntoUserCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$CreateUser.fromJson(Map<String, dynamic> json) {
+    final l$insertIntoUserCollection = json['insertIntoUserCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreateUser(
+      insertIntoUserCollection: l$insertIntoUserCollection == null
+          ? null
+          : Mutation$CreateUser$insertIntoUserCollection.fromJson(
+              (l$insertIntoUserCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$CreateUser$insertIntoUserCollection? insertIntoUserCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$insertIntoUserCollection = insertIntoUserCollection;
+    _resultData['insertIntoUserCollection'] =
+        l$insertIntoUserCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$insertIntoUserCollection = insertIntoUserCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$insertIntoUserCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreateUser) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$insertIntoUserCollection = insertIntoUserCollection;
+    final lOther$insertIntoUserCollection = other.insertIntoUserCollection;
+    if (l$insertIntoUserCollection != lOther$insertIntoUserCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreateUser on Mutation$CreateUser {
+  CopyWith$Mutation$CreateUser<Mutation$CreateUser> get copyWith =>
+      CopyWith$Mutation$CreateUser(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$CreateUser<TRes> {
+  factory CopyWith$Mutation$CreateUser(
+    Mutation$CreateUser instance,
+    TRes Function(Mutation$CreateUser) then,
+  ) = _CopyWithImpl$Mutation$CreateUser;
+
+  factory CopyWith$Mutation$CreateUser.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$CreateUser;
+
+  TRes call({
+    Mutation$CreateUser$insertIntoUserCollection? insertIntoUserCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes>
+      get insertIntoUserCollection;
+}
+
+class _CopyWithImpl$Mutation$CreateUser<TRes>
+    implements CopyWith$Mutation$CreateUser<TRes> {
+  _CopyWithImpl$Mutation$CreateUser(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$CreateUser _instance;
+
+  final TRes Function(Mutation$CreateUser) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? insertIntoUserCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$CreateUser(
+        insertIntoUserCollection: insertIntoUserCollection == _undefined
+            ? _instance.insertIntoUserCollection
+            : (insertIntoUserCollection
+                as Mutation$CreateUser$insertIntoUserCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes>
+      get insertIntoUserCollection {
+    final local$insertIntoUserCollection = _instance.insertIntoUserCollection;
+    return local$insertIntoUserCollection == null
+        ? CopyWith$Mutation$CreateUser$insertIntoUserCollection.stub(
+            _then(_instance))
+        : CopyWith$Mutation$CreateUser$insertIntoUserCollection(
+            local$insertIntoUserCollection,
+            (e) => call(insertIntoUserCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$CreateUser<TRes>
+    implements CopyWith$Mutation$CreateUser<TRes> {
+  _CopyWithStubImpl$Mutation$CreateUser(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$CreateUser$insertIntoUserCollection? insertIntoUserCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes>
+      get insertIntoUserCollection =>
+          CopyWith$Mutation$CreateUser$insertIntoUserCollection.stub(_res);
+}
+
+const documentNodeMutationCreateUser = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'CreateUser'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UserInsertInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'insertIntoUserCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'objects'),
+            value: ListValueNode(
+                values: [VariableNode(name: NameNode(value: 'input'))]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'User'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUser,
+  fragmentDefinitionUserRole,
+  fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
+]);
+Mutation$CreateUser _parserFn$Mutation$CreateUser(Map<String, dynamic> data) =>
+    Mutation$CreateUser.fromJson(data);
+typedef OnMutationCompleted$Mutation$CreateUser = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$CreateUser?,
+);
+
+class Options$Mutation$CreateUser
+    extends graphql.MutationOptions<Mutation$CreateUser> {
+  Options$Mutation$CreateUser({
+    String? operationName,
+    required Variables$Mutation$CreateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$CreateUser? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$CreateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$CreateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$CreateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationCreateUser,
+          parserFn: _parserFn$Mutation$CreateUser,
+        );
+
+  final OnMutationCompleted$Mutation$CreateUser? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$CreateUser
+    extends graphql.WatchQueryOptions<Mutation$CreateUser> {
+  WatchOptions$Mutation$CreateUser({
+    String? operationName,
+    required Variables$Mutation$CreateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$CreateUser? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationCreateUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$CreateUser,
+        );
+}
+
+extension ClientExtension$Mutation$CreateUser on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$CreateUser>> mutate$CreateUser(
+          Options$Mutation$CreateUser options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$CreateUser> watchMutation$CreateUser(
+          WatchOptions$Mutation$CreateUser options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$CreateUser$HookResult {
+  Mutation$CreateUser$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$CreateUser runMutation;
+
+  final graphql.QueryResult<Mutation$CreateUser> result;
+}
+
+Mutation$CreateUser$HookResult useMutation$CreateUser(
+    [WidgetOptions$Mutation$CreateUser? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$CreateUser());
+  return Mutation$CreateUser$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$CreateUser> useWatchMutation$CreateUser(
+        WatchOptions$Mutation$CreateUser options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$CreateUser
+    extends graphql.MutationOptions<Mutation$CreateUser> {
+  WidgetOptions$Mutation$CreateUser({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$CreateUser? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$CreateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$CreateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$CreateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationCreateUser,
+          parserFn: _parserFn$Mutation$CreateUser,
+        );
+
+  final OnMutationCompleted$Mutation$CreateUser? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$CreateUser
+    = graphql.MultiSourceResult<Mutation$CreateUser> Function(
+  Variables$Mutation$CreateUser, {
+  Object? optimisticResult,
+  Mutation$CreateUser? typedOptimisticResult,
+});
+typedef Builder$Mutation$CreateUser = widgets.Widget Function(
+  RunMutation$Mutation$CreateUser,
+  graphql.QueryResult<Mutation$CreateUser>?,
+);
+
+class Mutation$CreateUser$Widget
+    extends graphql_flutter.Mutation<Mutation$CreateUser> {
+  Mutation$CreateUser$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$CreateUser? options,
+    required Builder$Mutation$CreateUser builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$CreateUser(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$CreateUser$insertIntoUserCollection {
+  Mutation$CreateUser$insertIntoUserCollection({
+    required this.records,
+    this.$__typename = 'UserInsertResponse',
+  });
+
+  factory Mutation$CreateUser$insertIntoUserCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$records = json['records'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreateUser$insertIntoUserCollection(
+      records: (l$records as List<dynamic>)
+          .map((e) => Fragment$User.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$User> records;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$records = records;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$records.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreateUser$insertIntoUserCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreateUser$insertIntoUserCollection
+    on Mutation$CreateUser$insertIntoUserCollection {
+  CopyWith$Mutation$CreateUser$insertIntoUserCollection<
+          Mutation$CreateUser$insertIntoUserCollection>
+      get copyWith => CopyWith$Mutation$CreateUser$insertIntoUserCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes> {
+  factory CopyWith$Mutation$CreateUser$insertIntoUserCollection(
+    Mutation$CreateUser$insertIntoUserCollection instance,
+    TRes Function(Mutation$CreateUser$insertIntoUserCollection) then,
+  ) = _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection;
+
+  factory CopyWith$Mutation$CreateUser$insertIntoUserCollection.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$CreateUser$insertIntoUserCollection;
+
+  TRes call({
+    List<Fragment$User>? records,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$User> Function(
+              Iterable<CopyWith$Fragment$User<Fragment$User>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection<TRes>
+    implements CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes> {
+  _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$CreateUser$insertIntoUserCollection _instance;
+
+  final TRes Function(Mutation$CreateUser$insertIntoUserCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? records = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$CreateUser$insertIntoUserCollection(
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$User>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$User> Function(
+                  Iterable<CopyWith$Fragment$User<Fragment$User>>)
+              _fn) =>
+      call(
+          records: _fn(_instance.records.map((e) => CopyWith$Fragment$User(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$CreateUser$insertIntoUserCollection<TRes>
+    implements CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes> {
+  _CopyWithStubImpl$Mutation$CreateUser$insertIntoUserCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$User>? records,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
+}
+
+class Variables$Mutation$UpdateUser {
+  factory Variables$Mutation$UpdateUser({
+    required String id,
+    required Input$UserUpdateInput user,
+  }) =>
+      Variables$Mutation$UpdateUser._({
+        r'id': id,
+        r'user': user,
+      });
+
+  Variables$Mutation$UpdateUser._(this._$data);
+
+  factory Variables$Mutation$UpdateUser.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as String);
+    final l$user = data['user'];
+    result$data['user'] =
+        Input$UserUpdateInput.fromJson((l$user as Map<String, dynamic>));
+    return Variables$Mutation$UpdateUser._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get id => (_$data['id'] as String);
+
+  Input$UserUpdateInput get user => (_$data['user'] as Input$UserUpdateInput);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
+    final l$user = user;
+    result$data['user'] = l$user.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$UpdateUser<Variables$Mutation$UpdateUser>
+      get copyWith => CopyWith$Variables$Mutation$UpdateUser(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$UpdateUser) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$user = user;
+    final lOther$user = other.user;
+    if (l$user != lOther$user) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$user = user;
+    return Object.hashAll([
+      l$id,
+      l$user,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$UpdateUser<TRes> {
+  factory CopyWith$Variables$Mutation$UpdateUser(
+    Variables$Mutation$UpdateUser instance,
+    TRes Function(Variables$Mutation$UpdateUser) then,
+  ) = _CopyWithImpl$Variables$Mutation$UpdateUser;
+
+  factory CopyWith$Variables$Mutation$UpdateUser.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$UpdateUser;
+
+  TRes call({
+    String? id,
+    Input$UserUpdateInput? user,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
+    implements CopyWith$Variables$Mutation$UpdateUser<TRes> {
+  _CopyWithImpl$Variables$Mutation$UpdateUser(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$UpdateUser _instance;
+
+  final TRes Function(Variables$Mutation$UpdateUser) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? user = _undefined,
+  }) =>
+      _then(Variables$Mutation$UpdateUser._({
+        ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as String),
+        if (user != _undefined && user != null)
+          'user': (user as Input$UserUpdateInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$UpdateUser<TRes>
+    implements CopyWith$Variables$Mutation$UpdateUser<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$UpdateUser(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    Input$UserUpdateInput? user,
+  }) =>
+      _res;
+}
+
+class Mutation$UpdateUser {
+  Mutation$UpdateUser({
+    required this.updateUserCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$UpdateUser.fromJson(Map<String, dynamic> json) {
+    final l$updateUserCollection = json['updateUserCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateUser(
+      updateUserCollection: Mutation$UpdateUser$updateUserCollection.fromJson(
+          (l$updateUserCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$UpdateUser$updateUserCollection updateUserCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$updateUserCollection = updateUserCollection;
+    _resultData['updateUserCollection'] = l$updateUserCollection.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$updateUserCollection = updateUserCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$updateUserCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateUser) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$updateUserCollection = updateUserCollection;
+    final lOther$updateUserCollection = other.updateUserCollection;
+    if (l$updateUserCollection != lOther$updateUserCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateUser on Mutation$UpdateUser {
+  CopyWith$Mutation$UpdateUser<Mutation$UpdateUser> get copyWith =>
+      CopyWith$Mutation$UpdateUser(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$UpdateUser<TRes> {
+  factory CopyWith$Mutation$UpdateUser(
+    Mutation$UpdateUser instance,
+    TRes Function(Mutation$UpdateUser) then,
+  ) = _CopyWithImpl$Mutation$UpdateUser;
+
+  factory CopyWith$Mutation$UpdateUser.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateUser;
+
+  TRes call({
+    Mutation$UpdateUser$updateUserCollection? updateUserCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$UpdateUser$updateUserCollection<TRes>
+      get updateUserCollection;
+}
+
+class _CopyWithImpl$Mutation$UpdateUser<TRes>
+    implements CopyWith$Mutation$UpdateUser<TRes> {
+  _CopyWithImpl$Mutation$UpdateUser(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$UpdateUser _instance;
+
+  final TRes Function(Mutation$UpdateUser) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? updateUserCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$UpdateUser(
+        updateUserCollection:
+            updateUserCollection == _undefined || updateUserCollection == null
+                ? _instance.updateUserCollection
+                : (updateUserCollection
+                    as Mutation$UpdateUser$updateUserCollection),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$UpdateUser$updateUserCollection<TRes>
+      get updateUserCollection {
+    final local$updateUserCollection = _instance.updateUserCollection;
+    return CopyWith$Mutation$UpdateUser$updateUserCollection(
+        local$updateUserCollection, (e) => call(updateUserCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UpdateUser<TRes>
+    implements CopyWith$Mutation$UpdateUser<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateUser(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$UpdateUser$updateUserCollection? updateUserCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$UpdateUser$updateUserCollection<TRes>
+      get updateUserCollection =>
+          CopyWith$Mutation$UpdateUser$updateUserCollection.stub(_res);
+}
+
+const documentNodeMutationUpdateUser = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'UpdateUser'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'user')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UserUpdateInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'updateUserCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'id'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
+              )
+            ]),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'set'),
+            value: VariableNode(name: NameNode(value: 'user')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'User'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'affectedCount'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUser,
+  fragmentDefinitionUserRole,
+  fragmentDefinitionRole,
+  fragmentDefinitionFirstResponder,
+  fragmentDefinitionFirstResponderType,
+  fragmentDefinitionStation,
+  fragmentDefinitionStationProvider,
+  fragmentDefinitionProvider,
+  fragmentDefinitionProviderType,
+  fragmentDefinitionFirstResponderStation,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
+  fragmentDefinitionUserOrganization,
+]);
+Mutation$UpdateUser _parserFn$Mutation$UpdateUser(Map<String, dynamic> data) =>
+    Mutation$UpdateUser.fromJson(data);
+typedef OnMutationCompleted$Mutation$UpdateUser = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$UpdateUser?,
+);
+
+class Options$Mutation$UpdateUser
+    extends graphql.MutationOptions<Mutation$UpdateUser> {
+  Options$Mutation$UpdateUser({
+    String? operationName,
+    required Variables$Mutation$UpdateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$UpdateUser? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$UpdateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateUser,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
+
+  final OnMutationCompleted$Mutation$UpdateUser? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$UpdateUser
+    extends graphql.WatchQueryOptions<Mutation$UpdateUser> {
+  WatchOptions$Mutation$UpdateUser({
+    String? operationName,
+    required Variables$Mutation$UpdateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$UpdateUser? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationUpdateUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
+}
+
+extension ClientExtension$Mutation$UpdateUser on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$UpdateUser>> mutate$UpdateUser(
+          Options$Mutation$UpdateUser options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$UpdateUser> watchMutation$UpdateUser(
+          WatchOptions$Mutation$UpdateUser options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$UpdateUser$HookResult {
+  Mutation$UpdateUser$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$UpdateUser runMutation;
+
+  final graphql.QueryResult<Mutation$UpdateUser> result;
+}
+
+Mutation$UpdateUser$HookResult useMutation$UpdateUser(
+    [WidgetOptions$Mutation$UpdateUser? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$UpdateUser());
+  return Mutation$UpdateUser$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$UpdateUser> useWatchMutation$UpdateUser(
+        WatchOptions$Mutation$UpdateUser options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$UpdateUser
+    extends graphql.MutationOptions<Mutation$UpdateUser> {
+  WidgetOptions$Mutation$UpdateUser({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$UpdateUser? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$UpdateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateUser,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
+
+  final OnMutationCompleted$Mutation$UpdateUser? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$UpdateUser
+    = graphql.MultiSourceResult<Mutation$UpdateUser> Function(
+  Variables$Mutation$UpdateUser, {
+  Object? optimisticResult,
+  Mutation$UpdateUser? typedOptimisticResult,
+});
+typedef Builder$Mutation$UpdateUser = widgets.Widget Function(
+  RunMutation$Mutation$UpdateUser,
+  graphql.QueryResult<Mutation$UpdateUser>?,
+);
+
+class Mutation$UpdateUser$Widget
+    extends graphql_flutter.Mutation<Mutation$UpdateUser> {
+  Mutation$UpdateUser$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$UpdateUser? options,
+    required Builder$Mutation$UpdateUser builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$UpdateUser(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$UpdateUser$updateUserCollection {
+  Mutation$UpdateUser$updateUserCollection({
+    required this.records,
+    required this.affectedCount,
+    this.$__typename = 'UserUpdateResponse',
+  });
+
+  factory Mutation$UpdateUser$updateUserCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$records = json['records'];
+    final l$affectedCount = json['affectedCount'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateUser$updateUserCollection(
+      records: (l$records as List<dynamic>)
+          .map((e) => Fragment$User.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      affectedCount: (l$affectedCount as int),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$User> records;
+
+  final int affectedCount;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$affectedCount = affectedCount;
+    _resultData['affectedCount'] = l$affectedCount;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$records = records;
+    final l$affectedCount = affectedCount;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$records.map((v) => v)),
+      l$affectedCount,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateUser$updateUserCollection) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$affectedCount = affectedCount;
+    final lOther$affectedCount = other.affectedCount;
+    if (l$affectedCount != lOther$affectedCount) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateUser$updateUserCollection
+    on Mutation$UpdateUser$updateUserCollection {
+  CopyWith$Mutation$UpdateUser$updateUserCollection<
+          Mutation$UpdateUser$updateUserCollection>
+      get copyWith => CopyWith$Mutation$UpdateUser$updateUserCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$UpdateUser$updateUserCollection<TRes> {
+  factory CopyWith$Mutation$UpdateUser$updateUserCollection(
+    Mutation$UpdateUser$updateUserCollection instance,
+    TRes Function(Mutation$UpdateUser$updateUserCollection) then,
+  ) = _CopyWithImpl$Mutation$UpdateUser$updateUserCollection;
+
+  factory CopyWith$Mutation$UpdateUser$updateUserCollection.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateUser$updateUserCollection;
+
+  TRes call({
+    List<Fragment$User>? records,
+    int? affectedCount,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$User> Function(
+              Iterable<CopyWith$Fragment$User<Fragment$User>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$UpdateUser$updateUserCollection<TRes>
+    implements CopyWith$Mutation$UpdateUser$updateUserCollection<TRes> {
+  _CopyWithImpl$Mutation$UpdateUser$updateUserCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$UpdateUser$updateUserCollection _instance;
+
+  final TRes Function(Mutation$UpdateUser$updateUserCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? records = _undefined,
+    Object? affectedCount = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$UpdateUser$updateUserCollection(
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$User>),
+        affectedCount: affectedCount == _undefined || affectedCount == null
+            ? _instance.affectedCount
+            : (affectedCount as int),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$User> Function(
+                  Iterable<CopyWith$Fragment$User<Fragment$User>>)
+              _fn) =>
+      call(
+          records: _fn(_instance.records.map((e) => CopyWith$Fragment$User(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$UpdateUser$updateUserCollection<TRes>
+    implements CopyWith$Mutation$UpdateUser$updateUserCollection<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateUser$updateUserCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$User>? records,
+    int? affectedCount,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
 }

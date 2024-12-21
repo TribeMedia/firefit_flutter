@@ -1,8 +1,9 @@
 import 'package:core/core.dart';
-import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
-import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart';
+//import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
+//import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart.old';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MenuItemListTile extends StatelessWidget {
   final MenuItem menuItem;
@@ -24,16 +25,16 @@ class MenuItemListTile extends StatelessWidget {
       child: ExpansionTile(
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(
-            menuItem.imageUrl,
-            width: 60,
-            height: 60,
+          child: CachedNetworkImage(
+            imageUrl: menuItem.imageUrl ?? '',
             fit: BoxFit.cover,
+            placeholder: (context, url) => const CircularProgressIndicator(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
         title: Text(menuItem.name),
         subtitle: Text(
-          '\$${menuItem.price?.toStringAsFixed(2) ?? 'N/A'}',
+          '\$${menuItem.price.toStringAsFixed(2)}',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         trailing: Row(
@@ -59,7 +60,7 @@ class MenuItemListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  menuItem.description,
+                  menuItem.notes ?? '',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 SizedBox(height: 16),
@@ -67,11 +68,11 @@ class MenuItemListTile extends StatelessWidget {
                   'Nutrition Information',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                SizedBox(height: 8),
+                /*SizedBox(height: 8),
                 if (menuItem.nutrition != null)
                   NutritionInfoWidget(nutrition: menuItem.nutrition!)
                 else
-                  Text('Nutrition information not available'),
+                  Text('Nutrition information not available'),*/
               ],
             ),
           ),

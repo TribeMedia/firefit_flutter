@@ -37,6 +37,12 @@ abstract class Env {
 
   @EnviedField(varName: 'ELECTRIC_SERVICE_URL')
   static const String electricServiceUrl = _Env.electricServiceUrl;
+
+  @EnviedField(varName: 'STATION_ID')
+  static const String stationId = _Env.stationId;
+
+  @EnviedField(varName: 'APPLICATION_ID')
+  static const String applicationId = _Env.applicationId;
 }
 
 class Environment with EnvInterface {
@@ -72,6 +78,12 @@ class Environment with EnvInterface {
 
   @override
   String get electricServiceUrl => _Env.electricServiceUrl;
+
+  @override
+  String get stationId => _Env.stationId;
+
+  @override
+  String get applicationId => _Env.applicationId;
 
   static final Environment _instance = Environment._internal();
 

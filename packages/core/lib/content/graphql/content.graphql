@@ -1,0 +1,294 @@
+fragment PublicationState on PublicationState {
+  id
+  name
+  key
+  createdAt
+}
+
+query PublicationStateCollection($filter: PublicationStateFilter, $orderBy: [PublicationStateOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
+  publicationStateCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...PublicationState
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query PublicationState($id: UUID!) {
+  publicationStateCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...PublicationState
+      }
+    }
+  }
+}
+
+fragment ContentType on ContentType {
+  id
+  applicationId
+  application {
+    ...Application
+  }
+  name
+  description
+  key
+  schema
+  requiresApproval
+  createdAt
+}
+
+query ContentTypeCollection($filter: ContentTypeFilter, $orderBy: [ContentTypeOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
+  contentTypeCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...ContentType
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query ContentType($id: UUID!) {
+  contentTypeCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...ContentType
+      }
+    }
+  }
+}
+
+fragment TemplateVariableType on TemplateVariableType {
+  id
+  name
+  key
+  schema
+  createdAt
+  description
+  isPrimitive
+  isArray
+  isObject
+  isNumeric
+  isBool
+  isString
+}
+
+fragment TemplateVariable on TemplateVariable {
+  id
+  templateVariableTypeId
+  templateVariableType {
+    ...TemplateVariableType
+  }
+  data
+  createdAt
+}
+
+fragment ContentTemplateVariable on ContentTemplateVariable {
+  id
+  templateVariableTypeId
+  templateVariableType {
+    ...TemplateVariableType
+  }
+  contentTemplateId
+  data
+  createdAt
+}
+
+fragment ContentTemplate on ContentTemplate {
+  id
+  applicationId
+  application {
+    ...Application
+  }
+  contentTypeId
+  contentType {
+    ...ContentType
+  }
+  title 
+  body
+  data
+  createdAt
+  isActive
+  activatedAt
+  isArchived
+  archivedAt
+  updatedAt
+  contentTemplateVariableCollection {
+    edges {
+      node {
+        ...ContentTemplateVariable
+      }
+    }
+  }
+}
+
+fragment ContentPart on ContentPart {
+  id
+  contentTypeId
+  contentType {
+    ...ContentType
+  }
+  title
+  data
+  body
+  bodyMarkdown
+  createdAt
+  updatedAt
+  version
+  aiContext
+}
+
+fragment ContentContentPart on ContentContentPart {
+  id
+  contentId
+  contentPartId
+  contentPart {
+    ...ContentPart
+  }
+  index
+  createdAt
+}
+
+fragment Content on Content {
+  id
+  applicationId
+  application {
+    ...Application
+  }
+  contentTypeId
+  contentType {
+    ...ContentType
+  }
+  authorId
+  author {
+    ...User
+  }
+  title
+  description
+  body
+  bodyMarkdown
+  publicationStateId
+  publicationState {
+    ...PublicationState
+  }
+  isApproved
+  approvedAt
+  createdAt
+  coverUrl
+  publicationUrl
+  version
+  contentTemplateId
+  contentTemplate {
+    ...ContentTemplate
+  }
+  creationTypeId
+  creationType {
+    ...CreationType
+  }
+  contentContentPartCollection(orderBy: [{ index: AscNullsLast }]) {
+    edges {
+      node {
+        ...ContentContentPart
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query Content($id: UUID!) {
+  contentCollection(filter: { id: { eq: $id } } ) {
+    edges {
+      node {
+        ...Content
+      }
+    }
+  }
+}
+
+
+query ContentCollection($filter: ContentFilter, $orderBy: [ContentOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
+  contentCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...Content
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+fragment CreationType on CreationType {
+  id
+  name
+  key
+  createdAt
+}
+
+query CreationTypeCollection($filter: CreationTypeFilter, $orderBy: [CreationTypeOrderBy!], $first: Int, $last: Int, $before: Cursor, $after: Cursor, $offset: Int) {
+  creationTypeCollection(filter: $filter, orderBy: $orderBy, first: $first, last: $last, before: $before, after: $after, offset: $offset) {
+    edges {
+      node {
+        ...CreationType
+      }
+    }
+  }
+}
+
+
+
+mutation CreateContent($objects: [ContentInsertInput!]!) {
+  insertIntoContentCollection(objects: $objects) {
+    records {
+      ...Content
+    }
+    affectedCount
+  }
+}
+
+mutation UpdateContent($id: UUID!, $content: ContentUpdateInput!) {
+  updateContentCollection(
+    filter: {
+      id: { eq: $id }
+    }
+    set: $content
+  ) {
+    records {
+      ...Content
+    }
+    affectedCount
+  }
+}
+
+mutation DeleteContent($id: UUID!) {
+  deleteFromContentCollection(
+    filter: { id: { eq: $id}}
+  ) {
+    records {
+      ...Content
+    }
+    affectedCount
+  }
+}
