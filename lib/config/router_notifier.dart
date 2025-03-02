@@ -23,11 +23,11 @@ class RouterNotifier extends ChangeNotifier {
 
   // Optional: Add methods to check auth state
   bool get isAuthenticated {
-    return _ref.read(userNotifierProvider).hasValue;
+    return _ref.read(userNotifierProvider.notifier).isAuthenticated;
   }
 
-  Future<Either< Failure, Product>> getMenuItem(String id) async {
-    final repository =  _ref.read(productRepositoryProvider);
+  Future<Either<Failure, Product>> getMenuItem(String id) async {
+    final repository = _ref.read(productRepositoryProvider);
     final result = await repository.queryProducts(
       filter: Input$ProductsFilter(
         id: Input$UUIDFilter(eq: id),

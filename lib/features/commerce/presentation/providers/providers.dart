@@ -2,7 +2,6 @@ import 'package:core/core.dart';
 import 'package:firefit/config/providers.dart';
 import 'package:firefit/env/env.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
-import 'package:firefit/features/commerce/providers/providers.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -74,7 +73,6 @@ class OrderController extends _$OrderController {
     final orderResult = await orderRepository.createOrder(
         input: Input$OrdersInsertInput(
       userId: cart.userId,
-
     ));
     return orderResult.fold(
       (l) {

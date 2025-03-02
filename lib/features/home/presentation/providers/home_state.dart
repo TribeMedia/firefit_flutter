@@ -31,16 +31,6 @@ class HomeStateNotifier extends AsyncNotifier<HomeStateModel> {
     final currentUser =
         ref.read(userNotifierProvider.notifier).state.value?.user;
 
-    final stationRepository = ref.read(stationRepositoryProvider);
-
-    if (currentUser == null) {
-      final model = HomeStateModel(
-        error: 'No user found',
-      );
-      state = AsyncValue.data(model);
-      return model;
-    }
-
     final model = HomeStateModel(
       user: currentUser,
       error: null,

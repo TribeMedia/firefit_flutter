@@ -3,7 +3,6 @@ import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
 import 'package:firefit/features/menu/providers.dart';
-import 'package:firefit/features/stations/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,12 +10,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'home_screen.g.dart';
 
-final featuredMenuItemsProvider = FutureProvider.autoDispose<List<Product>>((ref) async {
+final featuredMenuItemsProvider =
+    FutureProvider.autoDispose<List<Product>>((ref) async {
   final productRepository = ref.read(productRepositoryProvider);
   final result = await productRepository.queryProducts(
     first: 0,
     last: 4,
-    orderBy: [Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.DescNullsLast)],
+    orderBy: [
+      Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.DescNullsLast)
+    ],
   );
   return result.fold(
     (failure) => [],
@@ -25,7 +27,6 @@ final featuredMenuItemsProvider = FutureProvider.autoDispose<List<Product>>((ref
     },
   );
 });
-
 
 @riverpod
 class HomeAppBarScrollController extends _$HomeAppBarScrollController {
@@ -45,7 +46,7 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final homeState = ref.watch(homeStateProvider);
-    final menuState = ref.watch(menuControllerProvider(globalProviderId));
+    final menuState = ref.watch(menuControllerProvider);
 
     return homeState.when(
       data: (homeStateModel) {
@@ -71,7 +72,8 @@ class HomeScreen extends HookConsumerWidget {
 
             if (menuScreenViewModel.error != null) {
               return Scaffold(
-                body: Center(child: Text('Error: ${menuScreenViewModel.error}')),
+                body:
+                    Center(child: Text('Error: ${menuScreenViewModel.error}')),
               );
             }
 
@@ -112,55 +114,56 @@ class HomeContent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final menuController = ref.watch(menuControllerProvider(globalProviderId).notifier);
+    ref.watch(menuControllerProvider.notifier);
     final featuredMenuItemsValue = ref.watch(featuredMenuItemsProvider);
 
     return featuredMenuItemsValue.when(
-        data: (featuredMenuItems) {
-
-          if (homeStateModel.user == null) {
-            return ErrorScreen(
-              errorMessage: 'No first responder found',
-              onRetry: () => context.go('/'),
-            );
-          }
-
-          if (homeStateModel.user!.user.primaryStation == null) {
-            return ErrorScreen(
-              errorMessage: 'No current station found',
-              onRetry: () => context.go('/'),
-            );
-          }
-
-          final ScrollController scrollController = ref.watch(homeAppBarScrollControllerProvider);
-
-          return CustomScrollView(
-            controller: scrollController,
-            slivers: [
-              HomeSliverAppBar(
-                station: homeStateModel.user!.user.primaryStation!,
-                user: homeStateModel.user!,
-                parentScrollController: scrollController,
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.all(16.0),
-                sliver: SliverList(
-                  delegate: SliverChildListDelegate([
-                    _buildFeaturedMenuItems(context, featuredMenuItems),
-                    const SizedBox(height: 24),
-                    _buildTeamUpdates(context, ref),
-                  ]),
-                ),
-              ),
-            ],
+      data: (featuredMenuItems) {
+        if (homeStateModel.user == null) {
+          return ErrorScreen(
+            errorMessage: 'No first responder found',
+            onRetry: () => context.go('/'),
           );
-        },
-        error: (error, stackTrace) => Center(child: Text('Error: $error')),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        }
+
+        if (homeStateModel.user!.user.primaryStation == null) {
+          return ErrorScreen(
+            errorMessage: 'No current station found',
+            onRetry: () => context.go('/'),
+          );
+        }
+
+        final ScrollController scrollController =
+            ref.watch(homeAppBarScrollControllerProvider);
+
+        return CustomScrollView(
+          controller: scrollController,
+          slivers: [
+            HomeSliverAppBar(
+              station: homeStateModel.user!.user.primaryStation!,
+              user: homeStateModel.user!,
+              parentScrollController: scrollController,
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.all(16.0),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  _buildFeaturedMenuItems(context, featuredMenuItems),
+                  const SizedBox(height: 24),
+                  _buildTeamUpdates(context, ref),
+                ]),
+              ),
+            ),
+          ],
+        );
+      },
+      error: (error, stackTrace) => Center(child: Text('Error: $error')),
+      loading: () => const Center(child: CircularProgressIndicator()),
     );
   }
 
-  Widget _buildFeaturedMenuItems(BuildContext context, List<Product> featuredItems) {
+  Widget _buildFeaturedMenuItems(
+      BuildContext context, List<Product> featuredItems) {
     if (featuredItems.isEmpty) {
       return const Center(
         child: Text('No featured items found'),
@@ -180,7 +183,7 @@ class HomeContent extends HookConsumerWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: featuredItems.length,
           separatorBuilder: (BuildContext context, int index) =>
-          const SizedBox(height: 16),
+              const SizedBox(height: 16),
           itemBuilder: (BuildContext context, int index) {
             final Product menuItem = featuredItems[index];
             return GestureDetector(
@@ -234,7 +237,8 @@ class HomeContent extends HookConsumerWidget {
                           Text(
                             menuItem.shortDescription ?? '',
                             style: TextStyle(
-                              color: Colors.white.withAlpha((255 * 0.8).round()),
+                              color:
+                                  Colors.white.withAlpha((255 * 0.8).round()),
                               fontSize: 14,
                             ),
                             maxLines: 2,

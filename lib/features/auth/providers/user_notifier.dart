@@ -1,5 +1,4 @@
 import 'package:core/core.dart';
-import 'package:core/users/graphql/users.graphql.dart';
 import 'package:firefit/config/providers.dart';
 import 'package:firefit/env/env.dart';
 import 'package:firefit/features/auth/providers/authentication_service_provider.dart';
@@ -16,10 +15,12 @@ class UserState {
   final bool isLoading;
   final bool isLoggedIn;
   final AuthUser? user;
+  final Station? station;
 
   const UserState({
     this.user,
     this.error,
+    this.station,
     required this.isLoading,
     required this.isLoggedIn,
   });
@@ -29,6 +30,9 @@ class UserNotifier extends AsyncNotifier<UserState> {
   late final UserRepositoryInterface userRepository;
   late final AuthenticationServiceInterface authenticationService;
   late final StationRepositoryInterface stationRepository;
+
+  /// Returns whether the user is currently authenticated
+  bool get isAuthenticated => state.value?.isLoggedIn ?? false;
 
   @override
   Future<UserState> build() async {
@@ -43,7 +47,12 @@ class UserNotifier extends AsyncNotifier<UserState> {
 
     // Immediately return the initial user state without any delay
     //logging.debug('UserNotifier initialized with user: ${initialUser.id}');
-    final userState = UserState(user: null, isLoading: false, isLoggedIn: true);
+    final userState = UserState(
+      user: null,
+      isLoading: false,
+      isLoggedIn: false,
+      station: null,
+    );
     state = AsyncValue.data(userState);
 
     return userState;
@@ -88,6 +97,7 @@ class UserNotifier extends AsyncNotifier<UserState> {
               isLoading: false,
               isLoggedIn: false,
               error: l.error,
+              station: state.value?.station,
             ),
           );
           return left(l);
@@ -99,6 +109,7 @@ class UserNotifier extends AsyncNotifier<UserState> {
               isLoading: false,
               isLoggedIn: true,
               error: null,
+              station: r.user.primaryStation,
             ),
           );
           return right(r);
@@ -125,41 +136,43 @@ class UserNotifier extends AsyncNotifier<UserState> {
       );
 
       return station.fold(
-          (l) => left(l),
-          (r) async {
-            final authResult = await authenticationService.register(
-              email: email,
-              password: password,
-              firstName: firstName ?? '',
-              lastName: lastName ?? '',
-              handle: handle,
-              stationId: r.id,
-            );
-            return authResult.fold(
-                  (l) {
-                state = AsyncValue.data(
-                  UserState(
-                    user: null,
-                    isLoading: false,
-                    isLoggedIn: false,
-                    error: l.error,
-                  ),
-                );
-                return left(l);
-              },
-                  (r) {
-                state = AsyncValue.data(
-                  UserState(
-                    user: r,
-                    isLoading: false,
-                    isLoggedIn: true,
-                    error: null,
-                  ),
-                );
-                return right(r);
-              },
-            );
-          },
+        (l) => left(l),
+        (r) async {
+          final authResult = await authenticationService.register(
+            email: email,
+            password: password,
+            firstName: firstName ?? '',
+            lastName: lastName ?? '',
+            handle: handle,
+            stationId: r.id,
+          );
+          return authResult.fold(
+            (l) {
+              state = AsyncValue.data(
+                UserState(
+                  user: null,
+                  isLoading: false,
+                  isLoggedIn: false,
+                  error: l.error,
+                  station: r,
+                ),
+              );
+              return left(l);
+            },
+            (r) {
+              state = AsyncValue.data(
+                UserState(
+                  user: r,
+                  isLoading: false,
+                  isLoggedIn: true,
+                  error: null,
+                  station: state.value?.station,
+                ),
+              );
+              return right(r);
+            },
+          );
+        },
       );
     } catch (err, stackTrace) {
       state = AsyncValue.error(err, stackTrace);
@@ -169,31 +182,30 @@ class UserNotifier extends AsyncNotifier<UserState> {
 
   Future<bool> validateStationCode(String code) async {
     final logging = ref.read(loggingProvider);
+    final stationRepository = ref.read(stationRepositoryProvider);
 
     try {
       state = const AsyncValue.loading();
       logging.debug('Validating station code: $code');
 
-      // Simulate API call to validate station code
-      await Future.delayed(const Duration(seconds: 1));
-
-      // For demo purposes, only accept 'STATION6'
-      if (code != 'STATION6') {
-        state = AsyncValue.data(
-          UserState(
-            user: state.value?.user,
-            isLoading: false,
-            isLoggedIn: true,
-            error: 'Invalid station code',
-          ),
-        );
-        return true;
-      }
-
-      state = AsyncValue.data(
-        UserState(user: state.value?.user, isLoading: false, isLoggedIn: true),
+      final stationResult = await stationRepository.getStationByCode(
+        id: code,
       );
-      logging.debug('Station code validated successfully');
+
+      return stationResult.fold(
+        (l) => false,
+        (r) {
+          state = AsyncValue.data(
+            UserState(
+              user: state.value?.user,
+              isLoading: false,
+              isLoggedIn: state.value?.isLoggedIn ?? false,
+              station: r,
+            ),
+          );
+          return true;
+        },
+      );
     } catch (err, stackTrace) {
       logging.error('Failed to validate station code');
       logging.debug('Error: $err\nStackTrace: $stackTrace');

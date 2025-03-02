@@ -58,8 +58,7 @@ class AuthenticationService implements AuthenticationServiceInterface {
         return null;
       }
 
-      final profile =
-        await b.actor.getProfile(actor: session!.handle);
+      final profile = await b.actor.getProfile(actor: session!.handle);
 
       if (profile.status != HttpStatus.ok) {
         await storageService.deleteSession();
@@ -74,17 +73,15 @@ class AuthenticationService implements AuthenticationServiceInterface {
         ),
       );
 
-      return result.fold(
-              (l) => null,
-              (r) {
-                _authStateController.add(AuthUser(
-                  session: session!,
-                  profile: profile.data,
-                  service: pdsServer,
-                  user: r.first,
-                ));
-                return session;
-              });
+      return result.fold((l) => null, (r) {
+        _authStateController.add(AuthUser(
+          session: session!,
+          profile: profile.data,
+          service: pdsServer,
+          user: r.first,
+        ));
+        return session;
+      });
     } catch (e) {
       await storageService.deleteSession();
       return null;
@@ -115,22 +112,20 @@ class AuthenticationService implements AuthenticationServiceInterface {
         ),
       );
 
-      return result.fold(
-              (l) => null,
-              (r) {
-            _authStateController.add(AuthUser(
-              session: session,
-              profile: profile.data,
-              service: pdsServer,
-              user: r.first,
-            ));
-            return AuthUser(
-                session: session,
-                profile: profile.data,
-                service: pdsServer,
-              user: r.first,
-            );
-          });
+      return result.fold((l) => null, (r) {
+        _authStateController.add(AuthUser(
+          session: session,
+          profile: profile.data,
+          service: pdsServer,
+          user: r.first,
+        ));
+        return AuthUser(
+          session: session,
+          profile: profile.data,
+          service: pdsServer,
+          user: r.first,
+        );
+      });
     } catch (e) {
       _authStateController.add(null);
       return null;
@@ -168,7 +163,8 @@ class AuthenticationService implements AuthenticationServiceInterface {
       if (profile.status != HttpStatus.ok) {
         await storageService.deleteSession();
         _authStateController.add(null);
-        return Left(Failure.unprocessableEntity(message: profile.data.toString()));
+        return Left(
+            Failure.unprocessableEntity(message: profile.data.toString()));
       }
 
       final result = await userRepository.queryUsers(
@@ -179,23 +175,21 @@ class AuthenticationService implements AuthenticationServiceInterface {
         ),
       );
 
-     return result.fold(
-              (l) => Left(Failure.unprocessableEntity(message: l.toString())),
-              (r) {
-                _authStateController.add(AuthUser(
-                  session: session!,
-                  profile: profile.data,
-                  service: pdsServer,
-                  user: r.first,
-                ));
-                return Right(AuthUser(
-                  session: session!,
-                  profile: profile.data,
-                  service: pdsServer,
-                  user: r.first,
-                ));
-
-              });
+      return result.fold(
+          (l) => Left(Failure.unprocessableEntity(message: l.toString())), (r) {
+        _authStateController.add(AuthUser(
+          session: session!,
+          profile: profile.data,
+          service: pdsServer,
+          user: r.first,
+        ));
+        return Right(AuthUser(
+          session: session!,
+          profile: profile.data,
+          service: pdsServer,
+          user: r.first,
+        ));
+      });
     } catch (e) {
       await storageService.deleteSession();
       _authStateController.add(null);
@@ -232,7 +226,7 @@ class AuthenticationService implements AuthenticationServiceInterface {
   }) async {
     try {
       atProto ??= ATProto.anonymous();
-      
+
       final accountOutput = await atProto!.server.createAccount(
         email: email,
         password: password,
@@ -240,7 +234,8 @@ class AuthenticationService implements AuthenticationServiceInterface {
       );
 
       if (accountOutput.status != HttpStatus.ok) {
-        return Left(Failure.unprocessableEntity(message: accountOutput.data.toString()));
+        return Left(Failure.unprocessableEntity(
+            message: accountOutput.data.toString()));
       }
 
       session = atProto!.session;
@@ -251,7 +246,8 @@ class AuthenticationService implements AuthenticationServiceInterface {
         'displayName': '$firstName $lastName',
       };
 
-      final result = await userRepository.createUser(input: Input$UsersInsertInput(
+      final result = await userRepository.createUser(
+          input: Input$UsersInsertInput(
         did: session!.did,
         email: email,
         handle: handle,
@@ -259,39 +255,38 @@ class AuthenticationService implements AuthenticationServiceInterface {
         primaryStationId: stationId,
       ));
 
-      return result.fold(
-              (l) async {
-                return Left(Failure.unprocessableEntity(message: l.toString()));
-              },
-              (r) async {
-                // Update the profile using putRecord
-                final response = await atProto!.repo.putRecord(
-                  repo: did,
-                  collection: NSID('app.bsky.actor.profile'),
-                  rkey: 'self',
-                  record: profileRecord,
-                );
+      return result.fold((l) async {
+        return Left(Failure.unprocessableEntity(message: l.toString()));
+      }, (r) async {
+        // Update the profile using putRecord
+        final response = await atProto!.repo.putRecord(
+          repo: did,
+          collection: NSID('app.bsky.actor.profile'),
+          rkey: 'self',
+          record: profileRecord,
+        );
 
-                if (response.status != HttpStatus.ok) {
-                  return Left(Failure.unprocessableEntity(message: response.data.toString()));
-                }
+        if (response.status != HttpStatus.ok) {
+          return Left(
+              Failure.unprocessableEntity(message: response.data.toString()));
+        }
 
-                bsky = Bluesky.fromSession(session!);
+        bsky = Bluesky.fromSession(session!);
 
-                final profile = await bsky!.actor.getProfile(
-                  actor: session!.handle,
-                );
+        final profile = await bsky!.actor.getProfile(
+          actor: session!.handle,
+        );
 
-                final user = AuthUser(
-                    session: session!,
-                    profile: profile.data,
-                    service: pdsServer,
-                    user: r,
-                );
+        final user = AuthUser(
+          session: session!,
+          profile: profile.data,
+          service: pdsServer,
+          user: r,
+        );
 
-                _authStateController.add(user);
-                return Right(user);
-              });
+        _authStateController.add(user);
+        return Right(user);
+      });
     } catch (e) {
       return Left(Failure.unprocessableEntity(message: e.toString()));
     }

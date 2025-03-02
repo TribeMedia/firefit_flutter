@@ -22,7 +22,7 @@ class MenuScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final menuController = ref.watch(menuControllerProvider(globalProviderId));
+    final menuController = ref.watch(menuControllerProvider);
 
 
     return Scaffold(
@@ -47,7 +47,7 @@ class MenuScreen extends HookConsumerWidget {
           child: ErrorScreen(
             errorMessage: error.toString(),
             onRetry: () =>
-                ref.refresh(menuControllerProvider(globalProviderId)),
+                ref.refresh(menuControllerProvider),
           ),
         ),
         data: (menuViewModel) => menuViewModel.products.isEmpty
