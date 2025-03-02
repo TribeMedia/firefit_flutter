@@ -4,7 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class FeaturedMenuItemCard extends HookConsumerWidget {
-  final MenuItem menuItem;
+
+  final Product menuItem;
 
   const FeaturedMenuItemCard({super.key, required this.menuItem});
 
@@ -20,7 +21,7 @@ class FeaturedMenuItemCard extends HookConsumerWidget {
             child: Stack(
               children: [
                 Image.network(
-                  menuItem.imageUrl ?? 'https://via.placeholder.com/300x200',
+                  menuItem.photoUrl ?? 'https://via.placeholder.com/300x200',
                   height: 200,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -33,15 +34,6 @@ class FeaturedMenuItemCard extends HookConsumerWidget {
                     );
                   },
                 ),
-                if (!menuItem.isAvailable)
-                  Positioned(
-                    top: 10,
-                    right: 10,
-                    child: ShadBadge(
-                      backgroundColor: shadTheme.colorScheme.destructive,
-                      child: Text('Unavailable'),
-                    ),
-                  ),
               ],
             ),
           ),
@@ -58,7 +50,7 @@ class FeaturedMenuItemCard extends HookConsumerWidget {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  menuItem.notes ?? 'No description available',
+                  menuItem.shortDescription ?? 'No description available',
                   style: shadTheme.textTheme.p,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -68,26 +60,11 @@ class FeaturedMenuItemCard extends HookConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '\$${menuItem.price.toStringAsFixed(2)}',
+                      '\$${menuItem.unitPrice.toStringAsFixed(2)}',
                       style: shadTheme.textTheme.h3.copyWith(
                         color: shadTheme.colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
-                    Wrap(
-                      spacing: 4,
-                      children: menuItem.categories
-                          .where((category) => category != null)
-                          .map((category) => ShadBadge(
-                                backgroundColor:
-                                    shadTheme.colorScheme.background,
-                                child: Text(
-                                  category!,
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                              ))
-                          .take(2)
-                          .toList(),
                     ),
                   ],
                 ),

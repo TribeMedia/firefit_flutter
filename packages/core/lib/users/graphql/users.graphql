@@ -1,11 +1,10 @@
-fragment Role on Role {
+fragment Role on Roles {
   id
   name
   key
-  schema
 }
 
-fragment UserRole on UserRole {
+fragment UserRole on UserRoles {
   id
   roleId
   role {
@@ -14,57 +13,44 @@ fragment UserRole on UserRole {
   userId
 }
 
-fragment UserOrganization on UserOrganization {
-  id
-  userId
-  organizationId
-  organization {
-    ...Organization
-  }
-  createdAt
-}
-
-fragment User on User {
+fragment User on Users {
   id
   email
   firstName
   lastName
-  displayName
-  data
-  avatarUrl
-  kratosId
-  supabaseUserId
-  userRoleCollection {
+  metadata
+  did
+  handle
+  pdsUrl
+  createdAt
+  userRolesCollection {
     edges {
       node {
         ...UserRole
       }
     }
   }
-  firstResponderCollection{
-    edges{
-      node{
-        ...FirstResponder
+  primaryStationId
+  primaryStation{
+    ...Station
+  }
+  userStationsCollection {
+    edges {
+      node {
+        ...UserStation
       }
     }
   }
-  primaryOrganizationId
-  primaryOrganization{
-    ...Organization
+}
+
+fragment UserStation on UserStations {
+  id
+  userId
+  stationId
+  station {
+    ...Station
   }
-  userOrganizationCollection{
-    edges{
-      node{
-        ...UserOrganization
-      }
-    }
-    pageInfo{
-      startCursor
-      endCursor
-      hasNextPage
-      hasPreviousPage
-    }
-  }
+  createdAt
 }
 
 query UserCollection(
@@ -72,10 +58,10 @@ query UserCollection(
   $last: Int
   $before: Cursor
   $after: Cursor
-  $filter: UserFilter
-  $orderBy: [UserOrderBy!]
+  $filter: UsersFilter
+  $orderBy: [UsersOrderBy!]
 ) {
-  userCollection(first: $first, last: $last, before: $before, after: $after, filter: $filter, orderBy: $orderBy) {
+  usersCollection(first: $first, last: $last, before: $before, after: $after, filter: $filter, orderBy: $orderBy) {
     edges {
       node {
        ...User
@@ -91,7 +77,7 @@ query UserCollection(
 }
 
 query User($id: UUID!) {
-  userCollection(filter: { id: { eq: $id } } ) {
+  usersCollection(filter: { id: { eq: $id } } ) {
     edges {
       node {
         ...User
@@ -100,16 +86,69 @@ query User($id: UUID!) {
   }
 }
 
-mutation CreateUser($input: UserInsertInput!) {
-  insertIntoUserCollection(objects: [$input]) {
+mutation CreateUser($input: UsersInsertInput!) {
+  insertIntoUsersCollection(objects: [$input]) {
     records {
       ...User
     }
   }
 }
 
-mutation UpdateUser($id: UUID!, $user: UserUpdateInput!) {
-  updateUserCollection(
+mutation DeleteUser($id: UUID!) {
+  deleteFromUsersCollection(filter: { id: { eq: $id } }) {
+    affectedCount
+    records {
+      ...User
+    }
+  }
+}
+
+mutation AddUserToStation($userId: UUID!, $stationId: UUID!) {
+  insertIntoUserStationsCollection(objects: [{ userId: $userId, stationId: $stationId }]) {
+    records {
+      ...UserStation
+    }
+  }
+}
+
+mutation RemoveUserFromStation($userId: UUID!, $stationId: UUID!) {
+  deleteFromUserStationsCollection(
+    filter: {
+      userId: { eq: $userId }
+      stationId: { eq: $stationId }
+    }
+  ) {
+    affectedCount
+    records {
+      ...UserStation
+    }
+  }
+}
+
+mutation AddUserToRole($userId: UUID!, $roleId: UUID!) {
+  insertIntoUserRolesCollection(objects: [{ userId: $userId, roleId: $roleId }]) {
+    records {
+      ...UserRole
+    }
+  }
+}
+
+mutation RemoveUserFromRole($userId: UUID!, $roleId: UUID!) {
+  deleteFromUserRolesCollection(
+    filter: {
+      userId: { eq: $userId }
+      roleId: { eq: $roleId }
+    }
+  ) {
+    affectedCount
+    records {
+      ...UserRole
+    }
+  }
+}
+
+mutation UpdateUser($id: UUID!, $user: UsersUpdateInput!) {
+  updateUsersCollection(
     filter: {
       id: { eq: $id }
     }

@@ -1,141 +1,69 @@
-fragment OrderType on OrderType {
-  id
-  name
-  key
-  description
-  schema
-  iconUrl
-  coverUrl
-}
 
-fragment OrderItemMenuItem on OrderItemMenuItem {
-  id
-  orderItemId
-  menuItemId
-  menuItem {
-    ...MenuItem
-  }
-  notes
-  count
-}
-
-fragment OrderItem on OrderItem {
-  id
-  name
-  orderId
-  units
-  pricePerUnit
-  orderItemMenuItemCollection {
-    edges {
-      node {
-        ...OrderItemMenuItem
-      }
-    }
-    pageInfo {
-      startCursor
-      endCursor
-      hasNextPage
-      hasPreviousPage
-    }
-  }
-}
-
-fragment ShoppingCartMenuItem on ShoppingCartMenuItem {
+fragment ShoppingCartItem on ShoppingCartItems {
   id
   shoppingCartId
-  menuItemId
-  menuItem {
-    ...MenuItem
+  productId
+  product {
+    ...Product
   }
-  count
+  createdAt
+  unitPrice
+  quantity
 }
 
-fragment ShoppingCart on ShoppingCart {
+fragment ShoppingCart on ShoppingCarts {
   id
   userId
-  shoppingCartMenuItemCollection {
+  orderId
+  shoppingCartItemsCollection {
     edges {
       node {
-        ...ShoppingCartMenuItem
+        ...ShoppingCartItem
       }
     }
   }
-}
-
-fragment PaymentType on PaymentType {
-  id
-  name
-  key
-  schema
   createdAt
 }
 
-fragment PaymentInfo on PaymentInfo {
+fragment OrderItem on OrderItems {
   id
-  userId
-  paymentTypeId
-  paymentType {
-    ...PaymentType
+  productId
+  product {
+    ...Product
   }
-  name
-  data
+  orderId
+  createdAt
+  unitPrice
+  quantity
 }
 
-fragment OrderTransaction on OrderTransaction {
+fragment OrderTransaction on OrderTransactions {
   id
   amount
   orderId
-  paymentInfoId
-  paymentInfo {
-    ...PaymentInfo
-  }
+  ccLast4
+  ccCard
+  succeeded
+  error
   payerTransactionId
   createdAt
 }
 
-fragment Order on Order {
+fragment Order on Orders {
   id
-  orderTypeId
-  orderType {
-    ...OrderType
-  }
-  stationId
-  station {
-    ...Station
-  }
   userId
   user {
     ...User
   }
-  orderStatusId
-  orderStatus {
-    id
-    name
-    key
-  }
-  orderItemCollection {
+  orderStatus
+  orderItemsCollection {
     edges {
       node {
-        id
-        orderItemMenuItemCollection {
-          edges {
-            node {
-              ...OrderItemMenuItem  
-            }
-          }
-          pageInfo {
-            startCursor
-            endCursor
-            hasNextPage
-            hasPreviousPage
-          }
-        }
-        units
+        ...OrderItem
       }
     }
   }
-  isPaid
-  orderTransactionCollection {
+  orderTransactionsCollection {
     edges {
       node {
         ...OrderTransaction
@@ -148,14 +76,18 @@ fragment Order on Order {
       hasPreviousPage
     }
   }
-  data
+  deliveryAddress
+  deliveryCity
+  deliveryZip
+  deliveryLocationName
+  deliveryAddress1
   notes
   updatedAt
   createdAt
 }
 
 query Order($id: UUID!) {
-  orderCollection(filter: { id: { eq: $id } }) {
+  ordersCollection(filter: { id: { eq: $id } }) {
     edges {
       node {
         ...Order
@@ -169,10 +101,10 @@ query OrderCollection(
   $last: Int
   $before: Cursor
   $after: Cursor
-  $filter: OrderFilter
-  $orderBy: [OrderOrderBy!]
+  $filter: OrdersFilter
+  $orderBy: [OrdersOrderBy!]
 ) {
-  orderCollection(
+  ordersCollection(
     first: $first
     last: $last
     before: $before
@@ -194,11 +126,29 @@ query OrderCollection(
   }
 }
 
-mutation CreateOrder($input: OrderInsertInput!) {
-  insertIntoOrderCollection(objects: [$input]) {
+mutation CreateOrder($input: OrdersInsertInput!) {
+  insertIntoOrdersCollection(objects: [$input]) {
     records {
       ...Order
     }
+    affectedCount
+  }
+}
+
+mutation UpdateOrder($id: UUID!, $input: OrdersUpdateInput!) {
+  updateOrdersCollection(
+    filter: { id: { eq: $id } }
+    set: $input
+  ) {
+    records {
+      ...Order
+    }
+    affectedCount
+  }
+}
+
+mutation DeleteOrder($id: UUID!) {
+  deleteFromOrdersCollection(filter: { id: { eq: $id } }) {
     affectedCount
   }
 }
@@ -208,10 +158,10 @@ query OrderTransactionCollection(
   $last: Int
   $before: Cursor
   $after: Cursor
-  $filter: OrderTransactionFilter
-  $orderBy: [OrderTransactionOrderBy!]
+  $filter: OrderTransactionsFilter
+  $orderBy: [OrderTransactionsOrderBy!]
 ) {
-  orderTransactionCollection(
+  orderTransactionsCollection(
     first: $first
     last: $last
     before: $before
@@ -233,72 +183,9 @@ query OrderTransactionCollection(
   }
 }
 
-query PaymentTypeCollection(
-  $first: Int
-  $last: Int
-  $before: Cursor
-  $after: Cursor
-  $filter: PaymentTypeFilter
-  $orderBy: [PaymentTypeOrderBy!]
-) {
-  paymentTypeCollection(
-    first: $first
-    last: $last
-    before: $before
-    after: $after
-    filter: $filter
-    orderBy: $orderBy
-  ) {
-    edges {
-      node {
-        ...PaymentType
-      }
-    }
-    pageInfo {
-      startCursor
-      endCursor
-      hasNextPage
-      hasPreviousPage
-    }
-  }
-}
 
-query PaymentInfoCollection(
-  $first: Int
-  $last: Int
-  $before: Cursor
-  $after: Cursor
-  $filter: PaymentInfoFilter
-  $orderBy: [PaymentInfoOrderBy!]
-) {
-  paymentInfoCollection(
-    first: $first
-    last: $last
-    before: $before
-    after: $after
-    filter: $filter
-    orderBy: $orderBy
-  ) {
-    edges {
-      node {
-        ...PaymentInfo
-      }
-    }
-  }
-}
-
-
-mutation CreatePaymentInfo($input: PaymentInfoInsertInput!) {
-  insertIntoPaymentInfoCollection(objects: [$input]) {
-    records {
-      ...PaymentInfo
-    }
-    affectedCount
-  }
-}
-
-mutation CreateShoppingCart($input: ShoppingCartInsertInput!) {
-  insertIntoShoppingCartCollection(objects: [$input]) {
+mutation CreateShoppingCart($input: ShoppingCartsInsertInput!) {
+  insertIntoShoppingCartsCollection(objects: [$input]) {
     records {
       ...ShoppingCart
     }
@@ -306,26 +193,26 @@ mutation CreateShoppingCart($input: ShoppingCartInsertInput!) {
   }
 }
 
-mutation CreateShoppingCartMenuItem($input: ShoppingCartMenuItemInsertInput!) {
-  insertIntoShoppingCartMenuItemCollection(objects: [$input]) {
+mutation CreateShoppingCartItem($input: ShoppingCartItemsInsertInput!) {
+  insertIntoShoppingCartItemsCollection(objects: [$input]) {
     records {
-      ...ShoppingCartMenuItem
+      ...ShoppingCartItem
     }
     affectedCount
   }
 }
 
-mutation DeleteShoppingCartMenuItem($id: UUID!) {
-  deleteFromShoppingCartMenuItemCollection(filter: { id: { eq: $id } }) {
+mutation DeleteShoppingCartItem($id: UUID!) {
+  deleteFromShoppingCartItemsCollection(filter: { id: { eq: $id } }) {
     records {
-      ...ShoppingCartMenuItem
+      ...ShoppingCartItem
     }
     affectedCount
   }
 }
 
 mutation DeleteShoppingCart($id: UUID!) {
-  deleteFromShoppingCartCollection(filter: { id: { eq: $id } }) {
+  deleteFromShoppingCartsCollection(filter: { id: { eq: $id } }) {
     records {
       ...ShoppingCart
     }
@@ -338,10 +225,10 @@ query ShoppingCartCollection(
   $last: Int,
   $before: Cursor,
   $after: Cursor,
-  $filter: ShoppingCartFilter,
-  $orderBy: [ShoppingCartOrderBy!],
+  $filter: ShoppingCartsFilter,
+  $orderBy: [ShoppingCartsOrderBy!],
 ) {
-  shoppingCartCollection(
+  shoppingCartsCollection(
     first: $first,
     last: $last,
     before: $before,
@@ -363,8 +250,8 @@ query ShoppingCartCollection(
   }
 }
 
-mutation UpdateShoppingCart($id: UUID!, $input: ShoppingCartUpdateInput!) {
-  updateShoppingCartCollection(
+mutation UpdateShoppingCart($id: UUID!, $input: ShoppingCartsUpdateInput!) {
+  updateShoppingCartsCollection(
     filter: { id: { eq: $id } }
     set: $input
   ) {
@@ -374,3 +261,70 @@ mutation UpdateShoppingCart($id: UUID!, $input: ShoppingCartUpdateInput!) {
     affectedCount
   }
 }
+
+mutation UpdateShoppingCartItem($id: UUID!, $input: ShoppingCartItemsUpdateInput!) {
+  updateShoppingCartItemsCollection(
+    filter: { id: { eq: $id } }
+    set: $input
+  ) {
+    records {
+      ...ShoppingCartItem
+    }
+    affectedCount
+  }
+}
+
+mutation DeleteShoppingCartItem($id: UUID!) {
+  deleteFromShoppingCartItemsCollection(
+    filter: { id: { eq: $id } }
+  ) {
+    affectedCount
+  }
+}
+
+mutation DeleteShoppingCart($id: UUID!) {
+  deleteFromShoppingCartsCollection(
+    filter: { id: { eq: $id } }
+  ) {
+    affectedCount
+  }
+}
+
+mutation AddShoppingCartItem($input: ShoppingCartItemsInsertInput!) {
+  insertIntoShoppingCartItemsCollection(objects: [$input]) {
+    records {
+      ...ShoppingCartItem
+    }
+    affectedCount
+  }
+}
+
+mutation CreateOrderTransaction($input: OrderTransactionsInsertInput!) {
+  insertIntoOrderTransactionsCollection(objects: [$input]) {
+    records {
+      ...OrderTransaction
+    }
+    affectedCount
+  }
+}
+
+mutation UpdateOrderTransaction($id: UUID!, $input: OrderTransactionsUpdateInput!) {
+  updateOrderTransactionsCollection(
+    filter: { id: { eq: $id } }
+    set: $input
+  ) {
+    records {
+      ...OrderTransaction
+    }
+    affectedCount
+  }
+}
+
+mutation DeleteOrderTransaction($id: UUID!) {
+  deleteFromOrderTransactionsCollection(
+    filter: { id: { eq: $id } }
+  ) {
+    affectedCount
+  }
+}
+

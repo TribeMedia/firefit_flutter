@@ -14,7 +14,7 @@ class Fragment$NotificationType {
     this.iconUrl,
     this.schema,
     required this.createdAt,
-    this.$__typename = 'NotificationType',
+    this.$__typename = 'NotificationTypes',
   });
 
   factory Fragment$NotificationType.fromJson(Map<String, dynamic> json) {
@@ -94,7 +94,7 @@ class Fragment$NotificationType {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$NotificationType) ||
+    if (other is! Fragment$NotificationType ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -230,7 +230,7 @@ const fragmentDefinitionNotificationType = FragmentDefinitionNode(
   name: NameNode(value: 'NotificationType'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
-    name: NameNode(value: 'NotificationType'),
+    name: NameNode(value: 'NotificationTypes'),
     isNonNull: false,
   )),
   directives: [],
@@ -328,23 +328,21 @@ extension ClientExtension$Fragment$NotificationType on graphql.GraphQLClient {
 class Fragment$Notification {
   Fragment$Notification({
     required this.id,
-    required this.applicationId,
-    this.userId,
+    required this.userId,
     required this.notificationTypeId,
     required this.notificationType,
     required this.title,
-    this.subtitle,
+    required this.subtitle,
     this.iconUrl,
     required this.isRead,
-    required this.messageMarkdown,
+    this.messageMarkdown,
     this.data,
     required this.createdAt,
-    this.$__typename = 'Notification',
+    this.$__typename = 'Notifications',
   });
 
   factory Fragment$Notification.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
-    final l$applicationId = json['applicationId'];
     final l$userId = json['userId'];
     final l$notificationTypeId = json['notificationTypeId'];
     final l$notificationType = json['notificationType'];
@@ -358,16 +356,15 @@ class Fragment$Notification {
     final l$$__typename = json['__typename'];
     return Fragment$Notification(
       id: (l$id as String),
-      applicationId: (l$applicationId as String),
-      userId: (l$userId as String?),
+      userId: (l$userId as String),
       notificationTypeId: (l$notificationTypeId as String),
       notificationType: Fragment$NotificationType.fromJson(
           (l$notificationType as Map<String, dynamic>)),
       title: (l$title as String),
-      subtitle: (l$subtitle as String?),
+      subtitle: (l$subtitle as String),
       iconUrl: (l$iconUrl as String?),
       isRead: (l$isRead as bool),
-      messageMarkdown: (l$messageMarkdown as String),
+      messageMarkdown: (l$messageMarkdown as String?),
       data: l$data == null ? null : jsonFieldFromJson(l$data),
       createdAt: DateTime.parse((l$createdAt as String)),
       $__typename: (l$$__typename as String),
@@ -376,9 +373,7 @@ class Fragment$Notification {
 
   final String id;
 
-  final String applicationId;
-
-  final String? userId;
+  final String userId;
 
   final String notificationTypeId;
 
@@ -386,13 +381,13 @@ class Fragment$Notification {
 
   final String title;
 
-  final String? subtitle;
+  final String subtitle;
 
   final String? iconUrl;
 
   final bool isRead;
 
-  final String messageMarkdown;
+  final String? messageMarkdown;
 
   final Map<String, dynamic>? data;
 
@@ -404,8 +399,6 @@ class Fragment$Notification {
     final _resultData = <String, dynamic>{};
     final l$id = id;
     _resultData['id'] = l$id;
-    final l$applicationId = applicationId;
-    _resultData['applicationId'] = l$applicationId;
     final l$userId = userId;
     _resultData['userId'] = l$userId;
     final l$notificationTypeId = notificationTypeId;
@@ -434,7 +427,6 @@ class Fragment$Notification {
   @override
   int get hashCode {
     final l$id = id;
-    final l$applicationId = applicationId;
     final l$userId = userId;
     final l$notificationTypeId = notificationTypeId;
     final l$notificationType = notificationType;
@@ -448,7 +440,6 @@ class Fragment$Notification {
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
-      l$applicationId,
       l$userId,
       l$notificationTypeId,
       l$notificationType,
@@ -468,17 +459,12 @@ class Fragment$Notification {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$Notification) || runtimeType != other.runtimeType) {
+    if (other is! Fragment$Notification || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) {
-      return false;
-    }
-    final l$applicationId = applicationId;
-    final lOther$applicationId = other.applicationId;
-    if (l$applicationId != lOther$applicationId) {
       return false;
     }
     final l$userId = userId;
@@ -559,7 +545,6 @@ abstract class CopyWith$Fragment$Notification<TRes> {
 
   TRes call({
     String? id,
-    String? applicationId,
     String? userId,
     String? notificationTypeId,
     Fragment$NotificationType? notificationType,
@@ -590,7 +575,6 @@ class _CopyWithImpl$Fragment$Notification<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? applicationId = _undefined,
     Object? userId = _undefined,
     Object? notificationTypeId = _undefined,
     Object? notificationType = _undefined,
@@ -605,10 +589,9 @@ class _CopyWithImpl$Fragment$Notification<TRes>
   }) =>
       _then(Fragment$Notification(
         id: id == _undefined || id == null ? _instance.id : (id as String),
-        applicationId: applicationId == _undefined || applicationId == null
-            ? _instance.applicationId
-            : (applicationId as String),
-        userId: userId == _undefined ? _instance.userId : (userId as String?),
+        userId: userId == _undefined || userId == null
+            ? _instance.userId
+            : (userId as String),
         notificationTypeId:
             notificationTypeId == _undefined || notificationTypeId == null
                 ? _instance.notificationTypeId
@@ -620,17 +603,17 @@ class _CopyWithImpl$Fragment$Notification<TRes>
         title: title == _undefined || title == null
             ? _instance.title
             : (title as String),
-        subtitle:
-            subtitle == _undefined ? _instance.subtitle : (subtitle as String?),
+        subtitle: subtitle == _undefined || subtitle == null
+            ? _instance.subtitle
+            : (subtitle as String),
         iconUrl:
             iconUrl == _undefined ? _instance.iconUrl : (iconUrl as String?),
         isRead: isRead == _undefined || isRead == null
             ? _instance.isRead
             : (isRead as bool),
-        messageMarkdown:
-            messageMarkdown == _undefined || messageMarkdown == null
-                ? _instance.messageMarkdown
-                : (messageMarkdown as String),
+        messageMarkdown: messageMarkdown == _undefined
+            ? _instance.messageMarkdown
+            : (messageMarkdown as String?),
         data: data == _undefined
             ? _instance.data
             : (data as Map<String, dynamic>?),
@@ -657,7 +640,6 @@ class _CopyWithStubImpl$Fragment$Notification<TRes>
 
   call({
     String? id,
-    String? applicationId,
     String? userId,
     String? notificationTypeId,
     Fragment$NotificationType? notificationType,
@@ -680,20 +662,13 @@ const fragmentDefinitionNotification = FragmentDefinitionNode(
   name: NameNode(value: 'Notification'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
-    name: NameNode(value: 'Notification'),
+    name: NameNode(value: 'Notifications'),
     isNonNull: false,
   )),
   directives: [],
   selectionSet: SelectionSetNode(selections: [
     FieldNode(
       name: NameNode(value: 'id'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'applicationId'),
       alias: null,
       arguments: [],
       directives: [],
@@ -836,8 +811,8 @@ class Variables$Query$NotificationCollection {
     int? last,
     dynamic? after,
     dynamic? before,
-    Input$NotificationFilter? filter,
-    List<Input$NotificationOrderBy>? orderBy,
+    Input$NotificationsFilter? filter,
+    List<Input$NotificationsOrderBy>? orderBy,
   }) =>
       Variables$Query$NotificationCollection._({
         if (first != null) r'first': first,
@@ -873,14 +848,14 @@ class Variables$Query$NotificationCollection {
       final l$filter = data['filter'];
       result$data['filter'] = l$filter == null
           ? null
-          : Input$NotificationFilter.fromJson(
+          : Input$NotificationsFilter.fromJson(
               (l$filter as Map<String, dynamic>));
     }
     if (data.containsKey('orderBy')) {
       final l$orderBy = data['orderBy'];
       result$data['orderBy'] = (l$orderBy as List<dynamic>?)
           ?.map((e) =>
-              Input$NotificationOrderBy.fromJson((e as Map<String, dynamic>)))
+              Input$NotificationsOrderBy.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
     return Variables$Query$NotificationCollection._(result$data);
@@ -896,11 +871,11 @@ class Variables$Query$NotificationCollection {
 
   dynamic? get before => (_$data['before'] as dynamic?);
 
-  Input$NotificationFilter? get filter =>
-      (_$data['filter'] as Input$NotificationFilter?);
+  Input$NotificationsFilter? get filter =>
+      (_$data['filter'] as Input$NotificationsFilter?);
 
-  List<Input$NotificationOrderBy>? get orderBy =>
-      (_$data['orderBy'] as List<Input$NotificationOrderBy>?);
+  List<Input$NotificationsOrderBy>? get orderBy =>
+      (_$data['orderBy'] as List<Input$NotificationsOrderBy>?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -943,7 +918,7 @@ class Variables$Query$NotificationCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$NotificationCollection) ||
+    if (other is! Variables$Query$NotificationCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1046,8 +1021,8 @@ abstract class CopyWith$Variables$Query$NotificationCollection<TRes> {
     int? last,
     dynamic? after,
     dynamic? before,
-    Input$NotificationFilter? filter,
-    List<Input$NotificationOrderBy>? orderBy,
+    Input$NotificationsFilter? filter,
+    List<Input$NotificationsOrderBy>? orderBy,
   });
 }
 
@@ -1079,9 +1054,9 @@ class _CopyWithImpl$Variables$Query$NotificationCollection<TRes>
         if (after != _undefined) 'after': (after as dynamic?),
         if (before != _undefined) 'before': (before as dynamic?),
         if (filter != _undefined)
-          'filter': (filter as Input$NotificationFilter?),
+          'filter': (filter as Input$NotificationsFilter?),
         if (orderBy != _undefined)
-          'orderBy': (orderBy as List<Input$NotificationOrderBy>?),
+          'orderBy': (orderBy as List<Input$NotificationsOrderBy>?),
       }));
 }
 
@@ -1096,39 +1071,40 @@ class _CopyWithStubImpl$Variables$Query$NotificationCollection<TRes>
     int? last,
     dynamic? after,
     dynamic? before,
-    Input$NotificationFilter? filter,
-    List<Input$NotificationOrderBy>? orderBy,
+    Input$NotificationsFilter? filter,
+    List<Input$NotificationsOrderBy>? orderBy,
   }) =>
       _res;
 }
 
 class Query$NotificationCollection {
   Query$NotificationCollection({
-    this.notificationCollection,
+    this.notificationsCollection,
     this.$__typename = 'Query',
   });
 
   factory Query$NotificationCollection.fromJson(Map<String, dynamic> json) {
-    final l$notificationCollection = json['notificationCollection'];
+    final l$notificationsCollection = json['notificationsCollection'];
     final l$$__typename = json['__typename'];
     return Query$NotificationCollection(
-      notificationCollection: l$notificationCollection == null
+      notificationsCollection: l$notificationsCollection == null
           ? null
-          : Query$NotificationCollection$notificationCollection.fromJson(
-              (l$notificationCollection as Map<String, dynamic>)),
+          : Query$NotificationCollection$notificationsCollection.fromJson(
+              (l$notificationsCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$NotificationCollection$notificationCollection?
-      notificationCollection;
+  final Query$NotificationCollection$notificationsCollection?
+      notificationsCollection;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$notificationCollection = notificationCollection;
-    _resultData['notificationCollection'] = l$notificationCollection?.toJson();
+    final l$notificationsCollection = notificationsCollection;
+    _resultData['notificationsCollection'] =
+        l$notificationsCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1136,10 +1112,10 @@ class Query$NotificationCollection {
 
   @override
   int get hashCode {
-    final l$notificationCollection = notificationCollection;
+    final l$notificationsCollection = notificationsCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$notificationCollection,
+      l$notificationsCollection,
       l$$__typename,
     ]);
   }
@@ -1149,13 +1125,13 @@ class Query$NotificationCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$NotificationCollection) ||
+    if (other is! Query$NotificationCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$notificationCollection = notificationCollection;
-    final lOther$notificationCollection = other.notificationCollection;
-    if (l$notificationCollection != lOther$notificationCollection) {
+    final l$notificationsCollection = notificationsCollection;
+    final lOther$notificationsCollection = other.notificationsCollection;
+    if (l$notificationsCollection != lOther$notificationsCollection) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1186,11 +1162,12 @@ abstract class CopyWith$Query$NotificationCollection<TRes> {
       _CopyWithStubImpl$Query$NotificationCollection;
 
   TRes call({
-    Query$NotificationCollection$notificationCollection? notificationCollection,
+    Query$NotificationCollection$notificationsCollection?
+        notificationsCollection,
     String? $__typename,
   });
-  CopyWith$Query$NotificationCollection$notificationCollection<TRes>
-      get notificationCollection;
+  CopyWith$Query$NotificationCollection$notificationsCollection<TRes>
+      get notificationsCollection;
 }
 
 class _CopyWithImpl$Query$NotificationCollection<TRes>
@@ -1207,28 +1184,28 @@ class _CopyWithImpl$Query$NotificationCollection<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? notificationCollection = _undefined,
+    Object? notificationsCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$NotificationCollection(
-        notificationCollection: notificationCollection == _undefined
-            ? _instance.notificationCollection
-            : (notificationCollection
-                as Query$NotificationCollection$notificationCollection?),
+        notificationsCollection: notificationsCollection == _undefined
+            ? _instance.notificationsCollection
+            : (notificationsCollection
+                as Query$NotificationCollection$notificationsCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$NotificationCollection$notificationCollection<TRes>
-      get notificationCollection {
-    final local$notificationCollection = _instance.notificationCollection;
-    return local$notificationCollection == null
-        ? CopyWith$Query$NotificationCollection$notificationCollection.stub(
+  CopyWith$Query$NotificationCollection$notificationsCollection<TRes>
+      get notificationsCollection {
+    final local$notificationsCollection = _instance.notificationsCollection;
+    return local$notificationsCollection == null
+        ? CopyWith$Query$NotificationCollection$notificationsCollection.stub(
             _then(_instance))
-        : CopyWith$Query$NotificationCollection$notificationCollection(
-            local$notificationCollection,
-            (e) => call(notificationCollection: e));
+        : CopyWith$Query$NotificationCollection$notificationsCollection(
+            local$notificationsCollection,
+            (e) => call(notificationsCollection: e));
   }
 }
 
@@ -1239,14 +1216,15 @@ class _CopyWithStubImpl$Query$NotificationCollection<TRes>
   TRes _res;
 
   call({
-    Query$NotificationCollection$notificationCollection? notificationCollection,
+    Query$NotificationCollection$notificationsCollection?
+        notificationsCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$NotificationCollection$notificationCollection<TRes>
-      get notificationCollection =>
-          CopyWith$Query$NotificationCollection$notificationCollection.stub(
+  CopyWith$Query$NotificationCollection$notificationsCollection<TRes>
+      get notificationsCollection =>
+          CopyWith$Query$NotificationCollection$notificationsCollection.stub(
               _res);
 }
 
@@ -1294,7 +1272,7 @@ const documentNodeQueryNotificationCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'filter')),
         type: NamedTypeNode(
-          name: NameNode(value: 'NotificationFilter'),
+          name: NameNode(value: 'NotificationsFilter'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -1304,7 +1282,7 @@ const documentNodeQueryNotificationCollection = DocumentNode(definitions: [
         variable: VariableNode(name: NameNode(value: 'orderBy')),
         type: ListTypeNode(
           type: NamedTypeNode(
-            name: NameNode(value: 'NotificationOrderBy'),
+            name: NameNode(value: 'NotificationsOrderBy'),
             isNonNull: true,
           ),
           isNonNull: false,
@@ -1316,7 +1294,7 @@ const documentNodeQueryNotificationCollection = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'notificationCollection'),
+        name: NameNode(value: 'notificationsCollection'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -1610,33 +1588,32 @@ class Query$NotificationCollection$Widget
         );
 }
 
-class Query$NotificationCollection$notificationCollection {
-  Query$NotificationCollection$notificationCollection({
+class Query$NotificationCollection$notificationsCollection {
+  Query$NotificationCollection$notificationsCollection({
     required this.edges,
     required this.pageInfo,
-    this.$__typename = 'NotificationConnection',
+    this.$__typename = 'NotificationsConnection',
   });
 
-  factory Query$NotificationCollection$notificationCollection.fromJson(
+  factory Query$NotificationCollection$notificationsCollection.fromJson(
       Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
-    return Query$NotificationCollection$notificationCollection(
+    return Query$NotificationCollection$notificationsCollection(
       edges: (l$edges as List<dynamic>)
-          .map((e) => Query$NotificationCollection$notificationCollection$edges
+          .map((e) => Query$NotificationCollection$notificationsCollection$edges
               .fromJson((e as Map<String, dynamic>)))
           .toList(),
-      pageInfo:
-          Query$NotificationCollection$notificationCollection$pageInfo.fromJson(
-              (l$pageInfo as Map<String, dynamic>)),
+      pageInfo: Query$NotificationCollection$notificationsCollection$pageInfo
+          .fromJson((l$pageInfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$NotificationCollection$notificationCollection$edges> edges;
+  final List<Query$NotificationCollection$notificationsCollection$edges> edges;
 
-  final Query$NotificationCollection$notificationCollection$pageInfo pageInfo;
+  final Query$NotificationCollection$notificationsCollection$pageInfo pageInfo;
 
   final String $__typename;
 
@@ -1668,7 +1645,7 @@ class Query$NotificationCollection$notificationCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$NotificationCollection$notificationCollection) ||
+    if (other is! Query$NotificationCollection$notificationsCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1698,54 +1675,54 @@ class Query$NotificationCollection$notificationCollection {
   }
 }
 
-extension UtilityExtension$Query$NotificationCollection$notificationCollection
-    on Query$NotificationCollection$notificationCollection {
-  CopyWith$Query$NotificationCollection$notificationCollection<
-          Query$NotificationCollection$notificationCollection>
+extension UtilityExtension$Query$NotificationCollection$notificationsCollection
+    on Query$NotificationCollection$notificationsCollection {
+  CopyWith$Query$NotificationCollection$notificationsCollection<
+          Query$NotificationCollection$notificationsCollection>
       get copyWith =>
-          CopyWith$Query$NotificationCollection$notificationCollection(
+          CopyWith$Query$NotificationCollection$notificationsCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$NotificationCollection$notificationCollection<
+abstract class CopyWith$Query$NotificationCollection$notificationsCollection<
     TRes> {
-  factory CopyWith$Query$NotificationCollection$notificationCollection(
-    Query$NotificationCollection$notificationCollection instance,
-    TRes Function(Query$NotificationCollection$notificationCollection) then,
-  ) = _CopyWithImpl$Query$NotificationCollection$notificationCollection;
+  factory CopyWith$Query$NotificationCollection$notificationsCollection(
+    Query$NotificationCollection$notificationsCollection instance,
+    TRes Function(Query$NotificationCollection$notificationsCollection) then,
+  ) = _CopyWithImpl$Query$NotificationCollection$notificationsCollection;
 
-  factory CopyWith$Query$NotificationCollection$notificationCollection.stub(
+  factory CopyWith$Query$NotificationCollection$notificationsCollection.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$NotificationCollection$notificationCollection;
+      _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection;
 
   TRes call({
-    List<Query$NotificationCollection$notificationCollection$edges>? edges,
-    Query$NotificationCollection$notificationCollection$pageInfo? pageInfo,
+    List<Query$NotificationCollection$notificationsCollection$edges>? edges,
+    Query$NotificationCollection$notificationsCollection$pageInfo? pageInfo,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$NotificationCollection$notificationCollection$edges> Function(
+      Iterable<Query$NotificationCollection$notificationsCollection$edges> Function(
               Iterable<
-                  CopyWith$Query$NotificationCollection$notificationCollection$edges<
-                      Query$NotificationCollection$notificationCollection$edges>>)
+                  CopyWith$Query$NotificationCollection$notificationsCollection$edges<
+                      Query$NotificationCollection$notificationsCollection$edges>>)
           _fn);
-  CopyWith$Query$NotificationCollection$notificationCollection$pageInfo<TRes>
+  CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo<TRes>
       get pageInfo;
 }
 
-class _CopyWithImpl$Query$NotificationCollection$notificationCollection<TRes>
+class _CopyWithImpl$Query$NotificationCollection$notificationsCollection<TRes>
     implements
-        CopyWith$Query$NotificationCollection$notificationCollection<TRes> {
-  _CopyWithImpl$Query$NotificationCollection$notificationCollection(
+        CopyWith$Query$NotificationCollection$notificationsCollection<TRes> {
+  _CopyWithImpl$Query$NotificationCollection$notificationsCollection(
     this._instance,
     this._then,
   );
 
-  final Query$NotificationCollection$notificationCollection _instance;
+  final Query$NotificationCollection$notificationsCollection _instance;
 
-  final TRes Function(Query$NotificationCollection$notificationCollection)
+  final TRes Function(Query$NotificationCollection$notificationsCollection)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -1755,76 +1732,76 @@ class _CopyWithImpl$Query$NotificationCollection$notificationCollection<TRes>
     Object? pageInfo = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$NotificationCollection$notificationCollection(
+      _then(Query$NotificationCollection$notificationsCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
             : (edges as List<
-                Query$NotificationCollection$notificationCollection$edges>),
+                Query$NotificationCollection$notificationsCollection$edges>),
         pageInfo: pageInfo == _undefined || pageInfo == null
             ? _instance.pageInfo
             : (pageInfo
-                as Query$NotificationCollection$notificationCollection$pageInfo),
+                as Query$NotificationCollection$notificationsCollection$pageInfo),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$NotificationCollection$notificationCollection$edges> Function(
+          Iterable<Query$NotificationCollection$notificationsCollection$edges> Function(
                   Iterable<
-                      CopyWith$Query$NotificationCollection$notificationCollection$edges<
-                          Query$NotificationCollection$notificationCollection$edges>>)
+                      CopyWith$Query$NotificationCollection$notificationsCollection$edges<
+                          Query$NotificationCollection$notificationsCollection$edges>>)
               _fn) =>
       call(
           edges: _fn(_instance.edges.map((e) =>
-              CopyWith$Query$NotificationCollection$notificationCollection$edges(
+              CopyWith$Query$NotificationCollection$notificationsCollection$edges(
                 e,
                 (i) => i,
               ))).toList());
 
-  CopyWith$Query$NotificationCollection$notificationCollection$pageInfo<TRes>
+  CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo<TRes>
       get pageInfo {
     final local$pageInfo = _instance.pageInfo;
-    return CopyWith$Query$NotificationCollection$notificationCollection$pageInfo(
+    return CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo(
         local$pageInfo, (e) => call(pageInfo: e));
   }
 }
 
-class _CopyWithStubImpl$Query$NotificationCollection$notificationCollection<
+class _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection<
         TRes>
     implements
-        CopyWith$Query$NotificationCollection$notificationCollection<TRes> {
-  _CopyWithStubImpl$Query$NotificationCollection$notificationCollection(
+        CopyWith$Query$NotificationCollection$notificationsCollection<TRes> {
+  _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection(
       this._res);
 
   TRes _res;
 
   call({
-    List<Query$NotificationCollection$notificationCollection$edges>? edges,
-    Query$NotificationCollection$notificationCollection$pageInfo? pageInfo,
+    List<Query$NotificationCollection$notificationsCollection$edges>? edges,
+    Query$NotificationCollection$notificationsCollection$pageInfo? pageInfo,
     String? $__typename,
   }) =>
       _res;
 
   edges(_fn) => _res;
 
-  CopyWith$Query$NotificationCollection$notificationCollection$pageInfo<TRes>
+  CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo<TRes>
       get pageInfo =>
-          CopyWith$Query$NotificationCollection$notificationCollection$pageInfo
+          CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo
               .stub(_res);
 }
 
-class Query$NotificationCollection$notificationCollection$edges {
-  Query$NotificationCollection$notificationCollection$edges({
+class Query$NotificationCollection$notificationsCollection$edges {
+  Query$NotificationCollection$notificationsCollection$edges({
     required this.node,
-    this.$__typename = 'NotificationEdge',
+    this.$__typename = 'NotificationsEdge',
   });
 
-  factory Query$NotificationCollection$notificationCollection$edges.fromJson(
+  factory Query$NotificationCollection$notificationsCollection$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$NotificationCollection$notificationCollection$edges(
+    return Query$NotificationCollection$notificationsCollection$edges(
       node: Fragment$Notification.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -1858,7 +1835,7 @@ class Query$NotificationCollection$notificationCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$NotificationCollection$notificationCollection$edges) ||
+    if (other is! Query$NotificationCollection$notificationsCollection$edges ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1876,28 +1853,28 @@ class Query$NotificationCollection$notificationCollection$edges {
   }
 }
 
-extension UtilityExtension$Query$NotificationCollection$notificationCollection$edges
-    on Query$NotificationCollection$notificationCollection$edges {
-  CopyWith$Query$NotificationCollection$notificationCollection$edges<
-          Query$NotificationCollection$notificationCollection$edges>
+extension UtilityExtension$Query$NotificationCollection$notificationsCollection$edges
+    on Query$NotificationCollection$notificationsCollection$edges {
+  CopyWith$Query$NotificationCollection$notificationsCollection$edges<
+          Query$NotificationCollection$notificationsCollection$edges>
       get copyWith =>
-          CopyWith$Query$NotificationCollection$notificationCollection$edges(
+          CopyWith$Query$NotificationCollection$notificationsCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$NotificationCollection$notificationCollection$edges<
+abstract class CopyWith$Query$NotificationCollection$notificationsCollection$edges<
     TRes> {
-  factory CopyWith$Query$NotificationCollection$notificationCollection$edges(
-    Query$NotificationCollection$notificationCollection$edges instance,
-    TRes Function(Query$NotificationCollection$notificationCollection$edges)
+  factory CopyWith$Query$NotificationCollection$notificationsCollection$edges(
+    Query$NotificationCollection$notificationsCollection$edges instance,
+    TRes Function(Query$NotificationCollection$notificationsCollection$edges)
         then,
-  ) = _CopyWithImpl$Query$NotificationCollection$notificationCollection$edges;
+  ) = _CopyWithImpl$Query$NotificationCollection$notificationsCollection$edges;
 
-  factory CopyWith$Query$NotificationCollection$notificationCollection$edges.stub(
+  factory CopyWith$Query$NotificationCollection$notificationsCollection$edges.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$NotificationCollection$notificationCollection$edges;
+      _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection$edges;
 
   TRes call({
     Fragment$Notification? node,
@@ -1906,20 +1883,20 @@ abstract class CopyWith$Query$NotificationCollection$notificationCollection$edge
   CopyWith$Fragment$Notification<TRes> get node;
 }
 
-class _CopyWithImpl$Query$NotificationCollection$notificationCollection$edges<
+class _CopyWithImpl$Query$NotificationCollection$notificationsCollection$edges<
         TRes>
     implements
-        CopyWith$Query$NotificationCollection$notificationCollection$edges<
+        CopyWith$Query$NotificationCollection$notificationsCollection$edges<
             TRes> {
-  _CopyWithImpl$Query$NotificationCollection$notificationCollection$edges(
+  _CopyWithImpl$Query$NotificationCollection$notificationsCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Query$NotificationCollection$notificationCollection$edges _instance;
+  final Query$NotificationCollection$notificationsCollection$edges _instance;
 
-  final TRes Function(Query$NotificationCollection$notificationCollection$edges)
-      _then;
+  final TRes Function(
+      Query$NotificationCollection$notificationsCollection$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1927,7 +1904,7 @@ class _CopyWithImpl$Query$NotificationCollection$notificationCollection$edges<
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$NotificationCollection$notificationCollection$edges(
+      _then(Query$NotificationCollection$notificationsCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$Notification),
@@ -1942,12 +1919,12 @@ class _CopyWithImpl$Query$NotificationCollection$notificationCollection$edges<
   }
 }
 
-class _CopyWithStubImpl$Query$NotificationCollection$notificationCollection$edges<
+class _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection$edges<
         TRes>
     implements
-        CopyWith$Query$NotificationCollection$notificationCollection$edges<
+        CopyWith$Query$NotificationCollection$notificationsCollection$edges<
             TRes> {
-  _CopyWithStubImpl$Query$NotificationCollection$notificationCollection$edges(
+  _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection$edges(
       this._res);
 
   TRes _res;
@@ -1962,8 +1939,8 @@ class _CopyWithStubImpl$Query$NotificationCollection$notificationCollection$edge
       CopyWith$Fragment$Notification.stub(_res);
 }
 
-class Query$NotificationCollection$notificationCollection$pageInfo {
-  Query$NotificationCollection$notificationCollection$pageInfo({
+class Query$NotificationCollection$notificationsCollection$pageInfo {
+  Query$NotificationCollection$notificationsCollection$pageInfo({
     required this.hasNextPage,
     required this.hasPreviousPage,
     this.startCursor,
@@ -1971,14 +1948,14 @@ class Query$NotificationCollection$notificationCollection$pageInfo {
     this.$__typename = 'PageInfo',
   });
 
-  factory Query$NotificationCollection$notificationCollection$pageInfo.fromJson(
+  factory Query$NotificationCollection$notificationsCollection$pageInfo.fromJson(
       Map<String, dynamic> json) {
     final l$hasNextPage = json['hasNextPage'];
     final l$hasPreviousPage = json['hasPreviousPage'];
     final l$startCursor = json['startCursor'];
     final l$endCursor = json['endCursor'];
     final l$$__typename = json['__typename'];
-    return Query$NotificationCollection$notificationCollection$pageInfo(
+    return Query$NotificationCollection$notificationsCollection$pageInfo(
       hasNextPage: (l$hasNextPage as bool),
       hasPreviousPage: (l$hasPreviousPage as bool),
       startCursor: (l$startCursor as String?),
@@ -2033,8 +2010,8 @@ class Query$NotificationCollection$notificationCollection$pageInfo {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other
-            is Query$NotificationCollection$notificationCollection$pageInfo) ||
+    if (other
+            is! Query$NotificationCollection$notificationsCollection$pageInfo ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2067,28 +2044,28 @@ class Query$NotificationCollection$notificationCollection$pageInfo {
   }
 }
 
-extension UtilityExtension$Query$NotificationCollection$notificationCollection$pageInfo
-    on Query$NotificationCollection$notificationCollection$pageInfo {
-  CopyWith$Query$NotificationCollection$notificationCollection$pageInfo<
-          Query$NotificationCollection$notificationCollection$pageInfo>
+extension UtilityExtension$Query$NotificationCollection$notificationsCollection$pageInfo
+    on Query$NotificationCollection$notificationsCollection$pageInfo {
+  CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo<
+          Query$NotificationCollection$notificationsCollection$pageInfo>
       get copyWith =>
-          CopyWith$Query$NotificationCollection$notificationCollection$pageInfo(
+          CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$NotificationCollection$notificationCollection$pageInfo<
+abstract class CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo<
     TRes> {
-  factory CopyWith$Query$NotificationCollection$notificationCollection$pageInfo(
-    Query$NotificationCollection$notificationCollection$pageInfo instance,
-    TRes Function(Query$NotificationCollection$notificationCollection$pageInfo)
+  factory CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo(
+    Query$NotificationCollection$notificationsCollection$pageInfo instance,
+    TRes Function(Query$NotificationCollection$notificationsCollection$pageInfo)
         then,
-  ) = _CopyWithImpl$Query$NotificationCollection$notificationCollection$pageInfo;
+  ) = _CopyWithImpl$Query$NotificationCollection$notificationsCollection$pageInfo;
 
-  factory CopyWith$Query$NotificationCollection$notificationCollection$pageInfo.stub(
+  factory CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$NotificationCollection$notificationCollection$pageInfo;
+      _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection$pageInfo;
 
   TRes call({
     bool? hasNextPage,
@@ -2099,20 +2076,20 @@ abstract class CopyWith$Query$NotificationCollection$notificationCollection$page
   });
 }
 
-class _CopyWithImpl$Query$NotificationCollection$notificationCollection$pageInfo<
+class _CopyWithImpl$Query$NotificationCollection$notificationsCollection$pageInfo<
         TRes>
     implements
-        CopyWith$Query$NotificationCollection$notificationCollection$pageInfo<
+        CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo<
             TRes> {
-  _CopyWithImpl$Query$NotificationCollection$notificationCollection$pageInfo(
+  _CopyWithImpl$Query$NotificationCollection$notificationsCollection$pageInfo(
     this._instance,
     this._then,
   );
 
-  final Query$NotificationCollection$notificationCollection$pageInfo _instance;
+  final Query$NotificationCollection$notificationsCollection$pageInfo _instance;
 
   final TRes Function(
-      Query$NotificationCollection$notificationCollection$pageInfo) _then;
+      Query$NotificationCollection$notificationsCollection$pageInfo) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2123,7 +2100,7 @@ class _CopyWithImpl$Query$NotificationCollection$notificationCollection$pageInfo
     Object? endCursor = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$NotificationCollection$notificationCollection$pageInfo(
+      _then(Query$NotificationCollection$notificationsCollection$pageInfo(
         hasNextPage: hasNextPage == _undefined || hasNextPage == null
             ? _instance.hasNextPage
             : (hasNextPage as bool),
@@ -2143,12 +2120,12 @@ class _CopyWithImpl$Query$NotificationCollection$notificationCollection$pageInfo
       ));
 }
 
-class _CopyWithStubImpl$Query$NotificationCollection$notificationCollection$pageInfo<
+class _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection$pageInfo<
         TRes>
     implements
-        CopyWith$Query$NotificationCollection$notificationCollection$pageInfo<
+        CopyWith$Query$NotificationCollection$notificationsCollection$pageInfo<
             TRes> {
-  _CopyWithStubImpl$Query$NotificationCollection$notificationCollection$pageInfo(
+  _CopyWithStubImpl$Query$NotificationCollection$notificationsCollection$pageInfo(
       this._res);
 
   TRes _res;
@@ -2169,8 +2146,8 @@ class Variables$Query$NotificationTypesCollection {
     int? last,
     dynamic? after,
     dynamic? before,
-    Input$NotificationTypeFilter? filter,
-    List<Input$NotificationTypeOrderBy>? orderBy,
+    Input$NotificationTypesFilter? filter,
+    List<Input$NotificationTypesOrderBy>? orderBy,
   }) =>
       Variables$Query$NotificationTypesCollection._({
         if (first != null) r'first': first,
@@ -2206,13 +2183,13 @@ class Variables$Query$NotificationTypesCollection {
       final l$filter = data['filter'];
       result$data['filter'] = l$filter == null
           ? null
-          : Input$NotificationTypeFilter.fromJson(
+          : Input$NotificationTypesFilter.fromJson(
               (l$filter as Map<String, dynamic>));
     }
     if (data.containsKey('orderBy')) {
       final l$orderBy = data['orderBy'];
       result$data['orderBy'] = (l$orderBy as List<dynamic>?)
-          ?.map((e) => Input$NotificationTypeOrderBy.fromJson(
+          ?.map((e) => Input$NotificationTypesOrderBy.fromJson(
               (e as Map<String, dynamic>)))
           .toList();
     }
@@ -2229,11 +2206,11 @@ class Variables$Query$NotificationTypesCollection {
 
   dynamic? get before => (_$data['before'] as dynamic?);
 
-  Input$NotificationTypeFilter? get filter =>
-      (_$data['filter'] as Input$NotificationTypeFilter?);
+  Input$NotificationTypesFilter? get filter =>
+      (_$data['filter'] as Input$NotificationTypesFilter?);
 
-  List<Input$NotificationTypeOrderBy>? get orderBy =>
-      (_$data['orderBy'] as List<Input$NotificationTypeOrderBy>?);
+  List<Input$NotificationTypesOrderBy>? get orderBy =>
+      (_$data['orderBy'] as List<Input$NotificationTypesOrderBy>?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -2276,7 +2253,7 @@ class Variables$Query$NotificationTypesCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$NotificationTypesCollection) ||
+    if (other is! Variables$Query$NotificationTypesCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2379,8 +2356,8 @@ abstract class CopyWith$Variables$Query$NotificationTypesCollection<TRes> {
     int? last,
     dynamic? after,
     dynamic? before,
-    Input$NotificationTypeFilter? filter,
-    List<Input$NotificationTypeOrderBy>? orderBy,
+    Input$NotificationTypesFilter? filter,
+    List<Input$NotificationTypesOrderBy>? orderBy,
   });
 }
 
@@ -2412,9 +2389,9 @@ class _CopyWithImpl$Variables$Query$NotificationTypesCollection<TRes>
         if (after != _undefined) 'after': (after as dynamic?),
         if (before != _undefined) 'before': (before as dynamic?),
         if (filter != _undefined)
-          'filter': (filter as Input$NotificationTypeFilter?),
+          'filter': (filter as Input$NotificationTypesFilter?),
         if (orderBy != _undefined)
-          'orderBy': (orderBy as List<Input$NotificationTypeOrderBy>?),
+          'orderBy': (orderBy as List<Input$NotificationTypesOrderBy>?),
       }));
 }
 
@@ -2429,41 +2406,42 @@ class _CopyWithStubImpl$Variables$Query$NotificationTypesCollection<TRes>
     int? last,
     dynamic? after,
     dynamic? before,
-    Input$NotificationTypeFilter? filter,
-    List<Input$NotificationTypeOrderBy>? orderBy,
+    Input$NotificationTypesFilter? filter,
+    List<Input$NotificationTypesOrderBy>? orderBy,
   }) =>
       _res;
 }
 
 class Query$NotificationTypesCollection {
   Query$NotificationTypesCollection({
-    this.notificationTypeCollection,
+    this.notificationTypesCollection,
     this.$__typename = 'Query',
   });
 
   factory Query$NotificationTypesCollection.fromJson(
       Map<String, dynamic> json) {
-    final l$notificationTypeCollection = json['notificationTypeCollection'];
+    final l$notificationTypesCollection = json['notificationTypesCollection'];
     final l$$__typename = json['__typename'];
     return Query$NotificationTypesCollection(
-      notificationTypeCollection: l$notificationTypeCollection == null
+      notificationTypesCollection: l$notificationTypesCollection == null
           ? null
-          : Query$NotificationTypesCollection$notificationTypeCollection
-              .fromJson((l$notificationTypeCollection as Map<String, dynamic>)),
+          : Query$NotificationTypesCollection$notificationTypesCollection
+              .fromJson(
+                  (l$notificationTypesCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$NotificationTypesCollection$notificationTypeCollection?
-      notificationTypeCollection;
+  final Query$NotificationTypesCollection$notificationTypesCollection?
+      notificationTypesCollection;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$notificationTypeCollection = notificationTypeCollection;
-    _resultData['notificationTypeCollection'] =
-        l$notificationTypeCollection?.toJson();
+    final l$notificationTypesCollection = notificationTypesCollection;
+    _resultData['notificationTypesCollection'] =
+        l$notificationTypesCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -2471,10 +2449,10 @@ class Query$NotificationTypesCollection {
 
   @override
   int get hashCode {
-    final l$notificationTypeCollection = notificationTypeCollection;
+    final l$notificationTypesCollection = notificationTypesCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$notificationTypeCollection,
+      l$notificationTypesCollection,
       l$$__typename,
     ]);
   }
@@ -2484,13 +2462,14 @@ class Query$NotificationTypesCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$NotificationTypesCollection) ||
+    if (other is! Query$NotificationTypesCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$notificationTypeCollection = notificationTypeCollection;
-    final lOther$notificationTypeCollection = other.notificationTypeCollection;
-    if (l$notificationTypeCollection != lOther$notificationTypeCollection) {
+    final l$notificationTypesCollection = notificationTypesCollection;
+    final lOther$notificationTypesCollection =
+        other.notificationTypesCollection;
+    if (l$notificationTypesCollection != lOther$notificationTypesCollection) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2521,12 +2500,12 @@ abstract class CopyWith$Query$NotificationTypesCollection<TRes> {
       _CopyWithStubImpl$Query$NotificationTypesCollection;
 
   TRes call({
-    Query$NotificationTypesCollection$notificationTypeCollection?
-        notificationTypeCollection,
+    Query$NotificationTypesCollection$notificationTypesCollection?
+        notificationTypesCollection,
     String? $__typename,
   });
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection<TRes>
-      get notificationTypeCollection;
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection<TRes>
+      get notificationTypesCollection;
 }
 
 class _CopyWithImpl$Query$NotificationTypesCollection<TRes>
@@ -2543,29 +2522,29 @@ class _CopyWithImpl$Query$NotificationTypesCollection<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? notificationTypeCollection = _undefined,
+    Object? notificationTypesCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$NotificationTypesCollection(
-        notificationTypeCollection: notificationTypeCollection == _undefined
-            ? _instance.notificationTypeCollection
-            : (notificationTypeCollection
-                as Query$NotificationTypesCollection$notificationTypeCollection?),
+        notificationTypesCollection: notificationTypesCollection == _undefined
+            ? _instance.notificationTypesCollection
+            : (notificationTypesCollection
+                as Query$NotificationTypesCollection$notificationTypesCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection<TRes>
-      get notificationTypeCollection {
-    final local$notificationTypeCollection =
-        _instance.notificationTypeCollection;
-    return local$notificationTypeCollection == null
-        ? CopyWith$Query$NotificationTypesCollection$notificationTypeCollection
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection<TRes>
+      get notificationTypesCollection {
+    final local$notificationTypesCollection =
+        _instance.notificationTypesCollection;
+    return local$notificationTypesCollection == null
+        ? CopyWith$Query$NotificationTypesCollection$notificationTypesCollection
             .stub(_then(_instance))
-        : CopyWith$Query$NotificationTypesCollection$notificationTypeCollection(
-            local$notificationTypeCollection,
-            (e) => call(notificationTypeCollection: e));
+        : CopyWith$Query$NotificationTypesCollection$notificationTypesCollection(
+            local$notificationTypesCollection,
+            (e) => call(notificationTypesCollection: e));
   }
 }
 
@@ -2576,15 +2555,15 @@ class _CopyWithStubImpl$Query$NotificationTypesCollection<TRes>
   TRes _res;
 
   call({
-    Query$NotificationTypesCollection$notificationTypeCollection?
-        notificationTypeCollection,
+    Query$NotificationTypesCollection$notificationTypesCollection?
+        notificationTypesCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection<TRes>
-      get notificationTypeCollection =>
-          CopyWith$Query$NotificationTypesCollection$notificationTypeCollection
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection<TRes>
+      get notificationTypesCollection =>
+          CopyWith$Query$NotificationTypesCollection$notificationTypesCollection
               .stub(_res);
 }
 
@@ -2632,7 +2611,7 @@ const documentNodeQueryNotificationTypesCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'filter')),
         type: NamedTypeNode(
-          name: NameNode(value: 'NotificationTypeFilter'),
+          name: NameNode(value: 'NotificationTypesFilter'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -2642,7 +2621,7 @@ const documentNodeQueryNotificationTypesCollection = DocumentNode(definitions: [
         variable: VariableNode(name: NameNode(value: 'orderBy')),
         type: ListTypeNode(
           type: NamedTypeNode(
-            name: NameNode(value: 'NotificationTypeOrderBy'),
+            name: NameNode(value: 'NotificationTypesOrderBy'),
             isNonNull: true,
           ),
           isNonNull: false,
@@ -2654,7 +2633,7 @@ const documentNodeQueryNotificationTypesCollection = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'notificationTypeCollection'),
+        name: NameNode(value: 'notificationTypesCollection'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -2951,35 +2930,36 @@ class Query$NotificationTypesCollection$Widget
         );
 }
 
-class Query$NotificationTypesCollection$notificationTypeCollection {
-  Query$NotificationTypesCollection$notificationTypeCollection({
+class Query$NotificationTypesCollection$notificationTypesCollection {
+  Query$NotificationTypesCollection$notificationTypesCollection({
     required this.edges,
     required this.pageInfo,
-    this.$__typename = 'NotificationTypeConnection',
+    this.$__typename = 'NotificationTypesConnection',
   });
 
-  factory Query$NotificationTypesCollection$notificationTypeCollection.fromJson(
+  factory Query$NotificationTypesCollection$notificationTypesCollection.fromJson(
       Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
-    return Query$NotificationTypesCollection$notificationTypeCollection(
+    return Query$NotificationTypesCollection$notificationTypesCollection(
       edges: (l$edges as List<dynamic>)
           .map((e) =>
-              Query$NotificationTypesCollection$notificationTypeCollection$edges
+              Query$NotificationTypesCollection$notificationTypesCollection$edges
                   .fromJson((e as Map<String, dynamic>)))
           .toList(),
       pageInfo:
-          Query$NotificationTypesCollection$notificationTypeCollection$pageInfo
+          Query$NotificationTypesCollection$notificationTypesCollection$pageInfo
               .fromJson((l$pageInfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$NotificationTypesCollection$notificationTypeCollection$edges>
+  final List<
+          Query$NotificationTypesCollection$notificationTypesCollection$edges>
       edges;
 
-  final Query$NotificationTypesCollection$notificationTypeCollection$pageInfo
+  final Query$NotificationTypesCollection$notificationTypesCollection$pageInfo
       pageInfo;
 
   final String $__typename;
@@ -3012,8 +2992,8 @@ class Query$NotificationTypesCollection$notificationTypeCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other
-            is Query$NotificationTypesCollection$notificationTypeCollection) ||
+    if (other
+            is! Query$NotificationTypesCollection$notificationTypesCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3043,60 +3023,60 @@ class Query$NotificationTypesCollection$notificationTypeCollection {
   }
 }
 
-extension UtilityExtension$Query$NotificationTypesCollection$notificationTypeCollection
-    on Query$NotificationTypesCollection$notificationTypeCollection {
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection<
-          Query$NotificationTypesCollection$notificationTypeCollection>
+extension UtilityExtension$Query$NotificationTypesCollection$notificationTypesCollection
+    on Query$NotificationTypesCollection$notificationTypesCollection {
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection<
+          Query$NotificationTypesCollection$notificationTypesCollection>
       get copyWith =>
-          CopyWith$Query$NotificationTypesCollection$notificationTypeCollection(
+          CopyWith$Query$NotificationTypesCollection$notificationTypesCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$NotificationTypesCollection$notificationTypeCollection<
+abstract class CopyWith$Query$NotificationTypesCollection$notificationTypesCollection<
     TRes> {
-  factory CopyWith$Query$NotificationTypesCollection$notificationTypeCollection(
-    Query$NotificationTypesCollection$notificationTypeCollection instance,
-    TRes Function(Query$NotificationTypesCollection$notificationTypeCollection)
+  factory CopyWith$Query$NotificationTypesCollection$notificationTypesCollection(
+    Query$NotificationTypesCollection$notificationTypesCollection instance,
+    TRes Function(Query$NotificationTypesCollection$notificationTypesCollection)
         then,
-  ) = _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection;
+  ) = _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection;
 
-  factory CopyWith$Query$NotificationTypesCollection$notificationTypeCollection.stub(
+  factory CopyWith$Query$NotificationTypesCollection$notificationTypesCollection.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection;
+      _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection;
 
   TRes call({
-    List<Query$NotificationTypesCollection$notificationTypeCollection$edges>?
+    List<Query$NotificationTypesCollection$notificationTypesCollection$edges>?
         edges,
-    Query$NotificationTypesCollection$notificationTypeCollection$pageInfo?
+    Query$NotificationTypesCollection$notificationTypesCollection$pageInfo?
         pageInfo,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$NotificationTypesCollection$notificationTypeCollection$edges> Function(
+      Iterable<Query$NotificationTypesCollection$notificationTypesCollection$edges> Function(
               Iterable<
-                  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges<
-                      Query$NotificationTypesCollection$notificationTypeCollection$edges>>)
+                  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges<
+                      Query$NotificationTypesCollection$notificationTypesCollection$edges>>)
           _fn);
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
       TRes> get pageInfo;
 }
 
-class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection<
+class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection<
         TRes>
     implements
-        CopyWith$Query$NotificationTypesCollection$notificationTypeCollection<
+        CopyWith$Query$NotificationTypesCollection$notificationTypesCollection<
             TRes> {
-  _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection(
+  _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection(
     this._instance,
     this._then,
   );
 
-  final Query$NotificationTypesCollection$notificationTypeCollection _instance;
+  final Query$NotificationTypesCollection$notificationTypesCollection _instance;
 
   final TRes Function(
-      Query$NotificationTypesCollection$notificationTypeCollection) _then;
+      Query$NotificationTypesCollection$notificationTypesCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -3105,55 +3085,55 @@ class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection
     Object? pageInfo = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$NotificationTypesCollection$notificationTypeCollection(
+      _then(Query$NotificationTypesCollection$notificationTypesCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
             : (edges as List<
-                Query$NotificationTypesCollection$notificationTypeCollection$edges>),
+                Query$NotificationTypesCollection$notificationTypesCollection$edges>),
         pageInfo: pageInfo == _undefined || pageInfo == null
             ? _instance.pageInfo
             : (pageInfo
-                as Query$NotificationTypesCollection$notificationTypeCollection$pageInfo),
+                as Query$NotificationTypesCollection$notificationTypesCollection$pageInfo),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$NotificationTypesCollection$notificationTypeCollection$edges> Function(
+          Iterable<Query$NotificationTypesCollection$notificationTypesCollection$edges> Function(
                   Iterable<
-                      CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges<
-                          Query$NotificationTypesCollection$notificationTypeCollection$edges>>)
+                      CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges<
+                          Query$NotificationTypesCollection$notificationTypesCollection$edges>>)
               _fn) =>
       call(
           edges: _fn(_instance.edges.map((e) =>
-              CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges(
+              CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges(
                 e,
                 (i) => i,
               ))).toList());
 
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
       TRes> get pageInfo {
     final local$pageInfo = _instance.pageInfo;
-    return CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo(
+    return CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo(
         local$pageInfo, (e) => call(pageInfo: e));
   }
 }
 
-class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection<
+class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection<
         TRes>
     implements
-        CopyWith$Query$NotificationTypesCollection$notificationTypeCollection<
+        CopyWith$Query$NotificationTypesCollection$notificationTypesCollection<
             TRes> {
-  _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection(
+  _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection(
       this._res);
 
   TRes _res;
 
   call({
-    List<Query$NotificationTypesCollection$notificationTypeCollection$edges>?
+    List<Query$NotificationTypesCollection$notificationTypesCollection$edges>?
         edges,
-    Query$NotificationTypesCollection$notificationTypeCollection$pageInfo?
+    Query$NotificationTypesCollection$notificationTypesCollection$pageInfo?
         pageInfo,
     String? $__typename,
   }) =>
@@ -3161,24 +3141,24 @@ class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollec
 
   edges(_fn) => _res;
 
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
           TRes>
       get pageInfo =>
-          CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo
+          CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo
               .stub(_res);
 }
 
-class Query$NotificationTypesCollection$notificationTypeCollection$edges {
-  Query$NotificationTypesCollection$notificationTypeCollection$edges({
+class Query$NotificationTypesCollection$notificationTypesCollection$edges {
+  Query$NotificationTypesCollection$notificationTypesCollection$edges({
     required this.node,
-    this.$__typename = 'NotificationTypeEdge',
+    this.$__typename = 'NotificationTypesEdge',
   });
 
-  factory Query$NotificationTypesCollection$notificationTypeCollection$edges.fromJson(
+  factory Query$NotificationTypesCollection$notificationTypesCollection$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$NotificationTypesCollection$notificationTypeCollection$edges(
+    return Query$NotificationTypesCollection$notificationTypesCollection$edges(
       node:
           Fragment$NotificationType.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
@@ -3213,8 +3193,8 @@ class Query$NotificationTypesCollection$notificationTypeCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other
-            is Query$NotificationTypesCollection$notificationTypeCollection$edges) ||
+    if (other
+            is! Query$NotificationTypesCollection$notificationTypesCollection$edges ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3232,29 +3212,30 @@ class Query$NotificationTypesCollection$notificationTypeCollection$edges {
   }
 }
 
-extension UtilityExtension$Query$NotificationTypesCollection$notificationTypeCollection$edges
-    on Query$NotificationTypesCollection$notificationTypeCollection$edges {
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges<
-          Query$NotificationTypesCollection$notificationTypeCollection$edges>
+extension UtilityExtension$Query$NotificationTypesCollection$notificationTypesCollection$edges
+    on Query$NotificationTypesCollection$notificationTypesCollection$edges {
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges<
+          Query$NotificationTypesCollection$notificationTypesCollection$edges>
       get copyWith =>
-          CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges(
+          CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges<
+abstract class CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges<
     TRes> {
-  factory CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges(
-    Query$NotificationTypesCollection$notificationTypeCollection$edges instance,
+  factory CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges(
+    Query$NotificationTypesCollection$notificationTypesCollection$edges
+        instance,
     TRes Function(
-            Query$NotificationTypesCollection$notificationTypeCollection$edges)
+            Query$NotificationTypesCollection$notificationTypesCollection$edges)
         then,
-  ) = _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection$edges;
+  ) = _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection$edges;
 
-  factory CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges.stub(
+  factory CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection$edges;
+      _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection$edges;
 
   TRes call({
     Fragment$NotificationType? node,
@@ -3263,21 +3244,22 @@ abstract class CopyWith$Query$NotificationTypesCollection$notificationTypeCollec
   CopyWith$Fragment$NotificationType<TRes> get node;
 }
 
-class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection$edges<
+class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection$edges<
         TRes>
     implements
-        CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges<
+        CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges<
             TRes> {
-  _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection$edges(
+  _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Query$NotificationTypesCollection$notificationTypeCollection$edges
+  final Query$NotificationTypesCollection$notificationTypesCollection$edges
       _instance;
 
   final TRes Function(
-      Query$NotificationTypesCollection$notificationTypeCollection$edges) _then;
+          Query$NotificationTypesCollection$notificationTypesCollection$edges)
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -3285,7 +3267,7 @@ class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$NotificationTypesCollection$notificationTypeCollection$edges(
+      _then(Query$NotificationTypesCollection$notificationTypesCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$NotificationType),
@@ -3300,12 +3282,12 @@ class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection
   }
 }
 
-class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection$edges<
+class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection$edges<
         TRes>
     implements
-        CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$edges<
+        CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$edges<
             TRes> {
-  _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection$edges(
+  _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection$edges(
       this._res);
 
   TRes _res;
@@ -3320,8 +3302,8 @@ class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollec
       CopyWith$Fragment$NotificationType.stub(_res);
 }
 
-class Query$NotificationTypesCollection$notificationTypeCollection$pageInfo {
-  Query$NotificationTypesCollection$notificationTypeCollection$pageInfo({
+class Query$NotificationTypesCollection$notificationTypesCollection$pageInfo {
+  Query$NotificationTypesCollection$notificationTypesCollection$pageInfo({
     required this.hasNextPage,
     required this.hasPreviousPage,
     this.startCursor,
@@ -3329,14 +3311,14 @@ class Query$NotificationTypesCollection$notificationTypeCollection$pageInfo {
     this.$__typename = 'PageInfo',
   });
 
-  factory Query$NotificationTypesCollection$notificationTypeCollection$pageInfo.fromJson(
+  factory Query$NotificationTypesCollection$notificationTypesCollection$pageInfo.fromJson(
       Map<String, dynamic> json) {
     final l$hasNextPage = json['hasNextPage'];
     final l$hasPreviousPage = json['hasPreviousPage'];
     final l$startCursor = json['startCursor'];
     final l$endCursor = json['endCursor'];
     final l$$__typename = json['__typename'];
-    return Query$NotificationTypesCollection$notificationTypeCollection$pageInfo(
+    return Query$NotificationTypesCollection$notificationTypesCollection$pageInfo(
       hasNextPage: (l$hasNextPage as bool),
       hasPreviousPage: (l$hasPreviousPage as bool),
       startCursor: (l$startCursor as String?),
@@ -3391,8 +3373,8 @@ class Query$NotificationTypesCollection$notificationTypeCollection$pageInfo {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other
-            is Query$NotificationTypesCollection$notificationTypeCollection$pageInfo) ||
+    if (other
+            is! Query$NotificationTypesCollection$notificationTypesCollection$pageInfo ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3425,30 +3407,30 @@ class Query$NotificationTypesCollection$notificationTypeCollection$pageInfo {
   }
 }
 
-extension UtilityExtension$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo
-    on Query$NotificationTypesCollection$notificationTypeCollection$pageInfo {
-  CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
-          Query$NotificationTypesCollection$notificationTypeCollection$pageInfo>
+extension UtilityExtension$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo
+    on Query$NotificationTypesCollection$notificationTypesCollection$pageInfo {
+  CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
+          Query$NotificationTypesCollection$notificationTypesCollection$pageInfo>
       get copyWith =>
-          CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo(
+          CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+abstract class CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
     TRes> {
-  factory CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo(
-    Query$NotificationTypesCollection$notificationTypeCollection$pageInfo
+  factory CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo(
+    Query$NotificationTypesCollection$notificationTypesCollection$pageInfo
         instance,
     TRes Function(
-            Query$NotificationTypesCollection$notificationTypeCollection$pageInfo)
+            Query$NotificationTypesCollection$notificationTypesCollection$pageInfo)
         then,
-  ) = _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo;
+  ) = _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo;
 
-  factory CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo.stub(
+  factory CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo;
+      _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo;
 
   TRes call({
     bool? hasNextPage,
@@ -3459,21 +3441,21 @@ abstract class CopyWith$Query$NotificationTypesCollection$notificationTypeCollec
   });
 }
 
-class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
         TRes>
     implements
-        CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+        CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
             TRes> {
-  _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo(
+  _CopyWithImpl$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo(
     this._instance,
     this._then,
   );
 
-  final Query$NotificationTypesCollection$notificationTypeCollection$pageInfo
+  final Query$NotificationTypesCollection$notificationTypesCollection$pageInfo
       _instance;
 
   final TRes Function(
-          Query$NotificationTypesCollection$notificationTypeCollection$pageInfo)
+          Query$NotificationTypesCollection$notificationTypesCollection$pageInfo)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -3486,7 +3468,7 @@ class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Query$NotificationTypesCollection$notificationTypeCollection$pageInfo(
+          Query$NotificationTypesCollection$notificationTypesCollection$pageInfo(
         hasNextPage: hasNextPage == _undefined || hasNextPage == null
             ? _instance.hasNextPage
             : (hasNextPage as bool),
@@ -3506,12 +3488,12 @@ class _CopyWithImpl$Query$NotificationTypesCollection$notificationTypeCollection
       ));
 }
 
-class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+class _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
         TRes>
     implements
-        CopyWith$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo<
+        CopyWith$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo<
             TRes> {
-  _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypeCollection$pageInfo(
+  _CopyWithStubImpl$Query$NotificationTypesCollection$notificationTypesCollection$pageInfo(
       this._res);
 
   TRes _res;

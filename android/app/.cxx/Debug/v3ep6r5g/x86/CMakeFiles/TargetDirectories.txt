@@ -1,0 +1,2 @@
+/Users/gqadonis/Projects/TribeMedia/firefit_flutter/android/app/.cxx/Debug/v3ep6r5g/x86/CMakeFiles/edit_cache.dir
+/Users/gqadonis/Projects/TribeMedia/firefit_flutter/android/app/.cxx/Debug/v3ep6r5g/x86/CMakeFiles/rebuild_cache.dir

@@ -11,14 +11,12 @@ sealed class HomeStateData {
 
 class HomeStateModel {
   HomeStateModel({
-    this.firstResponder,
     this.user,
     this.error,
     this.isLoading = false,
   });
 
-  final FirstResponder? firstResponder;
-  final User? user;
+  final AuthUser? user;
   final String? error;
   final bool isLoading;
 }
@@ -43,30 +41,13 @@ class HomeStateNotifier extends AsyncNotifier<HomeStateModel> {
       return model;
     }
 
-    final firstResponderResult = await stationRepository.queryFirstResponders(
-      filter: Input$FirstResponderFilter(
-        userId: Input$UUIDFilter(eq: currentUser.id),
-      ),
+    final model = HomeStateModel(
+      user: currentUser,
+      error: null,
+      isLoading: false,
     );
-
-    return firstResponderResult.fold(
-        (l) {
-          final model = HomeStateModel(
-            error: l.error,
-          );
-          state = AsyncValue.data(model);
-          return model;
-        },
-        (r) {
-          final responder = r.first;
-          final model = HomeStateModel(
-            firstResponder: responder,
-            user: currentUser,
-          );
-          state = AsyncValue.data(model);
-          return model;
-        },
-    );
+    state = AsyncValue.data(model);
+    return model;
   }
 
   @override

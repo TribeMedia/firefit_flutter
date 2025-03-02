@@ -9,12 +9,12 @@ abstract class UserRepositoryInterface {
     int? last,
     String? before,
     String? after,
-    Input$UserFilter? filter,
-    List<Input$UserOrderBy>? orderBy,
+    Input$UsersFilter? filter,
+    List<Input$UsersOrderBy>? orderBy,
   });
 
   Future<Either<Failure, User>> createUser(
-      {required Input$UserInsertInput input});
+      {required Input$UsersInsertInput input});
   Future<Either<Failure, User>> updateUser(
-      {required String id, required Input$UserUpdateInput input});
+      {required String id, required Input$UsersUpdateInput input});
 }

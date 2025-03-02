@@ -7,11 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-final menuItemProvider = FutureProvider.family<MenuItem?, String>(
+final menuItemProvider = FutureProvider.family<Product?, String>(
         (ref, id) async {
-          final repository = ref.read(menuRepositoryProvider);
-          final result = await repository.queryMenuItems(
-            filter: Input$MenuItemFilter(
+          final repository = ref.read(productRepositoryProvider);
+          final result = await repository.queryProducts(
+            filter: Input$ProductsFilter(
               id: Input$UUIDFilter(eq: id),
             ),
           );
@@ -53,7 +53,7 @@ class MenuItemDetailPage extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.network(
-                  menuItem.imageUrl ?? 'https://via.placeholder.com/400x200',
+                  menuItem.photoUrl ?? 'https://via.placeholder.com/400x200',
                   width: double.infinity,
                   height: 200,
                   fit: BoxFit.cover,
@@ -66,12 +66,12 @@ class MenuItemDetailPage extends HookConsumerWidget {
                       Text(menuItem.name, style: shadTheme.textTheme.h2),
                       SizedBox(height: 8),
                       Text(
-                        menuItem.notes ?? 'No description available',
+                        menuItem.shortDescription ?? 'No description available',
                         style: shadTheme.textTheme.p,
                       ),
                       SizedBox(height: 16),
                       Text(
-                        'Price: \$${menuItem.price.toStringAsFixed(2)}',
+                        'Price: \$${menuItem.unitPrice.toStringAsFixed(2)}',
                         style: shadTheme.textTheme.h4.copyWith(
                           color: shadTheme.colorScheme.primary,
                         ),
@@ -96,14 +96,13 @@ class MenuItemDetailPage extends HookConsumerWidget {
   Widget _buildCartButtons(
       BuildContext context,
       WidgetRef ref,
-      MenuItem item,
+      Product item,
       ShoppingCartNotifier cartNotifier,
       AsyncValue<ShoppingCartModel> cartState,
       ) {
     final shadTheme = ShadTheme.of(context);
     final itemInCart = cartState.value?.items.firstWhere(
           (cartItem) => cartItem.id == item.id,
-      orElse: () => CartItem(id: '', name: '', price: 0, quantity: 0),
     );
     final itemCount = itemInCart?.quantity ?? 0;
 
@@ -115,7 +114,7 @@ class MenuItemDetailPage extends HookConsumerWidget {
             cartNotifier.addItem(CartItem(
               id: item.id,
               name: item.name,
-              price: item.price,
+              price: item.unitPrice,
               quantity: 1,
             ));
           },

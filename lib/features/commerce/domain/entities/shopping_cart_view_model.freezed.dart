@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,163 +10,32 @@ part of 'shopping_cart_view_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MenuItemViewModel _$MenuItemViewModelFromJson(Map<String, dynamic> json) {
-  return _MenuItemViewModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$MenuItemViewModel {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
-
-  /// Serializes this MenuItemViewModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get id;
+  String get name;
+  double get price;
+  String? get imageUrl;
 
   /// Create a copy of MenuItemViewModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $MenuItemViewModelCopyWith<MenuItemViewModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$MenuItemViewModelCopyWithImpl<MenuItemViewModel>(
+          this as MenuItemViewModel, _$identity);
 
-/// @nodoc
-abstract class $MenuItemViewModelCopyWith<$Res> {
-  factory $MenuItemViewModelCopyWith(
-          MenuItemViewModel value, $Res Function(MenuItemViewModel) then) =
-      _$MenuItemViewModelCopyWithImpl<$Res, MenuItemViewModel>;
-  @useResult
-  $Res call({String id, String name, double price, String? imageUrl});
-}
-
-/// @nodoc
-class _$MenuItemViewModelCopyWithImpl<$Res, $Val extends MenuItemViewModel>
-    implements $MenuItemViewModelCopyWith<$Res> {
-  _$MenuItemViewModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MenuItemViewModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? price = null,
-    Object? imageUrl = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MenuItemViewModelImplCopyWith<$Res>
-    implements $MenuItemViewModelCopyWith<$Res> {
-  factory _$$MenuItemViewModelImplCopyWith(_$MenuItemViewModelImpl value,
-          $Res Function(_$MenuItemViewModelImpl) then) =
-      __$$MenuItemViewModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String id, String name, double price, String? imageUrl});
-}
-
-/// @nodoc
-class __$$MenuItemViewModelImplCopyWithImpl<$Res>
-    extends _$MenuItemViewModelCopyWithImpl<$Res, _$MenuItemViewModelImpl>
-    implements _$$MenuItemViewModelImplCopyWith<$Res> {
-  __$$MenuItemViewModelImplCopyWithImpl(_$MenuItemViewModelImpl _value,
-      $Res Function(_$MenuItemViewModelImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MenuItemViewModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? price = null,
-    Object? imageUrl = freezed,
-  }) {
-    return _then(_$MenuItemViewModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MenuItemViewModelImpl implements _MenuItemViewModel {
-  const _$MenuItemViewModelImpl(
-      {required this.id,
-      required this.name,
-      required this.price,
-      this.imageUrl});
-
-  factory _$MenuItemViewModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MenuItemViewModelImplFromJson(json);
-
-  @override
-  final String id;
-  @override
-  final String name;
-  @override
-  final double price;
-  @override
-  final String? imageUrl;
-
-  @override
-  String toString() {
-    return 'MenuItemViewModel(id: $id, name: $name, price: $price, imageUrl: $imageUrl)';
-  }
+  /// Serializes this MenuItemViewModel to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MenuItemViewModelImpl &&
+            other is MenuItemViewModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
@@ -177,142 +47,216 @@ class _$MenuItemViewModelImpl implements _MenuItemViewModel {
   @override
   int get hashCode => Object.hash(runtimeType, id, name, price, imageUrl);
 
-  /// Create a copy of MenuItemViewModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MenuItemViewModelImplCopyWith<_$MenuItemViewModelImpl> get copyWith =>
-      __$$MenuItemViewModelImplCopyWithImpl<_$MenuItemViewModelImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MenuItemViewModelImplToJson(
-      this,
-    );
+  String toString() {
+    return 'MenuItemViewModel(id: $id, name: $name, price: $price, imageUrl: $imageUrl)';
   }
 }
 
-abstract class _MenuItemViewModel implements MenuItemViewModel {
-  const factory _MenuItemViewModel(
-      {required final String id,
-      required final String name,
-      required final double price,
-      final String? imageUrl}) = _$MenuItemViewModelImpl;
+/// @nodoc
+abstract mixin class $MenuItemViewModelCopyWith<$Res> {
+  factory $MenuItemViewModelCopyWith(
+          MenuItemViewModel value, $Res Function(MenuItemViewModel) _then) =
+      _$MenuItemViewModelCopyWithImpl;
+  @useResult
+  $Res call({String id, String name, double price, String? imageUrl});
+}
 
-  factory _MenuItemViewModel.fromJson(Map<String, dynamic> json) =
-      _$MenuItemViewModelImpl.fromJson;
+/// @nodoc
+class _$MenuItemViewModelCopyWithImpl<$Res>
+    implements $MenuItemViewModelCopyWith<$Res> {
+  _$MenuItemViewModelCopyWithImpl(this._self, this._then);
+
+  final MenuItemViewModel _self;
+  final $Res Function(MenuItemViewModel) _then;
+
+  /// Create a copy of MenuItemViewModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? price = null,
+    Object? imageUrl = freezed,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _self.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      imageUrl: freezed == imageUrl
+          ? _self.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _MenuItemViewModel implements MenuItemViewModel {
+  const _MenuItemViewModel(
+      {required this.id,
+      required this.name,
+      required this.price,
+      this.imageUrl});
+  factory _MenuItemViewModel.fromJson(Map<String, dynamic> json) =>
+      _$MenuItemViewModelFromJson(json);
 
   @override
-  String get id;
+  final String id;
   @override
-  String get name;
+  final String name;
   @override
-  double get price;
+  final double price;
   @override
-  String? get imageUrl;
+  final String? imageUrl;
 
   /// Create a copy of MenuItemViewModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MenuItemViewModelImplCopyWith<_$MenuItemViewModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$MenuItemViewModelCopyWith<_MenuItemViewModel> get copyWith =>
+      __$MenuItemViewModelCopyWithImpl<_MenuItemViewModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MenuItemViewModelToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MenuItemViewModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, price, imageUrl);
+
+  @override
+  String toString() {
+    return 'MenuItemViewModel(id: $id, name: $name, price: $price, imageUrl: $imageUrl)';
+  }
 }
 
-ShoppingCartViewModel _$ShoppingCartViewModelFromJson(
-    Map<String, dynamic> json) {
-  return _ShoppingCartViewModel.fromJson(json);
+/// @nodoc
+abstract mixin class _$MenuItemViewModelCopyWith<$Res>
+    implements $MenuItemViewModelCopyWith<$Res> {
+  factory _$MenuItemViewModelCopyWith(
+          _MenuItemViewModel value, $Res Function(_MenuItemViewModel) _then) =
+      __$MenuItemViewModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String id, String name, double price, String? imageUrl});
+}
+
+/// @nodoc
+class __$MenuItemViewModelCopyWithImpl<$Res>
+    implements _$MenuItemViewModelCopyWith<$Res> {
+  __$MenuItemViewModelCopyWithImpl(this._self, this._then);
+
+  final _MenuItemViewModel _self;
+  final $Res Function(_MenuItemViewModel) _then;
+
+  /// Create a copy of MenuItemViewModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? price = null,
+    Object? imageUrl = freezed,
+  }) {
+    return _then(_MenuItemViewModel(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _self.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      imageUrl: freezed == imageUrl
+          ? _self.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$ShoppingCartViewModel {
-  String get id => throw _privateConstructorUsedError;
-  List<MenuItemViewModel> get items => throw _privateConstructorUsedError;
-  double? get subtotal => throw _privateConstructorUsedError;
-  double? get total => throw _privateConstructorUsedError;
-  int? get itemCount => throw _privateConstructorUsedError;
-
-  /// Serializes this ShoppingCartViewModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get id;
+  List<MenuItemViewModel> get items;
+  double? get subtotal;
+  double? get total;
+  int? get itemCount;
 
   /// Create a copy of ShoppingCartViewModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShoppingCartViewModelCopyWith<ShoppingCartViewModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ShoppingCartViewModelCopyWith<$Res> {
-  factory $ShoppingCartViewModelCopyWith(ShoppingCartViewModel value,
-          $Res Function(ShoppingCartViewModel) then) =
-      _$ShoppingCartViewModelCopyWithImpl<$Res, ShoppingCartViewModel>;
-  @useResult
-  $Res call(
-      {String id,
-      List<MenuItemViewModel> items,
-      double? subtotal,
-      double? total,
-      int? itemCount});
-}
-
-/// @nodoc
-class _$ShoppingCartViewModelCopyWithImpl<$Res,
-        $Val extends ShoppingCartViewModel>
-    implements $ShoppingCartViewModelCopyWith<$Res> {
-  _$ShoppingCartViewModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ShoppingCartViewModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $ShoppingCartViewModelCopyWith<ShoppingCartViewModel> get copyWith =>
+      _$ShoppingCartViewModelCopyWithImpl<ShoppingCartViewModel>(
+          this as ShoppingCartViewModel, _$identity);
+
+  /// Serializes this ShoppingCartViewModel to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? items = null,
-    Object? subtotal = freezed,
-    Object? total = freezed,
-    Object? itemCount = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<MenuItemViewModel>,
-      subtotal: freezed == subtotal
-          ? _value.subtotal
-          : subtotal // ignore: cast_nullable_to_non_nullable
-              as double?,
-      total: freezed == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as double?,
-      itemCount: freezed == itemCount
-          ? _value.itemCount
-          : itemCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ShoppingCartViewModel &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other.items, items) &&
+            (identical(other.subtotal, subtotal) ||
+                other.subtotal == subtotal) &&
+            (identical(other.total, total) || other.total == total) &&
+            (identical(other.itemCount, itemCount) ||
+                other.itemCount == itemCount));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id,
+      const DeepCollectionEquality().hash(items), subtotal, total, itemCount);
+
+  @override
+  String toString() {
+    return 'ShoppingCartViewModel(id: $id, items: $items, subtotal: $subtotal, total: $total, itemCount: $itemCount)';
   }
 }
 
 /// @nodoc
-abstract class _$$ShoppingCartViewModelImplCopyWith<$Res>
-    implements $ShoppingCartViewModelCopyWith<$Res> {
-  factory _$$ShoppingCartViewModelImplCopyWith(
-          _$ShoppingCartViewModelImpl value,
-          $Res Function(_$ShoppingCartViewModelImpl) then) =
-      __$$ShoppingCartViewModelImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ShoppingCartViewModelCopyWith<$Res> {
+  factory $ShoppingCartViewModelCopyWith(ShoppingCartViewModel value,
+          $Res Function(ShoppingCartViewModel) _then) =
+      _$ShoppingCartViewModelCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -323,13 +267,12 @@ abstract class _$$ShoppingCartViewModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShoppingCartViewModelImplCopyWithImpl<$Res>
-    extends _$ShoppingCartViewModelCopyWithImpl<$Res,
-        _$ShoppingCartViewModelImpl>
-    implements _$$ShoppingCartViewModelImplCopyWith<$Res> {
-  __$$ShoppingCartViewModelImplCopyWithImpl(_$ShoppingCartViewModelImpl _value,
-      $Res Function(_$ShoppingCartViewModelImpl) _then)
-      : super(_value, _then);
+class _$ShoppingCartViewModelCopyWithImpl<$Res>
+    implements $ShoppingCartViewModelCopyWith<$Res> {
+  _$ShoppingCartViewModelCopyWithImpl(this._self, this._then);
+
+  final ShoppingCartViewModel _self;
+  final $Res Function(ShoppingCartViewModel) _then;
 
   /// Create a copy of ShoppingCartViewModel
   /// with the given fields replaced by the non-null parameter values.
@@ -342,25 +285,25 @@ class __$$ShoppingCartViewModelImplCopyWithImpl<$Res>
     Object? total = freezed,
     Object? itemCount = freezed,
   }) {
-    return _then(_$ShoppingCartViewModelImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       items: null == items
-          ? _value._items
+          ? _self.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<MenuItemViewModel>,
       subtotal: freezed == subtotal
-          ? _value.subtotal
+          ? _self.subtotal
           : subtotal // ignore: cast_nullable_to_non_nullable
               as double?,
       total: freezed == total
-          ? _value.total
+          ? _self.total
           : total // ignore: cast_nullable_to_non_nullable
               as double?,
       itemCount: freezed == itemCount
-          ? _value.itemCount
+          ? _self.itemCount
           : itemCount // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
@@ -369,17 +312,16 @@ class __$$ShoppingCartViewModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ShoppingCartViewModelImpl implements _ShoppingCartViewModel {
-  const _$ShoppingCartViewModelImpl(
+class _ShoppingCartViewModel implements ShoppingCartViewModel {
+  const _ShoppingCartViewModel(
       {required this.id,
       required final List<MenuItemViewModel> items,
       this.subtotal,
       this.total,
       this.itemCount})
       : _items = items;
-
-  factory _$ShoppingCartViewModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShoppingCartViewModelImplFromJson(json);
+  factory _ShoppingCartViewModel.fromJson(Map<String, dynamic> json) =>
+      _$ShoppingCartViewModelFromJson(json);
 
   @override
   final String id;
@@ -398,16 +340,27 @@ class _$ShoppingCartViewModelImpl implements _ShoppingCartViewModel {
   @override
   final int? itemCount;
 
+  /// Create a copy of ShoppingCartViewModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ShoppingCartViewModel(id: $id, items: $items, subtotal: $subtotal, total: $total, itemCount: $itemCount)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ShoppingCartViewModelCopyWith<_ShoppingCartViewModel> get copyWith =>
+      __$ShoppingCartViewModelCopyWithImpl<_ShoppingCartViewModel>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ShoppingCartViewModelToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShoppingCartViewModelImpl &&
+            other is _ShoppingCartViewModel &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.subtotal, subtotal) ||
@@ -422,49 +375,70 @@ class _$ShoppingCartViewModelImpl implements _ShoppingCartViewModel {
   int get hashCode => Object.hash(runtimeType, id,
       const DeepCollectionEquality().hash(_items), subtotal, total, itemCount);
 
-  /// Create a copy of ShoppingCartViewModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ShoppingCartViewModelImplCopyWith<_$ShoppingCartViewModelImpl>
-      get copyWith => __$$ShoppingCartViewModelImplCopyWithImpl<
-          _$ShoppingCartViewModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ShoppingCartViewModelImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ShoppingCartViewModel(id: $id, items: $items, subtotal: $subtotal, total: $total, itemCount: $itemCount)';
   }
 }
 
-abstract class _ShoppingCartViewModel implements ShoppingCartViewModel {
-  const factory _ShoppingCartViewModel(
-      {required final String id,
-      required final List<MenuItemViewModel> items,
-      final double? subtotal,
-      final double? total,
-      final int? itemCount}) = _$ShoppingCartViewModelImpl;
+/// @nodoc
+abstract mixin class _$ShoppingCartViewModelCopyWith<$Res>
+    implements $ShoppingCartViewModelCopyWith<$Res> {
+  factory _$ShoppingCartViewModelCopyWith(_ShoppingCartViewModel value,
+          $Res Function(_ShoppingCartViewModel) _then) =
+      __$ShoppingCartViewModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      List<MenuItemViewModel> items,
+      double? subtotal,
+      double? total,
+      int? itemCount});
+}
 
-  factory _ShoppingCartViewModel.fromJson(Map<String, dynamic> json) =
-      _$ShoppingCartViewModelImpl.fromJson;
+/// @nodoc
+class __$ShoppingCartViewModelCopyWithImpl<$Res>
+    implements _$ShoppingCartViewModelCopyWith<$Res> {
+  __$ShoppingCartViewModelCopyWithImpl(this._self, this._then);
 
-  @override
-  String get id;
-  @override
-  List<MenuItemViewModel> get items;
-  @override
-  double? get subtotal;
-  @override
-  double? get total;
-  @override
-  int? get itemCount;
+  final _ShoppingCartViewModel _self;
+  final $Res Function(_ShoppingCartViewModel) _then;
 
   /// Create a copy of ShoppingCartViewModel
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShoppingCartViewModelImplCopyWith<_$ShoppingCartViewModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? items = null,
+    Object? subtotal = freezed,
+    Object? total = freezed,
+    Object? itemCount = freezed,
+  }) {
+    return _then(_ShoppingCartViewModel(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      items: null == items
+          ? _self._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<MenuItemViewModel>,
+      subtotal: freezed == subtotal
+          ? _self.subtotal
+          : subtotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      total: freezed == total
+          ? _self.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as double?,
+      itemCount: freezed == itemCount
+          ? _self.itemCount
+          : itemCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
+
+// dart format on

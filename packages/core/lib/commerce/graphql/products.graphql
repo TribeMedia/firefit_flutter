@@ -1,0 +1,75 @@
+
+fragment Product on Products {
+    id
+    productTypeId
+    name
+    shortDescription
+    longDescription
+    photoUrl
+    data
+    createdAt
+    updatedAt
+    unitPrice
+    unit
+    instructions
+}
+
+query ProductCollection(
+  $first: Int
+  $last: Int
+  $before: Cursor
+  $after: Cursor
+  $filter: ProductsFilter
+  $orderBy: [ProductsOrderBy!]
+) {
+  productsCollection(
+    first: $first
+    last: $last
+    before: $before
+    after: $after
+    filter: $filter
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...Product
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
+
+mutation CreateProduct($input: ProductsInsertInput!) {
+  insertIntoProductsCollection(objects: [$input]) {
+    records {
+      ...Product
+    }
+    affectedCount
+  }
+}
+
+mutation UpdateProduct($id: UUID!, $input: ProductsUpdateInput!) {
+  updateProductsCollection(
+    filter: { id: { eq: $id } }
+    set: $input
+  ) {
+    records {
+      ...Product
+    }
+    affectedCount
+  }
+}
+
+mutation DeleteProduct($id: UUID!) {
+  deleteFromProductsCollection(filter: { id: { eq: $id } }) {
+    records {
+      ...Product
+    }
+    affectedCount
+  }
+}

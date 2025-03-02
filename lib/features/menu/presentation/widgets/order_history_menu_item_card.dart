@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class OrderHistoryMenuItemCard extends HookConsumerWidget {
-  final MenuItem menuItem;
+  final Product menuItem;
   final DateTime lastOrderDate;
   final VoidCallback onReorder;
 
@@ -27,7 +27,7 @@ class OrderHistoryMenuItemCard extends HookConsumerWidget {
             child: Stack(
               children: [
                 Image.network(
-                  menuItem.imageUrl ?? 'https://via.placeholder.com/300x200',
+                  menuItem.photoUrl ?? 'https://via.placeholder.com/300x200',
                   height: 150,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -67,7 +67,7 @@ class OrderHistoryMenuItemCard extends HookConsumerWidget {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  menuItem.notes ?? 'No description available',
+                  menuItem.shortDescription ?? 'No description available',
                   style: shadTheme.textTheme.p,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -77,7 +77,7 @@ class OrderHistoryMenuItemCard extends HookConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '\$${menuItem.price.toStringAsFixed(2)}',
+                      '\$${menuItem.unitPrice.toStringAsFixed(2)}',
                       style: shadTheme.textTheme.h4.copyWith(
                         color: shadTheme.colorScheme.primary,
                         fontWeight: FontWeight.bold,

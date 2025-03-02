@@ -10,60 +10,37 @@ abstract class OrderRepositoryInterface {
     int? last,
     String? before,
     String? after,
-    Input$OrderFilter? filter,
-    List<Input$OrderOrderBy>? orderBy,
+    Input$OrdersFilter? filter,
+    List<Input$OrdersOrderBy>? orderBy,
   });
 
   Future<fp.Either<Failure, Order>> createOrder(
-      {required Input$OrderInsertInput input});
+      {required Input$OrdersInsertInput input});
 
   Future<fp.Either<Failure, ShoppingCart>> createShoppingCart(
-      {required Input$ShoppingCartInsertInput input});
+      {required Input$ShoppingCartsInsertInput input});
 
-  Future<fp.Either<Failure, ShoppingCartMenuItem>> createShoppingCartMenuItem(
-      {required Input$ShoppingCartMenuItemInsertInput input});
+  Future<fp.Either<Failure, ShoppingCartItem>> createShoppingCartItem(
+      {required Input$ShoppingCartItemsInsertInput input});
+
+  Future<fp.Either<Failure, ShoppingCartItem>> createShoppingCartMenuItem(
+      {required Input$ShoppingCartItemsInsertInput input});
 
   Future<fp.Either<Failure, ShoppingCart>> deleteShoppingCart(
       {required String id});
 
   Future<fp.Either<Failure, ShoppingCart>> updateShoppingCart(
-      {required String id, required Input$ShoppingCartUpdateInput input});
+      {required String id, required Input$ShoppingCartsUpdateInput input});
 
-  Future<fp.Either<Failure, ShoppingCartMenuItem>> deleteShoppingCartMenuItem(
+  Future<fp.Either<Failure, ShoppingCartItem>> deleteShoppingCartMenuItem(
       {required String id});
-
-  Future<fp.Either<Failure, Order>> placeOrder({
-    required String shoppingCartId,
-    required String paymentInfoId,
-  });
-
-  Future<fp.Either<Failure, List<PaymentInfo>>> queryPaymentInfo({
-    int? first,
-    int? last,
-    String? before,
-    String? after,
-    Input$PaymentInfoFilter? filter,
-    List<Input$PaymentInfoOrderBy>? orderBy,
-  });
-
-  Future<fp.Either<Failure, List<PaymentType>>> queryPaymentType({
-    int? first,
-    int? last,
-    String? before,
-    String? after,
-    Input$PaymentTypeFilter? filter,
-    List<Input$PaymentTypeOrderBy>? orderBy,
-  });
 
   Future<fp.Either<Failure, List<ShoppingCart>>> queryShoppingCarts({
     int? first,
     int? last,
     String? before,
     String? after,
-    Input$ShoppingCartFilter? filter,
-    List<Input$ShoppingCartOrderBy>? orderBy,
+    Input$ShoppingCartsFilter? filter,
+    List<Input$ShoppingCartsOrderBy>? orderBy,
   });
-
-  Future<fp.Either<Failure, PaymentInfo>> createPaymentInfo(
-      {required Input$PaymentInfoInsertInput input});
 }

@@ -50,7 +50,7 @@ class MenuScreen extends HookConsumerWidget {
                 ref.refresh(menuControllerProvider(globalProviderId)),
           ),
         ),
-        data: (menuViewModel) => menuViewModel.menus.isEmpty
+        data: (menuViewModel) => menuViewModel.products.isEmpty
             ? const EmptyViewState(
                 title: 'No Menu Items Available',
                 message: 'There are currently no items on the menu.',
@@ -59,7 +59,7 @@ class MenuScreen extends HookConsumerWidget {
             : SafeArea(
                 child: ListView.builder(
                   padding: const EdgeInsets.all(kPagePadding),
-                  itemCount: menuViewModel.menus.length,
+                  itemCount: menuViewModel.products.length,
                   itemBuilder: (context, index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +68,7 @@ class MenuScreen extends HookConsumerWidget {
                         _buildMealTypeSection(
                           context,
                           ref,
-                          menuViewModel.menus[index],
+                          menuViewModel.products,
                         ),
                       ],
                     );
@@ -79,12 +79,12 @@ class MenuScreen extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMealTypeSection(BuildContext context, WidgetRef ref, Menu menu) {
+  Widget _buildMealTypeSection(BuildContext context, WidgetRef ref, List<Product> products) {
     final theme = Theme.of(context);
 
     return ShadCard(
       title: Text(
-        menu.name,
+        'Menu',
         style: theme.textTheme.titleLarge?.copyWith(
           fontWeight: FontWeight.bold,
           color: theme.colorScheme.primary,
@@ -94,10 +94,10 @@ class MenuScreen extends HookConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ...menu.menuItemCollection?.edges
+          ...products
                   .map((e) => Padding(
                         padding: const EdgeInsets.only(bottom: 16),
-                        child: _buildMenuItem(context, ref, e.node),
+                        child: _buildMenuItem(context, ref, e),
                       ))
                   .toList() ??
               [],
@@ -106,7 +106,7 @@ class MenuScreen extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMenuItem(BuildContext context, WidgetRef ref, MenuItem item) {
+  Widget _buildMenuItem(BuildContext context, WidgetRef ref, Product item) {
     final theme = Theme.of(context);
     final cartNotifier = ref.watch(shoppingCartProvider.notifier);
     final cartState = ref.watch(shoppingCartProvider);
@@ -132,11 +132,11 @@ class MenuScreen extends HookConsumerWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (item.imageUrl != null)
+                    if (item.photoUrl != null)
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.network(
-                          item.imageUrl!,
+                          item.photoUrl!,
                           width: kImageSize,
                           height: kImageSize,
                           fit: BoxFit.cover,
@@ -163,10 +163,10 @@ class MenuScreen extends HookConsumerWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          if (item.notes != null) ...[
+                          if (item.shortDescription != null) ...[
                             const SizedBox(height: 4),
                             Text(
-                              item.notes!,
+                              item.shortDescription!,
                               style: theme.textTheme.bodyMedium,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -183,7 +183,7 @@ class MenuScreen extends HookConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '\$${item.price.toStringAsFixed(2)}',
+                      '\$${item.unitPrice.toStringAsFixed(2)}',
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: theme.colorScheme.primary,
                         fontWeight: FontWeight.bold,
@@ -243,7 +243,7 @@ class MenuScreen extends HookConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     ShoppingCartNotifier cartNotifier,
-    MenuItem item,
+    Product item,
   ) async {
     try {
       ref.read(processingItemProvider.notifier).state = item.id;
@@ -252,9 +252,9 @@ class MenuScreen extends HookConsumerWidget {
       await cartNotifier.addItem(CartItem(
         id: item.id,
         name: item.name,
-        price: item.price,
+        price: item.unitPrice,
         quantity: 1,
-        imageUrl: item.imageUrl,
+        imageUrl: item.photoUrl,
       ));
 
       if (context.mounted) {
@@ -282,7 +282,7 @@ class MenuScreen extends HookConsumerWidget {
     }
   }
 
-  void _handleItemTap(BuildContext context, WidgetRef ref, MenuItem item) {
+  void _handleItemTap(BuildContext context, WidgetRef ref, Product item) {
     try {
       context.go('/menu/item/${item.id}');
     } catch (e) {

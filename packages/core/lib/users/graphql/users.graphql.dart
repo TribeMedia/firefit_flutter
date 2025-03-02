@@ -1,9 +1,6 @@
-import '../../providers/graphql/provider.graphql.dart';
 import '../../schema.graphql.dart';
-import '../../team/graphql/first_responders.graphql.dart';
-import '../../team/graphql/stations.graphql.dart';
+import '../../stations/graphql/stations.graphql.dart';
 import 'dart:async';
-import 'organizations.graphql.dart';
 import 'package:core/scalars.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
@@ -15,21 +12,18 @@ class Fragment$Role {
     required this.id,
     required this.name,
     required this.key,
-    this.schema,
-    this.$__typename = 'Role',
+    this.$__typename = 'Roles',
   });
 
   factory Fragment$Role.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$name = json['name'];
     final l$key = json['key'];
-    final l$schema = json['schema'];
     final l$$__typename = json['__typename'];
     return Fragment$Role(
       id: (l$id as String),
       name: (l$name as String),
       key: (l$key as String),
-      schema: l$schema == null ? null : jsonFieldFromJson(l$schema),
       $__typename: (l$$__typename as String),
     );
   }
@@ -39,8 +33,6 @@ class Fragment$Role {
   final String name;
 
   final String key;
-
-  final Map<String, dynamic>? schema;
 
   final String $__typename;
 
@@ -52,8 +44,6 @@ class Fragment$Role {
     _resultData['name'] = l$name;
     final l$key = key;
     _resultData['key'] = l$key;
-    final l$schema = schema;
-    _resultData['schema'] = l$schema == null ? null : jsonFieldToJson(l$schema);
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -64,13 +54,11 @@ class Fragment$Role {
     final l$id = id;
     final l$name = name;
     final l$key = key;
-    final l$schema = schema;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
       l$name,
       l$key,
-      l$schema,
       l$$__typename,
     ]);
   }
@@ -80,7 +68,7 @@ class Fragment$Role {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$Role) || runtimeType != other.runtimeType) {
+    if (other is! Fragment$Role || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -96,11 +84,6 @@ class Fragment$Role {
     final l$key = key;
     final lOther$key = other.key;
     if (l$key != lOther$key) {
-      return false;
-    }
-    final l$schema = schema;
-    final lOther$schema = other.schema;
-    if (l$schema != lOther$schema) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -132,7 +115,6 @@ abstract class CopyWith$Fragment$Role<TRes> {
     String? id,
     String? name,
     String? key,
-    Map<String, dynamic>? schema,
     String? $__typename,
   });
 }
@@ -154,7 +136,6 @@ class _CopyWithImpl$Fragment$Role<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? key = _undefined,
-    Object? schema = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$Role(
@@ -163,9 +144,6 @@ class _CopyWithImpl$Fragment$Role<TRes>
             ? _instance.name
             : (name as String),
         key: key == _undefined || key == null ? _instance.key : (key as String),
-        schema: schema == _undefined
-            ? _instance.schema
-            : (schema as Map<String, dynamic>?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -182,7 +160,6 @@ class _CopyWithStubImpl$Fragment$Role<TRes>
     String? id,
     String? name,
     String? key,
-    Map<String, dynamic>? schema,
     String? $__typename,
   }) =>
       _res;
@@ -192,7 +169,7 @@ const fragmentDefinitionRole = FragmentDefinitionNode(
   name: NameNode(value: 'Role'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
-    name: NameNode(value: 'Role'),
+    name: NameNode(value: 'Roles'),
     isNonNull: false,
   )),
   directives: [],
@@ -213,13 +190,6 @@ const fragmentDefinitionRole = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'key'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'schema'),
       alias: null,
       arguments: [],
       directives: [],
@@ -279,7 +249,7 @@ class Fragment$UserRole {
     required this.roleId,
     required this.role,
     required this.userId,
-    this.$__typename = 'UserRole',
+    this.$__typename = 'UserRoles',
   });
 
   factory Fragment$UserRole.fromJson(Map<String, dynamic> json) {
@@ -343,7 +313,7 @@ class Fragment$UserRole {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$UserRole) || runtimeType != other.runtimeType) {
+    if (other is! Fragment$UserRole || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -466,7 +436,7 @@ const fragmentDefinitionUserRole = FragmentDefinitionNode(
   name: NameNode(value: 'UserRole'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
-    name: NameNode(value: 'UserRole'),
+    name: NameNode(value: 'UserRoles'),
     isNonNull: false,
   )),
   directives: [],
@@ -560,343 +530,22 @@ extension ClientExtension$Fragment$UserRole on graphql.GraphQLClient {
   }
 }
 
-class Fragment$UserOrganization {
-  Fragment$UserOrganization({
-    required this.id,
-    required this.userId,
-    required this.organizationId,
-    required this.organization,
-    required this.createdAt,
-    this.$__typename = 'UserOrganization',
-  });
-
-  factory Fragment$UserOrganization.fromJson(Map<String, dynamic> json) {
-    final l$id = json['id'];
-    final l$userId = json['userId'];
-    final l$organizationId = json['organizationId'];
-    final l$organization = json['organization'];
-    final l$createdAt = json['createdAt'];
-    final l$$__typename = json['__typename'];
-    return Fragment$UserOrganization(
-      id: (l$id as String),
-      userId: (l$userId as String),
-      organizationId: (l$organizationId as String),
-      organization: Fragment$Organization.fromJson(
-          (l$organization as Map<String, dynamic>)),
-      createdAt: DateTime.parse((l$createdAt as String)),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final String id;
-
-  final String userId;
-
-  final String organizationId;
-
-  final Fragment$Organization organization;
-
-  final DateTime createdAt;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$id = id;
-    _resultData['id'] = l$id;
-    final l$userId = userId;
-    _resultData['userId'] = l$userId;
-    final l$organizationId = organizationId;
-    _resultData['organizationId'] = l$organizationId;
-    final l$organization = organization;
-    _resultData['organization'] = l$organization.toJson();
-    final l$createdAt = createdAt;
-    _resultData['createdAt'] = l$createdAt.toIso8601String();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$userId = userId;
-    final l$organizationId = organizationId;
-    final l$organization = organization;
-    final l$createdAt = createdAt;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$userId,
-      l$organizationId,
-      l$organization,
-      l$createdAt,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Fragment$UserOrganization) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$userId = userId;
-    final lOther$userId = other.userId;
-    if (l$userId != lOther$userId) {
-      return false;
-    }
-    final l$organizationId = organizationId;
-    final lOther$organizationId = other.organizationId;
-    if (l$organizationId != lOther$organizationId) {
-      return false;
-    }
-    final l$organization = organization;
-    final lOther$organization = other.organization;
-    if (l$organization != lOther$organization) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Fragment$UserOrganization
-    on Fragment$UserOrganization {
-  CopyWith$Fragment$UserOrganization<Fragment$UserOrganization> get copyWith =>
-      CopyWith$Fragment$UserOrganization(
-        this,
-        (i) => i,
-      );
-}
-
-abstract class CopyWith$Fragment$UserOrganization<TRes> {
-  factory CopyWith$Fragment$UserOrganization(
-    Fragment$UserOrganization instance,
-    TRes Function(Fragment$UserOrganization) then,
-  ) = _CopyWithImpl$Fragment$UserOrganization;
-
-  factory CopyWith$Fragment$UserOrganization.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$UserOrganization;
-
-  TRes call({
-    String? id,
-    String? userId,
-    String? organizationId,
-    Fragment$Organization? organization,
-    DateTime? createdAt,
-    String? $__typename,
-  });
-  CopyWith$Fragment$Organization<TRes> get organization;
-}
-
-class _CopyWithImpl$Fragment$UserOrganization<TRes>
-    implements CopyWith$Fragment$UserOrganization<TRes> {
-  _CopyWithImpl$Fragment$UserOrganization(
-    this._instance,
-    this._then,
-  );
-
-  final Fragment$UserOrganization _instance;
-
-  final TRes Function(Fragment$UserOrganization) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? userId = _undefined,
-    Object? organizationId = _undefined,
-    Object? organization = _undefined,
-    Object? createdAt = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$UserOrganization(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        userId: userId == _undefined || userId == null
-            ? _instance.userId
-            : (userId as String),
-        organizationId: organizationId == _undefined || organizationId == null
-            ? _instance.organizationId
-            : (organizationId as String),
-        organization: organization == _undefined || organization == null
-            ? _instance.organization
-            : (organization as Fragment$Organization),
-        createdAt: createdAt == _undefined || createdAt == null
-            ? _instance.createdAt
-            : (createdAt as DateTime),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-
-  CopyWith$Fragment$Organization<TRes> get organization {
-    final local$organization = _instance.organization;
-    return CopyWith$Fragment$Organization(
-        local$organization, (e) => call(organization: e));
-  }
-}
-
-class _CopyWithStubImpl$Fragment$UserOrganization<TRes>
-    implements CopyWith$Fragment$UserOrganization<TRes> {
-  _CopyWithStubImpl$Fragment$UserOrganization(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    String? userId,
-    String? organizationId,
-    Fragment$Organization? organization,
-    DateTime? createdAt,
-    String? $__typename,
-  }) =>
-      _res;
-
-  CopyWith$Fragment$Organization<TRes> get organization =>
-      CopyWith$Fragment$Organization.stub(_res);
-}
-
-const fragmentDefinitionUserOrganization = FragmentDefinitionNode(
-  name: NameNode(value: 'UserOrganization'),
-  typeCondition: TypeConditionNode(
-      on: NamedTypeNode(
-    name: NameNode(value: 'UserOrganization'),
-    isNonNull: false,
-  )),
-  directives: [],
-  selectionSet: SelectionSetNode(selections: [
-    FieldNode(
-      name: NameNode(value: 'id'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'userId'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'organizationId'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'organization'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FragmentSpreadNode(
-          name: NameNode(value: 'Organization'),
-          directives: [],
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'createdAt'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: '__typename'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-  ]),
-);
-const documentNodeFragmentUserOrganization = DocumentNode(definitions: [
-  fragmentDefinitionUserOrganization,
-  fragmentDefinitionOrganization,
-  fragmentDefinitionOrganizationType,
-]);
-
-extension ClientExtension$Fragment$UserOrganization on graphql.GraphQLClient {
-  void writeFragment$UserOrganization({
-    required Fragment$UserOrganization data,
-    required Map<String, dynamic> idFields,
-    bool broadcast = true,
-  }) =>
-      this.writeFragment(
-        graphql.FragmentRequest(
-          idFields: idFields,
-          fragment: const graphql.Fragment(
-            fragmentName: 'UserOrganization',
-            document: documentNodeFragmentUserOrganization,
-          ),
-        ),
-        data: data.toJson(),
-        broadcast: broadcast,
-      );
-  Fragment$UserOrganization? readFragment$UserOrganization({
-    required Map<String, dynamic> idFields,
-    bool optimistic = true,
-  }) {
-    final result = this.readFragment(
-      graphql.FragmentRequest(
-        idFields: idFields,
-        fragment: const graphql.Fragment(
-          fragmentName: 'UserOrganization',
-          document: documentNodeFragmentUserOrganization,
-        ),
-      ),
-      optimistic: optimistic,
-    );
-    return result == null ? null : Fragment$UserOrganization.fromJson(result);
-  }
-}
-
 class Fragment$User {
   Fragment$User({
     required this.id,
     required this.email,
-    this.firstName,
-    this.lastName,
-    this.displayName,
-    this.data,
-    this.avatarUrl,
-    this.kratosId,
-    this.supabaseUserId,
-    this.userRoleCollection,
-    this.firstResponderCollection,
-    this.primaryOrganizationId,
-    this.primaryOrganization,
-    this.userOrganizationCollection,
-    this.$__typename = 'User',
+    required this.firstName,
+    required this.lastName,
+    this.metadata,
+    required this.did,
+    required this.handle,
+    required this.pdsUrl,
+    required this.createdAt,
+    this.userRolesCollection,
+    this.primaryStationId,
+    this.primaryStation,
+    this.userStationsCollection,
+    this.$__typename = 'Users',
   });
 
   factory Fragment$User.fromJson(Map<String, dynamic> json) {
@@ -904,44 +553,39 @@ class Fragment$User {
     final l$email = json['email'];
     final l$firstName = json['firstName'];
     final l$lastName = json['lastName'];
-    final l$displayName = json['displayName'];
-    final l$data = json['data'];
-    final l$avatarUrl = json['avatarUrl'];
-    final l$kratosId = json['kratosId'];
-    final l$supabaseUserId = json['supabaseUserId'];
-    final l$userRoleCollection = json['userRoleCollection'];
-    final l$firstResponderCollection = json['firstResponderCollection'];
-    final l$primaryOrganizationId = json['primaryOrganizationId'];
-    final l$primaryOrganization = json['primaryOrganization'];
-    final l$userOrganizationCollection = json['userOrganizationCollection'];
+    final l$metadata = json['metadata'];
+    final l$did = json['did'];
+    final l$handle = json['handle'];
+    final l$pdsUrl = json['pdsUrl'];
+    final l$createdAt = json['createdAt'];
+    final l$userRolesCollection = json['userRolesCollection'];
+    final l$primaryStationId = json['primaryStationId'];
+    final l$primaryStation = json['primaryStation'];
+    final l$userStationsCollection = json['userStationsCollection'];
     final l$$__typename = json['__typename'];
     return Fragment$User(
       id: (l$id as String),
       email: (l$email as String),
-      firstName: (l$firstName as String?),
-      lastName: (l$lastName as String?),
-      displayName: (l$displayName as String?),
-      data: l$data == null ? null : jsonFieldFromJson(l$data),
-      avatarUrl: (l$avatarUrl as String?),
-      kratosId: (l$kratosId as String?),
-      supabaseUserId: (l$supabaseUserId as String?),
-      userRoleCollection: l$userRoleCollection == null
+      firstName: (l$firstName as String),
+      lastName: (l$lastName as String),
+      metadata: l$metadata == null ? null : jsonFieldFromJson(l$metadata),
+      did: (l$did as String),
+      handle: (l$handle as String),
+      pdsUrl: (l$pdsUrl as String),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      userRolesCollection: l$userRolesCollection == null
           ? null
-          : Fragment$User$userRoleCollection.fromJson(
-              (l$userRoleCollection as Map<String, dynamic>)),
-      firstResponderCollection: l$firstResponderCollection == null
+          : Fragment$User$userRolesCollection.fromJson(
+              (l$userRolesCollection as Map<String, dynamic>)),
+      primaryStationId: (l$primaryStationId as String?),
+      primaryStation: l$primaryStation == null
           ? null
-          : Fragment$User$firstResponderCollection.fromJson(
-              (l$firstResponderCollection as Map<String, dynamic>)),
-      primaryOrganizationId: (l$primaryOrganizationId as String?),
-      primaryOrganization: l$primaryOrganization == null
+          : Fragment$Station.fromJson(
+              (l$primaryStation as Map<String, dynamic>)),
+      userStationsCollection: l$userStationsCollection == null
           ? null
-          : Fragment$Organization.fromJson(
-              (l$primaryOrganization as Map<String, dynamic>)),
-      userOrganizationCollection: l$userOrganizationCollection == null
-          ? null
-          : Fragment$User$userOrganizationCollection.fromJson(
-              (l$userOrganizationCollection as Map<String, dynamic>)),
+          : Fragment$User$userStationsCollection.fromJson(
+              (l$userStationsCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -950,29 +594,27 @@ class Fragment$User {
 
   final String email;
 
-  final String? firstName;
+  final String firstName;
 
-  final String? lastName;
+  final String lastName;
 
-  final String? displayName;
+  final Map<String, dynamic>? metadata;
 
-  final Map<String, dynamic>? data;
+  final String did;
 
-  final String? avatarUrl;
+  final String handle;
 
-  final String? kratosId;
+  final String pdsUrl;
 
-  final String? supabaseUserId;
+  final DateTime createdAt;
 
-  final Fragment$User$userRoleCollection? userRoleCollection;
+  final Fragment$User$userRolesCollection? userRolesCollection;
 
-  final Fragment$User$firstResponderCollection? firstResponderCollection;
+  final String? primaryStationId;
 
-  final String? primaryOrganizationId;
+  final Fragment$Station? primaryStation;
 
-  final Fragment$Organization? primaryOrganization;
-
-  final Fragment$User$userOrganizationCollection? userOrganizationCollection;
+  final Fragment$User$userStationsCollection? userStationsCollection;
 
   final String $__typename;
 
@@ -986,28 +628,25 @@ class Fragment$User {
     _resultData['firstName'] = l$firstName;
     final l$lastName = lastName;
     _resultData['lastName'] = l$lastName;
-    final l$displayName = displayName;
-    _resultData['displayName'] = l$displayName;
-    final l$data = data;
-    _resultData['data'] = l$data == null ? null : jsonFieldToJson(l$data);
-    final l$avatarUrl = avatarUrl;
-    _resultData['avatarUrl'] = l$avatarUrl;
-    final l$kratosId = kratosId;
-    _resultData['kratosId'] = l$kratosId;
-    final l$supabaseUserId = supabaseUserId;
-    _resultData['supabaseUserId'] = l$supabaseUserId;
-    final l$userRoleCollection = userRoleCollection;
-    _resultData['userRoleCollection'] = l$userRoleCollection?.toJson();
-    final l$firstResponderCollection = firstResponderCollection;
-    _resultData['firstResponderCollection'] =
-        l$firstResponderCollection?.toJson();
-    final l$primaryOrganizationId = primaryOrganizationId;
-    _resultData['primaryOrganizationId'] = l$primaryOrganizationId;
-    final l$primaryOrganization = primaryOrganization;
-    _resultData['primaryOrganization'] = l$primaryOrganization?.toJson();
-    final l$userOrganizationCollection = userOrganizationCollection;
-    _resultData['userOrganizationCollection'] =
-        l$userOrganizationCollection?.toJson();
+    final l$metadata = metadata;
+    _resultData['metadata'] =
+        l$metadata == null ? null : jsonFieldToJson(l$metadata);
+    final l$did = did;
+    _resultData['did'] = l$did;
+    final l$handle = handle;
+    _resultData['handle'] = l$handle;
+    final l$pdsUrl = pdsUrl;
+    _resultData['pdsUrl'] = l$pdsUrl;
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$userRolesCollection = userRolesCollection;
+    _resultData['userRolesCollection'] = l$userRolesCollection?.toJson();
+    final l$primaryStationId = primaryStationId;
+    _resultData['primaryStationId'] = l$primaryStationId;
+    final l$primaryStation = primaryStation;
+    _resultData['primaryStation'] = l$primaryStation?.toJson();
+    final l$userStationsCollection = userStationsCollection;
+    _resultData['userStationsCollection'] = l$userStationsCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1019,32 +658,30 @@ class Fragment$User {
     final l$email = email;
     final l$firstName = firstName;
     final l$lastName = lastName;
-    final l$displayName = displayName;
-    final l$data = data;
-    final l$avatarUrl = avatarUrl;
-    final l$kratosId = kratosId;
-    final l$supabaseUserId = supabaseUserId;
-    final l$userRoleCollection = userRoleCollection;
-    final l$firstResponderCollection = firstResponderCollection;
-    final l$primaryOrganizationId = primaryOrganizationId;
-    final l$primaryOrganization = primaryOrganization;
-    final l$userOrganizationCollection = userOrganizationCollection;
+    final l$metadata = metadata;
+    final l$did = did;
+    final l$handle = handle;
+    final l$pdsUrl = pdsUrl;
+    final l$createdAt = createdAt;
+    final l$userRolesCollection = userRolesCollection;
+    final l$primaryStationId = primaryStationId;
+    final l$primaryStation = primaryStation;
+    final l$userStationsCollection = userStationsCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
       l$email,
       l$firstName,
       l$lastName,
-      l$displayName,
-      l$data,
-      l$avatarUrl,
-      l$kratosId,
-      l$supabaseUserId,
-      l$userRoleCollection,
-      l$firstResponderCollection,
-      l$primaryOrganizationId,
-      l$primaryOrganization,
-      l$userOrganizationCollection,
+      l$metadata,
+      l$did,
+      l$handle,
+      l$pdsUrl,
+      l$createdAt,
+      l$userRolesCollection,
+      l$primaryStationId,
+      l$primaryStation,
+      l$userStationsCollection,
       l$$__typename,
     ]);
   }
@@ -1054,7 +691,7 @@ class Fragment$User {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$User) || runtimeType != other.runtimeType) {
+    if (other is! Fragment$User || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -1077,54 +714,49 @@ class Fragment$User {
     if (l$lastName != lOther$lastName) {
       return false;
     }
-    final l$displayName = displayName;
-    final lOther$displayName = other.displayName;
-    if (l$displayName != lOther$displayName) {
+    final l$metadata = metadata;
+    final lOther$metadata = other.metadata;
+    if (l$metadata != lOther$metadata) {
       return false;
     }
-    final l$data = data;
-    final lOther$data = other.data;
-    if (l$data != lOther$data) {
+    final l$did = did;
+    final lOther$did = other.did;
+    if (l$did != lOther$did) {
       return false;
     }
-    final l$avatarUrl = avatarUrl;
-    final lOther$avatarUrl = other.avatarUrl;
-    if (l$avatarUrl != lOther$avatarUrl) {
+    final l$handle = handle;
+    final lOther$handle = other.handle;
+    if (l$handle != lOther$handle) {
       return false;
     }
-    final l$kratosId = kratosId;
-    final lOther$kratosId = other.kratosId;
-    if (l$kratosId != lOther$kratosId) {
+    final l$pdsUrl = pdsUrl;
+    final lOther$pdsUrl = other.pdsUrl;
+    if (l$pdsUrl != lOther$pdsUrl) {
       return false;
     }
-    final l$supabaseUserId = supabaseUserId;
-    final lOther$supabaseUserId = other.supabaseUserId;
-    if (l$supabaseUserId != lOther$supabaseUserId) {
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$userRoleCollection = userRoleCollection;
-    final lOther$userRoleCollection = other.userRoleCollection;
-    if (l$userRoleCollection != lOther$userRoleCollection) {
+    final l$userRolesCollection = userRolesCollection;
+    final lOther$userRolesCollection = other.userRolesCollection;
+    if (l$userRolesCollection != lOther$userRolesCollection) {
       return false;
     }
-    final l$firstResponderCollection = firstResponderCollection;
-    final lOther$firstResponderCollection = other.firstResponderCollection;
-    if (l$firstResponderCollection != lOther$firstResponderCollection) {
+    final l$primaryStationId = primaryStationId;
+    final lOther$primaryStationId = other.primaryStationId;
+    if (l$primaryStationId != lOther$primaryStationId) {
       return false;
     }
-    final l$primaryOrganizationId = primaryOrganizationId;
-    final lOther$primaryOrganizationId = other.primaryOrganizationId;
-    if (l$primaryOrganizationId != lOther$primaryOrganizationId) {
+    final l$primaryStation = primaryStation;
+    final lOther$primaryStation = other.primaryStation;
+    if (l$primaryStation != lOther$primaryStation) {
       return false;
     }
-    final l$primaryOrganization = primaryOrganization;
-    final lOther$primaryOrganization = other.primaryOrganization;
-    if (l$primaryOrganization != lOther$primaryOrganization) {
-      return false;
-    }
-    final l$userOrganizationCollection = userOrganizationCollection;
-    final lOther$userOrganizationCollection = other.userOrganizationCollection;
-    if (l$userOrganizationCollection != lOther$userOrganizationCollection) {
+    final l$userStationsCollection = userStationsCollection;
+    final lOther$userStationsCollection = other.userStationsCollection;
+    if (l$userStationsCollection != lOther$userStationsCollection) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1157,24 +789,21 @@ abstract class CopyWith$Fragment$User<TRes> {
     String? email,
     String? firstName,
     String? lastName,
-    String? displayName,
-    Map<String, dynamic>? data,
-    String? avatarUrl,
-    String? kratosId,
-    String? supabaseUserId,
-    Fragment$User$userRoleCollection? userRoleCollection,
-    Fragment$User$firstResponderCollection? firstResponderCollection,
-    String? primaryOrganizationId,
-    Fragment$Organization? primaryOrganization,
-    Fragment$User$userOrganizationCollection? userOrganizationCollection,
+    Map<String, dynamic>? metadata,
+    String? did,
+    String? handle,
+    String? pdsUrl,
+    DateTime? createdAt,
+    Fragment$User$userRolesCollection? userRolesCollection,
+    String? primaryStationId,
+    Fragment$Station? primaryStation,
+    Fragment$User$userStationsCollection? userStationsCollection,
     String? $__typename,
   });
-  CopyWith$Fragment$User$userRoleCollection<TRes> get userRoleCollection;
-  CopyWith$Fragment$User$firstResponderCollection<TRes>
-      get firstResponderCollection;
-  CopyWith$Fragment$Organization<TRes> get primaryOrganization;
-  CopyWith$Fragment$User$userOrganizationCollection<TRes>
-      get userOrganizationCollection;
+  CopyWith$Fragment$User$userRolesCollection<TRes> get userRolesCollection;
+  CopyWith$Fragment$Station<TRes> get primaryStation;
+  CopyWith$Fragment$User$userStationsCollection<TRes>
+      get userStationsCollection;
 }
 
 class _CopyWithImpl$Fragment$User<TRes>
@@ -1195,16 +824,15 @@ class _CopyWithImpl$Fragment$User<TRes>
     Object? email = _undefined,
     Object? firstName = _undefined,
     Object? lastName = _undefined,
-    Object? displayName = _undefined,
-    Object? data = _undefined,
-    Object? avatarUrl = _undefined,
-    Object? kratosId = _undefined,
-    Object? supabaseUserId = _undefined,
-    Object? userRoleCollection = _undefined,
-    Object? firstResponderCollection = _undefined,
-    Object? primaryOrganizationId = _undefined,
-    Object? primaryOrganization = _undefined,
-    Object? userOrganizationCollection = _undefined,
+    Object? metadata = _undefined,
+    Object? did = _undefined,
+    Object? handle = _undefined,
+    Object? pdsUrl = _undefined,
+    Object? createdAt = _undefined,
+    Object? userRolesCollection = _undefined,
+    Object? primaryStationId = _undefined,
+    Object? primaryStation = _undefined,
+    Object? userStationsCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$User(
@@ -1212,83 +840,66 @@ class _CopyWithImpl$Fragment$User<TRes>
         email: email == _undefined || email == null
             ? _instance.email
             : (email as String),
-        firstName: firstName == _undefined
+        firstName: firstName == _undefined || firstName == null
             ? _instance.firstName
-            : (firstName as String?),
-        lastName:
-            lastName == _undefined ? _instance.lastName : (lastName as String?),
-        displayName: displayName == _undefined
-            ? _instance.displayName
-            : (displayName as String?),
-        data: data == _undefined
-            ? _instance.data
-            : (data as Map<String, dynamic>?),
-        avatarUrl: avatarUrl == _undefined
-            ? _instance.avatarUrl
-            : (avatarUrl as String?),
-        kratosId:
-            kratosId == _undefined ? _instance.kratosId : (kratosId as String?),
-        supabaseUserId: supabaseUserId == _undefined
-            ? _instance.supabaseUserId
-            : (supabaseUserId as String?),
-        userRoleCollection: userRoleCollection == _undefined
-            ? _instance.userRoleCollection
-            : (userRoleCollection as Fragment$User$userRoleCollection?),
-        firstResponderCollection: firstResponderCollection == _undefined
-            ? _instance.firstResponderCollection
-            : (firstResponderCollection
-                as Fragment$User$firstResponderCollection?),
-        primaryOrganizationId: primaryOrganizationId == _undefined
-            ? _instance.primaryOrganizationId
-            : (primaryOrganizationId as String?),
-        primaryOrganization: primaryOrganization == _undefined
-            ? _instance.primaryOrganization
-            : (primaryOrganization as Fragment$Organization?),
-        userOrganizationCollection: userOrganizationCollection == _undefined
-            ? _instance.userOrganizationCollection
-            : (userOrganizationCollection
-                as Fragment$User$userOrganizationCollection?),
+            : (firstName as String),
+        lastName: lastName == _undefined || lastName == null
+            ? _instance.lastName
+            : (lastName as String),
+        metadata: metadata == _undefined
+            ? _instance.metadata
+            : (metadata as Map<String, dynamic>?),
+        did: did == _undefined || did == null ? _instance.did : (did as String),
+        handle: handle == _undefined || handle == null
+            ? _instance.handle
+            : (handle as String),
+        pdsUrl: pdsUrl == _undefined || pdsUrl == null
+            ? _instance.pdsUrl
+            : (pdsUrl as String),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        userRolesCollection: userRolesCollection == _undefined
+            ? _instance.userRolesCollection
+            : (userRolesCollection as Fragment$User$userRolesCollection?),
+        primaryStationId: primaryStationId == _undefined
+            ? _instance.primaryStationId
+            : (primaryStationId as String?),
+        primaryStation: primaryStation == _undefined
+            ? _instance.primaryStation
+            : (primaryStation as Fragment$Station?),
+        userStationsCollection: userStationsCollection == _undefined
+            ? _instance.userStationsCollection
+            : (userStationsCollection as Fragment$User$userStationsCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$User$userRoleCollection<TRes> get userRoleCollection {
-    final local$userRoleCollection = _instance.userRoleCollection;
-    return local$userRoleCollection == null
-        ? CopyWith$Fragment$User$userRoleCollection.stub(_then(_instance))
-        : CopyWith$Fragment$User$userRoleCollection(
-            local$userRoleCollection, (e) => call(userRoleCollection: e));
+  CopyWith$Fragment$User$userRolesCollection<TRes> get userRolesCollection {
+    final local$userRolesCollection = _instance.userRolesCollection;
+    return local$userRolesCollection == null
+        ? CopyWith$Fragment$User$userRolesCollection.stub(_then(_instance))
+        : CopyWith$Fragment$User$userRolesCollection(
+            local$userRolesCollection, (e) => call(userRolesCollection: e));
   }
 
-  CopyWith$Fragment$User$firstResponderCollection<TRes>
-      get firstResponderCollection {
-    final local$firstResponderCollection = _instance.firstResponderCollection;
-    return local$firstResponderCollection == null
-        ? CopyWith$Fragment$User$firstResponderCollection.stub(_then(_instance))
-        : CopyWith$Fragment$User$firstResponderCollection(
-            local$firstResponderCollection,
-            (e) => call(firstResponderCollection: e));
+  CopyWith$Fragment$Station<TRes> get primaryStation {
+    final local$primaryStation = _instance.primaryStation;
+    return local$primaryStation == null
+        ? CopyWith$Fragment$Station.stub(_then(_instance))
+        : CopyWith$Fragment$Station(
+            local$primaryStation, (e) => call(primaryStation: e));
   }
 
-  CopyWith$Fragment$Organization<TRes> get primaryOrganization {
-    final local$primaryOrganization = _instance.primaryOrganization;
-    return local$primaryOrganization == null
-        ? CopyWith$Fragment$Organization.stub(_then(_instance))
-        : CopyWith$Fragment$Organization(
-            local$primaryOrganization, (e) => call(primaryOrganization: e));
-  }
-
-  CopyWith$Fragment$User$userOrganizationCollection<TRes>
-      get userOrganizationCollection {
-    final local$userOrganizationCollection =
-        _instance.userOrganizationCollection;
-    return local$userOrganizationCollection == null
-        ? CopyWith$Fragment$User$userOrganizationCollection.stub(
-            _then(_instance))
-        : CopyWith$Fragment$User$userOrganizationCollection(
-            local$userOrganizationCollection,
-            (e) => call(userOrganizationCollection: e));
+  CopyWith$Fragment$User$userStationsCollection<TRes>
+      get userStationsCollection {
+    final local$userStationsCollection = _instance.userStationsCollection;
+    return local$userStationsCollection == null
+        ? CopyWith$Fragment$User$userStationsCollection.stub(_then(_instance))
+        : CopyWith$Fragment$User$userStationsCollection(
+            local$userStationsCollection,
+            (e) => call(userStationsCollection: e));
   }
 }
 
@@ -1303,40 +914,35 @@ class _CopyWithStubImpl$Fragment$User<TRes>
     String? email,
     String? firstName,
     String? lastName,
-    String? displayName,
-    Map<String, dynamic>? data,
-    String? avatarUrl,
-    String? kratosId,
-    String? supabaseUserId,
-    Fragment$User$userRoleCollection? userRoleCollection,
-    Fragment$User$firstResponderCollection? firstResponderCollection,
-    String? primaryOrganizationId,
-    Fragment$Organization? primaryOrganization,
-    Fragment$User$userOrganizationCollection? userOrganizationCollection,
+    Map<String, dynamic>? metadata,
+    String? did,
+    String? handle,
+    String? pdsUrl,
+    DateTime? createdAt,
+    Fragment$User$userRolesCollection? userRolesCollection,
+    String? primaryStationId,
+    Fragment$Station? primaryStation,
+    Fragment$User$userStationsCollection? userStationsCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$User$userRoleCollection<TRes> get userRoleCollection =>
-      CopyWith$Fragment$User$userRoleCollection.stub(_res);
+  CopyWith$Fragment$User$userRolesCollection<TRes> get userRolesCollection =>
+      CopyWith$Fragment$User$userRolesCollection.stub(_res);
 
-  CopyWith$Fragment$User$firstResponderCollection<TRes>
-      get firstResponderCollection =>
-          CopyWith$Fragment$User$firstResponderCollection.stub(_res);
+  CopyWith$Fragment$Station<TRes> get primaryStation =>
+      CopyWith$Fragment$Station.stub(_res);
 
-  CopyWith$Fragment$Organization<TRes> get primaryOrganization =>
-      CopyWith$Fragment$Organization.stub(_res);
-
-  CopyWith$Fragment$User$userOrganizationCollection<TRes>
-      get userOrganizationCollection =>
-          CopyWith$Fragment$User$userOrganizationCollection.stub(_res);
+  CopyWith$Fragment$User$userStationsCollection<TRes>
+      get userStationsCollection =>
+          CopyWith$Fragment$User$userStationsCollection.stub(_res);
 }
 
 const fragmentDefinitionUser = FragmentDefinitionNode(
   name: NameNode(value: 'User'),
   typeCondition: TypeConditionNode(
       on: NamedTypeNode(
-    name: NameNode(value: 'User'),
+    name: NameNode(value: 'Users'),
     isNonNull: false,
   )),
   directives: [],
@@ -1370,42 +976,42 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'displayName'),
+      name: NameNode(value: 'metadata'),
       alias: null,
       arguments: [],
       directives: [],
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'data'),
+      name: NameNode(value: 'did'),
       alias: null,
       arguments: [],
       directives: [],
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'avatarUrl'),
+      name: NameNode(value: 'handle'),
       alias: null,
       arguments: [],
       directives: [],
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'kratosId'),
+      name: NameNode(value: 'pdsUrl'),
       alias: null,
       arguments: [],
       directives: [],
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'supabaseUserId'),
+      name: NameNode(value: 'createdAt'),
       alias: null,
       arguments: [],
       directives: [],
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'userRoleCollection'),
+      name: NameNode(value: 'userRolesCollection'),
       alias: null,
       arguments: [],
       directives: [],
@@ -1454,69 +1060,20 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
-      name: NameNode(value: 'firstResponderCollection'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'edges'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
-            FieldNode(
-              name: NameNode(value: 'node'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FragmentSpreadNode(
-                  name: NameNode(value: 'FirstResponder'),
-                  directives: [],
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            ),
-            FieldNode(
-              name: NameNode(value: '__typename'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-          ]),
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'primaryOrganizationId'),
+      name: NameNode(value: 'primaryStationId'),
       alias: null,
       arguments: [],
       directives: [],
       selectionSet: null,
     ),
     FieldNode(
-      name: NameNode(value: 'primaryOrganization'),
+      name: NameNode(value: 'primaryStation'),
       alias: null,
       arguments: [],
       directives: [],
       selectionSet: SelectionSetNode(selections: [
         FragmentSpreadNode(
-          name: NameNode(value: 'Organization'),
+          name: NameNode(value: 'Station'),
           directives: [],
         ),
         FieldNode(
@@ -1529,7 +1086,7 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
-      name: NameNode(value: 'userOrganizationCollection'),
+      name: NameNode(value: 'userStationsCollection'),
       alias: null,
       arguments: [],
       directives: [],
@@ -1547,7 +1104,7 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
               directives: [],
               selectionSet: SelectionSetNode(selections: [
                 FragmentSpreadNode(
-                  name: NameNode(value: 'UserOrganization'),
+                  name: NameNode(value: 'UserStation'),
                   directives: [],
                 ),
                 FieldNode(
@@ -1558,49 +1115,6 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
                   selectionSet: null,
                 ),
               ]),
-            ),
-            FieldNode(
-              name: NameNode(value: '__typename'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-          ]),
-        ),
-        FieldNode(
-          name: NameNode(value: 'pageInfo'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
-            FieldNode(
-              name: NameNode(value: 'startCursor'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'endCursor'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'hasNextPage'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'hasPreviousPage'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
             ),
             FieldNode(
               name: NameNode(value: '__typename'),
@@ -1633,16 +1147,8 @@ const documentNodeFragmentUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
-  fragmentDefinitionFirstResponder,
-  fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
-  fragmentDefinitionStationProvider,
-  fragmentDefinitionProvider,
-  fragmentDefinitionProviderType,
-  fragmentDefinitionFirstResponderStation,
-  fragmentDefinitionOrganization,
-  fragmentDefinitionOrganizationType,
-  fragmentDefinitionUserOrganization,
+  fragmentDefinitionUserStation,
 ]);
 
 extension ClientExtension$Fragment$User on graphql.GraphQLClient {
@@ -1680,25 +1186,26 @@ extension ClientExtension$Fragment$User on graphql.GraphQLClient {
   }
 }
 
-class Fragment$User$userRoleCollection {
-  Fragment$User$userRoleCollection({
+class Fragment$User$userRolesCollection {
+  Fragment$User$userRolesCollection({
     required this.edges,
-    this.$__typename = 'UserRoleConnection',
+    this.$__typename = 'UserRolesConnection',
   });
 
-  factory Fragment$User$userRoleCollection.fromJson(Map<String, dynamic> json) {
+  factory Fragment$User$userRolesCollection.fromJson(
+      Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$$__typename = json['__typename'];
-    return Fragment$User$userRoleCollection(
+    return Fragment$User$userRolesCollection(
       edges: (l$edges as List<dynamic>)
-          .map((e) => Fragment$User$userRoleCollection$edges.fromJson(
+          .map((e) => Fragment$User$userRolesCollection$edges.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Fragment$User$userRoleCollection$edges> edges;
+  final List<Fragment$User$userRolesCollection$edges> edges;
 
   final String $__typename;
 
@@ -1726,7 +1233,7 @@ class Fragment$User$userRoleCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$User$userRoleCollection) ||
+    if (other is! Fragment$User$userRolesCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1751,46 +1258,46 @@ class Fragment$User$userRoleCollection {
   }
 }
 
-extension UtilityExtension$Fragment$User$userRoleCollection
-    on Fragment$User$userRoleCollection {
-  CopyWith$Fragment$User$userRoleCollection<Fragment$User$userRoleCollection>
-      get copyWith => CopyWith$Fragment$User$userRoleCollection(
+extension UtilityExtension$Fragment$User$userRolesCollection
+    on Fragment$User$userRolesCollection {
+  CopyWith$Fragment$User$userRolesCollection<Fragment$User$userRolesCollection>
+      get copyWith => CopyWith$Fragment$User$userRolesCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Fragment$User$userRoleCollection<TRes> {
-  factory CopyWith$Fragment$User$userRoleCollection(
-    Fragment$User$userRoleCollection instance,
-    TRes Function(Fragment$User$userRoleCollection) then,
-  ) = _CopyWithImpl$Fragment$User$userRoleCollection;
+abstract class CopyWith$Fragment$User$userRolesCollection<TRes> {
+  factory CopyWith$Fragment$User$userRolesCollection(
+    Fragment$User$userRolesCollection instance,
+    TRes Function(Fragment$User$userRolesCollection) then,
+  ) = _CopyWithImpl$Fragment$User$userRolesCollection;
 
-  factory CopyWith$Fragment$User$userRoleCollection.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$User$userRoleCollection;
+  factory CopyWith$Fragment$User$userRolesCollection.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$userRolesCollection;
 
   TRes call({
-    List<Fragment$User$userRoleCollection$edges>? edges,
+    List<Fragment$User$userRolesCollection$edges>? edges,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Fragment$User$userRoleCollection$edges> Function(
+      Iterable<Fragment$User$userRolesCollection$edges> Function(
               Iterable<
-                  CopyWith$Fragment$User$userRoleCollection$edges<
-                      Fragment$User$userRoleCollection$edges>>)
+                  CopyWith$Fragment$User$userRolesCollection$edges<
+                      Fragment$User$userRolesCollection$edges>>)
           _fn);
 }
 
-class _CopyWithImpl$Fragment$User$userRoleCollection<TRes>
-    implements CopyWith$Fragment$User$userRoleCollection<TRes> {
-  _CopyWithImpl$Fragment$User$userRoleCollection(
+class _CopyWithImpl$Fragment$User$userRolesCollection<TRes>
+    implements CopyWith$Fragment$User$userRolesCollection<TRes> {
+  _CopyWithImpl$Fragment$User$userRolesCollection(
     this._instance,
     this._then,
   );
 
-  final Fragment$User$userRoleCollection _instance;
+  final Fragment$User$userRolesCollection _instance;
 
-  final TRes Function(Fragment$User$userRoleCollection) _then;
+  final TRes Function(Fragment$User$userRolesCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1798,37 +1305,37 @@ class _CopyWithImpl$Fragment$User$userRoleCollection<TRes>
     Object? edges = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$User$userRoleCollection(
+      _then(Fragment$User$userRolesCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
-            : (edges as List<Fragment$User$userRoleCollection$edges>),
+            : (edges as List<Fragment$User$userRolesCollection$edges>),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Fragment$User$userRoleCollection$edges> Function(
+          Iterable<Fragment$User$userRolesCollection$edges> Function(
                   Iterable<
-                      CopyWith$Fragment$User$userRoleCollection$edges<
-                          Fragment$User$userRoleCollection$edges>>)
+                      CopyWith$Fragment$User$userRolesCollection$edges<
+                          Fragment$User$userRolesCollection$edges>>)
               _fn) =>
       call(
           edges: _fn(_instance.edges
-              .map((e) => CopyWith$Fragment$User$userRoleCollection$edges(
+              .map((e) => CopyWith$Fragment$User$userRolesCollection$edges(
                     e,
                     (i) => i,
                   ))).toList());
 }
 
-class _CopyWithStubImpl$Fragment$User$userRoleCollection<TRes>
-    implements CopyWith$Fragment$User$userRoleCollection<TRes> {
-  _CopyWithStubImpl$Fragment$User$userRoleCollection(this._res);
+class _CopyWithStubImpl$Fragment$User$userRolesCollection<TRes>
+    implements CopyWith$Fragment$User$userRolesCollection<TRes> {
+  _CopyWithStubImpl$Fragment$User$userRolesCollection(this._res);
 
   TRes _res;
 
   call({
-    List<Fragment$User$userRoleCollection$edges>? edges,
+    List<Fragment$User$userRolesCollection$edges>? edges,
     String? $__typename,
   }) =>
       _res;
@@ -1836,17 +1343,17 @@ class _CopyWithStubImpl$Fragment$User$userRoleCollection<TRes>
   edges(_fn) => _res;
 }
 
-class Fragment$User$userRoleCollection$edges {
-  Fragment$User$userRoleCollection$edges({
+class Fragment$User$userRolesCollection$edges {
+  Fragment$User$userRolesCollection$edges({
     required this.node,
-    this.$__typename = 'UserRoleEdge',
+    this.$__typename = 'UserRolesEdge',
   });
 
-  factory Fragment$User$userRoleCollection$edges.fromJson(
+  factory Fragment$User$userRolesCollection$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Fragment$User$userRoleCollection$edges(
+    return Fragment$User$userRolesCollection$edges(
       node: Fragment$UserRole.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -1880,7 +1387,7 @@ class Fragment$User$userRoleCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$User$userRoleCollection$edges) ||
+    if (other is! Fragment$User$userRolesCollection$edges ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1898,24 +1405,24 @@ class Fragment$User$userRoleCollection$edges {
   }
 }
 
-extension UtilityExtension$Fragment$User$userRoleCollection$edges
-    on Fragment$User$userRoleCollection$edges {
-  CopyWith$Fragment$User$userRoleCollection$edges<
-          Fragment$User$userRoleCollection$edges>
-      get copyWith => CopyWith$Fragment$User$userRoleCollection$edges(
+extension UtilityExtension$Fragment$User$userRolesCollection$edges
+    on Fragment$User$userRolesCollection$edges {
+  CopyWith$Fragment$User$userRolesCollection$edges<
+          Fragment$User$userRolesCollection$edges>
+      get copyWith => CopyWith$Fragment$User$userRolesCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Fragment$User$userRoleCollection$edges<TRes> {
-  factory CopyWith$Fragment$User$userRoleCollection$edges(
-    Fragment$User$userRoleCollection$edges instance,
-    TRes Function(Fragment$User$userRoleCollection$edges) then,
-  ) = _CopyWithImpl$Fragment$User$userRoleCollection$edges;
+abstract class CopyWith$Fragment$User$userRolesCollection$edges<TRes> {
+  factory CopyWith$Fragment$User$userRolesCollection$edges(
+    Fragment$User$userRolesCollection$edges instance,
+    TRes Function(Fragment$User$userRolesCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$User$userRolesCollection$edges;
 
-  factory CopyWith$Fragment$User$userRoleCollection$edges.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$User$userRoleCollection$edges;
+  factory CopyWith$Fragment$User$userRolesCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$userRolesCollection$edges;
 
   TRes call({
     Fragment$UserRole? node,
@@ -1924,16 +1431,16 @@ abstract class CopyWith$Fragment$User$userRoleCollection$edges<TRes> {
   CopyWith$Fragment$UserRole<TRes> get node;
 }
 
-class _CopyWithImpl$Fragment$User$userRoleCollection$edges<TRes>
-    implements CopyWith$Fragment$User$userRoleCollection$edges<TRes> {
-  _CopyWithImpl$Fragment$User$userRoleCollection$edges(
+class _CopyWithImpl$Fragment$User$userRolesCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userRolesCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$User$userRolesCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Fragment$User$userRoleCollection$edges _instance;
+  final Fragment$User$userRolesCollection$edges _instance;
 
-  final TRes Function(Fragment$User$userRoleCollection$edges) _then;
+  final TRes Function(Fragment$User$userRolesCollection$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1941,7 +1448,7 @@ class _CopyWithImpl$Fragment$User$userRoleCollection$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$User$userRoleCollection$edges(
+      _then(Fragment$User$userRolesCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$UserRole),
@@ -1956,9 +1463,9 @@ class _CopyWithImpl$Fragment$User$userRoleCollection$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Fragment$User$userRoleCollection$edges<TRes>
-    implements CopyWith$Fragment$User$userRoleCollection$edges<TRes> {
-  _CopyWithStubImpl$Fragment$User$userRoleCollection$edges(this._res);
+class _CopyWithStubImpl$Fragment$User$userRolesCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userRolesCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$User$userRolesCollection$edges(this._res);
 
   TRes _res;
 
@@ -1972,26 +1479,26 @@ class _CopyWithStubImpl$Fragment$User$userRoleCollection$edges<TRes>
       CopyWith$Fragment$UserRole.stub(_res);
 }
 
-class Fragment$User$firstResponderCollection {
-  Fragment$User$firstResponderCollection({
+class Fragment$User$userStationsCollection {
+  Fragment$User$userStationsCollection({
     required this.edges,
-    this.$__typename = 'FirstResponderConnection',
+    this.$__typename = 'UserStationsConnection',
   });
 
-  factory Fragment$User$firstResponderCollection.fromJson(
+  factory Fragment$User$userStationsCollection.fromJson(
       Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$$__typename = json['__typename'];
-    return Fragment$User$firstResponderCollection(
+    return Fragment$User$userStationsCollection(
       edges: (l$edges as List<dynamic>)
-          .map((e) => Fragment$User$firstResponderCollection$edges.fromJson(
+          .map((e) => Fragment$User$userStationsCollection$edges.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Fragment$User$firstResponderCollection$edges> edges;
+  final List<Fragment$User$userStationsCollection$edges> edges;
 
   final String $__typename;
 
@@ -2019,7 +1526,7 @@ class Fragment$User$firstResponderCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$User$firstResponderCollection) ||
+    if (other is! Fragment$User$userStationsCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2044,47 +1551,47 @@ class Fragment$User$firstResponderCollection {
   }
 }
 
-extension UtilityExtension$Fragment$User$firstResponderCollection
-    on Fragment$User$firstResponderCollection {
-  CopyWith$Fragment$User$firstResponderCollection<
-          Fragment$User$firstResponderCollection>
-      get copyWith => CopyWith$Fragment$User$firstResponderCollection(
+extension UtilityExtension$Fragment$User$userStationsCollection
+    on Fragment$User$userStationsCollection {
+  CopyWith$Fragment$User$userStationsCollection<
+          Fragment$User$userStationsCollection>
+      get copyWith => CopyWith$Fragment$User$userStationsCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Fragment$User$firstResponderCollection<TRes> {
-  factory CopyWith$Fragment$User$firstResponderCollection(
-    Fragment$User$firstResponderCollection instance,
-    TRes Function(Fragment$User$firstResponderCollection) then,
-  ) = _CopyWithImpl$Fragment$User$firstResponderCollection;
+abstract class CopyWith$Fragment$User$userStationsCollection<TRes> {
+  factory CopyWith$Fragment$User$userStationsCollection(
+    Fragment$User$userStationsCollection instance,
+    TRes Function(Fragment$User$userStationsCollection) then,
+  ) = _CopyWithImpl$Fragment$User$userStationsCollection;
 
-  factory CopyWith$Fragment$User$firstResponderCollection.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$User$firstResponderCollection;
+  factory CopyWith$Fragment$User$userStationsCollection.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$userStationsCollection;
 
   TRes call({
-    List<Fragment$User$firstResponderCollection$edges>? edges,
+    List<Fragment$User$userStationsCollection$edges>? edges,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Fragment$User$firstResponderCollection$edges> Function(
+      Iterable<Fragment$User$userStationsCollection$edges> Function(
               Iterable<
-                  CopyWith$Fragment$User$firstResponderCollection$edges<
-                      Fragment$User$firstResponderCollection$edges>>)
+                  CopyWith$Fragment$User$userStationsCollection$edges<
+                      Fragment$User$userStationsCollection$edges>>)
           _fn);
 }
 
-class _CopyWithImpl$Fragment$User$firstResponderCollection<TRes>
-    implements CopyWith$Fragment$User$firstResponderCollection<TRes> {
-  _CopyWithImpl$Fragment$User$firstResponderCollection(
+class _CopyWithImpl$Fragment$User$userStationsCollection<TRes>
+    implements CopyWith$Fragment$User$userStationsCollection<TRes> {
+  _CopyWithImpl$Fragment$User$userStationsCollection(
     this._instance,
     this._then,
   );
 
-  final Fragment$User$firstResponderCollection _instance;
+  final Fragment$User$userStationsCollection _instance;
 
-  final TRes Function(Fragment$User$firstResponderCollection) _then;
+  final TRes Function(Fragment$User$userStationsCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2092,37 +1599,37 @@ class _CopyWithImpl$Fragment$User$firstResponderCollection<TRes>
     Object? edges = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$User$firstResponderCollection(
+      _then(Fragment$User$userStationsCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
-            : (edges as List<Fragment$User$firstResponderCollection$edges>),
+            : (edges as List<Fragment$User$userStationsCollection$edges>),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Fragment$User$firstResponderCollection$edges> Function(
+          Iterable<Fragment$User$userStationsCollection$edges> Function(
                   Iterable<
-                      CopyWith$Fragment$User$firstResponderCollection$edges<
-                          Fragment$User$firstResponderCollection$edges>>)
+                      CopyWith$Fragment$User$userStationsCollection$edges<
+                          Fragment$User$userStationsCollection$edges>>)
               _fn) =>
       call(
           edges: _fn(_instance.edges
-              .map((e) => CopyWith$Fragment$User$firstResponderCollection$edges(
+              .map((e) => CopyWith$Fragment$User$userStationsCollection$edges(
                     e,
                     (i) => i,
                   ))).toList());
 }
 
-class _CopyWithStubImpl$Fragment$User$firstResponderCollection<TRes>
-    implements CopyWith$Fragment$User$firstResponderCollection<TRes> {
-  _CopyWithStubImpl$Fragment$User$firstResponderCollection(this._res);
+class _CopyWithStubImpl$Fragment$User$userStationsCollection<TRes>
+    implements CopyWith$Fragment$User$userStationsCollection<TRes> {
+  _CopyWithStubImpl$Fragment$User$userStationsCollection(this._res);
 
   TRes _res;
 
   call({
-    List<Fragment$User$firstResponderCollection$edges>? edges,
+    List<Fragment$User$userStationsCollection$edges>? edges,
     String? $__typename,
   }) =>
       _res;
@@ -2130,23 +1637,23 @@ class _CopyWithStubImpl$Fragment$User$firstResponderCollection<TRes>
   edges(_fn) => _res;
 }
 
-class Fragment$User$firstResponderCollection$edges {
-  Fragment$User$firstResponderCollection$edges({
+class Fragment$User$userStationsCollection$edges {
+  Fragment$User$userStationsCollection$edges({
     required this.node,
-    this.$__typename = 'FirstResponderEdge',
+    this.$__typename = 'UserStationsEdge',
   });
 
-  factory Fragment$User$firstResponderCollection$edges.fromJson(
+  factory Fragment$User$userStationsCollection$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Fragment$User$firstResponderCollection$edges(
-      node: Fragment$FirstResponder.fromJson((l$node as Map<String, dynamic>)),
+    return Fragment$User$userStationsCollection$edges(
+      node: Fragment$UserStation.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Fragment$FirstResponder node;
+  final Fragment$UserStation node;
 
   final String $__typename;
 
@@ -2174,7 +1681,7 @@ class Fragment$User$firstResponderCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$User$firstResponderCollection$edges) ||
+    if (other is! Fragment$User$userStationsCollection$edges ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2192,42 +1699,42 @@ class Fragment$User$firstResponderCollection$edges {
   }
 }
 
-extension UtilityExtension$Fragment$User$firstResponderCollection$edges
-    on Fragment$User$firstResponderCollection$edges {
-  CopyWith$Fragment$User$firstResponderCollection$edges<
-          Fragment$User$firstResponderCollection$edges>
-      get copyWith => CopyWith$Fragment$User$firstResponderCollection$edges(
+extension UtilityExtension$Fragment$User$userStationsCollection$edges
+    on Fragment$User$userStationsCollection$edges {
+  CopyWith$Fragment$User$userStationsCollection$edges<
+          Fragment$User$userStationsCollection$edges>
+      get copyWith => CopyWith$Fragment$User$userStationsCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
-  factory CopyWith$Fragment$User$firstResponderCollection$edges(
-    Fragment$User$firstResponderCollection$edges instance,
-    TRes Function(Fragment$User$firstResponderCollection$edges) then,
-  ) = _CopyWithImpl$Fragment$User$firstResponderCollection$edges;
+abstract class CopyWith$Fragment$User$userStationsCollection$edges<TRes> {
+  factory CopyWith$Fragment$User$userStationsCollection$edges(
+    Fragment$User$userStationsCollection$edges instance,
+    TRes Function(Fragment$User$userStationsCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$User$userStationsCollection$edges;
 
-  factory CopyWith$Fragment$User$firstResponderCollection$edges.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges;
+  factory CopyWith$Fragment$User$userStationsCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$userStationsCollection$edges;
 
   TRes call({
-    Fragment$FirstResponder? node,
+    Fragment$UserStation? node,
     String? $__typename,
   });
-  CopyWith$Fragment$FirstResponder<TRes> get node;
+  CopyWith$Fragment$UserStation<TRes> get node;
 }
 
-class _CopyWithImpl$Fragment$User$firstResponderCollection$edges<TRes>
-    implements CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
-  _CopyWithImpl$Fragment$User$firstResponderCollection$edges(
+class _CopyWithImpl$Fragment$User$userStationsCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userStationsCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$User$userStationsCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Fragment$User$firstResponderCollection$edges _instance;
+  final Fragment$User$userStationsCollection$edges _instance;
 
-  final TRes Function(Fragment$User$firstResponderCollection$edges) _then;
+  final TRes Function(Fragment$User$userStationsCollection$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2235,72 +1742,88 @@ class _CopyWithImpl$Fragment$User$firstResponderCollection$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$User$firstResponderCollection$edges(
+      _then(Fragment$User$userStationsCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
-            : (node as Fragment$FirstResponder),
+            : (node as Fragment$UserStation),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Fragment$FirstResponder<TRes> get node {
+  CopyWith$Fragment$UserStation<TRes> get node {
     final local$node = _instance.node;
-    return CopyWith$Fragment$FirstResponder(local$node, (e) => call(node: e));
+    return CopyWith$Fragment$UserStation(local$node, (e) => call(node: e));
   }
 }
 
-class _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges<TRes>
-    implements CopyWith$Fragment$User$firstResponderCollection$edges<TRes> {
-  _CopyWithStubImpl$Fragment$User$firstResponderCollection$edges(this._res);
+class _CopyWithStubImpl$Fragment$User$userStationsCollection$edges<TRes>
+    implements CopyWith$Fragment$User$userStationsCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$User$userStationsCollection$edges(this._res);
 
   TRes _res;
 
   call({
-    Fragment$FirstResponder? node,
+    Fragment$UserStation? node,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Fragment$FirstResponder<TRes> get node =>
-      CopyWith$Fragment$FirstResponder.stub(_res);
+  CopyWith$Fragment$UserStation<TRes> get node =>
+      CopyWith$Fragment$UserStation.stub(_res);
 }
 
-class Fragment$User$userOrganizationCollection {
-  Fragment$User$userOrganizationCollection({
-    required this.edges,
-    required this.pageInfo,
-    this.$__typename = 'UserOrganizationConnection',
+class Fragment$UserStation {
+  Fragment$UserStation({
+    required this.id,
+    required this.userId,
+    required this.stationId,
+    required this.station,
+    required this.createdAt,
+    this.$__typename = 'UserStations',
   });
 
-  factory Fragment$User$userOrganizationCollection.fromJson(
-      Map<String, dynamic> json) {
-    final l$edges = json['edges'];
-    final l$pageInfo = json['pageInfo'];
+  factory Fragment$UserStation.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$userId = json['userId'];
+    final l$stationId = json['stationId'];
+    final l$station = json['station'];
+    final l$createdAt = json['createdAt'];
     final l$$__typename = json['__typename'];
-    return Fragment$User$userOrganizationCollection(
-      edges: (l$edges as List<dynamic>)
-          .map((e) => Fragment$User$userOrganizationCollection$edges.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList(),
-      pageInfo: Fragment$User$userOrganizationCollection$pageInfo.fromJson(
-          (l$pageInfo as Map<String, dynamic>)),
+    return Fragment$UserStation(
+      id: (l$id as String),
+      userId: (l$userId as String),
+      stationId: (l$stationId as String),
+      station: Fragment$Station.fromJson((l$station as Map<String, dynamic>)),
+      createdAt: DateTime.parse((l$createdAt as String)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Fragment$User$userOrganizationCollection$edges> edges;
+  final String id;
 
-  final Fragment$User$userOrganizationCollection$pageInfo pageInfo;
+  final String userId;
+
+  final String stationId;
+
+  final Fragment$Station station;
+
+  final DateTime createdAt;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$edges = edges;
-    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
-    final l$pageInfo = pageInfo;
-    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$userId = userId;
+    _resultData['userId'] = l$userId;
+    final l$stationId = stationId;
+    _resultData['stationId'] = l$stationId;
+    final l$station = station;
+    _resultData['station'] = l$station.toJson();
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -2308,12 +1831,18 @@ class Fragment$User$userOrganizationCollection {
 
   @override
   int get hashCode {
-    final l$edges = edges;
-    final l$pageInfo = pageInfo;
+    final l$id = id;
+    final l$userId = userId;
+    final l$stationId = stationId;
+    final l$station = station;
+    final l$createdAt = createdAt;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$edges.map((v) => v)),
-      l$pageInfo,
+      l$id,
+      l$userId,
+      l$stationId,
+      l$station,
+      l$createdAt,
       l$$__typename,
     ]);
   }
@@ -2323,25 +1852,32 @@ class Fragment$User$userOrganizationCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Fragment$User$userOrganizationCollection) ||
-        runtimeType != other.runtimeType) {
+    if (other is! Fragment$UserStation || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$edges = edges;
-    final lOther$edges = other.edges;
-    if (l$edges.length != lOther$edges.length) {
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
       return false;
     }
-    for (int i = 0; i < l$edges.length; i++) {
-      final l$edges$entry = l$edges[i];
-      final lOther$edges$entry = lOther$edges[i];
-      if (l$edges$entry != lOther$edges$entry) {
-        return false;
-      }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
     }
-    final l$pageInfo = pageInfo;
-    final lOther$pageInfo = other.pageInfo;
-    if (l$pageInfo != lOther$pageInfo) {
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    final l$station = station;
+    final lOther$station = other.station;
+    if (l$station != lOther$station) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2353,440 +1889,203 @@ class Fragment$User$userOrganizationCollection {
   }
 }
 
-extension UtilityExtension$Fragment$User$userOrganizationCollection
-    on Fragment$User$userOrganizationCollection {
-  CopyWith$Fragment$User$userOrganizationCollection<
-          Fragment$User$userOrganizationCollection>
-      get copyWith => CopyWith$Fragment$User$userOrganizationCollection(
-            this,
-            (i) => i,
-          );
+extension UtilityExtension$Fragment$UserStation on Fragment$UserStation {
+  CopyWith$Fragment$UserStation<Fragment$UserStation> get copyWith =>
+      CopyWith$Fragment$UserStation(
+        this,
+        (i) => i,
+      );
 }
 
-abstract class CopyWith$Fragment$User$userOrganizationCollection<TRes> {
-  factory CopyWith$Fragment$User$userOrganizationCollection(
-    Fragment$User$userOrganizationCollection instance,
-    TRes Function(Fragment$User$userOrganizationCollection) then,
-  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection;
+abstract class CopyWith$Fragment$UserStation<TRes> {
+  factory CopyWith$Fragment$UserStation(
+    Fragment$UserStation instance,
+    TRes Function(Fragment$UserStation) then,
+  ) = _CopyWithImpl$Fragment$UserStation;
 
-  factory CopyWith$Fragment$User$userOrganizationCollection.stub(TRes res) =
-      _CopyWithStubImpl$Fragment$User$userOrganizationCollection;
+  factory CopyWith$Fragment$UserStation.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$UserStation;
 
   TRes call({
-    List<Fragment$User$userOrganizationCollection$edges>? edges,
-    Fragment$User$userOrganizationCollection$pageInfo? pageInfo,
+    String? id,
+    String? userId,
+    String? stationId,
+    Fragment$Station? station,
+    DateTime? createdAt,
     String? $__typename,
   });
-  TRes edges(
-      Iterable<Fragment$User$userOrganizationCollection$edges> Function(
-              Iterable<
-                  CopyWith$Fragment$User$userOrganizationCollection$edges<
-                      Fragment$User$userOrganizationCollection$edges>>)
-          _fn);
-  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> get pageInfo;
+  CopyWith$Fragment$Station<TRes> get station;
 }
 
-class _CopyWithImpl$Fragment$User$userOrganizationCollection<TRes>
-    implements CopyWith$Fragment$User$userOrganizationCollection<TRes> {
-  _CopyWithImpl$Fragment$User$userOrganizationCollection(
+class _CopyWithImpl$Fragment$UserStation<TRes>
+    implements CopyWith$Fragment$UserStation<TRes> {
+  _CopyWithImpl$Fragment$UserStation(
     this._instance,
     this._then,
   );
 
-  final Fragment$User$userOrganizationCollection _instance;
+  final Fragment$UserStation _instance;
 
-  final TRes Function(Fragment$User$userOrganizationCollection) _then;
+  final TRes Function(Fragment$UserStation) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? edges = _undefined,
-    Object? pageInfo = _undefined,
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? stationId = _undefined,
+    Object? station = _undefined,
+    Object? createdAt = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Fragment$User$userOrganizationCollection(
-        edges: edges == _undefined || edges == null
-            ? _instance.edges
-            : (edges as List<Fragment$User$userOrganizationCollection$edges>),
-        pageInfo: pageInfo == _undefined || pageInfo == null
-            ? _instance.pageInfo
-            : (pageInfo as Fragment$User$userOrganizationCollection$pageInfo),
+      _then(Fragment$UserStation(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        userId: userId == _undefined || userId == null
+            ? _instance.userId
+            : (userId as String),
+        stationId: stationId == _undefined || stationId == null
+            ? _instance.stationId
+            : (stationId as String),
+        station: station == _undefined || station == null
+            ? _instance.station
+            : (station as Fragment$Station),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  TRes edges(
-          Iterable<Fragment$User$userOrganizationCollection$edges> Function(
-                  Iterable<
-                      CopyWith$Fragment$User$userOrganizationCollection$edges<
-                          Fragment$User$userOrganizationCollection$edges>>)
-              _fn) =>
-      call(
-          edges: _fn(_instance.edges.map(
-              (e) => CopyWith$Fragment$User$userOrganizationCollection$edges(
-                    e,
-                    (i) => i,
-                  ))).toList());
-
-  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes>
-      get pageInfo {
-    final local$pageInfo = _instance.pageInfo;
-    return CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
-        local$pageInfo, (e) => call(pageInfo: e));
+  CopyWith$Fragment$Station<TRes> get station {
+    final local$station = _instance.station;
+    return CopyWith$Fragment$Station(local$station, (e) => call(station: e));
   }
 }
 
-class _CopyWithStubImpl$Fragment$User$userOrganizationCollection<TRes>
-    implements CopyWith$Fragment$User$userOrganizationCollection<TRes> {
-  _CopyWithStubImpl$Fragment$User$userOrganizationCollection(this._res);
+class _CopyWithStubImpl$Fragment$UserStation<TRes>
+    implements CopyWith$Fragment$UserStation<TRes> {
+  _CopyWithStubImpl$Fragment$UserStation(this._res);
 
   TRes _res;
 
   call({
-    List<Fragment$User$userOrganizationCollection$edges>? edges,
-    Fragment$User$userOrganizationCollection$pageInfo? pageInfo,
+    String? id,
+    String? userId,
+    String? stationId,
+    Fragment$Station? station,
+    DateTime? createdAt,
     String? $__typename,
   }) =>
       _res;
 
-  edges(_fn) => _res;
-
-  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes>
-      get pageInfo =>
-          CopyWith$Fragment$User$userOrganizationCollection$pageInfo.stub(_res);
+  CopyWith$Fragment$Station<TRes> get station =>
+      CopyWith$Fragment$Station.stub(_res);
 }
 
-class Fragment$User$userOrganizationCollection$edges {
-  Fragment$User$userOrganizationCollection$edges({
-    required this.node,
-    this.$__typename = 'UserOrganizationEdge',
-  });
+const fragmentDefinitionUserStation = FragmentDefinitionNode(
+  name: NameNode(value: 'UserStation'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'UserStations'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'userId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'stationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'station'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Station'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentUserStation = DocumentNode(definitions: [
+  fragmentDefinitionUserStation,
+  fragmentDefinitionStation,
+]);
 
-  factory Fragment$User$userOrganizationCollection$edges.fromJson(
-      Map<String, dynamic> json) {
-    final l$node = json['node'];
-    final l$$__typename = json['__typename'];
-    return Fragment$User$userOrganizationCollection$edges(
-      node:
-          Fragment$UserOrganization.fromJson((l$node as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
+extension ClientExtension$Fragment$UserStation on graphql.GraphQLClient {
+  void writeFragment$UserStation({
+    required Fragment$UserStation data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'UserStation',
+            document: documentNodeFragmentUserStation,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$UserStation? readFragment$UserStation({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'UserStation',
+          document: documentNodeFragmentUserStation,
+        ),
+      ),
+      optimistic: optimistic,
     );
+    return result == null ? null : Fragment$UserStation.fromJson(result);
   }
-
-  final Fragment$UserOrganization node;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$node = node;
-    _resultData['node'] = l$node.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$node = node;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$node,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Fragment$User$userOrganizationCollection$edges) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$node = node;
-    final lOther$node = other.node;
-    if (l$node != lOther$node) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Fragment$User$userOrganizationCollection$edges
-    on Fragment$User$userOrganizationCollection$edges {
-  CopyWith$Fragment$User$userOrganizationCollection$edges<
-          Fragment$User$userOrganizationCollection$edges>
-      get copyWith => CopyWith$Fragment$User$userOrganizationCollection$edges(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
-  factory CopyWith$Fragment$User$userOrganizationCollection$edges(
-    Fragment$User$userOrganizationCollection$edges instance,
-    TRes Function(Fragment$User$userOrganizationCollection$edges) then,
-  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection$edges;
-
-  factory CopyWith$Fragment$User$userOrganizationCollection$edges.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges;
-
-  TRes call({
-    Fragment$UserOrganization? node,
-    String? $__typename,
-  });
-  CopyWith$Fragment$UserOrganization<TRes> get node;
-}
-
-class _CopyWithImpl$Fragment$User$userOrganizationCollection$edges<TRes>
-    implements CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
-  _CopyWithImpl$Fragment$User$userOrganizationCollection$edges(
-    this._instance,
-    this._then,
-  );
-
-  final Fragment$User$userOrganizationCollection$edges _instance;
-
-  final TRes Function(Fragment$User$userOrganizationCollection$edges) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? node = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$User$userOrganizationCollection$edges(
-        node: node == _undefined || node == null
-            ? _instance.node
-            : (node as Fragment$UserOrganization),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-
-  CopyWith$Fragment$UserOrganization<TRes> get node {
-    final local$node = _instance.node;
-    return CopyWith$Fragment$UserOrganization(local$node, (e) => call(node: e));
-  }
-}
-
-class _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges<TRes>
-    implements CopyWith$Fragment$User$userOrganizationCollection$edges<TRes> {
-  _CopyWithStubImpl$Fragment$User$userOrganizationCollection$edges(this._res);
-
-  TRes _res;
-
-  call({
-    Fragment$UserOrganization? node,
-    String? $__typename,
-  }) =>
-      _res;
-
-  CopyWith$Fragment$UserOrganization<TRes> get node =>
-      CopyWith$Fragment$UserOrganization.stub(_res);
-}
-
-class Fragment$User$userOrganizationCollection$pageInfo {
-  Fragment$User$userOrganizationCollection$pageInfo({
-    this.startCursor,
-    this.endCursor,
-    required this.hasNextPage,
-    required this.hasPreviousPage,
-    this.$__typename = 'PageInfo',
-  });
-
-  factory Fragment$User$userOrganizationCollection$pageInfo.fromJson(
-      Map<String, dynamic> json) {
-    final l$startCursor = json['startCursor'];
-    final l$endCursor = json['endCursor'];
-    final l$hasNextPage = json['hasNextPage'];
-    final l$hasPreviousPage = json['hasPreviousPage'];
-    final l$$__typename = json['__typename'];
-    return Fragment$User$userOrganizationCollection$pageInfo(
-      startCursor: (l$startCursor as String?),
-      endCursor: (l$endCursor as String?),
-      hasNextPage: (l$hasNextPage as bool),
-      hasPreviousPage: (l$hasPreviousPage as bool),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final String? startCursor;
-
-  final String? endCursor;
-
-  final bool hasNextPage;
-
-  final bool hasPreviousPage;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$startCursor = startCursor;
-    _resultData['startCursor'] = l$startCursor;
-    final l$endCursor = endCursor;
-    _resultData['endCursor'] = l$endCursor;
-    final l$hasNextPage = hasNextPage;
-    _resultData['hasNextPage'] = l$hasNextPage;
-    final l$hasPreviousPage = hasPreviousPage;
-    _resultData['hasPreviousPage'] = l$hasPreviousPage;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$startCursor = startCursor;
-    final l$endCursor = endCursor;
-    final l$hasNextPage = hasNextPage;
-    final l$hasPreviousPage = hasPreviousPage;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$startCursor,
-      l$endCursor,
-      l$hasNextPage,
-      l$hasPreviousPage,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Fragment$User$userOrganizationCollection$pageInfo) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$startCursor = startCursor;
-    final lOther$startCursor = other.startCursor;
-    if (l$startCursor != lOther$startCursor) {
-      return false;
-    }
-    final l$endCursor = endCursor;
-    final lOther$endCursor = other.endCursor;
-    if (l$endCursor != lOther$endCursor) {
-      return false;
-    }
-    final l$hasNextPage = hasNextPage;
-    final lOther$hasNextPage = other.hasNextPage;
-    if (l$hasNextPage != lOther$hasNextPage) {
-      return false;
-    }
-    final l$hasPreviousPage = hasPreviousPage;
-    final lOther$hasPreviousPage = other.hasPreviousPage;
-    if (l$hasPreviousPage != lOther$hasPreviousPage) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Fragment$User$userOrganizationCollection$pageInfo
-    on Fragment$User$userOrganizationCollection$pageInfo {
-  CopyWith$Fragment$User$userOrganizationCollection$pageInfo<
-          Fragment$User$userOrganizationCollection$pageInfo>
-      get copyWith =>
-          CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Fragment$User$userOrganizationCollection$pageInfo<
-    TRes> {
-  factory CopyWith$Fragment$User$userOrganizationCollection$pageInfo(
-    Fragment$User$userOrganizationCollection$pageInfo instance,
-    TRes Function(Fragment$User$userOrganizationCollection$pageInfo) then,
-  ) = _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo;
-
-  factory CopyWith$Fragment$User$userOrganizationCollection$pageInfo.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo;
-
-  TRes call({
-    String? startCursor,
-    String? endCursor,
-    bool? hasNextPage,
-    bool? hasPreviousPage,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo<TRes>
-    implements
-        CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> {
-  _CopyWithImpl$Fragment$User$userOrganizationCollection$pageInfo(
-    this._instance,
-    this._then,
-  );
-
-  final Fragment$User$userOrganizationCollection$pageInfo _instance;
-
-  final TRes Function(Fragment$User$userOrganizationCollection$pageInfo) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? startCursor = _undefined,
-    Object? endCursor = _undefined,
-    Object? hasNextPage = _undefined,
-    Object? hasPreviousPage = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$User$userOrganizationCollection$pageInfo(
-        startCursor: startCursor == _undefined
-            ? _instance.startCursor
-            : (startCursor as String?),
-        endCursor: endCursor == _undefined
-            ? _instance.endCursor
-            : (endCursor as String?),
-        hasNextPage: hasNextPage == _undefined || hasNextPage == null
-            ? _instance.hasNextPage
-            : (hasNextPage as bool),
-        hasPreviousPage:
-            hasPreviousPage == _undefined || hasPreviousPage == null
-                ? _instance.hasPreviousPage
-                : (hasPreviousPage as bool),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo<TRes>
-    implements
-        CopyWith$Fragment$User$userOrganizationCollection$pageInfo<TRes> {
-  _CopyWithStubImpl$Fragment$User$userOrganizationCollection$pageInfo(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? startCursor,
-    String? endCursor,
-    bool? hasNextPage,
-    bool? hasPreviousPage,
-    String? $__typename,
-  }) =>
-      _res;
 }
 
 class Variables$Query$UserCollection {
@@ -2795,8 +2094,8 @@ class Variables$Query$UserCollection {
     int? last,
     dynamic? before,
     dynamic? after,
-    Input$UserFilter? filter,
-    List<Input$UserOrderBy>? orderBy,
+    Input$UsersFilter? filter,
+    List<Input$UsersOrderBy>? orderBy,
   }) =>
       Variables$Query$UserCollection._({
         if (first != null) r'first': first,
@@ -2831,12 +2130,12 @@ class Variables$Query$UserCollection {
       final l$filter = data['filter'];
       result$data['filter'] = l$filter == null
           ? null
-          : Input$UserFilter.fromJson((l$filter as Map<String, dynamic>));
+          : Input$UsersFilter.fromJson((l$filter as Map<String, dynamic>));
     }
     if (data.containsKey('orderBy')) {
       final l$orderBy = data['orderBy'];
       result$data['orderBy'] = (l$orderBy as List<dynamic>?)
-          ?.map((e) => Input$UserOrderBy.fromJson((e as Map<String, dynamic>)))
+          ?.map((e) => Input$UsersOrderBy.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
     return Variables$Query$UserCollection._(result$data);
@@ -2852,10 +2151,10 @@ class Variables$Query$UserCollection {
 
   dynamic? get after => (_$data['after'] as dynamic?);
 
-  Input$UserFilter? get filter => (_$data['filter'] as Input$UserFilter?);
+  Input$UsersFilter? get filter => (_$data['filter'] as Input$UsersFilter?);
 
-  List<Input$UserOrderBy>? get orderBy =>
-      (_$data['orderBy'] as List<Input$UserOrderBy>?);
+  List<Input$UsersOrderBy>? get orderBy =>
+      (_$data['orderBy'] as List<Input$UsersOrderBy>?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -2897,7 +2196,7 @@ class Variables$Query$UserCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$UserCollection) ||
+    if (other is! Variables$Query$UserCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3000,8 +2299,8 @@ abstract class CopyWith$Variables$Query$UserCollection<TRes> {
     int? last,
     dynamic? before,
     dynamic? after,
-    Input$UserFilter? filter,
-    List<Input$UserOrderBy>? orderBy,
+    Input$UsersFilter? filter,
+    List<Input$UsersOrderBy>? orderBy,
   });
 }
 
@@ -3032,9 +2331,9 @@ class _CopyWithImpl$Variables$Query$UserCollection<TRes>
         if (last != _undefined) 'last': (last as int?),
         if (before != _undefined) 'before': (before as dynamic?),
         if (after != _undefined) 'after': (after as dynamic?),
-        if (filter != _undefined) 'filter': (filter as Input$UserFilter?),
+        if (filter != _undefined) 'filter': (filter as Input$UsersFilter?),
         if (orderBy != _undefined)
-          'orderBy': (orderBy as List<Input$UserOrderBy>?),
+          'orderBy': (orderBy as List<Input$UsersOrderBy>?),
       }));
 }
 
@@ -3049,38 +2348,38 @@ class _CopyWithStubImpl$Variables$Query$UserCollection<TRes>
     int? last,
     dynamic? before,
     dynamic? after,
-    Input$UserFilter? filter,
-    List<Input$UserOrderBy>? orderBy,
+    Input$UsersFilter? filter,
+    List<Input$UsersOrderBy>? orderBy,
   }) =>
       _res;
 }
 
 class Query$UserCollection {
   Query$UserCollection({
-    this.userCollection,
+    this.usersCollection,
     this.$__typename = 'Query',
   });
 
   factory Query$UserCollection.fromJson(Map<String, dynamic> json) {
-    final l$userCollection = json['userCollection'];
+    final l$usersCollection = json['usersCollection'];
     final l$$__typename = json['__typename'];
     return Query$UserCollection(
-      userCollection: l$userCollection == null
+      usersCollection: l$usersCollection == null
           ? null
-          : Query$UserCollection$userCollection.fromJson(
-              (l$userCollection as Map<String, dynamic>)),
+          : Query$UserCollection$usersCollection.fromJson(
+              (l$usersCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$UserCollection$userCollection? userCollection;
+  final Query$UserCollection$usersCollection? usersCollection;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$userCollection = userCollection;
-    _resultData['userCollection'] = l$userCollection?.toJson();
+    final l$usersCollection = usersCollection;
+    _resultData['usersCollection'] = l$usersCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -3088,10 +2387,10 @@ class Query$UserCollection {
 
   @override
   int get hashCode {
-    final l$userCollection = userCollection;
+    final l$usersCollection = usersCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$userCollection,
+      l$usersCollection,
       l$$__typename,
     ]);
   }
@@ -3101,12 +2400,12 @@ class Query$UserCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$UserCollection) || runtimeType != other.runtimeType) {
+    if (other is! Query$UserCollection || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$userCollection = userCollection;
-    final lOther$userCollection = other.userCollection;
-    if (l$userCollection != lOther$userCollection) {
+    final l$usersCollection = usersCollection;
+    final lOther$usersCollection = other.usersCollection;
+    if (l$usersCollection != lOther$usersCollection) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -3136,10 +2435,10 @@ abstract class CopyWith$Query$UserCollection<TRes> {
       _CopyWithStubImpl$Query$UserCollection;
 
   TRes call({
-    Query$UserCollection$userCollection? userCollection,
+    Query$UserCollection$usersCollection? usersCollection,
     String? $__typename,
   });
-  CopyWith$Query$UserCollection$userCollection<TRes> get userCollection;
+  CopyWith$Query$UserCollection$usersCollection<TRes> get usersCollection;
 }
 
 class _CopyWithImpl$Query$UserCollection<TRes>
@@ -3156,24 +2455,24 @@ class _CopyWithImpl$Query$UserCollection<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? userCollection = _undefined,
+    Object? usersCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$UserCollection(
-        userCollection: userCollection == _undefined
-            ? _instance.userCollection
-            : (userCollection as Query$UserCollection$userCollection?),
+        usersCollection: usersCollection == _undefined
+            ? _instance.usersCollection
+            : (usersCollection as Query$UserCollection$usersCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$UserCollection$userCollection<TRes> get userCollection {
-    final local$userCollection = _instance.userCollection;
-    return local$userCollection == null
-        ? CopyWith$Query$UserCollection$userCollection.stub(_then(_instance))
-        : CopyWith$Query$UserCollection$userCollection(
-            local$userCollection, (e) => call(userCollection: e));
+  CopyWith$Query$UserCollection$usersCollection<TRes> get usersCollection {
+    final local$usersCollection = _instance.usersCollection;
+    return local$usersCollection == null
+        ? CopyWith$Query$UserCollection$usersCollection.stub(_then(_instance))
+        : CopyWith$Query$UserCollection$usersCollection(
+            local$usersCollection, (e) => call(usersCollection: e));
   }
 }
 
@@ -3184,13 +2483,13 @@ class _CopyWithStubImpl$Query$UserCollection<TRes>
   TRes _res;
 
   call({
-    Query$UserCollection$userCollection? userCollection,
+    Query$UserCollection$usersCollection? usersCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$UserCollection$userCollection<TRes> get userCollection =>
-      CopyWith$Query$UserCollection$userCollection.stub(_res);
+  CopyWith$Query$UserCollection$usersCollection<TRes> get usersCollection =>
+      CopyWith$Query$UserCollection$usersCollection.stub(_res);
 }
 
 const documentNodeQueryUserCollection = DocumentNode(definitions: [
@@ -3237,7 +2536,7 @@ const documentNodeQueryUserCollection = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'filter')),
         type: NamedTypeNode(
-          name: NameNode(value: 'UserFilter'),
+          name: NameNode(value: 'UsersFilter'),
           isNonNull: false,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -3247,7 +2546,7 @@ const documentNodeQueryUserCollection = DocumentNode(definitions: [
         variable: VariableNode(name: NameNode(value: 'orderBy')),
         type: ListTypeNode(
           type: NamedTypeNode(
-            name: NameNode(value: 'UserOrderBy'),
+            name: NameNode(value: 'UsersOrderBy'),
             isNonNull: true,
           ),
           isNonNull: false,
@@ -3259,7 +2558,7 @@ const documentNodeQueryUserCollection = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'userCollection'),
+        name: NameNode(value: 'usersCollection'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -3387,16 +2686,8 @@ const documentNodeQueryUserCollection = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
-  fragmentDefinitionFirstResponder,
-  fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
-  fragmentDefinitionStationProvider,
-  fragmentDefinitionProvider,
-  fragmentDefinitionProviderType,
-  fragmentDefinitionFirstResponderStation,
-  fragmentDefinitionOrganization,
-  fragmentDefinitionOrganizationType,
-  fragmentDefinitionUserOrganization,
+  fragmentDefinitionUserStation,
 ]);
 Query$UserCollection _parserFn$Query$UserCollection(
         Map<String, dynamic> data) =>
@@ -3552,32 +2843,32 @@ class Query$UserCollection$Widget
         );
 }
 
-class Query$UserCollection$userCollection {
-  Query$UserCollection$userCollection({
+class Query$UserCollection$usersCollection {
+  Query$UserCollection$usersCollection({
     required this.edges,
     required this.pageInfo,
-    this.$__typename = 'UserConnection',
+    this.$__typename = 'UsersConnection',
   });
 
-  factory Query$UserCollection$userCollection.fromJson(
+  factory Query$UserCollection$usersCollection.fromJson(
       Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
-    return Query$UserCollection$userCollection(
+    return Query$UserCollection$usersCollection(
       edges: (l$edges as List<dynamic>)
-          .map((e) => Query$UserCollection$userCollection$edges.fromJson(
+          .map((e) => Query$UserCollection$usersCollection$edges.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
-      pageInfo: Query$UserCollection$userCollection$pageInfo.fromJson(
+      pageInfo: Query$UserCollection$usersCollection$pageInfo.fromJson(
           (l$pageInfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$UserCollection$userCollection$edges> edges;
+  final List<Query$UserCollection$usersCollection$edges> edges;
 
-  final Query$UserCollection$userCollection$pageInfo pageInfo;
+  final Query$UserCollection$usersCollection$pageInfo pageInfo;
 
   final String $__typename;
 
@@ -3609,7 +2900,7 @@ class Query$UserCollection$userCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$UserCollection$userCollection) ||
+    if (other is! Query$UserCollection$usersCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3639,49 +2930,49 @@ class Query$UserCollection$userCollection {
   }
 }
 
-extension UtilityExtension$Query$UserCollection$userCollection
-    on Query$UserCollection$userCollection {
-  CopyWith$Query$UserCollection$userCollection<
-          Query$UserCollection$userCollection>
-      get copyWith => CopyWith$Query$UserCollection$userCollection(
+extension UtilityExtension$Query$UserCollection$usersCollection
+    on Query$UserCollection$usersCollection {
+  CopyWith$Query$UserCollection$usersCollection<
+          Query$UserCollection$usersCollection>
+      get copyWith => CopyWith$Query$UserCollection$usersCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$UserCollection$userCollection<TRes> {
-  factory CopyWith$Query$UserCollection$userCollection(
-    Query$UserCollection$userCollection instance,
-    TRes Function(Query$UserCollection$userCollection) then,
-  ) = _CopyWithImpl$Query$UserCollection$userCollection;
+abstract class CopyWith$Query$UserCollection$usersCollection<TRes> {
+  factory CopyWith$Query$UserCollection$usersCollection(
+    Query$UserCollection$usersCollection instance,
+    TRes Function(Query$UserCollection$usersCollection) then,
+  ) = _CopyWithImpl$Query$UserCollection$usersCollection;
 
-  factory CopyWith$Query$UserCollection$userCollection.stub(TRes res) =
-      _CopyWithStubImpl$Query$UserCollection$userCollection;
+  factory CopyWith$Query$UserCollection$usersCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$UserCollection$usersCollection;
 
   TRes call({
-    List<Query$UserCollection$userCollection$edges>? edges,
-    Query$UserCollection$userCollection$pageInfo? pageInfo,
+    List<Query$UserCollection$usersCollection$edges>? edges,
+    Query$UserCollection$usersCollection$pageInfo? pageInfo,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$UserCollection$userCollection$edges> Function(
+      Iterable<Query$UserCollection$usersCollection$edges> Function(
               Iterable<
-                  CopyWith$Query$UserCollection$userCollection$edges<
-                      Query$UserCollection$userCollection$edges>>)
+                  CopyWith$Query$UserCollection$usersCollection$edges<
+                      Query$UserCollection$usersCollection$edges>>)
           _fn);
-  CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> get pageInfo;
+  CopyWith$Query$UserCollection$usersCollection$pageInfo<TRes> get pageInfo;
 }
 
-class _CopyWithImpl$Query$UserCollection$userCollection<TRes>
-    implements CopyWith$Query$UserCollection$userCollection<TRes> {
-  _CopyWithImpl$Query$UserCollection$userCollection(
+class _CopyWithImpl$Query$UserCollection$usersCollection<TRes>
+    implements CopyWith$Query$UserCollection$usersCollection<TRes> {
+  _CopyWithImpl$Query$UserCollection$usersCollection(
     this._instance,
     this._then,
   );
 
-  final Query$UserCollection$userCollection _instance;
+  final Query$UserCollection$usersCollection _instance;
 
-  final TRes Function(Query$UserCollection$userCollection) _then;
+  final TRes Function(Query$UserCollection$usersCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -3690,68 +2981,68 @@ class _CopyWithImpl$Query$UserCollection$userCollection<TRes>
     Object? pageInfo = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$UserCollection$userCollection(
+      _then(Query$UserCollection$usersCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
-            : (edges as List<Query$UserCollection$userCollection$edges>),
+            : (edges as List<Query$UserCollection$usersCollection$edges>),
         pageInfo: pageInfo == _undefined || pageInfo == null
             ? _instance.pageInfo
-            : (pageInfo as Query$UserCollection$userCollection$pageInfo),
+            : (pageInfo as Query$UserCollection$usersCollection$pageInfo),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$UserCollection$userCollection$edges> Function(
+          Iterable<Query$UserCollection$usersCollection$edges> Function(
                   Iterable<
-                      CopyWith$Query$UserCollection$userCollection$edges<
-                          Query$UserCollection$userCollection$edges>>)
+                      CopyWith$Query$UserCollection$usersCollection$edges<
+                          Query$UserCollection$usersCollection$edges>>)
               _fn) =>
       call(
           edges: _fn(_instance.edges
-              .map((e) => CopyWith$Query$UserCollection$userCollection$edges(
+              .map((e) => CopyWith$Query$UserCollection$usersCollection$edges(
                     e,
                     (i) => i,
                   ))).toList());
 
-  CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> get pageInfo {
+  CopyWith$Query$UserCollection$usersCollection$pageInfo<TRes> get pageInfo {
     final local$pageInfo = _instance.pageInfo;
-    return CopyWith$Query$UserCollection$userCollection$pageInfo(
+    return CopyWith$Query$UserCollection$usersCollection$pageInfo(
         local$pageInfo, (e) => call(pageInfo: e));
   }
 }
 
-class _CopyWithStubImpl$Query$UserCollection$userCollection<TRes>
-    implements CopyWith$Query$UserCollection$userCollection<TRes> {
-  _CopyWithStubImpl$Query$UserCollection$userCollection(this._res);
+class _CopyWithStubImpl$Query$UserCollection$usersCollection<TRes>
+    implements CopyWith$Query$UserCollection$usersCollection<TRes> {
+  _CopyWithStubImpl$Query$UserCollection$usersCollection(this._res);
 
   TRes _res;
 
   call({
-    List<Query$UserCollection$userCollection$edges>? edges,
-    Query$UserCollection$userCollection$pageInfo? pageInfo,
+    List<Query$UserCollection$usersCollection$edges>? edges,
+    Query$UserCollection$usersCollection$pageInfo? pageInfo,
     String? $__typename,
   }) =>
       _res;
 
   edges(_fn) => _res;
 
-  CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> get pageInfo =>
-      CopyWith$Query$UserCollection$userCollection$pageInfo.stub(_res);
+  CopyWith$Query$UserCollection$usersCollection$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$UserCollection$usersCollection$pageInfo.stub(_res);
 }
 
-class Query$UserCollection$userCollection$edges {
-  Query$UserCollection$userCollection$edges({
+class Query$UserCollection$usersCollection$edges {
+  Query$UserCollection$usersCollection$edges({
     required this.node,
-    this.$__typename = 'UserEdge',
+    this.$__typename = 'UsersEdge',
   });
 
-  factory Query$UserCollection$userCollection$edges.fromJson(
+  factory Query$UserCollection$usersCollection$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$UserCollection$userCollection$edges(
+    return Query$UserCollection$usersCollection$edges(
       node: Fragment$User.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -3785,7 +3076,7 @@ class Query$UserCollection$userCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$UserCollection$userCollection$edges) ||
+    if (other is! Query$UserCollection$usersCollection$edges ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3803,24 +3094,24 @@ class Query$UserCollection$userCollection$edges {
   }
 }
 
-extension UtilityExtension$Query$UserCollection$userCollection$edges
-    on Query$UserCollection$userCollection$edges {
-  CopyWith$Query$UserCollection$userCollection$edges<
-          Query$UserCollection$userCollection$edges>
-      get copyWith => CopyWith$Query$UserCollection$userCollection$edges(
+extension UtilityExtension$Query$UserCollection$usersCollection$edges
+    on Query$UserCollection$usersCollection$edges {
+  CopyWith$Query$UserCollection$usersCollection$edges<
+          Query$UserCollection$usersCollection$edges>
+      get copyWith => CopyWith$Query$UserCollection$usersCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$UserCollection$userCollection$edges<TRes> {
-  factory CopyWith$Query$UserCollection$userCollection$edges(
-    Query$UserCollection$userCollection$edges instance,
-    TRes Function(Query$UserCollection$userCollection$edges) then,
-  ) = _CopyWithImpl$Query$UserCollection$userCollection$edges;
+abstract class CopyWith$Query$UserCollection$usersCollection$edges<TRes> {
+  factory CopyWith$Query$UserCollection$usersCollection$edges(
+    Query$UserCollection$usersCollection$edges instance,
+    TRes Function(Query$UserCollection$usersCollection$edges) then,
+  ) = _CopyWithImpl$Query$UserCollection$usersCollection$edges;
 
-  factory CopyWith$Query$UserCollection$userCollection$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$UserCollection$userCollection$edges;
+  factory CopyWith$Query$UserCollection$usersCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$UserCollection$usersCollection$edges;
 
   TRes call({
     Fragment$User? node,
@@ -3829,16 +3120,16 @@ abstract class CopyWith$Query$UserCollection$userCollection$edges<TRes> {
   CopyWith$Fragment$User<TRes> get node;
 }
 
-class _CopyWithImpl$Query$UserCollection$userCollection$edges<TRes>
-    implements CopyWith$Query$UserCollection$userCollection$edges<TRes> {
-  _CopyWithImpl$Query$UserCollection$userCollection$edges(
+class _CopyWithImpl$Query$UserCollection$usersCollection$edges<TRes>
+    implements CopyWith$Query$UserCollection$usersCollection$edges<TRes> {
+  _CopyWithImpl$Query$UserCollection$usersCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Query$UserCollection$userCollection$edges _instance;
+  final Query$UserCollection$usersCollection$edges _instance;
 
-  final TRes Function(Query$UserCollection$userCollection$edges) _then;
+  final TRes Function(Query$UserCollection$usersCollection$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -3846,7 +3137,7 @@ class _CopyWithImpl$Query$UserCollection$userCollection$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$UserCollection$userCollection$edges(
+      _then(Query$UserCollection$usersCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$User),
@@ -3861,9 +3152,9 @@ class _CopyWithImpl$Query$UserCollection$userCollection$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$UserCollection$userCollection$edges<TRes>
-    implements CopyWith$Query$UserCollection$userCollection$edges<TRes> {
-  _CopyWithStubImpl$Query$UserCollection$userCollection$edges(this._res);
+class _CopyWithStubImpl$Query$UserCollection$usersCollection$edges<TRes>
+    implements CopyWith$Query$UserCollection$usersCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$UserCollection$usersCollection$edges(this._res);
 
   TRes _res;
 
@@ -3876,8 +3167,8 @@ class _CopyWithStubImpl$Query$UserCollection$userCollection$edges<TRes>
   CopyWith$Fragment$User<TRes> get node => CopyWith$Fragment$User.stub(_res);
 }
 
-class Query$UserCollection$userCollection$pageInfo {
-  Query$UserCollection$userCollection$pageInfo({
+class Query$UserCollection$usersCollection$pageInfo {
+  Query$UserCollection$usersCollection$pageInfo({
     this.startCursor,
     this.endCursor,
     required this.hasNextPage,
@@ -3885,14 +3176,14 @@ class Query$UserCollection$userCollection$pageInfo {
     this.$__typename = 'PageInfo',
   });
 
-  factory Query$UserCollection$userCollection$pageInfo.fromJson(
+  factory Query$UserCollection$usersCollection$pageInfo.fromJson(
       Map<String, dynamic> json) {
     final l$startCursor = json['startCursor'];
     final l$endCursor = json['endCursor'];
     final l$hasNextPage = json['hasNextPage'];
     final l$hasPreviousPage = json['hasPreviousPage'];
     final l$$__typename = json['__typename'];
-    return Query$UserCollection$userCollection$pageInfo(
+    return Query$UserCollection$usersCollection$pageInfo(
       startCursor: (l$startCursor as String?),
       endCursor: (l$endCursor as String?),
       hasNextPage: (l$hasNextPage as bool),
@@ -3947,7 +3238,7 @@ class Query$UserCollection$userCollection$pageInfo {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$UserCollection$userCollection$pageInfo) ||
+    if (other is! Query$UserCollection$usersCollection$pageInfo ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3980,24 +3271,25 @@ class Query$UserCollection$userCollection$pageInfo {
   }
 }
 
-extension UtilityExtension$Query$UserCollection$userCollection$pageInfo
-    on Query$UserCollection$userCollection$pageInfo {
-  CopyWith$Query$UserCollection$userCollection$pageInfo<
-          Query$UserCollection$userCollection$pageInfo>
-      get copyWith => CopyWith$Query$UserCollection$userCollection$pageInfo(
+extension UtilityExtension$Query$UserCollection$usersCollection$pageInfo
+    on Query$UserCollection$usersCollection$pageInfo {
+  CopyWith$Query$UserCollection$usersCollection$pageInfo<
+          Query$UserCollection$usersCollection$pageInfo>
+      get copyWith => CopyWith$Query$UserCollection$usersCollection$pageInfo(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> {
-  factory CopyWith$Query$UserCollection$userCollection$pageInfo(
-    Query$UserCollection$userCollection$pageInfo instance,
-    TRes Function(Query$UserCollection$userCollection$pageInfo) then,
-  ) = _CopyWithImpl$Query$UserCollection$userCollection$pageInfo;
+abstract class CopyWith$Query$UserCollection$usersCollection$pageInfo<TRes> {
+  factory CopyWith$Query$UserCollection$usersCollection$pageInfo(
+    Query$UserCollection$usersCollection$pageInfo instance,
+    TRes Function(Query$UserCollection$usersCollection$pageInfo) then,
+  ) = _CopyWithImpl$Query$UserCollection$usersCollection$pageInfo;
 
-  factory CopyWith$Query$UserCollection$userCollection$pageInfo.stub(TRes res) =
-      _CopyWithStubImpl$Query$UserCollection$userCollection$pageInfo;
+  factory CopyWith$Query$UserCollection$usersCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$UserCollection$usersCollection$pageInfo;
 
   TRes call({
     String? startCursor,
@@ -4008,16 +3300,16 @@ abstract class CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> {
   });
 }
 
-class _CopyWithImpl$Query$UserCollection$userCollection$pageInfo<TRes>
-    implements CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> {
-  _CopyWithImpl$Query$UserCollection$userCollection$pageInfo(
+class _CopyWithImpl$Query$UserCollection$usersCollection$pageInfo<TRes>
+    implements CopyWith$Query$UserCollection$usersCollection$pageInfo<TRes> {
+  _CopyWithImpl$Query$UserCollection$usersCollection$pageInfo(
     this._instance,
     this._then,
   );
 
-  final Query$UserCollection$userCollection$pageInfo _instance;
+  final Query$UserCollection$usersCollection$pageInfo _instance;
 
-  final TRes Function(Query$UserCollection$userCollection$pageInfo) _then;
+  final TRes Function(Query$UserCollection$usersCollection$pageInfo) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4028,7 +3320,7 @@ class _CopyWithImpl$Query$UserCollection$userCollection$pageInfo<TRes>
     Object? hasPreviousPage = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$UserCollection$userCollection$pageInfo(
+      _then(Query$UserCollection$usersCollection$pageInfo(
         startCursor: startCursor == _undefined
             ? _instance.startCursor
             : (startCursor as String?),
@@ -4048,9 +3340,9 @@ class _CopyWithImpl$Query$UserCollection$userCollection$pageInfo<TRes>
       ));
 }
 
-class _CopyWithStubImpl$Query$UserCollection$userCollection$pageInfo<TRes>
-    implements CopyWith$Query$UserCollection$userCollection$pageInfo<TRes> {
-  _CopyWithStubImpl$Query$UserCollection$userCollection$pageInfo(this._res);
+class _CopyWithStubImpl$Query$UserCollection$usersCollection$pageInfo<TRes>
+    implements CopyWith$Query$UserCollection$usersCollection$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$UserCollection$usersCollection$pageInfo(this._res);
 
   TRes _res;
 
@@ -4100,7 +3392,7 @@ class Variables$Query$User {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$User) || runtimeType != other.runtimeType) {
+    if (other is! Variables$Query$User || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -4160,30 +3452,30 @@ class _CopyWithStubImpl$Variables$Query$User<TRes>
 
 class Query$User {
   Query$User({
-    this.userCollection,
+    this.usersCollection,
     this.$__typename = 'Query',
   });
 
   factory Query$User.fromJson(Map<String, dynamic> json) {
-    final l$userCollection = json['userCollection'];
+    final l$usersCollection = json['usersCollection'];
     final l$$__typename = json['__typename'];
     return Query$User(
-      userCollection: l$userCollection == null
+      usersCollection: l$usersCollection == null
           ? null
-          : Query$User$userCollection.fromJson(
-              (l$userCollection as Map<String, dynamic>)),
+          : Query$User$usersCollection.fromJson(
+              (l$usersCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Query$User$userCollection? userCollection;
+  final Query$User$usersCollection? usersCollection;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$userCollection = userCollection;
-    _resultData['userCollection'] = l$userCollection?.toJson();
+    final l$usersCollection = usersCollection;
+    _resultData['usersCollection'] = l$usersCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -4191,10 +3483,10 @@ class Query$User {
 
   @override
   int get hashCode {
-    final l$userCollection = userCollection;
+    final l$usersCollection = usersCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$userCollection,
+      l$usersCollection,
       l$$__typename,
     ]);
   }
@@ -4204,12 +3496,12 @@ class Query$User {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$User) || runtimeType != other.runtimeType) {
+    if (other is! Query$User || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$userCollection = userCollection;
-    final lOther$userCollection = other.userCollection;
-    if (l$userCollection != lOther$userCollection) {
+    final l$usersCollection = usersCollection;
+    final lOther$usersCollection = other.usersCollection;
+    if (l$usersCollection != lOther$usersCollection) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -4237,10 +3529,10 @@ abstract class CopyWith$Query$User<TRes> {
   factory CopyWith$Query$User.stub(TRes res) = _CopyWithStubImpl$Query$User;
 
   TRes call({
-    Query$User$userCollection? userCollection,
+    Query$User$usersCollection? usersCollection,
     String? $__typename,
   });
-  CopyWith$Query$User$userCollection<TRes> get userCollection;
+  CopyWith$Query$User$usersCollection<TRes> get usersCollection;
 }
 
 class _CopyWithImpl$Query$User<TRes> implements CopyWith$Query$User<TRes> {
@@ -4256,24 +3548,24 @@ class _CopyWithImpl$Query$User<TRes> implements CopyWith$Query$User<TRes> {
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? userCollection = _undefined,
+    Object? usersCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$User(
-        userCollection: userCollection == _undefined
-            ? _instance.userCollection
-            : (userCollection as Query$User$userCollection?),
+        usersCollection: usersCollection == _undefined
+            ? _instance.usersCollection
+            : (usersCollection as Query$User$usersCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Query$User$userCollection<TRes> get userCollection {
-    final local$userCollection = _instance.userCollection;
-    return local$userCollection == null
-        ? CopyWith$Query$User$userCollection.stub(_then(_instance))
-        : CopyWith$Query$User$userCollection(
-            local$userCollection, (e) => call(userCollection: e));
+  CopyWith$Query$User$usersCollection<TRes> get usersCollection {
+    final local$usersCollection = _instance.usersCollection;
+    return local$usersCollection == null
+        ? CopyWith$Query$User$usersCollection.stub(_then(_instance))
+        : CopyWith$Query$User$usersCollection(
+            local$usersCollection, (e) => call(usersCollection: e));
   }
 }
 
@@ -4283,13 +3575,13 @@ class _CopyWithStubImpl$Query$User<TRes> implements CopyWith$Query$User<TRes> {
   TRes _res;
 
   call({
-    Query$User$userCollection? userCollection,
+    Query$User$usersCollection? usersCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$User$userCollection<TRes> get userCollection =>
-      CopyWith$Query$User$userCollection.stub(_res);
+  CopyWith$Query$User$usersCollection<TRes> get usersCollection =>
+      CopyWith$Query$User$usersCollection.stub(_res);
 }
 
 const documentNodeQueryUser = DocumentNode(definitions: [
@@ -4310,7 +3602,7 @@ const documentNodeQueryUser = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'userCollection'),
+        name: NameNode(value: 'usersCollection'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -4385,16 +3677,8 @@ const documentNodeQueryUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
-  fragmentDefinitionFirstResponder,
-  fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
-  fragmentDefinitionStationProvider,
-  fragmentDefinitionProvider,
-  fragmentDefinitionProviderType,
-  fragmentDefinitionFirstResponderStation,
-  fragmentDefinitionOrganization,
-  fragmentDefinitionOrganizationType,
-  fragmentDefinitionUserOrganization,
+  fragmentDefinitionUserStation,
 ]);
 Query$User _parserFn$Query$User(Map<String, dynamic> data) =>
     Query$User.fromJson(data);
@@ -4544,25 +3828,25 @@ class Query$User$Widget extends graphql_flutter.Query<Query$User> {
         );
 }
 
-class Query$User$userCollection {
-  Query$User$userCollection({
+class Query$User$usersCollection {
+  Query$User$usersCollection({
     required this.edges,
-    this.$__typename = 'UserConnection',
+    this.$__typename = 'UsersConnection',
   });
 
-  factory Query$User$userCollection.fromJson(Map<String, dynamic> json) {
+  factory Query$User$usersCollection.fromJson(Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$$__typename = json['__typename'];
-    return Query$User$userCollection(
+    return Query$User$usersCollection(
       edges: (l$edges as List<dynamic>)
-          .map((e) => Query$User$userCollection$edges.fromJson(
+          .map((e) => Query$User$usersCollection$edges.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Query$User$userCollection$edges> edges;
+  final List<Query$User$usersCollection$edges> edges;
 
   final String $__typename;
 
@@ -4590,7 +3874,7 @@ class Query$User$userCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$User$userCollection) ||
+    if (other is! Query$User$usersCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4615,46 +3899,46 @@ class Query$User$userCollection {
   }
 }
 
-extension UtilityExtension$Query$User$userCollection
-    on Query$User$userCollection {
-  CopyWith$Query$User$userCollection<Query$User$userCollection> get copyWith =>
-      CopyWith$Query$User$userCollection(
-        this,
-        (i) => i,
-      );
+extension UtilityExtension$Query$User$usersCollection
+    on Query$User$usersCollection {
+  CopyWith$Query$User$usersCollection<Query$User$usersCollection>
+      get copyWith => CopyWith$Query$User$usersCollection(
+            this,
+            (i) => i,
+          );
 }
 
-abstract class CopyWith$Query$User$userCollection<TRes> {
-  factory CopyWith$Query$User$userCollection(
-    Query$User$userCollection instance,
-    TRes Function(Query$User$userCollection) then,
-  ) = _CopyWithImpl$Query$User$userCollection;
+abstract class CopyWith$Query$User$usersCollection<TRes> {
+  factory CopyWith$Query$User$usersCollection(
+    Query$User$usersCollection instance,
+    TRes Function(Query$User$usersCollection) then,
+  ) = _CopyWithImpl$Query$User$usersCollection;
 
-  factory CopyWith$Query$User$userCollection.stub(TRes res) =
-      _CopyWithStubImpl$Query$User$userCollection;
+  factory CopyWith$Query$User$usersCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$User$usersCollection;
 
   TRes call({
-    List<Query$User$userCollection$edges>? edges,
+    List<Query$User$usersCollection$edges>? edges,
     String? $__typename,
   });
   TRes edges(
-      Iterable<Query$User$userCollection$edges> Function(
+      Iterable<Query$User$usersCollection$edges> Function(
               Iterable<
-                  CopyWith$Query$User$userCollection$edges<
-                      Query$User$userCollection$edges>>)
+                  CopyWith$Query$User$usersCollection$edges<
+                      Query$User$usersCollection$edges>>)
           _fn);
 }
 
-class _CopyWithImpl$Query$User$userCollection<TRes>
-    implements CopyWith$Query$User$userCollection<TRes> {
-  _CopyWithImpl$Query$User$userCollection(
+class _CopyWithImpl$Query$User$usersCollection<TRes>
+    implements CopyWith$Query$User$usersCollection<TRes> {
+  _CopyWithImpl$Query$User$usersCollection(
     this._instance,
     this._then,
   );
 
-  final Query$User$userCollection _instance;
+  final Query$User$usersCollection _instance;
 
-  final TRes Function(Query$User$userCollection) _then;
+  final TRes Function(Query$User$usersCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4662,37 +3946,37 @@ class _CopyWithImpl$Query$User$userCollection<TRes>
     Object? edges = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$User$userCollection(
+      _then(Query$User$usersCollection(
         edges: edges == _undefined || edges == null
             ? _instance.edges
-            : (edges as List<Query$User$userCollection$edges>),
+            : (edges as List<Query$User$usersCollection$edges>),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes edges(
-          Iterable<Query$User$userCollection$edges> Function(
+          Iterable<Query$User$usersCollection$edges> Function(
                   Iterable<
-                      CopyWith$Query$User$userCollection$edges<
-                          Query$User$userCollection$edges>>)
+                      CopyWith$Query$User$usersCollection$edges<
+                          Query$User$usersCollection$edges>>)
               _fn) =>
       call(
           edges: _fn(_instance.edges
-              .map((e) => CopyWith$Query$User$userCollection$edges(
+              .map((e) => CopyWith$Query$User$usersCollection$edges(
                     e,
                     (i) => i,
                   ))).toList());
 }
 
-class _CopyWithStubImpl$Query$User$userCollection<TRes>
-    implements CopyWith$Query$User$userCollection<TRes> {
-  _CopyWithStubImpl$Query$User$userCollection(this._res);
+class _CopyWithStubImpl$Query$User$usersCollection<TRes>
+    implements CopyWith$Query$User$usersCollection<TRes> {
+  _CopyWithStubImpl$Query$User$usersCollection(this._res);
 
   TRes _res;
 
   call({
-    List<Query$User$userCollection$edges>? edges,
+    List<Query$User$usersCollection$edges>? edges,
     String? $__typename,
   }) =>
       _res;
@@ -4700,16 +3984,16 @@ class _CopyWithStubImpl$Query$User$userCollection<TRes>
   edges(_fn) => _res;
 }
 
-class Query$User$userCollection$edges {
-  Query$User$userCollection$edges({
+class Query$User$usersCollection$edges {
+  Query$User$usersCollection$edges({
     required this.node,
-    this.$__typename = 'UserEdge',
+    this.$__typename = 'UsersEdge',
   });
 
-  factory Query$User$userCollection$edges.fromJson(Map<String, dynamic> json) {
+  factory Query$User$usersCollection$edges.fromJson(Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
-    return Query$User$userCollection$edges(
+    return Query$User$usersCollection$edges(
       node: Fragment$User.fromJson((l$node as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -4743,7 +4027,7 @@ class Query$User$userCollection$edges {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$User$userCollection$edges) ||
+    if (other is! Query$User$usersCollection$edges ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4761,23 +4045,23 @@ class Query$User$userCollection$edges {
   }
 }
 
-extension UtilityExtension$Query$User$userCollection$edges
-    on Query$User$userCollection$edges {
-  CopyWith$Query$User$userCollection$edges<Query$User$userCollection$edges>
-      get copyWith => CopyWith$Query$User$userCollection$edges(
+extension UtilityExtension$Query$User$usersCollection$edges
+    on Query$User$usersCollection$edges {
+  CopyWith$Query$User$usersCollection$edges<Query$User$usersCollection$edges>
+      get copyWith => CopyWith$Query$User$usersCollection$edges(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$User$userCollection$edges<TRes> {
-  factory CopyWith$Query$User$userCollection$edges(
-    Query$User$userCollection$edges instance,
-    TRes Function(Query$User$userCollection$edges) then,
-  ) = _CopyWithImpl$Query$User$userCollection$edges;
+abstract class CopyWith$Query$User$usersCollection$edges<TRes> {
+  factory CopyWith$Query$User$usersCollection$edges(
+    Query$User$usersCollection$edges instance,
+    TRes Function(Query$User$usersCollection$edges) then,
+  ) = _CopyWithImpl$Query$User$usersCollection$edges;
 
-  factory CopyWith$Query$User$userCollection$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$User$userCollection$edges;
+  factory CopyWith$Query$User$usersCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$User$usersCollection$edges;
 
   TRes call({
     Fragment$User? node,
@@ -4786,16 +4070,16 @@ abstract class CopyWith$Query$User$userCollection$edges<TRes> {
   CopyWith$Fragment$User<TRes> get node;
 }
 
-class _CopyWithImpl$Query$User$userCollection$edges<TRes>
-    implements CopyWith$Query$User$userCollection$edges<TRes> {
-  _CopyWithImpl$Query$User$userCollection$edges(
+class _CopyWithImpl$Query$User$usersCollection$edges<TRes>
+    implements CopyWith$Query$User$usersCollection$edges<TRes> {
+  _CopyWithImpl$Query$User$usersCollection$edges(
     this._instance,
     this._then,
   );
 
-  final Query$User$userCollection$edges _instance;
+  final Query$User$usersCollection$edges _instance;
 
-  final TRes Function(Query$User$userCollection$edges) _then;
+  final TRes Function(Query$User$usersCollection$edges) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4803,7 +4087,7 @@ class _CopyWithImpl$Query$User$userCollection$edges<TRes>
     Object? node = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Query$User$userCollection$edges(
+      _then(Query$User$usersCollection$edges(
         node: node == _undefined || node == null
             ? _instance.node
             : (node as Fragment$User),
@@ -4818,9 +4102,9 @@ class _CopyWithImpl$Query$User$userCollection$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$User$userCollection$edges<TRes>
-    implements CopyWith$Query$User$userCollection$edges<TRes> {
-  _CopyWithStubImpl$Query$User$userCollection$edges(this._res);
+class _CopyWithStubImpl$Query$User$usersCollection$edges<TRes>
+    implements CopyWith$Query$User$usersCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$User$usersCollection$edges(this._res);
 
   TRes _res;
 
@@ -4835,7 +4119,7 @@ class _CopyWithStubImpl$Query$User$userCollection$edges<TRes>
 
 class Variables$Mutation$CreateUser {
   factory Variables$Mutation$CreateUser(
-          {required Input$UserInsertInput input}) =>
+          {required Input$UsersInsertInput input}) =>
       Variables$Mutation$CreateUser._({
         r'input': input,
       });
@@ -4846,13 +4130,14 @@ class Variables$Mutation$CreateUser {
     final result$data = <String, dynamic>{};
     final l$input = data['input'];
     result$data['input'] =
-        Input$UserInsertInput.fromJson((l$input as Map<String, dynamic>));
+        Input$UsersInsertInput.fromJson((l$input as Map<String, dynamic>));
     return Variables$Mutation$CreateUser._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
-  Input$UserInsertInput get input => (_$data['input'] as Input$UserInsertInput);
+  Input$UsersInsertInput get input =>
+      (_$data['input'] as Input$UsersInsertInput);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -4872,7 +4157,7 @@ class Variables$Mutation$CreateUser {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Mutation$CreateUser) ||
+    if (other is! Variables$Mutation$CreateUser ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4900,7 +4185,7 @@ abstract class CopyWith$Variables$Mutation$CreateUser<TRes> {
   factory CopyWith$Variables$Mutation$CreateUser.stub(TRes res) =
       _CopyWithStubImpl$Variables$Mutation$CreateUser;
 
-  TRes call({Input$UserInsertInput? input});
+  TRes call({Input$UsersInsertInput? input});
 }
 
 class _CopyWithImpl$Variables$Mutation$CreateUser<TRes>
@@ -4920,7 +4205,7 @@ class _CopyWithImpl$Variables$Mutation$CreateUser<TRes>
       _then(Variables$Mutation$CreateUser._({
         ..._instance._$data,
         if (input != _undefined && input != null)
-          'input': (input as Input$UserInsertInput),
+          'input': (input as Input$UsersInsertInput),
       }));
 }
 
@@ -4930,36 +4215,37 @@ class _CopyWithStubImpl$Variables$Mutation$CreateUser<TRes>
 
   TRes _res;
 
-  call({Input$UserInsertInput? input}) => _res;
+  call({Input$UsersInsertInput? input}) => _res;
 }
 
 class Mutation$CreateUser {
   Mutation$CreateUser({
-    this.insertIntoUserCollection,
+    this.insertIntoUsersCollection,
     this.$__typename = 'Mutation',
   });
 
   factory Mutation$CreateUser.fromJson(Map<String, dynamic> json) {
-    final l$insertIntoUserCollection = json['insertIntoUserCollection'];
+    final l$insertIntoUsersCollection = json['insertIntoUsersCollection'];
     final l$$__typename = json['__typename'];
     return Mutation$CreateUser(
-      insertIntoUserCollection: l$insertIntoUserCollection == null
+      insertIntoUsersCollection: l$insertIntoUsersCollection == null
           ? null
-          : Mutation$CreateUser$insertIntoUserCollection.fromJson(
-              (l$insertIntoUserCollection as Map<String, dynamic>)),
+          : Mutation$CreateUser$insertIntoUsersCollection.fromJson(
+              (l$insertIntoUsersCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Mutation$CreateUser$insertIntoUserCollection? insertIntoUserCollection;
+  final Mutation$CreateUser$insertIntoUsersCollection?
+      insertIntoUsersCollection;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$insertIntoUserCollection = insertIntoUserCollection;
-    _resultData['insertIntoUserCollection'] =
-        l$insertIntoUserCollection?.toJson();
+    final l$insertIntoUsersCollection = insertIntoUsersCollection;
+    _resultData['insertIntoUsersCollection'] =
+        l$insertIntoUsersCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -4967,10 +4253,10 @@ class Mutation$CreateUser {
 
   @override
   int get hashCode {
-    final l$insertIntoUserCollection = insertIntoUserCollection;
+    final l$insertIntoUsersCollection = insertIntoUsersCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$insertIntoUserCollection,
+      l$insertIntoUsersCollection,
       l$$__typename,
     ]);
   }
@@ -4980,12 +4266,12 @@ class Mutation$CreateUser {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$CreateUser) || runtimeType != other.runtimeType) {
+    if (other is! Mutation$CreateUser || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$insertIntoUserCollection = insertIntoUserCollection;
-    final lOther$insertIntoUserCollection = other.insertIntoUserCollection;
-    if (l$insertIntoUserCollection != lOther$insertIntoUserCollection) {
+    final l$insertIntoUsersCollection = insertIntoUsersCollection;
+    final lOther$insertIntoUsersCollection = other.insertIntoUsersCollection;
+    if (l$insertIntoUsersCollection != lOther$insertIntoUsersCollection) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -5015,11 +4301,11 @@ abstract class CopyWith$Mutation$CreateUser<TRes> {
       _CopyWithStubImpl$Mutation$CreateUser;
 
   TRes call({
-    Mutation$CreateUser$insertIntoUserCollection? insertIntoUserCollection,
+    Mutation$CreateUser$insertIntoUsersCollection? insertIntoUsersCollection,
     String? $__typename,
   });
-  CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes>
-      get insertIntoUserCollection;
+  CopyWith$Mutation$CreateUser$insertIntoUsersCollection<TRes>
+      get insertIntoUsersCollection;
 }
 
 class _CopyWithImpl$Mutation$CreateUser<TRes>
@@ -5036,28 +4322,28 @@ class _CopyWithImpl$Mutation$CreateUser<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? insertIntoUserCollection = _undefined,
+    Object? insertIntoUsersCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$CreateUser(
-        insertIntoUserCollection: insertIntoUserCollection == _undefined
-            ? _instance.insertIntoUserCollection
-            : (insertIntoUserCollection
-                as Mutation$CreateUser$insertIntoUserCollection?),
+        insertIntoUsersCollection: insertIntoUsersCollection == _undefined
+            ? _instance.insertIntoUsersCollection
+            : (insertIntoUsersCollection
+                as Mutation$CreateUser$insertIntoUsersCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes>
-      get insertIntoUserCollection {
-    final local$insertIntoUserCollection = _instance.insertIntoUserCollection;
-    return local$insertIntoUserCollection == null
-        ? CopyWith$Mutation$CreateUser$insertIntoUserCollection.stub(
+  CopyWith$Mutation$CreateUser$insertIntoUsersCollection<TRes>
+      get insertIntoUsersCollection {
+    final local$insertIntoUsersCollection = _instance.insertIntoUsersCollection;
+    return local$insertIntoUsersCollection == null
+        ? CopyWith$Mutation$CreateUser$insertIntoUsersCollection.stub(
             _then(_instance))
-        : CopyWith$Mutation$CreateUser$insertIntoUserCollection(
-            local$insertIntoUserCollection,
-            (e) => call(insertIntoUserCollection: e));
+        : CopyWith$Mutation$CreateUser$insertIntoUsersCollection(
+            local$insertIntoUsersCollection,
+            (e) => call(insertIntoUsersCollection: e));
   }
 }
 
@@ -5068,14 +4354,14 @@ class _CopyWithStubImpl$Mutation$CreateUser<TRes>
   TRes _res;
 
   call({
-    Mutation$CreateUser$insertIntoUserCollection? insertIntoUserCollection,
+    Mutation$CreateUser$insertIntoUsersCollection? insertIntoUsersCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes>
-      get insertIntoUserCollection =>
-          CopyWith$Mutation$CreateUser$insertIntoUserCollection.stub(_res);
+  CopyWith$Mutation$CreateUser$insertIntoUsersCollection<TRes>
+      get insertIntoUsersCollection =>
+          CopyWith$Mutation$CreateUser$insertIntoUsersCollection.stub(_res);
 }
 
 const documentNodeMutationCreateUser = DocumentNode(definitions: [
@@ -5086,7 +4372,7 @@ const documentNodeMutationCreateUser = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'input')),
         type: NamedTypeNode(
-          name: NameNode(value: 'UserInsertInput'),
+          name: NameNode(value: 'UsersInsertInput'),
           isNonNull: true,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -5096,7 +4382,7 @@ const documentNodeMutationCreateUser = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'insertIntoUserCollection'),
+        name: NameNode(value: 'insertIntoUsersCollection'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -5147,16 +4433,8 @@ const documentNodeMutationCreateUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
-  fragmentDefinitionFirstResponder,
-  fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
-  fragmentDefinitionStationProvider,
-  fragmentDefinitionProvider,
-  fragmentDefinitionProviderType,
-  fragmentDefinitionFirstResponderStation,
-  fragmentDefinitionOrganization,
-  fragmentDefinitionOrganizationType,
-  fragmentDefinitionUserOrganization,
+  fragmentDefinitionUserStation,
 ]);
 Mutation$CreateUser _parserFn$Mutation$CreateUser(Map<String, dynamic> data) =>
     Mutation$CreateUser.fromJson(data);
@@ -5365,17 +4643,17 @@ class Mutation$CreateUser$Widget
         );
 }
 
-class Mutation$CreateUser$insertIntoUserCollection {
-  Mutation$CreateUser$insertIntoUserCollection({
+class Mutation$CreateUser$insertIntoUsersCollection {
+  Mutation$CreateUser$insertIntoUsersCollection({
     required this.records,
-    this.$__typename = 'UserInsertResponse',
+    this.$__typename = 'UsersInsertResponse',
   });
 
-  factory Mutation$CreateUser$insertIntoUserCollection.fromJson(
+  factory Mutation$CreateUser$insertIntoUsersCollection.fromJson(
       Map<String, dynamic> json) {
     final l$records = json['records'];
     final l$$__typename = json['__typename'];
-    return Mutation$CreateUser$insertIntoUserCollection(
+    return Mutation$CreateUser$insertIntoUsersCollection(
       records: (l$records as List<dynamic>)
           .map((e) => Fragment$User.fromJson((e as Map<String, dynamic>)))
           .toList(),
@@ -5411,7 +4689,7 @@ class Mutation$CreateUser$insertIntoUserCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$CreateUser$insertIntoUserCollection) ||
+    if (other is! Mutation$CreateUser$insertIntoUsersCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -5436,24 +4714,25 @@ class Mutation$CreateUser$insertIntoUserCollection {
   }
 }
 
-extension UtilityExtension$Mutation$CreateUser$insertIntoUserCollection
-    on Mutation$CreateUser$insertIntoUserCollection {
-  CopyWith$Mutation$CreateUser$insertIntoUserCollection<
-          Mutation$CreateUser$insertIntoUserCollection>
-      get copyWith => CopyWith$Mutation$CreateUser$insertIntoUserCollection(
+extension UtilityExtension$Mutation$CreateUser$insertIntoUsersCollection
+    on Mutation$CreateUser$insertIntoUsersCollection {
+  CopyWith$Mutation$CreateUser$insertIntoUsersCollection<
+          Mutation$CreateUser$insertIntoUsersCollection>
+      get copyWith => CopyWith$Mutation$CreateUser$insertIntoUsersCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes> {
-  factory CopyWith$Mutation$CreateUser$insertIntoUserCollection(
-    Mutation$CreateUser$insertIntoUserCollection instance,
-    TRes Function(Mutation$CreateUser$insertIntoUserCollection) then,
-  ) = _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection;
+abstract class CopyWith$Mutation$CreateUser$insertIntoUsersCollection<TRes> {
+  factory CopyWith$Mutation$CreateUser$insertIntoUsersCollection(
+    Mutation$CreateUser$insertIntoUsersCollection instance,
+    TRes Function(Mutation$CreateUser$insertIntoUsersCollection) then,
+  ) = _CopyWithImpl$Mutation$CreateUser$insertIntoUsersCollection;
 
-  factory CopyWith$Mutation$CreateUser$insertIntoUserCollection.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$CreateUser$insertIntoUserCollection;
+  factory CopyWith$Mutation$CreateUser$insertIntoUsersCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$CreateUser$insertIntoUsersCollection;
 
   TRes call({
     List<Fragment$User>? records,
@@ -5465,16 +4744,16 @@ abstract class CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes> {
           _fn);
 }
 
-class _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection<TRes>
-    implements CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes> {
-  _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection(
+class _CopyWithImpl$Mutation$CreateUser$insertIntoUsersCollection<TRes>
+    implements CopyWith$Mutation$CreateUser$insertIntoUsersCollection<TRes> {
+  _CopyWithImpl$Mutation$CreateUser$insertIntoUsersCollection(
     this._instance,
     this._then,
   );
 
-  final Mutation$CreateUser$insertIntoUserCollection _instance;
+  final Mutation$CreateUser$insertIntoUsersCollection _instance;
 
-  final TRes Function(Mutation$CreateUser$insertIntoUserCollection) _then;
+  final TRes Function(Mutation$CreateUser$insertIntoUsersCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -5482,7 +4761,7 @@ class _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection<TRes>
     Object? records = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$CreateUser$insertIntoUserCollection(
+      _then(Mutation$CreateUser$insertIntoUsersCollection(
         records: records == _undefined || records == null
             ? _instance.records
             : (records as List<Fragment$User>),
@@ -5502,9 +4781,9 @@ class _CopyWithImpl$Mutation$CreateUser$insertIntoUserCollection<TRes>
               ))).toList());
 }
 
-class _CopyWithStubImpl$Mutation$CreateUser$insertIntoUserCollection<TRes>
-    implements CopyWith$Mutation$CreateUser$insertIntoUserCollection<TRes> {
-  _CopyWithStubImpl$Mutation$CreateUser$insertIntoUserCollection(this._res);
+class _CopyWithStubImpl$Mutation$CreateUser$insertIntoUsersCollection<TRes>
+    implements CopyWith$Mutation$CreateUser$insertIntoUsersCollection<TRes> {
+  _CopyWithStubImpl$Mutation$CreateUser$insertIntoUsersCollection(this._res);
 
   TRes _res;
 
@@ -5517,10 +4796,3800 @@ class _CopyWithStubImpl$Mutation$CreateUser$insertIntoUserCollection<TRes>
   records(_fn) => _res;
 }
 
+class Variables$Mutation$DeleteUser {
+  factory Variables$Mutation$DeleteUser({required String id}) =>
+      Variables$Mutation$DeleteUser._({
+        r'id': id,
+      });
+
+  Variables$Mutation$DeleteUser._(this._$data);
+
+  factory Variables$Mutation$DeleteUser.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as String);
+    return Variables$Mutation$DeleteUser._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get id => (_$data['id'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$DeleteUser<Variables$Mutation$DeleteUser>
+      get copyWith => CopyWith$Variables$Mutation$DeleteUser(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$DeleteUser ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    return Object.hashAll([l$id]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$DeleteUser<TRes> {
+  factory CopyWith$Variables$Mutation$DeleteUser(
+    Variables$Mutation$DeleteUser instance,
+    TRes Function(Variables$Mutation$DeleteUser) then,
+  ) = _CopyWithImpl$Variables$Mutation$DeleteUser;
+
+  factory CopyWith$Variables$Mutation$DeleteUser.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$DeleteUser;
+
+  TRes call({String? id});
+}
+
+class _CopyWithImpl$Variables$Mutation$DeleteUser<TRes>
+    implements CopyWith$Variables$Mutation$DeleteUser<TRes> {
+  _CopyWithImpl$Variables$Mutation$DeleteUser(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$DeleteUser _instance;
+
+  final TRes Function(Variables$Mutation$DeleteUser) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? id = _undefined}) =>
+      _then(Variables$Mutation$DeleteUser._({
+        ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$DeleteUser<TRes>
+    implements CopyWith$Variables$Mutation$DeleteUser<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$DeleteUser(this._res);
+
+  TRes _res;
+
+  call({String? id}) => _res;
+}
+
+class Mutation$DeleteUser {
+  Mutation$DeleteUser({
+    required this.deleteFromUsersCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$DeleteUser.fromJson(Map<String, dynamic> json) {
+    final l$deleteFromUsersCollection = json['deleteFromUsersCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$DeleteUser(
+      deleteFromUsersCollection:
+          Mutation$DeleteUser$deleteFromUsersCollection.fromJson(
+              (l$deleteFromUsersCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$DeleteUser$deleteFromUsersCollection deleteFromUsersCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$deleteFromUsersCollection = deleteFromUsersCollection;
+    _resultData['deleteFromUsersCollection'] =
+        l$deleteFromUsersCollection.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$deleteFromUsersCollection = deleteFromUsersCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$deleteFromUsersCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$DeleteUser || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$deleteFromUsersCollection = deleteFromUsersCollection;
+    final lOther$deleteFromUsersCollection = other.deleteFromUsersCollection;
+    if (l$deleteFromUsersCollection != lOther$deleteFromUsersCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$DeleteUser on Mutation$DeleteUser {
+  CopyWith$Mutation$DeleteUser<Mutation$DeleteUser> get copyWith =>
+      CopyWith$Mutation$DeleteUser(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$DeleteUser<TRes> {
+  factory CopyWith$Mutation$DeleteUser(
+    Mutation$DeleteUser instance,
+    TRes Function(Mutation$DeleteUser) then,
+  ) = _CopyWithImpl$Mutation$DeleteUser;
+
+  factory CopyWith$Mutation$DeleteUser.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$DeleteUser;
+
+  TRes call({
+    Mutation$DeleteUser$deleteFromUsersCollection? deleteFromUsersCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$DeleteUser$deleteFromUsersCollection<TRes>
+      get deleteFromUsersCollection;
+}
+
+class _CopyWithImpl$Mutation$DeleteUser<TRes>
+    implements CopyWith$Mutation$DeleteUser<TRes> {
+  _CopyWithImpl$Mutation$DeleteUser(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$DeleteUser _instance;
+
+  final TRes Function(Mutation$DeleteUser) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? deleteFromUsersCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$DeleteUser(
+        deleteFromUsersCollection: deleteFromUsersCollection == _undefined ||
+                deleteFromUsersCollection == null
+            ? _instance.deleteFromUsersCollection
+            : (deleteFromUsersCollection
+                as Mutation$DeleteUser$deleteFromUsersCollection),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$DeleteUser$deleteFromUsersCollection<TRes>
+      get deleteFromUsersCollection {
+    final local$deleteFromUsersCollection = _instance.deleteFromUsersCollection;
+    return CopyWith$Mutation$DeleteUser$deleteFromUsersCollection(
+        local$deleteFromUsersCollection,
+        (e) => call(deleteFromUsersCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$DeleteUser<TRes>
+    implements CopyWith$Mutation$DeleteUser<TRes> {
+  _CopyWithStubImpl$Mutation$DeleteUser(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$DeleteUser$deleteFromUsersCollection? deleteFromUsersCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$DeleteUser$deleteFromUsersCollection<TRes>
+      get deleteFromUsersCollection =>
+          CopyWith$Mutation$DeleteUser$deleteFromUsersCollection.stub(_res);
+}
+
+const documentNodeMutationDeleteUser = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'DeleteUser'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'deleteFromUsersCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'id'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
+              )
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'affectedCount'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'User'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUser,
+  fragmentDefinitionUserRole,
+  fragmentDefinitionRole,
+  fragmentDefinitionStation,
+  fragmentDefinitionUserStation,
+]);
+Mutation$DeleteUser _parserFn$Mutation$DeleteUser(Map<String, dynamic> data) =>
+    Mutation$DeleteUser.fromJson(data);
+typedef OnMutationCompleted$Mutation$DeleteUser = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$DeleteUser?,
+);
+
+class Options$Mutation$DeleteUser
+    extends graphql.MutationOptions<Mutation$DeleteUser> {
+  Options$Mutation$DeleteUser({
+    String? operationName,
+    required Variables$Mutation$DeleteUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$DeleteUser? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$DeleteUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$DeleteUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$DeleteUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationDeleteUser,
+          parserFn: _parserFn$Mutation$DeleteUser,
+        );
+
+  final OnMutationCompleted$Mutation$DeleteUser? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$DeleteUser
+    extends graphql.WatchQueryOptions<Mutation$DeleteUser> {
+  WatchOptions$Mutation$DeleteUser({
+    String? operationName,
+    required Variables$Mutation$DeleteUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$DeleteUser? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationDeleteUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$DeleteUser,
+        );
+}
+
+extension ClientExtension$Mutation$DeleteUser on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$DeleteUser>> mutate$DeleteUser(
+          Options$Mutation$DeleteUser options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$DeleteUser> watchMutation$DeleteUser(
+          WatchOptions$Mutation$DeleteUser options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$DeleteUser$HookResult {
+  Mutation$DeleteUser$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$DeleteUser runMutation;
+
+  final graphql.QueryResult<Mutation$DeleteUser> result;
+}
+
+Mutation$DeleteUser$HookResult useMutation$DeleteUser(
+    [WidgetOptions$Mutation$DeleteUser? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$DeleteUser());
+  return Mutation$DeleteUser$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$DeleteUser> useWatchMutation$DeleteUser(
+        WatchOptions$Mutation$DeleteUser options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$DeleteUser
+    extends graphql.MutationOptions<Mutation$DeleteUser> {
+  WidgetOptions$Mutation$DeleteUser({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$DeleteUser? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$DeleteUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$DeleteUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$DeleteUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationDeleteUser,
+          parserFn: _parserFn$Mutation$DeleteUser,
+        );
+
+  final OnMutationCompleted$Mutation$DeleteUser? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$DeleteUser
+    = graphql.MultiSourceResult<Mutation$DeleteUser> Function(
+  Variables$Mutation$DeleteUser, {
+  Object? optimisticResult,
+  Mutation$DeleteUser? typedOptimisticResult,
+});
+typedef Builder$Mutation$DeleteUser = widgets.Widget Function(
+  RunMutation$Mutation$DeleteUser,
+  graphql.QueryResult<Mutation$DeleteUser>?,
+);
+
+class Mutation$DeleteUser$Widget
+    extends graphql_flutter.Mutation<Mutation$DeleteUser> {
+  Mutation$DeleteUser$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$DeleteUser? options,
+    required Builder$Mutation$DeleteUser builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$DeleteUser(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$DeleteUser$deleteFromUsersCollection {
+  Mutation$DeleteUser$deleteFromUsersCollection({
+    required this.affectedCount,
+    required this.records,
+    this.$__typename = 'UsersDeleteResponse',
+  });
+
+  factory Mutation$DeleteUser$deleteFromUsersCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$affectedCount = json['affectedCount'];
+    final l$records = json['records'];
+    final l$$__typename = json['__typename'];
+    return Mutation$DeleteUser$deleteFromUsersCollection(
+      affectedCount: (l$affectedCount as int),
+      records: (l$records as List<dynamic>)
+          .map((e) => Fragment$User.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final int affectedCount;
+
+  final List<Fragment$User> records;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$affectedCount = affectedCount;
+    _resultData['affectedCount'] = l$affectedCount;
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$affectedCount = affectedCount;
+    final l$records = records;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$affectedCount,
+      Object.hashAll(l$records.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$DeleteUser$deleteFromUsersCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$affectedCount = affectedCount;
+    final lOther$affectedCount = other.affectedCount;
+    if (l$affectedCount != lOther$affectedCount) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$DeleteUser$deleteFromUsersCollection
+    on Mutation$DeleteUser$deleteFromUsersCollection {
+  CopyWith$Mutation$DeleteUser$deleteFromUsersCollection<
+          Mutation$DeleteUser$deleteFromUsersCollection>
+      get copyWith => CopyWith$Mutation$DeleteUser$deleteFromUsersCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$DeleteUser$deleteFromUsersCollection<TRes> {
+  factory CopyWith$Mutation$DeleteUser$deleteFromUsersCollection(
+    Mutation$DeleteUser$deleteFromUsersCollection instance,
+    TRes Function(Mutation$DeleteUser$deleteFromUsersCollection) then,
+  ) = _CopyWithImpl$Mutation$DeleteUser$deleteFromUsersCollection;
+
+  factory CopyWith$Mutation$DeleteUser$deleteFromUsersCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$DeleteUser$deleteFromUsersCollection;
+
+  TRes call({
+    int? affectedCount,
+    List<Fragment$User>? records,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$User> Function(
+              Iterable<CopyWith$Fragment$User<Fragment$User>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$DeleteUser$deleteFromUsersCollection<TRes>
+    implements CopyWith$Mutation$DeleteUser$deleteFromUsersCollection<TRes> {
+  _CopyWithImpl$Mutation$DeleteUser$deleteFromUsersCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$DeleteUser$deleteFromUsersCollection _instance;
+
+  final TRes Function(Mutation$DeleteUser$deleteFromUsersCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? affectedCount = _undefined,
+    Object? records = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$DeleteUser$deleteFromUsersCollection(
+        affectedCount: affectedCount == _undefined || affectedCount == null
+            ? _instance.affectedCount
+            : (affectedCount as int),
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$User>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$User> Function(
+                  Iterable<CopyWith$Fragment$User<Fragment$User>>)
+              _fn) =>
+      call(
+          records: _fn(_instance.records.map((e) => CopyWith$Fragment$User(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$DeleteUser$deleteFromUsersCollection<TRes>
+    implements CopyWith$Mutation$DeleteUser$deleteFromUsersCollection<TRes> {
+  _CopyWithStubImpl$Mutation$DeleteUser$deleteFromUsersCollection(this._res);
+
+  TRes _res;
+
+  call({
+    int? affectedCount,
+    List<Fragment$User>? records,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
+}
+
+class Variables$Mutation$AddUserToStation {
+  factory Variables$Mutation$AddUserToStation({
+    required String userId,
+    required String stationId,
+  }) =>
+      Variables$Mutation$AddUserToStation._({
+        r'userId': userId,
+        r'stationId': stationId,
+      });
+
+  Variables$Mutation$AddUserToStation._(this._$data);
+
+  factory Variables$Mutation$AddUserToStation.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$userId = data['userId'];
+    result$data['userId'] = (l$userId as String);
+    final l$stationId = data['stationId'];
+    result$data['stationId'] = (l$stationId as String);
+    return Variables$Mutation$AddUserToStation._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get userId => (_$data['userId'] as String);
+
+  String get stationId => (_$data['stationId'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$userId = userId;
+    result$data['userId'] = l$userId;
+    final l$stationId = stationId;
+    result$data['stationId'] = l$stationId;
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$AddUserToStation<
+          Variables$Mutation$AddUserToStation>
+      get copyWith => CopyWith$Variables$Mutation$AddUserToStation(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$AddUserToStation ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$userId = userId;
+    final l$stationId = stationId;
+    return Object.hashAll([
+      l$userId,
+      l$stationId,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$AddUserToStation<TRes> {
+  factory CopyWith$Variables$Mutation$AddUserToStation(
+    Variables$Mutation$AddUserToStation instance,
+    TRes Function(Variables$Mutation$AddUserToStation) then,
+  ) = _CopyWithImpl$Variables$Mutation$AddUserToStation;
+
+  factory CopyWith$Variables$Mutation$AddUserToStation.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$AddUserToStation;
+
+  TRes call({
+    String? userId,
+    String? stationId,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$AddUserToStation<TRes>
+    implements CopyWith$Variables$Mutation$AddUserToStation<TRes> {
+  _CopyWithImpl$Variables$Mutation$AddUserToStation(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$AddUserToStation _instance;
+
+  final TRes Function(Variables$Mutation$AddUserToStation) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? userId = _undefined,
+    Object? stationId = _undefined,
+  }) =>
+      _then(Variables$Mutation$AddUserToStation._({
+        ..._instance._$data,
+        if (userId != _undefined && userId != null)
+          'userId': (userId as String),
+        if (stationId != _undefined && stationId != null)
+          'stationId': (stationId as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$AddUserToStation<TRes>
+    implements CopyWith$Variables$Mutation$AddUserToStation<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$AddUserToStation(this._res);
+
+  TRes _res;
+
+  call({
+    String? userId,
+    String? stationId,
+  }) =>
+      _res;
+}
+
+class Mutation$AddUserToStation {
+  Mutation$AddUserToStation({
+    this.insertIntoUserStationsCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$AddUserToStation.fromJson(Map<String, dynamic> json) {
+    final l$insertIntoUserStationsCollection =
+        json['insertIntoUserStationsCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$AddUserToStation(
+      insertIntoUserStationsCollection: l$insertIntoUserStationsCollection ==
+              null
+          ? null
+          : Mutation$AddUserToStation$insertIntoUserStationsCollection.fromJson(
+              (l$insertIntoUserStationsCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$AddUserToStation$insertIntoUserStationsCollection?
+      insertIntoUserStationsCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$insertIntoUserStationsCollection = insertIntoUserStationsCollection;
+    _resultData['insertIntoUserStationsCollection'] =
+        l$insertIntoUserStationsCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$insertIntoUserStationsCollection = insertIntoUserStationsCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$insertIntoUserStationsCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$AddUserToStation ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$insertIntoUserStationsCollection = insertIntoUserStationsCollection;
+    final lOther$insertIntoUserStationsCollection =
+        other.insertIntoUserStationsCollection;
+    if (l$insertIntoUserStationsCollection !=
+        lOther$insertIntoUserStationsCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$AddUserToStation
+    on Mutation$AddUserToStation {
+  CopyWith$Mutation$AddUserToStation<Mutation$AddUserToStation> get copyWith =>
+      CopyWith$Mutation$AddUserToStation(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$AddUserToStation<TRes> {
+  factory CopyWith$Mutation$AddUserToStation(
+    Mutation$AddUserToStation instance,
+    TRes Function(Mutation$AddUserToStation) then,
+  ) = _CopyWithImpl$Mutation$AddUserToStation;
+
+  factory CopyWith$Mutation$AddUserToStation.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$AddUserToStation;
+
+  TRes call({
+    Mutation$AddUserToStation$insertIntoUserStationsCollection?
+        insertIntoUserStationsCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection<TRes>
+      get insertIntoUserStationsCollection;
+}
+
+class _CopyWithImpl$Mutation$AddUserToStation<TRes>
+    implements CopyWith$Mutation$AddUserToStation<TRes> {
+  _CopyWithImpl$Mutation$AddUserToStation(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$AddUserToStation _instance;
+
+  final TRes Function(Mutation$AddUserToStation) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? insertIntoUserStationsCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$AddUserToStation(
+        insertIntoUserStationsCollection: insertIntoUserStationsCollection ==
+                _undefined
+            ? _instance.insertIntoUserStationsCollection
+            : (insertIntoUserStationsCollection
+                as Mutation$AddUserToStation$insertIntoUserStationsCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection<TRes>
+      get insertIntoUserStationsCollection {
+    final local$insertIntoUserStationsCollection =
+        _instance.insertIntoUserStationsCollection;
+    return local$insertIntoUserStationsCollection == null
+        ? CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection
+            .stub(_then(_instance))
+        : CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection(
+            local$insertIntoUserStationsCollection,
+            (e) => call(insertIntoUserStationsCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$AddUserToStation<TRes>
+    implements CopyWith$Mutation$AddUserToStation<TRes> {
+  _CopyWithStubImpl$Mutation$AddUserToStation(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$AddUserToStation$insertIntoUserStationsCollection?
+        insertIntoUserStationsCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection<TRes>
+      get insertIntoUserStationsCollection =>
+          CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection
+              .stub(_res);
+}
+
+const documentNodeMutationAddUserToStation = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'AddUserToStation'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'stationId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'insertIntoUserStationsCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'objects'),
+            value: ListValueNode(values: [
+              ObjectValueNode(fields: [
+                ObjectFieldNode(
+                  name: NameNode(value: 'userId'),
+                  value: VariableNode(name: NameNode(value: 'userId')),
+                ),
+                ObjectFieldNode(
+                  name: NameNode(value: 'stationId'),
+                  value: VariableNode(name: NameNode(value: 'stationId')),
+                ),
+              ])
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'UserStation'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUserStation,
+  fragmentDefinitionStation,
+]);
+Mutation$AddUserToStation _parserFn$Mutation$AddUserToStation(
+        Map<String, dynamic> data) =>
+    Mutation$AddUserToStation.fromJson(data);
+typedef OnMutationCompleted$Mutation$AddUserToStation = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$AddUserToStation?,
+);
+
+class Options$Mutation$AddUserToStation
+    extends graphql.MutationOptions<Mutation$AddUserToStation> {
+  Options$Mutation$AddUserToStation({
+    String? operationName,
+    required Variables$Mutation$AddUserToStation variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$AddUserToStation? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$AddUserToStation? onCompleted,
+    graphql.OnMutationUpdate<Mutation$AddUserToStation>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$AddUserToStation(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationAddUserToStation,
+          parserFn: _parserFn$Mutation$AddUserToStation,
+        );
+
+  final OnMutationCompleted$Mutation$AddUserToStation? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$AddUserToStation
+    extends graphql.WatchQueryOptions<Mutation$AddUserToStation> {
+  WatchOptions$Mutation$AddUserToStation({
+    String? operationName,
+    required Variables$Mutation$AddUserToStation variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$AddUserToStation? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationAddUserToStation,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$AddUserToStation,
+        );
+}
+
+extension ClientExtension$Mutation$AddUserToStation on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$AddUserToStation>>
+      mutate$AddUserToStation(
+              Options$Mutation$AddUserToStation options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$AddUserToStation>
+      watchMutation$AddUserToStation(
+              WatchOptions$Mutation$AddUserToStation options) =>
+          this.watchMutation(options);
+}
+
+class Mutation$AddUserToStation$HookResult {
+  Mutation$AddUserToStation$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$AddUserToStation runMutation;
+
+  final graphql.QueryResult<Mutation$AddUserToStation> result;
+}
+
+Mutation$AddUserToStation$HookResult useMutation$AddUserToStation(
+    [WidgetOptions$Mutation$AddUserToStation? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$AddUserToStation());
+  return Mutation$AddUserToStation$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$AddUserToStation>
+    useWatchMutation$AddUserToStation(
+            WatchOptions$Mutation$AddUserToStation options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$AddUserToStation
+    extends graphql.MutationOptions<Mutation$AddUserToStation> {
+  WidgetOptions$Mutation$AddUserToStation({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$AddUserToStation? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$AddUserToStation? onCompleted,
+    graphql.OnMutationUpdate<Mutation$AddUserToStation>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$AddUserToStation(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationAddUserToStation,
+          parserFn: _parserFn$Mutation$AddUserToStation,
+        );
+
+  final OnMutationCompleted$Mutation$AddUserToStation? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$AddUserToStation
+    = graphql.MultiSourceResult<Mutation$AddUserToStation> Function(
+  Variables$Mutation$AddUserToStation, {
+  Object? optimisticResult,
+  Mutation$AddUserToStation? typedOptimisticResult,
+});
+typedef Builder$Mutation$AddUserToStation = widgets.Widget Function(
+  RunMutation$Mutation$AddUserToStation,
+  graphql.QueryResult<Mutation$AddUserToStation>?,
+);
+
+class Mutation$AddUserToStation$Widget
+    extends graphql_flutter.Mutation<Mutation$AddUserToStation> {
+  Mutation$AddUserToStation$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$AddUserToStation? options,
+    required Builder$Mutation$AddUserToStation builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$AddUserToStation(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$AddUserToStation$insertIntoUserStationsCollection {
+  Mutation$AddUserToStation$insertIntoUserStationsCollection({
+    required this.records,
+    this.$__typename = 'UserStationsInsertResponse',
+  });
+
+  factory Mutation$AddUserToStation$insertIntoUserStationsCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$records = json['records'];
+    final l$$__typename = json['__typename'];
+    return Mutation$AddUserToStation$insertIntoUserStationsCollection(
+      records: (l$records as List<dynamic>)
+          .map(
+              (e) => Fragment$UserStation.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$UserStation> records;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$records = records;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$records.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$AddUserToStation$insertIntoUserStationsCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$AddUserToStation$insertIntoUserStationsCollection
+    on Mutation$AddUserToStation$insertIntoUserStationsCollection {
+  CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection<
+          Mutation$AddUserToStation$insertIntoUserStationsCollection>
+      get copyWith =>
+          CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection<
+    TRes> {
+  factory CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection(
+    Mutation$AddUserToStation$insertIntoUserStationsCollection instance,
+    TRes Function(Mutation$AddUserToStation$insertIntoUserStationsCollection)
+        then,
+  ) = _CopyWithImpl$Mutation$AddUserToStation$insertIntoUserStationsCollection;
+
+  factory CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$AddUserToStation$insertIntoUserStationsCollection;
+
+  TRes call({
+    List<Fragment$UserStation>? records,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$UserStation> Function(
+              Iterable<CopyWith$Fragment$UserStation<Fragment$UserStation>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$AddUserToStation$insertIntoUserStationsCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection<
+            TRes> {
+  _CopyWithImpl$Mutation$AddUserToStation$insertIntoUserStationsCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$AddUserToStation$insertIntoUserStationsCollection _instance;
+
+  final TRes Function(
+      Mutation$AddUserToStation$insertIntoUserStationsCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? records = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$AddUserToStation$insertIntoUserStationsCollection(
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$UserStation>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$UserStation> Function(
+                  Iterable<CopyWith$Fragment$UserStation<Fragment$UserStation>>)
+              _fn) =>
+      call(
+          records:
+              _fn(_instance.records.map((e) => CopyWith$Fragment$UserStation(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$AddUserToStation$insertIntoUserStationsCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$AddUserToStation$insertIntoUserStationsCollection<
+            TRes> {
+  _CopyWithStubImpl$Mutation$AddUserToStation$insertIntoUserStationsCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$UserStation>? records,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
+}
+
+class Variables$Mutation$RemoveUserFromStation {
+  factory Variables$Mutation$RemoveUserFromStation({
+    required String userId,
+    required String stationId,
+  }) =>
+      Variables$Mutation$RemoveUserFromStation._({
+        r'userId': userId,
+        r'stationId': stationId,
+      });
+
+  Variables$Mutation$RemoveUserFromStation._(this._$data);
+
+  factory Variables$Mutation$RemoveUserFromStation.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$userId = data['userId'];
+    result$data['userId'] = (l$userId as String);
+    final l$stationId = data['stationId'];
+    result$data['stationId'] = (l$stationId as String);
+    return Variables$Mutation$RemoveUserFromStation._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get userId => (_$data['userId'] as String);
+
+  String get stationId => (_$data['stationId'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$userId = userId;
+    result$data['userId'] = l$userId;
+    final l$stationId = stationId;
+    result$data['stationId'] = l$stationId;
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$RemoveUserFromStation<
+          Variables$Mutation$RemoveUserFromStation>
+      get copyWith => CopyWith$Variables$Mutation$RemoveUserFromStation(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$RemoveUserFromStation ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$userId = userId;
+    final l$stationId = stationId;
+    return Object.hashAll([
+      l$userId,
+      l$stationId,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$RemoveUserFromStation<TRes> {
+  factory CopyWith$Variables$Mutation$RemoveUserFromStation(
+    Variables$Mutation$RemoveUserFromStation instance,
+    TRes Function(Variables$Mutation$RemoveUserFromStation) then,
+  ) = _CopyWithImpl$Variables$Mutation$RemoveUserFromStation;
+
+  factory CopyWith$Variables$Mutation$RemoveUserFromStation.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$RemoveUserFromStation;
+
+  TRes call({
+    String? userId,
+    String? stationId,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$RemoveUserFromStation<TRes>
+    implements CopyWith$Variables$Mutation$RemoveUserFromStation<TRes> {
+  _CopyWithImpl$Variables$Mutation$RemoveUserFromStation(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$RemoveUserFromStation _instance;
+
+  final TRes Function(Variables$Mutation$RemoveUserFromStation) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? userId = _undefined,
+    Object? stationId = _undefined,
+  }) =>
+      _then(Variables$Mutation$RemoveUserFromStation._({
+        ..._instance._$data,
+        if (userId != _undefined && userId != null)
+          'userId': (userId as String),
+        if (stationId != _undefined && stationId != null)
+          'stationId': (stationId as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$RemoveUserFromStation<TRes>
+    implements CopyWith$Variables$Mutation$RemoveUserFromStation<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$RemoveUserFromStation(this._res);
+
+  TRes _res;
+
+  call({
+    String? userId,
+    String? stationId,
+  }) =>
+      _res;
+}
+
+class Mutation$RemoveUserFromStation {
+  Mutation$RemoveUserFromStation({
+    required this.deleteFromUserStationsCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$RemoveUserFromStation.fromJson(Map<String, dynamic> json) {
+    final l$deleteFromUserStationsCollection =
+        json['deleteFromUserStationsCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$RemoveUserFromStation(
+      deleteFromUserStationsCollection:
+          Mutation$RemoveUserFromStation$deleteFromUserStationsCollection
+              .fromJson(
+                  (l$deleteFromUserStationsCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$RemoveUserFromStation$deleteFromUserStationsCollection
+      deleteFromUserStationsCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$deleteFromUserStationsCollection = deleteFromUserStationsCollection;
+    _resultData['deleteFromUserStationsCollection'] =
+        l$deleteFromUserStationsCollection.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$deleteFromUserStationsCollection = deleteFromUserStationsCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$deleteFromUserStationsCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$RemoveUserFromStation ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$deleteFromUserStationsCollection = deleteFromUserStationsCollection;
+    final lOther$deleteFromUserStationsCollection =
+        other.deleteFromUserStationsCollection;
+    if (l$deleteFromUserStationsCollection !=
+        lOther$deleteFromUserStationsCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$RemoveUserFromStation
+    on Mutation$RemoveUserFromStation {
+  CopyWith$Mutation$RemoveUserFromStation<Mutation$RemoveUserFromStation>
+      get copyWith => CopyWith$Mutation$RemoveUserFromStation(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$RemoveUserFromStation<TRes> {
+  factory CopyWith$Mutation$RemoveUserFromStation(
+    Mutation$RemoveUserFromStation instance,
+    TRes Function(Mutation$RemoveUserFromStation) then,
+  ) = _CopyWithImpl$Mutation$RemoveUserFromStation;
+
+  factory CopyWith$Mutation$RemoveUserFromStation.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$RemoveUserFromStation;
+
+  TRes call({
+    Mutation$RemoveUserFromStation$deleteFromUserStationsCollection?
+        deleteFromUserStationsCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<TRes>
+      get deleteFromUserStationsCollection;
+}
+
+class _CopyWithImpl$Mutation$RemoveUserFromStation<TRes>
+    implements CopyWith$Mutation$RemoveUserFromStation<TRes> {
+  _CopyWithImpl$Mutation$RemoveUserFromStation(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$RemoveUserFromStation _instance;
+
+  final TRes Function(Mutation$RemoveUserFromStation) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? deleteFromUserStationsCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$RemoveUserFromStation(
+        deleteFromUserStationsCollection: deleteFromUserStationsCollection ==
+                    _undefined ||
+                deleteFromUserStationsCollection == null
+            ? _instance.deleteFromUserStationsCollection
+            : (deleteFromUserStationsCollection
+                as Mutation$RemoveUserFromStation$deleteFromUserStationsCollection),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<TRes>
+      get deleteFromUserStationsCollection {
+    final local$deleteFromUserStationsCollection =
+        _instance.deleteFromUserStationsCollection;
+    return CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection(
+        local$deleteFromUserStationsCollection,
+        (e) => call(deleteFromUserStationsCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$RemoveUserFromStation<TRes>
+    implements CopyWith$Mutation$RemoveUserFromStation<TRes> {
+  _CopyWithStubImpl$Mutation$RemoveUserFromStation(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$RemoveUserFromStation$deleteFromUserStationsCollection?
+        deleteFromUserStationsCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<TRes>
+      get deleteFromUserStationsCollection =>
+          CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection
+              .stub(_res);
+}
+
+const documentNodeMutationRemoveUserFromStation = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'RemoveUserFromStation'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'stationId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'deleteFromUserStationsCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'userId'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'userId')),
+                  )
+                ]),
+              ),
+              ObjectFieldNode(
+                name: NameNode(value: 'stationId'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'stationId')),
+                  )
+                ]),
+              ),
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'affectedCount'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'UserStation'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUserStation,
+  fragmentDefinitionStation,
+]);
+Mutation$RemoveUserFromStation _parserFn$Mutation$RemoveUserFromStation(
+        Map<String, dynamic> data) =>
+    Mutation$RemoveUserFromStation.fromJson(data);
+typedef OnMutationCompleted$Mutation$RemoveUserFromStation = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Mutation$RemoveUserFromStation?,
+);
+
+class Options$Mutation$RemoveUserFromStation
+    extends graphql.MutationOptions<Mutation$RemoveUserFromStation> {
+  Options$Mutation$RemoveUserFromStation({
+    String? operationName,
+    required Variables$Mutation$RemoveUserFromStation variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$RemoveUserFromStation? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$RemoveUserFromStation? onCompleted,
+    graphql.OnMutationUpdate<Mutation$RemoveUserFromStation>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$RemoveUserFromStation(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationRemoveUserFromStation,
+          parserFn: _parserFn$Mutation$RemoveUserFromStation,
+        );
+
+  final OnMutationCompleted$Mutation$RemoveUserFromStation?
+      onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$RemoveUserFromStation
+    extends graphql.WatchQueryOptions<Mutation$RemoveUserFromStation> {
+  WatchOptions$Mutation$RemoveUserFromStation({
+    String? operationName,
+    required Variables$Mutation$RemoveUserFromStation variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$RemoveUserFromStation? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationRemoveUserFromStation,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$RemoveUserFromStation,
+        );
+}
+
+extension ClientExtension$Mutation$RemoveUserFromStation
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$RemoveUserFromStation>>
+      mutate$RemoveUserFromStation(
+              Options$Mutation$RemoveUserFromStation options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$RemoveUserFromStation>
+      watchMutation$RemoveUserFromStation(
+              WatchOptions$Mutation$RemoveUserFromStation options) =>
+          this.watchMutation(options);
+}
+
+class Mutation$RemoveUserFromStation$HookResult {
+  Mutation$RemoveUserFromStation$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$RemoveUserFromStation runMutation;
+
+  final graphql.QueryResult<Mutation$RemoveUserFromStation> result;
+}
+
+Mutation$RemoveUserFromStation$HookResult useMutation$RemoveUserFromStation(
+    [WidgetOptions$Mutation$RemoveUserFromStation? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$RemoveUserFromStation());
+  return Mutation$RemoveUserFromStation$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$RemoveUserFromStation>
+    useWatchMutation$RemoveUserFromStation(
+            WatchOptions$Mutation$RemoveUserFromStation options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$RemoveUserFromStation
+    extends graphql.MutationOptions<Mutation$RemoveUserFromStation> {
+  WidgetOptions$Mutation$RemoveUserFromStation({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$RemoveUserFromStation? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$RemoveUserFromStation? onCompleted,
+    graphql.OnMutationUpdate<Mutation$RemoveUserFromStation>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$RemoveUserFromStation(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationRemoveUserFromStation,
+          parserFn: _parserFn$Mutation$RemoveUserFromStation,
+        );
+
+  final OnMutationCompleted$Mutation$RemoveUserFromStation?
+      onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$RemoveUserFromStation
+    = graphql.MultiSourceResult<Mutation$RemoveUserFromStation> Function(
+  Variables$Mutation$RemoveUserFromStation, {
+  Object? optimisticResult,
+  Mutation$RemoveUserFromStation? typedOptimisticResult,
+});
+typedef Builder$Mutation$RemoveUserFromStation = widgets.Widget Function(
+  RunMutation$Mutation$RemoveUserFromStation,
+  graphql.QueryResult<Mutation$RemoveUserFromStation>?,
+);
+
+class Mutation$RemoveUserFromStation$Widget
+    extends graphql_flutter.Mutation<Mutation$RemoveUserFromStation> {
+  Mutation$RemoveUserFromStation$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$RemoveUserFromStation? options,
+    required Builder$Mutation$RemoveUserFromStation builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$RemoveUserFromStation(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$RemoveUserFromStation$deleteFromUserStationsCollection {
+  Mutation$RemoveUserFromStation$deleteFromUserStationsCollection({
+    required this.affectedCount,
+    required this.records,
+    this.$__typename = 'UserStationsDeleteResponse',
+  });
+
+  factory Mutation$RemoveUserFromStation$deleteFromUserStationsCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$affectedCount = json['affectedCount'];
+    final l$records = json['records'];
+    final l$$__typename = json['__typename'];
+    return Mutation$RemoveUserFromStation$deleteFromUserStationsCollection(
+      affectedCount: (l$affectedCount as int),
+      records: (l$records as List<dynamic>)
+          .map(
+              (e) => Fragment$UserStation.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final int affectedCount;
+
+  final List<Fragment$UserStation> records;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$affectedCount = affectedCount;
+    _resultData['affectedCount'] = l$affectedCount;
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$affectedCount = affectedCount;
+    final l$records = records;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$affectedCount,
+      Object.hashAll(l$records.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Mutation$RemoveUserFromStation$deleteFromUserStationsCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$affectedCount = affectedCount;
+    final lOther$affectedCount = other.affectedCount;
+    if (l$affectedCount != lOther$affectedCount) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection
+    on Mutation$RemoveUserFromStation$deleteFromUserStationsCollection {
+  CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<
+          Mutation$RemoveUserFromStation$deleteFromUserStationsCollection>
+      get copyWith =>
+          CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<
+    TRes> {
+  factory CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection(
+    Mutation$RemoveUserFromStation$deleteFromUserStationsCollection instance,
+    TRes Function(
+            Mutation$RemoveUserFromStation$deleteFromUserStationsCollection)
+        then,
+  ) = _CopyWithImpl$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection;
+
+  factory CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection;
+
+  TRes call({
+    int? affectedCount,
+    List<Fragment$UserStation>? records,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$UserStation> Function(
+              Iterable<CopyWith$Fragment$UserStation<Fragment$UserStation>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<
+            TRes> {
+  _CopyWithImpl$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$RemoveUserFromStation$deleteFromUserStationsCollection
+      _instance;
+
+  final TRes Function(
+      Mutation$RemoveUserFromStation$deleteFromUserStationsCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? affectedCount = _undefined,
+    Object? records = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$RemoveUserFromStation$deleteFromUserStationsCollection(
+        affectedCount: affectedCount == _undefined || affectedCount == null
+            ? _instance.affectedCount
+            : (affectedCount as int),
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$UserStation>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$UserStation> Function(
+                  Iterable<CopyWith$Fragment$UserStation<Fragment$UserStation>>)
+              _fn) =>
+      call(
+          records:
+              _fn(_instance.records.map((e) => CopyWith$Fragment$UserStation(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection<
+            TRes> {
+  _CopyWithStubImpl$Mutation$RemoveUserFromStation$deleteFromUserStationsCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    int? affectedCount,
+    List<Fragment$UserStation>? records,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
+}
+
+class Variables$Mutation$AddUserToRole {
+  factory Variables$Mutation$AddUserToRole({
+    required String userId,
+    required String roleId,
+  }) =>
+      Variables$Mutation$AddUserToRole._({
+        r'userId': userId,
+        r'roleId': roleId,
+      });
+
+  Variables$Mutation$AddUserToRole._(this._$data);
+
+  factory Variables$Mutation$AddUserToRole.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$userId = data['userId'];
+    result$data['userId'] = (l$userId as String);
+    final l$roleId = data['roleId'];
+    result$data['roleId'] = (l$roleId as String);
+    return Variables$Mutation$AddUserToRole._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get userId => (_$data['userId'] as String);
+
+  String get roleId => (_$data['roleId'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$userId = userId;
+    result$data['userId'] = l$userId;
+    final l$roleId = roleId;
+    result$data['roleId'] = l$roleId;
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$AddUserToRole<Variables$Mutation$AddUserToRole>
+      get copyWith => CopyWith$Variables$Mutation$AddUserToRole(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$AddUserToRole ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$roleId = roleId;
+    final lOther$roleId = other.roleId;
+    if (l$roleId != lOther$roleId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$userId = userId;
+    final l$roleId = roleId;
+    return Object.hashAll([
+      l$userId,
+      l$roleId,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$AddUserToRole<TRes> {
+  factory CopyWith$Variables$Mutation$AddUserToRole(
+    Variables$Mutation$AddUserToRole instance,
+    TRes Function(Variables$Mutation$AddUserToRole) then,
+  ) = _CopyWithImpl$Variables$Mutation$AddUserToRole;
+
+  factory CopyWith$Variables$Mutation$AddUserToRole.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$AddUserToRole;
+
+  TRes call({
+    String? userId,
+    String? roleId,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$AddUserToRole<TRes>
+    implements CopyWith$Variables$Mutation$AddUserToRole<TRes> {
+  _CopyWithImpl$Variables$Mutation$AddUserToRole(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$AddUserToRole _instance;
+
+  final TRes Function(Variables$Mutation$AddUserToRole) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? userId = _undefined,
+    Object? roleId = _undefined,
+  }) =>
+      _then(Variables$Mutation$AddUserToRole._({
+        ..._instance._$data,
+        if (userId != _undefined && userId != null)
+          'userId': (userId as String),
+        if (roleId != _undefined && roleId != null)
+          'roleId': (roleId as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$AddUserToRole<TRes>
+    implements CopyWith$Variables$Mutation$AddUserToRole<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$AddUserToRole(this._res);
+
+  TRes _res;
+
+  call({
+    String? userId,
+    String? roleId,
+  }) =>
+      _res;
+}
+
+class Mutation$AddUserToRole {
+  Mutation$AddUserToRole({
+    this.insertIntoUserRolesCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$AddUserToRole.fromJson(Map<String, dynamic> json) {
+    final l$insertIntoUserRolesCollection =
+        json['insertIntoUserRolesCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$AddUserToRole(
+      insertIntoUserRolesCollection: l$insertIntoUserRolesCollection == null
+          ? null
+          : Mutation$AddUserToRole$insertIntoUserRolesCollection.fromJson(
+              (l$insertIntoUserRolesCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$AddUserToRole$insertIntoUserRolesCollection?
+      insertIntoUserRolesCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$insertIntoUserRolesCollection = insertIntoUserRolesCollection;
+    _resultData['insertIntoUserRolesCollection'] =
+        l$insertIntoUserRolesCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$insertIntoUserRolesCollection = insertIntoUserRolesCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$insertIntoUserRolesCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$AddUserToRole || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$insertIntoUserRolesCollection = insertIntoUserRolesCollection;
+    final lOther$insertIntoUserRolesCollection =
+        other.insertIntoUserRolesCollection;
+    if (l$insertIntoUserRolesCollection !=
+        lOther$insertIntoUserRolesCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$AddUserToRole on Mutation$AddUserToRole {
+  CopyWith$Mutation$AddUserToRole<Mutation$AddUserToRole> get copyWith =>
+      CopyWith$Mutation$AddUserToRole(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$AddUserToRole<TRes> {
+  factory CopyWith$Mutation$AddUserToRole(
+    Mutation$AddUserToRole instance,
+    TRes Function(Mutation$AddUserToRole) then,
+  ) = _CopyWithImpl$Mutation$AddUserToRole;
+
+  factory CopyWith$Mutation$AddUserToRole.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$AddUserToRole;
+
+  TRes call({
+    Mutation$AddUserToRole$insertIntoUserRolesCollection?
+        insertIntoUserRolesCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection<TRes>
+      get insertIntoUserRolesCollection;
+}
+
+class _CopyWithImpl$Mutation$AddUserToRole<TRes>
+    implements CopyWith$Mutation$AddUserToRole<TRes> {
+  _CopyWithImpl$Mutation$AddUserToRole(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$AddUserToRole _instance;
+
+  final TRes Function(Mutation$AddUserToRole) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? insertIntoUserRolesCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$AddUserToRole(
+        insertIntoUserRolesCollection:
+            insertIntoUserRolesCollection == _undefined
+                ? _instance.insertIntoUserRolesCollection
+                : (insertIntoUserRolesCollection
+                    as Mutation$AddUserToRole$insertIntoUserRolesCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection<TRes>
+      get insertIntoUserRolesCollection {
+    final local$insertIntoUserRolesCollection =
+        _instance.insertIntoUserRolesCollection;
+    return local$insertIntoUserRolesCollection == null
+        ? CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection.stub(
+            _then(_instance))
+        : CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection(
+            local$insertIntoUserRolesCollection,
+            (e) => call(insertIntoUserRolesCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$AddUserToRole<TRes>
+    implements CopyWith$Mutation$AddUserToRole<TRes> {
+  _CopyWithStubImpl$Mutation$AddUserToRole(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$AddUserToRole$insertIntoUserRolesCollection?
+        insertIntoUserRolesCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection<TRes>
+      get insertIntoUserRolesCollection =>
+          CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection.stub(
+              _res);
+}
+
+const documentNodeMutationAddUserToRole = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'AddUserToRole'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'roleId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'insertIntoUserRolesCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'objects'),
+            value: ListValueNode(values: [
+              ObjectValueNode(fields: [
+                ObjectFieldNode(
+                  name: NameNode(value: 'userId'),
+                  value: VariableNode(name: NameNode(value: 'userId')),
+                ),
+                ObjectFieldNode(
+                  name: NameNode(value: 'roleId'),
+                  value: VariableNode(name: NameNode(value: 'roleId')),
+                ),
+              ])
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'UserRole'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUserRole,
+  fragmentDefinitionRole,
+]);
+Mutation$AddUserToRole _parserFn$Mutation$AddUserToRole(
+        Map<String, dynamic> data) =>
+    Mutation$AddUserToRole.fromJson(data);
+typedef OnMutationCompleted$Mutation$AddUserToRole = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$AddUserToRole?,
+);
+
+class Options$Mutation$AddUserToRole
+    extends graphql.MutationOptions<Mutation$AddUserToRole> {
+  Options$Mutation$AddUserToRole({
+    String? operationName,
+    required Variables$Mutation$AddUserToRole variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$AddUserToRole? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$AddUserToRole? onCompleted,
+    graphql.OnMutationUpdate<Mutation$AddUserToRole>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$AddUserToRole(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationAddUserToRole,
+          parserFn: _parserFn$Mutation$AddUserToRole,
+        );
+
+  final OnMutationCompleted$Mutation$AddUserToRole? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$AddUserToRole
+    extends graphql.WatchQueryOptions<Mutation$AddUserToRole> {
+  WatchOptions$Mutation$AddUserToRole({
+    String? operationName,
+    required Variables$Mutation$AddUserToRole variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$AddUserToRole? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationAddUserToRole,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$AddUserToRole,
+        );
+}
+
+extension ClientExtension$Mutation$AddUserToRole on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$AddUserToRole>> mutate$AddUserToRole(
+          Options$Mutation$AddUserToRole options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$AddUserToRole> watchMutation$AddUserToRole(
+          WatchOptions$Mutation$AddUserToRole options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$AddUserToRole$HookResult {
+  Mutation$AddUserToRole$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$AddUserToRole runMutation;
+
+  final graphql.QueryResult<Mutation$AddUserToRole> result;
+}
+
+Mutation$AddUserToRole$HookResult useMutation$AddUserToRole(
+    [WidgetOptions$Mutation$AddUserToRole? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$AddUserToRole());
+  return Mutation$AddUserToRole$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$AddUserToRole> useWatchMutation$AddUserToRole(
+        WatchOptions$Mutation$AddUserToRole options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$AddUserToRole
+    extends graphql.MutationOptions<Mutation$AddUserToRole> {
+  WidgetOptions$Mutation$AddUserToRole({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$AddUserToRole? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$AddUserToRole? onCompleted,
+    graphql.OnMutationUpdate<Mutation$AddUserToRole>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$AddUserToRole(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationAddUserToRole,
+          parserFn: _parserFn$Mutation$AddUserToRole,
+        );
+
+  final OnMutationCompleted$Mutation$AddUserToRole? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$AddUserToRole
+    = graphql.MultiSourceResult<Mutation$AddUserToRole> Function(
+  Variables$Mutation$AddUserToRole, {
+  Object? optimisticResult,
+  Mutation$AddUserToRole? typedOptimisticResult,
+});
+typedef Builder$Mutation$AddUserToRole = widgets.Widget Function(
+  RunMutation$Mutation$AddUserToRole,
+  graphql.QueryResult<Mutation$AddUserToRole>?,
+);
+
+class Mutation$AddUserToRole$Widget
+    extends graphql_flutter.Mutation<Mutation$AddUserToRole> {
+  Mutation$AddUserToRole$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$AddUserToRole? options,
+    required Builder$Mutation$AddUserToRole builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$AddUserToRole(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$AddUserToRole$insertIntoUserRolesCollection {
+  Mutation$AddUserToRole$insertIntoUserRolesCollection({
+    required this.records,
+    this.$__typename = 'UserRolesInsertResponse',
+  });
+
+  factory Mutation$AddUserToRole$insertIntoUserRolesCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$records = json['records'];
+    final l$$__typename = json['__typename'];
+    return Mutation$AddUserToRole$insertIntoUserRolesCollection(
+      records: (l$records as List<dynamic>)
+          .map((e) => Fragment$UserRole.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$UserRole> records;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$records = records;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$records.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$AddUserToRole$insertIntoUserRolesCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$AddUserToRole$insertIntoUserRolesCollection
+    on Mutation$AddUserToRole$insertIntoUserRolesCollection {
+  CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection<
+          Mutation$AddUserToRole$insertIntoUserRolesCollection>
+      get copyWith =>
+          CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection<
+    TRes> {
+  factory CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection(
+    Mutation$AddUserToRole$insertIntoUserRolesCollection instance,
+    TRes Function(Mutation$AddUserToRole$insertIntoUserRolesCollection) then,
+  ) = _CopyWithImpl$Mutation$AddUserToRole$insertIntoUserRolesCollection;
+
+  factory CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$AddUserToRole$insertIntoUserRolesCollection;
+
+  TRes call({
+    List<Fragment$UserRole>? records,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$UserRole> Function(
+              Iterable<CopyWith$Fragment$UserRole<Fragment$UserRole>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$AddUserToRole$insertIntoUserRolesCollection<TRes>
+    implements
+        CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection<TRes> {
+  _CopyWithImpl$Mutation$AddUserToRole$insertIntoUserRolesCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$AddUserToRole$insertIntoUserRolesCollection _instance;
+
+  final TRes Function(Mutation$AddUserToRole$insertIntoUserRolesCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? records = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$AddUserToRole$insertIntoUserRolesCollection(
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$UserRole>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$UserRole> Function(
+                  Iterable<CopyWith$Fragment$UserRole<Fragment$UserRole>>)
+              _fn) =>
+      call(
+          records: _fn(_instance.records.map((e) => CopyWith$Fragment$UserRole(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$AddUserToRole$insertIntoUserRolesCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$AddUserToRole$insertIntoUserRolesCollection<TRes> {
+  _CopyWithStubImpl$Mutation$AddUserToRole$insertIntoUserRolesCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$UserRole>? records,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
+}
+
+class Variables$Mutation$RemoveUserFromRole {
+  factory Variables$Mutation$RemoveUserFromRole({
+    required String userId,
+    required String roleId,
+  }) =>
+      Variables$Mutation$RemoveUserFromRole._({
+        r'userId': userId,
+        r'roleId': roleId,
+      });
+
+  Variables$Mutation$RemoveUserFromRole._(this._$data);
+
+  factory Variables$Mutation$RemoveUserFromRole.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$userId = data['userId'];
+    result$data['userId'] = (l$userId as String);
+    final l$roleId = data['roleId'];
+    result$data['roleId'] = (l$roleId as String);
+    return Variables$Mutation$RemoveUserFromRole._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get userId => (_$data['userId'] as String);
+
+  String get roleId => (_$data['roleId'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$userId = userId;
+    result$data['userId'] = l$userId;
+    final l$roleId = roleId;
+    result$data['roleId'] = l$roleId;
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$RemoveUserFromRole<
+          Variables$Mutation$RemoveUserFromRole>
+      get copyWith => CopyWith$Variables$Mutation$RemoveUserFromRole(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$RemoveUserFromRole ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$roleId = roleId;
+    final lOther$roleId = other.roleId;
+    if (l$roleId != lOther$roleId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$userId = userId;
+    final l$roleId = roleId;
+    return Object.hashAll([
+      l$userId,
+      l$roleId,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$RemoveUserFromRole<TRes> {
+  factory CopyWith$Variables$Mutation$RemoveUserFromRole(
+    Variables$Mutation$RemoveUserFromRole instance,
+    TRes Function(Variables$Mutation$RemoveUserFromRole) then,
+  ) = _CopyWithImpl$Variables$Mutation$RemoveUserFromRole;
+
+  factory CopyWith$Variables$Mutation$RemoveUserFromRole.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$RemoveUserFromRole;
+
+  TRes call({
+    String? userId,
+    String? roleId,
+  });
+}
+
+class _CopyWithImpl$Variables$Mutation$RemoveUserFromRole<TRes>
+    implements CopyWith$Variables$Mutation$RemoveUserFromRole<TRes> {
+  _CopyWithImpl$Variables$Mutation$RemoveUserFromRole(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$RemoveUserFromRole _instance;
+
+  final TRes Function(Variables$Mutation$RemoveUserFromRole) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? userId = _undefined,
+    Object? roleId = _undefined,
+  }) =>
+      _then(Variables$Mutation$RemoveUserFromRole._({
+        ..._instance._$data,
+        if (userId != _undefined && userId != null)
+          'userId': (userId as String),
+        if (roleId != _undefined && roleId != null)
+          'roleId': (roleId as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$RemoveUserFromRole<TRes>
+    implements CopyWith$Variables$Mutation$RemoveUserFromRole<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$RemoveUserFromRole(this._res);
+
+  TRes _res;
+
+  call({
+    String? userId,
+    String? roleId,
+  }) =>
+      _res;
+}
+
+class Mutation$RemoveUserFromRole {
+  Mutation$RemoveUserFromRole({
+    required this.deleteFromUserRolesCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$RemoveUserFromRole.fromJson(Map<String, dynamic> json) {
+    final l$deleteFromUserRolesCollection =
+        json['deleteFromUserRolesCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$RemoveUserFromRole(
+      deleteFromUserRolesCollection:
+          Mutation$RemoveUserFromRole$deleteFromUserRolesCollection.fromJson(
+              (l$deleteFromUserRolesCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$RemoveUserFromRole$deleteFromUserRolesCollection
+      deleteFromUserRolesCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$deleteFromUserRolesCollection = deleteFromUserRolesCollection;
+    _resultData['deleteFromUserRolesCollection'] =
+        l$deleteFromUserRolesCollection.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$deleteFromUserRolesCollection = deleteFromUserRolesCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$deleteFromUserRolesCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$RemoveUserFromRole ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$deleteFromUserRolesCollection = deleteFromUserRolesCollection;
+    final lOther$deleteFromUserRolesCollection =
+        other.deleteFromUserRolesCollection;
+    if (l$deleteFromUserRolesCollection !=
+        lOther$deleteFromUserRolesCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$RemoveUserFromRole
+    on Mutation$RemoveUserFromRole {
+  CopyWith$Mutation$RemoveUserFromRole<Mutation$RemoveUserFromRole>
+      get copyWith => CopyWith$Mutation$RemoveUserFromRole(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$RemoveUserFromRole<TRes> {
+  factory CopyWith$Mutation$RemoveUserFromRole(
+    Mutation$RemoveUserFromRole instance,
+    TRes Function(Mutation$RemoveUserFromRole) then,
+  ) = _CopyWithImpl$Mutation$RemoveUserFromRole;
+
+  factory CopyWith$Mutation$RemoveUserFromRole.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$RemoveUserFromRole;
+
+  TRes call({
+    Mutation$RemoveUserFromRole$deleteFromUserRolesCollection?
+        deleteFromUserRolesCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<TRes>
+      get deleteFromUserRolesCollection;
+}
+
+class _CopyWithImpl$Mutation$RemoveUserFromRole<TRes>
+    implements CopyWith$Mutation$RemoveUserFromRole<TRes> {
+  _CopyWithImpl$Mutation$RemoveUserFromRole(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$RemoveUserFromRole _instance;
+
+  final TRes Function(Mutation$RemoveUserFromRole) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? deleteFromUserRolesCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$RemoveUserFromRole(
+        deleteFromUserRolesCollection: deleteFromUserRolesCollection ==
+                    _undefined ||
+                deleteFromUserRolesCollection == null
+            ? _instance.deleteFromUserRolesCollection
+            : (deleteFromUserRolesCollection
+                as Mutation$RemoveUserFromRole$deleteFromUserRolesCollection),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<TRes>
+      get deleteFromUserRolesCollection {
+    final local$deleteFromUserRolesCollection =
+        _instance.deleteFromUserRolesCollection;
+    return CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection(
+        local$deleteFromUserRolesCollection,
+        (e) => call(deleteFromUserRolesCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$RemoveUserFromRole<TRes>
+    implements CopyWith$Mutation$RemoveUserFromRole<TRes> {
+  _CopyWithStubImpl$Mutation$RemoveUserFromRole(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$RemoveUserFromRole$deleteFromUserRolesCollection?
+        deleteFromUserRolesCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<TRes>
+      get deleteFromUserRolesCollection =>
+          CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection
+              .stub(_res);
+}
+
+const documentNodeMutationRemoveUserFromRole = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'RemoveUserFromRole'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'roleId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'deleteFromUserRolesCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'userId'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'userId')),
+                  )
+                ]),
+              ),
+              ObjectFieldNode(
+                name: NameNode(value: 'roleId'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'roleId')),
+                  )
+                ]),
+              ),
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'affectedCount'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'UserRole'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionUserRole,
+  fragmentDefinitionRole,
+]);
+Mutation$RemoveUserFromRole _parserFn$Mutation$RemoveUserFromRole(
+        Map<String, dynamic> data) =>
+    Mutation$RemoveUserFromRole.fromJson(data);
+typedef OnMutationCompleted$Mutation$RemoveUserFromRole = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Mutation$RemoveUserFromRole?,
+);
+
+class Options$Mutation$RemoveUserFromRole
+    extends graphql.MutationOptions<Mutation$RemoveUserFromRole> {
+  Options$Mutation$RemoveUserFromRole({
+    String? operationName,
+    required Variables$Mutation$RemoveUserFromRole variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$RemoveUserFromRole? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$RemoveUserFromRole? onCompleted,
+    graphql.OnMutationUpdate<Mutation$RemoveUserFromRole>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$RemoveUserFromRole(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationRemoveUserFromRole,
+          parserFn: _parserFn$Mutation$RemoveUserFromRole,
+        );
+
+  final OnMutationCompleted$Mutation$RemoveUserFromRole? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$RemoveUserFromRole
+    extends graphql.WatchQueryOptions<Mutation$RemoveUserFromRole> {
+  WatchOptions$Mutation$RemoveUserFromRole({
+    String? operationName,
+    required Variables$Mutation$RemoveUserFromRole variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$RemoveUserFromRole? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationRemoveUserFromRole,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$RemoveUserFromRole,
+        );
+}
+
+extension ClientExtension$Mutation$RemoveUserFromRole on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$RemoveUserFromRole>>
+      mutate$RemoveUserFromRole(
+              Options$Mutation$RemoveUserFromRole options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$RemoveUserFromRole>
+      watchMutation$RemoveUserFromRole(
+              WatchOptions$Mutation$RemoveUserFromRole options) =>
+          this.watchMutation(options);
+}
+
+class Mutation$RemoveUserFromRole$HookResult {
+  Mutation$RemoveUserFromRole$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$RemoveUserFromRole runMutation;
+
+  final graphql.QueryResult<Mutation$RemoveUserFromRole> result;
+}
+
+Mutation$RemoveUserFromRole$HookResult useMutation$RemoveUserFromRole(
+    [WidgetOptions$Mutation$RemoveUserFromRole? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$RemoveUserFromRole());
+  return Mutation$RemoveUserFromRole$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$RemoveUserFromRole>
+    useWatchMutation$RemoveUserFromRole(
+            WatchOptions$Mutation$RemoveUserFromRole options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$RemoveUserFromRole
+    extends graphql.MutationOptions<Mutation$RemoveUserFromRole> {
+  WidgetOptions$Mutation$RemoveUserFromRole({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$RemoveUserFromRole? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$RemoveUserFromRole? onCompleted,
+    graphql.OnMutationUpdate<Mutation$RemoveUserFromRole>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$RemoveUserFromRole(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationRemoveUserFromRole,
+          parserFn: _parserFn$Mutation$RemoveUserFromRole,
+        );
+
+  final OnMutationCompleted$Mutation$RemoveUserFromRole? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$RemoveUserFromRole
+    = graphql.MultiSourceResult<Mutation$RemoveUserFromRole> Function(
+  Variables$Mutation$RemoveUserFromRole, {
+  Object? optimisticResult,
+  Mutation$RemoveUserFromRole? typedOptimisticResult,
+});
+typedef Builder$Mutation$RemoveUserFromRole = widgets.Widget Function(
+  RunMutation$Mutation$RemoveUserFromRole,
+  graphql.QueryResult<Mutation$RemoveUserFromRole>?,
+);
+
+class Mutation$RemoveUserFromRole$Widget
+    extends graphql_flutter.Mutation<Mutation$RemoveUserFromRole> {
+  Mutation$RemoveUserFromRole$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$RemoveUserFromRole? options,
+    required Builder$Mutation$RemoveUserFromRole builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$RemoveUserFromRole(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$RemoveUserFromRole$deleteFromUserRolesCollection {
+  Mutation$RemoveUserFromRole$deleteFromUserRolesCollection({
+    required this.affectedCount,
+    required this.records,
+    this.$__typename = 'UserRolesDeleteResponse',
+  });
+
+  factory Mutation$RemoveUserFromRole$deleteFromUserRolesCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$affectedCount = json['affectedCount'];
+    final l$records = json['records'];
+    final l$$__typename = json['__typename'];
+    return Mutation$RemoveUserFromRole$deleteFromUserRolesCollection(
+      affectedCount: (l$affectedCount as int),
+      records: (l$records as List<dynamic>)
+          .map((e) => Fragment$UserRole.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final int affectedCount;
+
+  final List<Fragment$UserRole> records;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$affectedCount = affectedCount;
+    _resultData['affectedCount'] = l$affectedCount;
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$affectedCount = affectedCount;
+    final l$records = records;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$affectedCount,
+      Object.hashAll(l$records.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$RemoveUserFromRole$deleteFromUserRolesCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$affectedCount = affectedCount;
+    final lOther$affectedCount = other.affectedCount;
+    if (l$affectedCount != lOther$affectedCount) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection
+    on Mutation$RemoveUserFromRole$deleteFromUserRolesCollection {
+  CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<
+          Mutation$RemoveUserFromRole$deleteFromUserRolesCollection>
+      get copyWith =>
+          CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<
+    TRes> {
+  factory CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection(
+    Mutation$RemoveUserFromRole$deleteFromUserRolesCollection instance,
+    TRes Function(Mutation$RemoveUserFromRole$deleteFromUserRolesCollection)
+        then,
+  ) = _CopyWithImpl$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection;
+
+  factory CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection;
+
+  TRes call({
+    int? affectedCount,
+    List<Fragment$UserRole>? records,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$UserRole> Function(
+              Iterable<CopyWith$Fragment$UserRole<Fragment$UserRole>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<
+            TRes> {
+  _CopyWithImpl$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$RemoveUserFromRole$deleteFromUserRolesCollection _instance;
+
+  final TRes Function(Mutation$RemoveUserFromRole$deleteFromUserRolesCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? affectedCount = _undefined,
+    Object? records = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$RemoveUserFromRole$deleteFromUserRolesCollection(
+        affectedCount: affectedCount == _undefined || affectedCount == null
+            ? _instance.affectedCount
+            : (affectedCount as int),
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$UserRole>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$UserRole> Function(
+                  Iterable<CopyWith$Fragment$UserRole<Fragment$UserRole>>)
+              _fn) =>
+      call(
+          records: _fn(_instance.records.map((e) => CopyWith$Fragment$UserRole(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection<
+            TRes> {
+  _CopyWithStubImpl$Mutation$RemoveUserFromRole$deleteFromUserRolesCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    int? affectedCount,
+    List<Fragment$UserRole>? records,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
+}
+
 class Variables$Mutation$UpdateUser {
   factory Variables$Mutation$UpdateUser({
     required String id,
-    required Input$UserUpdateInput user,
+    required Input$UsersUpdateInput user,
   }) =>
       Variables$Mutation$UpdateUser._({
         r'id': id,
@@ -5535,7 +8604,7 @@ class Variables$Mutation$UpdateUser {
     result$data['id'] = (l$id as String);
     final l$user = data['user'];
     result$data['user'] =
-        Input$UserUpdateInput.fromJson((l$user as Map<String, dynamic>));
+        Input$UsersUpdateInput.fromJson((l$user as Map<String, dynamic>));
     return Variables$Mutation$UpdateUser._(result$data);
   }
 
@@ -5543,7 +8612,7 @@ class Variables$Mutation$UpdateUser {
 
   String get id => (_$data['id'] as String);
 
-  Input$UserUpdateInput get user => (_$data['user'] as Input$UserUpdateInput);
+  Input$UsersUpdateInput get user => (_$data['user'] as Input$UsersUpdateInput);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -5565,7 +8634,7 @@ class Variables$Mutation$UpdateUser {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Mutation$UpdateUser) ||
+    if (other is! Variables$Mutation$UpdateUser ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -5604,7 +8673,7 @@ abstract class CopyWith$Variables$Mutation$UpdateUser<TRes> {
 
   TRes call({
     String? id,
-    Input$UserUpdateInput? user,
+    Input$UsersUpdateInput? user,
   });
 }
 
@@ -5629,7 +8698,7 @@ class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
         ..._instance._$data,
         if (id != _undefined && id != null) 'id': (id as String),
         if (user != _undefined && user != null)
-          'user': (user as Input$UserUpdateInput),
+          'user': (user as Input$UsersUpdateInput),
       }));
 }
 
@@ -5641,35 +8710,35 @@ class _CopyWithStubImpl$Variables$Mutation$UpdateUser<TRes>
 
   call({
     String? id,
-    Input$UserUpdateInput? user,
+    Input$UsersUpdateInput? user,
   }) =>
       _res;
 }
 
 class Mutation$UpdateUser {
   Mutation$UpdateUser({
-    required this.updateUserCollection,
+    required this.updateUsersCollection,
     this.$__typename = 'Mutation',
   });
 
   factory Mutation$UpdateUser.fromJson(Map<String, dynamic> json) {
-    final l$updateUserCollection = json['updateUserCollection'];
+    final l$updateUsersCollection = json['updateUsersCollection'];
     final l$$__typename = json['__typename'];
     return Mutation$UpdateUser(
-      updateUserCollection: Mutation$UpdateUser$updateUserCollection.fromJson(
-          (l$updateUserCollection as Map<String, dynamic>)),
+      updateUsersCollection: Mutation$UpdateUser$updateUsersCollection.fromJson(
+          (l$updateUsersCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Mutation$UpdateUser$updateUserCollection updateUserCollection;
+  final Mutation$UpdateUser$updateUsersCollection updateUsersCollection;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$updateUserCollection = updateUserCollection;
-    _resultData['updateUserCollection'] = l$updateUserCollection.toJson();
+    final l$updateUsersCollection = updateUsersCollection;
+    _resultData['updateUsersCollection'] = l$updateUsersCollection.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -5677,10 +8746,10 @@ class Mutation$UpdateUser {
 
   @override
   int get hashCode {
-    final l$updateUserCollection = updateUserCollection;
+    final l$updateUsersCollection = updateUsersCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$updateUserCollection,
+      l$updateUsersCollection,
       l$$__typename,
     ]);
   }
@@ -5690,12 +8759,12 @@ class Mutation$UpdateUser {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$UpdateUser) || runtimeType != other.runtimeType) {
+    if (other is! Mutation$UpdateUser || runtimeType != other.runtimeType) {
       return false;
     }
-    final l$updateUserCollection = updateUserCollection;
-    final lOther$updateUserCollection = other.updateUserCollection;
-    if (l$updateUserCollection != lOther$updateUserCollection) {
+    final l$updateUsersCollection = updateUsersCollection;
+    final lOther$updateUsersCollection = other.updateUsersCollection;
+    if (l$updateUsersCollection != lOther$updateUsersCollection) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -5725,11 +8794,11 @@ abstract class CopyWith$Mutation$UpdateUser<TRes> {
       _CopyWithStubImpl$Mutation$UpdateUser;
 
   TRes call({
-    Mutation$UpdateUser$updateUserCollection? updateUserCollection,
+    Mutation$UpdateUser$updateUsersCollection? updateUsersCollection,
     String? $__typename,
   });
-  CopyWith$Mutation$UpdateUser$updateUserCollection<TRes>
-      get updateUserCollection;
+  CopyWith$Mutation$UpdateUser$updateUsersCollection<TRes>
+      get updateUsersCollection;
 }
 
 class _CopyWithImpl$Mutation$UpdateUser<TRes>
@@ -5746,25 +8815,25 @@ class _CopyWithImpl$Mutation$UpdateUser<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? updateUserCollection = _undefined,
+    Object? updateUsersCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$UpdateUser(
-        updateUserCollection:
-            updateUserCollection == _undefined || updateUserCollection == null
-                ? _instance.updateUserCollection
-                : (updateUserCollection
-                    as Mutation$UpdateUser$updateUserCollection),
+        updateUsersCollection:
+            updateUsersCollection == _undefined || updateUsersCollection == null
+                ? _instance.updateUsersCollection
+                : (updateUsersCollection
+                    as Mutation$UpdateUser$updateUsersCollection),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$UpdateUser$updateUserCollection<TRes>
-      get updateUserCollection {
-    final local$updateUserCollection = _instance.updateUserCollection;
-    return CopyWith$Mutation$UpdateUser$updateUserCollection(
-        local$updateUserCollection, (e) => call(updateUserCollection: e));
+  CopyWith$Mutation$UpdateUser$updateUsersCollection<TRes>
+      get updateUsersCollection {
+    final local$updateUsersCollection = _instance.updateUsersCollection;
+    return CopyWith$Mutation$UpdateUser$updateUsersCollection(
+        local$updateUsersCollection, (e) => call(updateUsersCollection: e));
   }
 }
 
@@ -5775,14 +8844,14 @@ class _CopyWithStubImpl$Mutation$UpdateUser<TRes>
   TRes _res;
 
   call({
-    Mutation$UpdateUser$updateUserCollection? updateUserCollection,
+    Mutation$UpdateUser$updateUsersCollection? updateUsersCollection,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$UpdateUser$updateUserCollection<TRes>
-      get updateUserCollection =>
-          CopyWith$Mutation$UpdateUser$updateUserCollection.stub(_res);
+  CopyWith$Mutation$UpdateUser$updateUsersCollection<TRes>
+      get updateUsersCollection =>
+          CopyWith$Mutation$UpdateUser$updateUsersCollection.stub(_res);
 }
 
 const documentNodeMutationUpdateUser = DocumentNode(definitions: [
@@ -5802,7 +8871,7 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
       VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'user')),
         type: NamedTypeNode(
-          name: NameNode(value: 'UserUpdateInput'),
+          name: NameNode(value: 'UsersUpdateInput'),
           isNonNull: true,
         ),
         defaultValue: DefaultValueNode(value: null),
@@ -5812,7 +8881,7 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'updateUserCollection'),
+        name: NameNode(value: 'updateUsersCollection'),
         alias: null,
         arguments: [
           ArgumentNode(
@@ -5883,16 +8952,8 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
   fragmentDefinitionUser,
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
-  fragmentDefinitionFirstResponder,
-  fragmentDefinitionFirstResponderType,
   fragmentDefinitionStation,
-  fragmentDefinitionStationProvider,
-  fragmentDefinitionProvider,
-  fragmentDefinitionProviderType,
-  fragmentDefinitionFirstResponderStation,
-  fragmentDefinitionOrganization,
-  fragmentDefinitionOrganizationType,
-  fragmentDefinitionUserOrganization,
+  fragmentDefinitionUserStation,
 ]);
 Mutation$UpdateUser _parserFn$Mutation$UpdateUser(Map<String, dynamic> data) =>
     Mutation$UpdateUser.fromJson(data);
@@ -6101,19 +9162,19 @@ class Mutation$UpdateUser$Widget
         );
 }
 
-class Mutation$UpdateUser$updateUserCollection {
-  Mutation$UpdateUser$updateUserCollection({
+class Mutation$UpdateUser$updateUsersCollection {
+  Mutation$UpdateUser$updateUsersCollection({
     required this.records,
     required this.affectedCount,
-    this.$__typename = 'UserUpdateResponse',
+    this.$__typename = 'UsersUpdateResponse',
   });
 
-  factory Mutation$UpdateUser$updateUserCollection.fromJson(
+  factory Mutation$UpdateUser$updateUsersCollection.fromJson(
       Map<String, dynamic> json) {
     final l$records = json['records'];
     final l$affectedCount = json['affectedCount'];
     final l$$__typename = json['__typename'];
-    return Mutation$UpdateUser$updateUserCollection(
+    return Mutation$UpdateUser$updateUsersCollection(
       records: (l$records as List<dynamic>)
           .map((e) => Fragment$User.fromJson((e as Map<String, dynamic>)))
           .toList(),
@@ -6156,7 +9217,7 @@ class Mutation$UpdateUser$updateUserCollection {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$UpdateUser$updateUserCollection) ||
+    if (other is! Mutation$UpdateUser$updateUsersCollection ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -6186,24 +9247,24 @@ class Mutation$UpdateUser$updateUserCollection {
   }
 }
 
-extension UtilityExtension$Mutation$UpdateUser$updateUserCollection
-    on Mutation$UpdateUser$updateUserCollection {
-  CopyWith$Mutation$UpdateUser$updateUserCollection<
-          Mutation$UpdateUser$updateUserCollection>
-      get copyWith => CopyWith$Mutation$UpdateUser$updateUserCollection(
+extension UtilityExtension$Mutation$UpdateUser$updateUsersCollection
+    on Mutation$UpdateUser$updateUsersCollection {
+  CopyWith$Mutation$UpdateUser$updateUsersCollection<
+          Mutation$UpdateUser$updateUsersCollection>
+      get copyWith => CopyWith$Mutation$UpdateUser$updateUsersCollection(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$UpdateUser$updateUserCollection<TRes> {
-  factory CopyWith$Mutation$UpdateUser$updateUserCollection(
-    Mutation$UpdateUser$updateUserCollection instance,
-    TRes Function(Mutation$UpdateUser$updateUserCollection) then,
-  ) = _CopyWithImpl$Mutation$UpdateUser$updateUserCollection;
+abstract class CopyWith$Mutation$UpdateUser$updateUsersCollection<TRes> {
+  factory CopyWith$Mutation$UpdateUser$updateUsersCollection(
+    Mutation$UpdateUser$updateUsersCollection instance,
+    TRes Function(Mutation$UpdateUser$updateUsersCollection) then,
+  ) = _CopyWithImpl$Mutation$UpdateUser$updateUsersCollection;
 
-  factory CopyWith$Mutation$UpdateUser$updateUserCollection.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$UpdateUser$updateUserCollection;
+  factory CopyWith$Mutation$UpdateUser$updateUsersCollection.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateUser$updateUsersCollection;
 
   TRes call({
     List<Fragment$User>? records,
@@ -6216,16 +9277,16 @@ abstract class CopyWith$Mutation$UpdateUser$updateUserCollection<TRes> {
           _fn);
 }
 
-class _CopyWithImpl$Mutation$UpdateUser$updateUserCollection<TRes>
-    implements CopyWith$Mutation$UpdateUser$updateUserCollection<TRes> {
-  _CopyWithImpl$Mutation$UpdateUser$updateUserCollection(
+class _CopyWithImpl$Mutation$UpdateUser$updateUsersCollection<TRes>
+    implements CopyWith$Mutation$UpdateUser$updateUsersCollection<TRes> {
+  _CopyWithImpl$Mutation$UpdateUser$updateUsersCollection(
     this._instance,
     this._then,
   );
 
-  final Mutation$UpdateUser$updateUserCollection _instance;
+  final Mutation$UpdateUser$updateUsersCollection _instance;
 
-  final TRes Function(Mutation$UpdateUser$updateUserCollection) _then;
+  final TRes Function(Mutation$UpdateUser$updateUsersCollection) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -6234,7 +9295,7 @@ class _CopyWithImpl$Mutation$UpdateUser$updateUserCollection<TRes>
     Object? affectedCount = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$UpdateUser$updateUserCollection(
+      _then(Mutation$UpdateUser$updateUsersCollection(
         records: records == _undefined || records == null
             ? _instance.records
             : (records as List<Fragment$User>),
@@ -6257,9 +9318,9 @@ class _CopyWithImpl$Mutation$UpdateUser$updateUserCollection<TRes>
               ))).toList());
 }
 
-class _CopyWithStubImpl$Mutation$UpdateUser$updateUserCollection<TRes>
-    implements CopyWith$Mutation$UpdateUser$updateUserCollection<TRes> {
-  _CopyWithStubImpl$Mutation$UpdateUser$updateUserCollection(this._res);
+class _CopyWithStubImpl$Mutation$UpdateUser$updateUsersCollection<TRes>
+    implements CopyWith$Mutation$UpdateUser$updateUsersCollection<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateUser$updateUsersCollection(this._res);
 
   TRes _res;
 

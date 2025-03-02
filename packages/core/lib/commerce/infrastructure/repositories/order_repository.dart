@@ -21,29 +21,23 @@ class OrderRepository extends OrderRepositoryInterface {
 
   @override
   Future<fp.Either<Failure, Order>> createOrder(
-      {required Input$OrderInsertInput input}) {
-    // TODO: implement createOrder
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<fp.Either<Failure, PaymentInfo>> createPaymentInfo(
-      {required Input$PaymentInfoInsertInput input}) async {
+      {required Input$OrdersInsertInput input}) async {
     try {
-      final response = await graphqlClient.mutate$CreatePaymentInfo(
-        Options$Mutation$CreatePaymentInfo(
-          variables: Variables$Mutation$CreatePaymentInfo(input: input),
+      final response = await graphqlClient.mutate$CreateOrder(
+        Options$Mutation$CreateOrder(
+          variables: Variables$Mutation$CreateOrder(input: input),
         ),
       );
 
       if (response.hasException) {
-        debugPrint('${response.exception}');
+        debugPrint(response.exception?.toString());
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception?.toString() ?? 'Unknown error occurred'));
       }
 
       return fp.Right(
-          response.parsedData!.insertIntoPaymentInfoCollection!.records.first);
+          response.parsedData!.insertIntoOrdersCollection!.records.first);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
@@ -52,7 +46,7 @@ class OrderRepository extends OrderRepositoryInterface {
 
   @override
   Future<fp.Either<Failure, ShoppingCart>> createShoppingCart(
-      {required Input$ShoppingCartInsertInput input}) async {
+      {required Input$ShoppingCartsInsertInput input}) async {
     try {
       final response = await graphqlClient.mutate$CreateShoppingCart(
         Options$Mutation$CreateShoppingCart(
@@ -63,11 +57,12 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
       }
 
-      return fp.Right(
-          response.parsedData!.insertIntoShoppingCartCollection!.records.first);
+      return fp.Right(response
+          .parsedData!.insertIntoShoppingCartsCollection!.records.first);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
@@ -75,24 +70,24 @@ class OrderRepository extends OrderRepositoryInterface {
   }
 
   @override
-  Future<fp.Either<Failure, ShoppingCartMenuItem>> createShoppingCartMenuItem(
-      {required Input$ShoppingCartMenuItemInsertInput input}) async {
+  Future<fp.Either<Failure, ShoppingCartItem>> createShoppingCartMenuItem(
+      {required Input$ShoppingCartItemsInsertInput input}) async {
     try {
-      final response = await graphqlClient.mutate$CreateShoppingCartMenuItem(
-        Options$Mutation$CreateShoppingCartMenuItem(
-          variables:
-              Variables$Mutation$CreateShoppingCartMenuItem(input: input),
+      final response = await graphqlClient.mutate$CreateShoppingCartItem(
+        Options$Mutation$CreateShoppingCartItem(
+          variables: Variables$Mutation$CreateShoppingCartItem(input: input),
         ),
       );
 
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
       }
 
       return fp.Right(response
-          .parsedData!.insertIntoShoppingCartMenuItemCollection!.records.first);
+          .parsedData!.insertIntoShoppingCartItemsCollection!.records.first);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
@@ -112,11 +107,12 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
       }
 
       return fp.Right(
-          response.parsedData!.deleteFromShoppingCartCollection.records.first);
+          response.parsedData!.deleteFromShoppingCartsCollection.records.first);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
@@ -124,34 +120,28 @@ class OrderRepository extends OrderRepositoryInterface {
   }
 
   @override
-  Future<fp.Either<Failure, ShoppingCartMenuItem>> deleteShoppingCartMenuItem(
+  Future<fp.Either<Failure, ShoppingCartItem>> deleteShoppingCartMenuItem(
       {required String id}) async {
     try {
-      final response = await graphqlClient.mutate$DeleteShoppingCartMenuItem(
-        Options$Mutation$DeleteShoppingCartMenuItem(
-          variables: Variables$Mutation$DeleteShoppingCartMenuItem(id: id),
+      final response = await graphqlClient.mutate$DeleteShoppingCartItem(
+        Options$Mutation$DeleteShoppingCartItem(
+          variables: Variables$Mutation$DeleteShoppingCartItem(id: id),
         ),
       );
 
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
       }
 
       return fp.Right(response
-          .parsedData!.deleteFromShoppingCartMenuItemCollection.records.first);
+          .parsedData!.deleteFromShoppingCartItemsCollection.records.first);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
     }
-  }
-
-  @override
-  Future<fp.Either<Failure, Order>> placeOrder(
-      {required String shoppingCartId, required String paymentInfoId}) {
-    // TODO: implement placeOrder
-    throw UnimplementedError();
   }
 
   @override
@@ -160,8 +150,8 @@ class OrderRepository extends OrderRepositoryInterface {
       int? last,
       String? before,
       String? after,
-      Input$OrderFilter? filter,
-      List<Input$OrderOrderBy>? orderBy}) async {
+      Input$OrdersFilter? filter,
+      List<Input$OrdersOrderBy>? orderBy}) async {
     try {
       final response = await graphqlClient.query$OrderCollection(
         Options$Query$OrderCollection(
@@ -179,101 +169,16 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
       }
 
       if (response.parsedData != null &&
-          response.parsedData!.orderCollection != null &&
-          response.parsedData!.orderCollection!.edges.isNotEmpty) {
+          response.parsedData!.ordersCollection != null &&
+          response.parsedData!.ordersCollection!.edges.isNotEmpty) {
         return fp.Right(List<Order>.from(
-            response.parsedData!.orderCollection!.edges.map((e) => e.node)));
+            response.parsedData!.ordersCollection!.edges.map((e) => e.node)));
       }
-      return const fp.Right([]);
-    } catch (e) {
-      debugPrint('$e');
-      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
-    }
-  }
-
-  @override
-  Future<fp.Either<Failure, List<PaymentInfo>>> queryPaymentInfo(
-      {int? first,
-      int? last,
-      String? before,
-      String? after,
-      Input$PaymentInfoFilter? filter,
-      List<Input$PaymentInfoOrderBy>? orderBy}) async {
-    try {
-      final response = await graphqlClient.query$PaymentInfoCollection(
-        Options$Query$PaymentInfoCollection(
-          variables: Variables$Query$PaymentInfoCollection(
-            first: first,
-            last: last,
-            before: before,
-            after: after,
-            filter: filter,
-            orderBy: orderBy,
-          ),
-        ),
-      );
-
-      if (response.hasException) {
-        debugPrint('${response.exception}');
-        return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
-      }
-
-      if (response.parsedData != null &&
-          response.parsedData!.paymentInfoCollection != null &&
-          response.parsedData!.paymentInfoCollection!.edges.isNotEmpty) {
-        return fp.Right(List<PaymentInfo>.from(response
-            .parsedData!.paymentInfoCollection!.edges
-            .map((e) => e.node)));
-      }
-
-      return const fp.Right([]);
-    } catch (e) {
-      debugPrint('$e');
-      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
-    }
-  }
-
-  @override
-  Future<fp.Either<Failure, List<PaymentType>>> queryPaymentType(
-      {int? first,
-      int? last,
-      String? before,
-      String? after,
-      Input$PaymentTypeFilter? filter,
-      List<Input$PaymentTypeOrderBy>? orderBy}) async {
-    try {
-      final response = await graphqlClient.query$PaymentTypeCollection(
-        Options$Query$PaymentTypeCollection(
-          variables: Variables$Query$PaymentTypeCollection(
-            first: first,
-            last: last,
-            before: before,
-            after: after,
-            filter: filter,
-            orderBy: orderBy,
-          ),
-        ),
-      );
-
-      if (response.hasException) {
-        debugPrint('${response.exception}');
-        return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
-      }
-
-      if (response.parsedData != null &&
-          response.parsedData!.paymentTypeCollection != null &&
-          response.parsedData!.paymentTypeCollection!.edges.isNotEmpty) {
-        return fp.Right(List<PaymentType>.from(response
-            .parsedData!.paymentTypeCollection!.edges
-            .map((e) => e.node)));
-      }
-
       return const fp.Right([]);
     } catch (e) {
       debugPrint('$e');
@@ -287,8 +192,8 @@ class OrderRepository extends OrderRepositoryInterface {
     int? last,
     String? before,
     String? after,
-    Input$ShoppingCartFilter? filter,
-    List<Input$ShoppingCartOrderBy>? orderBy,
+    Input$ShoppingCartsFilter? filter,
+    List<Input$ShoppingCartsOrderBy>? orderBy,
   }) async {
     try {
       final response = await graphqlClient.query$ShoppingCartCollection(
@@ -307,14 +212,15 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
       }
 
       if (response.parsedData != null &&
-          response.parsedData!.shoppingCartCollection != null &&
-          response.parsedData!.shoppingCartCollection!.edges.isNotEmpty) {
+          response.parsedData!.shoppingCartsCollection != null &&
+          response.parsedData!.shoppingCartsCollection!.edges.isNotEmpty) {
         return fp.Right(List<ShoppingCart>.from(response
-            .parsedData!.shoppingCartCollection!.edges
+            .parsedData!.shoppingCartsCollection!.edges
             .map((e) => e.node)));
       }
       return const fp.Right([]);
@@ -325,7 +231,9 @@ class OrderRepository extends OrderRepositoryInterface {
   }
 
   @override
-  Future<fp.Either<Failure, ShoppingCart>> updateShoppingCart({required String id, required Input$ShoppingCartUpdateInput input}) async {
+  Future<fp.Either<Failure, ShoppingCart>> updateShoppingCart(
+      {required String id,
+      required Input$ShoppingCartsUpdateInput input}) async {
     try {
       final response = await graphqlClient.mutate$UpdateShoppingCart(
         Options$Mutation$UpdateShoppingCart(
@@ -339,13 +247,40 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message: response.exception.toString()));
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
       }
 
       if (response.parsedData != null) {
-        return fp.Right(response.parsedData!.updateShoppingCartCollection.records.first);
+        return fp.Right(
+            response.parsedData!.updateShoppingCartsCollection.records.first);
       }
       return const fp.Left(Failure.empty());
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<fp.Either<Failure, ShoppingCartItem>> createShoppingCartItem(
+      {required Input$ShoppingCartItemsInsertInput input}) async {
+    try {
+      final response = await graphqlClient.mutate$CreateShoppingCartItem(
+        Options$Mutation$CreateShoppingCartItem(
+          variables: Variables$Mutation$CreateShoppingCartItem(input: input),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message:
+                response.exception.toString() ?? 'Unknown error occurred'));
+      }
+
+      return fp.Right(response
+          .parsedData!.insertIntoShoppingCartItemsCollection!.records.first);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));

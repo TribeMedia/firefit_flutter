@@ -29,8 +29,8 @@ class ShoppingCartScreen extends HookConsumerWidget {
               final item = cartItems[index];
               return FCard(
                 child: ListTile(
-                  title: Text(item.name),
-                  subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
+                  title: Text(item.product.name),
+                  subtitle: Text('\$${item.unitPrice.toStringAsFixed(2)}'),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -71,7 +71,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
 
           final cartItems = model.items;
           final totalAmount = cartItems.fold(
-              0.0, (sum, item) => sum + (item.price * item.quantity));
+              0.0, (sum, item) => sum + (item.unitPrice * item.quantity));
 
           return Padding(
             padding: const EdgeInsets.all(16.0),

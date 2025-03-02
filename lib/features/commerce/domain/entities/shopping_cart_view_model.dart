@@ -5,7 +5,7 @@ part 'shopping_cart_view_model.freezed.dart';
 part 'shopping_cart_view_model.g.dart';
 
 @freezed
-class MenuItemViewModel with _$MenuItemViewModel {
+abstract class MenuItemViewModel with _$MenuItemViewModel {
   const factory MenuItemViewModel({
     required String id,
     required String name,
@@ -18,7 +18,7 @@ class MenuItemViewModel with _$MenuItemViewModel {
 }
 
 @freezed
-class ShoppingCartViewModel with _$ShoppingCartViewModel {
+abstract class ShoppingCartViewModel with _$ShoppingCartViewModel {
   const factory ShoppingCartViewModel({
     required String id,
     required List<MenuItemViewModel> items,
@@ -32,8 +32,8 @@ class ShoppingCartViewModel with _$ShoppingCartViewModel {
 
   // Conversion function
   static ShoppingCartViewModel fromFragment(ShoppingCart fragment) {
-    final items = fragment.shoppingCartMenuItemCollection?.edges
-            .map((edge) => edge.node.menuItem)
+    final items = fragment.shoppingCartItemsCollection?.edges
+            .map((edge) => edge.node.product)
             .toList() ??
         [];
 
@@ -41,8 +41,8 @@ class ShoppingCartViewModel with _$ShoppingCartViewModel {
         .map((menuItem) => MenuItemViewModel(
               id: menuItem.id,
               name: menuItem.name,
-              price: menuItem.price.toDouble(),
-              imageUrl: menuItem.imageUrl,
+              price: menuItem.unitPrice.toDouble(),
+              imageUrl: menuItem.photoUrl,
             ))
         .toList();
 

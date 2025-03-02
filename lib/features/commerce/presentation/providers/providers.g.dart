@@ -8,7 +8,7 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$orderControllerHash() => r'df85af02f2c0d7beef0d7d0bfd3e25d0983a43ae';
+String _$orderControllerHash() => r'dadb9bdea430f6bcc46ad55d6f47ac2ce0b7563c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -33,10 +33,10 @@ class _SystemHash {
 
 abstract class _$OrderController
     extends BuildlessAsyncNotifier<OrderViewModel> {
-  late final String userId;
+  late final AuthUser user;
 
   FutureOr<OrderViewModel> build(
-    String userId,
+    AuthUser user,
   );
 }
 
@@ -51,10 +51,10 @@ class OrderControllerFamily extends Family<AsyncValue<OrderViewModel>> {
 
   /// See also [OrderController].
   OrderControllerProvider call(
-    String userId,
+    AuthUser user,
   ) {
     return OrderControllerProvider(
-      userId,
+      user,
     );
   }
 
@@ -63,7 +63,7 @@ class OrderControllerFamily extends Family<AsyncValue<OrderViewModel>> {
     covariant OrderControllerProvider provider,
   ) {
     return call(
-      provider.userId,
+      provider.user,
     );
   }
 
@@ -87,9 +87,9 @@ class OrderControllerProvider
     extends AsyncNotifierProviderImpl<OrderController, OrderViewModel> {
   /// See also [OrderController].
   OrderControllerProvider(
-    String userId,
+    AuthUser user,
   ) : this._internal(
-          () => OrderController()..userId = userId,
+          () => OrderController()..user = user,
           from: orderControllerProvider,
           name: r'orderControllerProvider',
           debugGetCreateSourceHash:
@@ -99,7 +99,7 @@ class OrderControllerProvider
           dependencies: OrderControllerFamily._dependencies,
           allTransitiveDependencies:
               OrderControllerFamily._allTransitiveDependencies,
-          userId: userId,
+          user: user,
         );
 
   OrderControllerProvider._internal(
@@ -109,17 +109,17 @@ class OrderControllerProvider
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.userId,
+    required this.user,
   }) : super.internal();
 
-  final String userId;
+  final AuthUser user;
 
   @override
   FutureOr<OrderViewModel> runNotifierBuild(
     covariant OrderController notifier,
   ) {
     return notifier.build(
-      userId,
+      user,
     );
   }
 
@@ -128,13 +128,13 @@ class OrderControllerProvider
     return ProviderOverride(
       origin: this,
       override: OrderControllerProvider._internal(
-        () => create()..userId = userId,
+        () => create()..user = user,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        userId: userId,
+        user: user,
       ),
     );
   }
@@ -147,13 +147,13 @@ class OrderControllerProvider
 
   @override
   bool operator ==(Object other) {
-    return other is OrderControllerProvider && other.userId == userId;
+    return other is OrderControllerProvider && other.user == user;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, userId.hashCode);
+    hash = _SystemHash.combine(hash, user.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -162,8 +162,8 @@ class OrderControllerProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin OrderControllerRef on AsyncNotifierProviderRef<OrderViewModel> {
-  /// The parameter `userId` of this provider.
-  String get userId;
+  /// The parameter `user` of this provider.
+  AuthUser get user;
 }
 
 class _OrderControllerProviderElement
@@ -172,7 +172,7 @@ class _OrderControllerProviderElement
   _OrderControllerProviderElement(super.provider);
 
   @override
-  String get userId => (origin as OrderControllerProvider).userId;
+  AuthUser get user => (origin as OrderControllerProvider).user;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

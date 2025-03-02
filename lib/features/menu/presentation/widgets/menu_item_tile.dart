@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class MenuItemTile extends StatelessWidget {
-  final MenuItem item;
+  final Product item;
   final VoidCallback? onAddToOrder;
 
   const MenuItemTile({
@@ -30,7 +30,7 @@ class MenuItemTile extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(
-                imageUrl: item.imageUrl ?? 'https://via.placeholder.com/80',
+                imageUrl: item.photoUrl ?? 'https://via.placeholder.com/80',
                 width: 80,
                 height: 80,
                 fit: BoxFit.cover,
@@ -56,7 +56,7 @@ class MenuItemTile extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        item.notes ?? 'No description available',
+                        item.shortDescription ?? 'No description available',
                         style: theme.textTheme.p.copyWith(
                           color: theme.colorScheme.mutedForeground,
                         ),
@@ -69,7 +69,7 @@ class MenuItemTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$${item.price.toStringAsFixed(2)}',
+                        '\$${item.unitPrice.toStringAsFixed(2)}',
                         style: theme.textTheme.h4.copyWith(
                           color: theme.colorScheme.primary,
                         ),

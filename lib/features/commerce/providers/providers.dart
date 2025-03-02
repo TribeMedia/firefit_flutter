@@ -7,10 +7,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'providers.g.dart';
 
-const String menuOrderTypeId = 'd94c1b99-57b5-4515-8e65-72f37648698f';
-const String createdOrderStatusId = 'ee060cf3-5628-4cc6-b4a4-6fc1e500d7c3';
-const String demoUserPaymentMethodId = 'de12448d-2c83-4567-a24d-0abfd01db84d';
-
 final orderRepositoryProvider = Provider<OrderRepositoryInterface>((ref) {
   final talker = ref.watch(loggingProvider);
 
@@ -43,11 +39,11 @@ class OrderController extends _$OrderController {
 
   FutureOr<OrderViewModel> load(String userId) async {
     final homeState = await ref.watch(homeStateProvider.future);
-    currentStation = homeState.firstResponder!.currentStation!;
+    currentStation = homeState.user!.user.primaryStation!;
 
     orderRepository = ref.read(orderRepositoryProvider);
     final orderResult = await orderRepository.queryOrders(
-      filter: Input$OrderFilter(
+      filter: Input$OrdersFilter(
         userId: Input$UUIDFilter(eq: userId),
       ),
     );
@@ -67,12 +63,13 @@ class OrderController extends _$OrderController {
 
   Future<fp.Either<Failure, Order>> createOrder(ShoppingCart cart) async {
     return await orderRepository.createOrder(
-        input: Input$OrderInsertInput(
+        input: Input$OrdersInsertInput(
       userId: cart.userId,
-      stationId: currentStation.id,
-      orderTypeId: menuOrderTypeId,
-      orderStatusId: createdOrderStatusId,
-      paymentInfoId: demoUserPaymentMethodId,
+          deliveryAddress1: currentStation.address1,
+          deliveryAddress: currentStation.address,
+          deliveryCity: currentStation.city,
+          deliveryLocationName: currentStation.name,
+          deliveryZip: currentStation.zip,
     ));
   }
 }

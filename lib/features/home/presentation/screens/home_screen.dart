@@ -3,14 +3,29 @@ import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
 import 'package:firefit/features/menu/providers.dart';
-import 'package:firefit/features/teams/presentation/widgets/team_update_card.dart';
-import 'package:firefit/features/teams/providers.dart';
+import 'package:firefit/features/stations/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'home_screen.g.dart';
+
+final featuredMenuItemsProvider = FutureProvider.autoDispose<List<Product>>((ref) async {
+  final productRepository = ref.read(productRepositoryProvider);
+  final result = await productRepository.queryProducts(
+    first: 0,
+    last: 4,
+    orderBy: [Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.DescNullsLast)],
+  );
+  return result.fold(
+    (failure) => [],
+    (menuItems) {
+      return menuItems;
+    },
+  );
+});
+
 
 @riverpod
 class HomeAppBarScrollController extends _$HomeAppBarScrollController {
@@ -98,49 +113,54 @@ class HomeContent extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final menuController = ref.watch(menuControllerProvider(globalProviderId).notifier);
-    final List<MenuItem> featuredMenuItems = menuController.featuredMenuItems
-      ..sort((MenuItem a, MenuItem b) => b.createdAt.compareTo(a.createdAt))
-      ..take(5).toList();
+    final featuredMenuItemsValue = ref.watch(featuredMenuItemsProvider);
 
-    if (homeStateModel.firstResponder == null) {
-      return ErrorScreen(
-        errorMessage: 'No first responder found',
-        onRetry: () => context.go('/'),
-      );
-    }
+    return featuredMenuItemsValue.when(
+        data: (featuredMenuItems) {
 
-    if (homeStateModel.firstResponder!.currentStation == null) {
-      return ErrorScreen(
-        errorMessage: 'No current station found',
-        onRetry: () => context.go('/'),
-      );
-    }
+          if (homeStateModel.user == null) {
+            return ErrorScreen(
+              errorMessage: 'No first responder found',
+              onRetry: () => context.go('/'),
+            );
+          }
 
-    final ScrollController scrollController = ref.watch(homeAppBarScrollControllerProvider);
+          if (homeStateModel.user!.user.primaryStation == null) {
+            return ErrorScreen(
+              errorMessage: 'No current station found',
+              onRetry: () => context.go('/'),
+            );
+          }
 
-    return CustomScrollView(
-      controller: scrollController,
-      slivers: [
-        HomeSliverAppBar(
-          station: homeStateModel.firstResponder!.currentStation!,
-          user: homeStateModel.user!,
-          parentScrollController: scrollController,
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.all(16.0),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate([
-              _buildFeaturedMenuItems(context, featuredMenuItems),
-              const SizedBox(height: 24),
-              _buildTeamUpdates(context, ref),
-            ]),
-          ),
-        ),
-      ],
+          final ScrollController scrollController = ref.watch(homeAppBarScrollControllerProvider);
+
+          return CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              HomeSliverAppBar(
+                station: homeStateModel.user!.user.primaryStation!,
+                user: homeStateModel.user!,
+                parentScrollController: scrollController,
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.all(16.0),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate([
+                    _buildFeaturedMenuItems(context, featuredMenuItems),
+                    const SizedBox(height: 24),
+                    _buildTeamUpdates(context, ref),
+                  ]),
+                ),
+              ),
+            ],
+          );
+        },
+        error: (error, stackTrace) => Center(child: Text('Error: $error')),
+        loading: () => const Center(child: CircularProgressIndicator()),
     );
   }
 
-  Widget _buildFeaturedMenuItems(BuildContext context, List<MenuItem> featuredItems) {
+  Widget _buildFeaturedMenuItems(BuildContext context, List<Product> featuredItems) {
     if (featuredItems.isEmpty) {
       return const Center(
         child: Text('No featured items found'),
@@ -162,7 +182,7 @@ class HomeContent extends HookConsumerWidget {
           separatorBuilder: (BuildContext context, int index) =>
           const SizedBox(height: 16),
           itemBuilder: (BuildContext context, int index) {
-            final MenuItem menuItem = featuredItems[index];
+            final Product menuItem = featuredItems[index];
             return GestureDetector(
               onTap: () => context.go('/menu/item/${menuItem.id}'),
               child: Container(
@@ -176,7 +196,7 @@ class HomeContent extends HookConsumerWidget {
                   fit: StackFit.expand,
                   children: [
                     Image.network(
-                      menuItem.imageUrl ?? '',
+                      menuItem.photoUrl ?? '',
                       fit: BoxFit.cover,
                     ),
                     Container(
@@ -212,7 +232,7 @@ class HomeContent extends HookConsumerWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            menuItem.notes ?? '',
+                            menuItem.shortDescription ?? '',
                             style: TextStyle(
                               color: Colors.white.withAlpha((255 * 0.8).round()),
                               fontSize: 14,
@@ -222,7 +242,7 @@ class HomeContent extends HookConsumerWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            '\$${menuItem.price.toStringAsFixed(2)}',
+                            '\$${menuItem.unitPrice.toStringAsFixed(2)}',
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -243,8 +263,9 @@ class HomeContent extends HookConsumerWidget {
   }
 
   Widget _buildTeamUpdates(BuildContext context, WidgetRef ref) {
-    final stationController = ref.watch(
-      stationControllerProvider(homeStateModel.user!.id),
+    return Container();
+    /*final stationController = ref.watch(
+      stationControllerProvider(homeStateModel.user!.user.id),
     );
 
     return stationController.when(
@@ -284,6 +305,6 @@ class HomeContent extends HookConsumerWidget {
       error: (error, stackTrace) => Center(
         child: Text('Error: $error'),
       ),
-    );
+    );*/
   }
 }

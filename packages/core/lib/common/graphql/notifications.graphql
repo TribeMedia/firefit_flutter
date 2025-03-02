@@ -1,4 +1,4 @@
-fragment NotificationType on NotificationType {
+fragment NotificationType on NotificationTypes {
 id
   key
   name
@@ -7,9 +7,8 @@ id
   createdAt
 }
 
-fragment Notification on Notification {
+fragment Notification on Notifications {
   id
-  applicationId
   userId
   notificationTypeId
   notificationType {
@@ -29,10 +28,10 @@ query NotificationCollection(
   $last: Int, 
   $after: Cursor, 
   $before: Cursor, 
-  $filter: NotificationFilter, 
-  $orderBy: [NotificationOrderBy!]
+  $filter: NotificationsFilter, 
+  $orderBy: [NotificationsOrderBy!]
 ) {
-  notificationCollection(
+  notificationsCollection(
     first: $first, 
     last: $last, 
     after: $after, 
@@ -59,10 +58,10 @@ query NotificationTypesCollection(
   $last: Int, 
   $after: Cursor, 
   $before: Cursor, 
-  $filter: NotificationTypeFilter, 
-  $orderBy: [NotificationTypeOrderBy!]
+  $filter: NotificationTypesFilter, 
+  $orderBy: [NotificationTypesOrderBy!]
 ) {
-  notificationTypeCollection(
+  notificationTypesCollection(
     first: $first, 
     last: $last, 
     after: $after, 

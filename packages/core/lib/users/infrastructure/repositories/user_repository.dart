@@ -27,8 +27,8 @@ class UserRepository extends UserRepositoryInterface {
     int? last,
     String? before,
     String? after,
-    Input$UserFilter? filter,
-    List<Input$UserOrderBy>? orderBy,
+    Input$UsersFilter? filter,
+    List<Input$UsersOrderBy>? orderBy,
   }) async {
     try {
       final response = await graphqlClient.query$UserCollection(
@@ -51,9 +51,9 @@ class UserRepository extends UserRepositoryInterface {
       }
 
       if (response.parsedData != null &&
-          response.parsedData!.userCollection != null) {
+          response.parsedData!.usersCollection != null) {
         return Right(List<User>.from(
-            response.parsedData!.userCollection!.edges.map((e) => e.node)));
+            response.parsedData!.usersCollection!.edges.map((e) => e.node)));
       }
       return const Right([]);
     } catch (e) {
@@ -64,7 +64,7 @@ class UserRepository extends UserRepositoryInterface {
 
   @override
   Future<Either<Failure, User>> createUser(
-      {required Input$UserInsertInput input}) async {
+      {required Input$UsersInsertInput input}) async {
     try {
       final response =
           await graphqlClient.mutate$CreateUser(Options$Mutation$CreateUser(
@@ -78,9 +78,9 @@ class UserRepository extends UserRepositoryInterface {
       }
 
       if (response.parsedData != null &&
-          response.parsedData!.insertIntoUserCollection != null) {
+          response.parsedData!.insertIntoUsersCollection != null) {
         return Right(
-            response.parsedData!.insertIntoUserCollection!.records.first);
+            response.parsedData!.insertIntoUsersCollection!.records.first);
       }
       return const Left(Failure.empty());
     } catch (e) {
@@ -91,7 +91,7 @@ class UserRepository extends UserRepositoryInterface {
 
   @override
   Future<Either<Failure, User>> updateUser(
-      {required String id, required Input$UserUpdateInput input}) async {
+      {required String id, required Input$UsersUpdateInput input}) async {
     try {
       final response =
           await graphqlClient.mutate$UpdateUser(Options$Mutation$UpdateUser(
@@ -108,7 +108,7 @@ class UserRepository extends UserRepositoryInterface {
       }
 
       if (response.parsedData != null) {
-        return Right(response.parsedData!.updateUserCollection.records.first);
+        return Right(response.parsedData!.updateUsersCollection.records.first);
       }
       return const Left(Failure.empty());
     } catch (e) {

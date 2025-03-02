@@ -26,10 +26,10 @@ class RouterNotifier extends ChangeNotifier {
     return _ref.read(userNotifierProvider).hasValue;
   }
 
-  Future<Either< Failure, MenuItem>> getMenuItem(String id) async {
-    final repository =  _ref.read(menuRepositoryProvider);
-    final result = await repository.queryMenuItems(
-      filter: Input$MenuItemFilter(
+  Future<Either< Failure, Product>> getMenuItem(String id) async {
+    final repository =  _ref.read(productRepositoryProvider);
+    final result = await repository.queryProducts(
+      filter: Input$ProductsFilter(
         id: Input$UUIDFilter(eq: id),
       ),
     );

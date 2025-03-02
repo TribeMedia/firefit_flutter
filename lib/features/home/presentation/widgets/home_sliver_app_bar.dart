@@ -122,7 +122,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
   });
 
   final Station station;
-  final User user;
+  final AuthUser user;
   final ScrollController parentScrollController;
 
   @override
@@ -158,9 +158,9 @@ class HomeSliverAppBar extends HookConsumerWidget {
               ),
               Padding(
                   padding: EdgeInsets.only(right: 8),
-                child: user.avatarUrl != null
-                    ? ShadAvatar(user.avatarUrl!)
-                    : InitialsAvatar(name: user.displayName!),
+                child: user.profile.avatar != null
+                    ? ShadAvatar(user.profile.avatar!)
+                    : InitialsAvatar(name: user.profile.displayName!),
               ),
             ],
             leading: Padding(

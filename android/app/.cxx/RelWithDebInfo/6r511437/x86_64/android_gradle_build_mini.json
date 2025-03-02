@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/gqadonis/development/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/gqadonis/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/gqadonis/Projects/TribeMedia/firefit_flutter/android/app/.cxx/RelWithDebInfo/6r511437/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/gqadonis/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/gqadonis/Projects/TribeMedia/firefit_flutter/android/app/.cxx/RelWithDebInfo/6r511437/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

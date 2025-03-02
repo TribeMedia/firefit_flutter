@@ -1,71 +1,41 @@
 import 'package:core/core.dart';
 import 'package:core/users/graphql/users.graphql.dart';
 import 'package:firefit/config/providers.dart';
+import 'package:firefit/env/env.dart';
+import 'package:firefit/features/auth/providers/authentication_service_provider.dart';
+import 'package:firefit/features/common/providers/providers.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+final userRepositoryProvider = Provider<UserRepositoryInterface>((ref) {
+  return UserRepository(talker: ref.read(loggingProvider), env: Environment());
+});
+
 class UserState {
-  final User? user;
-  final FirstResponder? firstResponder;
   final String? error;
   final bool isLoading;
   final bool isLoggedIn;
+  final AuthUser? user;
 
-  const UserState(
-      {this.user,
-      this.firstResponder,
-      this.error,
-      required this.isLoading,
-      required this.isLoggedIn});
+  const UserState({
+    this.user,
+    this.error,
+    required this.isLoading,
+    required this.isLoggedIn,
+  });
 }
 
-final initialUser = User(
-  id: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
-  email: 'travis@tribemedia.io',
-  lastName: 'James',
-  firstName: 'Travis',
-  displayName: 'Travis James',
-  avatarUrl:
-      'https://ipfs.tribemedia.io/ipfs/QmewGTYVkaHVAsynxF7x8CPeRH8iZUBQ7PTYj8Ab9shXpj',
-  firstResponderCollection: Fragment$User$firstResponderCollection(
-    edges: [
-      Fragment$User$firstResponderCollection$edges(
-        node: FirstResponder(
-          id: '036adc2b-abe7-4037-b61c-9fb54046718f',
-          userId: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
-          firstResponderTypeId: 'b61ab1a0-a65e-42e8-9f3a-57d62fe1d91c',
-          firstResponderType: Fragment$FirstResponderType(
-            id: '231324ab-38a2-42c7-a22f-849d195f42d1',
-            key: 'firefighter',
-            name: 'Firefighter',
-            schema: null,
-            createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),
-          ),
-          currentStationId: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2',
-          currentStation: Fragment$Station(
-            id: 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2',
-            name: 'Engine Company',
-            number: 6,
-            description: 'DC Fire & EMS Department',
-            longDescriptionMarkdown: '',
-            address: '2000 14th Street, NW',
-            address1: '5th Floor',
-            city: 'Washington',
-            state: 'DC',
-            zip: '20001',
-            registrationCode: 'STATION6',
-            iconUrl: 'https://ipfs.tribemedia.io/ipfs/QmWM3Dp8D4NjQxco8P3RPpb6eDwVkhYe9jKkRubPs1BCoR',
-            coverUrl: 'https://ipfs.tribemedia.io/ipfs/QmbWBc8tRN6fBP5Y6BMZm1TmAzzj3bSWQvz6C1dQQA7jug',
-            createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),
-        ), createdAt: DateTime.parse('2023-04-20T18:00:00.000Z'),
-      ),
-      ),
-    ],
-  ),
-);
-
 class UserNotifier extends AsyncNotifier<UserState> {
+  late final UserRepositoryInterface userRepository;
+  late final AuthenticationServiceInterface authenticationService;
+  late final StationRepositoryInterface stationRepository;
+
   @override
   Future<UserState> build() async {
+    userRepository = ref.read(userRepositoryProvider);
+    authenticationService = ref.read(authenticationServiceProvider);
+    stationRepository = ref.read(stationRepositoryProvider);
+
     state = const AsyncValue.loading();
     final logging = ref.read(loggingProvider);
 
@@ -73,17 +43,13 @@ class UserNotifier extends AsyncNotifier<UserState> {
 
     // Immediately return the initial user state without any delay
     //logging.debug('UserNotifier initialized with user: ${initialUser.id}');
-    final userState = UserState(
-      user: initialUser,
-      isLoading: false,
-      isLoggedIn: true,
-    );
+    final userState = UserState(user: null, isLoading: false, isLoggedIn: true);
     state = AsyncValue.data(userState);
 
     return userState;
   }
 
-  Future<void> updateUser(User updatedUser) async {
+  Future<void> updateUser(AuthUser updatedUser) async {
     final logging = ref.read(loggingProvider);
 
     try {
@@ -94,11 +60,7 @@ class UserNotifier extends AsyncNotifier<UserState> {
       await Future.delayed(const Duration(milliseconds: 100));
 
       state = AsyncValue.data(
-        UserState(
-          user: updatedUser,
-          isLoading: false,
-          isLoggedIn: true,
-        ),
+        UserState(user: updatedUser, isLoading: false, isLoggedIn: true),
       );
       logging.debug('User state updated successfully');
     } catch (err, stackTrace) {
@@ -106,6 +68,138 @@ class UserNotifier extends AsyncNotifier<UserState> {
       logging.debug('Error: $err\nStackTrace: $stackTrace');
       state = AsyncValue.error(err, stackTrace);
     }
+  }
+
+  Future<Either<Failure, AuthUser>> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      state = const AsyncValue.loading();
+      final authResult = await authenticationService.login(
+        identifier: email,
+        password: password,
+      );
+      return authResult.fold(
+        (l) {
+          state = AsyncValue.data(
+            UserState(
+              user: null,
+              isLoading: false,
+              isLoggedIn: false,
+              error: l.error,
+            ),
+          );
+          return left(l);
+        },
+        (r) {
+          state = AsyncValue.data(
+            UserState(
+              user: r,
+              isLoading: false,
+              isLoggedIn: true,
+              error: null,
+            ),
+          );
+          return right(r);
+        },
+      );
+    } catch (err, stackTrace) {
+      state = AsyncValue.error(err, stackTrace);
+      return left(Failure.unprocessableEntity(message: err.toString()));
+    }
+  }
+
+  Future<Either<Failure, AuthUser>> register({
+    required String email,
+    required String password,
+    required String handle,
+    required String stationCode,
+    String? firstName,
+    String? lastName,
+  }) async {
+    try {
+      state = const AsyncValue.loading();
+      final station = await stationRepository.getStationByCode(
+        id: stationCode,
+      );
+
+      return station.fold(
+          (l) => left(l),
+          (r) async {
+            final authResult = await authenticationService.register(
+              email: email,
+              password: password,
+              firstName: firstName ?? '',
+              lastName: lastName ?? '',
+              handle: handle,
+              stationId: r.id,
+            );
+            return authResult.fold(
+                  (l) {
+                state = AsyncValue.data(
+                  UserState(
+                    user: null,
+                    isLoading: false,
+                    isLoggedIn: false,
+                    error: l.error,
+                  ),
+                );
+                return left(l);
+              },
+                  (r) {
+                state = AsyncValue.data(
+                  UserState(
+                    user: r,
+                    isLoading: false,
+                    isLoggedIn: true,
+                    error: null,
+                  ),
+                );
+                return right(r);
+              },
+            );
+          },
+      );
+    } catch (err, stackTrace) {
+      state = AsyncValue.error(err, stackTrace);
+      return left(Failure.unprocessableEntity(message: err.toString()));
+    }
+  }
+
+  Future<bool> validateStationCode(String code) async {
+    final logging = ref.read(loggingProvider);
+
+    try {
+      state = const AsyncValue.loading();
+      logging.debug('Validating station code: $code');
+
+      // Simulate API call to validate station code
+      await Future.delayed(const Duration(seconds: 1));
+
+      // For demo purposes, only accept 'STATION6'
+      if (code != 'STATION6') {
+        state = AsyncValue.data(
+          UserState(
+            user: state.value?.user,
+            isLoading: false,
+            isLoggedIn: true,
+            error: 'Invalid station code',
+          ),
+        );
+        return true;
+      }
+
+      state = AsyncValue.data(
+        UserState(user: state.value?.user, isLoading: false, isLoggedIn: true),
+      );
+      logging.debug('Station code validated successfully');
+    } catch (err, stackTrace) {
+      logging.error('Failed to validate station code');
+      logging.debug('Error: $err\nStackTrace: $stackTrace');
+      state = AsyncValue.error(err, stackTrace);
+    }
+    return false;
   }
 }
 

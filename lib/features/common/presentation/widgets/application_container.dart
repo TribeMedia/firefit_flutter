@@ -90,7 +90,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                     ),
                   ),
                   title: Text(
-                    homeState.user?.displayName ?? homeState.user!.firstName!,
+                    homeState.user!.user.firstName,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontFamily: 'Geist Mono',
                           fontWeight: FontWeight.bold,

@@ -43,6 +43,9 @@ abstract class Env {
 
   @EnviedField(varName: 'APPLICATION_ID')
   static const String applicationId = _Env.applicationId;
+
+  @EnviedField(varName: 'PDS_SERVICE_URL')
+  static const String pdsServiceUrl = _Env.pdsServiceUrl;
 }
 
 class Environment with EnvInterface {
@@ -84,6 +87,9 @@ class Environment with EnvInterface {
 
   @override
   String get applicationId => _Env.applicationId;
+
+  @override
+  String get pdsServiceUrl => _Env.pdsServiceUrl;
 
   static final Environment _instance = Environment._internal();
 

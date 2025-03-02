@@ -23,4 +23,6 @@ mixin EnvInterface {
   String get stationId;
 
   String get applicationId;
+
+  String get pdsServiceUrl;
 }

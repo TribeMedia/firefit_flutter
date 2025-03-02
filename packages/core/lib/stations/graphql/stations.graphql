@@ -1,0 +1,97 @@
+
+
+fragment Station on Stations {
+  id
+  name
+  number
+  description
+  longDescription
+  address
+  address1
+  city
+  state
+  zip
+  imageUrl
+  coverUrl
+  registrationCode
+  createdAt
+}
+
+query Station($id: UUID!) {
+  stationsCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...Station
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query StationCollection(
+  $first: Int,
+  $last: Int,
+  $before: Cursor,
+  $after: Cursor,
+  $offset: Int,
+  $filter: StationsFilter,
+  $orderBy: [StationsOrderBy!],
+) {
+  stationsCollection(
+    filter: $filter,
+    orderBy: $orderBy,
+    first: $first,
+    last: $last,
+    before: $before,
+    after: $after,
+    offset: $offset,
+  ) {
+    edges {
+      node {
+        ...Station
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+mutation UpdateStation($id: UUID!, $input: StationsUpdateInput!) {
+  updateStationsCollection(
+    filter: { id: { eq: $id } }
+    set: $input
+  ) {
+    records {
+      ...Station
+    }
+    affectedCount
+  }
+}
+
+mutation CreateStation($input: StationsInsertInput!) {
+  insertIntoStationsCollection(objects: [$input]) {
+    records {
+      ...Station
+    }
+    affectedCount
+  }
+}
+
+mutation DeleteStation($id: UUID!) {    
+  deleteFromStationsCollection(filter: { id: { eq: $id } }) {
+    records {
+      ...Station
+    }
+    affectedCount
+  }
+}
+

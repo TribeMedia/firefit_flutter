@@ -8,17 +8,15 @@ part of 'shopping_cart_view_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MenuItemViewModelImpl _$$MenuItemViewModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MenuItemViewModelImpl(
+_MenuItemViewModel _$MenuItemViewModelFromJson(Map<String, dynamic> json) =>
+    _MenuItemViewModel(
       id: json['id'] as String,
       name: json['name'] as String,
       price: (json['price'] as num).toDouble(),
       imageUrl: json['imageUrl'] as String?,
     );
 
-Map<String, dynamic> _$$MenuItemViewModelImplToJson(
-        _$MenuItemViewModelImpl instance) =>
+Map<String, dynamic> _$MenuItemViewModelToJson(_MenuItemViewModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -26,9 +24,9 @@ Map<String, dynamic> _$$MenuItemViewModelImplToJson(
       'imageUrl': instance.imageUrl,
     };
 
-_$ShoppingCartViewModelImpl _$$ShoppingCartViewModelImplFromJson(
+_ShoppingCartViewModel _$ShoppingCartViewModelFromJson(
         Map<String, dynamic> json) =>
-    _$ShoppingCartViewModelImpl(
+    _ShoppingCartViewModel(
       id: json['id'] as String,
       items: (json['items'] as List<dynamic>)
           .map((e) => MenuItemViewModel.fromJson(e as Map<String, dynamic>))
@@ -38,8 +36,8 @@ _$ShoppingCartViewModelImpl _$$ShoppingCartViewModelImplFromJson(
       itemCount: (json['itemCount'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$ShoppingCartViewModelImplToJson(
-        _$ShoppingCartViewModelImpl instance) =>
+Map<String, dynamic> _$ShoppingCartViewModelToJson(
+        _ShoppingCartViewModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'items': instance.items.map((e) => e.toJson()).toList(),

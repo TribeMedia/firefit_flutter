@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class MenuItemDetailScreen extends HookConsumerWidget {
-  final MenuItem menuItem;
+  final Product menuItem;
 
   const MenuItemDetailScreen({super.key, required this.menuItem});
 
@@ -51,7 +51,7 @@ class MenuItemDetailScreen extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
-              menuItem.imageUrl ?? '',
+              menuItem.photoUrl ?? '',
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -67,7 +67,7 @@ class MenuItemDetailScreen extends HookConsumerWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    menuItem.notes ?? '',
+                    menuItem.shortDescription ?? '',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   SizedBox(height: 16),
@@ -75,7 +75,7 @@ class MenuItemDetailScreen extends HookConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Price: \$${menuItem.price.toStringAsFixed(2)}',
+                        'Price: \$${menuItem.unitPrice.toStringAsFixed(2)}',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       Row(
@@ -97,8 +97,8 @@ class MenuItemDetailScreen extends HookConsumerWidget {
                             onPressed: () => notifier.addItem(CartItem(
                               id: menuItem.id,
                               name: menuItem.name,
-                              price: menuItem.price,
-                              imageUrl: menuItem.imageUrl,
+                              price: menuItem.unitPrice,
+                              imageUrl: menuItem.photoUrl,
                             )),
                           ),
                         ],

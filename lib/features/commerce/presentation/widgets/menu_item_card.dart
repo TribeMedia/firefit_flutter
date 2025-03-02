@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class MenuItemCard extends StatelessWidget {
-  final MenuItem menuItem;
+  final Product menuItem;
   final VoidCallback onAddToCart;
   final VoidCallback onRemoveFromCart;
   final int quantity;
@@ -27,7 +27,7 @@ class MenuItemCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.network(
-              menuItem.imageUrl ?? '',
+              menuItem.photoUrl ?? '',
               height: 120,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -46,14 +46,14 @@ class MenuItemCard extends StatelessWidget {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  menuItem.notes ?? '',
+                  menuItem.shortDescription ?? '',
                   style: Theme.of(context).textTheme.bodySmall,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 8),
                 Text(
-                  '\$${menuItem.price.toStringAsFixed(2)}',
+                  '\$${menuItem.unitPrice.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 SizedBox(height: 8),

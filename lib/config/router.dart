@@ -1,6 +1,7 @@
 import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
+import 'package:firefit/features/auth/presentation/screens/station_code_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/orders_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
@@ -24,7 +25,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     refreshListenable: routerNotifier,
     redirect: (context, state) {
       final isAuthenticated = routerNotifier.isAuthenticated;
-      final isAuthRoute = state.matchedLocation == '/login' ||
+      final isAuthRoute =
+          state.matchedLocation == '/login' ||
           state.matchedLocation == '/register';
 
       if (!isAuthenticated && !isAuthRoute) return '/login';
@@ -40,10 +42,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           );
         },
         routes: [
-          GoRoute(
-            path: '/',
-            builder: (context, state) => const HomeScreen(),
-          ),
+          GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
           GoRoute(
             path: '/menu',
             builder: (context, state) => const MenuScreen(),
@@ -52,9 +51,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: 'item/:id',
                 builder: (context, state) {
                   final id = state.pathParameters['id'];
-                  return MenuItemDetailPage(
-                    menuItemId: id!,
-                  );
+                  return MenuItemDetailPage(menuItemId: id!);
                 },
               ),
             ],
@@ -69,19 +66,24 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
         ],
       ),
+      GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
       GoRoute(
-        path: '/login',
-        builder: (context, state) => const LoginScreen(),
+        path: '/register/:stationCode',
+        builder: (context, state) {
+          final stationCode = state.pathParameters['stationCode'];
+          return RegistrationScreen(stationCode: stationCode!);
+        },
       ),
       GoRoute(
-        path: '/register',
-        builder: (context, state) => const RegistrationScreen(),
+        path: '/station-code',
+        builder: (context, state) => const StationCodeScreen(),
       ),
     ],
-    errorBuilder: (context, state) => ErrorScreen(
-      errorMessage: state.error?.toString() ?? 'Unknown error occurred',
-      onRetry: () => context.go('/'),
-    ),
+    errorBuilder:
+        (context, state) => ErrorScreen(
+          errorMessage: state.error?.toString() ?? 'Unknown error occurred',
+          onRetry: () => context.go('/'),
+        ),
   );
 });
 

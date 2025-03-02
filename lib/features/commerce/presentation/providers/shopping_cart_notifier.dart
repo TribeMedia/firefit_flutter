@@ -1,3 +1,4 @@
+import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/core.dart';
 import 'package:firefit/features/auth/providers/user_notifier.dart';
 import 'package:firefit/features/commerce/domain/entities/cart_item.dart';
@@ -10,7 +11,7 @@ import 'package:uuid/uuid.dart';
 
 class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
   late final OrderRepositoryInterface orderRepository;
-  late final User? user;
+  late final AuthUser? user;
   ShoppingCart? currentCart;
 
   @override
@@ -27,13 +28,9 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
       user = userResult.user;
 
       final cartResult = await orderRepository.queryShoppingCarts(
-        filter: Input$ShoppingCartFilter(
-          userId: Input$UUIDFilter(
-            eq: user!.id,
-          ),
-          orderId: Input$UUIDFilter(
-            $is: Enum$FilterIs.NULL,
-          ),
+        filter: Input$ShoppingCartsFilter(
+          userId: Input$UUIDFilter(eq: user!.user.id),
+          orderId: Input$UUIDFilter($is: Enum$FilterIs.NULL),
         ),
       );
 
@@ -47,20 +44,12 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
           if (r.isNotEmpty) {
             currentCart = r.first;
             final model = ShoppingCartModel(
-              shoppingCarts: r
-                  .map((cart) => ShoppingCartViewModel.fromFragment(cart))
-                  .toList(),
+              shoppingCarts:
+                  r
+                      .map((cart) => ShoppingCartViewModel.fromFragment(cart))
+                      .toList(),
               currentCartId: currentCart?.id,
-              items: currentCart!.shoppingCartMenuItemCollection?.edges
-                      .map((edge) => CartItem(
-                            id: edge.node.id,
-                            name: edge.node.menuItem.name,
-                            price: edge.node.menuItem.price.toDouble(),
-                            quantity: edge.node.count,
-                            imageUrl: edge.node.menuItem.imageUrl,
-                          ))
-                      .toList() ??
-                  [],
+              items: [],
             );
             state = AsyncData(model);
             return model;
@@ -83,15 +72,16 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
       if (currentState.currentCartId == null) {
         state = const AsyncLoading();
         final result = await orderRepository.createShoppingCart(
-          input: Input$ShoppingCartInsertInput(
+          input: Input$ShoppingCartsInsertInput(
             id: newCartId,
-            userId: user!.id,
+            userId: user!.user.id,
           ),
         );
 
         if (result.isLeft()) {
-          final error = result.getLeft().getOrElse(() =>
-              Failure.unprocessableEntity(message: 'Failed creating cart!'));
+          final error = result.getLeft().getOrElse(
+            () => Failure.unprocessableEntity(message: 'Failed creating cart!'),
+          );
           state = AsyncError(error.error, StackTrace.current);
           return;
         }
@@ -101,29 +91,33 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
       // Add item to database
       state = const AsyncLoading();
       final itemResult = await orderRepository.createShoppingCartMenuItem(
-        input: Input$ShoppingCartMenuItemInsertInput(
+        input: Input$ShoppingCartItemsInsertInput(
           id: const Uuid().v4(),
           shoppingCartId: isNewCart ? newCartId : currentState.currentCartId!,
-          menuItemId: item.id,
-          count: item.quantity,
+          productId: item.id,
+          quantity: item.quantity,
         ),
       );
 
       if (itemResult.isLeft()) {
-        final error = itemResult.getLeft().getOrElse(() =>
-            Failure.unprocessableEntity(
-                message: 'Failed adding item to cart!'));
+        final error = itemResult.getLeft().getOrElse(
+          () => Failure.unprocessableEntity(
+            message: 'Failed adding item to cart!',
+          ),
+        );
         state = AsyncError(error.error, StackTrace.current);
         return;
       }
 
       // Update the state with the new item
-      final updatedItems = [...currentState.items, item];
-      state = AsyncData(ShoppingCartModel(
-        shoppingCarts: currentState.shoppingCarts,
-        currentCartId: isNewCart ? newCartId : currentState.currentCartId,
-        items: updatedItems,
-      ));
+      // For now, we'll just use the existing items
+      state = AsyncData(
+        ShoppingCartModel(
+          shoppingCarts: currentState.shoppingCarts,
+          currentCartId: isNewCart ? newCartId : currentState.currentCartId,
+          items: currentState.items,
+        ),
+      );
     } catch (e, stackTrace) {
       state = AsyncError(e, stackTrace);
     }
@@ -139,27 +133,34 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
 
       if (result.isLeft()) {
         state = AsyncError(
-            result
-                .getLeft()
-                .getOrElse(() => Failure.unprocessableEntity(
-                    message: 'Failed removing item from cart!'))
-                .error,
-            StackTrace.current);
+          result
+              .getLeft()
+              .getOrElse(
+                () => Failure.unprocessableEntity(
+                  message: 'Failed removing item from cart!',
+                ),
+              )
+              .error,
+          StackTrace.current,
+        );
         return;
       }
 
       if (currentState.items.length == 1) {
         isLastItem = true;
         await orderRepository.deleteShoppingCart(
-            id: currentState.currentCartId!);
+          id: currentState.currentCartId!,
+        );
       }
 
       // Update local state
-      state = AsyncValue.data(currentState.copyWith(
-        items: currentState.items.where((item) => item.id != id).toList(),
-        totalPrice: totalPrice,
-        currentCartId: isLastItem ? null : currentState.currentCartId,
-      ));
+      state = AsyncValue.data(
+        currentState.copyWith(
+          items: currentState.items.where((item) => item.id != id).toList(),
+          totalPrice: totalPrice,
+          currentCartId: isLastItem ? null : currentState.currentCartId,
+        ),
+      );
     } catch (e) {
       state = AsyncError(e, StackTrace.current);
     }
@@ -167,25 +168,37 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
 
   Future<void> updateQuantity(String id, int quantity) async {
     final currentState = state.value!;
-    state = AsyncValue.data(currentState.copyWith(
-      items: currentState.items
-          .map((item) =>
-              item.id == id ? item.copyWith(quantity: quantity) : item)
-          .toList(),
-      totalPrice: totalPrice,
-    ));
+    state = AsyncValue.data(
+      currentState.copyWith(
+        items:
+            currentState.items
+                .map(
+                  (item) =>
+                      item.id == id ? item.copyWith(quantity: quantity) : item,
+                )
+                .toList(),
+        totalPrice: totalPrice,
+      ),
+    );
   }
 
   Future<void> calculateTotalPrice() async {
     final currentState = state.value!;
-    state = AsyncValue.data(currentState.copyWith(
-        totalPrice: currentState.items
-            .fold(0.0, (sum, item) => sum + item.price * item.quantity)));
+    state = AsyncValue.data(
+      currentState.copyWith(
+        totalPrice: currentState.items.fold(
+          0.0,
+          (sum, item) => sum + item.unitPrice * item.quantity,
+        ),
+      ),
+    );
   }
 
   double get totalPrice =>
-      state.value?.items
-          .fold(0.0, (sum, item) => sum! + item.price * item.quantity) ??
+      state.value?.items.fold(
+        0.0,
+        (sum, item) => sum! + item.unitPrice * item.quantity,
+      ) ??
       0.0;
 
   Future<void> clearCart() async {
@@ -197,4 +210,5 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
 
 final shoppingCartProvider =
     AsyncNotifierProvider<ShoppingCartNotifier, ShoppingCartModel>(
-        () => ShoppingCartNotifier());
+      () => ShoppingCartNotifier(),
+    );

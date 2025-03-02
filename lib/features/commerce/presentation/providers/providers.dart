@@ -17,13 +17,13 @@ class OrderViewModel {
   final String? error;
   final bool isLoading;
   final List<Order> orders;
-  final String userId;
+  final AuthUser user;
 
   OrderViewModel({
     this.error,
     this.isLoading = false,
     this.orders = const [],
-    required this.userId,
+    required this.user,
   });
 
   OrderViewModel copyWith({
@@ -32,7 +32,7 @@ class OrderViewModel {
     String? error,
   }) =>
       OrderViewModel(
-          userId: userId,
+          user: user,
           isLoading: isLoading ?? this.isLoading,
           orders: orders ?? this.orders,
           error: error);
@@ -41,26 +41,26 @@ class OrderViewModel {
 @Riverpod(keepAlive: true)
 class OrderController extends _$OrderController {
   @override
-  FutureOr<OrderViewModel> build(String userId) async {
+  FutureOr<OrderViewModel> build(AuthUser user) async {
     state = const AsyncLoading();
-    return await load(userId);
+    return await load(user);
   }
 
-  FutureOr<OrderViewModel> load(String userId) async {
+  FutureOr<OrderViewModel> load(AuthUser user) async {
     final orderRepository = ref.read(orderRepositoryProvider);
     final orderResult = await orderRepository.queryOrders(
-      filter: Input$OrderFilter(
-        userId: Input$UUIDFilter(eq: userId),
+      filter: Input$OrdersFilter(
+        userId: Input$UUIDFilter(eq: state.value?.user.user.id),
       ),
     );
     return orderResult.fold(
       (l) {
-        final viewModel = OrderViewModel(userId: userId, error: l.error);
+        final viewModel = OrderViewModel(user: user, error: l.error);
         state = AsyncData(viewModel);
         return viewModel;
       },
       (r) {
-        final viewModel = OrderViewModel(userId: userId, orders: r);
+        final viewModel = OrderViewModel(user: user, orders: r);
         state = AsyncData(viewModel);
         return viewModel;
       },
@@ -72,12 +72,9 @@ class OrderController extends _$OrderController {
     final orderRepository = ref.read(orderRepositoryProvider);
     final homeState = await ref.watch(homeStateProvider.future);
     final orderResult = await orderRepository.createOrder(
-        input: Input$OrderInsertInput(
+        input: Input$OrdersInsertInput(
       userId: cart.userId,
-      stationId: homeState.firstResponder!.currentStationId,
-      paymentInfoId: demoUserPaymentMethodId,
-      orderStatusId: createdOrderStatusId,
-      orderTypeId: menuOrderTypeId,
+
     ));
     return orderResult.fold(
       (l) {
@@ -91,7 +88,7 @@ class OrderController extends _$OrderController {
         final orderRepository = ref.read(orderRepositoryProvider);
         final result = await orderRepository.updateShoppingCart(
             id: cart.id,
-            input: Input$ShoppingCartUpdateInput(orderId: order.id));
+            input: Input$ShoppingCartsUpdateInput(orderId: order.id));
         return result.fold(
           (l) {
             state = AsyncData(state.value!.copyWith(
@@ -101,7 +98,7 @@ class OrderController extends _$OrderController {
             return fp.left(l);
           },
           (r) async {
-            await load(userId);
+            await load(homeState.user!);
             ref.invalidate(shoppingCartProvider);
             return fp.right(order);
           },

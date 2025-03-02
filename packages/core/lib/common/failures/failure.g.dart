@@ -6,87 +6,80 @@ part of 'failure.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EmptyFailureImpl _$$EmptyFailureImplFromJson(Map<String, dynamic> json) =>
-    _$EmptyFailureImpl(
+_EmptyFailure _$EmptyFailureFromJson(Map<String, dynamic> json) =>
+    _EmptyFailure(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$EmptyFailureImplToJson(_$EmptyFailureImpl instance) =>
+Map<String, dynamic> _$EmptyFailureToJson(_EmptyFailure instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$UnprocessableEntityFailureImpl _$$UnprocessableEntityFailureImplFromJson(
+_UnprocessableEntityFailure _$UnprocessableEntityFailureFromJson(
         Map<String, dynamic> json) =>
-    _$UnprocessableEntityFailureImpl(
+    _UnprocessableEntityFailure(
       message: json['message'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$UnprocessableEntityFailureImplToJson(
-        _$UnprocessableEntityFailureImpl instance) =>
+Map<String, dynamic> _$UnprocessableEntityFailureToJson(
+        _UnprocessableEntityFailure instance) =>
     <String, dynamic>{
       'message': instance.message,
       'runtimeType': instance.$type,
     };
 
-_$UnauthorizedFailureImpl _$$UnauthorizedFailureImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UnauthorizedFailureImpl(
+_UnauthorizedFailure _$UnauthorizedFailureFromJson(Map<String, dynamic> json) =>
+    _UnauthorizedFailure(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$UnauthorizedFailureImplToJson(
-        _$UnauthorizedFailureImpl instance) =>
+Map<String, dynamic> _$UnauthorizedFailureToJson(
+        _UnauthorizedFailure instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$BadRequestFailureImpl _$$BadRequestFailureImplFromJson(
-        Map<String, dynamic> json) =>
-    _$BadRequestFailureImpl(
+_BadRequestFailure _$BadRequestFailureFromJson(Map<String, dynamic> json) =>
+    _BadRequestFailure(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$BadRequestFailureImplToJson(
-        _$BadRequestFailureImpl instance) =>
+Map<String, dynamic> _$BadRequestFailureToJson(_BadRequestFailure instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$NotFoundFailureImpl _$$NotFoundFailureImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NotFoundFailureImpl(
+_NotFoundFailure _$NotFoundFailureFromJson(Map<String, dynamic> json) =>
+    _NotFoundFailure(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$NotFoundFailureImplToJson(
-        _$NotFoundFailureImpl instance) =>
+Map<String, dynamic> _$NotFoundFailureToJson(_NotFoundFailure instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$NetworkFailureImpl _$$NetworkFailureImplFromJson(Map<String, dynamic> json) =>
-    _$NetworkFailureImpl(
+_NetworkFailure _$NetworkFailureFromJson(Map<String, dynamic> json) =>
+    _NetworkFailure(
       message: json['message'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$NetworkFailureImplToJson(
-        _$NetworkFailureImpl instance) =>
+Map<String, dynamic> _$NetworkFailureToJson(_NetworkFailure instance) =>
     <String, dynamic>{
       'message': instance.message,
       'runtimeType': instance.$type,
     };
 
-_$StorageFailureImpl _$$StorageFailureImplFromJson(Map<String, dynamic> json) =>
-    _$StorageFailureImpl(
+_StorageFailure _$StorageFailureFromJson(Map<String, dynamic> json) =>
+    _StorageFailure(
       json['message'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$StorageFailureImplToJson(
-        _$StorageFailureImpl instance) =>
+Map<String, dynamic> _$StorageFailureToJson(_StorageFailure instance) =>
     <String, dynamic>{
       'message': instance.message,
       'runtimeType': instance.$type,

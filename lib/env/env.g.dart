@@ -10,6 +10,7 @@ part of 'env.dart';
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
+// generated_from: .env
 final class _Env {
   static const String supabaseUrl = 'https://supabase.tribemedia.io';
 
@@ -37,4 +38,6 @@ final class _Env {
   static const String stationId = 'a7a36d7a-7d97-4c02-8ccf-4ff1cbe8b7d2';
 
   static const String applicationId = '917669e4-601b-401c-8f9f-98a5ac2c20ff';
+
+  static const String pdsServiceUrl = 'https://bsky.social';
 }

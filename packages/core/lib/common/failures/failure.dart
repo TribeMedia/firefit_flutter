@@ -1,11 +1,12 @@
+import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'failure.freezed.dart';
 part 'failure.g.dart';
 
 @freezed
-class Failure implements Exception {
-
+class Failure with _$Failure implements Exception {
   const Failure._();
 
   /// Expected value is null or empty
@@ -34,4 +35,9 @@ class Failure implements Exception {
 
   factory Failure.fromJson(Map<String, dynamic> json) =>
       _$FailureFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return jsonDecode(jsonEncode(this));
+  }
 }

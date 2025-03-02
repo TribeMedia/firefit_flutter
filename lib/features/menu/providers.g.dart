@@ -8,7 +8,7 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$menuControllerHash() => r'0052364a52dcb2b6947b17a20157c5b25c5832a1';
+String _$menuControllerHash() => r'd102d82c2bc8eb4806237044a75caa5fe91d8d64';
 
 /// Copied from Dart SDK
 class _SystemHash {
