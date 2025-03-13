@@ -1,20 +1,22 @@
+import 'package:firefit/config/providers.dart' as providers;
 import 'package:firefit/config/providers.dart';
 import 'package:firefit/env/env.dart';
 import 'package:firefit/features/application/application.dart';
+import 'package:firefit/utils/logging/state_logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+// Create the ProviderContainer
+final globalContainer = ProviderContainer(observers: [StateLogger()]);
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Create the ProviderContainer
-  final container = ProviderContainer();
-
   // Initialize Talker early
-  final talker = container.read(loggingProvider);
+  final talker = globalContainer.read(loggingProvider);
   talker.debug('Application initialization started');
 
   LicenseRegistry.addLicense(() async* {
@@ -30,9 +32,11 @@ Future<void> main() async {
     );
     //talker.debug('Supabase initialized successfully');
 
+    await providers.initializeProviders(globalContainer);
+
     runApp(
       UncontrolledProviderScope(
-        container: container,
+        container: globalContainer,
         child: const Application(),
       ),
     );

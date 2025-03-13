@@ -24,7 +24,6 @@ class MenuScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final menuController = ref.watch(menuControllerProvider);
 
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -46,8 +45,7 @@ class MenuScreen extends HookConsumerWidget {
         error: (error, _) => SafeArea(
           child: ErrorScreen(
             errorMessage: error.toString(),
-            onRetry: () =>
-                ref.refresh(menuControllerProvider),
+            onRetry: () => ref.refresh(menuControllerProvider),
           ),
         ),
         data: (menuViewModel) => menuViewModel.products.isEmpty
@@ -59,7 +57,7 @@ class MenuScreen extends HookConsumerWidget {
             : SafeArea(
                 child: ListView.builder(
                   padding: const EdgeInsets.all(kPagePadding),
-                  itemCount: menuViewModel.products.length,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +77,8 @@ class MenuScreen extends HookConsumerWidget {
     );
   }
 
-  Widget _buildMealTypeSection(BuildContext context, WidgetRef ref, List<Product> products) {
+  Widget _buildMealTypeSection(
+      BuildContext context, WidgetRef ref, List<Product> products) {
     final theme = Theme.of(context);
 
     return ShadCard(

@@ -14,8 +14,7 @@ final featuredMenuItemsProvider =
     FutureProvider.autoDispose<List<Product>>((ref) async {
   final productRepository = ref.read(productRepositoryProvider);
   final result = await productRepository.queryProducts(
-    first: 0,
-    last: 4,
+    first: 4,
     orderBy: [
       Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.DescNullsLast)
     ],

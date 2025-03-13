@@ -1,0 +1,89 @@
+---
+description: Flutter code generation
+globs: 
+alwaysApply: false
+---
+# Flutter and Dart Code Generation Rules
+
+## Core Architecture Requirements
+
+- Always follow the clean architecture pattern with domain, data, and presentation layers
+- Strictly adhere to TypeScript configurations defined in `analysis_options.yaml`
+- Never use `dynamic` type explicitly or implicitly - all types must be properly defined
+- Use snake_case for all filenames (e.g., `user_profile.dart`, not `UserProfile.dart`)
+- Prefer feature-based organization over layer-based organization
+- Use proper dependency injection with Riverpod
+
+## Code Verification Process
+
+Before finalizing any generated code:
+
+1. Check current package versions in pubspec.yaml to ensure compatibility
+2. Verify API usage against actual implementations in the project
+3. Search for current best practices using the firecrawl MCP server
+
+## Directory Structure and Organization
+
+Follow this feature-based clean architecture:
+
+- `lib/features/[feature_name]/`: Feature-specific code
+  - `domain/`: Entities, repository interfaces, failures, validation
+  - `data/`: Repository implementations, data sources, DTOs
+  - `presentation/`: Screens, widgets, view models
+- `lib/core/`: Shared code used across features
+  - `error/`: Error handling (failures, exceptions)
+  - `util/`: Utility functions and extensions
+  - `network/`: Network-related code (API clients, interceptors)
+- `lib/app/`: Application-level code
+  - `router/`: Routing configuration
+  - `theme/`: Theme configuration
+  - `localization/`: Localization configuration
+
+## State Management with Riverpod
+
+When implementing Riverpod providers:
+
+1. Use AsyncNotifier for async operations
+2. Use StateNotifier for synchronous state management
+3. Organize providers by feature
+4. Use proper error handling with AsyncValue
+5. Implement proper loading states
+
+## Authentication & Protected Routes
+
+When implementing authentication:
+
+- Create an AuthRepository in the domain layer
+- Implement proper error handling with Either<Failure, Success>
+- Use secure storage for tokens
+- Implement proper token refresh mechanisms
+- Use go_router for protected routes
+
+## Testing
+
+- Write unit tests for all repository implementations
+- Write widget tests for UI components
+- Write integration tests for key user flows
+- Use mocktail for mocking dependencies
+- Follow the testing templates in docs/TESTING_TEMPLATES.md
+
+## Bug Fixing & Code Generation Workflow
+
+- For every code generation or bug fix, set a checkpoint so changes can be reversed if needed
+- When executing several steps to fix a bug, always generate a memory so the solution can be easily applied in other contexts
+- Use all available memory-oriented tools and MCP servers to maintain multiple copies of solutions
+- When fixing bugs or eliminating errors, focus ONLY on the bug being fixed in the file in question unless otherwise instructed or necessary
+- Do not make enhancements during bug fixing
+
+## Type Management
+
+- Always check the current code base FIRST before creating new types to avoid duplicates
+- Follow the prescribed directory structure and methodology to prevent type duplication
+- Use freezed for immutable models
+- Use json_serializable for JSON serialization
+
+## Package Management
+
+- Use Flutter's pub for package management
+- Run `flutter pub get` after adding new dependencies
+- Run `dart run build_runner build --delete-conflicting-outputs` for code generation

@@ -45,13 +45,15 @@ class UserNotifier extends AsyncNotifier<UserState> {
 
     logging.debug('UserNotifier initializing...');
 
+    final authUser = await authenticationService.getCurrentUser();
+
     // Immediately return the initial user state without any delay
     //logging.debug('UserNotifier initialized with user: ${initialUser.id}');
     final userState = UserState(
-      user: null,
+      user: authUser,
       isLoading: false,
-      isLoggedIn: false,
-      station: null,
+      isLoggedIn: authUser != null,
+      station: authUser?.user.primaryStation,
     );
     state = AsyncValue.data(userState);
 

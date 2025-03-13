@@ -18,10 +18,13 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code related
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -29,9 +32,11 @@ migrate_working_dir/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
 /build/
+**/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
@@ -43,9 +48,95 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-
 android/app/build
 android-build-output
+android/local.properties
+android/key.properties
+android/.gradle
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/**/GeneratedPluginRegistrant.java
+android/**/*.keystore
+android/**/*.jks
 
+# iOS/XCode related
 ios/build
+**/dgph
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sconsign.dblite
+**/ios/**/.tags*
+**/ios/**/.vagrant/
+**/ios/**/DerivedData/
+**/ios/**/Icon?
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/profile
+**/ios/**/xcuserdata
+**/ios/**/.generated/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS related
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+**/macos/Flutter/Flutter-Debug.xcconfig
+**/macos/Flutter/Flutter-Release.xcconfig
+**/macos/Flutter/Flutter-Profile.xcconfig
+**/macos/Flutter/ephemeral
+
+# Coverage
+coverage/
+*.lcov
+
+# Temporary files
+*.tmp
+*.temp
+*.lock
+!pubspec.lock
+
+# Firebase related
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# Code generation
+**/*.g.dart
+**/*.freezed.dart
+**/*.graphql.dart
+**/lib/generated/
+!**/lib/generated/.gitkeep
+
+# Fastlane/Ruby related
+vendor/
+report.xml
+**/FastlaneScreenshots
+**/Fastlane.DS_Store
+.ruby-version
+.bundle/
+.rspec
+
+# Web related
+**/web/favicon.png
+**/web/icons/
+**/web/splash/
+lib/generated_plugin_registrant.dart
+
+# Exceptions
+!**/ios/**/default.mode1v3
+!**/ios/**/default.mode2v3
+!**/ios/**/default.pbxuser
+!**/ios/**/default.perspectivev3

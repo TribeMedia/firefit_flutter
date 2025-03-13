@@ -7,7 +7,9 @@ import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_item_detail_page.dart';
+import 'package:firefit/features/menu/presentation/screens/menu_product_screen.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_screen.dart';
+import 'package:firefit/features/menu/providers.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -51,7 +53,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: 'item/:id',
                 builder: (context, state) {
                   final id = state.pathParameters['id'];
-                  return MenuItemDetailPage(menuItemId: id!);
+                  return MenuProductScreen(productId: id!);
                 },
               ),
             ],

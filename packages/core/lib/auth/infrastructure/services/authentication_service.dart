@@ -141,7 +141,7 @@ class AuthenticationService implements AuthenticationServiceInterface {
       final sessionOutput = await createSession(
         identifier: identifier,
         password: password,
-        $service: pdsServer,
+        $service: 'bsky.social',
       );
 
       if (sessionOutput.status != HttpStatus.ok) {

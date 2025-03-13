@@ -27,26 +27,35 @@ Map<String, dynamic>? pdsServerValidator(AbstractControl<dynamic> control) {
 }
 
 final formGroupProvider = StateProvider<FormGroup>((ref) {
-  return fb.group({
-    'firstName': ['', Validators.required],
-    'lastName': ['', Validators.required],
-    'email': [
-      '',
-      [Validators.required, Validators.email],
-    ],
-    'password': [
-      '',
-      [
+  return FormGroup({
+    'firstName': FormControl<String>(
+      value: '',
+      validators: [Validators.required],
+    ),
+    'lastName': FormControl<String>(
+      value: '',
+      validators: [Validators.required],
+    ),
+    'email': FormControl<String>(
+      value: '',
+      validators: [Validators.required, Validators.email],
+    ),
+    'password': FormControl<String>(
+      value: '',
+      validators: [
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$'),
       ],
-    ],
+    ),
     'pdsServer': FormControl<String>(
       value: 'bsky.social',
       disabled: true,
     ),
-    'handle': ['', Validators.required],
+    'handle': FormControl<String>(
+      value: '',
+      validators: [Validators.required],
+    ),
   });
 });
 
@@ -139,7 +148,7 @@ class RegistrationScreen extends HookConsumerWidget {
                                   labelStyle:
                                       TextStyle(color: Colors.grey[800]),
                                   floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
+                                      FloatingLabelBehavior.never,
                                   border: InputBorder.none,
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -163,7 +172,7 @@ class RegistrationScreen extends HookConsumerWidget {
                                   labelStyle:
                                       TextStyle(color: Colors.grey[800]),
                                   floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
+                                      FloatingLabelBehavior.never,
                                   border: InputBorder.none,
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -187,7 +196,7 @@ class RegistrationScreen extends HookConsumerWidget {
                                   labelStyle:
                                       TextStyle(color: Colors.grey[800]),
                                   floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
+                                      FloatingLabelBehavior.never,
                                   border: InputBorder.none,
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -213,7 +222,7 @@ class RegistrationScreen extends HookConsumerWidget {
                                   labelStyle:
                                       TextStyle(color: Colors.grey[800]),
                                   floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
+                                      FloatingLabelBehavior.never,
                                   border: InputBorder.none,
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -237,7 +246,7 @@ class RegistrationScreen extends HookConsumerWidget {
                                   labelStyle:
                                       TextStyle(color: Colors.grey[800]),
                                   floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
+                                      FloatingLabelBehavior.never,
                                   border: InputBorder.none,
                                   filled: true,
                                   fillColor: Colors.grey[200],
@@ -298,7 +307,7 @@ class RegistrationScreen extends HookConsumerWidget {
                                       labelStyle:
                                           TextStyle(color: Colors.grey[800]),
                                       floatingLabelBehavior:
-                                          FloatingLabelBehavior.always,
+                                          FloatingLabelBehavior.never,
                                       border: InputBorder.none,
                                       filled: true,
                                       fillColor: Colors.grey[200],

@@ -662,7 +662,7 @@ packages:
     source: hosted
     version: "0.7.0"
   flutter_hooks:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: flutter_hooks
       sha256: b772e710d16d7a20c0740c4f855095026b31c7eb5ba3ab67d2bd52021cd9461d
@@ -824,10 +824,10 @@ packages:
     dependency: "direct dev"
     description:
       name: freezed
-      sha256: a3d6429368603a591ca7c1795799a247998fb213ded509070c2c59708b25df31
+      sha256: a6274c34d61b3d68082f2b0e9a641a3ec197e525d269f35b82f62d5b2c6d9f75
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.2"
+    version: "3.0.3"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -872,10 +872,10 @@ packages:
     dependency: "direct dev"
     description:
       name: go_router_builder
-      sha256: d094b60c654aa9a303f93ed627f139753ef582a83d43c1f247d2173d6727e285
+      sha256: a79845a602f9ce3d837408c408915ea034eb2957fe0b527cfa3fc50e2e9bcb93
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.1"
+    version: "2.8.2"
   google_fonts:
     dependency: "direct main"
     description:
@@ -1308,6 +1308,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.3.0"
+  markdown_widget:
+    dependency: "direct main"
+    description:
+      name: markdown_widget
+      sha256: "216dced98962d7699a265344624bc280489d739654585ee881c95563a3252fac"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2+6"
   matcher:
     dependency: transitive
     description:
@@ -1624,10 +1632,10 @@ packages:
     dependency: "direct dev"
     description:
       name: reactive_forms_generator
-      sha256: "105da21784090f326ffa8b59f98c5089215eda437199710cf0757771b645a551"
+      sha256: "49e700fb07b2f36032f9f319e620dca2a52072ba47ec53317c288cc32788841b"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.0"
+    version: "6.1.1"
   realtime_client:
     dependency: transitive
     description:
@@ -2202,6 +2210,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  visibility_detector:
+    dependency: transitive
+    description:
+      name: visibility_detector
+      sha256: dd5cc11e13494f432d15939c3aa8ae76844c42b723398643ce9addb88a5ed420
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0+2"
   vm_service:
     dependency: transitive
     description:

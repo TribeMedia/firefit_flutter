@@ -29,14 +29,22 @@ ValidatorFunction pdsServerValidator() {
 }
 
 final loginFormGroupProvider = StateProvider<FormGroup>((ref) {
-  return fb.group({
-    'identifier': ['', Validators.required],
-    'password': ['', Validators.required],
-    'pdsService': [
-      'bsky.social',
-      [Validators.required]
-    ],
-    'customPds': [false],
+  return FormGroup({
+    'identifier': FormControl<String>(
+      value: '',
+      validators: [Validators.required],
+    ),
+    'password': FormControl<String>(
+      value: '',
+      validators: [Validators.required],
+    ),
+    'pdsService': FormControl<String>(
+      value: 'bsky.social',
+      validators: [Validators.required],
+    ),
+    'customPds': FormControl<bool>(
+      value: false,
+    ),
   });
 });
 
@@ -107,7 +115,7 @@ class LoginScreen extends HookConsumerWidget {
                                 hintStyle: TextStyle(color: Colors.grey[600]),
                                 labelStyle: TextStyle(color: Colors.grey[800]),
                                 floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
+                                    FloatingLabelBehavior.never,
                                 border: InputBorder.none,
                                 filled: true,
                                 fillColor: Colors.grey[200],
@@ -130,7 +138,7 @@ class LoginScreen extends HookConsumerWidget {
                                 hintStyle: TextStyle(color: Colors.grey[600]),
                                 labelStyle: TextStyle(color: Colors.grey[800]),
                                 floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
+                                    FloatingLabelBehavior.never,
                                 border: InputBorder.none,
                                 filled: true,
                                 fillColor: Colors.grey[200],
@@ -178,7 +186,7 @@ class LoginScreen extends HookConsumerWidget {
                                           labelStyle: TextStyle(
                                               color: Colors.grey[800]),
                                           floatingLabelBehavior:
-                                              FloatingLabelBehavior.always,
+                                              FloatingLabelBehavior.never,
                                           border: InputBorder.none,
                                           filled: true,
                                           fillColor: Colors.grey[200],

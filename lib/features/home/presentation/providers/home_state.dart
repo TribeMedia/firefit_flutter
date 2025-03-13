@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:core/core.dart';
 import 'package:firefit/features/auth/providers/user_notifier.dart';
-import 'package:firefit/features/common/providers/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 sealed class HomeStateData {

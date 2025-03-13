@@ -9,12 +9,14 @@ class StationCodeScreen extends HookConsumerWidget {
   const StationCodeScreen({super.key});
 
   FormGroup buildForm() {
-    return fb.group({
-      'stationCode': [
-        '',
-        Validators.required,
-        Validators.pattern(r'^[A-Z]+$'),
-      ],
+    return FormGroup({
+      'stationCode': FormControl<String>(
+        value: '',
+        validators: [
+          Validators.required,
+          Validators.pattern(r'^[A-Z]+$'),
+        ],
+      ),
     });
   }
 

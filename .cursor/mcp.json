@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_PERSIST": "true",
+        "MEMORY_PATH": "/Users/gqadonis/mcp_data/memories/firefit_flutter_memory.json"
+      }
+    },
+    "github.com/pashpashpash/perplexity-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/gqadonis/Documents/Cline/MCP/perplexity-mcp/build/index.js"
+      ],
+      "env": {
+        "PERPLEXITY_API_KEY": "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"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/gqadonis/Projects/TribeMedia/firefit_flutter"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
