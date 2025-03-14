@@ -1,4 +1,5 @@
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
+import 'package:core/commerce/graphql/orders.graphql.dart';
+import 'package:core/core.dart';
 import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_icon.dart';
@@ -52,16 +53,13 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
     final scaffoldKey = ref.watch(scaffoldKeyProvider(widget.name));
     int currentIndex = _getCurrentIndex(context);
     final homeStateValue = ref.watch(homeStateProvider);
-    final cartValue = ref.watch(shoppingCartProvider);
-
-    final cartButton = CartIcon(
-      onPressed: () {
-        showCart(context);
-      },
-    );
 
     return homeStateValue.when(
       data: (homeState) {
+        final user = homeState.user!.user;
+        final cart = user.shoppingCartsCollection?.edges.first.node;
+        final cartItemCount = cart?.shoppingCartItemsCollection?.edges.length ?? 0;
+
         return Scaffold(
           key: scaffoldKey,
           appBar: currentIndex != 0
@@ -97,29 +95,20 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                         ),
                   ),
                   actions: [
+                    cart != null ? CartIcon(
+                      onPressed: () {
+                        showCart(
+                          context,
+                          cart,
+                          user,
+                        );
+                      },
+                      count: cartItemCount,
+                    ) : SizedBox.shrink(),
                     IconButton(
                       icon: const Icon(Icons.notifications),
                       onPressed: () {
                         // Handle notifications
-                      },
-                    ),
-                    cartValue.when(
-                      data: (cartModel) {
-                        if (cartModel.items.isNotEmpty) {
-                          return CartIcon(
-                            onPressed: () {
-                              showCart(context);
-                            },
-                            count: cartModel.items.length,
-                          );
-                        }
-                        return cartButton;
-                      },
-                      loading: () {
-                        return cartButton;
-                      },
-                      error: (error, stackTrace) {
-                        return cartButton;
                       },
                     ),
                   ],
@@ -182,7 +171,10 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
     );
   }
 
-  void showCart(BuildContext context) {
+  void showCart(BuildContext context,
+      Fragment$ShoppingCart cart,
+      User user,
+      ) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -203,7 +195,13 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
-          child: CartOverlay(),
+          child: CartOverlay(
+            cart: cart,
+            user: user,
+            onUpdateQuantity: (String itemId, int quantity) {  },
+            onCheckout: () {  },
+            onClose: () { Navigator.pop(context); },
+          ),
         ),
       ),
     );

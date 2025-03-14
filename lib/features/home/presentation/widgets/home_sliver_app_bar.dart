@@ -1,5 +1,8 @@
+import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/core.dart';
+import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
+import 'package:firefit/features/common/presentation/widgets/cart_badge.dart';
 import 'package:firefit/features/common/presentation/widgets/initials_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -136,6 +139,35 @@ class HomeSliverAppBar extends HookConsumerWidget {
         ? Colors.white  // Stay white in dark mode
         : Colors.black; // Transition to black in light mode
 
+    final cart = user.user.shoppingCartsCollection?.edges.first.node;
+    final cartItemCount = cart?.shoppingCartItemsCollection?.edges.length ?? 0;
+
+    Widget cartWidget = const SizedBox.shrink();
+    if (cartItemCount > 0) {
+      cartWidget = Stack(
+        clipBehavior: Clip.none,
+        children: [
+          IconButton(
+            onPressed: () => showCartDrawer(
+                context,
+              cart!,
+              user.user,
+            ),
+            icon: const Icon(Icons.shopping_cart_outlined),
+            tooltip: 'Shopping Cart',
+            style: IconButton.styleFrom(
+              foregroundColor: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+          Positioned(
+              right: 8,
+              top: 8,
+              child: CartBadge(itemCount: cartItemCount),
+            ),
+        ],
+      );
+    }
+
     return SliverLayoutBuilder(
       builder: (BuildContext context, SliverConstraints constraints) {
         final homeAppBarState = ref.watch(
@@ -152,6 +184,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
         return homeAppBarState.when(
           data: (HomeAppBarState state) => SliverAppBar(
             actions: [
+              cartWidget,
               IconButton(
                 icon: const Icon(Icons.notifications),
                 onPressed: () {},
@@ -238,4 +271,27 @@ class HomeSliverAppBar extends HookConsumerWidget {
       },
     );
   }
+}
+
+void showCartDrawer(
+    BuildContext context,
+    Fragment$ShoppingCart cart,
+    User user,
+    ) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) => DraggableScrollableSheet(
+      initialChildSize: 0.7,
+      minChildSize: 0.5,
+      maxChildSize: 0.9,
+      builder: (_, controller) => CartOverlay(
+        cart: cart,
+        user: user, onUpdateQuantity: (String itemId, int quantity) {  },
+        onCheckout: () {  },
+        onClose: () { Navigator.pop(context); },
+      ),
+    ),
+  );
 }

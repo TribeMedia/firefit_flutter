@@ -2517,8 +2517,10 @@ const documentNodeFragmentOrder = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
-  fragmentDefinitionOrderItem,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
+  fragmentDefinitionOrderItem,
   fragmentDefinitionOrderTransaction,
 ]);
 
@@ -3704,8 +3706,10 @@ const documentNodeQueryOrder = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
-  fragmentDefinitionOrderItem,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
+  fragmentDefinitionOrderItem,
   fragmentDefinitionOrderTransaction,
 ]);
 Query$Order _parserFn$Query$Order(Map<String, dynamic> data) =>
@@ -4749,8 +4753,10 @@ const documentNodeQueryOrderCollection = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
-  fragmentDefinitionOrderItem,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
+  fragmentDefinitionOrderItem,
   fragmentDefinitionOrderTransaction,
 ]);
 Query$OrderCollection _parserFn$Query$OrderCollection(
@@ -5748,8 +5754,10 @@ const documentNodeMutationCreateOrder = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
-  fragmentDefinitionOrderItem,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
+  fragmentDefinitionOrderItem,
   fragmentDefinitionOrderTransaction,
 ]);
 Mutation$CreateOrder _parserFn$Mutation$CreateOrder(
@@ -6504,8 +6512,10 @@ const documentNodeMutationUpdateOrder = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
-  fragmentDefinitionOrderItem,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
+  fragmentDefinitionOrderItem,
   fragmentDefinitionOrderTransaction,
 ]);
 Mutation$UpdateOrder _parserFn$Mutation$UpdateOrder(

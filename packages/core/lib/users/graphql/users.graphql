@@ -41,6 +41,19 @@ fragment User on Users {
       }
     }
   }
+  shoppingCartsCollection {
+    edges {
+      node {
+        ...ShoppingCart
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
 }
 
 fragment UserStation on UserStations {

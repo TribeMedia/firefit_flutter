@@ -9,7 +9,6 @@ import 'package:firefit/features/home/presentation/screens/home_screen.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_item_detail_page.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_product_screen.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_screen.dart';
-import 'package:firefit/features/menu/providers.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -27,8 +26,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     refreshListenable: routerNotifier,
     redirect: (context, state) {
       final isAuthenticated = routerNotifier.isAuthenticated;
-      final isAuthRoute =
-          state.matchedLocation == '/login' ||
+      final isAuthRoute = state.matchedLocation == '/login' ||
           state.matchedLocation == '/register';
 
       if (!isAuthenticated && !isAuthRoute) return '/login';
@@ -81,11 +79,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const StationCodeScreen(),
       ),
     ],
-    errorBuilder:
-        (context, state) => ErrorScreen(
-          errorMessage: state.error?.toString() ?? 'Unknown error occurred',
-          onRetry: () => context.go('/'),
-        ),
+    errorBuilder: (context, state) => ErrorScreen(
+      errorMessage: state.error?.toString() ?? 'Unknown error occurred',
+      onRetry: () => context.go('/'),
+    ),
   );
 });
 

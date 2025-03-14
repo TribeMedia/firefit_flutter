@@ -1,3 +1,5 @@
+import '../../commerce/graphql/orders.graphql.dart';
+import '../../commerce/graphql/products.graphql.dart';
 import '../../schema.graphql.dart';
 import '../../stations/graphql/stations.graphql.dart';
 import 'dart:async';
@@ -545,6 +547,7 @@ class Fragment$User {
     this.primaryStationId,
     this.primaryStation,
     this.userStationsCollection,
+    this.shoppingCartsCollection,
     this.$__typename = 'Users',
   });
 
@@ -562,6 +565,7 @@ class Fragment$User {
     final l$primaryStationId = json['primaryStationId'];
     final l$primaryStation = json['primaryStation'];
     final l$userStationsCollection = json['userStationsCollection'];
+    final l$shoppingCartsCollection = json['shoppingCartsCollection'];
     final l$$__typename = json['__typename'];
     return Fragment$User(
       id: (l$id as String),
@@ -586,6 +590,10 @@ class Fragment$User {
           ? null
           : Fragment$User$userStationsCollection.fromJson(
               (l$userStationsCollection as Map<String, dynamic>)),
+      shoppingCartsCollection: l$shoppingCartsCollection == null
+          ? null
+          : Fragment$User$shoppingCartsCollection.fromJson(
+              (l$shoppingCartsCollection as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -615,6 +623,8 @@ class Fragment$User {
   final Fragment$Station? primaryStation;
 
   final Fragment$User$userStationsCollection? userStationsCollection;
+
+  final Fragment$User$shoppingCartsCollection? shoppingCartsCollection;
 
   final String $__typename;
 
@@ -647,6 +657,9 @@ class Fragment$User {
     _resultData['primaryStation'] = l$primaryStation?.toJson();
     final l$userStationsCollection = userStationsCollection;
     _resultData['userStationsCollection'] = l$userStationsCollection?.toJson();
+    final l$shoppingCartsCollection = shoppingCartsCollection;
+    _resultData['shoppingCartsCollection'] =
+        l$shoppingCartsCollection?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -667,6 +680,7 @@ class Fragment$User {
     final l$primaryStationId = primaryStationId;
     final l$primaryStation = primaryStation;
     final l$userStationsCollection = userStationsCollection;
+    final l$shoppingCartsCollection = shoppingCartsCollection;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -682,6 +696,7 @@ class Fragment$User {
       l$primaryStationId,
       l$primaryStation,
       l$userStationsCollection,
+      l$shoppingCartsCollection,
       l$$__typename,
     ]);
   }
@@ -759,6 +774,11 @@ class Fragment$User {
     if (l$userStationsCollection != lOther$userStationsCollection) {
       return false;
     }
+    final l$shoppingCartsCollection = shoppingCartsCollection;
+    final lOther$shoppingCartsCollection = other.shoppingCartsCollection;
+    if (l$shoppingCartsCollection != lOther$shoppingCartsCollection) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -798,12 +818,15 @@ abstract class CopyWith$Fragment$User<TRes> {
     String? primaryStationId,
     Fragment$Station? primaryStation,
     Fragment$User$userStationsCollection? userStationsCollection,
+    Fragment$User$shoppingCartsCollection? shoppingCartsCollection,
     String? $__typename,
   });
   CopyWith$Fragment$User$userRolesCollection<TRes> get userRolesCollection;
   CopyWith$Fragment$Station<TRes> get primaryStation;
   CopyWith$Fragment$User$userStationsCollection<TRes>
       get userStationsCollection;
+  CopyWith$Fragment$User$shoppingCartsCollection<TRes>
+      get shoppingCartsCollection;
 }
 
 class _CopyWithImpl$Fragment$User<TRes>
@@ -833,6 +856,7 @@ class _CopyWithImpl$Fragment$User<TRes>
     Object? primaryStationId = _undefined,
     Object? primaryStation = _undefined,
     Object? userStationsCollection = _undefined,
+    Object? shoppingCartsCollection = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$User(
@@ -871,6 +895,10 @@ class _CopyWithImpl$Fragment$User<TRes>
         userStationsCollection: userStationsCollection == _undefined
             ? _instance.userStationsCollection
             : (userStationsCollection as Fragment$User$userStationsCollection?),
+        shoppingCartsCollection: shoppingCartsCollection == _undefined
+            ? _instance.shoppingCartsCollection
+            : (shoppingCartsCollection
+                as Fragment$User$shoppingCartsCollection?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -901,6 +929,16 @@ class _CopyWithImpl$Fragment$User<TRes>
             local$userStationsCollection,
             (e) => call(userStationsCollection: e));
   }
+
+  CopyWith$Fragment$User$shoppingCartsCollection<TRes>
+      get shoppingCartsCollection {
+    final local$shoppingCartsCollection = _instance.shoppingCartsCollection;
+    return local$shoppingCartsCollection == null
+        ? CopyWith$Fragment$User$shoppingCartsCollection.stub(_then(_instance))
+        : CopyWith$Fragment$User$shoppingCartsCollection(
+            local$shoppingCartsCollection,
+            (e) => call(shoppingCartsCollection: e));
+  }
 }
 
 class _CopyWithStubImpl$Fragment$User<TRes>
@@ -923,6 +961,7 @@ class _CopyWithStubImpl$Fragment$User<TRes>
     String? primaryStationId,
     Fragment$Station? primaryStation,
     Fragment$User$userStationsCollection? userStationsCollection,
+    Fragment$User$shoppingCartsCollection? shoppingCartsCollection,
     String? $__typename,
   }) =>
       _res;
@@ -936,6 +975,10 @@ class _CopyWithStubImpl$Fragment$User<TRes>
   CopyWith$Fragment$User$userStationsCollection<TRes>
       get userStationsCollection =>
           CopyWith$Fragment$User$userStationsCollection.stub(_res);
+
+  CopyWith$Fragment$User$shoppingCartsCollection<TRes>
+      get shoppingCartsCollection =>
+          CopyWith$Fragment$User$shoppingCartsCollection.stub(_res);
 }
 
 const fragmentDefinitionUser = FragmentDefinitionNode(
@@ -1135,6 +1178,98 @@ const fragmentDefinitionUser = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
+      name: NameNode(value: 'shoppingCartsCollection'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'edges'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'node'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'ShoppingCart'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ]),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: 'pageInfo'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'startCursor'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'endCursor'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'hasNextPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'hasPreviousPage'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
       name: NameNode(value: '__typename'),
       alias: null,
       arguments: [],
@@ -1149,6 +1284,9 @@ const documentNodeFragmentUser = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
 ]);
 
 extension ClientExtension$Fragment$User on graphql.GraphQLClient {
@@ -1771,6 +1909,520 @@ class _CopyWithStubImpl$Fragment$User$userStationsCollection$edges<TRes>
 
   CopyWith$Fragment$UserStation<TRes> get node =>
       CopyWith$Fragment$UserStation.stub(_res);
+}
+
+class Fragment$User$shoppingCartsCollection {
+  Fragment$User$shoppingCartsCollection({
+    required this.edges,
+    required this.pageInfo,
+    this.$__typename = 'ShoppingCartsConnection',
+  });
+
+  factory Fragment$User$shoppingCartsCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$shoppingCartsCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Fragment$User$shoppingCartsCollection$edges.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo: Fragment$User$shoppingCartsCollection$pageInfo.fromJson(
+          (l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$User$shoppingCartsCollection$edges> edges;
+
+  final Fragment$User$shoppingCartsCollection$pageInfo pageInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$User$shoppingCartsCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$shoppingCartsCollection
+    on Fragment$User$shoppingCartsCollection {
+  CopyWith$Fragment$User$shoppingCartsCollection<
+          Fragment$User$shoppingCartsCollection>
+      get copyWith => CopyWith$Fragment$User$shoppingCartsCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$shoppingCartsCollection<TRes> {
+  factory CopyWith$Fragment$User$shoppingCartsCollection(
+    Fragment$User$shoppingCartsCollection instance,
+    TRes Function(Fragment$User$shoppingCartsCollection) then,
+  ) = _CopyWithImpl$Fragment$User$shoppingCartsCollection;
+
+  factory CopyWith$Fragment$User$shoppingCartsCollection.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$shoppingCartsCollection;
+
+  TRes call({
+    List<Fragment$User$shoppingCartsCollection$edges>? edges,
+    Fragment$User$shoppingCartsCollection$pageInfo? pageInfo,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Fragment$User$shoppingCartsCollection$edges> Function(
+              Iterable<
+                  CopyWith$Fragment$User$shoppingCartsCollection$edges<
+                      Fragment$User$shoppingCartsCollection$edges>>)
+          _fn);
+  CopyWith$Fragment$User$shoppingCartsCollection$pageInfo<TRes> get pageInfo;
+}
+
+class _CopyWithImpl$Fragment$User$shoppingCartsCollection<TRes>
+    implements CopyWith$Fragment$User$shoppingCartsCollection<TRes> {
+  _CopyWithImpl$Fragment$User$shoppingCartsCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$shoppingCartsCollection _instance;
+
+  final TRes Function(Fragment$User$shoppingCartsCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$shoppingCartsCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<Fragment$User$shoppingCartsCollection$edges>),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo as Fragment$User$shoppingCartsCollection$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Fragment$User$shoppingCartsCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Fragment$User$shoppingCartsCollection$edges<
+                          Fragment$User$shoppingCartsCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges
+              .map((e) => CopyWith$Fragment$User$shoppingCartsCollection$edges(
+                    e,
+                    (i) => i,
+                  ))).toList());
+
+  CopyWith$Fragment$User$shoppingCartsCollection$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Fragment$User$shoppingCartsCollection$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$shoppingCartsCollection<TRes>
+    implements CopyWith$Fragment$User$shoppingCartsCollection<TRes> {
+  _CopyWithStubImpl$Fragment$User$shoppingCartsCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$User$shoppingCartsCollection$edges>? edges,
+    Fragment$User$shoppingCartsCollection$pageInfo? pageInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+
+  CopyWith$Fragment$User$shoppingCartsCollection$pageInfo<TRes> get pageInfo =>
+      CopyWith$Fragment$User$shoppingCartsCollection$pageInfo.stub(_res);
+}
+
+class Fragment$User$shoppingCartsCollection$edges {
+  Fragment$User$shoppingCartsCollection$edges({
+    required this.node,
+    this.$__typename = 'ShoppingCartsEdge',
+  });
+
+  factory Fragment$User$shoppingCartsCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$shoppingCartsCollection$edges(
+      node: Fragment$ShoppingCart.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$ShoppingCart node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$User$shoppingCartsCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$shoppingCartsCollection$edges
+    on Fragment$User$shoppingCartsCollection$edges {
+  CopyWith$Fragment$User$shoppingCartsCollection$edges<
+          Fragment$User$shoppingCartsCollection$edges>
+      get copyWith => CopyWith$Fragment$User$shoppingCartsCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$shoppingCartsCollection$edges<TRes> {
+  factory CopyWith$Fragment$User$shoppingCartsCollection$edges(
+    Fragment$User$shoppingCartsCollection$edges instance,
+    TRes Function(Fragment$User$shoppingCartsCollection$edges) then,
+  ) = _CopyWithImpl$Fragment$User$shoppingCartsCollection$edges;
+
+  factory CopyWith$Fragment$User$shoppingCartsCollection$edges.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$User$shoppingCartsCollection$edges;
+
+  TRes call({
+    Fragment$ShoppingCart? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$ShoppingCart<TRes> get node;
+}
+
+class _CopyWithImpl$Fragment$User$shoppingCartsCollection$edges<TRes>
+    implements CopyWith$Fragment$User$shoppingCartsCollection$edges<TRes> {
+  _CopyWithImpl$Fragment$User$shoppingCartsCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$shoppingCartsCollection$edges _instance;
+
+  final TRes Function(Fragment$User$shoppingCartsCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$shoppingCartsCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$ShoppingCart),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$ShoppingCart<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$ShoppingCart(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$User$shoppingCartsCollection$edges<TRes>
+    implements CopyWith$Fragment$User$shoppingCartsCollection$edges<TRes> {
+  _CopyWithStubImpl$Fragment$User$shoppingCartsCollection$edges(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$ShoppingCart? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$ShoppingCart<TRes> get node =>
+      CopyWith$Fragment$ShoppingCart.stub(_res);
+}
+
+class Fragment$User$shoppingCartsCollection$pageInfo {
+  Fragment$User$shoppingCartsCollection$pageInfo({
+    this.startCursor,
+    this.endCursor,
+    required this.hasNextPage,
+    required this.hasPreviousPage,
+    this.$__typename = 'PageInfo',
+  });
+
+  factory Fragment$User$shoppingCartsCollection$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$startCursor = json['startCursor'];
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$hasPreviousPage = json['hasPreviousPage'];
+    final l$$__typename = json['__typename'];
+    return Fragment$User$shoppingCartsCollection$pageInfo(
+      startCursor: (l$startCursor as String?),
+      endCursor: (l$endCursor as String?),
+      hasNextPage: (l$hasNextPage as bool),
+      hasPreviousPage: (l$hasPreviousPage as bool),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String? startCursor;
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  final bool hasPreviousPage;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$startCursor = startCursor;
+    _resultData['startCursor'] = l$startCursor;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    _resultData['hasPreviousPage'] = l$hasPreviousPage;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$startCursor = startCursor;
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$hasPreviousPage = hasPreviousPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$startCursor,
+      l$endCursor,
+      l$hasNextPage,
+      l$hasPreviousPage,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$User$shoppingCartsCollection$pageInfo ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$startCursor = startCursor;
+    final lOther$startCursor = other.startCursor;
+    if (l$startCursor != lOther$startCursor) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$hasPreviousPage = hasPreviousPage;
+    final lOther$hasPreviousPage = other.hasPreviousPage;
+    if (l$hasPreviousPage != lOther$hasPreviousPage) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$User$shoppingCartsCollection$pageInfo
+    on Fragment$User$shoppingCartsCollection$pageInfo {
+  CopyWith$Fragment$User$shoppingCartsCollection$pageInfo<
+          Fragment$User$shoppingCartsCollection$pageInfo>
+      get copyWith => CopyWith$Fragment$User$shoppingCartsCollection$pageInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$User$shoppingCartsCollection$pageInfo<TRes> {
+  factory CopyWith$Fragment$User$shoppingCartsCollection$pageInfo(
+    Fragment$User$shoppingCartsCollection$pageInfo instance,
+    TRes Function(Fragment$User$shoppingCartsCollection$pageInfo) then,
+  ) = _CopyWithImpl$Fragment$User$shoppingCartsCollection$pageInfo;
+
+  factory CopyWith$Fragment$User$shoppingCartsCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$User$shoppingCartsCollection$pageInfo;
+
+  TRes call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$User$shoppingCartsCollection$pageInfo<TRes>
+    implements CopyWith$Fragment$User$shoppingCartsCollection$pageInfo<TRes> {
+  _CopyWithImpl$Fragment$User$shoppingCartsCollection$pageInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$User$shoppingCartsCollection$pageInfo _instance;
+
+  final TRes Function(Fragment$User$shoppingCartsCollection$pageInfo) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? startCursor = _undefined,
+    Object? endCursor = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? hasPreviousPage = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$User$shoppingCartsCollection$pageInfo(
+        startCursor: startCursor == _undefined
+            ? _instance.startCursor
+            : (startCursor as String?),
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        hasPreviousPage:
+            hasPreviousPage == _undefined || hasPreviousPage == null
+                ? _instance.hasPreviousPage
+                : (hasPreviousPage as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$User$shoppingCartsCollection$pageInfo<TRes>
+    implements CopyWith$Fragment$User$shoppingCartsCollection$pageInfo<TRes> {
+  _CopyWithStubImpl$Fragment$User$shoppingCartsCollection$pageInfo(this._res);
+
+  TRes _res;
+
+  call({
+    String? startCursor,
+    String? endCursor,
+    bool? hasNextPage,
+    bool? hasPreviousPage,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Fragment$UserStation {
@@ -2688,6 +3340,9 @@ const documentNodeQueryUserCollection = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
 ]);
 Query$UserCollection _parserFn$Query$UserCollection(
         Map<String, dynamic> data) =>
@@ -3679,6 +4334,9 @@ const documentNodeQueryUser = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
 ]);
 Query$User _parserFn$Query$User(Map<String, dynamic> data) =>
     Query$User.fromJson(data);
@@ -4435,6 +5093,9 @@ const documentNodeMutationCreateUser = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
 ]);
 Mutation$CreateUser _parserFn$Mutation$CreateUser(Map<String, dynamic> data) =>
     Mutation$CreateUser.fromJson(data);
@@ -5122,6 +5783,9 @@ const documentNodeMutationDeleteUser = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
 ]);
 Mutation$DeleteUser _parserFn$Mutation$DeleteUser(Map<String, dynamic> data) =>
     Mutation$DeleteUser.fromJson(data);
@@ -8954,6 +9618,9 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
   fragmentDefinitionRole,
   fragmentDefinitionStation,
   fragmentDefinitionUserStation,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
 ]);
 Mutation$UpdateUser _parserFn$Mutation$UpdateUser(Map<String, dynamic> data) =>
     Mutation$UpdateUser.fromJson(data);

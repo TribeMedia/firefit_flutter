@@ -112,6 +112,137 @@ input DatetimeListFilter {
   overlaps: [Datetime!]
 }
 
+type DeliveryLocation implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  createdAt: Datetime!
+  address: String!
+  address1: String
+  city: String!
+  state: String!
+  zip: String!
+  latitude: Float
+  longitude: Float
+  startOpenTime: Opaque
+  endOpenTime: Opaque
+  stationDeliveryLocationsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationDeliveryLocationsFilter
+    # Sort order to apply to the collection
+    orderBy: [StationDeliveryLocationsOrderBy!]
+  ): StationDeliveryLocationsConnection
+}
+
+type DeliveryLocationConnection {
+  edges: [DeliveryLocationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type DeliveryLocationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [DeliveryLocation!]!
+}
+
+type DeliveryLocationEdge {
+  cursor: String!
+  node: DeliveryLocation!
+}
+
+input DeliveryLocationFilter {
+  id: UUIDFilter
+  name: StringFilter
+  createdAt: DatetimeFilter
+  address: StringFilter
+  address1: StringFilter
+  city: StringFilter
+  state: StringFilter
+  zip: StringFilter
+  latitude: FloatFilter
+  longitude: FloatFilter
+  startOpenTime: OpaqueFilter
+  endOpenTime: OpaqueFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [DeliveryLocationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [DeliveryLocationFilter!]
+  # Negates a filter
+  not: DeliveryLocationFilter
+}
+
+input DeliveryLocationInsertInput {
+  id: UUID
+  name: String
+  createdAt: Datetime
+  address: String
+  address1: String
+  city: String
+  state: String
+  zip: String
+  latitude: Float
+  longitude: Float
+  startOpenTime: Opaque
+  endOpenTime: Opaque
+}
+
+type DeliveryLocationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [DeliveryLocation!]!
+}
+
+input DeliveryLocationOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  createdAt: OrderByDirection
+  address: OrderByDirection
+  address1: OrderByDirection
+  city: OrderByDirection
+  state: OrderByDirection
+  zip: OrderByDirection
+  latitude: OrderByDirection
+  longitude: OrderByDirection
+  startOpenTime: OrderByDirection
+  endOpenTime: OrderByDirection
+}
+
+input DeliveryLocationUpdateInput {
+  id: UUID
+  name: String
+  createdAt: Datetime
+  address: String
+  address1: String
+  city: String
+  state: String
+  zip: String
+  latitude: Float
+  longitude: Float
+  startOpenTime: Opaque
+  endOpenTime: Opaque
+}
+
+type DeliveryLocationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [DeliveryLocation!]!
+}
+
 enum FilterIs {
   NULL
   NOT_NULL
@@ -169,6 +300,27 @@ scalar JSON
 
 # The root type for creating and mutating data
 type Mutation {
+  # Deletes zero or more records from the `DeliveryLocation` collection
+  deleteFromDeliveryLocationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: DeliveryLocationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): DeliveryLocationDeleteResponse!
+  # Deletes zero or more records from the `Navigation` collection
+  deleteFromNavigationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: NavigationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): NavigationDeleteResponse!
+  # Deletes zero or more records from the `NavigationItems` collection
+  deleteFromNavigationItemsCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: NavigationItemsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): NavigationItemsDeleteResponse!
   # Deletes zero or more records from the `NotificationTypes` collection
   deleteFromNotificationTypesCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -211,6 +363,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): PermissionsDeleteResponse!
+  # Deletes zero or more records from the `ProductInventory` collection
+  deleteFromProductInventoryCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ProductInventoryFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ProductInventoryDeleteResponse!
   # Deletes zero or more records from the `ProductTypes` collection
   deleteFromProductTypesCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -260,6 +419,20 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): ShoppingCartsDeleteResponse!
+  # Deletes zero or more records from the `StationDeliveryLocationTimeslots` collection
+  deleteFromStationDeliveryLocationTimeslotsCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: StationDeliveryLocationTimeslotsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): StationDeliveryLocationTimeslotsDeleteResponse!
+  # Deletes zero or more records from the `StationDeliveryLocations` collection
+  deleteFromStationDeliveryLocationsCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: StationDeliveryLocationsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): StationDeliveryLocationsDeleteResponse!
   # Deletes zero or more records from the `Stations` collection
   deleteFromStationsCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -295,6 +468,18 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): UsersDeleteResponse!
+  # Adds one or more `DeliveryLocation` records to the collection
+  insertIntoDeliveryLocationCollection(
+    objects: [DeliveryLocationInsertInput!]!
+  ): DeliveryLocationInsertResponse
+  # Adds one or more `Navigation` records to the collection
+  insertIntoNavigationCollection(
+    objects: [NavigationInsertInput!]!
+  ): NavigationInsertResponse
+  # Adds one or more `NavigationItems` records to the collection
+  insertIntoNavigationItemsCollection(
+    objects: [NavigationItemsInsertInput!]!
+  ): NavigationItemsInsertResponse
   # Adds one or more `NotificationTypes` records to the collection
   insertIntoNotificationTypesCollection(
     objects: [NotificationTypesInsertInput!]!
@@ -319,6 +504,10 @@ type Mutation {
   insertIntoPermissionsCollection(
     objects: [PermissionsInsertInput!]!
   ): PermissionsInsertResponse
+  # Adds one or more `ProductInventory` records to the collection
+  insertIntoProductInventoryCollection(
+    objects: [ProductInventoryInsertInput!]!
+  ): ProductInventoryInsertResponse
   # Adds one or more `ProductTypes` records to the collection
   insertIntoProductTypesCollection(
     objects: [ProductTypesInsertInput!]!
@@ -345,6 +534,14 @@ type Mutation {
   insertIntoShoppingCartsCollection(
     objects: [ShoppingCartsInsertInput!]!
   ): ShoppingCartsInsertResponse
+  # Adds one or more `StationDeliveryLocationTimeslots` records to the collection
+  insertIntoStationDeliveryLocationTimeslotsCollection(
+    objects: [StationDeliveryLocationTimeslotsInsertInput!]!
+  ): StationDeliveryLocationTimeslotsInsertResponse
+  # Adds one or more `StationDeliveryLocations` records to the collection
+  insertIntoStationDeliveryLocationsCollection(
+    objects: [StationDeliveryLocationsInsertInput!]!
+  ): StationDeliveryLocationsInsertResponse
   # Adds one or more `Stations` records to the collection
   insertIntoStationsCollection(
     objects: [StationsInsertInput!]!
@@ -363,6 +560,33 @@ type Mutation {
   ): UserStationsInsertResponse
   # Adds one or more `Users` records to the collection
   insertIntoUsersCollection(objects: [UsersInsertInput!]!): UsersInsertResponse
+  # Updates zero or more records in the `DeliveryLocation` collection
+  updateDeliveryLocationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: DeliveryLocationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: DeliveryLocationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): DeliveryLocationUpdateResponse!
+  # Updates zero or more records in the `Navigation` collection
+  updateNavigationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: NavigationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: NavigationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): NavigationUpdateResponse!
+  # Updates zero or more records in the `NavigationItems` collection
+  updateNavigationItemsCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: NavigationItemsUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: NavigationItemsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): NavigationItemsUpdateResponse!
   # Updates zero or more records in the `NotificationTypes` collection
   updateNotificationTypesCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -417,6 +641,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): PermissionsUpdateResponse!
+  # Updates zero or more records in the `ProductInventory` collection
+  updateProductInventoryCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: ProductInventoryUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: ProductInventoryFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): ProductInventoryUpdateResponse!
   # Updates zero or more records in the `ProductTypes` collection
   updateProductTypesCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -480,6 +713,24 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): ShoppingCartsUpdateResponse!
+  # Updates zero or more records in the `StationDeliveryLocationTimeslots` collection
+  updateStationDeliveryLocationTimeslotsCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: StationDeliveryLocationTimeslotsUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: StationDeliveryLocationTimeslotsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): StationDeliveryLocationTimeslotsUpdateResponse!
+  # Updates zero or more records in the `StationDeliveryLocations` collection
+  updateStationDeliveryLocationsCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: StationDeliveryLocationsUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: StationDeliveryLocationsFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): StationDeliveryLocationsUpdateResponse!
   # Updates zero or more records in the `Stations` collection
   updateStationsCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -525,6 +776,225 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): UsersUpdateResponse!
+}
+
+type Navigation implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  key: String!
+  data: JSON
+  createdAt: Datetime!
+  navigationItemsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: NavigationItemsFilter
+    # Sort order to apply to the collection
+    orderBy: [NavigationItemsOrderBy!]
+  ): NavigationItemsConnection
+}
+
+type NavigationConnection {
+  edges: [NavigationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type NavigationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Navigation!]!
+}
+
+type NavigationEdge {
+  cursor: String!
+  node: Navigation!
+}
+
+input NavigationFilter {
+  id: UUIDFilter
+  name: StringFilter
+  key: StringFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [NavigationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [NavigationFilter!]
+  # Negates a filter
+  not: NavigationFilter
+}
+
+input NavigationInsertInput {
+  id: UUID
+  name: String
+  key: String
+  data: JSON
+  createdAt: Datetime
+}
+
+type NavigationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Navigation!]!
+}
+
+type NavigationItems implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  iconName: String
+  path: String!
+  index: Int!
+  createdAt: Datetime!
+  parentId: UUID
+  roles: [String]
+  data: JSON
+  tag: String!
+  navigationId: UUID!
+  parent: NavigationItems
+  navigation: Navigation
+  navigationItemsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: NavigationItemsFilter
+    # Sort order to apply to the collection
+    orderBy: [NavigationItemsOrderBy!]
+  ): NavigationItemsConnection
+}
+
+type NavigationItemsConnection {
+  edges: [NavigationItemsEdge!]!
+  pageInfo: PageInfo!
+}
+
+type NavigationItemsDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [NavigationItems!]!
+}
+
+type NavigationItemsEdge {
+  cursor: String!
+  node: NavigationItems!
+}
+
+input NavigationItemsFilter {
+  id: UUIDFilter
+  name: StringFilter
+  iconName: StringFilter
+  path: StringFilter
+  index: IntFilter
+  createdAt: DatetimeFilter
+  parentId: UUIDFilter
+  roles: StringListFilter
+  tag: StringFilter
+  navigationId: UUIDFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [NavigationItemsFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [NavigationItemsFilter!]
+  # Negates a filter
+  not: NavigationItemsFilter
+}
+
+input NavigationItemsInsertInput {
+  id: UUID
+  name: String
+  iconName: String
+  path: String
+  index: Int
+  createdAt: Datetime
+  parentId: UUID
+  roles: [String]
+  data: JSON
+  tag: String
+  navigationId: UUID
+}
+
+type NavigationItemsInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [NavigationItems!]!
+}
+
+input NavigationItemsOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  iconName: OrderByDirection
+  path: OrderByDirection
+  index: OrderByDirection
+  createdAt: OrderByDirection
+  parentId: OrderByDirection
+  tag: OrderByDirection
+  navigationId: OrderByDirection
+}
+
+input NavigationItemsUpdateInput {
+  id: UUID
+  name: String
+  iconName: String
+  path: String
+  index: Int
+  createdAt: Datetime
+  parentId: UUID
+  roles: [String]
+  data: JSON
+  tag: String
+  navigationId: UUID
+}
+
+type NavigationItemsUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [NavigationItems!]!
+}
+
+input NavigationOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  key: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input NavigationUpdateInput {
+  id: UUID
+  name: String
+  key: String
+  data: JSON
+  createdAt: Datetime
+}
+
+type NavigationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Navigation!]!
 }
 
 interface Node {
@@ -864,6 +1334,12 @@ type Orders implements Node {
   deliveryAddress1: String
   updatedAt: Datetime
   notes: String
+  deliveryLat: Float
+  deliveryLong: Float
+  subtotal: BigFloat
+  tax: BigFloat
+  total: BigFloat
+  deliveryState: String
   user: Users!
   orderTransactionsCollection(
     # Query the first `n` records in the collection
@@ -945,6 +1421,12 @@ input OrdersFilter {
   deliveryAddress1: StringFilter
   updatedAt: DatetimeFilter
   notes: StringFilter
+  deliveryLat: FloatFilter
+  deliveryLong: FloatFilter
+  subtotal: BigFloatFilter
+  tax: BigFloatFilter
+  total: BigFloatFilter
+  deliveryState: StringFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [OrdersFilter!]
@@ -967,6 +1449,12 @@ input OrdersInsertInput {
   deliveryAddress1: String
   updatedAt: Datetime
   notes: String
+  deliveryLat: Float
+  deliveryLong: Float
+  subtotal: BigFloat
+  tax: BigFloat
+  total: BigFloat
+  deliveryState: String
 }
 
 type OrdersInsertResponse {
@@ -989,6 +1477,12 @@ input OrdersOrderBy {
   deliveryAddress1: OrderByDirection
   updatedAt: OrderByDirection
   notes: OrderByDirection
+  deliveryLat: OrderByDirection
+  deliveryLong: OrderByDirection
+  subtotal: OrderByDirection
+  tax: OrderByDirection
+  total: OrderByDirection
+  deliveryState: OrderByDirection
 }
 
 enum OrderStatus {
@@ -1022,6 +1516,12 @@ input OrdersUpdateInput {
   deliveryAddress1: String
   updatedAt: Datetime
   notes: String
+  deliveryLat: Float
+  deliveryLong: Float
+  subtotal: BigFloat
+  tax: BigFloat
+  total: BigFloat
+  deliveryState: String
 }
 
 type OrdersUpdateResponse {
@@ -1252,6 +1752,95 @@ type PermissionsUpdateResponse {
   records: [Permissions!]!
 }
 
+type ProductInventory implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  count: BigInt!
+  isAlwaysAvailable: Boolean!
+  data: JSON
+  notes: String
+  createdAt: Datetime!
+  updatedAt: Datetime
+  products: Products!
+}
+
+type ProductInventoryConnection {
+  edges: [ProductInventoryEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ProductInventoryDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ProductInventory!]!
+}
+
+type ProductInventoryEdge {
+  cursor: String!
+  node: ProductInventory!
+}
+
+input ProductInventoryFilter {
+  id: UUIDFilter
+  count: BigIntFilter
+  isAlwaysAvailable: BooleanFilter
+  notes: StringFilter
+  createdAt: DatetimeFilter
+  updatedAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [ProductInventoryFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [ProductInventoryFilter!]
+  # Negates a filter
+  not: ProductInventoryFilter
+}
+
+input ProductInventoryInsertInput {
+  id: UUID
+  count: BigInt
+  isAlwaysAvailable: Boolean
+  data: JSON
+  notes: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+type ProductInventoryInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ProductInventory!]!
+}
+
+input ProductInventoryOrderBy {
+  id: OrderByDirection
+  count: OrderByDirection
+  isAlwaysAvailable: OrderByDirection
+  notes: OrderByDirection
+  createdAt: OrderByDirection
+  updatedAt: OrderByDirection
+}
+
+input ProductInventoryUpdateInput {
+  id: UUID
+  count: BigInt
+  isAlwaysAvailable: Boolean
+  data: JSON
+  notes: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+type ProductInventoryUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [ProductInventory!]!
+}
+
 type Products implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -1300,6 +1889,7 @@ type Products implements Node {
     # Sort order to apply to the collection
     orderBy: [OrderItemsOrderBy!]
   ): OrderItemsConnection
+  productInventory: ProductInventory
 }
 
 type ProductsConnection {
@@ -1504,6 +2094,57 @@ type ProductTypesUpdateResponse {
 
 # The root type for querying data
 type Query {
+  # A pagable collection of type `DeliveryLocation`
+  deliveryLocationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: DeliveryLocationFilter
+    # Sort order to apply to the collection
+    orderBy: [DeliveryLocationOrderBy!]
+  ): DeliveryLocationConnection
+  # A pagable collection of type `Navigation`
+  navigationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: NavigationFilter
+    # Sort order to apply to the collection
+    orderBy: [NavigationOrderBy!]
+  ): NavigationConnection
+  # A pagable collection of type `NavigationItems`
+  navigationItemsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: NavigationItemsFilter
+    # Sort order to apply to the collection
+    orderBy: [NavigationItemsOrderBy!]
+  ): NavigationItemsConnection
   # Retrieve a record by its `ID`
   node(
     # The record's `ID`
@@ -1611,6 +2252,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [PermissionsOrderBy!]
   ): PermissionsConnection
+  # A pagable collection of type `ProductInventory`
+  productInventoryCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: ProductInventoryFilter
+    # Sort order to apply to the collection
+    orderBy: [ProductInventoryOrderBy!]
+  ): ProductInventoryConnection
   # A pagable collection of type `ProductTypes`
   productTypesCollection(
     # Query the first `n` records in the collection
@@ -1730,6 +2388,40 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [ShoppingCartsOrderBy!]
   ): ShoppingCartsConnection
+  # A pagable collection of type `StationDeliveryLocationTimeslots`
+  stationDeliveryLocationTimeslotsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationDeliveryLocationTimeslotsFilter
+    # Sort order to apply to the collection
+    orderBy: [StationDeliveryLocationTimeslotsOrderBy!]
+  ): StationDeliveryLocationTimeslotsConnection
+  # A pagable collection of type `StationDeliveryLocations`
+  stationDeliveryLocationsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationDeliveryLocationsFilter
+    # Sort order to apply to the collection
+    orderBy: [StationDeliveryLocationsOrderBy!]
+  ): StationDeliveryLocationsConnection
   # A pagable collection of type `Stations`
   stationsCollection(
     # Query the first `n` records in the collection
@@ -2081,14 +2773,12 @@ type ShoppingCartItems implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
   id: UUID!
-  userId: UUID!
   productId: UUID!
-  quantity: BigInt!
+  quantity: Int!
   createdAt: Datetime!
   unitPrice: Float!
   shoppingCartId: UUID!
   product: Products!
-  user: Users!
   shoppingCart: ShoppingCarts!
 }
 
@@ -2111,9 +2801,8 @@ type ShoppingCartItemsEdge {
 
 input ShoppingCartItemsFilter {
   id: UUIDFilter
-  userId: UUIDFilter
   productId: UUIDFilter
-  quantity: BigIntFilter
+  quantity: IntFilter
   createdAt: DatetimeFilter
   unitPrice: FloatFilter
   shoppingCartId: UUIDFilter
@@ -2128,9 +2817,8 @@ input ShoppingCartItemsFilter {
 
 input ShoppingCartItemsInsertInput {
   id: UUID
-  userId: UUID
   productId: UUID
-  quantity: BigInt
+  quantity: Int
   createdAt: Datetime
   unitPrice: Float
   shoppingCartId: UUID
@@ -2145,7 +2833,6 @@ type ShoppingCartItemsInsertResponse {
 
 input ShoppingCartItemsOrderBy {
   id: OrderByDirection
-  userId: OrderByDirection
   productId: OrderByDirection
   quantity: OrderByDirection
   createdAt: OrderByDirection
@@ -2155,9 +2842,8 @@ input ShoppingCartItemsOrderBy {
 
 input ShoppingCartItemsUpdateInput {
   id: UUID
-  userId: UUID
   productId: UUID
-  quantity: BigInt
+  quantity: Int
   createdAt: Datetime
   unitPrice: Float
   shoppingCartId: UUID
@@ -2263,6 +2949,180 @@ type ShoppingCartsUpdateResponse {
   records: [ShoppingCarts!]!
 }
 
+type StationDeliveryLocations implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  createdAt: Datetime!
+  stationId: UUID!
+  deliveryLocationId: UUID!
+  station: Stations!
+  deliveryLocation: DeliveryLocation!
+  stationDeliveryLocationTimeslotsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationDeliveryLocationTimeslotsFilter
+    # Sort order to apply to the collection
+    orderBy: [StationDeliveryLocationTimeslotsOrderBy!]
+  ): StationDeliveryLocationTimeslotsConnection
+}
+
+type StationDeliveryLocationsConnection {
+  edges: [StationDeliveryLocationsEdge!]!
+  pageInfo: PageInfo!
+}
+
+type StationDeliveryLocationsDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationDeliveryLocations!]!
+}
+
+type StationDeliveryLocationsEdge {
+  cursor: String!
+  node: StationDeliveryLocations!
+}
+
+input StationDeliveryLocationsFilter {
+  id: UUIDFilter
+  createdAt: DatetimeFilter
+  stationId: UUIDFilter
+  deliveryLocationId: UUIDFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [StationDeliveryLocationsFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [StationDeliveryLocationsFilter!]
+  # Negates a filter
+  not: StationDeliveryLocationsFilter
+}
+
+input StationDeliveryLocationsInsertInput {
+  id: UUID
+  createdAt: Datetime
+  stationId: UUID
+  deliveryLocationId: UUID
+}
+
+type StationDeliveryLocationsInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationDeliveryLocations!]!
+}
+
+input StationDeliveryLocationsOrderBy {
+  id: OrderByDirection
+  createdAt: OrderByDirection
+  stationId: OrderByDirection
+  deliveryLocationId: OrderByDirection
+}
+
+input StationDeliveryLocationsUpdateInput {
+  id: UUID
+  createdAt: Datetime
+  stationId: UUID
+  deliveryLocationId: UUID
+}
+
+type StationDeliveryLocationsUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationDeliveryLocations!]!
+}
+
+type StationDeliveryLocationTimeslots implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  createdAt: Datetime!
+  stationDeliveryLocationId: UUID!
+  beginAt: Datetime!
+  endAt: Datetime
+  stationDeliveryLocation: StationDeliveryLocations!
+}
+
+type StationDeliveryLocationTimeslotsConnection {
+  edges: [StationDeliveryLocationTimeslotsEdge!]!
+  pageInfo: PageInfo!
+}
+
+type StationDeliveryLocationTimeslotsDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationDeliveryLocationTimeslots!]!
+}
+
+type StationDeliveryLocationTimeslotsEdge {
+  cursor: String!
+  node: StationDeliveryLocationTimeslots!
+}
+
+input StationDeliveryLocationTimeslotsFilter {
+  id: UUIDFilter
+  createdAt: DatetimeFilter
+  stationDeliveryLocationId: UUIDFilter
+  beginAt: DatetimeFilter
+  endAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [StationDeliveryLocationTimeslotsFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [StationDeliveryLocationTimeslotsFilter!]
+  # Negates a filter
+  not: StationDeliveryLocationTimeslotsFilter
+}
+
+input StationDeliveryLocationTimeslotsInsertInput {
+  id: UUID
+  createdAt: Datetime
+  stationDeliveryLocationId: UUID
+  beginAt: Datetime
+  endAt: Datetime
+}
+
+type StationDeliveryLocationTimeslotsInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationDeliveryLocationTimeslots!]!
+}
+
+input StationDeliveryLocationTimeslotsOrderBy {
+  id: OrderByDirection
+  createdAt: OrderByDirection
+  stationDeliveryLocationId: OrderByDirection
+  beginAt: OrderByDirection
+  endAt: OrderByDirection
+}
+
+input StationDeliveryLocationTimeslotsUpdateInput {
+  id: UUID
+  createdAt: Datetime
+  stationDeliveryLocationId: UUID
+  beginAt: Datetime
+  endAt: Datetime
+}
+
+type StationDeliveryLocationTimeslotsUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [StationDeliveryLocationTimeslots!]!
+}
+
 type Stations implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -2314,6 +3174,22 @@ type Stations implements Node {
     # Sort order to apply to the collection
     orderBy: [UsersOrderBy!]
   ): UsersConnection
+  stationDeliveryLocationsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationDeliveryLocationsFilter
+    # Sort order to apply to the collection
+    orderBy: [StationDeliveryLocationsOrderBy!]
+  ): StationDeliveryLocationsConnection
 }
 
 type StationsConnection {
@@ -2657,22 +3533,6 @@ type Users implements Node {
   updatedAt: Datetime
   primaryStationId: UUID
   primaryStation: Stations
-  shoppingCartItemsCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: ShoppingCartItemsFilter
-    # Sort order to apply to the collection
-    orderBy: [ShoppingCartItemsOrderBy!]
-  ): ShoppingCartItemsConnection
   userRolesCollection(
     # Query the first `n` records in the collection
     first: Int

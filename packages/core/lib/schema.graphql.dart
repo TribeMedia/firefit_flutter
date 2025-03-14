@@ -2861,6 +2861,2082 @@ class _CopyWithStubImpl$Input$DatetimeListFilter<TRes>
       _res;
 }
 
+class Input$DeliveryLocationFilter {
+  factory Input$DeliveryLocationFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$DatetimeFilter? createdAt,
+    Input$StringFilter? address,
+    Input$StringFilter? address1,
+    Input$StringFilter? city,
+    Input$StringFilter? state,
+    Input$StringFilter? zip,
+    Input$FloatFilter? latitude,
+    Input$FloatFilter? longitude,
+    Input$OpaqueFilter? startOpenTime,
+    Input$OpaqueFilter? endOpenTime,
+    Input$IDFilter? nodeId,
+    List<Input$DeliveryLocationFilter>? and,
+    List<Input$DeliveryLocationFilter>? or,
+    Input$DeliveryLocationFilter? not,
+  }) =>
+      Input$DeliveryLocationFilter._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+        if (startOpenTime != null) r'startOpenTime': startOpenTime,
+        if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$DeliveryLocationFilter._(this._$data);
+
+  factory Input$DeliveryLocationFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = l$address == null
+          ? null
+          : Input$StringFilter.fromJson((l$address as Map<String, dynamic>));
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = l$address1 == null
+          ? null
+          : Input$StringFilter.fromJson((l$address1 as Map<String, dynamic>));
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = l$city == null
+          ? null
+          : Input$StringFilter.fromJson((l$city as Map<String, dynamic>));
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = l$state == null
+          ? null
+          : Input$StringFilter.fromJson((l$state as Map<String, dynamic>));
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = l$zip == null
+          ? null
+          : Input$StringFilter.fromJson((l$zip as Map<String, dynamic>));
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = l$latitude == null
+          ? null
+          : Input$FloatFilter.fromJson((l$latitude as Map<String, dynamic>));
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = l$longitude == null
+          ? null
+          : Input$FloatFilter.fromJson((l$longitude as Map<String, dynamic>));
+    }
+    if (data.containsKey('startOpenTime')) {
+      final l$startOpenTime = data['startOpenTime'];
+      result$data['startOpenTime'] = l$startOpenTime == null
+          ? null
+          : Input$OpaqueFilter.fromJson(
+              (l$startOpenTime as Map<String, dynamic>));
+    }
+    if (data.containsKey('endOpenTime')) {
+      final l$endOpenTime = data['endOpenTime'];
+      result$data['endOpenTime'] = l$endOpenTime == null
+          ? null
+          : Input$OpaqueFilter.fromJson(
+              (l$endOpenTime as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$DeliveryLocationFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$DeliveryLocationFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$DeliveryLocationFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$DeliveryLocationFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$StringFilter? get address => (_$data['address'] as Input$StringFilter?);
+
+  Input$StringFilter? get address1 =>
+      (_$data['address1'] as Input$StringFilter?);
+
+  Input$StringFilter? get city => (_$data['city'] as Input$StringFilter?);
+
+  Input$StringFilter? get state => (_$data['state'] as Input$StringFilter?);
+
+  Input$StringFilter? get zip => (_$data['zip'] as Input$StringFilter?);
+
+  Input$FloatFilter? get latitude => (_$data['latitude'] as Input$FloatFilter?);
+
+  Input$FloatFilter? get longitude =>
+      (_$data['longitude'] as Input$FloatFilter?);
+
+  Input$OpaqueFilter? get startOpenTime =>
+      (_$data['startOpenTime'] as Input$OpaqueFilter?);
+
+  Input$OpaqueFilter? get endOpenTime =>
+      (_$data['endOpenTime'] as Input$OpaqueFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$DeliveryLocationFilter>? get and =>
+      (_$data['and'] as List<Input$DeliveryLocationFilter>?);
+
+  List<Input$DeliveryLocationFilter>? get or =>
+      (_$data['or'] as List<Input$DeliveryLocationFilter>?);
+
+  Input$DeliveryLocationFilter? get not =>
+      (_$data['not'] as Input$DeliveryLocationFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] = l$address?.toJson();
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] = l$address1?.toJson();
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] = l$city?.toJson();
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] = l$state?.toJson();
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] = l$zip?.toJson();
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] = l$latitude?.toJson();
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude?.toJson();
+    }
+    if (_$data.containsKey('startOpenTime')) {
+      final l$startOpenTime = startOpenTime;
+      result$data['startOpenTime'] = l$startOpenTime?.toJson();
+    }
+    if (_$data.containsKey('endOpenTime')) {
+      final l$endOpenTime = endOpenTime;
+      result$data['endOpenTime'] = l$endOpenTime?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryLocationFilter<Input$DeliveryLocationFilter>
+      get copyWith => CopyWith$Input$DeliveryLocationFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryLocationFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    final l$startOpenTime = startOpenTime;
+    final lOther$startOpenTime = other.startOpenTime;
+    if (_$data.containsKey('startOpenTime') !=
+        other._$data.containsKey('startOpenTime')) {
+      return false;
+    }
+    if (l$startOpenTime != lOther$startOpenTime) {
+      return false;
+    }
+    final l$endOpenTime = endOpenTime;
+    final lOther$endOpenTime = other.endOpenTime;
+    if (_$data.containsKey('endOpenTime') !=
+        other._$data.containsKey('endOpenTime')) {
+      return false;
+    }
+    if (l$endOpenTime != lOther$endOpenTime) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$createdAt = createdAt;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    final l$startOpenTime = startOpenTime;
+    final l$endOpenTime = endOpenTime;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+      _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
+      _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryLocationFilter<TRes> {
+  factory CopyWith$Input$DeliveryLocationFilter(
+    Input$DeliveryLocationFilter instance,
+    TRes Function(Input$DeliveryLocationFilter) then,
+  ) = _CopyWithImpl$Input$DeliveryLocationFilter;
+
+  factory CopyWith$Input$DeliveryLocationFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryLocationFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$DatetimeFilter? createdAt,
+    Input$StringFilter? address,
+    Input$StringFilter? address1,
+    Input$StringFilter? city,
+    Input$StringFilter? state,
+    Input$StringFilter? zip,
+    Input$FloatFilter? latitude,
+    Input$FloatFilter? longitude,
+    Input$OpaqueFilter? startOpenTime,
+    Input$OpaqueFilter? endOpenTime,
+    Input$IDFilter? nodeId,
+    List<Input$DeliveryLocationFilter>? and,
+    List<Input$DeliveryLocationFilter>? or,
+    Input$DeliveryLocationFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$StringFilter<TRes> get address;
+  CopyWith$Input$StringFilter<TRes> get address1;
+  CopyWith$Input$StringFilter<TRes> get city;
+  CopyWith$Input$StringFilter<TRes> get state;
+  CopyWith$Input$StringFilter<TRes> get zip;
+  CopyWith$Input$FloatFilter<TRes> get latitude;
+  CopyWith$Input$FloatFilter<TRes> get longitude;
+  CopyWith$Input$OpaqueFilter<TRes> get startOpenTime;
+  CopyWith$Input$OpaqueFilter<TRes> get endOpenTime;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$DeliveryLocationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$DeliveryLocationFilter<
+                      Input$DeliveryLocationFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$DeliveryLocationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$DeliveryLocationFilter<
+                      Input$DeliveryLocationFilter>>?)
+          _fn);
+  CopyWith$Input$DeliveryLocationFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
+    implements CopyWith$Input$DeliveryLocationFilter<TRes> {
+  _CopyWithImpl$Input$DeliveryLocationFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryLocationFilter _instance;
+
+  final TRes Function(Input$DeliveryLocationFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? createdAt = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+    Object? startOpenTime = _undefined,
+    Object? endOpenTime = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$DeliveryLocationFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (address != _undefined) 'address': (address as Input$StringFilter?),
+        if (address1 != _undefined)
+          'address1': (address1 as Input$StringFilter?),
+        if (city != _undefined) 'city': (city as Input$StringFilter?),
+        if (state != _undefined) 'state': (state as Input$StringFilter?),
+        if (zip != _undefined) 'zip': (zip as Input$StringFilter?),
+        if (latitude != _undefined)
+          'latitude': (latitude as Input$FloatFilter?),
+        if (longitude != _undefined)
+          'longitude': (longitude as Input$FloatFilter?),
+        if (startOpenTime != _undefined)
+          'startOpenTime': (startOpenTime as Input$OpaqueFilter?),
+        if (endOpenTime != _undefined)
+          'endOpenTime': (endOpenTime as Input$OpaqueFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$DeliveryLocationFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$DeliveryLocationFilter>?),
+        if (not != _undefined) 'not': (not as Input$DeliveryLocationFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get address {
+    final local$address = _instance.address;
+    return local$address == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$address, (e) => call(address: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get address1 {
+    final local$address1 = _instance.address1;
+    return local$address1 == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$address1, (e) => call(address1: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get city {
+    final local$city = _instance.city;
+    return local$city == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$city, (e) => call(city: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get state {
+    final local$state = _instance.state;
+    return local$state == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$state, (e) => call(state: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get zip {
+    final local$zip = _instance.zip;
+    return local$zip == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$zip, (e) => call(zip: e));
+  }
+
+  CopyWith$Input$FloatFilter<TRes> get latitude {
+    final local$latitude = _instance.latitude;
+    return local$latitude == null
+        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
+        : CopyWith$Input$FloatFilter(local$latitude, (e) => call(latitude: e));
+  }
+
+  CopyWith$Input$FloatFilter<TRes> get longitude {
+    final local$longitude = _instance.longitude;
+    return local$longitude == null
+        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
+        : CopyWith$Input$FloatFilter(
+            local$longitude, (e) => call(longitude: e));
+  }
+
+  CopyWith$Input$OpaqueFilter<TRes> get startOpenTime {
+    final local$startOpenTime = _instance.startOpenTime;
+    return local$startOpenTime == null
+        ? CopyWith$Input$OpaqueFilter.stub(_then(_instance))
+        : CopyWith$Input$OpaqueFilter(
+            local$startOpenTime, (e) => call(startOpenTime: e));
+  }
+
+  CopyWith$Input$OpaqueFilter<TRes> get endOpenTime {
+    final local$endOpenTime = _instance.endOpenTime;
+    return local$endOpenTime == null
+        ? CopyWith$Input$OpaqueFilter.stub(_then(_instance))
+        : CopyWith$Input$OpaqueFilter(
+            local$endOpenTime, (e) => call(endOpenTime: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$DeliveryLocationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$DeliveryLocationFilter<
+                          Input$DeliveryLocationFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(
+              _instance.and?.map((e) => CopyWith$Input$DeliveryLocationFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$DeliveryLocationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$DeliveryLocationFilter<
+                          Input$DeliveryLocationFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(
+              _instance.or?.map((e) => CopyWith$Input$DeliveryLocationFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$DeliveryLocationFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$DeliveryLocationFilter.stub(_then(_instance))
+        : CopyWith$Input$DeliveryLocationFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
+    implements CopyWith$Input$DeliveryLocationFilter<TRes> {
+  _CopyWithStubImpl$Input$DeliveryLocationFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$DatetimeFilter? createdAt,
+    Input$StringFilter? address,
+    Input$StringFilter? address1,
+    Input$StringFilter? city,
+    Input$StringFilter? state,
+    Input$StringFilter? zip,
+    Input$FloatFilter? latitude,
+    Input$FloatFilter? longitude,
+    Input$OpaqueFilter? startOpenTime,
+    Input$OpaqueFilter? endOpenTime,
+    Input$IDFilter? nodeId,
+    List<Input$DeliveryLocationFilter>? and,
+    List<Input$DeliveryLocationFilter>? or,
+    Input$DeliveryLocationFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get address =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get address1 =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get city =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get state =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get zip =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$FloatFilter<TRes> get latitude =>
+      CopyWith$Input$FloatFilter.stub(_res);
+
+  CopyWith$Input$FloatFilter<TRes> get longitude =>
+      CopyWith$Input$FloatFilter.stub(_res);
+
+  CopyWith$Input$OpaqueFilter<TRes> get startOpenTime =>
+      CopyWith$Input$OpaqueFilter.stub(_res);
+
+  CopyWith$Input$OpaqueFilter<TRes> get endOpenTime =>
+      CopyWith$Input$OpaqueFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$DeliveryLocationFilter<TRes> get not =>
+      CopyWith$Input$DeliveryLocationFilter.stub(_res);
+}
+
+class Input$DeliveryLocationInsertInput {
+  factory Input$DeliveryLocationInsertInput({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    double? latitude,
+    double? longitude,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+  }) =>
+      Input$DeliveryLocationInsertInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+        if (startOpenTime != null) r'startOpenTime': startOpenTime,
+        if (endOpenTime != null) r'endOpenTime': endOpenTime,
+      });
+
+  Input$DeliveryLocationInsertInput._(this._$data);
+
+  factory Input$DeliveryLocationInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = (l$address as String?);
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = (l$address1 as String?);
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = (l$city as String?);
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = (l$state as String?);
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = (l$zip as String?);
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = (l$latitude as num?)?.toDouble();
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = (l$longitude as num?)?.toDouble();
+    }
+    if (data.containsKey('startOpenTime')) {
+      final l$startOpenTime = data['startOpenTime'];
+      result$data['startOpenTime'] = (l$startOpenTime as dynamic?);
+    }
+    if (data.containsKey('endOpenTime')) {
+      final l$endOpenTime = data['endOpenTime'];
+      result$data['endOpenTime'] = (l$endOpenTime as dynamic?);
+    }
+    return Input$DeliveryLocationInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get address => (_$data['address'] as String?);
+
+  String? get address1 => (_$data['address1'] as String?);
+
+  String? get city => (_$data['city'] as String?);
+
+  String? get state => (_$data['state'] as String?);
+
+  String? get zip => (_$data['zip'] as String?);
+
+  double? get latitude => (_$data['latitude'] as double?);
+
+  double? get longitude => (_$data['longitude'] as double?);
+
+  dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
+
+  dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] = l$address;
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] = l$address1;
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] = l$city;
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] = l$state;
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] = l$zip;
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] = l$latitude;
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude;
+    }
+    if (_$data.containsKey('startOpenTime')) {
+      final l$startOpenTime = startOpenTime;
+      result$data['startOpenTime'] = l$startOpenTime;
+    }
+    if (_$data.containsKey('endOpenTime')) {
+      final l$endOpenTime = endOpenTime;
+      result$data['endOpenTime'] = l$endOpenTime;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryLocationInsertInput<Input$DeliveryLocationInsertInput>
+      get copyWith => CopyWith$Input$DeliveryLocationInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryLocationInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    final l$startOpenTime = startOpenTime;
+    final lOther$startOpenTime = other.startOpenTime;
+    if (_$data.containsKey('startOpenTime') !=
+        other._$data.containsKey('startOpenTime')) {
+      return false;
+    }
+    if (l$startOpenTime != lOther$startOpenTime) {
+      return false;
+    }
+    final l$endOpenTime = endOpenTime;
+    final lOther$endOpenTime = other.endOpenTime;
+    if (_$data.containsKey('endOpenTime') !=
+        other._$data.containsKey('endOpenTime')) {
+      return false;
+    }
+    if (l$endOpenTime != lOther$endOpenTime) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$createdAt = createdAt;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    final l$startOpenTime = startOpenTime;
+    final l$endOpenTime = endOpenTime;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+      _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
+      _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryLocationInsertInput<TRes> {
+  factory CopyWith$Input$DeliveryLocationInsertInput(
+    Input$DeliveryLocationInsertInput instance,
+    TRes Function(Input$DeliveryLocationInsertInput) then,
+  ) = _CopyWithImpl$Input$DeliveryLocationInsertInput;
+
+  factory CopyWith$Input$DeliveryLocationInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryLocationInsertInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    double? latitude,
+    double? longitude,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+  });
+}
+
+class _CopyWithImpl$Input$DeliveryLocationInsertInput<TRes>
+    implements CopyWith$Input$DeliveryLocationInsertInput<TRes> {
+  _CopyWithImpl$Input$DeliveryLocationInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryLocationInsertInput _instance;
+
+  final TRes Function(Input$DeliveryLocationInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? createdAt = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+    Object? startOpenTime = _undefined,
+    Object? endOpenTime = _undefined,
+  }) =>
+      _then(Input$DeliveryLocationInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (address != _undefined) 'address': (address as String?),
+        if (address1 != _undefined) 'address1': (address1 as String?),
+        if (city != _undefined) 'city': (city as String?),
+        if (state != _undefined) 'state': (state as String?),
+        if (zip != _undefined) 'zip': (zip as String?),
+        if (latitude != _undefined) 'latitude': (latitude as double?),
+        if (longitude != _undefined) 'longitude': (longitude as double?),
+        if (startOpenTime != _undefined)
+          'startOpenTime': (startOpenTime as dynamic?),
+        if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DeliveryLocationInsertInput<TRes>
+    implements CopyWith$Input$DeliveryLocationInsertInput<TRes> {
+  _CopyWithStubImpl$Input$DeliveryLocationInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    double? latitude,
+    double? longitude,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+  }) =>
+      _res;
+}
+
+class Input$DeliveryLocationOrderBy {
+  factory Input$DeliveryLocationOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? address,
+    Enum$OrderByDirection? address1,
+    Enum$OrderByDirection? city,
+    Enum$OrderByDirection? state,
+    Enum$OrderByDirection? zip,
+    Enum$OrderByDirection? latitude,
+    Enum$OrderByDirection? longitude,
+    Enum$OrderByDirection? startOpenTime,
+    Enum$OrderByDirection? endOpenTime,
+  }) =>
+      Input$DeliveryLocationOrderBy._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+        if (startOpenTime != null) r'startOpenTime': startOpenTime,
+        if (endOpenTime != null) r'endOpenTime': endOpenTime,
+      });
+
+  Input$DeliveryLocationOrderBy._(this._$data);
+
+  factory Input$DeliveryLocationOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = l$address == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$address as String));
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = l$address1 == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$address1 as String));
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = l$city == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$city as String));
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = l$state == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$state as String));
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = l$zip == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$zip as String));
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = l$latitude == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$latitude as String));
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = l$longitude == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$longitude as String));
+    }
+    if (data.containsKey('startOpenTime')) {
+      final l$startOpenTime = data['startOpenTime'];
+      result$data['startOpenTime'] = l$startOpenTime == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$startOpenTime as String));
+    }
+    if (data.containsKey('endOpenTime')) {
+      final l$endOpenTime = data['endOpenTime'];
+      result$data['endOpenTime'] = l$endOpenTime == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$endOpenTime as String));
+    }
+    return Input$DeliveryLocationOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get address =>
+      (_$data['address'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get address1 =>
+      (_$data['address1'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get city => (_$data['city'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get state =>
+      (_$data['state'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get zip => (_$data['zip'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get latitude =>
+      (_$data['latitude'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get longitude =>
+      (_$data['longitude'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get startOpenTime =>
+      (_$data['startOpenTime'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get endOpenTime =>
+      (_$data['endOpenTime'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] =
+          l$address == null ? null : toJson$Enum$OrderByDirection(l$address);
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] =
+          l$address1 == null ? null : toJson$Enum$OrderByDirection(l$address1);
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] =
+          l$city == null ? null : toJson$Enum$OrderByDirection(l$city);
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] =
+          l$state == null ? null : toJson$Enum$OrderByDirection(l$state);
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] =
+          l$zip == null ? null : toJson$Enum$OrderByDirection(l$zip);
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] =
+          l$latitude == null ? null : toJson$Enum$OrderByDirection(l$latitude);
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$longitude);
+    }
+    if (_$data.containsKey('startOpenTime')) {
+      final l$startOpenTime = startOpenTime;
+      result$data['startOpenTime'] = l$startOpenTime == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$startOpenTime);
+    }
+    if (_$data.containsKey('endOpenTime')) {
+      final l$endOpenTime = endOpenTime;
+      result$data['endOpenTime'] = l$endOpenTime == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$endOpenTime);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryLocationOrderBy<Input$DeliveryLocationOrderBy>
+      get copyWith => CopyWith$Input$DeliveryLocationOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryLocationOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    final l$startOpenTime = startOpenTime;
+    final lOther$startOpenTime = other.startOpenTime;
+    if (_$data.containsKey('startOpenTime') !=
+        other._$data.containsKey('startOpenTime')) {
+      return false;
+    }
+    if (l$startOpenTime != lOther$startOpenTime) {
+      return false;
+    }
+    final l$endOpenTime = endOpenTime;
+    final lOther$endOpenTime = other.endOpenTime;
+    if (_$data.containsKey('endOpenTime') !=
+        other._$data.containsKey('endOpenTime')) {
+      return false;
+    }
+    if (l$endOpenTime != lOther$endOpenTime) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$createdAt = createdAt;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    final l$startOpenTime = startOpenTime;
+    final l$endOpenTime = endOpenTime;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+      _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
+      _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryLocationOrderBy<TRes> {
+  factory CopyWith$Input$DeliveryLocationOrderBy(
+    Input$DeliveryLocationOrderBy instance,
+    TRes Function(Input$DeliveryLocationOrderBy) then,
+  ) = _CopyWithImpl$Input$DeliveryLocationOrderBy;
+
+  factory CopyWith$Input$DeliveryLocationOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryLocationOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? address,
+    Enum$OrderByDirection? address1,
+    Enum$OrderByDirection? city,
+    Enum$OrderByDirection? state,
+    Enum$OrderByDirection? zip,
+    Enum$OrderByDirection? latitude,
+    Enum$OrderByDirection? longitude,
+    Enum$OrderByDirection? startOpenTime,
+    Enum$OrderByDirection? endOpenTime,
+  });
+}
+
+class _CopyWithImpl$Input$DeliveryLocationOrderBy<TRes>
+    implements CopyWith$Input$DeliveryLocationOrderBy<TRes> {
+  _CopyWithImpl$Input$DeliveryLocationOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryLocationOrderBy _instance;
+
+  final TRes Function(Input$DeliveryLocationOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? createdAt = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+    Object? startOpenTime = _undefined,
+    Object? endOpenTime = _undefined,
+  }) =>
+      _then(Input$DeliveryLocationOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (address != _undefined)
+          'address': (address as Enum$OrderByDirection?),
+        if (address1 != _undefined)
+          'address1': (address1 as Enum$OrderByDirection?),
+        if (city != _undefined) 'city': (city as Enum$OrderByDirection?),
+        if (state != _undefined) 'state': (state as Enum$OrderByDirection?),
+        if (zip != _undefined) 'zip': (zip as Enum$OrderByDirection?),
+        if (latitude != _undefined)
+          'latitude': (latitude as Enum$OrderByDirection?),
+        if (longitude != _undefined)
+          'longitude': (longitude as Enum$OrderByDirection?),
+        if (startOpenTime != _undefined)
+          'startOpenTime': (startOpenTime as Enum$OrderByDirection?),
+        if (endOpenTime != _undefined)
+          'endOpenTime': (endOpenTime as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DeliveryLocationOrderBy<TRes>
+    implements CopyWith$Input$DeliveryLocationOrderBy<TRes> {
+  _CopyWithStubImpl$Input$DeliveryLocationOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? address,
+    Enum$OrderByDirection? address1,
+    Enum$OrderByDirection? city,
+    Enum$OrderByDirection? state,
+    Enum$OrderByDirection? zip,
+    Enum$OrderByDirection? latitude,
+    Enum$OrderByDirection? longitude,
+    Enum$OrderByDirection? startOpenTime,
+    Enum$OrderByDirection? endOpenTime,
+  }) =>
+      _res;
+}
+
+class Input$DeliveryLocationUpdateInput {
+  factory Input$DeliveryLocationUpdateInput({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    double? latitude,
+    double? longitude,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+  }) =>
+      Input$DeliveryLocationUpdateInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+        if (startOpenTime != null) r'startOpenTime': startOpenTime,
+        if (endOpenTime != null) r'endOpenTime': endOpenTime,
+      });
+
+  Input$DeliveryLocationUpdateInput._(this._$data);
+
+  factory Input$DeliveryLocationUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = (l$address as String?);
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = (l$address1 as String?);
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = (l$city as String?);
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = (l$state as String?);
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = (l$zip as String?);
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = (l$latitude as num?)?.toDouble();
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = (l$longitude as num?)?.toDouble();
+    }
+    if (data.containsKey('startOpenTime')) {
+      final l$startOpenTime = data['startOpenTime'];
+      result$data['startOpenTime'] = (l$startOpenTime as dynamic?);
+    }
+    if (data.containsKey('endOpenTime')) {
+      final l$endOpenTime = data['endOpenTime'];
+      result$data['endOpenTime'] = (l$endOpenTime as dynamic?);
+    }
+    return Input$DeliveryLocationUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get address => (_$data['address'] as String?);
+
+  String? get address1 => (_$data['address1'] as String?);
+
+  String? get city => (_$data['city'] as String?);
+
+  String? get state => (_$data['state'] as String?);
+
+  String? get zip => (_$data['zip'] as String?);
+
+  double? get latitude => (_$data['latitude'] as double?);
+
+  double? get longitude => (_$data['longitude'] as double?);
+
+  dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
+
+  dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] = l$address;
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] = l$address1;
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] = l$city;
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] = l$state;
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] = l$zip;
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] = l$latitude;
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude;
+    }
+    if (_$data.containsKey('startOpenTime')) {
+      final l$startOpenTime = startOpenTime;
+      result$data['startOpenTime'] = l$startOpenTime;
+    }
+    if (_$data.containsKey('endOpenTime')) {
+      final l$endOpenTime = endOpenTime;
+      result$data['endOpenTime'] = l$endOpenTime;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryLocationUpdateInput<Input$DeliveryLocationUpdateInput>
+      get copyWith => CopyWith$Input$DeliveryLocationUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryLocationUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    final l$startOpenTime = startOpenTime;
+    final lOther$startOpenTime = other.startOpenTime;
+    if (_$data.containsKey('startOpenTime') !=
+        other._$data.containsKey('startOpenTime')) {
+      return false;
+    }
+    if (l$startOpenTime != lOther$startOpenTime) {
+      return false;
+    }
+    final l$endOpenTime = endOpenTime;
+    final lOther$endOpenTime = other.endOpenTime;
+    if (_$data.containsKey('endOpenTime') !=
+        other._$data.containsKey('endOpenTime')) {
+      return false;
+    }
+    if (l$endOpenTime != lOther$endOpenTime) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$createdAt = createdAt;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    final l$startOpenTime = startOpenTime;
+    final l$endOpenTime = endOpenTime;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+      _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
+      _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryLocationUpdateInput<TRes> {
+  factory CopyWith$Input$DeliveryLocationUpdateInput(
+    Input$DeliveryLocationUpdateInput instance,
+    TRes Function(Input$DeliveryLocationUpdateInput) then,
+  ) = _CopyWithImpl$Input$DeliveryLocationUpdateInput;
+
+  factory CopyWith$Input$DeliveryLocationUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryLocationUpdateInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    double? latitude,
+    double? longitude,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+  });
+}
+
+class _CopyWithImpl$Input$DeliveryLocationUpdateInput<TRes>
+    implements CopyWith$Input$DeliveryLocationUpdateInput<TRes> {
+  _CopyWithImpl$Input$DeliveryLocationUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryLocationUpdateInput _instance;
+
+  final TRes Function(Input$DeliveryLocationUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? createdAt = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+    Object? startOpenTime = _undefined,
+    Object? endOpenTime = _undefined,
+  }) =>
+      _then(Input$DeliveryLocationUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (address != _undefined) 'address': (address as String?),
+        if (address1 != _undefined) 'address1': (address1 as String?),
+        if (city != _undefined) 'city': (city as String?),
+        if (state != _undefined) 'state': (state as String?),
+        if (zip != _undefined) 'zip': (zip as String?),
+        if (latitude != _undefined) 'latitude': (latitude as double?),
+        if (longitude != _undefined) 'longitude': (longitude as double?),
+        if (startOpenTime != _undefined)
+          'startOpenTime': (startOpenTime as dynamic?),
+        if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DeliveryLocationUpdateInput<TRes>
+    implements CopyWith$Input$DeliveryLocationUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$DeliveryLocationUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    double? latitude,
+    double? longitude,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+  }) =>
+      _res;
+}
+
 class Input$FloatFilter {
   factory Input$FloatFilter({
     double? eq,
@@ -4161,6 +6237,2973 @@ class _CopyWithStubImpl$Input$IntListFilter<TRes>
     List<int>? eq,
     Enum$FilterIs? $is,
     List<int>? overlaps,
+  }) =>
+      _res;
+}
+
+class Input$NavigationFilter {
+  factory Input$NavigationFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$NavigationFilter>? and,
+    List<Input$NavigationFilter>? or,
+    Input$NavigationFilter? not,
+  }) =>
+      Input$NavigationFilter._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$NavigationFilter._(this._$data);
+
+  factory Input$NavigationFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : Input$StringFilter.fromJson((l$key as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) =>
+              Input$NavigationFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) =>
+              Input$NavigationFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$NavigationFilter.fromJson((l$not as Map<String, dynamic>));
+    }
+    return Input$NavigationFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get key => (_$data['key'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$NavigationFilter>? get and =>
+      (_$data['and'] as List<Input$NavigationFilter>?);
+
+  List<Input$NavigationFilter>? get or =>
+      (_$data['or'] as List<Input$NavigationFilter>?);
+
+  Input$NavigationFilter? get not => (_$data['not'] as Input$NavigationFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationFilter<Input$NavigationFilter> get copyWith =>
+      CopyWith$Input$NavigationFilter(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationFilter || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationFilter<TRes> {
+  factory CopyWith$Input$NavigationFilter(
+    Input$NavigationFilter instance,
+    TRes Function(Input$NavigationFilter) then,
+  ) = _CopyWithImpl$Input$NavigationFilter;
+
+  factory CopyWith$Input$NavigationFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$NavigationFilter>? and,
+    List<Input$NavigationFilter>? or,
+    Input$NavigationFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get key;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$NavigationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$NavigationFilter<Input$NavigationFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$NavigationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$NavigationFilter<Input$NavigationFilter>>?)
+          _fn);
+  CopyWith$Input$NavigationFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$NavigationFilter<TRes>
+    implements CopyWith$Input$NavigationFilter<TRes> {
+  _CopyWithImpl$Input$NavigationFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationFilter _instance;
+
+  final TRes Function(Input$NavigationFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$NavigationFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (key != _undefined) 'key': (key as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined) 'and': (and as List<Input$NavigationFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$NavigationFilter>?),
+        if (not != _undefined) 'not': (not as Input$NavigationFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get key {
+    final local$key = _instance.key;
+    return local$key == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$key, (e) => call(key: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$NavigationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$NavigationFilter<Input$NavigationFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$NavigationFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  TRes or(
+          Iterable<Input$NavigationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$NavigationFilter<Input$NavigationFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$NavigationFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$NavigationFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$NavigationFilter.stub(_then(_instance))
+        : CopyWith$Input$NavigationFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$NavigationFilter<TRes>
+    implements CopyWith$Input$NavigationFilter<TRes> {
+  _CopyWithStubImpl$Input$NavigationFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$NavigationFilter>? and,
+    List<Input$NavigationFilter>? or,
+    Input$NavigationFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get key =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$NavigationFilter<TRes> get not =>
+      CopyWith$Input$NavigationFilter.stub(_res);
+}
+
+class Input$NavigationInsertInput {
+  factory Input$NavigationInsertInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  }) =>
+      Input$NavigationInsertInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$NavigationInsertInput._(this._$data);
+
+  factory Input$NavigationInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$NavigationInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationInsertInput<Input$NavigationInsertInput>
+      get copyWith => CopyWith$Input$NavigationInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationInsertInput<TRes> {
+  factory CopyWith$Input$NavigationInsertInput(
+    Input$NavigationInsertInput instance,
+    TRes Function(Input$NavigationInsertInput) then,
+  ) = _CopyWithImpl$Input$NavigationInsertInput;
+
+  factory CopyWith$Input$NavigationInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationInsertInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$NavigationInsertInput<TRes>
+    implements CopyWith$Input$NavigationInsertInput<TRes> {
+  _CopyWithImpl$Input$NavigationInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationInsertInput _instance;
+
+  final TRes Function(Input$NavigationInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$NavigationInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$NavigationInsertInput<TRes>
+    implements CopyWith$Input$NavigationInsertInput<TRes> {
+  _CopyWithStubImpl$Input$NavigationInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$NavigationItemsFilter {
+  factory Input$NavigationItemsFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? iconName,
+    Input$StringFilter? path,
+    Input$IntFilter? index,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? parentId,
+    Input$StringListFilter? roles,
+    Input$StringFilter? tag,
+    Input$UUIDFilter? navigationId,
+    Input$IDFilter? nodeId,
+    List<Input$NavigationItemsFilter>? and,
+    List<Input$NavigationItemsFilter>? or,
+    Input$NavigationItemsFilter? not,
+  }) =>
+      Input$NavigationItemsFilter._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (iconName != null) r'iconName': iconName,
+        if (path != null) r'path': path,
+        if (index != null) r'index': index,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (parentId != null) r'parentId': parentId,
+        if (roles != null) r'roles': roles,
+        if (tag != null) r'tag': tag,
+        if (navigationId != null) r'navigationId': navigationId,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$NavigationItemsFilter._(this._$data);
+
+  factory Input$NavigationItemsFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('iconName')) {
+      final l$iconName = data['iconName'];
+      result$data['iconName'] = l$iconName == null
+          ? null
+          : Input$StringFilter.fromJson((l$iconName as Map<String, dynamic>));
+    }
+    if (data.containsKey('path')) {
+      final l$path = data['path'];
+      result$data['path'] = l$path == null
+          ? null
+          : Input$StringFilter.fromJson((l$path as Map<String, dynamic>));
+    }
+    if (data.containsKey('index')) {
+      final l$index = data['index'];
+      result$data['index'] = l$index == null
+          ? null
+          : Input$IntFilter.fromJson((l$index as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('parentId')) {
+      final l$parentId = data['parentId'];
+      result$data['parentId'] = l$parentId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$parentId as Map<String, dynamic>));
+    }
+    if (data.containsKey('roles')) {
+      final l$roles = data['roles'];
+      result$data['roles'] = l$roles == null
+          ? null
+          : Input$StringListFilter.fromJson((l$roles as Map<String, dynamic>));
+    }
+    if (data.containsKey('tag')) {
+      final l$tag = data['tag'];
+      result$data['tag'] = l$tag == null
+          ? null
+          : Input$StringFilter.fromJson((l$tag as Map<String, dynamic>));
+    }
+    if (data.containsKey('navigationId')) {
+      final l$navigationId = data['navigationId'];
+      result$data['navigationId'] = l$navigationId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$navigationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) =>
+              Input$NavigationItemsFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) =>
+              Input$NavigationItemsFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$NavigationItemsFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$NavigationItemsFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get iconName =>
+      (_$data['iconName'] as Input$StringFilter?);
+
+  Input$StringFilter? get path => (_$data['path'] as Input$StringFilter?);
+
+  Input$IntFilter? get index => (_$data['index'] as Input$IntFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$UUIDFilter? get parentId => (_$data['parentId'] as Input$UUIDFilter?);
+
+  Input$StringListFilter? get roles =>
+      (_$data['roles'] as Input$StringListFilter?);
+
+  Input$StringFilter? get tag => (_$data['tag'] as Input$StringFilter?);
+
+  Input$UUIDFilter? get navigationId =>
+      (_$data['navigationId'] as Input$UUIDFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$NavigationItemsFilter>? get and =>
+      (_$data['and'] as List<Input$NavigationItemsFilter>?);
+
+  List<Input$NavigationItemsFilter>? get or =>
+      (_$data['or'] as List<Input$NavigationItemsFilter>?);
+
+  Input$NavigationItemsFilter? get not =>
+      (_$data['not'] as Input$NavigationItemsFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('iconName')) {
+      final l$iconName = iconName;
+      result$data['iconName'] = l$iconName?.toJson();
+    }
+    if (_$data.containsKey('path')) {
+      final l$path = path;
+      result$data['path'] = l$path?.toJson();
+    }
+    if (_$data.containsKey('index')) {
+      final l$index = index;
+      result$data['index'] = l$index?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('parentId')) {
+      final l$parentId = parentId;
+      result$data['parentId'] = l$parentId?.toJson();
+    }
+    if (_$data.containsKey('roles')) {
+      final l$roles = roles;
+      result$data['roles'] = l$roles?.toJson();
+    }
+    if (_$data.containsKey('tag')) {
+      final l$tag = tag;
+      result$data['tag'] = l$tag?.toJson();
+    }
+    if (_$data.containsKey('navigationId')) {
+      final l$navigationId = navigationId;
+      result$data['navigationId'] = l$navigationId?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationItemsFilter<Input$NavigationItemsFilter>
+      get copyWith => CopyWith$Input$NavigationItemsFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationItemsFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$iconName = iconName;
+    final lOther$iconName = other.iconName;
+    if (_$data.containsKey('iconName') !=
+        other._$data.containsKey('iconName')) {
+      return false;
+    }
+    if (l$iconName != lOther$iconName) {
+      return false;
+    }
+    final l$path = path;
+    final lOther$path = other.path;
+    if (_$data.containsKey('path') != other._$data.containsKey('path')) {
+      return false;
+    }
+    if (l$path != lOther$path) {
+      return false;
+    }
+    final l$index = index;
+    final lOther$index = other.index;
+    if (_$data.containsKey('index') != other._$data.containsKey('index')) {
+      return false;
+    }
+    if (l$index != lOther$index) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$parentId = parentId;
+    final lOther$parentId = other.parentId;
+    if (_$data.containsKey('parentId') !=
+        other._$data.containsKey('parentId')) {
+      return false;
+    }
+    if (l$parentId != lOther$parentId) {
+      return false;
+    }
+    final l$roles = roles;
+    final lOther$roles = other.roles;
+    if (_$data.containsKey('roles') != other._$data.containsKey('roles')) {
+      return false;
+    }
+    if (l$roles != lOther$roles) {
+      return false;
+    }
+    final l$tag = tag;
+    final lOther$tag = other.tag;
+    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+      return false;
+    }
+    if (l$tag != lOther$tag) {
+      return false;
+    }
+    final l$navigationId = navigationId;
+    final lOther$navigationId = other.navigationId;
+    if (_$data.containsKey('navigationId') !=
+        other._$data.containsKey('navigationId')) {
+      return false;
+    }
+    if (l$navigationId != lOther$navigationId) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$iconName = iconName;
+    final l$path = path;
+    final l$index = index;
+    final l$createdAt = createdAt;
+    final l$parentId = parentId;
+    final l$roles = roles;
+    final l$tag = tag;
+    final l$navigationId = navigationId;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('iconName') ? l$iconName : const {},
+      _$data.containsKey('path') ? l$path : const {},
+      _$data.containsKey('index') ? l$index : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('parentId') ? l$parentId : const {},
+      _$data.containsKey('roles') ? l$roles : const {},
+      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('navigationId') ? l$navigationId : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationItemsFilter<TRes> {
+  factory CopyWith$Input$NavigationItemsFilter(
+    Input$NavigationItemsFilter instance,
+    TRes Function(Input$NavigationItemsFilter) then,
+  ) = _CopyWithImpl$Input$NavigationItemsFilter;
+
+  factory CopyWith$Input$NavigationItemsFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationItemsFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? iconName,
+    Input$StringFilter? path,
+    Input$IntFilter? index,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? parentId,
+    Input$StringListFilter? roles,
+    Input$StringFilter? tag,
+    Input$UUIDFilter? navigationId,
+    Input$IDFilter? nodeId,
+    List<Input$NavigationItemsFilter>? and,
+    List<Input$NavigationItemsFilter>? or,
+    Input$NavigationItemsFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get iconName;
+  CopyWith$Input$StringFilter<TRes> get path;
+  CopyWith$Input$IntFilter<TRes> get index;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$UUIDFilter<TRes> get parentId;
+  CopyWith$Input$StringListFilter<TRes> get roles;
+  CopyWith$Input$StringFilter<TRes> get tag;
+  CopyWith$Input$UUIDFilter<TRes> get navigationId;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$NavigationItemsFilter>? Function(
+              Iterable<
+                  CopyWith$Input$NavigationItemsFilter<
+                      Input$NavigationItemsFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$NavigationItemsFilter>? Function(
+              Iterable<
+                  CopyWith$Input$NavigationItemsFilter<
+                      Input$NavigationItemsFilter>>?)
+          _fn);
+  CopyWith$Input$NavigationItemsFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$NavigationItemsFilter<TRes>
+    implements CopyWith$Input$NavigationItemsFilter<TRes> {
+  _CopyWithImpl$Input$NavigationItemsFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationItemsFilter _instance;
+
+  final TRes Function(Input$NavigationItemsFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? iconName = _undefined,
+    Object? path = _undefined,
+    Object? index = _undefined,
+    Object? createdAt = _undefined,
+    Object? parentId = _undefined,
+    Object? roles = _undefined,
+    Object? tag = _undefined,
+    Object? navigationId = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$NavigationItemsFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (iconName != _undefined)
+          'iconName': (iconName as Input$StringFilter?),
+        if (path != _undefined) 'path': (path as Input$StringFilter?),
+        if (index != _undefined) 'index': (index as Input$IntFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (parentId != _undefined) 'parentId': (parentId as Input$UUIDFilter?),
+        if (roles != _undefined) 'roles': (roles as Input$StringListFilter?),
+        if (tag != _undefined) 'tag': (tag as Input$StringFilter?),
+        if (navigationId != _undefined)
+          'navigationId': (navigationId as Input$UUIDFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$NavigationItemsFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$NavigationItemsFilter>?),
+        if (not != _undefined) 'not': (not as Input$NavigationItemsFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get iconName {
+    final local$iconName = _instance.iconName;
+    return local$iconName == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$iconName, (e) => call(iconName: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get path {
+    final local$path = _instance.path;
+    return local$path == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$path, (e) => call(path: e));
+  }
+
+  CopyWith$Input$IntFilter<TRes> get index {
+    final local$index = _instance.index;
+    return local$index == null
+        ? CopyWith$Input$IntFilter.stub(_then(_instance))
+        : CopyWith$Input$IntFilter(local$index, (e) => call(index: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get parentId {
+    final local$parentId = _instance.parentId;
+    return local$parentId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$parentId, (e) => call(parentId: e));
+  }
+
+  CopyWith$Input$StringListFilter<TRes> get roles {
+    final local$roles = _instance.roles;
+    return local$roles == null
+        ? CopyWith$Input$StringListFilter.stub(_then(_instance))
+        : CopyWith$Input$StringListFilter(local$roles, (e) => call(roles: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get tag {
+    final local$tag = _instance.tag;
+    return local$tag == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$tag, (e) => call(tag: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get navigationId {
+    final local$navigationId = _instance.navigationId;
+    return local$navigationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$navigationId, (e) => call(navigationId: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$NavigationItemsFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$NavigationItemsFilter<
+                          Input$NavigationItemsFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(
+              _instance.and?.map((e) => CopyWith$Input$NavigationItemsFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$NavigationItemsFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$NavigationItemsFilter<
+                          Input$NavigationItemsFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$NavigationItemsFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$NavigationItemsFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$NavigationItemsFilter.stub(_then(_instance))
+        : CopyWith$Input$NavigationItemsFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$NavigationItemsFilter<TRes>
+    implements CopyWith$Input$NavigationItemsFilter<TRes> {
+  _CopyWithStubImpl$Input$NavigationItemsFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? iconName,
+    Input$StringFilter? path,
+    Input$IntFilter? index,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? parentId,
+    Input$StringListFilter? roles,
+    Input$StringFilter? tag,
+    Input$UUIDFilter? navigationId,
+    Input$IDFilter? nodeId,
+    List<Input$NavigationItemsFilter>? and,
+    List<Input$NavigationItemsFilter>? or,
+    Input$NavigationItemsFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get iconName =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get path =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$IntFilter<TRes> get index =>
+      CopyWith$Input$IntFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get parentId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringListFilter<TRes> get roles =>
+      CopyWith$Input$StringListFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get tag =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get navigationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$NavigationItemsFilter<TRes> get not =>
+      CopyWith$Input$NavigationItemsFilter.stub(_res);
+}
+
+class Input$NavigationItemsInsertInput {
+  factory Input$NavigationItemsInsertInput({
+    String? id,
+    String? name,
+    String? iconName,
+    String? path,
+    int? index,
+    DateTime? createdAt,
+    String? parentId,
+    List<String?>? roles,
+    Map<String, dynamic>? data,
+    String? tag,
+    String? navigationId,
+  }) =>
+      Input$NavigationItemsInsertInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (iconName != null) r'iconName': iconName,
+        if (path != null) r'path': path,
+        if (index != null) r'index': index,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (parentId != null) r'parentId': parentId,
+        if (roles != null) r'roles': roles,
+        if (data != null) r'data': data,
+        if (tag != null) r'tag': tag,
+        if (navigationId != null) r'navigationId': navigationId,
+      });
+
+  Input$NavigationItemsInsertInput._(this._$data);
+
+  factory Input$NavigationItemsInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('iconName')) {
+      final l$iconName = data['iconName'];
+      result$data['iconName'] = (l$iconName as String?);
+    }
+    if (data.containsKey('path')) {
+      final l$path = data['path'];
+      result$data['path'] = (l$path as String?);
+    }
+    if (data.containsKey('index')) {
+      final l$index = data['index'];
+      result$data['index'] = (l$index as int?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('parentId')) {
+      final l$parentId = data['parentId'];
+      result$data['parentId'] = (l$parentId as String?);
+    }
+    if (data.containsKey('roles')) {
+      final l$roles = data['roles'];
+      result$data['roles'] =
+          (l$roles as List<dynamic>?)?.map((e) => (e as String?)).toList();
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('tag')) {
+      final l$tag = data['tag'];
+      result$data['tag'] = (l$tag as String?);
+    }
+    if (data.containsKey('navigationId')) {
+      final l$navigationId = data['navigationId'];
+      result$data['navigationId'] = (l$navigationId as String?);
+    }
+    return Input$NavigationItemsInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get iconName => (_$data['iconName'] as String?);
+
+  String? get path => (_$data['path'] as String?);
+
+  int? get index => (_$data['index'] as int?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get parentId => (_$data['parentId'] as String?);
+
+  List<String?>? get roles => (_$data['roles'] as List<String?>?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  String? get tag => (_$data['tag'] as String?);
+
+  String? get navigationId => (_$data['navigationId'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('iconName')) {
+      final l$iconName = iconName;
+      result$data['iconName'] = l$iconName;
+    }
+    if (_$data.containsKey('path')) {
+      final l$path = path;
+      result$data['path'] = l$path;
+    }
+    if (_$data.containsKey('index')) {
+      final l$index = index;
+      result$data['index'] = l$index;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('parentId')) {
+      final l$parentId = parentId;
+      result$data['parentId'] = l$parentId;
+    }
+    if (_$data.containsKey('roles')) {
+      final l$roles = roles;
+      result$data['roles'] = l$roles?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('tag')) {
+      final l$tag = tag;
+      result$data['tag'] = l$tag;
+    }
+    if (_$data.containsKey('navigationId')) {
+      final l$navigationId = navigationId;
+      result$data['navigationId'] = l$navigationId;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationItemsInsertInput<Input$NavigationItemsInsertInput>
+      get copyWith => CopyWith$Input$NavigationItemsInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationItemsInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$iconName = iconName;
+    final lOther$iconName = other.iconName;
+    if (_$data.containsKey('iconName') !=
+        other._$data.containsKey('iconName')) {
+      return false;
+    }
+    if (l$iconName != lOther$iconName) {
+      return false;
+    }
+    final l$path = path;
+    final lOther$path = other.path;
+    if (_$data.containsKey('path') != other._$data.containsKey('path')) {
+      return false;
+    }
+    if (l$path != lOther$path) {
+      return false;
+    }
+    final l$index = index;
+    final lOther$index = other.index;
+    if (_$data.containsKey('index') != other._$data.containsKey('index')) {
+      return false;
+    }
+    if (l$index != lOther$index) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$parentId = parentId;
+    final lOther$parentId = other.parentId;
+    if (_$data.containsKey('parentId') !=
+        other._$data.containsKey('parentId')) {
+      return false;
+    }
+    if (l$parentId != lOther$parentId) {
+      return false;
+    }
+    final l$roles = roles;
+    final lOther$roles = other.roles;
+    if (_$data.containsKey('roles') != other._$data.containsKey('roles')) {
+      return false;
+    }
+    if (l$roles != null && lOther$roles != null) {
+      if (l$roles.length != lOther$roles.length) {
+        return false;
+      }
+      for (int i = 0; i < l$roles.length; i++) {
+        final l$roles$entry = l$roles[i];
+        final lOther$roles$entry = lOther$roles[i];
+        if (l$roles$entry != lOther$roles$entry) {
+          return false;
+        }
+      }
+    } else if (l$roles != lOther$roles) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$tag = tag;
+    final lOther$tag = other.tag;
+    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+      return false;
+    }
+    if (l$tag != lOther$tag) {
+      return false;
+    }
+    final l$navigationId = navigationId;
+    final lOther$navigationId = other.navigationId;
+    if (_$data.containsKey('navigationId') !=
+        other._$data.containsKey('navigationId')) {
+      return false;
+    }
+    if (l$navigationId != lOther$navigationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$iconName = iconName;
+    final l$path = path;
+    final l$index = index;
+    final l$createdAt = createdAt;
+    final l$parentId = parentId;
+    final l$roles = roles;
+    final l$data = data;
+    final l$tag = tag;
+    final l$navigationId = navigationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('iconName') ? l$iconName : const {},
+      _$data.containsKey('path') ? l$path : const {},
+      _$data.containsKey('index') ? l$index : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('parentId') ? l$parentId : const {},
+      _$data.containsKey('roles')
+          ? l$roles == null
+              ? null
+              : Object.hashAll(l$roles.map((v) => v))
+          : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('navigationId') ? l$navigationId : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationItemsInsertInput<TRes> {
+  factory CopyWith$Input$NavigationItemsInsertInput(
+    Input$NavigationItemsInsertInput instance,
+    TRes Function(Input$NavigationItemsInsertInput) then,
+  ) = _CopyWithImpl$Input$NavigationItemsInsertInput;
+
+  factory CopyWith$Input$NavigationItemsInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationItemsInsertInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? iconName,
+    String? path,
+    int? index,
+    DateTime? createdAt,
+    String? parentId,
+    List<String?>? roles,
+    Map<String, dynamic>? data,
+    String? tag,
+    String? navigationId,
+  });
+}
+
+class _CopyWithImpl$Input$NavigationItemsInsertInput<TRes>
+    implements CopyWith$Input$NavigationItemsInsertInput<TRes> {
+  _CopyWithImpl$Input$NavigationItemsInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationItemsInsertInput _instance;
+
+  final TRes Function(Input$NavigationItemsInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? iconName = _undefined,
+    Object? path = _undefined,
+    Object? index = _undefined,
+    Object? createdAt = _undefined,
+    Object? parentId = _undefined,
+    Object? roles = _undefined,
+    Object? data = _undefined,
+    Object? tag = _undefined,
+    Object? navigationId = _undefined,
+  }) =>
+      _then(Input$NavigationItemsInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (iconName != _undefined) 'iconName': (iconName as String?),
+        if (path != _undefined) 'path': (path as String?),
+        if (index != _undefined) 'index': (index as int?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (parentId != _undefined) 'parentId': (parentId as String?),
+        if (roles != _undefined) 'roles': (roles as List<String?>?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (tag != _undefined) 'tag': (tag as String?),
+        if (navigationId != _undefined)
+          'navigationId': (navigationId as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$NavigationItemsInsertInput<TRes>
+    implements CopyWith$Input$NavigationItemsInsertInput<TRes> {
+  _CopyWithStubImpl$Input$NavigationItemsInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? iconName,
+    String? path,
+    int? index,
+    DateTime? createdAt,
+    String? parentId,
+    List<String?>? roles,
+    Map<String, dynamic>? data,
+    String? tag,
+    String? navigationId,
+  }) =>
+      _res;
+}
+
+class Input$NavigationItemsOrderBy {
+  factory Input$NavigationItemsOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? iconName,
+    Enum$OrderByDirection? path,
+    Enum$OrderByDirection? index,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? parentId,
+    Enum$OrderByDirection? tag,
+    Enum$OrderByDirection? navigationId,
+  }) =>
+      Input$NavigationItemsOrderBy._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (iconName != null) r'iconName': iconName,
+        if (path != null) r'path': path,
+        if (index != null) r'index': index,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (parentId != null) r'parentId': parentId,
+        if (tag != null) r'tag': tag,
+        if (navigationId != null) r'navigationId': navigationId,
+      });
+
+  Input$NavigationItemsOrderBy._(this._$data);
+
+  factory Input$NavigationItemsOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('iconName')) {
+      final l$iconName = data['iconName'];
+      result$data['iconName'] = l$iconName == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$iconName as String));
+    }
+    if (data.containsKey('path')) {
+      final l$path = data['path'];
+      result$data['path'] = l$path == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$path as String));
+    }
+    if (data.containsKey('index')) {
+      final l$index = data['index'];
+      result$data['index'] = l$index == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$index as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('parentId')) {
+      final l$parentId = data['parentId'];
+      result$data['parentId'] = l$parentId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$parentId as String));
+    }
+    if (data.containsKey('tag')) {
+      final l$tag = data['tag'];
+      result$data['tag'] = l$tag == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$tag as String));
+    }
+    if (data.containsKey('navigationId')) {
+      final l$navigationId = data['navigationId'];
+      result$data['navigationId'] = l$navigationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$navigationId as String));
+    }
+    return Input$NavigationItemsOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get iconName =>
+      (_$data['iconName'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get path => (_$data['path'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get index =>
+      (_$data['index'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get parentId =>
+      (_$data['parentId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get tag => (_$data['tag'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get navigationId =>
+      (_$data['navigationId'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('iconName')) {
+      final l$iconName = iconName;
+      result$data['iconName'] =
+          l$iconName == null ? null : toJson$Enum$OrderByDirection(l$iconName);
+    }
+    if (_$data.containsKey('path')) {
+      final l$path = path;
+      result$data['path'] =
+          l$path == null ? null : toJson$Enum$OrderByDirection(l$path);
+    }
+    if (_$data.containsKey('index')) {
+      final l$index = index;
+      result$data['index'] =
+          l$index == null ? null : toJson$Enum$OrderByDirection(l$index);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('parentId')) {
+      final l$parentId = parentId;
+      result$data['parentId'] =
+          l$parentId == null ? null : toJson$Enum$OrderByDirection(l$parentId);
+    }
+    if (_$data.containsKey('tag')) {
+      final l$tag = tag;
+      result$data['tag'] =
+          l$tag == null ? null : toJson$Enum$OrderByDirection(l$tag);
+    }
+    if (_$data.containsKey('navigationId')) {
+      final l$navigationId = navigationId;
+      result$data['navigationId'] = l$navigationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$navigationId);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationItemsOrderBy<Input$NavigationItemsOrderBy>
+      get copyWith => CopyWith$Input$NavigationItemsOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationItemsOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$iconName = iconName;
+    final lOther$iconName = other.iconName;
+    if (_$data.containsKey('iconName') !=
+        other._$data.containsKey('iconName')) {
+      return false;
+    }
+    if (l$iconName != lOther$iconName) {
+      return false;
+    }
+    final l$path = path;
+    final lOther$path = other.path;
+    if (_$data.containsKey('path') != other._$data.containsKey('path')) {
+      return false;
+    }
+    if (l$path != lOther$path) {
+      return false;
+    }
+    final l$index = index;
+    final lOther$index = other.index;
+    if (_$data.containsKey('index') != other._$data.containsKey('index')) {
+      return false;
+    }
+    if (l$index != lOther$index) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$parentId = parentId;
+    final lOther$parentId = other.parentId;
+    if (_$data.containsKey('parentId') !=
+        other._$data.containsKey('parentId')) {
+      return false;
+    }
+    if (l$parentId != lOther$parentId) {
+      return false;
+    }
+    final l$tag = tag;
+    final lOther$tag = other.tag;
+    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+      return false;
+    }
+    if (l$tag != lOther$tag) {
+      return false;
+    }
+    final l$navigationId = navigationId;
+    final lOther$navigationId = other.navigationId;
+    if (_$data.containsKey('navigationId') !=
+        other._$data.containsKey('navigationId')) {
+      return false;
+    }
+    if (l$navigationId != lOther$navigationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$iconName = iconName;
+    final l$path = path;
+    final l$index = index;
+    final l$createdAt = createdAt;
+    final l$parentId = parentId;
+    final l$tag = tag;
+    final l$navigationId = navigationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('iconName') ? l$iconName : const {},
+      _$data.containsKey('path') ? l$path : const {},
+      _$data.containsKey('index') ? l$index : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('parentId') ? l$parentId : const {},
+      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('navigationId') ? l$navigationId : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationItemsOrderBy<TRes> {
+  factory CopyWith$Input$NavigationItemsOrderBy(
+    Input$NavigationItemsOrderBy instance,
+    TRes Function(Input$NavigationItemsOrderBy) then,
+  ) = _CopyWithImpl$Input$NavigationItemsOrderBy;
+
+  factory CopyWith$Input$NavigationItemsOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationItemsOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? iconName,
+    Enum$OrderByDirection? path,
+    Enum$OrderByDirection? index,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? parentId,
+    Enum$OrderByDirection? tag,
+    Enum$OrderByDirection? navigationId,
+  });
+}
+
+class _CopyWithImpl$Input$NavigationItemsOrderBy<TRes>
+    implements CopyWith$Input$NavigationItemsOrderBy<TRes> {
+  _CopyWithImpl$Input$NavigationItemsOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationItemsOrderBy _instance;
+
+  final TRes Function(Input$NavigationItemsOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? iconName = _undefined,
+    Object? path = _undefined,
+    Object? index = _undefined,
+    Object? createdAt = _undefined,
+    Object? parentId = _undefined,
+    Object? tag = _undefined,
+    Object? navigationId = _undefined,
+  }) =>
+      _then(Input$NavigationItemsOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (iconName != _undefined)
+          'iconName': (iconName as Enum$OrderByDirection?),
+        if (path != _undefined) 'path': (path as Enum$OrderByDirection?),
+        if (index != _undefined) 'index': (index as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (parentId != _undefined)
+          'parentId': (parentId as Enum$OrderByDirection?),
+        if (tag != _undefined) 'tag': (tag as Enum$OrderByDirection?),
+        if (navigationId != _undefined)
+          'navigationId': (navigationId as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$NavigationItemsOrderBy<TRes>
+    implements CopyWith$Input$NavigationItemsOrderBy<TRes> {
+  _CopyWithStubImpl$Input$NavigationItemsOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? iconName,
+    Enum$OrderByDirection? path,
+    Enum$OrderByDirection? index,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? parentId,
+    Enum$OrderByDirection? tag,
+    Enum$OrderByDirection? navigationId,
+  }) =>
+      _res;
+}
+
+class Input$NavigationItemsUpdateInput {
+  factory Input$NavigationItemsUpdateInput({
+    String? id,
+    String? name,
+    String? iconName,
+    String? path,
+    int? index,
+    DateTime? createdAt,
+    String? parentId,
+    List<String?>? roles,
+    Map<String, dynamic>? data,
+    String? tag,
+    String? navigationId,
+  }) =>
+      Input$NavigationItemsUpdateInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (iconName != null) r'iconName': iconName,
+        if (path != null) r'path': path,
+        if (index != null) r'index': index,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (parentId != null) r'parentId': parentId,
+        if (roles != null) r'roles': roles,
+        if (data != null) r'data': data,
+        if (tag != null) r'tag': tag,
+        if (navigationId != null) r'navigationId': navigationId,
+      });
+
+  Input$NavigationItemsUpdateInput._(this._$data);
+
+  factory Input$NavigationItemsUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('iconName')) {
+      final l$iconName = data['iconName'];
+      result$data['iconName'] = (l$iconName as String?);
+    }
+    if (data.containsKey('path')) {
+      final l$path = data['path'];
+      result$data['path'] = (l$path as String?);
+    }
+    if (data.containsKey('index')) {
+      final l$index = data['index'];
+      result$data['index'] = (l$index as int?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('parentId')) {
+      final l$parentId = data['parentId'];
+      result$data['parentId'] = (l$parentId as String?);
+    }
+    if (data.containsKey('roles')) {
+      final l$roles = data['roles'];
+      result$data['roles'] =
+          (l$roles as List<dynamic>?)?.map((e) => (e as String?)).toList();
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('tag')) {
+      final l$tag = data['tag'];
+      result$data['tag'] = (l$tag as String?);
+    }
+    if (data.containsKey('navigationId')) {
+      final l$navigationId = data['navigationId'];
+      result$data['navigationId'] = (l$navigationId as String?);
+    }
+    return Input$NavigationItemsUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get iconName => (_$data['iconName'] as String?);
+
+  String? get path => (_$data['path'] as String?);
+
+  int? get index => (_$data['index'] as int?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get parentId => (_$data['parentId'] as String?);
+
+  List<String?>? get roles => (_$data['roles'] as List<String?>?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  String? get tag => (_$data['tag'] as String?);
+
+  String? get navigationId => (_$data['navigationId'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('iconName')) {
+      final l$iconName = iconName;
+      result$data['iconName'] = l$iconName;
+    }
+    if (_$data.containsKey('path')) {
+      final l$path = path;
+      result$data['path'] = l$path;
+    }
+    if (_$data.containsKey('index')) {
+      final l$index = index;
+      result$data['index'] = l$index;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('parentId')) {
+      final l$parentId = parentId;
+      result$data['parentId'] = l$parentId;
+    }
+    if (_$data.containsKey('roles')) {
+      final l$roles = roles;
+      result$data['roles'] = l$roles?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('tag')) {
+      final l$tag = tag;
+      result$data['tag'] = l$tag;
+    }
+    if (_$data.containsKey('navigationId')) {
+      final l$navigationId = navigationId;
+      result$data['navigationId'] = l$navigationId;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationItemsUpdateInput<Input$NavigationItemsUpdateInput>
+      get copyWith => CopyWith$Input$NavigationItemsUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationItemsUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$iconName = iconName;
+    final lOther$iconName = other.iconName;
+    if (_$data.containsKey('iconName') !=
+        other._$data.containsKey('iconName')) {
+      return false;
+    }
+    if (l$iconName != lOther$iconName) {
+      return false;
+    }
+    final l$path = path;
+    final lOther$path = other.path;
+    if (_$data.containsKey('path') != other._$data.containsKey('path')) {
+      return false;
+    }
+    if (l$path != lOther$path) {
+      return false;
+    }
+    final l$index = index;
+    final lOther$index = other.index;
+    if (_$data.containsKey('index') != other._$data.containsKey('index')) {
+      return false;
+    }
+    if (l$index != lOther$index) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$parentId = parentId;
+    final lOther$parentId = other.parentId;
+    if (_$data.containsKey('parentId') !=
+        other._$data.containsKey('parentId')) {
+      return false;
+    }
+    if (l$parentId != lOther$parentId) {
+      return false;
+    }
+    final l$roles = roles;
+    final lOther$roles = other.roles;
+    if (_$data.containsKey('roles') != other._$data.containsKey('roles')) {
+      return false;
+    }
+    if (l$roles != null && lOther$roles != null) {
+      if (l$roles.length != lOther$roles.length) {
+        return false;
+      }
+      for (int i = 0; i < l$roles.length; i++) {
+        final l$roles$entry = l$roles[i];
+        final lOther$roles$entry = lOther$roles[i];
+        if (l$roles$entry != lOther$roles$entry) {
+          return false;
+        }
+      }
+    } else if (l$roles != lOther$roles) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$tag = tag;
+    final lOther$tag = other.tag;
+    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+      return false;
+    }
+    if (l$tag != lOther$tag) {
+      return false;
+    }
+    final l$navigationId = navigationId;
+    final lOther$navigationId = other.navigationId;
+    if (_$data.containsKey('navigationId') !=
+        other._$data.containsKey('navigationId')) {
+      return false;
+    }
+    if (l$navigationId != lOther$navigationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$iconName = iconName;
+    final l$path = path;
+    final l$index = index;
+    final l$createdAt = createdAt;
+    final l$parentId = parentId;
+    final l$roles = roles;
+    final l$data = data;
+    final l$tag = tag;
+    final l$navigationId = navigationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('iconName') ? l$iconName : const {},
+      _$data.containsKey('path') ? l$path : const {},
+      _$data.containsKey('index') ? l$index : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('parentId') ? l$parentId : const {},
+      _$data.containsKey('roles')
+          ? l$roles == null
+              ? null
+              : Object.hashAll(l$roles.map((v) => v))
+          : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('navigationId') ? l$navigationId : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationItemsUpdateInput<TRes> {
+  factory CopyWith$Input$NavigationItemsUpdateInput(
+    Input$NavigationItemsUpdateInput instance,
+    TRes Function(Input$NavigationItemsUpdateInput) then,
+  ) = _CopyWithImpl$Input$NavigationItemsUpdateInput;
+
+  factory CopyWith$Input$NavigationItemsUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationItemsUpdateInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? iconName,
+    String? path,
+    int? index,
+    DateTime? createdAt,
+    String? parentId,
+    List<String?>? roles,
+    Map<String, dynamic>? data,
+    String? tag,
+    String? navigationId,
+  });
+}
+
+class _CopyWithImpl$Input$NavigationItemsUpdateInput<TRes>
+    implements CopyWith$Input$NavigationItemsUpdateInput<TRes> {
+  _CopyWithImpl$Input$NavigationItemsUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationItemsUpdateInput _instance;
+
+  final TRes Function(Input$NavigationItemsUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? iconName = _undefined,
+    Object? path = _undefined,
+    Object? index = _undefined,
+    Object? createdAt = _undefined,
+    Object? parentId = _undefined,
+    Object? roles = _undefined,
+    Object? data = _undefined,
+    Object? tag = _undefined,
+    Object? navigationId = _undefined,
+  }) =>
+      _then(Input$NavigationItemsUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (iconName != _undefined) 'iconName': (iconName as String?),
+        if (path != _undefined) 'path': (path as String?),
+        if (index != _undefined) 'index': (index as int?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (parentId != _undefined) 'parentId': (parentId as String?),
+        if (roles != _undefined) 'roles': (roles as List<String?>?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (tag != _undefined) 'tag': (tag as String?),
+        if (navigationId != _undefined)
+          'navigationId': (navigationId as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$NavigationItemsUpdateInput<TRes>
+    implements CopyWith$Input$NavigationItemsUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$NavigationItemsUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? iconName,
+    String? path,
+    int? index,
+    DateTime? createdAt,
+    String? parentId,
+    List<String?>? roles,
+    Map<String, dynamic>? data,
+    String? tag,
+    String? navigationId,
+  }) =>
+      _res;
+}
+
+class Input$NavigationOrderBy {
+  factory Input$NavigationOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$NavigationOrderBy._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$NavigationOrderBy._(this._$data);
+
+  factory Input$NavigationOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$key as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$NavigationOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get key => (_$data['key'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] =
+          l$key == null ? null : toJson$Enum$OrderByDirection(l$key);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationOrderBy<Input$NavigationOrderBy> get copyWith =>
+      CopyWith$Input$NavigationOrderBy(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationOrderBy || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationOrderBy<TRes> {
+  factory CopyWith$Input$NavigationOrderBy(
+    Input$NavigationOrderBy instance,
+    TRes Function(Input$NavigationOrderBy) then,
+  ) = _CopyWithImpl$Input$NavigationOrderBy;
+
+  factory CopyWith$Input$NavigationOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$NavigationOrderBy<TRes>
+    implements CopyWith$Input$NavigationOrderBy<TRes> {
+  _CopyWithImpl$Input$NavigationOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationOrderBy _instance;
+
+  final TRes Function(Input$NavigationOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$NavigationOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (key != _undefined) 'key': (key as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$NavigationOrderBy<TRes>
+    implements CopyWith$Input$NavigationOrderBy<TRes> {
+  _CopyWithStubImpl$Input$NavigationOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$NavigationUpdateInput {
+  factory Input$NavigationUpdateInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  }) =>
+      Input$NavigationUpdateInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$NavigationUpdateInput._(this._$data);
+
+  factory Input$NavigationUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$NavigationUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$NavigationUpdateInput<Input$NavigationUpdateInput>
+      get copyWith => CopyWith$Input$NavigationUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$NavigationUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$NavigationUpdateInput<TRes> {
+  factory CopyWith$Input$NavigationUpdateInput(
+    Input$NavigationUpdateInput instance,
+    TRes Function(Input$NavigationUpdateInput) then,
+  ) = _CopyWithImpl$Input$NavigationUpdateInput;
+
+  factory CopyWith$Input$NavigationUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$NavigationUpdateInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$NavigationUpdateInput<TRes>
+    implements CopyWith$Input$NavigationUpdateInput<TRes> {
+  _CopyWithImpl$Input$NavigationUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$NavigationUpdateInput _instance;
+
+  final TRes Function(Input$NavigationUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$NavigationUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$NavigationUpdateInput<TRes>
+    implements CopyWith$Input$NavigationUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$NavigationUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
   }) =>
       _res;
 }
@@ -8767,6 +13810,12 @@ class Input$OrdersFilter {
     Input$StringFilter? deliveryAddress1,
     Input$DatetimeFilter? updatedAt,
     Input$StringFilter? notes,
+    Input$FloatFilter? deliveryLat,
+    Input$FloatFilter? deliveryLong,
+    Input$BigFloatFilter? subtotal,
+    Input$BigFloatFilter? tax,
+    Input$BigFloatFilter? total,
+    Input$StringFilter? deliveryState,
     Input$IDFilter? nodeId,
     List<Input$OrdersFilter>? and,
     List<Input$OrdersFilter>? or,
@@ -8787,6 +13836,12 @@ class Input$OrdersFilter {
         if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
+        if (deliveryLat != null) r'deliveryLat': deliveryLat,
+        if (deliveryLong != null) r'deliveryLong': deliveryLong,
+        if (subtotal != null) r'subtotal': subtotal,
+        if (tax != null) r'tax': tax,
+        if (total != null) r'total': total,
+        if (deliveryState != null) r'deliveryState': deliveryState,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -8878,6 +13933,44 @@ class Input$OrdersFilter {
           ? null
           : Input$StringFilter.fromJson((l$notes as Map<String, dynamic>));
     }
+    if (data.containsKey('deliveryLat')) {
+      final l$deliveryLat = data['deliveryLat'];
+      result$data['deliveryLat'] = l$deliveryLat == null
+          ? null
+          : Input$FloatFilter.fromJson((l$deliveryLat as Map<String, dynamic>));
+    }
+    if (data.containsKey('deliveryLong')) {
+      final l$deliveryLong = data['deliveryLong'];
+      result$data['deliveryLong'] = l$deliveryLong == null
+          ? null
+          : Input$FloatFilter.fromJson(
+              (l$deliveryLong as Map<String, dynamic>));
+    }
+    if (data.containsKey('subtotal')) {
+      final l$subtotal = data['subtotal'];
+      result$data['subtotal'] = l$subtotal == null
+          ? null
+          : Input$BigFloatFilter.fromJson((l$subtotal as Map<String, dynamic>));
+    }
+    if (data.containsKey('tax')) {
+      final l$tax = data['tax'];
+      result$data['tax'] = l$tax == null
+          ? null
+          : Input$BigFloatFilter.fromJson((l$tax as Map<String, dynamic>));
+    }
+    if (data.containsKey('total')) {
+      final l$total = data['total'];
+      result$data['total'] = l$total == null
+          ? null
+          : Input$BigFloatFilter.fromJson((l$total as Map<String, dynamic>));
+    }
+    if (data.containsKey('deliveryState')) {
+      final l$deliveryState = data['deliveryState'];
+      result$data['deliveryState'] = l$deliveryState == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$deliveryState as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -8940,6 +14033,22 @@ class Input$OrdersFilter {
 
   Input$StringFilter? get notes => (_$data['notes'] as Input$StringFilter?);
 
+  Input$FloatFilter? get deliveryLat =>
+      (_$data['deliveryLat'] as Input$FloatFilter?);
+
+  Input$FloatFilter? get deliveryLong =>
+      (_$data['deliveryLong'] as Input$FloatFilter?);
+
+  Input$BigFloatFilter? get subtotal =>
+      (_$data['subtotal'] as Input$BigFloatFilter?);
+
+  Input$BigFloatFilter? get tax => (_$data['tax'] as Input$BigFloatFilter?);
+
+  Input$BigFloatFilter? get total => (_$data['total'] as Input$BigFloatFilter?);
+
+  Input$StringFilter? get deliveryState =>
+      (_$data['deliveryState'] as Input$StringFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$OrdersFilter>? get and =>
@@ -8999,6 +14108,30 @@ class Input$OrdersFilter {
     if (_$data.containsKey('notes')) {
       final l$notes = notes;
       result$data['notes'] = l$notes?.toJson();
+    }
+    if (_$data.containsKey('deliveryLat')) {
+      final l$deliveryLat = deliveryLat;
+      result$data['deliveryLat'] = l$deliveryLat?.toJson();
+    }
+    if (_$data.containsKey('deliveryLong')) {
+      final l$deliveryLong = deliveryLong;
+      result$data['deliveryLong'] = l$deliveryLong?.toJson();
+    }
+    if (_$data.containsKey('subtotal')) {
+      final l$subtotal = subtotal;
+      result$data['subtotal'] = l$subtotal?.toJson();
+    }
+    if (_$data.containsKey('tax')) {
+      final l$tax = tax;
+      result$data['tax'] = l$tax?.toJson();
+    }
+    if (_$data.containsKey('total')) {
+      final l$total = total;
+      result$data['total'] = l$total?.toJson();
+    }
+    if (_$data.containsKey('deliveryState')) {
+      final l$deliveryState = deliveryState;
+      result$data['deliveryState'] = l$deliveryState?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -9138,6 +14271,58 @@ class Input$OrdersFilter {
     if (l$notes != lOther$notes) {
       return false;
     }
+    final l$deliveryLat = deliveryLat;
+    final lOther$deliveryLat = other.deliveryLat;
+    if (_$data.containsKey('deliveryLat') !=
+        other._$data.containsKey('deliveryLat')) {
+      return false;
+    }
+    if (l$deliveryLat != lOther$deliveryLat) {
+      return false;
+    }
+    final l$deliveryLong = deliveryLong;
+    final lOther$deliveryLong = other.deliveryLong;
+    if (_$data.containsKey('deliveryLong') !=
+        other._$data.containsKey('deliveryLong')) {
+      return false;
+    }
+    if (l$deliveryLong != lOther$deliveryLong) {
+      return false;
+    }
+    final l$subtotal = subtotal;
+    final lOther$subtotal = other.subtotal;
+    if (_$data.containsKey('subtotal') !=
+        other._$data.containsKey('subtotal')) {
+      return false;
+    }
+    if (l$subtotal != lOther$subtotal) {
+      return false;
+    }
+    final l$tax = tax;
+    final lOther$tax = other.tax;
+    if (_$data.containsKey('tax') != other._$data.containsKey('tax')) {
+      return false;
+    }
+    if (l$tax != lOther$tax) {
+      return false;
+    }
+    final l$total = total;
+    final lOther$total = other.total;
+    if (_$data.containsKey('total') != other._$data.containsKey('total')) {
+      return false;
+    }
+    if (l$total != lOther$total) {
+      return false;
+    }
+    final l$deliveryState = deliveryState;
+    final lOther$deliveryState = other.deliveryState;
+    if (_$data.containsKey('deliveryState') !=
+        other._$data.containsKey('deliveryState')) {
+      return false;
+    }
+    if (l$deliveryState != lOther$deliveryState) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -9209,6 +14394,12 @@ class Input$OrdersFilter {
     final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
+    final l$deliveryLat = deliveryLat;
+    final l$deliveryLong = deliveryLong;
+    final l$subtotal = subtotal;
+    final l$tax = tax;
+    final l$total = total;
+    final l$deliveryState = deliveryState;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -9230,6 +14421,12 @@ class Input$OrdersFilter {
       _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
+      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
+      _$data.containsKey('subtotal') ? l$subtotal : const {},
+      _$data.containsKey('tax') ? l$tax : const {},
+      _$data.containsKey('total') ? l$total : const {},
+      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -9268,6 +14465,12 @@ abstract class CopyWith$Input$OrdersFilter<TRes> {
     Input$StringFilter? deliveryAddress1,
     Input$DatetimeFilter? updatedAt,
     Input$StringFilter? notes,
+    Input$FloatFilter? deliveryLat,
+    Input$FloatFilter? deliveryLong,
+    Input$BigFloatFilter? subtotal,
+    Input$BigFloatFilter? tax,
+    Input$BigFloatFilter? total,
+    Input$StringFilter? deliveryState,
     Input$IDFilter? nodeId,
     List<Input$OrdersFilter>? and,
     List<Input$OrdersFilter>? or,
@@ -9285,6 +14488,12 @@ abstract class CopyWith$Input$OrdersFilter<TRes> {
   CopyWith$Input$StringFilter<TRes> get deliveryAddress1;
   CopyWith$Input$DatetimeFilter<TRes> get updatedAt;
   CopyWith$Input$StringFilter<TRes> get notes;
+  CopyWith$Input$FloatFilter<TRes> get deliveryLat;
+  CopyWith$Input$FloatFilter<TRes> get deliveryLong;
+  CopyWith$Input$BigFloatFilter<TRes> get subtotal;
+  CopyWith$Input$BigFloatFilter<TRes> get tax;
+  CopyWith$Input$BigFloatFilter<TRes> get total;
+  CopyWith$Input$StringFilter<TRes> get deliveryState;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$OrdersFilter>? Function(
@@ -9323,6 +14532,12 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
     Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
+    Object? deliveryLat = _undefined,
+    Object? deliveryLong = _undefined,
+    Object? subtotal = _undefined,
+    Object? tax = _undefined,
+    Object? total = _undefined,
+    Object? deliveryState = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -9351,6 +14566,16 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
         if (updatedAt != _undefined)
           'updatedAt': (updatedAt as Input$DatetimeFilter?),
         if (notes != _undefined) 'notes': (notes as Input$StringFilter?),
+        if (deliveryLat != _undefined)
+          'deliveryLat': (deliveryLat as Input$FloatFilter?),
+        if (deliveryLong != _undefined)
+          'deliveryLong': (deliveryLong as Input$FloatFilter?),
+        if (subtotal != _undefined)
+          'subtotal': (subtotal as Input$BigFloatFilter?),
+        if (tax != _undefined) 'tax': (tax as Input$BigFloatFilter?),
+        if (total != _undefined) 'total': (total as Input$BigFloatFilter?),
+        if (deliveryState != _undefined)
+          'deliveryState': (deliveryState as Input$StringFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$OrdersFilter>?),
         if (or != _undefined) 'or': (or as List<Input$OrdersFilter>?),
@@ -9450,6 +14675,52 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
         : CopyWith$Input$StringFilter(local$notes, (e) => call(notes: e));
   }
 
+  CopyWith$Input$FloatFilter<TRes> get deliveryLat {
+    final local$deliveryLat = _instance.deliveryLat;
+    return local$deliveryLat == null
+        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
+        : CopyWith$Input$FloatFilter(
+            local$deliveryLat, (e) => call(deliveryLat: e));
+  }
+
+  CopyWith$Input$FloatFilter<TRes> get deliveryLong {
+    final local$deliveryLong = _instance.deliveryLong;
+    return local$deliveryLong == null
+        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
+        : CopyWith$Input$FloatFilter(
+            local$deliveryLong, (e) => call(deliveryLong: e));
+  }
+
+  CopyWith$Input$BigFloatFilter<TRes> get subtotal {
+    final local$subtotal = _instance.subtotal;
+    return local$subtotal == null
+        ? CopyWith$Input$BigFloatFilter.stub(_then(_instance))
+        : CopyWith$Input$BigFloatFilter(
+            local$subtotal, (e) => call(subtotal: e));
+  }
+
+  CopyWith$Input$BigFloatFilter<TRes> get tax {
+    final local$tax = _instance.tax;
+    return local$tax == null
+        ? CopyWith$Input$BigFloatFilter.stub(_then(_instance))
+        : CopyWith$Input$BigFloatFilter(local$tax, (e) => call(tax: e));
+  }
+
+  CopyWith$Input$BigFloatFilter<TRes> get total {
+    final local$total = _instance.total;
+    return local$total == null
+        ? CopyWith$Input$BigFloatFilter.stub(_then(_instance))
+        : CopyWith$Input$BigFloatFilter(local$total, (e) => call(total: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get deliveryState {
+    final local$deliveryState = _instance.deliveryState;
+    return local$deliveryState == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$deliveryState, (e) => call(deliveryState: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -9504,6 +14775,12 @@ class _CopyWithStubImpl$Input$OrdersFilter<TRes>
     Input$StringFilter? deliveryAddress1,
     Input$DatetimeFilter? updatedAt,
     Input$StringFilter? notes,
+    Input$FloatFilter? deliveryLat,
+    Input$FloatFilter? deliveryLong,
+    Input$BigFloatFilter? subtotal,
+    Input$BigFloatFilter? tax,
+    Input$BigFloatFilter? total,
+    Input$StringFilter? deliveryState,
     Input$IDFilter? nodeId,
     List<Input$OrdersFilter>? and,
     List<Input$OrdersFilter>? or,
@@ -9547,6 +14824,24 @@ class _CopyWithStubImpl$Input$OrdersFilter<TRes>
   CopyWith$Input$StringFilter<TRes> get notes =>
       CopyWith$Input$StringFilter.stub(_res);
 
+  CopyWith$Input$FloatFilter<TRes> get deliveryLat =>
+      CopyWith$Input$FloatFilter.stub(_res);
+
+  CopyWith$Input$FloatFilter<TRes> get deliveryLong =>
+      CopyWith$Input$FloatFilter.stub(_res);
+
+  CopyWith$Input$BigFloatFilter<TRes> get subtotal =>
+      CopyWith$Input$BigFloatFilter.stub(_res);
+
+  CopyWith$Input$BigFloatFilter<TRes> get tax =>
+      CopyWith$Input$BigFloatFilter.stub(_res);
+
+  CopyWith$Input$BigFloatFilter<TRes> get total =>
+      CopyWith$Input$BigFloatFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get deliveryState =>
+      CopyWith$Input$StringFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -9572,6 +14867,12 @@ class Input$OrdersInsertInput {
     String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
+    double? deliveryLat,
+    double? deliveryLong,
+    double? subtotal,
+    double? tax,
+    double? total,
+    String? deliveryState,
   }) =>
       Input$OrdersInsertInput._({
         if (id != null) r'id': id,
@@ -9588,6 +14889,12 @@ class Input$OrdersInsertInput {
         if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
+        if (deliveryLat != null) r'deliveryLat': deliveryLat,
+        if (deliveryLong != null) r'deliveryLong': deliveryLong,
+        if (subtotal != null) r'subtotal': subtotal,
+        if (tax != null) r'tax': tax,
+        if (total != null) r'total': total,
+        if (deliveryState != null) r'deliveryState': deliveryState,
       });
 
   Input$OrdersInsertInput._(this._$data);
@@ -9648,6 +14955,30 @@ class Input$OrdersInsertInput {
       final l$notes = data['notes'];
       result$data['notes'] = (l$notes as String?);
     }
+    if (data.containsKey('deliveryLat')) {
+      final l$deliveryLat = data['deliveryLat'];
+      result$data['deliveryLat'] = (l$deliveryLat as num?)?.toDouble();
+    }
+    if (data.containsKey('deliveryLong')) {
+      final l$deliveryLong = data['deliveryLong'];
+      result$data['deliveryLong'] = (l$deliveryLong as num?)?.toDouble();
+    }
+    if (data.containsKey('subtotal')) {
+      final l$subtotal = data['subtotal'];
+      result$data['subtotal'] = (l$subtotal as num?)?.toDouble();
+    }
+    if (data.containsKey('tax')) {
+      final l$tax = data['tax'];
+      result$data['tax'] = (l$tax as num?)?.toDouble();
+    }
+    if (data.containsKey('total')) {
+      final l$total = data['total'];
+      result$data['total'] = (l$total as num?)?.toDouble();
+    }
+    if (data.containsKey('deliveryState')) {
+      final l$deliveryState = data['deliveryState'];
+      result$data['deliveryState'] = (l$deliveryState as String?);
+    }
     return Input$OrdersInsertInput._(result$data);
   }
 
@@ -9679,6 +15010,18 @@ class Input$OrdersInsertInput {
   DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
 
   String? get notes => (_$data['notes'] as String?);
+
+  double? get deliveryLat => (_$data['deliveryLat'] as double?);
+
+  double? get deliveryLong => (_$data['deliveryLong'] as double?);
+
+  double? get subtotal => (_$data['subtotal'] as double?);
+
+  double? get tax => (_$data['tax'] as double?);
+
+  double? get total => (_$data['total'] as double?);
+
+  String? get deliveryState => (_$data['deliveryState'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -9731,6 +15074,30 @@ class Input$OrdersInsertInput {
     if (_$data.containsKey('notes')) {
       final l$notes = notes;
       result$data['notes'] = l$notes;
+    }
+    if (_$data.containsKey('deliveryLat')) {
+      final l$deliveryLat = deliveryLat;
+      result$data['deliveryLat'] = l$deliveryLat;
+    }
+    if (_$data.containsKey('deliveryLong')) {
+      final l$deliveryLong = deliveryLong;
+      result$data['deliveryLong'] = l$deliveryLong;
+    }
+    if (_$data.containsKey('subtotal')) {
+      final l$subtotal = subtotal;
+      result$data['subtotal'] = l$subtotal;
+    }
+    if (_$data.containsKey('tax')) {
+      final l$tax = tax;
+      result$data['tax'] = l$tax;
+    }
+    if (_$data.containsKey('total')) {
+      final l$total = total;
+      result$data['total'] = l$total;
+    }
+    if (_$data.containsKey('deliveryState')) {
+      final l$deliveryState = deliveryState;
+      result$data['deliveryState'] = l$deliveryState;
     }
     return result$data;
   }
@@ -9854,6 +15221,58 @@ class Input$OrdersInsertInput {
     if (l$notes != lOther$notes) {
       return false;
     }
+    final l$deliveryLat = deliveryLat;
+    final lOther$deliveryLat = other.deliveryLat;
+    if (_$data.containsKey('deliveryLat') !=
+        other._$data.containsKey('deliveryLat')) {
+      return false;
+    }
+    if (l$deliveryLat != lOther$deliveryLat) {
+      return false;
+    }
+    final l$deliveryLong = deliveryLong;
+    final lOther$deliveryLong = other.deliveryLong;
+    if (_$data.containsKey('deliveryLong') !=
+        other._$data.containsKey('deliveryLong')) {
+      return false;
+    }
+    if (l$deliveryLong != lOther$deliveryLong) {
+      return false;
+    }
+    final l$subtotal = subtotal;
+    final lOther$subtotal = other.subtotal;
+    if (_$data.containsKey('subtotal') !=
+        other._$data.containsKey('subtotal')) {
+      return false;
+    }
+    if (l$subtotal != lOther$subtotal) {
+      return false;
+    }
+    final l$tax = tax;
+    final lOther$tax = other.tax;
+    if (_$data.containsKey('tax') != other._$data.containsKey('tax')) {
+      return false;
+    }
+    if (l$tax != lOther$tax) {
+      return false;
+    }
+    final l$total = total;
+    final lOther$total = other.total;
+    if (_$data.containsKey('total') != other._$data.containsKey('total')) {
+      return false;
+    }
+    if (l$total != lOther$total) {
+      return false;
+    }
+    final l$deliveryState = deliveryState;
+    final lOther$deliveryState = other.deliveryState;
+    if (_$data.containsKey('deliveryState') !=
+        other._$data.containsKey('deliveryState')) {
+      return false;
+    }
+    if (l$deliveryState != lOther$deliveryState) {
+      return false;
+    }
     return true;
   }
 
@@ -9871,6 +15290,12 @@ class Input$OrdersInsertInput {
     final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
+    final l$deliveryLat = deliveryLat;
+    final l$deliveryLong = deliveryLong;
+    final l$subtotal = subtotal;
+    final l$tax = tax;
+    final l$total = total;
+    final l$deliveryState = deliveryState;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('userId') ? l$userId : const {},
@@ -9888,6 +15313,12 @@ class Input$OrdersInsertInput {
       _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
+      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
+      _$data.containsKey('subtotal') ? l$subtotal : const {},
+      _$data.containsKey('tax') ? l$tax : const {},
+      _$data.containsKey('total') ? l$total : const {},
+      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
     ]);
   }
 }
@@ -9914,6 +15345,12 @@ abstract class CopyWith$Input$OrdersInsertInput<TRes> {
     String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
+    double? deliveryLat,
+    double? deliveryLong,
+    double? subtotal,
+    double? tax,
+    double? total,
+    String? deliveryState,
   });
 }
 
@@ -9943,6 +15380,12 @@ class _CopyWithImpl$Input$OrdersInsertInput<TRes>
     Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
+    Object? deliveryLat = _undefined,
+    Object? deliveryLong = _undefined,
+    Object? subtotal = _undefined,
+    Object? tax = _undefined,
+    Object? total = _undefined,
+    Object? deliveryState = _undefined,
   }) =>
       _then(Input$OrdersInsertInput._({
         ..._instance._$data,
@@ -9964,6 +15407,14 @@ class _CopyWithImpl$Input$OrdersInsertInput<TRes>
           'deliveryAddress1': (deliveryAddress1 as String?),
         if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
         if (notes != _undefined) 'notes': (notes as String?),
+        if (deliveryLat != _undefined) 'deliveryLat': (deliveryLat as double?),
+        if (deliveryLong != _undefined)
+          'deliveryLong': (deliveryLong as double?),
+        if (subtotal != _undefined) 'subtotal': (subtotal as double?),
+        if (tax != _undefined) 'tax': (tax as double?),
+        if (total != _undefined) 'total': (total as double?),
+        if (deliveryState != _undefined)
+          'deliveryState': (deliveryState as String?),
       }));
 }
 
@@ -9986,6 +15437,12 @@ class _CopyWithStubImpl$Input$OrdersInsertInput<TRes>
     String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
+    double? deliveryLat,
+    double? deliveryLong,
+    double? subtotal,
+    double? tax,
+    double? total,
+    String? deliveryState,
   }) =>
       _res;
 }
@@ -10004,6 +15461,12 @@ class Input$OrdersOrderBy {
     Enum$OrderByDirection? deliveryAddress1,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? notes,
+    Enum$OrderByDirection? deliveryLat,
+    Enum$OrderByDirection? deliveryLong,
+    Enum$OrderByDirection? subtotal,
+    Enum$OrderByDirection? tax,
+    Enum$OrderByDirection? total,
+    Enum$OrderByDirection? deliveryState,
   }) =>
       Input$OrdersOrderBy._({
         if (id != null) r'id': id,
@@ -10020,6 +15483,12 @@ class Input$OrdersOrderBy {
         if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
+        if (deliveryLat != null) r'deliveryLat': deliveryLat,
+        if (deliveryLong != null) r'deliveryLong': deliveryLong,
+        if (subtotal != null) r'subtotal': subtotal,
+        if (tax != null) r'tax': tax,
+        if (total != null) r'total': total,
+        if (deliveryState != null) r'deliveryState': deliveryState,
       });
 
   Input$OrdersOrderBy._(this._$data);
@@ -10098,6 +15567,42 @@ class Input$OrdersOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$notes as String));
     }
+    if (data.containsKey('deliveryLat')) {
+      final l$deliveryLat = data['deliveryLat'];
+      result$data['deliveryLat'] = l$deliveryLat == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$deliveryLat as String));
+    }
+    if (data.containsKey('deliveryLong')) {
+      final l$deliveryLong = data['deliveryLong'];
+      result$data['deliveryLong'] = l$deliveryLong == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$deliveryLong as String));
+    }
+    if (data.containsKey('subtotal')) {
+      final l$subtotal = data['subtotal'];
+      result$data['subtotal'] = l$subtotal == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$subtotal as String));
+    }
+    if (data.containsKey('tax')) {
+      final l$tax = data['tax'];
+      result$data['tax'] = l$tax == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$tax as String));
+    }
+    if (data.containsKey('total')) {
+      final l$total = data['total'];
+      result$data['total'] = l$total == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$total as String));
+    }
+    if (data.containsKey('deliveryState')) {
+      final l$deliveryState = data['deliveryState'];
+      result$data['deliveryState'] = l$deliveryState == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$deliveryState as String));
+    }
     return Input$OrdersOrderBy._(result$data);
   }
 
@@ -10137,6 +15642,23 @@ class Input$OrdersOrderBy {
 
   Enum$OrderByDirection? get notes =>
       (_$data['notes'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get deliveryLat =>
+      (_$data['deliveryLat'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get deliveryLong =>
+      (_$data['deliveryLong'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get subtotal =>
+      (_$data['subtotal'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get tax => (_$data['tax'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get total =>
+      (_$data['total'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get deliveryState =>
+      (_$data['deliveryState'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -10208,6 +15730,39 @@ class Input$OrdersOrderBy {
       final l$notes = notes;
       result$data['notes'] =
           l$notes == null ? null : toJson$Enum$OrderByDirection(l$notes);
+    }
+    if (_$data.containsKey('deliveryLat')) {
+      final l$deliveryLat = deliveryLat;
+      result$data['deliveryLat'] = l$deliveryLat == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$deliveryLat);
+    }
+    if (_$data.containsKey('deliveryLong')) {
+      final l$deliveryLong = deliveryLong;
+      result$data['deliveryLong'] = l$deliveryLong == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$deliveryLong);
+    }
+    if (_$data.containsKey('subtotal')) {
+      final l$subtotal = subtotal;
+      result$data['subtotal'] =
+          l$subtotal == null ? null : toJson$Enum$OrderByDirection(l$subtotal);
+    }
+    if (_$data.containsKey('tax')) {
+      final l$tax = tax;
+      result$data['tax'] =
+          l$tax == null ? null : toJson$Enum$OrderByDirection(l$tax);
+    }
+    if (_$data.containsKey('total')) {
+      final l$total = total;
+      result$data['total'] =
+          l$total == null ? null : toJson$Enum$OrderByDirection(l$total);
+    }
+    if (_$data.containsKey('deliveryState')) {
+      final l$deliveryState = deliveryState;
+      result$data['deliveryState'] = l$deliveryState == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$deliveryState);
     }
     return result$data;
   }
@@ -10331,6 +15886,58 @@ class Input$OrdersOrderBy {
     if (l$notes != lOther$notes) {
       return false;
     }
+    final l$deliveryLat = deliveryLat;
+    final lOther$deliveryLat = other.deliveryLat;
+    if (_$data.containsKey('deliveryLat') !=
+        other._$data.containsKey('deliveryLat')) {
+      return false;
+    }
+    if (l$deliveryLat != lOther$deliveryLat) {
+      return false;
+    }
+    final l$deliveryLong = deliveryLong;
+    final lOther$deliveryLong = other.deliveryLong;
+    if (_$data.containsKey('deliveryLong') !=
+        other._$data.containsKey('deliveryLong')) {
+      return false;
+    }
+    if (l$deliveryLong != lOther$deliveryLong) {
+      return false;
+    }
+    final l$subtotal = subtotal;
+    final lOther$subtotal = other.subtotal;
+    if (_$data.containsKey('subtotal') !=
+        other._$data.containsKey('subtotal')) {
+      return false;
+    }
+    if (l$subtotal != lOther$subtotal) {
+      return false;
+    }
+    final l$tax = tax;
+    final lOther$tax = other.tax;
+    if (_$data.containsKey('tax') != other._$data.containsKey('tax')) {
+      return false;
+    }
+    if (l$tax != lOther$tax) {
+      return false;
+    }
+    final l$total = total;
+    final lOther$total = other.total;
+    if (_$data.containsKey('total') != other._$data.containsKey('total')) {
+      return false;
+    }
+    if (l$total != lOther$total) {
+      return false;
+    }
+    final l$deliveryState = deliveryState;
+    final lOther$deliveryState = other.deliveryState;
+    if (_$data.containsKey('deliveryState') !=
+        other._$data.containsKey('deliveryState')) {
+      return false;
+    }
+    if (l$deliveryState != lOther$deliveryState) {
+      return false;
+    }
     return true;
   }
 
@@ -10348,6 +15955,12 @@ class Input$OrdersOrderBy {
     final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
+    final l$deliveryLat = deliveryLat;
+    final l$deliveryLong = deliveryLong;
+    final l$subtotal = subtotal;
+    final l$tax = tax;
+    final l$total = total;
+    final l$deliveryState = deliveryState;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('userId') ? l$userId : const {},
@@ -10365,6 +15978,12 @@ class Input$OrdersOrderBy {
       _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
+      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
+      _$data.containsKey('subtotal') ? l$subtotal : const {},
+      _$data.containsKey('tax') ? l$tax : const {},
+      _$data.containsKey('total') ? l$total : const {},
+      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
     ]);
   }
 }
@@ -10391,6 +16010,12 @@ abstract class CopyWith$Input$OrdersOrderBy<TRes> {
     Enum$OrderByDirection? deliveryAddress1,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? notes,
+    Enum$OrderByDirection? deliveryLat,
+    Enum$OrderByDirection? deliveryLong,
+    Enum$OrderByDirection? subtotal,
+    Enum$OrderByDirection? tax,
+    Enum$OrderByDirection? total,
+    Enum$OrderByDirection? deliveryState,
   });
 }
 
@@ -10420,6 +16045,12 @@ class _CopyWithImpl$Input$OrdersOrderBy<TRes>
     Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
+    Object? deliveryLat = _undefined,
+    Object? deliveryLong = _undefined,
+    Object? subtotal = _undefined,
+    Object? tax = _undefined,
+    Object? total = _undefined,
+    Object? deliveryState = _undefined,
   }) =>
       _then(Input$OrdersOrderBy._({
         ..._instance._$data,
@@ -10446,6 +16077,16 @@ class _CopyWithImpl$Input$OrdersOrderBy<TRes>
         if (updatedAt != _undefined)
           'updatedAt': (updatedAt as Enum$OrderByDirection?),
         if (notes != _undefined) 'notes': (notes as Enum$OrderByDirection?),
+        if (deliveryLat != _undefined)
+          'deliveryLat': (deliveryLat as Enum$OrderByDirection?),
+        if (deliveryLong != _undefined)
+          'deliveryLong': (deliveryLong as Enum$OrderByDirection?),
+        if (subtotal != _undefined)
+          'subtotal': (subtotal as Enum$OrderByDirection?),
+        if (tax != _undefined) 'tax': (tax as Enum$OrderByDirection?),
+        if (total != _undefined) 'total': (total as Enum$OrderByDirection?),
+        if (deliveryState != _undefined)
+          'deliveryState': (deliveryState as Enum$OrderByDirection?),
       }));
 }
 
@@ -10468,6 +16109,12 @@ class _CopyWithStubImpl$Input$OrdersOrderBy<TRes>
     Enum$OrderByDirection? deliveryAddress1,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? notes,
+    Enum$OrderByDirection? deliveryLat,
+    Enum$OrderByDirection? deliveryLong,
+    Enum$OrderByDirection? subtotal,
+    Enum$OrderByDirection? tax,
+    Enum$OrderByDirection? total,
+    Enum$OrderByDirection? deliveryState,
   }) =>
       _res;
 }
@@ -10700,6 +16347,12 @@ class Input$OrdersUpdateInput {
     String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
+    double? deliveryLat,
+    double? deliveryLong,
+    double? subtotal,
+    double? tax,
+    double? total,
+    String? deliveryState,
   }) =>
       Input$OrdersUpdateInput._({
         if (id != null) r'id': id,
@@ -10716,6 +16369,12 @@ class Input$OrdersUpdateInput {
         if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
+        if (deliveryLat != null) r'deliveryLat': deliveryLat,
+        if (deliveryLong != null) r'deliveryLong': deliveryLong,
+        if (subtotal != null) r'subtotal': subtotal,
+        if (tax != null) r'tax': tax,
+        if (total != null) r'total': total,
+        if (deliveryState != null) r'deliveryState': deliveryState,
       });
 
   Input$OrdersUpdateInput._(this._$data);
@@ -10776,6 +16435,30 @@ class Input$OrdersUpdateInput {
       final l$notes = data['notes'];
       result$data['notes'] = (l$notes as String?);
     }
+    if (data.containsKey('deliveryLat')) {
+      final l$deliveryLat = data['deliveryLat'];
+      result$data['deliveryLat'] = (l$deliveryLat as num?)?.toDouble();
+    }
+    if (data.containsKey('deliveryLong')) {
+      final l$deliveryLong = data['deliveryLong'];
+      result$data['deliveryLong'] = (l$deliveryLong as num?)?.toDouble();
+    }
+    if (data.containsKey('subtotal')) {
+      final l$subtotal = data['subtotal'];
+      result$data['subtotal'] = (l$subtotal as num?)?.toDouble();
+    }
+    if (data.containsKey('tax')) {
+      final l$tax = data['tax'];
+      result$data['tax'] = (l$tax as num?)?.toDouble();
+    }
+    if (data.containsKey('total')) {
+      final l$total = data['total'];
+      result$data['total'] = (l$total as num?)?.toDouble();
+    }
+    if (data.containsKey('deliveryState')) {
+      final l$deliveryState = data['deliveryState'];
+      result$data['deliveryState'] = (l$deliveryState as String?);
+    }
     return Input$OrdersUpdateInput._(result$data);
   }
 
@@ -10807,6 +16490,18 @@ class Input$OrdersUpdateInput {
   DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
 
   String? get notes => (_$data['notes'] as String?);
+
+  double? get deliveryLat => (_$data['deliveryLat'] as double?);
+
+  double? get deliveryLong => (_$data['deliveryLong'] as double?);
+
+  double? get subtotal => (_$data['subtotal'] as double?);
+
+  double? get tax => (_$data['tax'] as double?);
+
+  double? get total => (_$data['total'] as double?);
+
+  String? get deliveryState => (_$data['deliveryState'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -10859,6 +16554,30 @@ class Input$OrdersUpdateInput {
     if (_$data.containsKey('notes')) {
       final l$notes = notes;
       result$data['notes'] = l$notes;
+    }
+    if (_$data.containsKey('deliveryLat')) {
+      final l$deliveryLat = deliveryLat;
+      result$data['deliveryLat'] = l$deliveryLat;
+    }
+    if (_$data.containsKey('deliveryLong')) {
+      final l$deliveryLong = deliveryLong;
+      result$data['deliveryLong'] = l$deliveryLong;
+    }
+    if (_$data.containsKey('subtotal')) {
+      final l$subtotal = subtotal;
+      result$data['subtotal'] = l$subtotal;
+    }
+    if (_$data.containsKey('tax')) {
+      final l$tax = tax;
+      result$data['tax'] = l$tax;
+    }
+    if (_$data.containsKey('total')) {
+      final l$total = total;
+      result$data['total'] = l$total;
+    }
+    if (_$data.containsKey('deliveryState')) {
+      final l$deliveryState = deliveryState;
+      result$data['deliveryState'] = l$deliveryState;
     }
     return result$data;
   }
@@ -10982,6 +16701,58 @@ class Input$OrdersUpdateInput {
     if (l$notes != lOther$notes) {
       return false;
     }
+    final l$deliveryLat = deliveryLat;
+    final lOther$deliveryLat = other.deliveryLat;
+    if (_$data.containsKey('deliveryLat') !=
+        other._$data.containsKey('deliveryLat')) {
+      return false;
+    }
+    if (l$deliveryLat != lOther$deliveryLat) {
+      return false;
+    }
+    final l$deliveryLong = deliveryLong;
+    final lOther$deliveryLong = other.deliveryLong;
+    if (_$data.containsKey('deliveryLong') !=
+        other._$data.containsKey('deliveryLong')) {
+      return false;
+    }
+    if (l$deliveryLong != lOther$deliveryLong) {
+      return false;
+    }
+    final l$subtotal = subtotal;
+    final lOther$subtotal = other.subtotal;
+    if (_$data.containsKey('subtotal') !=
+        other._$data.containsKey('subtotal')) {
+      return false;
+    }
+    if (l$subtotal != lOther$subtotal) {
+      return false;
+    }
+    final l$tax = tax;
+    final lOther$tax = other.tax;
+    if (_$data.containsKey('tax') != other._$data.containsKey('tax')) {
+      return false;
+    }
+    if (l$tax != lOther$tax) {
+      return false;
+    }
+    final l$total = total;
+    final lOther$total = other.total;
+    if (_$data.containsKey('total') != other._$data.containsKey('total')) {
+      return false;
+    }
+    if (l$total != lOther$total) {
+      return false;
+    }
+    final l$deliveryState = deliveryState;
+    final lOther$deliveryState = other.deliveryState;
+    if (_$data.containsKey('deliveryState') !=
+        other._$data.containsKey('deliveryState')) {
+      return false;
+    }
+    if (l$deliveryState != lOther$deliveryState) {
+      return false;
+    }
     return true;
   }
 
@@ -10999,6 +16770,12 @@ class Input$OrdersUpdateInput {
     final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
+    final l$deliveryLat = deliveryLat;
+    final l$deliveryLong = deliveryLong;
+    final l$subtotal = subtotal;
+    final l$tax = tax;
+    final l$total = total;
+    final l$deliveryState = deliveryState;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('userId') ? l$userId : const {},
@@ -11016,6 +16793,12 @@ class Input$OrdersUpdateInput {
       _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
+      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
+      _$data.containsKey('subtotal') ? l$subtotal : const {},
+      _$data.containsKey('tax') ? l$tax : const {},
+      _$data.containsKey('total') ? l$total : const {},
+      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
     ]);
   }
 }
@@ -11042,6 +16825,12 @@ abstract class CopyWith$Input$OrdersUpdateInput<TRes> {
     String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
+    double? deliveryLat,
+    double? deliveryLong,
+    double? subtotal,
+    double? tax,
+    double? total,
+    String? deliveryState,
   });
 }
 
@@ -11071,6 +16860,12 @@ class _CopyWithImpl$Input$OrdersUpdateInput<TRes>
     Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
+    Object? deliveryLat = _undefined,
+    Object? deliveryLong = _undefined,
+    Object? subtotal = _undefined,
+    Object? tax = _undefined,
+    Object? total = _undefined,
+    Object? deliveryState = _undefined,
   }) =>
       _then(Input$OrdersUpdateInput._({
         ..._instance._$data,
@@ -11092,6 +16887,14 @@ class _CopyWithImpl$Input$OrdersUpdateInput<TRes>
           'deliveryAddress1': (deliveryAddress1 as String?),
         if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
         if (notes != _undefined) 'notes': (notes as String?),
+        if (deliveryLat != _undefined) 'deliveryLat': (deliveryLat as double?),
+        if (deliveryLong != _undefined)
+          'deliveryLong': (deliveryLong as double?),
+        if (subtotal != _undefined) 'subtotal': (subtotal as double?),
+        if (tax != _undefined) 'tax': (tax as double?),
+        if (total != _undefined) 'total': (total as double?),
+        if (deliveryState != _undefined)
+          'deliveryState': (deliveryState as String?),
       }));
 }
 
@@ -11114,6 +16917,12 @@ class _CopyWithStubImpl$Input$OrdersUpdateInput<TRes>
     String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
+    double? deliveryLat,
+    double? deliveryLong,
+    double? subtotal,
+    double? tax,
+    double? total,
+    String? deliveryState,
   }) =>
       _res;
 }
@@ -13993,6 +19802,1390 @@ class _CopyWithStubImpl$Input$PermissionsUpdateInput<TRes>
     String? key,
     Map<String, dynamic>? metadata,
     DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$ProductInventoryFilter {
+  factory Input$ProductInventoryFilter({
+    Input$UUIDFilter? id,
+    Input$BigIntFilter? count,
+    Input$BooleanFilter? isAlwaysAvailable,
+    Input$StringFilter? notes,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProductInventoryFilter>? and,
+    List<Input$ProductInventoryFilter>? or,
+    Input$ProductInventoryFilter? not,
+  }) =>
+      Input$ProductInventoryFilter._({
+        if (id != null) r'id': id,
+        if (count != null) r'count': count,
+        if (isAlwaysAvailable != null) r'isAlwaysAvailable': isAlwaysAvailable,
+        if (notes != null) r'notes': notes,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$ProductInventoryFilter._(this._$data);
+
+  factory Input$ProductInventoryFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('count')) {
+      final l$count = data['count'];
+      result$data['count'] = l$count == null
+          ? null
+          : Input$BigIntFilter.fromJson((l$count as Map<String, dynamic>));
+    }
+    if (data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = data['isAlwaysAvailable'];
+      result$data['isAlwaysAvailable'] = l$isAlwaysAvailable == null
+          ? null
+          : Input$BooleanFilter.fromJson(
+              (l$isAlwaysAvailable as Map<String, dynamic>));
+    }
+    if (data.containsKey('notes')) {
+      final l$notes = data['notes'];
+      result$data['notes'] = l$notes == null
+          ? null
+          : Input$StringFilter.fromJson((l$notes as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$updatedAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$ProductInventoryFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$ProductInventoryFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$ProductInventoryFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$ProductInventoryFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$BigIntFilter? get count => (_$data['count'] as Input$BigIntFilter?);
+
+  Input$BooleanFilter? get isAlwaysAvailable =>
+      (_$data['isAlwaysAvailable'] as Input$BooleanFilter?);
+
+  Input$StringFilter? get notes => (_$data['notes'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$DatetimeFilter? get updatedAt =>
+      (_$data['updatedAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$ProductInventoryFilter>? get and =>
+      (_$data['and'] as List<Input$ProductInventoryFilter>?);
+
+  List<Input$ProductInventoryFilter>? get or =>
+      (_$data['or'] as List<Input$ProductInventoryFilter>?);
+
+  Input$ProductInventoryFilter? get not =>
+      (_$data['not'] as Input$ProductInventoryFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('count')) {
+      final l$count = count;
+      result$data['count'] = l$count?.toJson();
+    }
+    if (_$data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = isAlwaysAvailable;
+      result$data['isAlwaysAvailable'] = l$isAlwaysAvailable?.toJson();
+    }
+    if (_$data.containsKey('notes')) {
+      final l$notes = notes;
+      result$data['notes'] = l$notes?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductInventoryFilter<Input$ProductInventoryFilter>
+      get copyWith => CopyWith$Input$ProductInventoryFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductInventoryFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$count = count;
+    final lOther$count = other.count;
+    if (_$data.containsKey('count') != other._$data.containsKey('count')) {
+      return false;
+    }
+    if (l$count != lOther$count) {
+      return false;
+    }
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final lOther$isAlwaysAvailable = other.isAlwaysAvailable;
+    if (_$data.containsKey('isAlwaysAvailable') !=
+        other._$data.containsKey('isAlwaysAvailable')) {
+      return false;
+    }
+    if (l$isAlwaysAvailable != lOther$isAlwaysAvailable) {
+      return false;
+    }
+    final l$notes = notes;
+    final lOther$notes = other.notes;
+    if (_$data.containsKey('notes') != other._$data.containsKey('notes')) {
+      return false;
+    }
+    if (l$notes != lOther$notes) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$count = count;
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final l$notes = notes;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('count') ? l$count : const {},
+      _$data.containsKey('isAlwaysAvailable') ? l$isAlwaysAvailable : const {},
+      _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductInventoryFilter<TRes> {
+  factory CopyWith$Input$ProductInventoryFilter(
+    Input$ProductInventoryFilter instance,
+    TRes Function(Input$ProductInventoryFilter) then,
+  ) = _CopyWithImpl$Input$ProductInventoryFilter;
+
+  factory CopyWith$Input$ProductInventoryFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductInventoryFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$BigIntFilter? count,
+    Input$BooleanFilter? isAlwaysAvailable,
+    Input$StringFilter? notes,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProductInventoryFilter>? and,
+    List<Input$ProductInventoryFilter>? or,
+    Input$ProductInventoryFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$BigIntFilter<TRes> get count;
+  CopyWith$Input$BooleanFilter<TRes> get isAlwaysAvailable;
+  CopyWith$Input$StringFilter<TRes> get notes;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$ProductInventoryFilter>? Function(
+              Iterable<
+                  CopyWith$Input$ProductInventoryFilter<
+                      Input$ProductInventoryFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$ProductInventoryFilter>? Function(
+              Iterable<
+                  CopyWith$Input$ProductInventoryFilter<
+                      Input$ProductInventoryFilter>>?)
+          _fn);
+  CopyWith$Input$ProductInventoryFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$ProductInventoryFilter<TRes>
+    implements CopyWith$Input$ProductInventoryFilter<TRes> {
+  _CopyWithImpl$Input$ProductInventoryFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductInventoryFilter _instance;
+
+  final TRes Function(Input$ProductInventoryFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? count = _undefined,
+    Object? isAlwaysAvailable = _undefined,
+    Object? notes = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$ProductInventoryFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (count != _undefined) 'count': (count as Input$BigIntFilter?),
+        if (isAlwaysAvailable != _undefined)
+          'isAlwaysAvailable': (isAlwaysAvailable as Input$BooleanFilter?),
+        if (notes != _undefined) 'notes': (notes as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (updatedAt != _undefined)
+          'updatedAt': (updatedAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$ProductInventoryFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$ProductInventoryFilter>?),
+        if (not != _undefined) 'not': (not as Input$ProductInventoryFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$BigIntFilter<TRes> get count {
+    final local$count = _instance.count;
+    return local$count == null
+        ? CopyWith$Input$BigIntFilter.stub(_then(_instance))
+        : CopyWith$Input$BigIntFilter(local$count, (e) => call(count: e));
+  }
+
+  CopyWith$Input$BooleanFilter<TRes> get isAlwaysAvailable {
+    final local$isAlwaysAvailable = _instance.isAlwaysAvailable;
+    return local$isAlwaysAvailable == null
+        ? CopyWith$Input$BooleanFilter.stub(_then(_instance))
+        : CopyWith$Input$BooleanFilter(
+            local$isAlwaysAvailable, (e) => call(isAlwaysAvailable: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get notes {
+    final local$notes = _instance.notes;
+    return local$notes == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$notes, (e) => call(notes: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt {
+    final local$updatedAt = _instance.updatedAt;
+    return local$updatedAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$updatedAt, (e) => call(updatedAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$ProductInventoryFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProductInventoryFilter<
+                          Input$ProductInventoryFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(
+              _instance.and?.map((e) => CopyWith$Input$ProductInventoryFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$ProductInventoryFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProductInventoryFilter<
+                          Input$ProductInventoryFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(
+              _instance.or?.map((e) => CopyWith$Input$ProductInventoryFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$ProductInventoryFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$ProductInventoryFilter.stub(_then(_instance))
+        : CopyWith$Input$ProductInventoryFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$ProductInventoryFilter<TRes>
+    implements CopyWith$Input$ProductInventoryFilter<TRes> {
+  _CopyWithStubImpl$Input$ProductInventoryFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$BigIntFilter? count,
+    Input$BooleanFilter? isAlwaysAvailable,
+    Input$StringFilter? notes,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProductInventoryFilter>? and,
+    List<Input$ProductInventoryFilter>? or,
+    Input$ProductInventoryFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$BigIntFilter<TRes> get count =>
+      CopyWith$Input$BigIntFilter.stub(_res);
+
+  CopyWith$Input$BooleanFilter<TRes> get isAlwaysAvailable =>
+      CopyWith$Input$BooleanFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get notes =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$ProductInventoryFilter<TRes> get not =>
+      CopyWith$Input$ProductInventoryFilter.stub(_res);
+}
+
+class Input$ProductInventoryInsertInput {
+  factory Input$ProductInventoryInsertInput({
+    String? id,
+    int? count,
+    bool? isAlwaysAvailable,
+    Map<String, dynamic>? data,
+    String? notes,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Input$ProductInventoryInsertInput._({
+        if (id != null) r'id': id,
+        if (count != null) r'count': count,
+        if (isAlwaysAvailable != null) r'isAlwaysAvailable': isAlwaysAvailable,
+        if (data != null) r'data': data,
+        if (notes != null) r'notes': notes,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$ProductInventoryInsertInput._(this._$data);
+
+  factory Input$ProductInventoryInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('count')) {
+      final l$count = data['count'];
+      result$data['count'] = (l$count as int?);
+    }
+    if (data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = data['isAlwaysAvailable'];
+      result$data['isAlwaysAvailable'] = (l$isAlwaysAvailable as bool?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('notes')) {
+      final l$notes = data['notes'];
+      result$data['notes'] = (l$notes as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] =
+          l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String));
+    }
+    return Input$ProductInventoryInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  int? get count => (_$data['count'] as int?);
+
+  bool? get isAlwaysAvailable => (_$data['isAlwaysAvailable'] as bool?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  String? get notes => (_$data['notes'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('count')) {
+      final l$count = count;
+      result$data['count'] = l$count;
+    }
+    if (_$data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = isAlwaysAvailable;
+      result$data['isAlwaysAvailable'] = l$isAlwaysAvailable;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('notes')) {
+      final l$notes = notes;
+      result$data['notes'] = l$notes;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductInventoryInsertInput<Input$ProductInventoryInsertInput>
+      get copyWith => CopyWith$Input$ProductInventoryInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductInventoryInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$count = count;
+    final lOther$count = other.count;
+    if (_$data.containsKey('count') != other._$data.containsKey('count')) {
+      return false;
+    }
+    if (l$count != lOther$count) {
+      return false;
+    }
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final lOther$isAlwaysAvailable = other.isAlwaysAvailable;
+    if (_$data.containsKey('isAlwaysAvailable') !=
+        other._$data.containsKey('isAlwaysAvailable')) {
+      return false;
+    }
+    if (l$isAlwaysAvailable != lOther$isAlwaysAvailable) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$notes = notes;
+    final lOther$notes = other.notes;
+    if (_$data.containsKey('notes') != other._$data.containsKey('notes')) {
+      return false;
+    }
+    if (l$notes != lOther$notes) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$count = count;
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final l$data = data;
+    final l$notes = notes;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('count') ? l$count : const {},
+      _$data.containsKey('isAlwaysAvailable') ? l$isAlwaysAvailable : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductInventoryInsertInput<TRes> {
+  factory CopyWith$Input$ProductInventoryInsertInput(
+    Input$ProductInventoryInsertInput instance,
+    TRes Function(Input$ProductInventoryInsertInput) then,
+  ) = _CopyWithImpl$Input$ProductInventoryInsertInput;
+
+  factory CopyWith$Input$ProductInventoryInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductInventoryInsertInput;
+
+  TRes call({
+    String? id,
+    int? count,
+    bool? isAlwaysAvailable,
+    Map<String, dynamic>? data,
+    String? notes,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProductInventoryInsertInput<TRes>
+    implements CopyWith$Input$ProductInventoryInsertInput<TRes> {
+  _CopyWithImpl$Input$ProductInventoryInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductInventoryInsertInput _instance;
+
+  final TRes Function(Input$ProductInventoryInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? count = _undefined,
+    Object? isAlwaysAvailable = _undefined,
+    Object? data = _undefined,
+    Object? notes = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$ProductInventoryInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (count != _undefined) 'count': (count as int?),
+        if (isAlwaysAvailable != _undefined)
+          'isAlwaysAvailable': (isAlwaysAvailable as bool?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (notes != _undefined) 'notes': (notes as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProductInventoryInsertInput<TRes>
+    implements CopyWith$Input$ProductInventoryInsertInput<TRes> {
+  _CopyWithStubImpl$Input$ProductInventoryInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    int? count,
+    bool? isAlwaysAvailable,
+    Map<String, dynamic>? data,
+    String? notes,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      _res;
+}
+
+class Input$ProductInventoryOrderBy {
+  factory Input$ProductInventoryOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? count,
+    Enum$OrderByDirection? isAlwaysAvailable,
+    Enum$OrderByDirection? notes,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  }) =>
+      Input$ProductInventoryOrderBy._({
+        if (id != null) r'id': id,
+        if (count != null) r'count': count,
+        if (isAlwaysAvailable != null) r'isAlwaysAvailable': isAlwaysAvailable,
+        if (notes != null) r'notes': notes,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$ProductInventoryOrderBy._(this._$data);
+
+  factory Input$ProductInventoryOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('count')) {
+      final l$count = data['count'];
+      result$data['count'] = l$count == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$count as String));
+    }
+    if (data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = data['isAlwaysAvailable'];
+      result$data['isAlwaysAvailable'] = l$isAlwaysAvailable == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$isAlwaysAvailable as String));
+    }
+    if (data.containsKey('notes')) {
+      final l$notes = data['notes'];
+      result$data['notes'] = l$notes == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$notes as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$updatedAt as String));
+    }
+    return Input$ProductInventoryOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get count =>
+      (_$data['count'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get isAlwaysAvailable =>
+      (_$data['isAlwaysAvailable'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get notes =>
+      (_$data['notes'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get updatedAt =>
+      (_$data['updatedAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('count')) {
+      final l$count = count;
+      result$data['count'] =
+          l$count == null ? null : toJson$Enum$OrderByDirection(l$count);
+    }
+    if (_$data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = isAlwaysAvailable;
+      result$data['isAlwaysAvailable'] = l$isAlwaysAvailable == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$isAlwaysAvailable);
+    }
+    if (_$data.containsKey('notes')) {
+      final l$notes = notes;
+      result$data['notes'] =
+          l$notes == null ? null : toJson$Enum$OrderByDirection(l$notes);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$updatedAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductInventoryOrderBy<Input$ProductInventoryOrderBy>
+      get copyWith => CopyWith$Input$ProductInventoryOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductInventoryOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$count = count;
+    final lOther$count = other.count;
+    if (_$data.containsKey('count') != other._$data.containsKey('count')) {
+      return false;
+    }
+    if (l$count != lOther$count) {
+      return false;
+    }
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final lOther$isAlwaysAvailable = other.isAlwaysAvailable;
+    if (_$data.containsKey('isAlwaysAvailable') !=
+        other._$data.containsKey('isAlwaysAvailable')) {
+      return false;
+    }
+    if (l$isAlwaysAvailable != lOther$isAlwaysAvailable) {
+      return false;
+    }
+    final l$notes = notes;
+    final lOther$notes = other.notes;
+    if (_$data.containsKey('notes') != other._$data.containsKey('notes')) {
+      return false;
+    }
+    if (l$notes != lOther$notes) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$count = count;
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final l$notes = notes;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('count') ? l$count : const {},
+      _$data.containsKey('isAlwaysAvailable') ? l$isAlwaysAvailable : const {},
+      _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductInventoryOrderBy<TRes> {
+  factory CopyWith$Input$ProductInventoryOrderBy(
+    Input$ProductInventoryOrderBy instance,
+    TRes Function(Input$ProductInventoryOrderBy) then,
+  ) = _CopyWithImpl$Input$ProductInventoryOrderBy;
+
+  factory CopyWith$Input$ProductInventoryOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductInventoryOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? count,
+    Enum$OrderByDirection? isAlwaysAvailable,
+    Enum$OrderByDirection? notes,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProductInventoryOrderBy<TRes>
+    implements CopyWith$Input$ProductInventoryOrderBy<TRes> {
+  _CopyWithImpl$Input$ProductInventoryOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductInventoryOrderBy _instance;
+
+  final TRes Function(Input$ProductInventoryOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? count = _undefined,
+    Object? isAlwaysAvailable = _undefined,
+    Object? notes = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$ProductInventoryOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (count != _undefined) 'count': (count as Enum$OrderByDirection?),
+        if (isAlwaysAvailable != _undefined)
+          'isAlwaysAvailable': (isAlwaysAvailable as Enum$OrderByDirection?),
+        if (notes != _undefined) 'notes': (notes as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (updatedAt != _undefined)
+          'updatedAt': (updatedAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProductInventoryOrderBy<TRes>
+    implements CopyWith$Input$ProductInventoryOrderBy<TRes> {
+  _CopyWithStubImpl$Input$ProductInventoryOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? count,
+    Enum$OrderByDirection? isAlwaysAvailable,
+    Enum$OrderByDirection? notes,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  }) =>
+      _res;
+}
+
+class Input$ProductInventoryUpdateInput {
+  factory Input$ProductInventoryUpdateInput({
+    String? id,
+    int? count,
+    bool? isAlwaysAvailable,
+    Map<String, dynamic>? data,
+    String? notes,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Input$ProductInventoryUpdateInput._({
+        if (id != null) r'id': id,
+        if (count != null) r'count': count,
+        if (isAlwaysAvailable != null) r'isAlwaysAvailable': isAlwaysAvailable,
+        if (data != null) r'data': data,
+        if (notes != null) r'notes': notes,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$ProductInventoryUpdateInput._(this._$data);
+
+  factory Input$ProductInventoryUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('count')) {
+      final l$count = data['count'];
+      result$data['count'] = (l$count as int?);
+    }
+    if (data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = data['isAlwaysAvailable'];
+      result$data['isAlwaysAvailable'] = (l$isAlwaysAvailable as bool?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('notes')) {
+      final l$notes = data['notes'];
+      result$data['notes'] = (l$notes as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] =
+          l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String));
+    }
+    return Input$ProductInventoryUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  int? get count => (_$data['count'] as int?);
+
+  bool? get isAlwaysAvailable => (_$data['isAlwaysAvailable'] as bool?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  String? get notes => (_$data['notes'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('count')) {
+      final l$count = count;
+      result$data['count'] = l$count;
+    }
+    if (_$data.containsKey('isAlwaysAvailable')) {
+      final l$isAlwaysAvailable = isAlwaysAvailable;
+      result$data['isAlwaysAvailable'] = l$isAlwaysAvailable;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('notes')) {
+      final l$notes = notes;
+      result$data['notes'] = l$notes;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductInventoryUpdateInput<Input$ProductInventoryUpdateInput>
+      get copyWith => CopyWith$Input$ProductInventoryUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductInventoryUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$count = count;
+    final lOther$count = other.count;
+    if (_$data.containsKey('count') != other._$data.containsKey('count')) {
+      return false;
+    }
+    if (l$count != lOther$count) {
+      return false;
+    }
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final lOther$isAlwaysAvailable = other.isAlwaysAvailable;
+    if (_$data.containsKey('isAlwaysAvailable') !=
+        other._$data.containsKey('isAlwaysAvailable')) {
+      return false;
+    }
+    if (l$isAlwaysAvailable != lOther$isAlwaysAvailable) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$notes = notes;
+    final lOther$notes = other.notes;
+    if (_$data.containsKey('notes') != other._$data.containsKey('notes')) {
+      return false;
+    }
+    if (l$notes != lOther$notes) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$count = count;
+    final l$isAlwaysAvailable = isAlwaysAvailable;
+    final l$data = data;
+    final l$notes = notes;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('count') ? l$count : const {},
+      _$data.containsKey('isAlwaysAvailable') ? l$isAlwaysAvailable : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('notes') ? l$notes : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductInventoryUpdateInput<TRes> {
+  factory CopyWith$Input$ProductInventoryUpdateInput(
+    Input$ProductInventoryUpdateInput instance,
+    TRes Function(Input$ProductInventoryUpdateInput) then,
+  ) = _CopyWithImpl$Input$ProductInventoryUpdateInput;
+
+  factory CopyWith$Input$ProductInventoryUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductInventoryUpdateInput;
+
+  TRes call({
+    String? id,
+    int? count,
+    bool? isAlwaysAvailable,
+    Map<String, dynamic>? data,
+    String? notes,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProductInventoryUpdateInput<TRes>
+    implements CopyWith$Input$ProductInventoryUpdateInput<TRes> {
+  _CopyWithImpl$Input$ProductInventoryUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductInventoryUpdateInput _instance;
+
+  final TRes Function(Input$ProductInventoryUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? count = _undefined,
+    Object? isAlwaysAvailable = _undefined,
+    Object? data = _undefined,
+    Object? notes = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$ProductInventoryUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (count != _undefined) 'count': (count as int?),
+        if (isAlwaysAvailable != _undefined)
+          'isAlwaysAvailable': (isAlwaysAvailable as bool?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (notes != _undefined) 'notes': (notes as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProductInventoryUpdateInput<TRes>
+    implements CopyWith$Input$ProductInventoryUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$ProductInventoryUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    int? count,
+    bool? isAlwaysAvailable,
+    Map<String, dynamic>? data,
+    String? notes,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) =>
       _res;
 }
@@ -20560,9 +27753,8 @@ class _CopyWithStubImpl$Input$SessionsUpdateInput<TRes>
 class Input$ShoppingCartItemsFilter {
   factory Input$ShoppingCartItemsFilter({
     Input$UUIDFilter? id,
-    Input$UUIDFilter? userId,
     Input$UUIDFilter? productId,
-    Input$BigIntFilter? quantity,
+    Input$IntFilter? quantity,
     Input$DatetimeFilter? createdAt,
     Input$FloatFilter? unitPrice,
     Input$UUIDFilter? shoppingCartId,
@@ -20573,7 +27765,6 @@ class Input$ShoppingCartItemsFilter {
   }) =>
       Input$ShoppingCartItemsFilter._({
         if (id != null) r'id': id,
-        if (userId != null) r'userId': userId,
         if (productId != null) r'productId': productId,
         if (quantity != null) r'quantity': quantity,
         if (createdAt != null) r'createdAt': createdAt,
@@ -20595,12 +27786,6 @@ class Input$ShoppingCartItemsFilter {
           ? null
           : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
     }
-    if (data.containsKey('userId')) {
-      final l$userId = data['userId'];
-      result$data['userId'] = l$userId == null
-          ? null
-          : Input$UUIDFilter.fromJson((l$userId as Map<String, dynamic>));
-    }
     if (data.containsKey('productId')) {
       final l$productId = data['productId'];
       result$data['productId'] = l$productId == null
@@ -20611,7 +27796,7 @@ class Input$ShoppingCartItemsFilter {
       final l$quantity = data['quantity'];
       result$data['quantity'] = l$quantity == null
           ? null
-          : Input$BigIntFilter.fromJson((l$quantity as Map<String, dynamic>));
+          : Input$IntFilter.fromJson((l$quantity as Map<String, dynamic>));
     }
     if (data.containsKey('createdAt')) {
       final l$createdAt = data['createdAt'];
@@ -20667,12 +27852,9 @@ class Input$ShoppingCartItemsFilter {
 
   Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
 
-  Input$UUIDFilter? get userId => (_$data['userId'] as Input$UUIDFilter?);
-
   Input$UUIDFilter? get productId => (_$data['productId'] as Input$UUIDFilter?);
 
-  Input$BigIntFilter? get quantity =>
-      (_$data['quantity'] as Input$BigIntFilter?);
+  Input$IntFilter? get quantity => (_$data['quantity'] as Input$IntFilter?);
 
   Input$DatetimeFilter? get createdAt =>
       (_$data['createdAt'] as Input$DatetimeFilter?);
@@ -20699,10 +27881,6 @@ class Input$ShoppingCartItemsFilter {
     if (_$data.containsKey('id')) {
       final l$id = id;
       result$data['id'] = l$id?.toJson();
-    }
-    if (_$data.containsKey('userId')) {
-      final l$userId = userId;
-      result$data['userId'] = l$userId?.toJson();
     }
     if (_$data.containsKey('productId')) {
       final l$productId = productId;
@@ -20764,14 +27942,6 @@ class Input$ShoppingCartItemsFilter {
       return false;
     }
     if (l$id != lOther$id) {
-      return false;
-    }
-    final l$userId = userId;
-    final lOther$userId = other.userId;
-    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
-      return false;
-    }
-    if (l$userId != lOther$userId) {
       return false;
     }
     final l$productId = productId;
@@ -20879,7 +28049,6 @@ class Input$ShoppingCartItemsFilter {
   @override
   int get hashCode {
     final l$id = id;
-    final l$userId = userId;
     final l$productId = productId;
     final l$quantity = quantity;
     final l$createdAt = createdAt;
@@ -20891,7 +28060,6 @@ class Input$ShoppingCartItemsFilter {
     final l$not = not;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('productId') ? l$productId : const {},
       _$data.containsKey('quantity') ? l$quantity : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -20924,9 +28092,8 @@ abstract class CopyWith$Input$ShoppingCartItemsFilter<TRes> {
 
   TRes call({
     Input$UUIDFilter? id,
-    Input$UUIDFilter? userId,
     Input$UUIDFilter? productId,
-    Input$BigIntFilter? quantity,
+    Input$IntFilter? quantity,
     Input$DatetimeFilter? createdAt,
     Input$FloatFilter? unitPrice,
     Input$UUIDFilter? shoppingCartId,
@@ -20936,9 +28103,8 @@ abstract class CopyWith$Input$ShoppingCartItemsFilter<TRes> {
     Input$ShoppingCartItemsFilter? not,
   });
   CopyWith$Input$UUIDFilter<TRes> get id;
-  CopyWith$Input$UUIDFilter<TRes> get userId;
   CopyWith$Input$UUIDFilter<TRes> get productId;
-  CopyWith$Input$BigIntFilter<TRes> get quantity;
+  CopyWith$Input$IntFilter<TRes> get quantity;
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
   CopyWith$Input$FloatFilter<TRes> get unitPrice;
   CopyWith$Input$UUIDFilter<TRes> get shoppingCartId;
@@ -20973,7 +28139,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsFilter<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? userId = _undefined,
     Object? productId = _undefined,
     Object? quantity = _undefined,
     Object? createdAt = _undefined,
@@ -20987,11 +28152,9 @@ class _CopyWithImpl$Input$ShoppingCartItemsFilter<TRes>
       _then(Input$ShoppingCartItemsFilter._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as Input$UUIDFilter?),
-        if (userId != _undefined) 'userId': (userId as Input$UUIDFilter?),
         if (productId != _undefined)
           'productId': (productId as Input$UUIDFilter?),
-        if (quantity != _undefined)
-          'quantity': (quantity as Input$BigIntFilter?),
+        if (quantity != _undefined) 'quantity': (quantity as Input$IntFilter?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Input$DatetimeFilter?),
         if (unitPrice != _undefined)
@@ -21013,13 +28176,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsFilter<TRes>
         : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
   }
 
-  CopyWith$Input$UUIDFilter<TRes> get userId {
-    final local$userId = _instance.userId;
-    return local$userId == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$userId, (e) => call(userId: e));
-  }
-
   CopyWith$Input$UUIDFilter<TRes> get productId {
     final local$productId = _instance.productId;
     return local$productId == null
@@ -21027,11 +28183,11 @@ class _CopyWithImpl$Input$ShoppingCartItemsFilter<TRes>
         : CopyWith$Input$UUIDFilter(local$productId, (e) => call(productId: e));
   }
 
-  CopyWith$Input$BigIntFilter<TRes> get quantity {
+  CopyWith$Input$IntFilter<TRes> get quantity {
     final local$quantity = _instance.quantity;
     return local$quantity == null
-        ? CopyWith$Input$BigIntFilter.stub(_then(_instance))
-        : CopyWith$Input$BigIntFilter(local$quantity, (e) => call(quantity: e));
+        ? CopyWith$Input$IntFilter.stub(_then(_instance))
+        : CopyWith$Input$IntFilter(local$quantity, (e) => call(quantity: e));
   }
 
   CopyWith$Input$DatetimeFilter<TRes> get createdAt {
@@ -21108,9 +28264,8 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsFilter<TRes>
 
   call({
     Input$UUIDFilter? id,
-    Input$UUIDFilter? userId,
     Input$UUIDFilter? productId,
-    Input$BigIntFilter? quantity,
+    Input$IntFilter? quantity,
     Input$DatetimeFilter? createdAt,
     Input$FloatFilter? unitPrice,
     Input$UUIDFilter? shoppingCartId,
@@ -21124,14 +28279,11 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsFilter<TRes>
   CopyWith$Input$UUIDFilter<TRes> get id =>
       CopyWith$Input$UUIDFilter.stub(_res);
 
-  CopyWith$Input$UUIDFilter<TRes> get userId =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
   CopyWith$Input$UUIDFilter<TRes> get productId =>
       CopyWith$Input$UUIDFilter.stub(_res);
 
-  CopyWith$Input$BigIntFilter<TRes> get quantity =>
-      CopyWith$Input$BigIntFilter.stub(_res);
+  CopyWith$Input$IntFilter<TRes> get quantity =>
+      CopyWith$Input$IntFilter.stub(_res);
 
   CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
       CopyWith$Input$DatetimeFilter.stub(_res);
@@ -21156,7 +28308,6 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsFilter<TRes>
 class Input$ShoppingCartItemsInsertInput {
   factory Input$ShoppingCartItemsInsertInput({
     String? id,
-    String? userId,
     String? productId,
     int? quantity,
     DateTime? createdAt,
@@ -21165,7 +28316,6 @@ class Input$ShoppingCartItemsInsertInput {
   }) =>
       Input$ShoppingCartItemsInsertInput._({
         if (id != null) r'id': id,
-        if (userId != null) r'userId': userId,
         if (productId != null) r'productId': productId,
         if (quantity != null) r'quantity': quantity,
         if (createdAt != null) r'createdAt': createdAt,
@@ -21181,10 +28331,6 @@ class Input$ShoppingCartItemsInsertInput {
     if (data.containsKey('id')) {
       final l$id = data['id'];
       result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('userId')) {
-      final l$userId = data['userId'];
-      result$data['userId'] = (l$userId as String?);
     }
     if (data.containsKey('productId')) {
       final l$productId = data['productId'];
@@ -21214,8 +28360,6 @@ class Input$ShoppingCartItemsInsertInput {
 
   String? get id => (_$data['id'] as String?);
 
-  String? get userId => (_$data['userId'] as String?);
-
   String? get productId => (_$data['productId'] as String?);
 
   int? get quantity => (_$data['quantity'] as int?);
@@ -21231,10 +28375,6 @@ class Input$ShoppingCartItemsInsertInput {
     if (_$data.containsKey('id')) {
       final l$id = id;
       result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('userId')) {
-      final l$userId = userId;
-      result$data['userId'] = l$userId;
     }
     if (_$data.containsKey('productId')) {
       final l$productId = productId;
@@ -21281,14 +28421,6 @@ class Input$ShoppingCartItemsInsertInput {
       return false;
     }
     if (l$id != lOther$id) {
-      return false;
-    }
-    final l$userId = userId;
-    final lOther$userId = other.userId;
-    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
-      return false;
-    }
-    if (l$userId != lOther$userId) {
       return false;
     }
     final l$productId = productId;
@@ -21342,7 +28474,6 @@ class Input$ShoppingCartItemsInsertInput {
   @override
   int get hashCode {
     final l$id = id;
-    final l$userId = userId;
     final l$productId = productId;
     final l$quantity = quantity;
     final l$createdAt = createdAt;
@@ -21350,7 +28481,6 @@ class Input$ShoppingCartItemsInsertInput {
     final l$shoppingCartId = shoppingCartId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('productId') ? l$productId : const {},
       _$data.containsKey('quantity') ? l$quantity : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -21371,7 +28501,6 @@ abstract class CopyWith$Input$ShoppingCartItemsInsertInput<TRes> {
 
   TRes call({
     String? id,
-    String? userId,
     String? productId,
     int? quantity,
     DateTime? createdAt,
@@ -21395,7 +28524,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsInsertInput<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? userId = _undefined,
     Object? productId = _undefined,
     Object? quantity = _undefined,
     Object? createdAt = _undefined,
@@ -21405,7 +28533,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsInsertInput<TRes>
       _then(Input$ShoppingCartItemsInsertInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
-        if (userId != _undefined) 'userId': (userId as String?),
         if (productId != _undefined) 'productId': (productId as String?),
         if (quantity != _undefined) 'quantity': (quantity as int?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
@@ -21423,7 +28550,6 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsInsertInput<TRes>
 
   call({
     String? id,
-    String? userId,
     String? productId,
     int? quantity,
     DateTime? createdAt,
@@ -21436,7 +28562,6 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsInsertInput<TRes>
 class Input$ShoppingCartItemsOrderBy {
   factory Input$ShoppingCartItemsOrderBy({
     Enum$OrderByDirection? id,
-    Enum$OrderByDirection? userId,
     Enum$OrderByDirection? productId,
     Enum$OrderByDirection? quantity,
     Enum$OrderByDirection? createdAt,
@@ -21445,7 +28570,6 @@ class Input$ShoppingCartItemsOrderBy {
   }) =>
       Input$ShoppingCartItemsOrderBy._({
         if (id != null) r'id': id,
-        if (userId != null) r'userId': userId,
         if (productId != null) r'productId': productId,
         if (quantity != null) r'quantity': quantity,
         if (createdAt != null) r'createdAt': createdAt,
@@ -21462,12 +28586,6 @@ class Input$ShoppingCartItemsOrderBy {
       result$data['id'] = l$id == null
           ? null
           : fromJson$Enum$OrderByDirection((l$id as String));
-    }
-    if (data.containsKey('userId')) {
-      final l$userId = data['userId'];
-      result$data['userId'] = l$userId == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$userId as String));
     }
     if (data.containsKey('productId')) {
       final l$productId = data['productId'];
@@ -21506,9 +28624,6 @@ class Input$ShoppingCartItemsOrderBy {
 
   Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get userId =>
-      (_$data['userId'] as Enum$OrderByDirection?);
-
   Enum$OrderByDirection? get productId =>
       (_$data['productId'] as Enum$OrderByDirection?);
 
@@ -21530,11 +28645,6 @@ class Input$ShoppingCartItemsOrderBy {
       final l$id = id;
       result$data['id'] =
           l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
-    }
-    if (_$data.containsKey('userId')) {
-      final l$userId = userId;
-      result$data['userId'] =
-          l$userId == null ? null : toJson$Enum$OrderByDirection(l$userId);
     }
     if (_$data.containsKey('productId')) {
       final l$productId = productId;
@@ -21591,14 +28701,6 @@ class Input$ShoppingCartItemsOrderBy {
     if (l$id != lOther$id) {
       return false;
     }
-    final l$userId = userId;
-    final lOther$userId = other.userId;
-    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
-      return false;
-    }
-    if (l$userId != lOther$userId) {
-      return false;
-    }
     final l$productId = productId;
     final lOther$productId = other.productId;
     if (_$data.containsKey('productId') !=
@@ -21650,7 +28752,6 @@ class Input$ShoppingCartItemsOrderBy {
   @override
   int get hashCode {
     final l$id = id;
-    final l$userId = userId;
     final l$productId = productId;
     final l$quantity = quantity;
     final l$createdAt = createdAt;
@@ -21658,7 +28759,6 @@ class Input$ShoppingCartItemsOrderBy {
     final l$shoppingCartId = shoppingCartId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('productId') ? l$productId : const {},
       _$data.containsKey('quantity') ? l$quantity : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -21679,7 +28779,6 @@ abstract class CopyWith$Input$ShoppingCartItemsOrderBy<TRes> {
 
   TRes call({
     Enum$OrderByDirection? id,
-    Enum$OrderByDirection? userId,
     Enum$OrderByDirection? productId,
     Enum$OrderByDirection? quantity,
     Enum$OrderByDirection? createdAt,
@@ -21703,7 +28802,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsOrderBy<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? userId = _undefined,
     Object? productId = _undefined,
     Object? quantity = _undefined,
     Object? createdAt = _undefined,
@@ -21713,7 +28811,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsOrderBy<TRes>
       _then(Input$ShoppingCartItemsOrderBy._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
-        if (userId != _undefined) 'userId': (userId as Enum$OrderByDirection?),
         if (productId != _undefined)
           'productId': (productId as Enum$OrderByDirection?),
         if (quantity != _undefined)
@@ -21735,7 +28832,6 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsOrderBy<TRes>
 
   call({
     Enum$OrderByDirection? id,
-    Enum$OrderByDirection? userId,
     Enum$OrderByDirection? productId,
     Enum$OrderByDirection? quantity,
     Enum$OrderByDirection? createdAt,
@@ -21748,7 +28844,6 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsOrderBy<TRes>
 class Input$ShoppingCartItemsUpdateInput {
   factory Input$ShoppingCartItemsUpdateInput({
     String? id,
-    String? userId,
     String? productId,
     int? quantity,
     DateTime? createdAt,
@@ -21757,7 +28852,6 @@ class Input$ShoppingCartItemsUpdateInput {
   }) =>
       Input$ShoppingCartItemsUpdateInput._({
         if (id != null) r'id': id,
-        if (userId != null) r'userId': userId,
         if (productId != null) r'productId': productId,
         if (quantity != null) r'quantity': quantity,
         if (createdAt != null) r'createdAt': createdAt,
@@ -21773,10 +28867,6 @@ class Input$ShoppingCartItemsUpdateInput {
     if (data.containsKey('id')) {
       final l$id = data['id'];
       result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('userId')) {
-      final l$userId = data['userId'];
-      result$data['userId'] = (l$userId as String?);
     }
     if (data.containsKey('productId')) {
       final l$productId = data['productId'];
@@ -21806,8 +28896,6 @@ class Input$ShoppingCartItemsUpdateInput {
 
   String? get id => (_$data['id'] as String?);
 
-  String? get userId => (_$data['userId'] as String?);
-
   String? get productId => (_$data['productId'] as String?);
 
   int? get quantity => (_$data['quantity'] as int?);
@@ -21823,10 +28911,6 @@ class Input$ShoppingCartItemsUpdateInput {
     if (_$data.containsKey('id')) {
       final l$id = id;
       result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('userId')) {
-      final l$userId = userId;
-      result$data['userId'] = l$userId;
     }
     if (_$data.containsKey('productId')) {
       final l$productId = productId;
@@ -21875,14 +28959,6 @@ class Input$ShoppingCartItemsUpdateInput {
     if (l$id != lOther$id) {
       return false;
     }
-    final l$userId = userId;
-    final lOther$userId = other.userId;
-    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
-      return false;
-    }
-    if (l$userId != lOther$userId) {
-      return false;
-    }
     final l$productId = productId;
     final lOther$productId = other.productId;
     if (_$data.containsKey('productId') !=
@@ -21934,7 +29010,6 @@ class Input$ShoppingCartItemsUpdateInput {
   @override
   int get hashCode {
     final l$id = id;
-    final l$userId = userId;
     final l$productId = productId;
     final l$quantity = quantity;
     final l$createdAt = createdAt;
@@ -21942,7 +29017,6 @@ class Input$ShoppingCartItemsUpdateInput {
     final l$shoppingCartId = shoppingCartId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('productId') ? l$productId : const {},
       _$data.containsKey('quantity') ? l$quantity : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -21963,7 +29037,6 @@ abstract class CopyWith$Input$ShoppingCartItemsUpdateInput<TRes> {
 
   TRes call({
     String? id,
-    String? userId,
     String? productId,
     int? quantity,
     DateTime? createdAt,
@@ -21987,7 +29060,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsUpdateInput<TRes>
 
   TRes call({
     Object? id = _undefined,
-    Object? userId = _undefined,
     Object? productId = _undefined,
     Object? quantity = _undefined,
     Object? createdAt = _undefined,
@@ -21997,7 +29069,6 @@ class _CopyWithImpl$Input$ShoppingCartItemsUpdateInput<TRes>
       _then(Input$ShoppingCartItemsUpdateInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
-        if (userId != _undefined) 'userId': (userId as String?),
         if (productId != _undefined) 'productId': (productId as String?),
         if (quantity != _undefined) 'quantity': (quantity as int?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
@@ -22015,7 +29086,6 @@ class _CopyWithStubImpl$Input$ShoppingCartItemsUpdateInput<TRes>
 
   call({
     String? id,
-    String? userId,
     String? productId,
     int? quantity,
     DateTime? createdAt,
@@ -23082,6 +30152,2364 @@ class _CopyWithStubImpl$Input$ShoppingCartsUpdateInput<TRes>
     String? userId,
     String? orderId,
     DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$StationDeliveryLocationsFilter {
+  factory Input$StationDeliveryLocationsFilter({
+    Input$UUIDFilter? id,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? stationId,
+    Input$UUIDFilter? deliveryLocationId,
+    Input$IDFilter? nodeId,
+    List<Input$StationDeliveryLocationsFilter>? and,
+    List<Input$StationDeliveryLocationsFilter>? or,
+    Input$StationDeliveryLocationsFilter? not,
+  }) =>
+      Input$StationDeliveryLocationsFilter._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationId != null) r'stationId': stationId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$StationDeliveryLocationsFilter._(this._$data);
+
+  factory Input$StationDeliveryLocationsFilter.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('stationId')) {
+      final l$stationId = data['stationId'];
+      result$data['stationId'] = l$stationId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$stationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$deliveryLocationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$StationDeliveryLocationsFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$StationDeliveryLocationsFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$StationDeliveryLocationsFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$StationDeliveryLocationsFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$UUIDFilter? get stationId => (_$data['stationId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get deliveryLocationId =>
+      (_$data['deliveryLocationId'] as Input$UUIDFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$StationDeliveryLocationsFilter>? get and =>
+      (_$data['and'] as List<Input$StationDeliveryLocationsFilter>?);
+
+  List<Input$StationDeliveryLocationsFilter>? get or =>
+      (_$data['or'] as List<Input$StationDeliveryLocationsFilter>?);
+
+  Input$StationDeliveryLocationsFilter? get not =>
+      (_$data['not'] as Input$StationDeliveryLocationsFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('stationId')) {
+      final l$stationId = stationId;
+      result$data['stationId'] = l$stationId?.toJson();
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationsFilter<
+          Input$StationDeliveryLocationsFilter>
+      get copyWith => CopyWith$Input$StationDeliveryLocationsFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationsFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (_$data.containsKey('stationId') !=
+        other._$data.containsKey('stationId')) {
+      return false;
+    }
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationId = stationId;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationId') ? l$stationId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationsFilter<TRes> {
+  factory CopyWith$Input$StationDeliveryLocationsFilter(
+    Input$StationDeliveryLocationsFilter instance,
+    TRes Function(Input$StationDeliveryLocationsFilter) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationsFilter;
+
+  factory CopyWith$Input$StationDeliveryLocationsFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationsFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? stationId,
+    Input$UUIDFilter? deliveryLocationId,
+    Input$IDFilter? nodeId,
+    List<Input$StationDeliveryLocationsFilter>? and,
+    List<Input$StationDeliveryLocationsFilter>? or,
+    Input$StationDeliveryLocationsFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$UUIDFilter<TRes> get stationId;
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$StationDeliveryLocationsFilter>? Function(
+              Iterable<
+                  CopyWith$Input$StationDeliveryLocationsFilter<
+                      Input$StationDeliveryLocationsFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$StationDeliveryLocationsFilter>? Function(
+              Iterable<
+                  CopyWith$Input$StationDeliveryLocationsFilter<
+                      Input$StationDeliveryLocationsFilter>>?)
+          _fn);
+  CopyWith$Input$StationDeliveryLocationsFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationsFilter<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsFilter<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationsFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationsFilter _instance;
+
+  final TRes Function(Input$StationDeliveryLocationsFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationId = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationsFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (stationId != _undefined)
+          'stationId': (stationId as Input$UUIDFilter?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as Input$UUIDFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$StationDeliveryLocationsFilter>?),
+        if (or != _undefined)
+          'or': (or as List<Input$StationDeliveryLocationsFilter>?),
+        if (not != _undefined)
+          'not': (not as Input$StationDeliveryLocationsFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get stationId {
+    final local$stationId = _instance.stationId;
+    return local$stationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$stationId, (e) => call(stationId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId {
+    final local$deliveryLocationId = _instance.deliveryLocationId;
+    return local$deliveryLocationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$deliveryLocationId, (e) => call(deliveryLocationId: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$StationDeliveryLocationsFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$StationDeliveryLocationsFilter<
+                          Input$StationDeliveryLocationsFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and
+              ?.map((e) => CopyWith$Input$StationDeliveryLocationsFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$StationDeliveryLocationsFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$StationDeliveryLocationsFilter<
+                          Input$StationDeliveryLocationsFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or
+              ?.map((e) => CopyWith$Input$StationDeliveryLocationsFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$StationDeliveryLocationsFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$StationDeliveryLocationsFilter.stub(_then(_instance))
+        : CopyWith$Input$StationDeliveryLocationsFilter(
+            local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationsFilter<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsFilter<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationsFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? stationId,
+    Input$UUIDFilter? deliveryLocationId,
+    Input$IDFilter? nodeId,
+    List<Input$StationDeliveryLocationsFilter>? and,
+    List<Input$StationDeliveryLocationsFilter>? or,
+    Input$StationDeliveryLocationsFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get stationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$StationDeliveryLocationsFilter<TRes> get not =>
+      CopyWith$Input$StationDeliveryLocationsFilter.stub(_res);
+}
+
+class Input$StationDeliveryLocationsInsertInput {
+  factory Input$StationDeliveryLocationsInsertInput({
+    String? id,
+    DateTime? createdAt,
+    String? stationId,
+    String? deliveryLocationId,
+  }) =>
+      Input$StationDeliveryLocationsInsertInput._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationId != null) r'stationId': stationId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+      });
+
+  Input$StationDeliveryLocationsInsertInput._(this._$data);
+
+  factory Input$StationDeliveryLocationsInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('stationId')) {
+      final l$stationId = data['stationId'];
+      result$data['stationId'] = (l$stationId as String?);
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
+    }
+    return Input$StationDeliveryLocationsInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get stationId => (_$data['stationId'] as String?);
+
+  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('stationId')) {
+      final l$stationId = stationId;
+      result$data['stationId'] = l$stationId;
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationsInsertInput<
+          Input$StationDeliveryLocationsInsertInput>
+      get copyWith => CopyWith$Input$StationDeliveryLocationsInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationsInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (_$data.containsKey('stationId') !=
+        other._$data.containsKey('stationId')) {
+      return false;
+    }
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationId = stationId;
+    final l$deliveryLocationId = deliveryLocationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationId') ? l$stationId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationsInsertInput<TRes> {
+  factory CopyWith$Input$StationDeliveryLocationsInsertInput(
+    Input$StationDeliveryLocationsInsertInput instance,
+    TRes Function(Input$StationDeliveryLocationsInsertInput) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationsInsertInput;
+
+  factory CopyWith$Input$StationDeliveryLocationsInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationsInsertInput;
+
+  TRes call({
+    String? id,
+    DateTime? createdAt,
+    String? stationId,
+    String? deliveryLocationId,
+  });
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationsInsertInput<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsInsertInput<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationsInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationsInsertInput _instance;
+
+  final TRes Function(Input$StationDeliveryLocationsInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationId = _undefined,
+    Object? deliveryLocationId = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationsInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (stationId != _undefined) 'stationId': (stationId as String?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationsInsertInput<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsInsertInput<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationsInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    DateTime? createdAt,
+    String? stationId,
+    String? deliveryLocationId,
+  }) =>
+      _res;
+}
+
+class Input$StationDeliveryLocationsOrderBy {
+  factory Input$StationDeliveryLocationsOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? stationId,
+    Enum$OrderByDirection? deliveryLocationId,
+  }) =>
+      Input$StationDeliveryLocationsOrderBy._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationId != null) r'stationId': stationId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+      });
+
+  Input$StationDeliveryLocationsOrderBy._(this._$data);
+
+  factory Input$StationDeliveryLocationsOrderBy.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('stationId')) {
+      final l$stationId = data['stationId'];
+      result$data['stationId'] = l$stationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$stationId as String));
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$deliveryLocationId as String));
+    }
+    return Input$StationDeliveryLocationsOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get stationId =>
+      (_$data['stationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get deliveryLocationId =>
+      (_$data['deliveryLocationId'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('stationId')) {
+      final l$stationId = stationId;
+      result$data['stationId'] = l$stationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$stationId);
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$deliveryLocationId);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationsOrderBy<
+          Input$StationDeliveryLocationsOrderBy>
+      get copyWith => CopyWith$Input$StationDeliveryLocationsOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationsOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (_$data.containsKey('stationId') !=
+        other._$data.containsKey('stationId')) {
+      return false;
+    }
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationId = stationId;
+    final l$deliveryLocationId = deliveryLocationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationId') ? l$stationId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationsOrderBy<TRes> {
+  factory CopyWith$Input$StationDeliveryLocationsOrderBy(
+    Input$StationDeliveryLocationsOrderBy instance,
+    TRes Function(Input$StationDeliveryLocationsOrderBy) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationsOrderBy;
+
+  factory CopyWith$Input$StationDeliveryLocationsOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationsOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? stationId,
+    Enum$OrderByDirection? deliveryLocationId,
+  });
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationsOrderBy<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsOrderBy<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationsOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationsOrderBy _instance;
+
+  final TRes Function(Input$StationDeliveryLocationsOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationId = _undefined,
+    Object? deliveryLocationId = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationsOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (stationId != _undefined)
+          'stationId': (stationId as Enum$OrderByDirection?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationsOrderBy<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsOrderBy<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationsOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? stationId,
+    Enum$OrderByDirection? deliveryLocationId,
+  }) =>
+      _res;
+}
+
+class Input$StationDeliveryLocationsUpdateInput {
+  factory Input$StationDeliveryLocationsUpdateInput({
+    String? id,
+    DateTime? createdAt,
+    String? stationId,
+    String? deliveryLocationId,
+  }) =>
+      Input$StationDeliveryLocationsUpdateInput._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationId != null) r'stationId': stationId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+      });
+
+  Input$StationDeliveryLocationsUpdateInput._(this._$data);
+
+  factory Input$StationDeliveryLocationsUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('stationId')) {
+      final l$stationId = data['stationId'];
+      result$data['stationId'] = (l$stationId as String?);
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
+    }
+    return Input$StationDeliveryLocationsUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get stationId => (_$data['stationId'] as String?);
+
+  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('stationId')) {
+      final l$stationId = stationId;
+      result$data['stationId'] = l$stationId;
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationsUpdateInput<
+          Input$StationDeliveryLocationsUpdateInput>
+      get copyWith => CopyWith$Input$StationDeliveryLocationsUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationsUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationId = stationId;
+    final lOther$stationId = other.stationId;
+    if (_$data.containsKey('stationId') !=
+        other._$data.containsKey('stationId')) {
+      return false;
+    }
+    if (l$stationId != lOther$stationId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationId = stationId;
+    final l$deliveryLocationId = deliveryLocationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationId') ? l$stationId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationsUpdateInput<TRes> {
+  factory CopyWith$Input$StationDeliveryLocationsUpdateInput(
+    Input$StationDeliveryLocationsUpdateInput instance,
+    TRes Function(Input$StationDeliveryLocationsUpdateInput) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationsUpdateInput;
+
+  factory CopyWith$Input$StationDeliveryLocationsUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationsUpdateInput;
+
+  TRes call({
+    String? id,
+    DateTime? createdAt,
+    String? stationId,
+    String? deliveryLocationId,
+  });
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationsUpdateInput<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsUpdateInput<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationsUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationsUpdateInput _instance;
+
+  final TRes Function(Input$StationDeliveryLocationsUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationId = _undefined,
+    Object? deliveryLocationId = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationsUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (stationId != _undefined) 'stationId': (stationId as String?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationsUpdateInput<TRes>
+    implements CopyWith$Input$StationDeliveryLocationsUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationsUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    DateTime? createdAt,
+    String? stationId,
+    String? deliveryLocationId,
+  }) =>
+      _res;
+}
+
+class Input$StationDeliveryLocationTimeslotsFilter {
+  factory Input$StationDeliveryLocationTimeslotsFilter({
+    Input$UUIDFilter? id,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? stationDeliveryLocationId,
+    Input$DatetimeFilter? beginAt,
+    Input$DatetimeFilter? endAt,
+    Input$IDFilter? nodeId,
+    List<Input$StationDeliveryLocationTimeslotsFilter>? and,
+    List<Input$StationDeliveryLocationTimeslotsFilter>? or,
+    Input$StationDeliveryLocationTimeslotsFilter? not,
+  }) =>
+      Input$StationDeliveryLocationTimeslotsFilter._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationDeliveryLocationId != null)
+          r'stationDeliveryLocationId': stationDeliveryLocationId,
+        if (beginAt != null) r'beginAt': beginAt,
+        if (endAt != null) r'endAt': endAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$StationDeliveryLocationTimeslotsFilter._(this._$data);
+
+  factory Input$StationDeliveryLocationTimeslotsFilter.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
+      result$data['stationDeliveryLocationId'] =
+          l$stationDeliveryLocationId == null
+              ? null
+              : Input$UUIDFilter.fromJson(
+                  (l$stationDeliveryLocationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('beginAt')) {
+      final l$beginAt = data['beginAt'];
+      result$data['beginAt'] = l$beginAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson((l$beginAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('endAt')) {
+      final l$endAt = data['endAt'];
+      result$data['endAt'] = l$endAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson((l$endAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$StationDeliveryLocationTimeslotsFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$StationDeliveryLocationTimeslotsFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$StationDeliveryLocationTimeslotsFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$StationDeliveryLocationTimeslotsFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$UUIDFilter? get stationDeliveryLocationId =>
+      (_$data['stationDeliveryLocationId'] as Input$UUIDFilter?);
+
+  Input$DatetimeFilter? get beginAt =>
+      (_$data['beginAt'] as Input$DatetimeFilter?);
+
+  Input$DatetimeFilter? get endAt => (_$data['endAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$StationDeliveryLocationTimeslotsFilter>? get and =>
+      (_$data['and'] as List<Input$StationDeliveryLocationTimeslotsFilter>?);
+
+  List<Input$StationDeliveryLocationTimeslotsFilter>? get or =>
+      (_$data['or'] as List<Input$StationDeliveryLocationTimeslotsFilter>?);
+
+  Input$StationDeliveryLocationTimeslotsFilter? get not =>
+      (_$data['not'] as Input$StationDeliveryLocationTimeslotsFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = stationDeliveryLocationId;
+      result$data['stationDeliveryLocationId'] =
+          l$stationDeliveryLocationId?.toJson();
+    }
+    if (_$data.containsKey('beginAt')) {
+      final l$beginAt = beginAt;
+      result$data['beginAt'] = l$beginAt?.toJson();
+    }
+    if (_$data.containsKey('endAt')) {
+      final l$endAt = endAt;
+      result$data['endAt'] = l$endAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
+          Input$StationDeliveryLocationTimeslotsFilter>
+      get copyWith => CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationTimeslotsFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
+    if (_$data.containsKey('stationDeliveryLocationId') !=
+        other._$data.containsKey('stationDeliveryLocationId')) {
+      return false;
+    }
+    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
+      return false;
+    }
+    final l$beginAt = beginAt;
+    final lOther$beginAt = other.beginAt;
+    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
+      return false;
+    }
+    if (l$beginAt != lOther$beginAt) {
+      return false;
+    }
+    final l$endAt = endAt;
+    final lOther$endAt = other.endAt;
+    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
+      return false;
+    }
+    if (l$endAt != lOther$endAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final l$beginAt = beginAt;
+    final l$endAt = endAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationDeliveryLocationId')
+          ? l$stationDeliveryLocationId
+          : const {},
+      _$data.containsKey('beginAt') ? l$beginAt : const {},
+      _$data.containsKey('endAt') ? l$endAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> {
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
+    Input$StationDeliveryLocationTimeslotsFilter instance,
+    TRes Function(Input$StationDeliveryLocationTimeslotsFilter) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsFilter;
+
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? stationDeliveryLocationId,
+    Input$DatetimeFilter? beginAt,
+    Input$DatetimeFilter? endAt,
+    Input$IDFilter? nodeId,
+    List<Input$StationDeliveryLocationTimeslotsFilter>? and,
+    List<Input$StationDeliveryLocationTimeslotsFilter>? or,
+    Input$StationDeliveryLocationTimeslotsFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$UUIDFilter<TRes> get stationDeliveryLocationId;
+  CopyWith$Input$DatetimeFilter<TRes> get beginAt;
+  CopyWith$Input$DatetimeFilter<TRes> get endAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
+              Iterable<
+                  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
+                      Input$StationDeliveryLocationTimeslotsFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
+              Iterable<
+                  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
+                      Input$StationDeliveryLocationTimeslotsFilter>>?)
+          _fn);
+  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsFilter<TRes>
+    implements CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationTimeslotsFilter _instance;
+
+  final TRes Function(Input$StationDeliveryLocationTimeslotsFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationDeliveryLocationId = _undefined,
+    Object? beginAt = _undefined,
+    Object? endAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationTimeslotsFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (stationDeliveryLocationId != _undefined)
+          'stationDeliveryLocationId':
+              (stationDeliveryLocationId as Input$UUIDFilter?),
+        if (beginAt != _undefined)
+          'beginAt': (beginAt as Input$DatetimeFilter?),
+        if (endAt != _undefined) 'endAt': (endAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$StationDeliveryLocationTimeslotsFilter>?),
+        if (or != _undefined)
+          'or': (or as List<Input$StationDeliveryLocationTimeslotsFilter>?),
+        if (not != _undefined)
+          'not': (not as Input$StationDeliveryLocationTimeslotsFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get stationDeliveryLocationId {
+    final local$stationDeliveryLocationId = _instance.stationDeliveryLocationId;
+    return local$stationDeliveryLocationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$stationDeliveryLocationId,
+            (e) => call(stationDeliveryLocationId: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get beginAt {
+    final local$beginAt = _instance.beginAt;
+    return local$beginAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(local$beginAt, (e) => call(beginAt: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get endAt {
+    final local$endAt = _instance.endAt;
+    return local$endAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(local$endAt, (e) => call(endAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
+                          Input$StationDeliveryLocationTimeslotsFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map(
+              (e) => CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
+                          Input$StationDeliveryLocationTimeslotsFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map(
+              (e) => CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$StationDeliveryLocationTimeslotsFilter.stub(
+            _then(_instance))
+        : CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
+            local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsFilter<TRes>
+    implements CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? stationDeliveryLocationId,
+    Input$DatetimeFilter? beginAt,
+    Input$DatetimeFilter? endAt,
+    Input$IDFilter? nodeId,
+    List<Input$StationDeliveryLocationTimeslotsFilter>? and,
+    List<Input$StationDeliveryLocationTimeslotsFilter>? or,
+    Input$StationDeliveryLocationTimeslotsFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get stationDeliveryLocationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get beginAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get endAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> get not =>
+      CopyWith$Input$StationDeliveryLocationTimeslotsFilter.stub(_res);
+}
+
+class Input$StationDeliveryLocationTimeslotsInsertInput {
+  factory Input$StationDeliveryLocationTimeslotsInsertInput({
+    String? id,
+    DateTime? createdAt,
+    String? stationDeliveryLocationId,
+    DateTime? beginAt,
+    DateTime? endAt,
+  }) =>
+      Input$StationDeliveryLocationTimeslotsInsertInput._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationDeliveryLocationId != null)
+          r'stationDeliveryLocationId': stationDeliveryLocationId,
+        if (beginAt != null) r'beginAt': beginAt,
+        if (endAt != null) r'endAt': endAt,
+      });
+
+  Input$StationDeliveryLocationTimeslotsInsertInput._(this._$data);
+
+  factory Input$StationDeliveryLocationTimeslotsInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
+      result$data['stationDeliveryLocationId'] =
+          (l$stationDeliveryLocationId as String?);
+    }
+    if (data.containsKey('beginAt')) {
+      final l$beginAt = data['beginAt'];
+      result$data['beginAt'] =
+          l$beginAt == null ? null : DateTime.parse((l$beginAt as String));
+    }
+    if (data.containsKey('endAt')) {
+      final l$endAt = data['endAt'];
+      result$data['endAt'] =
+          l$endAt == null ? null : DateTime.parse((l$endAt as String));
+    }
+    return Input$StationDeliveryLocationTimeslotsInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get stationDeliveryLocationId =>
+      (_$data['stationDeliveryLocationId'] as String?);
+
+  DateTime? get beginAt => (_$data['beginAt'] as DateTime?);
+
+  DateTime? get endAt => (_$data['endAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = stationDeliveryLocationId;
+      result$data['stationDeliveryLocationId'] = l$stationDeliveryLocationId;
+    }
+    if (_$data.containsKey('beginAt')) {
+      final l$beginAt = beginAt;
+      result$data['beginAt'] = l$beginAt?.toIso8601String();
+    }
+    if (_$data.containsKey('endAt')) {
+      final l$endAt = endAt;
+      result$data['endAt'] = l$endAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<
+          Input$StationDeliveryLocationTimeslotsInsertInput>
+      get copyWith =>
+          CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationTimeslotsInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
+    if (_$data.containsKey('stationDeliveryLocationId') !=
+        other._$data.containsKey('stationDeliveryLocationId')) {
+      return false;
+    }
+    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
+      return false;
+    }
+    final l$beginAt = beginAt;
+    final lOther$beginAt = other.beginAt;
+    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
+      return false;
+    }
+    if (l$beginAt != lOther$beginAt) {
+      return false;
+    }
+    final l$endAt = endAt;
+    final lOther$endAt = other.endAt;
+    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
+      return false;
+    }
+    if (l$endAt != lOther$endAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final l$beginAt = beginAt;
+    final l$endAt = endAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationDeliveryLocationId')
+          ? l$stationDeliveryLocationId
+          : const {},
+      _$data.containsKey('beginAt') ? l$beginAt : const {},
+      _$data.containsKey('endAt') ? l$endAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<
+    TRes> {
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput(
+    Input$StationDeliveryLocationTimeslotsInsertInput instance,
+    TRes Function(Input$StationDeliveryLocationTimeslotsInsertInput) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsInsertInput;
+
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput.stub(
+          TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsInsertInput;
+
+  TRes call({
+    String? id,
+    DateTime? createdAt,
+    String? stationDeliveryLocationId,
+    DateTime? beginAt,
+    DateTime? endAt,
+  });
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsInsertInput<TRes>
+    implements
+        CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationTimeslotsInsertInput _instance;
+
+  final TRes Function(Input$StationDeliveryLocationTimeslotsInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationDeliveryLocationId = _undefined,
+    Object? beginAt = _undefined,
+    Object? endAt = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationTimeslotsInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (stationDeliveryLocationId != _undefined)
+          'stationDeliveryLocationId': (stationDeliveryLocationId as String?),
+        if (beginAt != _undefined) 'beginAt': (beginAt as DateTime?),
+        if (endAt != _undefined) 'endAt': (endAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsInsertInput<TRes>
+    implements
+        CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsInsertInput(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    DateTime? createdAt,
+    String? stationDeliveryLocationId,
+    DateTime? beginAt,
+    DateTime? endAt,
+  }) =>
+      _res;
+}
+
+class Input$StationDeliveryLocationTimeslotsOrderBy {
+  factory Input$StationDeliveryLocationTimeslotsOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? stationDeliveryLocationId,
+    Enum$OrderByDirection? beginAt,
+    Enum$OrderByDirection? endAt,
+  }) =>
+      Input$StationDeliveryLocationTimeslotsOrderBy._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationDeliveryLocationId != null)
+          r'stationDeliveryLocationId': stationDeliveryLocationId,
+        if (beginAt != null) r'beginAt': beginAt,
+        if (endAt != null) r'endAt': endAt,
+      });
+
+  Input$StationDeliveryLocationTimeslotsOrderBy._(this._$data);
+
+  factory Input$StationDeliveryLocationTimeslotsOrderBy.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
+      result$data['stationDeliveryLocationId'] =
+          l$stationDeliveryLocationId == null
+              ? null
+              : fromJson$Enum$OrderByDirection(
+                  (l$stationDeliveryLocationId as String));
+    }
+    if (data.containsKey('beginAt')) {
+      final l$beginAt = data['beginAt'];
+      result$data['beginAt'] = l$beginAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$beginAt as String));
+    }
+    if (data.containsKey('endAt')) {
+      final l$endAt = data['endAt'];
+      result$data['endAt'] = l$endAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$endAt as String));
+    }
+    return Input$StationDeliveryLocationTimeslotsOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get stationDeliveryLocationId =>
+      (_$data['stationDeliveryLocationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get beginAt =>
+      (_$data['beginAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get endAt =>
+      (_$data['endAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = stationDeliveryLocationId;
+      result$data['stationDeliveryLocationId'] =
+          l$stationDeliveryLocationId == null
+              ? null
+              : toJson$Enum$OrderByDirection(l$stationDeliveryLocationId);
+    }
+    if (_$data.containsKey('beginAt')) {
+      final l$beginAt = beginAt;
+      result$data['beginAt'] =
+          l$beginAt == null ? null : toJson$Enum$OrderByDirection(l$beginAt);
+    }
+    if (_$data.containsKey('endAt')) {
+      final l$endAt = endAt;
+      result$data['endAt'] =
+          l$endAt == null ? null : toJson$Enum$OrderByDirection(l$endAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<
+          Input$StationDeliveryLocationTimeslotsOrderBy>
+      get copyWith => CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationTimeslotsOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
+    if (_$data.containsKey('stationDeliveryLocationId') !=
+        other._$data.containsKey('stationDeliveryLocationId')) {
+      return false;
+    }
+    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
+      return false;
+    }
+    final l$beginAt = beginAt;
+    final lOther$beginAt = other.beginAt;
+    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
+      return false;
+    }
+    if (l$beginAt != lOther$beginAt) {
+      return false;
+    }
+    final l$endAt = endAt;
+    final lOther$endAt = other.endAt;
+    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
+      return false;
+    }
+    if (l$endAt != lOther$endAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final l$beginAt = beginAt;
+    final l$endAt = endAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationDeliveryLocationId')
+          ? l$stationDeliveryLocationId
+          : const {},
+      _$data.containsKey('beginAt') ? l$beginAt : const {},
+      _$data.containsKey('endAt') ? l$endAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<TRes> {
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy(
+    Input$StationDeliveryLocationTimeslotsOrderBy instance,
+    TRes Function(Input$StationDeliveryLocationTimeslotsOrderBy) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsOrderBy;
+
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy.stub(
+          TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? stationDeliveryLocationId,
+    Enum$OrderByDirection? beginAt,
+    Enum$OrderByDirection? endAt,
+  });
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsOrderBy<TRes>
+    implements CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationTimeslotsOrderBy _instance;
+
+  final TRes Function(Input$StationDeliveryLocationTimeslotsOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationDeliveryLocationId = _undefined,
+    Object? beginAt = _undefined,
+    Object? endAt = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationTimeslotsOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (stationDeliveryLocationId != _undefined)
+          'stationDeliveryLocationId':
+              (stationDeliveryLocationId as Enum$OrderByDirection?),
+        if (beginAt != _undefined)
+          'beginAt': (beginAt as Enum$OrderByDirection?),
+        if (endAt != _undefined) 'endAt': (endAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsOrderBy<TRes>
+    implements CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? stationDeliveryLocationId,
+    Enum$OrderByDirection? beginAt,
+    Enum$OrderByDirection? endAt,
+  }) =>
+      _res;
+}
+
+class Input$StationDeliveryLocationTimeslotsUpdateInput {
+  factory Input$StationDeliveryLocationTimeslotsUpdateInput({
+    String? id,
+    DateTime? createdAt,
+    String? stationDeliveryLocationId,
+    DateTime? beginAt,
+    DateTime? endAt,
+  }) =>
+      Input$StationDeliveryLocationTimeslotsUpdateInput._({
+        if (id != null) r'id': id,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (stationDeliveryLocationId != null)
+          r'stationDeliveryLocationId': stationDeliveryLocationId,
+        if (beginAt != null) r'beginAt': beginAt,
+        if (endAt != null) r'endAt': endAt,
+      });
+
+  Input$StationDeliveryLocationTimeslotsUpdateInput._(this._$data);
+
+  factory Input$StationDeliveryLocationTimeslotsUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
+      result$data['stationDeliveryLocationId'] =
+          (l$stationDeliveryLocationId as String?);
+    }
+    if (data.containsKey('beginAt')) {
+      final l$beginAt = data['beginAt'];
+      result$data['beginAt'] =
+          l$beginAt == null ? null : DateTime.parse((l$beginAt as String));
+    }
+    if (data.containsKey('endAt')) {
+      final l$endAt = data['endAt'];
+      result$data['endAt'] =
+          l$endAt == null ? null : DateTime.parse((l$endAt as String));
+    }
+    return Input$StationDeliveryLocationTimeslotsUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get stationDeliveryLocationId =>
+      (_$data['stationDeliveryLocationId'] as String?);
+
+  DateTime? get beginAt => (_$data['beginAt'] as DateTime?);
+
+  DateTime? get endAt => (_$data['endAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('stationDeliveryLocationId')) {
+      final l$stationDeliveryLocationId = stationDeliveryLocationId;
+      result$data['stationDeliveryLocationId'] = l$stationDeliveryLocationId;
+    }
+    if (_$data.containsKey('beginAt')) {
+      final l$beginAt = beginAt;
+      result$data['beginAt'] = l$beginAt?.toIso8601String();
+    }
+    if (_$data.containsKey('endAt')) {
+      final l$endAt = endAt;
+      result$data['endAt'] = l$endAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<
+          Input$StationDeliveryLocationTimeslotsUpdateInput>
+      get copyWith =>
+          CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StationDeliveryLocationTimeslotsUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
+    if (_$data.containsKey('stationDeliveryLocationId') !=
+        other._$data.containsKey('stationDeliveryLocationId')) {
+      return false;
+    }
+    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
+      return false;
+    }
+    final l$beginAt = beginAt;
+    final lOther$beginAt = other.beginAt;
+    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
+      return false;
+    }
+    if (l$beginAt != lOther$beginAt) {
+      return false;
+    }
+    final l$endAt = endAt;
+    final lOther$endAt = other.endAt;
+    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
+      return false;
+    }
+    if (l$endAt != lOther$endAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$createdAt = createdAt;
+    final l$stationDeliveryLocationId = stationDeliveryLocationId;
+    final l$beginAt = beginAt;
+    final l$endAt = endAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('stationDeliveryLocationId')
+          ? l$stationDeliveryLocationId
+          : const {},
+      _$data.containsKey('beginAt') ? l$beginAt : const {},
+      _$data.containsKey('endAt') ? l$endAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<
+    TRes> {
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput(
+    Input$StationDeliveryLocationTimeslotsUpdateInput instance,
+    TRes Function(Input$StationDeliveryLocationTimeslotsUpdateInput) then,
+  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsUpdateInput;
+
+  factory CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput.stub(
+          TRes res) =
+      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsUpdateInput;
+
+  TRes call({
+    String? id,
+    DateTime? createdAt,
+    String? stationDeliveryLocationId,
+    DateTime? beginAt,
+    DateTime? endAt,
+  });
+}
+
+class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes>
+    implements
+        CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes> {
+  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$StationDeliveryLocationTimeslotsUpdateInput _instance;
+
+  final TRes Function(Input$StationDeliveryLocationTimeslotsUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? createdAt = _undefined,
+    Object? stationDeliveryLocationId = _undefined,
+    Object? beginAt = _undefined,
+    Object? endAt = _undefined,
+  }) =>
+      _then(Input$StationDeliveryLocationTimeslotsUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (stationDeliveryLocationId != _undefined)
+          'stationDeliveryLocationId': (stationDeliveryLocationId as String?),
+        if (beginAt != _undefined) 'beginAt': (beginAt as DateTime?),
+        if (endAt != _undefined) 'endAt': (endAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes>
+    implements
+        CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsUpdateInput(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    DateTime? createdAt,
+    String? stationDeliveryLocationId,
+    DateTime? beginAt,
+    DateTime? endAt,
   }) =>
       _res;
 }
@@ -33060,12 +42488,16 @@ Enum$__DirectiveLocation fromJson$Enum$__DirectiveLocation(String value) {
 
 const possibleTypesMap = <String, Set<String>>{
   'Node': {
+    'DeliveryLocation',
+    'Navigation',
+    'NavigationItems',
     'Notifications',
     'NotificationTypes',
     'OrderItems',
     'Orders',
     'OrderTransactions',
     'Permissions',
+    'ProductInventory',
     'Products',
     'ProductTypes',
     'RolePermissions',
@@ -33073,6 +42505,8 @@ const possibleTypesMap = <String, Set<String>>{
     'Sessions',
     'ShoppingCartItems',
     'ShoppingCarts',
+    'StationDeliveryLocations',
+    'StationDeliveryLocationTimeslots',
     'Stations',
     'UserPermissions',
     'UserRoles',

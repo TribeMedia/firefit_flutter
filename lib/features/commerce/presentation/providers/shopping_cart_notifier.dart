@@ -96,6 +96,7 @@ class ShoppingCartNotifier extends AsyncNotifier<ShoppingCartModel> {
           shoppingCartId: isNewCart ? newCartId : currentState.currentCartId!,
           productId: item.id,
           quantity: item.quantity,
+          unitPrice: item.price,
         ),
       );
 

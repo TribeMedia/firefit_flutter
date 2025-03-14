@@ -13,7 +13,7 @@ class FeedScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BlueSky Feed'),
+        title: const Text('Food Feed'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
