@@ -1,4 +1,3 @@
-import 'package:core/commerce/domain/models/order.dart';
 import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/commerce/tax/domain/services/stripe_payment_service_interface.dart';
 import 'package:core/core.dart';
@@ -12,6 +11,7 @@ import 'package:firefit/theme/dark_theme.dart';
 import 'package:firefit/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -255,7 +255,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
 
               try {
                 // Show loading indicator
-                await showDialog(
+                showDialog(
                   context: context,
                   barrierDismissible: false,
                   builder: (context) => const AlertDialog(
@@ -302,8 +302,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                       .toInt()
                       .toDouble(), // Convert to cents
                   metadata: {
-                    'userId': user.id,
-                    'items': lineItems,
+                    'order_type': 'meal_payment',
                   },
                 );
 
@@ -344,10 +343,21 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                 if (!mounted) return;
 
                 // Present the payment sheet
-                await Stripe.instance.presentPaymentSheet();
+                final options = await Stripe.instance.presentPaymentSheet();
 
                 // Add a mounted check
                 if (!mounted) return;
+
+                // Handle payment result
+                if (options == null) {
+                  Fluttertoast.showToast(
+                    msg: 'Payment failed',
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    backgroundColor: Colors.red,
+                  );
+                  return;
+                }
 
                 // Handle successful payment
                 // Create a ShoppingCart instance for createOrder with required fields
@@ -366,21 +376,22 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
 
                 result.fold(
                   (failure) {
-                    ScaffoldMessenger.of(currentContext).showSnackBar(
-                      SnackBar(
-                        content: Text('Error creating order: ${failure.error}'),
-                      ),
+                    Fluttertoast.showToast(
+                      msg: 'Error creating order: ${failure.error}',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.red,
                     );
                   },
                   (order) {
                     // Clear the cart using the method in ShoppingCartNotifier
                     ref.read(shoppingCartProvider.notifier).clearCart();
 
-                    // Show success message
-                    ScaffoldMessenger.of(currentContext).showSnackBar(
-                      const SnackBar(
-                        content: Text('Payment successful! Order created.'),
-                      ),
+                    Fluttertoast.showToast(
+                      msg: 'Payment successful! Order created.',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.green,
                     );
 
                     // Close the cart overlay
@@ -397,10 +408,11 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                 }
 
                 // Handle errors
-                ScaffoldMessenger.of(currentContext).showSnackBar(
-                  SnackBar(
-                    content: Text('An error occurred: $e'),
-                  ),
+                await Fluttertoast.showToast(
+                  msg: 'An error occurred: $e',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  backgroundColor: Colors.red,
                 );
               }
             },

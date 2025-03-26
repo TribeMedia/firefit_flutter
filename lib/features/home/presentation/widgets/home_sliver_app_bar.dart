@@ -300,7 +300,9 @@ void showCartDrawer(
         cart: cart,
         user: user,
         onUpdateQuantity: (String itemId, int quantity) {},
-        onCheckout: () {},
+        onCheckout: () {
+
+        },
         onClose: () {
           Navigator.pop(context);
         },

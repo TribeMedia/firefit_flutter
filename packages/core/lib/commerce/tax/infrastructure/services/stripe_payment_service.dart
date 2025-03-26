@@ -11,7 +11,6 @@ class StripePaymentService implements StripePaymentServiceInterface {
   @override
   Future<Either<Failure, PaymentIntentResponse>> createPaymentIntent(
       {required PaymentIntentRequest request}) async {
-    final stripeSecretKey = env.stripeSecretKey;
 
     final dio = Dio();
     try {
@@ -24,15 +23,22 @@ class StripePaymentService implements StripePaymentServiceInterface {
         options: Options(
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer $stripeSecretKey',
+            'Authorization': 'Bearer ${env.supabaseKey}',
           },
         ),
         data: request,
       );
 
       if (response.statusCode == 200) {
-        return right(PaymentIntentResponse.fromJson(response.data)
-            .copyWith(success: true));
+        // Handle successful response
+        final responseData = PaymentIntentResponse(
+          clientSecret: response.data['client_secret'],
+          paymentIntentId: response.data['payment_intent_id'],
+          success: true,
+          errorMessage: '',
+        );
+
+        return right(responseData);
       } else {
         return left(Failure.unprocessableEntity(
             message: 'Failed to create payment intent'));

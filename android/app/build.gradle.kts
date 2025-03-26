@@ -39,6 +39,11 @@ android {
     }
 }
 
+dependencies {
+    // Add this line for Stripe support
+    implementation("androidx.fragment:fragment:1.3.6")
+}
+
 flutter {
     source = "../.."
 }
