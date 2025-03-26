@@ -1,5 +1,7 @@
+import 'package:firefit/features/auth/providers/user_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Providers for various settings
@@ -19,10 +21,7 @@ class SettingsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notificationsEnabled = ref.watch(notificationsEnabledProvider);
-    final dailyReminderTime = ref.watch(dailyReminderTimeProvider);
-    final dietaryRestrictions = ref.watch(dietaryRestrictionsProvider);
     final darkMode = ref.watch(darkModeProvider);
-    final measurementUnit = ref.watch(measurementUnitProvider);
     final theme = Theme.of(context);
 
     return FScaffold(
@@ -73,39 +72,9 @@ class SettingsScreen extends HookConsumerWidget {
                       .state = value,
                   activeColor: theme.colorScheme.primary,
                 ),
-                ListTile(
-                  title: Text(
-                    'Daily Reminder Time',
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      color: theme.colorScheme.onSurface,
-                    ),
-                  ),
-                  subtitle: Text(
-                    dailyReminderTime.format(context),
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-                    ),
-                  ),
-                  trailing: Icon(
-                    Icons.chevron_right,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                  onTap: () async {
-                    final TimeOfDay? newTime = await showTimePicker(
-                      context: context,
-                      initialTime: dailyReminderTime,
-                    );
-                    if (newTime != null) {
-                      ref.read(dailyReminderTimeProvider.notifier).state =
-                          newTime;
-                    }
-                  },
-                ),
               ],
             ),
           ),
-          _buildSectionHeader(context, 'Dietary Preferences'),
-          _buildDietaryRestrictions(context, ref, dietaryRestrictions),
           _buildSectionHeader(context, 'App Settings'),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -126,28 +95,6 @@ class SettingsScreen extends HookConsumerWidget {
                   onChanged: (value) =>
                       ref.read(darkModeProvider.notifier).state = value,
                   activeColor: theme.colorScheme.primary,
-                ),
-                ListTile(
-                  title: Text(
-                    'Measurement Unit',
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      color: theme.colorScheme.onSurface,
-                    ),
-                  ),
-                  subtitle: Text(
-                    measurementUnit == MeasurementUnit.metric
-                        ? 'Metric'
-                        : 'Imperial',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-                    ),
-                  ),
-                  trailing: Icon(
-                    Icons.chevron_right,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                  onTap: () =>
-                      _showMeasurementUnitDialog(context, ref, measurementUnit),
                 ),
               ],
             ),
@@ -214,7 +161,7 @@ class SettingsScreen extends HookConsumerWidget {
                     ),
                   ),
                   onTap: () {
-                    _showLogoutConfirmationDialog(context);
+                    _showLogoutConfirmationDialog(context, ref);
                   },
                 ),
               ],
@@ -239,122 +186,9 @@ class SettingsScreen extends HookConsumerWidget {
     );
   }
 
-  Widget _buildDietaryRestrictions(
-      BuildContext context, WidgetRef ref, List<String> dietaryRestrictions) {
+  void _showLogoutConfirmationDialog(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final restrictions = [
-      'Vegetarian',
-      'Vegan',
-      'Gluten-free',
-      'Dairy-free',
-      'Nut-free'
-    ];
-
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: restrictions.map((restriction) {
-          return CheckboxListTile(
-            title: Text(
-              restriction,
-              style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-              ),
-            ),
-            value: dietaryRestrictions.contains(restriction),
-            onChanged: (bool? value) {
-              if (value == true) {
-                ref.read(dietaryRestrictionsProvider.notifier).state = [
-                  ...dietaryRestrictions,
-                  restriction
-                ];
-              } else {
-                ref.read(dietaryRestrictionsProvider.notifier).state =
-                    dietaryRestrictions
-                        .where((item) => item != restriction)
-                        .toList();
-              }
-            },
-            activeColor: theme.colorScheme.primary,
-            checkColor: theme.colorScheme.onPrimary,
-          );
-        }).toList(),
-      ),
-    );
-  }
-
-  void _showMeasurementUnitDialog(
-      BuildContext context, WidgetRef ref, MeasurementUnit currentUnit) {
-    final theme = Theme.of(context);
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          'Select Measurement Unit',
-          style: theme.textTheme.titleLarge?.copyWith(
-            color: theme.colorScheme.onSurface,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: theme.colorScheme.surface,
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            RadioListTile<MeasurementUnit>(
-              title: Text(
-                'Metric',
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.onSurface,
-                ),
-              ),
-              value: MeasurementUnit.metric,
-              groupValue: currentUnit,
-              onChanged: (MeasurementUnit? value) {
-                if (value != null) {
-                  ref.read(measurementUnitProvider.notifier).state = value;
-                  Navigator.pop(context);
-                }
-              },
-            ),
-            RadioListTile<MeasurementUnit>(
-              title: Text(
-                'Imperial',
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.onSurface,
-                ),
-              ),
-              value: MeasurementUnit.imperial,
-              groupValue: currentUnit,
-              onChanged: (MeasurementUnit? value) {
-                if (value != null) {
-                  ref.read(measurementUnitProvider.notifier).state = value;
-                  Navigator.pop(context);
-                }
-              },
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              'Cancel',
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: theme.colorScheme.primary,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showLogoutConfirmationDialog(BuildContext context) {
-    final theme = Theme.of(context);
+    final userNotifier = ref.read(userNotifierProvider.notifier);
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -385,7 +219,8 @@ class SettingsScreen extends HookConsumerWidget {
           TextButton(
             onPressed: () {
               // Handle logout
-              Navigator.pop(context);
+              userNotifier.logout();
+              context.go('/login');
             },
             child: Text(
               'Logout',

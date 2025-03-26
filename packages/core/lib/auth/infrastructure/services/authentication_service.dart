@@ -76,7 +76,7 @@ class AuthenticationService implements AuthenticationServiceInterface {
       return result.fold((l) => null, (r) {
         _authStateController.add(AuthUser(
           session: session!,
-          profile: profile.data,
+          profile: ProfileView.fromBluesky(profile.data),
           service: pdsServer,
           user: r.first,
         ));
@@ -115,13 +115,13 @@ class AuthenticationService implements AuthenticationServiceInterface {
       return result.fold((l) => null, (r) {
         _authStateController.add(AuthUser(
           session: session,
-          profile: profile.data,
+          profile: ProfileView.fromBluesky(profile.data),
           service: pdsServer,
           user: r.first,
         ));
         return AuthUser(
           session: session,
-          profile: profile.data,
+          profile: ProfileView.fromBluesky(profile.data),
           service: pdsServer,
           user: r.first,
         );
@@ -179,13 +179,13 @@ class AuthenticationService implements AuthenticationServiceInterface {
           (l) => Left(Failure.unprocessableEntity(message: l.toString())), (r) {
         _authStateController.add(AuthUser(
           session: session!,
-          profile: profile.data,
+          profile: ProfileView.fromBluesky(profile.data),
           service: pdsServer,
           user: r.first,
         ));
         return Right(AuthUser(
           session: session!,
-          profile: profile.data,
+          profile: ProfileView.fromBluesky(profile.data),
           service: pdsServer,
           user: r.first,
         ));
@@ -279,7 +279,7 @@ class AuthenticationService implements AuthenticationServiceInterface {
 
         final user = AuthUser(
           session: session!,
-          profile: profile.data,
+          profile: ProfileView.fromBluesky(profile.data),
           service: pdsServer,
           user: r,
         );

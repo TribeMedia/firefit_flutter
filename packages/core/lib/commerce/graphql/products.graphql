@@ -12,6 +12,7 @@ fragment Product on Products {
     unitPrice
     unit
     instructions
+    stripeProductId
 }
 
 query ProductCollection(

@@ -14,7 +14,6 @@ class StationCodeScreen extends HookConsumerWidget {
         value: '',
         validators: [
           Validators.required,
-          Validators.pattern(r'^[A-Z]+$'),
         ],
       ),
     });
@@ -60,11 +59,9 @@ class StationCodeScreen extends HookConsumerWidget {
                     ),
                     textCapitalization: TextCapitalization.characters,
                     textInputAction: TextInputAction.done,
-                    style: const TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18, color: Colors.black),
                     validationMessages: {
                       'required': (error) => 'Station code is required',
-                      'pattern': (error) =>
-                          'Station code must be all uppercase letters',
                     },
                   ),
                   const SizedBox(height: 32),

@@ -174,5 +174,152 @@ class _OrderControllerProviderElement
   @override
   String get userId => (origin as OrderControllerProvider).userId;
 }
+
+String _$checkoutControllerHash() =>
+    r'bbfd8a7194c2293f08d77c2556ec2d60dd34b1a3';
+
+abstract class _$CheckoutController
+    extends BuildlessAsyncNotifier<CheckoutState> {
+  late final String userId;
+
+  FutureOr<CheckoutState> build(
+    String userId,
+  );
+}
+
+/// See also [CheckoutController].
+@ProviderFor(CheckoutController)
+const checkoutControllerProvider = CheckoutControllerFamily();
+
+/// See also [CheckoutController].
+class CheckoutControllerFamily extends Family<AsyncValue<CheckoutState>> {
+  /// See also [CheckoutController].
+  const CheckoutControllerFamily();
+
+  /// See also [CheckoutController].
+  CheckoutControllerProvider call(
+    String userId,
+  ) {
+    return CheckoutControllerProvider(
+      userId,
+    );
+  }
+
+  @override
+  CheckoutControllerProvider getProviderOverride(
+    covariant CheckoutControllerProvider provider,
+  ) {
+    return call(
+      provider.userId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'checkoutControllerProvider';
+}
+
+/// See also [CheckoutController].
+class CheckoutControllerProvider
+    extends AsyncNotifierProviderImpl<CheckoutController, CheckoutState> {
+  /// See also [CheckoutController].
+  CheckoutControllerProvider(
+    String userId,
+  ) : this._internal(
+          () => CheckoutController()..userId = userId,
+          from: checkoutControllerProvider,
+          name: r'checkoutControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$checkoutControllerHash,
+          dependencies: CheckoutControllerFamily._dependencies,
+          allTransitiveDependencies:
+              CheckoutControllerFamily._allTransitiveDependencies,
+          userId: userId,
+        );
+
+  CheckoutControllerProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.userId,
+  }) : super.internal();
+
+  final String userId;
+
+  @override
+  FutureOr<CheckoutState> runNotifierBuild(
+    covariant CheckoutController notifier,
+  ) {
+    return notifier.build(
+      userId,
+    );
+  }
+
+  @override
+  Override overrideWith(CheckoutController Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: CheckoutControllerProvider._internal(
+        () => create()..userId = userId,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        userId: userId,
+      ),
+    );
+  }
+
+  @override
+  AsyncNotifierProviderElement<CheckoutController, CheckoutState>
+      createElement() {
+    return _CheckoutControllerProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is CheckoutControllerProvider && other.userId == userId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, userId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin CheckoutControllerRef on AsyncNotifierProviderRef<CheckoutState> {
+  /// The parameter `userId` of this provider.
+  String get userId;
+}
+
+class _CheckoutControllerProviderElement
+    extends AsyncNotifierProviderElement<CheckoutController, CheckoutState>
+    with CheckoutControllerRef {
+  _CheckoutControllerProviderElement(super.provider);
+
+  @override
+  String get userId => (origin as CheckoutControllerProvider).userId;
+}
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,5 +1,3 @@
-
-
 import 'package:core/commerce/domain/models/product.dart';
 import 'package:core/commerce/domain/repositories/product_repository_interface.dart';
 import 'package:core/commerce/graphql/products.graphql.dart';
@@ -49,16 +47,14 @@ class ProductRepository extends ProductRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return Left(Failure.unprocessableEntity(
-            message:
-            response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       if (response.parsedData != null &&
           response.parsedData!.productsCollection != null &&
           response.parsedData!.productsCollection!.edges.isNotEmpty) {
-        return Right(List<Product>.from(response
-            .parsedData!.productsCollection!.edges
-            .map((e) => e.node)));
+        return Right(List<Product>.from(
+            response.parsedData!.productsCollection!.edges.map((e) => e.node)));
       }
       return const Left(Failure.empty());
     } catch (e) {

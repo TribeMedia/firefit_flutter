@@ -6,11 +6,24 @@ import 'package:firefit/utils/logging/state_logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Create the ProviderContainer
 final globalContainer = ProviderContainer(observers: [StateLogger()]);
+
+// Add to main() for Cline integration
+// Commented out due to missing ClineMonitor package
+/*
+void enableClineDebugging() {
+  ClineMonitor.attach(
+    captureFrequency: CaptureFrequency.onInteraction,
+    errorHandling: ErrorStrategy.retryWithVariations,
+    scenarioTracing: true
+  );
+}
+*/
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +46,8 @@ Future<void> main() async {
     //talker.debug('Supabase initialized successfully');
 
     await providers.initializeProviders(globalContainer);
+
+    Stripe.publishableKey = Env.stripePublishableKey;
 
     runApp(
       UncontrolledProviderScope(

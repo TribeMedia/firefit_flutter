@@ -4,6 +4,8 @@ import 'package:firefit/env/env.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:fpdart/fpdart.dart' as fp;
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'providers.g.dart';
@@ -105,3 +107,109 @@ class OrderController extends _$OrderController {
     );
   }
 }
+
+/// A simple provider that returns user-friendly label text for an [Enum$OrderStatus]
+final orderStatusLabelProvider = Provider.family<String, Enum$OrderStatus>(
+  (ref, status) {
+    switch (status) {
+      case Enum$OrderStatus.placed:
+        return 'Placed';
+      case Enum$OrderStatus.in_progress:
+        return 'In Progress';
+      case Enum$OrderStatus.made:
+        return 'Prepared';
+      case Enum$OrderStatus.out_for_delivery:
+        return 'Out for Delivery';
+      case Enum$OrderStatus.delivered:
+        return 'Delivered';
+      case Enum$OrderStatus.canceled:
+        return 'Canceled';
+      case Enum$OrderStatus.error:
+        return 'Error';
+      case Enum$OrderStatus.$unknown:
+        return 'Unknown';
+    }
+  },
+);
+
+/// A simple provider that returns an appropriate [Color] for an [Enum$OrderStatus]
+final orderStatusColorProvider = Provider.family<Color, Enum$OrderStatus>(
+  (ref, status) {
+    switch (status) {
+      case Enum$OrderStatus.placed:
+        return Colors.blue;
+      case Enum$OrderStatus.in_progress:
+        return Colors.orange;
+      case Enum$OrderStatus.made:
+        return Colors.green.shade600;
+      case Enum$OrderStatus.out_for_delivery:
+        return Colors.purple;
+      case Enum$OrderStatus.delivered:
+        return Colors.green;
+      case Enum$OrderStatus.canceled:
+        return Colors.red;
+      case Enum$OrderStatus.error:
+        return Colors.red.shade700;
+      case Enum$OrderStatus.$unknown:
+        return Colors.grey;
+    }
+  },
+);
+
+/// Model class to hold order total calculations
+class OrderTotals {
+  final double subtotal;
+  final double tax;
+  final double total;
+  final int itemCount;
+  final String formattedSubtotal;
+  final String formattedTax;
+  final String formattedTotal;
+  
+  OrderTotals({
+    required this.subtotal,
+    required this.tax,
+    required this.total,
+    required this.itemCount,
+    required this.formattedSubtotal,
+    required this.formattedTax,
+    required this.formattedTotal,
+  });
+}
+
+/// Provider that calculates consistent order totals from an Order object
+final orderTotalsProvider = Provider.family<OrderTotals, Order>(
+  (ref, order) {
+    // Calculate total items and order amount
+    int totalItems = 0;
+    double subtotal = 0;
+    
+    if (order.orderItemsCollection?.edges != null) {
+      for (final edge in order.orderItemsCollection!.edges) {
+        final item = edge.node;
+        totalItems += item.quantity;
+        subtotal += (item.unitPrice * item.quantity);
+      }
+    }
+    
+    // Calculate tax and total (assuming 8.25% tax rate)
+    final tax = subtotal * 0.0825;
+    final total = subtotal + tax;
+    
+    // Format currency amounts
+    final currencyFormat = NumberFormat.currency(symbol: '\$');
+    final formattedSubtotal = currencyFormat.format(subtotal);
+    final formattedTax = currencyFormat.format(tax);
+    final formattedTotal = currencyFormat.format(total);
+    
+    return OrderTotals(
+      subtotal: subtotal,
+      tax: tax,
+      total: total,
+      itemCount: totalItems,
+      formattedSubtotal: formattedSubtotal,
+      formattedTax: formattedTax,
+      formattedTotal: formattedTotal,
+    );
+  },
+);

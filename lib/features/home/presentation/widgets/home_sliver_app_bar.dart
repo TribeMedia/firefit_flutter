@@ -78,14 +78,16 @@ class HomeAppBar extends _$HomeAppBar {
     input.scrollController.addListener(() {
       if (!state.hasValue || !input.scrollController.hasClients) return;
 
-      final double scrollPercentage = (input.scrollController.offset /
-          (expandedHeight - kToolbarHeight)).clamp(0.0, 1.0);
+      final double scrollPercentage =
+          (input.scrollController.offset / (expandedHeight - kToolbarHeight))
+              .clamp(0.0, 1.0);
 
       final Color newTextColor = Color.lerp(
-        input.startTextColor,
-        input.endTextColor,
-        scrollPercentage,
-      ) ?? input.startTextColor;
+            input.startTextColor,
+            input.endTextColor,
+            scrollPercentage,
+          ) ??
+          input.startTextColor;
 
       // Only update if color has changed
       if (state.value!.currentTextColor != newTextColor) {
@@ -97,14 +99,16 @@ class HomeAppBar extends _$HomeAppBar {
 
     // Calculate initial color based on current scroll position
     final double initialScrollPercentage = input.scrollController.hasClients
-        ? (input.scrollController.offset / (expandedHeight - kToolbarHeight)).clamp(0.0, 1.0)
+        ? (input.scrollController.offset / (expandedHeight - kToolbarHeight))
+            .clamp(0.0, 1.0)
         : 0.0;
 
     final Color initialColor = Color.lerp(
-      input.startTextColor,
-      input.endTextColor,
-      initialScrollPercentage,
-    ) ?? input.startTextColor;
+          input.startTextColor,
+          input.endTextColor,
+          initialScrollPercentage,
+        ) ??
+        input.startTextColor;
 
     return HomeAppBarState(
       scrollController: input.scrollController,
@@ -136,7 +140,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
     final Color startTextColor = Colors.white;
     // End color depends on brightness mode
     final Color endTextColor = brightness == Brightness.dark
-        ? Colors.white  // Stay white in dark mode
+        ? Colors.white // Stay white in dark mode
         : Colors.black; // Transition to black in light mode
 
     final cart = user.user.shoppingCartsCollection?.edges.first.node;
@@ -149,7 +153,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
         children: [
           IconButton(
             onPressed: () => showCartDrawer(
-                context,
+              context,
               cart!,
               user.user,
             ),
@@ -160,10 +164,10 @@ class HomeSliverAppBar extends HookConsumerWidget {
             ),
           ),
           Positioned(
-              right: 8,
-              top: 8,
-              child: CartBadge(itemCount: cartItemCount),
-            ),
+            right: 8,
+            top: 8,
+            child: CartBadge(itemCount: cartItemCount),
+          ),
         ],
       );
     }
@@ -190,17 +194,23 @@ class HomeSliverAppBar extends HookConsumerWidget {
                 onPressed: () {},
               ),
               Padding(
-                  padding: EdgeInsets.only(right: 8),
-                child: user.profile.avatar != null
-                    ? ShadAvatar(user.profile.avatar!)
-                    : InitialsAvatar(name: user.profile.displayName!),
+                padding: EdgeInsets.only(right: 8),
+                child: GestureDetector(
+                  onTap: () => context.push('/profile'),
+                  child: user.profile.avatar != null
+                      ? ShadAvatar(user.profile.avatar!)
+                      : InitialsAvatar(name: user.profile.displayName!),
+                ),
               ),
             ],
             leading: Padding(
               padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.primary.withAlpha((255 * 0.1).round()),
+                  Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withAlpha((255 * 0.1).round()),
                   BlendMode.srcATop,
                 ),
                 child: IconButton(
@@ -274,10 +284,10 @@ class HomeSliverAppBar extends HookConsumerWidget {
 }
 
 void showCartDrawer(
-    BuildContext context,
-    Fragment$ShoppingCart cart,
-    User user,
-    ) {
+  BuildContext context,
+  Fragment$ShoppingCart cart,
+  User user,
+) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -288,9 +298,12 @@ void showCartDrawer(
       maxChildSize: 0.9,
       builder: (_, controller) => CartOverlay(
         cart: cart,
-        user: user, onUpdateQuantity: (String itemId, int quantity) {  },
-        onCheckout: () {  },
-        onClose: () { Navigator.pop(context); },
+        user: user,
+        onUpdateQuantity: (String itemId, int quantity) {},
+        onCheckout: () {},
+        onClose: () {
+          Navigator.pop(context);
+        },
       ),
     ),
   );

@@ -19,14 +19,14 @@ dependencies:
   core:
     path: ./packages/core
   riverpod_annotation: ^2.6.1
-  talker_flutter: ^4.6.14
+  talker_flutter: ^4.7.1
   dio: ^5.8.0+1
   envied: ^1.1.1
   flutter_markdown: ^0.7.6+2
   reactive_dropdown_search: ^5.0.5
   lottie: ^3.3.1
   http_parser: ^4.1.2
-  file_picker: ^9.0.2
+  file_picker: ^9.1.0
   awesome_snackbar_content: ^0.1.5
   equatable: ^2.0.7
   supabase_flutter: ^2.8.4
@@ -48,7 +48,7 @@ dependencies:
   cached_network_image: ^3.4.1
   path: ^1.9.1
   fpdart: ^1.1.1
-  talker_dio_logger: ^4.6.14
+  talker_dio_logger: ^4.7.1
   supabase_auth_ui: ^0.5.4
   uuid: ^4.5.1
   awesome_flutter_extensions: ^1.3.0
@@ -57,14 +57,14 @@ dependencies:
   carousel_slider: ^5.0.0
   toggle_list: ^0.3.1
   toggle_switch: ^2.3.0
-  forui: ^0.9.1+1
+  forui: ^0.10.0+1
   logging: ^1.3.0
   provider: ^6.1.2
   openai_dart: ^0.4.5
   flutter_highlight: ^0.7.0
   share_plus: ^10.1.4
   path_provider: ^2.1.5
-  timeago: ^3.6.1
+  timeago: ^3.7.0
   loading_animation_widget: ^1.3.0
   flutter_animate: ^4.5.2
   google_nav_bar: ^5.0.7
@@ -76,6 +76,10 @@ dependencies:
   flutter_launcher_icons: ^0.14.3
   flutter_hooks: ^0.21.2
   markdown_widget: ^2.3.2+6
+  webview_flutter: ^4.10.0
+  http: ^1.3.0
+  app_links: ^6.4.0
+  flutter_stripe: ^11.4.0
 
 dependency_overrides:
   collection: ^1.19.1

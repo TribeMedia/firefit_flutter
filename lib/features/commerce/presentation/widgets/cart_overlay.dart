@@ -1,8 +1,6 @@
 // cart_overlay.dart
-import 'package:core/auth/domain/models/auth.dart';
 import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/core.dart';
-import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/empty_view_state.dart';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';

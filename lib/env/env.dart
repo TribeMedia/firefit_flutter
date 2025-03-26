@@ -13,6 +13,16 @@ abstract class Env {
 
   @EnviedField(varName: 'PDS_SERVICE_URL')
   static const String pdsServiceUrl = _Env.pdsServiceUrl;
+
+  @EnviedField(varName: 'STRIPE_PUBLISHABLE_KEY')
+  static const String stripePublishableKey = _Env.stripePublishableKey;
+  @EnviedField(varName: 'STRIPE_SECRET_KEY')
+  static const String stripeSecretKey = _Env.stripeSecretKey;
+
+  @EnviedField(varName: 'API_NINJAS_KEY')
+  static const String apiNinjasKey = _Env.apiNinjasKey;
+  @EnviedField(varName: 'API_NINJAS_URL')
+  static const String apiNinjasUrl = _Env.apiNinjasUrl;
 }
 
 class Environment with EnvInterface {
@@ -30,4 +40,18 @@ class Environment with EnvInterface {
   factory Environment() => _instance;
 
   Environment._internal();
+
+  @override
+  // TODO: implement stripePublishableKey
+  String get stripePublishableKey => _Env.stripePublishableKey;
+
+  @override
+  // TODO: implement stripeSecretKey
+  String get stripeSecretKey => _Env.stripeSecretKey;
+
+  @override
+  String get apiNinjasKey => _Env.apiNinjasKey;
+
+  @override
+  String get apiNinjasUrl => _Env.apiNinjasUrl;
 }

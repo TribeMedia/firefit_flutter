@@ -132,8 +132,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       return fp.Right(response
@@ -169,8 +168,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       if (response.parsedData != null &&
@@ -212,8 +210,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       if (response.parsedData != null &&
@@ -247,8 +244,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       if (response.parsedData != null) {
@@ -275,8 +271,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       return fp.Right(response

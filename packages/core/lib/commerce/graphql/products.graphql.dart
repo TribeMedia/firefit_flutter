@@ -20,6 +20,7 @@ class Fragment$Product {
     required this.unitPrice,
     this.unit,
     this.instructions,
+    this.stripeProductId,
     this.$__typename = 'Products',
   });
 
@@ -36,6 +37,7 @@ class Fragment$Product {
     final l$unitPrice = json['unitPrice'];
     final l$unit = json['unit'];
     final l$instructions = json['instructions'];
+    final l$stripeProductId = json['stripeProductId'];
     final l$$__typename = json['__typename'];
     return Fragment$Product(
       id: (l$id as String),
@@ -51,6 +53,7 @@ class Fragment$Product {
       unitPrice: (l$unitPrice as num).toDouble(),
       unit: (l$unit as String?),
       instructions: (l$instructions as String?),
+      stripeProductId: (l$stripeProductId as String?),
       $__typename: (l$$__typename as String),
     );
   }
@@ -78,6 +81,8 @@ class Fragment$Product {
   final String? unit;
 
   final String? instructions;
+
+  final String? stripeProductId;
 
   final String $__typename;
 
@@ -107,6 +112,8 @@ class Fragment$Product {
     _resultData['unit'] = l$unit;
     final l$instructions = instructions;
     _resultData['instructions'] = l$instructions;
+    final l$stripeProductId = stripeProductId;
+    _resultData['stripeProductId'] = l$stripeProductId;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -126,6 +133,7 @@ class Fragment$Product {
     final l$unitPrice = unitPrice;
     final l$unit = unit;
     final l$instructions = instructions;
+    final l$stripeProductId = stripeProductId;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -140,6 +148,7 @@ class Fragment$Product {
       l$unitPrice,
       l$unit,
       l$instructions,
+      l$stripeProductId,
       l$$__typename,
     ]);
   }
@@ -212,6 +221,11 @@ class Fragment$Product {
     if (l$instructions != lOther$instructions) {
       return false;
     }
+    final l$stripeProductId = stripeProductId;
+    final lOther$stripeProductId = other.stripeProductId;
+    if (l$stripeProductId != lOther$stripeProductId) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -251,6 +265,7 @@ abstract class CopyWith$Fragment$Product<TRes> {
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
     String? $__typename,
   });
 }
@@ -281,6 +296,7 @@ class _CopyWithImpl$Fragment$Product<TRes>
     Object? unitPrice = _undefined,
     Object? unit = _undefined,
     Object? instructions = _undefined,
+    Object? stripeProductId = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$Product(
@@ -315,6 +331,9 @@ class _CopyWithImpl$Fragment$Product<TRes>
         instructions: instructions == _undefined
             ? _instance.instructions
             : (instructions as String?),
+        stripeProductId: stripeProductId == _undefined
+            ? _instance.stripeProductId
+            : (stripeProductId as String?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -340,6 +359,7 @@ class _CopyWithStubImpl$Fragment$Product<TRes>
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
     String? $__typename,
   }) =>
       _res;
@@ -433,6 +453,13 @@ const fragmentDefinitionProduct = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'instructions'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'stripeProductId'),
       alias: null,
       arguments: [],
       directives: [],

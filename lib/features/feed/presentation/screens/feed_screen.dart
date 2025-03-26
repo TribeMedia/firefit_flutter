@@ -1,7 +1,7 @@
+import 'package:firefit/features/feed/domain/models/feed_post.dart';
+import 'package:firefit/features/feed/presentation/widgets/feed_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../domain/models/feed_post.dart';
-import '../widgets/feed_item_widget.dart';
 
 class FeedScreen extends ConsumerWidget {
   const FeedScreen({super.key});

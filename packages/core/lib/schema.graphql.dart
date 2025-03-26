@@ -2875,6 +2875,7 @@ class Input$DeliveryLocationFilter {
     Input$FloatFilter? longitude,
     Input$OpaqueFilter? startOpenTime,
     Input$OpaqueFilter? endOpenTime,
+    Input$UUIDFilter? providerId,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -2893,6 +2894,7 @@ class Input$DeliveryLocationFilter {
         if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (providerId != null) r'providerId': providerId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -2978,6 +2980,12 @@ class Input$DeliveryLocationFilter {
           : Input$OpaqueFilter.fromJson(
               (l$endOpenTime as Map<String, dynamic>));
     }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = l$providerId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$providerId as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -3039,6 +3047,9 @@ class Input$DeliveryLocationFilter {
   Input$OpaqueFilter? get endOpenTime =>
       (_$data['endOpenTime'] as Input$OpaqueFilter?);
 
+  Input$UUIDFilter? get providerId =>
+      (_$data['providerId'] as Input$UUIDFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$DeliveryLocationFilter>? get and =>
@@ -3099,6 +3110,10 @@ class Input$DeliveryLocationFilter {
     if (_$data.containsKey('endOpenTime')) {
       final l$endOpenTime = endOpenTime;
       result$data['endOpenTime'] = l$endOpenTime?.toJson();
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -3236,6 +3251,15 @@ class Input$DeliveryLocationFilter {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -3307,6 +3331,7 @@ class Input$DeliveryLocationFilter {
     final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$providerId = providerId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -3324,6 +3349,7 @@ class Input$DeliveryLocationFilter {
       _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -3362,6 +3388,7 @@ abstract class CopyWith$Input$DeliveryLocationFilter<TRes> {
     Input$FloatFilter? longitude,
     Input$OpaqueFilter? startOpenTime,
     Input$OpaqueFilter? endOpenTime,
+    Input$UUIDFilter? providerId,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -3379,6 +3406,7 @@ abstract class CopyWith$Input$DeliveryLocationFilter<TRes> {
   CopyWith$Input$FloatFilter<TRes> get longitude;
   CopyWith$Input$OpaqueFilter<TRes> get startOpenTime;
   CopyWith$Input$OpaqueFilter<TRes> get endOpenTime;
+  CopyWith$Input$UUIDFilter<TRes> get providerId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$DeliveryLocationFilter>? Function(
@@ -3421,6 +3449,7 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
     Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? providerId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -3446,6 +3475,8 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
           'startOpenTime': (startOpenTime as Input$OpaqueFilter?),
         if (endOpenTime != _undefined)
           'endOpenTime': (endOpenTime as Input$OpaqueFilter?),
+        if (providerId != _undefined)
+          'providerId': (providerId as Input$UUIDFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined)
           'and': (and as List<Input$DeliveryLocationFilter>?),
@@ -3541,6 +3572,14 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
             local$endOpenTime, (e) => call(endOpenTime: e));
   }
 
+  CopyWith$Input$UUIDFilter<TRes> get providerId {
+    final local$providerId = _instance.providerId;
+    return local$providerId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$providerId, (e) => call(providerId: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -3601,6 +3640,7 @@ class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
     Input$FloatFilter? longitude,
     Input$OpaqueFilter? startOpenTime,
     Input$OpaqueFilter? endOpenTime,
+    Input$UUIDFilter? providerId,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -3644,6 +3684,9 @@ class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
   CopyWith$Input$OpaqueFilter<TRes> get endOpenTime =>
       CopyWith$Input$OpaqueFilter.stub(_res);
 
+  CopyWith$Input$UUIDFilter<TRes> get providerId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -3669,6 +3712,7 @@ class Input$DeliveryLocationInsertInput {
     double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
+    String? providerId,
   }) =>
       Input$DeliveryLocationInsertInput._({
         if (id != null) r'id': id,
@@ -3683,6 +3727,7 @@ class Input$DeliveryLocationInsertInput {
         if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (providerId != null) r'providerId': providerId,
       });
 
   Input$DeliveryLocationInsertInput._(this._$data);
@@ -3739,6 +3784,10 @@ class Input$DeliveryLocationInsertInput {
       final l$endOpenTime = data['endOpenTime'];
       result$data['endOpenTime'] = (l$endOpenTime as dynamic?);
     }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = (l$providerId as String?);
+    }
     return Input$DeliveryLocationInsertInput._(result$data);
   }
 
@@ -3767,6 +3816,8 @@ class Input$DeliveryLocationInsertInput {
   dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
 
   dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
+
+  String? get providerId => (_$data['providerId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -3817,6 +3868,10 @@ class Input$DeliveryLocationInsertInput {
     if (_$data.containsKey('endOpenTime')) {
       final l$endOpenTime = endOpenTime;
       result$data['endOpenTime'] = l$endOpenTime;
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId;
     }
     return result$data;
   }
@@ -3938,6 +3993,15 @@ class Input$DeliveryLocationInsertInput {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
     return true;
   }
 
@@ -3955,6 +4019,7 @@ class Input$DeliveryLocationInsertInput {
     final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$providerId = providerId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
@@ -3968,6 +4033,7 @@ class Input$DeliveryLocationInsertInput {
       _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
     ]);
   }
 }
@@ -3994,6 +4060,7 @@ abstract class CopyWith$Input$DeliveryLocationInsertInput<TRes> {
     double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
+    String? providerId,
   });
 }
 
@@ -4023,6 +4090,7 @@ class _CopyWithImpl$Input$DeliveryLocationInsertInput<TRes>
     Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? providerId = _undefined,
   }) =>
       _then(Input$DeliveryLocationInsertInput._({
         ..._instance._$data,
@@ -4039,6 +4107,7 @@ class _CopyWithImpl$Input$DeliveryLocationInsertInput<TRes>
         if (startOpenTime != _undefined)
           'startOpenTime': (startOpenTime as dynamic?),
         if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
+        if (providerId != _undefined) 'providerId': (providerId as String?),
       }));
 }
 
@@ -4061,6 +4130,7 @@ class _CopyWithStubImpl$Input$DeliveryLocationInsertInput<TRes>
     double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
+    String? providerId,
   }) =>
       _res;
 }
@@ -4079,6 +4149,7 @@ class Input$DeliveryLocationOrderBy {
     Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
+    Enum$OrderByDirection? providerId,
   }) =>
       Input$DeliveryLocationOrderBy._({
         if (id != null) r'id': id,
@@ -4093,6 +4164,7 @@ class Input$DeliveryLocationOrderBy {
         if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (providerId != null) r'providerId': providerId,
       });
 
   Input$DeliveryLocationOrderBy._(this._$data);
@@ -4171,6 +4243,12 @@ class Input$DeliveryLocationOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$endOpenTime as String));
     }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = l$providerId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$providerId as String));
+    }
     return Input$DeliveryLocationOrderBy._(result$data);
   }
 
@@ -4207,6 +4285,9 @@ class Input$DeliveryLocationOrderBy {
 
   Enum$OrderByDirection? get endOpenTime =>
       (_$data['endOpenTime'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get providerId =>
+      (_$data['providerId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -4273,6 +4354,12 @@ class Input$DeliveryLocationOrderBy {
       result$data['endOpenTime'] = l$endOpenTime == null
           ? null
           : toJson$Enum$OrderByDirection(l$endOpenTime);
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$providerId);
     }
     return result$data;
   }
@@ -4394,6 +4481,15 @@ class Input$DeliveryLocationOrderBy {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
     return true;
   }
 
@@ -4411,6 +4507,7 @@ class Input$DeliveryLocationOrderBy {
     final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$providerId = providerId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
@@ -4424,6 +4521,7 @@ class Input$DeliveryLocationOrderBy {
       _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
     ]);
   }
 }
@@ -4450,6 +4548,7 @@ abstract class CopyWith$Input$DeliveryLocationOrderBy<TRes> {
     Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
+    Enum$OrderByDirection? providerId,
   });
 }
 
@@ -4479,6 +4578,7 @@ class _CopyWithImpl$Input$DeliveryLocationOrderBy<TRes>
     Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? providerId = _undefined,
   }) =>
       _then(Input$DeliveryLocationOrderBy._({
         ..._instance._$data,
@@ -4501,6 +4601,8 @@ class _CopyWithImpl$Input$DeliveryLocationOrderBy<TRes>
           'startOpenTime': (startOpenTime as Enum$OrderByDirection?),
         if (endOpenTime != _undefined)
           'endOpenTime': (endOpenTime as Enum$OrderByDirection?),
+        if (providerId != _undefined)
+          'providerId': (providerId as Enum$OrderByDirection?),
       }));
 }
 
@@ -4523,6 +4625,7 @@ class _CopyWithStubImpl$Input$DeliveryLocationOrderBy<TRes>
     Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
+    Enum$OrderByDirection? providerId,
   }) =>
       _res;
 }
@@ -4541,6 +4644,7 @@ class Input$DeliveryLocationUpdateInput {
     double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
+    String? providerId,
   }) =>
       Input$DeliveryLocationUpdateInput._({
         if (id != null) r'id': id,
@@ -4555,6 +4659,7 @@ class Input$DeliveryLocationUpdateInput {
         if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (providerId != null) r'providerId': providerId,
       });
 
   Input$DeliveryLocationUpdateInput._(this._$data);
@@ -4611,6 +4716,10 @@ class Input$DeliveryLocationUpdateInput {
       final l$endOpenTime = data['endOpenTime'];
       result$data['endOpenTime'] = (l$endOpenTime as dynamic?);
     }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = (l$providerId as String?);
+    }
     return Input$DeliveryLocationUpdateInput._(result$data);
   }
 
@@ -4639,6 +4748,8 @@ class Input$DeliveryLocationUpdateInput {
   dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
 
   dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
+
+  String? get providerId => (_$data['providerId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -4689,6 +4800,10 @@ class Input$DeliveryLocationUpdateInput {
     if (_$data.containsKey('endOpenTime')) {
       final l$endOpenTime = endOpenTime;
       result$data['endOpenTime'] = l$endOpenTime;
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId;
     }
     return result$data;
   }
@@ -4810,6 +4925,15 @@ class Input$DeliveryLocationUpdateInput {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
     return true;
   }
 
@@ -4827,6 +4951,7 @@ class Input$DeliveryLocationUpdateInput {
     final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$providerId = providerId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
@@ -4840,6 +4965,7 @@ class Input$DeliveryLocationUpdateInput {
       _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
     ]);
   }
 }
@@ -4866,6 +4992,7 @@ abstract class CopyWith$Input$DeliveryLocationUpdateInput<TRes> {
     double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
+    String? providerId,
   });
 }
 
@@ -4895,6 +5022,7 @@ class _CopyWithImpl$Input$DeliveryLocationUpdateInput<TRes>
     Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? providerId = _undefined,
   }) =>
       _then(Input$DeliveryLocationUpdateInput._({
         ..._instance._$data,
@@ -4911,6 +5039,7 @@ class _CopyWithImpl$Input$DeliveryLocationUpdateInput<TRes>
         if (startOpenTime != _undefined)
           'startOpenTime': (startOpenTime as dynamic?),
         if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
+        if (providerId != _undefined) 'providerId': (providerId as String?),
       }));
 }
 
@@ -4933,6 +5062,7 @@ class _CopyWithStubImpl$Input$DeliveryLocationUpdateInput<TRes>
     double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
+    String? providerId,
   }) =>
       _res;
 }
@@ -6925,7 +7055,7 @@ class Input$NavigationItemsFilter {
     Input$DatetimeFilter? createdAt,
     Input$UUIDFilter? parentId,
     Input$StringListFilter? roles,
-    Input$StringFilter? tag,
+    Input$StringFilter? slug,
     Input$UUIDFilter? navigationId,
     Input$IDFilter? nodeId,
     List<Input$NavigationItemsFilter>? and,
@@ -6941,7 +7071,7 @@ class Input$NavigationItemsFilter {
         if (createdAt != null) r'createdAt': createdAt,
         if (parentId != null) r'parentId': parentId,
         if (roles != null) r'roles': roles,
-        if (tag != null) r'tag': tag,
+        if (slug != null) r'slug': slug,
         if (navigationId != null) r'navigationId': navigationId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
@@ -7002,11 +7132,11 @@ class Input$NavigationItemsFilter {
           ? null
           : Input$StringListFilter.fromJson((l$roles as Map<String, dynamic>));
     }
-    if (data.containsKey('tag')) {
-      final l$tag = data['tag'];
-      result$data['tag'] = l$tag == null
+    if (data.containsKey('slug')) {
+      final l$slug = data['slug'];
+      result$data['slug'] = l$slug == null
           ? null
-          : Input$StringFilter.fromJson((l$tag as Map<String, dynamic>));
+          : Input$StringFilter.fromJson((l$slug as Map<String, dynamic>));
     }
     if (data.containsKey('navigationId')) {
       final l$navigationId = data['navigationId'];
@@ -7065,7 +7195,7 @@ class Input$NavigationItemsFilter {
   Input$StringListFilter? get roles =>
       (_$data['roles'] as Input$StringListFilter?);
 
-  Input$StringFilter? get tag => (_$data['tag'] as Input$StringFilter?);
+  Input$StringFilter? get slug => (_$data['slug'] as Input$StringFilter?);
 
   Input$UUIDFilter? get navigationId =>
       (_$data['navigationId'] as Input$UUIDFilter?);
@@ -7115,9 +7245,9 @@ class Input$NavigationItemsFilter {
       final l$roles = roles;
       result$data['roles'] = l$roles?.toJson();
     }
-    if (_$data.containsKey('tag')) {
-      final l$tag = tag;
-      result$data['tag'] = l$tag?.toJson();
+    if (_$data.containsKey('slug')) {
+      final l$slug = slug;
+      result$data['slug'] = l$slug?.toJson();
     }
     if (_$data.containsKey('navigationId')) {
       final l$navigationId = navigationId;
@@ -7224,12 +7354,12 @@ class Input$NavigationItemsFilter {
     if (l$roles != lOther$roles) {
       return false;
     }
-    final l$tag = tag;
-    final lOther$tag = other.tag;
-    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+    final l$slug = slug;
+    final lOther$slug = other.slug;
+    if (_$data.containsKey('slug') != other._$data.containsKey('slug')) {
       return false;
     }
-    if (l$tag != lOther$tag) {
+    if (l$slug != lOther$slug) {
       return false;
     }
     final l$navigationId = navigationId;
@@ -7308,7 +7438,7 @@ class Input$NavigationItemsFilter {
     final l$createdAt = createdAt;
     final l$parentId = parentId;
     final l$roles = roles;
-    final l$tag = tag;
+    final l$slug = slug;
     final l$navigationId = navigationId;
     final l$nodeId = nodeId;
     final l$and = and;
@@ -7323,7 +7453,7 @@ class Input$NavigationItemsFilter {
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('parentId') ? l$parentId : const {},
       _$data.containsKey('roles') ? l$roles : const {},
-      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('slug') ? l$slug : const {},
       _$data.containsKey('navigationId') ? l$navigationId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
@@ -7359,7 +7489,7 @@ abstract class CopyWith$Input$NavigationItemsFilter<TRes> {
     Input$DatetimeFilter? createdAt,
     Input$UUIDFilter? parentId,
     Input$StringListFilter? roles,
-    Input$StringFilter? tag,
+    Input$StringFilter? slug,
     Input$UUIDFilter? navigationId,
     Input$IDFilter? nodeId,
     List<Input$NavigationItemsFilter>? and,
@@ -7374,7 +7504,7 @@ abstract class CopyWith$Input$NavigationItemsFilter<TRes> {
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
   CopyWith$Input$UUIDFilter<TRes> get parentId;
   CopyWith$Input$StringListFilter<TRes> get roles;
-  CopyWith$Input$StringFilter<TRes> get tag;
+  CopyWith$Input$StringFilter<TRes> get slug;
   CopyWith$Input$UUIDFilter<TRes> get navigationId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
@@ -7414,7 +7544,7 @@ class _CopyWithImpl$Input$NavigationItemsFilter<TRes>
     Object? createdAt = _undefined,
     Object? parentId = _undefined,
     Object? roles = _undefined,
-    Object? tag = _undefined,
+    Object? slug = _undefined,
     Object? navigationId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
@@ -7433,7 +7563,7 @@ class _CopyWithImpl$Input$NavigationItemsFilter<TRes>
           'createdAt': (createdAt as Input$DatetimeFilter?),
         if (parentId != _undefined) 'parentId': (parentId as Input$UUIDFilter?),
         if (roles != _undefined) 'roles': (roles as Input$StringListFilter?),
-        if (tag != _undefined) 'tag': (tag as Input$StringFilter?),
+        if (slug != _undefined) 'slug': (slug as Input$StringFilter?),
         if (navigationId != _undefined)
           'navigationId': (navigationId as Input$UUIDFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
@@ -7500,11 +7630,11 @@ class _CopyWithImpl$Input$NavigationItemsFilter<TRes>
         : CopyWith$Input$StringListFilter(local$roles, (e) => call(roles: e));
   }
 
-  CopyWith$Input$StringFilter<TRes> get tag {
-    final local$tag = _instance.tag;
-    return local$tag == null
+  CopyWith$Input$StringFilter<TRes> get slug {
+    final local$slug = _instance.slug;
+    return local$slug == null
         ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$tag, (e) => call(tag: e));
+        : CopyWith$Input$StringFilter(local$slug, (e) => call(slug: e));
   }
 
   CopyWith$Input$UUIDFilter<TRes> get navigationId {
@@ -7570,7 +7700,7 @@ class _CopyWithStubImpl$Input$NavigationItemsFilter<TRes>
     Input$DatetimeFilter? createdAt,
     Input$UUIDFilter? parentId,
     Input$StringListFilter? roles,
-    Input$StringFilter? tag,
+    Input$StringFilter? slug,
     Input$UUIDFilter? navigationId,
     Input$IDFilter? nodeId,
     List<Input$NavigationItemsFilter>? and,
@@ -7603,7 +7733,7 @@ class _CopyWithStubImpl$Input$NavigationItemsFilter<TRes>
   CopyWith$Input$StringListFilter<TRes> get roles =>
       CopyWith$Input$StringListFilter.stub(_res);
 
-  CopyWith$Input$StringFilter<TRes> get tag =>
+  CopyWith$Input$StringFilter<TRes> get slug =>
       CopyWith$Input$StringFilter.stub(_res);
 
   CopyWith$Input$UUIDFilter<TRes> get navigationId =>
@@ -7631,7 +7761,7 @@ class Input$NavigationItemsInsertInput {
     String? parentId,
     List<String?>? roles,
     Map<String, dynamic>? data,
-    String? tag,
+    String? slug,
     String? navigationId,
   }) =>
       Input$NavigationItemsInsertInput._({
@@ -7644,7 +7774,7 @@ class Input$NavigationItemsInsertInput {
         if (parentId != null) r'parentId': parentId,
         if (roles != null) r'roles': roles,
         if (data != null) r'data': data,
-        if (tag != null) r'tag': tag,
+        if (slug != null) r'slug': slug,
         if (navigationId != null) r'navigationId': navigationId,
       });
 
@@ -7690,9 +7820,9 @@ class Input$NavigationItemsInsertInput {
       final l$data = data['data'];
       result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
     }
-    if (data.containsKey('tag')) {
-      final l$tag = data['tag'];
-      result$data['tag'] = (l$tag as String?);
+    if (data.containsKey('slug')) {
+      final l$slug = data['slug'];
+      result$data['slug'] = (l$slug as String?);
     }
     if (data.containsKey('navigationId')) {
       final l$navigationId = data['navigationId'];
@@ -7721,7 +7851,7 @@ class Input$NavigationItemsInsertInput {
 
   Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
 
-  String? get tag => (_$data['tag'] as String?);
+  String? get slug => (_$data['slug'] as String?);
 
   String? get navigationId => (_$data['navigationId'] as String?);
 
@@ -7763,9 +7893,9 @@ class Input$NavigationItemsInsertInput {
       final l$data = data;
       result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
     }
-    if (_$data.containsKey('tag')) {
-      final l$tag = tag;
-      result$data['tag'] = l$tag;
+    if (_$data.containsKey('slug')) {
+      final l$slug = slug;
+      result$data['slug'] = l$slug;
     }
     if (_$data.containsKey('navigationId')) {
       final l$navigationId = navigationId;
@@ -7875,12 +8005,12 @@ class Input$NavigationItemsInsertInput {
     if (l$data != lOther$data) {
       return false;
     }
-    final l$tag = tag;
-    final lOther$tag = other.tag;
-    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+    final l$slug = slug;
+    final lOther$slug = other.slug;
+    if (_$data.containsKey('slug') != other._$data.containsKey('slug')) {
       return false;
     }
-    if (l$tag != lOther$tag) {
+    if (l$slug != lOther$slug) {
       return false;
     }
     final l$navigationId = navigationId;
@@ -7906,7 +8036,7 @@ class Input$NavigationItemsInsertInput {
     final l$parentId = parentId;
     final l$roles = roles;
     final l$data = data;
-    final l$tag = tag;
+    final l$slug = slug;
     final l$navigationId = navigationId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
@@ -7922,7 +8052,7 @@ class Input$NavigationItemsInsertInput {
               : Object.hashAll(l$roles.map((v) => v))
           : const {},
       _$data.containsKey('data') ? l$data : const {},
-      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('slug') ? l$slug : const {},
       _$data.containsKey('navigationId') ? l$navigationId : const {},
     ]);
   }
@@ -7947,7 +8077,7 @@ abstract class CopyWith$Input$NavigationItemsInsertInput<TRes> {
     String? parentId,
     List<String?>? roles,
     Map<String, dynamic>? data,
-    String? tag,
+    String? slug,
     String? navigationId,
   });
 }
@@ -7975,7 +8105,7 @@ class _CopyWithImpl$Input$NavigationItemsInsertInput<TRes>
     Object? parentId = _undefined,
     Object? roles = _undefined,
     Object? data = _undefined,
-    Object? tag = _undefined,
+    Object? slug = _undefined,
     Object? navigationId = _undefined,
   }) =>
       _then(Input$NavigationItemsInsertInput._({
@@ -7989,7 +8119,7 @@ class _CopyWithImpl$Input$NavigationItemsInsertInput<TRes>
         if (parentId != _undefined) 'parentId': (parentId as String?),
         if (roles != _undefined) 'roles': (roles as List<String?>?),
         if (data != _undefined) 'data': (data as Map<String, dynamic>?),
-        if (tag != _undefined) 'tag': (tag as String?),
+        if (slug != _undefined) 'slug': (slug as String?),
         if (navigationId != _undefined)
           'navigationId': (navigationId as String?),
       }));
@@ -8011,7 +8141,7 @@ class _CopyWithStubImpl$Input$NavigationItemsInsertInput<TRes>
     String? parentId,
     List<String?>? roles,
     Map<String, dynamic>? data,
-    String? tag,
+    String? slug,
     String? navigationId,
   }) =>
       _res;
@@ -8026,7 +8156,7 @@ class Input$NavigationItemsOrderBy {
     Enum$OrderByDirection? index,
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? parentId,
-    Enum$OrderByDirection? tag,
+    Enum$OrderByDirection? slug,
     Enum$OrderByDirection? navigationId,
   }) =>
       Input$NavigationItemsOrderBy._({
@@ -8037,7 +8167,7 @@ class Input$NavigationItemsOrderBy {
         if (index != null) r'index': index,
         if (createdAt != null) r'createdAt': createdAt,
         if (parentId != null) r'parentId': parentId,
-        if (tag != null) r'tag': tag,
+        if (slug != null) r'slug': slug,
         if (navigationId != null) r'navigationId': navigationId,
       });
 
@@ -8087,11 +8217,11 @@ class Input$NavigationItemsOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$parentId as String));
     }
-    if (data.containsKey('tag')) {
-      final l$tag = data['tag'];
-      result$data['tag'] = l$tag == null
+    if (data.containsKey('slug')) {
+      final l$slug = data['slug'];
+      result$data['slug'] = l$slug == null
           ? null
-          : fromJson$Enum$OrderByDirection((l$tag as String));
+          : fromJson$Enum$OrderByDirection((l$slug as String));
     }
     if (data.containsKey('navigationId')) {
       final l$navigationId = data['navigationId'];
@@ -8122,7 +8252,7 @@ class Input$NavigationItemsOrderBy {
   Enum$OrderByDirection? get parentId =>
       (_$data['parentId'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get tag => (_$data['tag'] as Enum$OrderByDirection?);
+  Enum$OrderByDirection? get slug => (_$data['slug'] as Enum$OrderByDirection?);
 
   Enum$OrderByDirection? get navigationId =>
       (_$data['navigationId'] as Enum$OrderByDirection?);
@@ -8165,10 +8295,10 @@ class Input$NavigationItemsOrderBy {
       result$data['parentId'] =
           l$parentId == null ? null : toJson$Enum$OrderByDirection(l$parentId);
     }
-    if (_$data.containsKey('tag')) {
-      final l$tag = tag;
-      result$data['tag'] =
-          l$tag == null ? null : toJson$Enum$OrderByDirection(l$tag);
+    if (_$data.containsKey('slug')) {
+      final l$slug = slug;
+      result$data['slug'] =
+          l$slug == null ? null : toJson$Enum$OrderByDirection(l$slug);
     }
     if (_$data.containsKey('navigationId')) {
       final l$navigationId = navigationId;
@@ -8253,12 +8383,12 @@ class Input$NavigationItemsOrderBy {
     if (l$parentId != lOther$parentId) {
       return false;
     }
-    final l$tag = tag;
-    final lOther$tag = other.tag;
-    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+    final l$slug = slug;
+    final lOther$slug = other.slug;
+    if (_$data.containsKey('slug') != other._$data.containsKey('slug')) {
       return false;
     }
-    if (l$tag != lOther$tag) {
+    if (l$slug != lOther$slug) {
       return false;
     }
     final l$navigationId = navigationId;
@@ -8282,7 +8412,7 @@ class Input$NavigationItemsOrderBy {
     final l$index = index;
     final l$createdAt = createdAt;
     final l$parentId = parentId;
-    final l$tag = tag;
+    final l$slug = slug;
     final l$navigationId = navigationId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
@@ -8292,7 +8422,7 @@ class Input$NavigationItemsOrderBy {
       _$data.containsKey('index') ? l$index : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('parentId') ? l$parentId : const {},
-      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('slug') ? l$slug : const {},
       _$data.containsKey('navigationId') ? l$navigationId : const {},
     ]);
   }
@@ -8315,7 +8445,7 @@ abstract class CopyWith$Input$NavigationItemsOrderBy<TRes> {
     Enum$OrderByDirection? index,
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? parentId,
-    Enum$OrderByDirection? tag,
+    Enum$OrderByDirection? slug,
     Enum$OrderByDirection? navigationId,
   });
 }
@@ -8341,7 +8471,7 @@ class _CopyWithImpl$Input$NavigationItemsOrderBy<TRes>
     Object? index = _undefined,
     Object? createdAt = _undefined,
     Object? parentId = _undefined,
-    Object? tag = _undefined,
+    Object? slug = _undefined,
     Object? navigationId = _undefined,
   }) =>
       _then(Input$NavigationItemsOrderBy._({
@@ -8356,7 +8486,7 @@ class _CopyWithImpl$Input$NavigationItemsOrderBy<TRes>
           'createdAt': (createdAt as Enum$OrderByDirection?),
         if (parentId != _undefined)
           'parentId': (parentId as Enum$OrderByDirection?),
-        if (tag != _undefined) 'tag': (tag as Enum$OrderByDirection?),
+        if (slug != _undefined) 'slug': (slug as Enum$OrderByDirection?),
         if (navigationId != _undefined)
           'navigationId': (navigationId as Enum$OrderByDirection?),
       }));
@@ -8376,7 +8506,7 @@ class _CopyWithStubImpl$Input$NavigationItemsOrderBy<TRes>
     Enum$OrderByDirection? index,
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? parentId,
-    Enum$OrderByDirection? tag,
+    Enum$OrderByDirection? slug,
     Enum$OrderByDirection? navigationId,
   }) =>
       _res;
@@ -8393,7 +8523,7 @@ class Input$NavigationItemsUpdateInput {
     String? parentId,
     List<String?>? roles,
     Map<String, dynamic>? data,
-    String? tag,
+    String? slug,
     String? navigationId,
   }) =>
       Input$NavigationItemsUpdateInput._({
@@ -8406,7 +8536,7 @@ class Input$NavigationItemsUpdateInput {
         if (parentId != null) r'parentId': parentId,
         if (roles != null) r'roles': roles,
         if (data != null) r'data': data,
-        if (tag != null) r'tag': tag,
+        if (slug != null) r'slug': slug,
         if (navigationId != null) r'navigationId': navigationId,
       });
 
@@ -8452,9 +8582,9 @@ class Input$NavigationItemsUpdateInput {
       final l$data = data['data'];
       result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
     }
-    if (data.containsKey('tag')) {
-      final l$tag = data['tag'];
-      result$data['tag'] = (l$tag as String?);
+    if (data.containsKey('slug')) {
+      final l$slug = data['slug'];
+      result$data['slug'] = (l$slug as String?);
     }
     if (data.containsKey('navigationId')) {
       final l$navigationId = data['navigationId'];
@@ -8483,7 +8613,7 @@ class Input$NavigationItemsUpdateInput {
 
   Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
 
-  String? get tag => (_$data['tag'] as String?);
+  String? get slug => (_$data['slug'] as String?);
 
   String? get navigationId => (_$data['navigationId'] as String?);
 
@@ -8525,9 +8655,9 @@ class Input$NavigationItemsUpdateInput {
       final l$data = data;
       result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
     }
-    if (_$data.containsKey('tag')) {
-      final l$tag = tag;
-      result$data['tag'] = l$tag;
+    if (_$data.containsKey('slug')) {
+      final l$slug = slug;
+      result$data['slug'] = l$slug;
     }
     if (_$data.containsKey('navigationId')) {
       final l$navigationId = navigationId;
@@ -8637,12 +8767,12 @@ class Input$NavigationItemsUpdateInput {
     if (l$data != lOther$data) {
       return false;
     }
-    final l$tag = tag;
-    final lOther$tag = other.tag;
-    if (_$data.containsKey('tag') != other._$data.containsKey('tag')) {
+    final l$slug = slug;
+    final lOther$slug = other.slug;
+    if (_$data.containsKey('slug') != other._$data.containsKey('slug')) {
       return false;
     }
-    if (l$tag != lOther$tag) {
+    if (l$slug != lOther$slug) {
       return false;
     }
     final l$navigationId = navigationId;
@@ -8668,7 +8798,7 @@ class Input$NavigationItemsUpdateInput {
     final l$parentId = parentId;
     final l$roles = roles;
     final l$data = data;
-    final l$tag = tag;
+    final l$slug = slug;
     final l$navigationId = navigationId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
@@ -8684,7 +8814,7 @@ class Input$NavigationItemsUpdateInput {
               : Object.hashAll(l$roles.map((v) => v))
           : const {},
       _$data.containsKey('data') ? l$data : const {},
-      _$data.containsKey('tag') ? l$tag : const {},
+      _$data.containsKey('slug') ? l$slug : const {},
       _$data.containsKey('navigationId') ? l$navigationId : const {},
     ]);
   }
@@ -8709,7 +8839,7 @@ abstract class CopyWith$Input$NavigationItemsUpdateInput<TRes> {
     String? parentId,
     List<String?>? roles,
     Map<String, dynamic>? data,
-    String? tag,
+    String? slug,
     String? navigationId,
   });
 }
@@ -8737,7 +8867,7 @@ class _CopyWithImpl$Input$NavigationItemsUpdateInput<TRes>
     Object? parentId = _undefined,
     Object? roles = _undefined,
     Object? data = _undefined,
-    Object? tag = _undefined,
+    Object? slug = _undefined,
     Object? navigationId = _undefined,
   }) =>
       _then(Input$NavigationItemsUpdateInput._({
@@ -8751,7 +8881,7 @@ class _CopyWithImpl$Input$NavigationItemsUpdateInput<TRes>
         if (parentId != _undefined) 'parentId': (parentId as String?),
         if (roles != _undefined) 'roles': (roles as List<String?>?),
         if (data != _undefined) 'data': (data as Map<String, dynamic>?),
-        if (tag != _undefined) 'tag': (tag as String?),
+        if (slug != _undefined) 'slug': (slug as String?),
         if (navigationId != _undefined)
           'navigationId': (navigationId as String?),
       }));
@@ -8773,7 +8903,7 @@ class _CopyWithStubImpl$Input$NavigationItemsUpdateInput<TRes>
     String? parentId,
     List<String?>? roles,
     Map<String, dynamic>? data,
-    String? tag,
+    String? slug,
     String? navigationId,
   }) =>
       _res;
@@ -18689,6 +18819,3049 @@ class _CopyWithStubImpl$Input$OrderTransactionsUpdateInput<TRes>
       _res;
 }
 
+class Input$OrganizationFilter {
+  factory Input$OrganizationFilter({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? organizationTypeId,
+    Input$StringFilter? name,
+    Input$StringFilter? logoUrl,
+    Input$StringFilter? coverUrl,
+    Input$StringFilter? description,
+    Input$StringFilter? longDescriptionMarkdown,
+    Input$StringFilter? webUrl,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$OrganizationFilter>? and,
+    List<Input$OrganizationFilter>? or,
+    Input$OrganizationFilter? not,
+  }) =>
+      Input$OrganizationFilter._({
+        if (id != null) r'id': id,
+        if (organizationTypeId != null)
+          r'organizationTypeId': organizationTypeId,
+        if (name != null) r'name': name,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (description != null) r'description': description,
+        if (longDescriptionMarkdown != null)
+          r'longDescriptionMarkdown': longDescriptionMarkdown,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$OrganizationFilter._(this._$data);
+
+  factory Input$OrganizationFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = data['organizationTypeId'];
+      result$data['organizationTypeId'] = l$organizationTypeId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$organizationTypeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = l$logoUrl == null
+          ? null
+          : Input$StringFilter.fromJson((l$logoUrl as Map<String, dynamic>));
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = l$coverUrl == null
+          ? null
+          : Input$StringFilter.fromJson((l$coverUrl as Map<String, dynamic>));
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = l$description == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$description as Map<String, dynamic>));
+    }
+    if (data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = data['longDescriptionMarkdown'];
+      result$data['longDescriptionMarkdown'] = l$longDescriptionMarkdown == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$longDescriptionMarkdown as Map<String, dynamic>));
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = l$webUrl == null
+          ? null
+          : Input$StringFilter.fromJson((l$webUrl as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) =>
+              Input$OrganizationFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) =>
+              Input$OrganizationFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$OrganizationFilter.fromJson((l$not as Map<String, dynamic>));
+    }
+    return Input$OrganizationFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get organizationTypeId =>
+      (_$data['organizationTypeId'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get logoUrl => (_$data['logoUrl'] as Input$StringFilter?);
+
+  Input$StringFilter? get coverUrl =>
+      (_$data['coverUrl'] as Input$StringFilter?);
+
+  Input$StringFilter? get description =>
+      (_$data['description'] as Input$StringFilter?);
+
+  Input$StringFilter? get longDescriptionMarkdown =>
+      (_$data['longDescriptionMarkdown'] as Input$StringFilter?);
+
+  Input$StringFilter? get webUrl => (_$data['webUrl'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$OrganizationFilter>? get and =>
+      (_$data['and'] as List<Input$OrganizationFilter>?);
+
+  List<Input$OrganizationFilter>? get or =>
+      (_$data['or'] as List<Input$OrganizationFilter>?);
+
+  Input$OrganizationFilter? get not =>
+      (_$data['not'] as Input$OrganizationFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = organizationTypeId;
+      result$data['organizationTypeId'] = l$organizationTypeId?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] = l$logoUrl?.toJson();
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] = l$coverUrl?.toJson();
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description?.toJson();
+    }
+    if (_$data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = longDescriptionMarkdown;
+      result$data['longDescriptionMarkdown'] =
+          l$longDescriptionMarkdown?.toJson();
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] = l$webUrl?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationFilter<Input$OrganizationFilter> get copyWith =>
+      CopyWith$Input$OrganizationFilter(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$organizationTypeId = organizationTypeId;
+    final lOther$organizationTypeId = other.organizationTypeId;
+    if (_$data.containsKey('organizationTypeId') !=
+        other._$data.containsKey('organizationTypeId')) {
+      return false;
+    }
+    if (l$organizationTypeId != lOther$organizationTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final lOther$longDescriptionMarkdown = other.longDescriptionMarkdown;
+    if (_$data.containsKey('longDescriptionMarkdown') !=
+        other._$data.containsKey('longDescriptionMarkdown')) {
+      return false;
+    }
+    if (l$longDescriptionMarkdown != lOther$longDescriptionMarkdown) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$organizationTypeId = organizationTypeId;
+    final l$name = name;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$description = description;
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final l$webUrl = webUrl;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('organizationTypeId')
+          ? l$organizationTypeId
+          : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('longDescriptionMarkdown')
+          ? l$longDescriptionMarkdown
+          : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationFilter<TRes> {
+  factory CopyWith$Input$OrganizationFilter(
+    Input$OrganizationFilter instance,
+    TRes Function(Input$OrganizationFilter) then,
+  ) = _CopyWithImpl$Input$OrganizationFilter;
+
+  factory CopyWith$Input$OrganizationFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? organizationTypeId,
+    Input$StringFilter? name,
+    Input$StringFilter? logoUrl,
+    Input$StringFilter? coverUrl,
+    Input$StringFilter? description,
+    Input$StringFilter? longDescriptionMarkdown,
+    Input$StringFilter? webUrl,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$OrganizationFilter>? and,
+    List<Input$OrganizationFilter>? or,
+    Input$OrganizationFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$UUIDFilter<TRes> get organizationTypeId;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get logoUrl;
+  CopyWith$Input$StringFilter<TRes> get coverUrl;
+  CopyWith$Input$StringFilter<TRes> get description;
+  CopyWith$Input$StringFilter<TRes> get longDescriptionMarkdown;
+  CopyWith$Input$StringFilter<TRes> get webUrl;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$OrganizationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$OrganizationFilter<Input$OrganizationFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$OrganizationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$OrganizationFilter<Input$OrganizationFilter>>?)
+          _fn);
+  CopyWith$Input$OrganizationFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$OrganizationFilter<TRes>
+    implements CopyWith$Input$OrganizationFilter<TRes> {
+  _CopyWithImpl$Input$OrganizationFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationFilter _instance;
+
+  final TRes Function(Input$OrganizationFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? organizationTypeId = _undefined,
+    Object? name = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? description = _undefined,
+    Object? longDescriptionMarkdown = _undefined,
+    Object? webUrl = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$OrganizationFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (organizationTypeId != _undefined)
+          'organizationTypeId': (organizationTypeId as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (logoUrl != _undefined) 'logoUrl': (logoUrl as Input$StringFilter?),
+        if (coverUrl != _undefined)
+          'coverUrl': (coverUrl as Input$StringFilter?),
+        if (description != _undefined)
+          'description': (description as Input$StringFilter?),
+        if (longDescriptionMarkdown != _undefined)
+          'longDescriptionMarkdown':
+              (longDescriptionMarkdown as Input$StringFilter?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined) 'and': (and as List<Input$OrganizationFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$OrganizationFilter>?),
+        if (not != _undefined) 'not': (not as Input$OrganizationFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationTypeId {
+    final local$organizationTypeId = _instance.organizationTypeId;
+    return local$organizationTypeId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$organizationTypeId, (e) => call(organizationTypeId: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get logoUrl {
+    final local$logoUrl = _instance.logoUrl;
+    return local$logoUrl == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$logoUrl, (e) => call(logoUrl: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get coverUrl {
+    final local$coverUrl = _instance.coverUrl;
+    return local$coverUrl == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$coverUrl, (e) => call(coverUrl: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get description {
+    final local$description = _instance.description;
+    return local$description == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$description, (e) => call(description: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get longDescriptionMarkdown {
+    final local$longDescriptionMarkdown = _instance.longDescriptionMarkdown;
+    return local$longDescriptionMarkdown == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$longDescriptionMarkdown,
+            (e) => call(longDescriptionMarkdown: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get webUrl {
+    final local$webUrl = _instance.webUrl;
+    return local$webUrl == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$webUrl, (e) => call(webUrl: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$OrganizationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$OrganizationFilter<
+                          Input$OrganizationFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$OrganizationFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  TRes or(
+          Iterable<Input$OrganizationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$OrganizationFilter<
+                          Input$OrganizationFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$OrganizationFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$OrganizationFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$OrganizationFilter.stub(_then(_instance))
+        : CopyWith$Input$OrganizationFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$OrganizationFilter<TRes>
+    implements CopyWith$Input$OrganizationFilter<TRes> {
+  _CopyWithStubImpl$Input$OrganizationFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? organizationTypeId,
+    Input$StringFilter? name,
+    Input$StringFilter? logoUrl,
+    Input$StringFilter? coverUrl,
+    Input$StringFilter? description,
+    Input$StringFilter? longDescriptionMarkdown,
+    Input$StringFilter? webUrl,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$OrganizationFilter>? and,
+    List<Input$OrganizationFilter>? or,
+    Input$OrganizationFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationTypeId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get logoUrl =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get coverUrl =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get description =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get longDescriptionMarkdown =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get webUrl =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$OrganizationFilter<TRes> get not =>
+      CopyWith$Input$OrganizationFilter.stub(_res);
+}
+
+class Input$OrganizationInsertInput {
+  factory Input$OrganizationInsertInput({
+    String? id,
+    String? organizationTypeId,
+    String? name,
+    String? logoUrl,
+    String? coverUrl,
+    String? description,
+    String? longDescriptionMarkdown,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  }) =>
+      Input$OrganizationInsertInput._({
+        if (id != null) r'id': id,
+        if (organizationTypeId != null)
+          r'organizationTypeId': organizationTypeId,
+        if (name != null) r'name': name,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (description != null) r'description': description,
+        if (longDescriptionMarkdown != null)
+          r'longDescriptionMarkdown': longDescriptionMarkdown,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$OrganizationInsertInput._(this._$data);
+
+  factory Input$OrganizationInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = data['organizationTypeId'];
+      result$data['organizationTypeId'] = (l$organizationTypeId as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = (l$logoUrl as String?);
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = (l$coverUrl as String?);
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = (l$description as String?);
+    }
+    if (data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = data['longDescriptionMarkdown'];
+      result$data['longDescriptionMarkdown'] =
+          (l$longDescriptionMarkdown as String?);
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = (l$webUrl as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$OrganizationInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get organizationTypeId => (_$data['organizationTypeId'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get logoUrl => (_$data['logoUrl'] as String?);
+
+  String? get coverUrl => (_$data['coverUrl'] as String?);
+
+  String? get description => (_$data['description'] as String?);
+
+  String? get longDescriptionMarkdown =>
+      (_$data['longDescriptionMarkdown'] as String?);
+
+  String? get webUrl => (_$data['webUrl'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = organizationTypeId;
+      result$data['organizationTypeId'] = l$organizationTypeId;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] = l$logoUrl;
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] = l$coverUrl;
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description;
+    }
+    if (_$data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = longDescriptionMarkdown;
+      result$data['longDescriptionMarkdown'] = l$longDescriptionMarkdown;
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] = l$webUrl;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationInsertInput<Input$OrganizationInsertInput>
+      get copyWith => CopyWith$Input$OrganizationInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$organizationTypeId = organizationTypeId;
+    final lOther$organizationTypeId = other.organizationTypeId;
+    if (_$data.containsKey('organizationTypeId') !=
+        other._$data.containsKey('organizationTypeId')) {
+      return false;
+    }
+    if (l$organizationTypeId != lOther$organizationTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final lOther$longDescriptionMarkdown = other.longDescriptionMarkdown;
+    if (_$data.containsKey('longDescriptionMarkdown') !=
+        other._$data.containsKey('longDescriptionMarkdown')) {
+      return false;
+    }
+    if (l$longDescriptionMarkdown != lOther$longDescriptionMarkdown) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$organizationTypeId = organizationTypeId;
+    final l$name = name;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$description = description;
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final l$webUrl = webUrl;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('organizationTypeId')
+          ? l$organizationTypeId
+          : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('longDescriptionMarkdown')
+          ? l$longDescriptionMarkdown
+          : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationInsertInput<TRes> {
+  factory CopyWith$Input$OrganizationInsertInput(
+    Input$OrganizationInsertInput instance,
+    TRes Function(Input$OrganizationInsertInput) then,
+  ) = _CopyWithImpl$Input$OrganizationInsertInput;
+
+  factory CopyWith$Input$OrganizationInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationInsertInput;
+
+  TRes call({
+    String? id,
+    String? organizationTypeId,
+    String? name,
+    String? logoUrl,
+    String? coverUrl,
+    String? description,
+    String? longDescriptionMarkdown,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$OrganizationInsertInput<TRes>
+    implements CopyWith$Input$OrganizationInsertInput<TRes> {
+  _CopyWithImpl$Input$OrganizationInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationInsertInput _instance;
+
+  final TRes Function(Input$OrganizationInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? organizationTypeId = _undefined,
+    Object? name = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? description = _undefined,
+    Object? longDescriptionMarkdown = _undefined,
+    Object? webUrl = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$OrganizationInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (organizationTypeId != _undefined)
+          'organizationTypeId': (organizationTypeId as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (logoUrl != _undefined) 'logoUrl': (logoUrl as String?),
+        if (coverUrl != _undefined) 'coverUrl': (coverUrl as String?),
+        if (description != _undefined) 'description': (description as String?),
+        if (longDescriptionMarkdown != _undefined)
+          'longDescriptionMarkdown': (longDescriptionMarkdown as String?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$OrganizationInsertInput<TRes>
+    implements CopyWith$Input$OrganizationInsertInput<TRes> {
+  _CopyWithStubImpl$Input$OrganizationInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? organizationTypeId,
+    String? name,
+    String? logoUrl,
+    String? coverUrl,
+    String? description,
+    String? longDescriptionMarkdown,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$OrganizationOrderBy {
+  factory Input$OrganizationOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? organizationTypeId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? logoUrl,
+    Enum$OrderByDirection? coverUrl,
+    Enum$OrderByDirection? description,
+    Enum$OrderByDirection? longDescriptionMarkdown,
+    Enum$OrderByDirection? webUrl,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$OrganizationOrderBy._({
+        if (id != null) r'id': id,
+        if (organizationTypeId != null)
+          r'organizationTypeId': organizationTypeId,
+        if (name != null) r'name': name,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (description != null) r'description': description,
+        if (longDescriptionMarkdown != null)
+          r'longDescriptionMarkdown': longDescriptionMarkdown,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$OrganizationOrderBy._(this._$data);
+
+  factory Input$OrganizationOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = data['organizationTypeId'];
+      result$data['organizationTypeId'] = l$organizationTypeId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$organizationTypeId as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = l$logoUrl == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$logoUrl as String));
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = l$coverUrl == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$coverUrl as String));
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = l$description == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$description as String));
+    }
+    if (data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = data['longDescriptionMarkdown'];
+      result$data['longDescriptionMarkdown'] = l$longDescriptionMarkdown == null
+          ? null
+          : fromJson$Enum$OrderByDirection(
+              (l$longDescriptionMarkdown as String));
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = l$webUrl == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$webUrl as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$OrganizationOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get organizationTypeId =>
+      (_$data['organizationTypeId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get logoUrl =>
+      (_$data['logoUrl'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get coverUrl =>
+      (_$data['coverUrl'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get description =>
+      (_$data['description'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get longDescriptionMarkdown =>
+      (_$data['longDescriptionMarkdown'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get webUrl =>
+      (_$data['webUrl'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = organizationTypeId;
+      result$data['organizationTypeId'] = l$organizationTypeId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$organizationTypeId);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] =
+          l$logoUrl == null ? null : toJson$Enum$OrderByDirection(l$logoUrl);
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] =
+          l$coverUrl == null ? null : toJson$Enum$OrderByDirection(l$coverUrl);
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$description);
+    }
+    if (_$data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = longDescriptionMarkdown;
+      result$data['longDescriptionMarkdown'] = l$longDescriptionMarkdown == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$longDescriptionMarkdown);
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] =
+          l$webUrl == null ? null : toJson$Enum$OrderByDirection(l$webUrl);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationOrderBy<Input$OrganizationOrderBy> get copyWith =>
+      CopyWith$Input$OrganizationOrderBy(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$organizationTypeId = organizationTypeId;
+    final lOther$organizationTypeId = other.organizationTypeId;
+    if (_$data.containsKey('organizationTypeId') !=
+        other._$data.containsKey('organizationTypeId')) {
+      return false;
+    }
+    if (l$organizationTypeId != lOther$organizationTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final lOther$longDescriptionMarkdown = other.longDescriptionMarkdown;
+    if (_$data.containsKey('longDescriptionMarkdown') !=
+        other._$data.containsKey('longDescriptionMarkdown')) {
+      return false;
+    }
+    if (l$longDescriptionMarkdown != lOther$longDescriptionMarkdown) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$organizationTypeId = organizationTypeId;
+    final l$name = name;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$description = description;
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final l$webUrl = webUrl;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('organizationTypeId')
+          ? l$organizationTypeId
+          : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('longDescriptionMarkdown')
+          ? l$longDescriptionMarkdown
+          : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationOrderBy<TRes> {
+  factory CopyWith$Input$OrganizationOrderBy(
+    Input$OrganizationOrderBy instance,
+    TRes Function(Input$OrganizationOrderBy) then,
+  ) = _CopyWithImpl$Input$OrganizationOrderBy;
+
+  factory CopyWith$Input$OrganizationOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? organizationTypeId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? logoUrl,
+    Enum$OrderByDirection? coverUrl,
+    Enum$OrderByDirection? description,
+    Enum$OrderByDirection? longDescriptionMarkdown,
+    Enum$OrderByDirection? webUrl,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$OrganizationOrderBy<TRes>
+    implements CopyWith$Input$OrganizationOrderBy<TRes> {
+  _CopyWithImpl$Input$OrganizationOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationOrderBy _instance;
+
+  final TRes Function(Input$OrganizationOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? organizationTypeId = _undefined,
+    Object? name = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? description = _undefined,
+    Object? longDescriptionMarkdown = _undefined,
+    Object? webUrl = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$OrganizationOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (organizationTypeId != _undefined)
+          'organizationTypeId': (organizationTypeId as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (logoUrl != _undefined)
+          'logoUrl': (logoUrl as Enum$OrderByDirection?),
+        if (coverUrl != _undefined)
+          'coverUrl': (coverUrl as Enum$OrderByDirection?),
+        if (description != _undefined)
+          'description': (description as Enum$OrderByDirection?),
+        if (longDescriptionMarkdown != _undefined)
+          'longDescriptionMarkdown':
+              (longDescriptionMarkdown as Enum$OrderByDirection?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$OrganizationOrderBy<TRes>
+    implements CopyWith$Input$OrganizationOrderBy<TRes> {
+  _CopyWithStubImpl$Input$OrganizationOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? organizationTypeId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? logoUrl,
+    Enum$OrderByDirection? coverUrl,
+    Enum$OrderByDirection? description,
+    Enum$OrderByDirection? longDescriptionMarkdown,
+    Enum$OrderByDirection? webUrl,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$OrganizationTypeFilter {
+  factory Input$OrganizationTypeFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$OrganizationTypeFilter>? and,
+    List<Input$OrganizationTypeFilter>? or,
+    Input$OrganizationTypeFilter? not,
+  }) =>
+      Input$OrganizationTypeFilter._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$OrganizationTypeFilter._(this._$data);
+
+  factory Input$OrganizationTypeFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : Input$StringFilter.fromJson((l$key as Map<String, dynamic>));
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$managingTable as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$OrganizationTypeFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$OrganizationTypeFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$OrganizationTypeFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$OrganizationTypeFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get key => (_$data['key'] as Input$StringFilter?);
+
+  Input$StringFilter? get managingTable =>
+      (_$data['managingTable'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$OrganizationTypeFilter>? get and =>
+      (_$data['and'] as List<Input$OrganizationTypeFilter>?);
+
+  List<Input$OrganizationTypeFilter>? get or =>
+      (_$data['or'] as List<Input$OrganizationTypeFilter>?);
+
+  Input$OrganizationTypeFilter? get not =>
+      (_$data['not'] as Input$OrganizationTypeFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key?.toJson();
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationTypeFilter<Input$OrganizationTypeFilter>
+      get copyWith => CopyWith$Input$OrganizationTypeFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationTypeFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationTypeFilter<TRes> {
+  factory CopyWith$Input$OrganizationTypeFilter(
+    Input$OrganizationTypeFilter instance,
+    TRes Function(Input$OrganizationTypeFilter) then,
+  ) = _CopyWithImpl$Input$OrganizationTypeFilter;
+
+  factory CopyWith$Input$OrganizationTypeFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationTypeFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$OrganizationTypeFilter>? and,
+    List<Input$OrganizationTypeFilter>? or,
+    Input$OrganizationTypeFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get key;
+  CopyWith$Input$StringFilter<TRes> get managingTable;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$OrganizationTypeFilter>? Function(
+              Iterable<
+                  CopyWith$Input$OrganizationTypeFilter<
+                      Input$OrganizationTypeFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$OrganizationTypeFilter>? Function(
+              Iterable<
+                  CopyWith$Input$OrganizationTypeFilter<
+                      Input$OrganizationTypeFilter>>?)
+          _fn);
+  CopyWith$Input$OrganizationTypeFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$OrganizationTypeFilter<TRes>
+    implements CopyWith$Input$OrganizationTypeFilter<TRes> {
+  _CopyWithImpl$Input$OrganizationTypeFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationTypeFilter _instance;
+
+  final TRes Function(Input$OrganizationTypeFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$OrganizationTypeFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (key != _undefined) 'key': (key as Input$StringFilter?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$OrganizationTypeFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$OrganizationTypeFilter>?),
+        if (not != _undefined) 'not': (not as Input$OrganizationTypeFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get key {
+    final local$key = _instance.key;
+    return local$key == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$key, (e) => call(key: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get managingTable {
+    final local$managingTable = _instance.managingTable;
+    return local$managingTable == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$managingTable, (e) => call(managingTable: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$OrganizationTypeFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$OrganizationTypeFilter<
+                          Input$OrganizationTypeFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(
+              _instance.and?.map((e) => CopyWith$Input$OrganizationTypeFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$OrganizationTypeFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$OrganizationTypeFilter<
+                          Input$OrganizationTypeFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(
+              _instance.or?.map((e) => CopyWith$Input$OrganizationTypeFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$OrganizationTypeFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$OrganizationTypeFilter.stub(_then(_instance))
+        : CopyWith$Input$OrganizationTypeFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$OrganizationTypeFilter<TRes>
+    implements CopyWith$Input$OrganizationTypeFilter<TRes> {
+  _CopyWithStubImpl$Input$OrganizationTypeFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$OrganizationTypeFilter>? and,
+    List<Input$OrganizationTypeFilter>? or,
+    Input$OrganizationTypeFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get key =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get managingTable =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$OrganizationTypeFilter<TRes> get not =>
+      CopyWith$Input$OrganizationTypeFilter.stub(_res);
+}
+
+class Input$OrganizationTypeInsertInput {
+  factory Input$OrganizationTypeInsertInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      Input$OrganizationTypeInsertInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (schema != null) r'schema': schema,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$OrganizationTypeInsertInput._(this._$data);
+
+  factory Input$OrganizationTypeInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('schema')) {
+      final l$schema = data['schema'];
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldFromJson(l$schema);
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = (l$managingTable as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$OrganizationTypeInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get schema =>
+      (_$data['schema'] as Map<String, dynamic>?);
+
+  String? get managingTable => (_$data['managingTable'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('schema')) {
+      final l$schema = schema;
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldToJson(l$schema);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationTypeInsertInput<Input$OrganizationTypeInsertInput>
+      get copyWith => CopyWith$Input$OrganizationTypeInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationTypeInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (_$data.containsKey('schema') != other._$data.containsKey('schema')) {
+      return false;
+    }
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('schema') ? l$schema : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationTypeInsertInput<TRes> {
+  factory CopyWith$Input$OrganizationTypeInsertInput(
+    Input$OrganizationTypeInsertInput instance,
+    TRes Function(Input$OrganizationTypeInsertInput) then,
+  ) = _CopyWithImpl$Input$OrganizationTypeInsertInput;
+
+  factory CopyWith$Input$OrganizationTypeInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationTypeInsertInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$OrganizationTypeInsertInput<TRes>
+    implements CopyWith$Input$OrganizationTypeInsertInput<TRes> {
+  _CopyWithImpl$Input$OrganizationTypeInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationTypeInsertInput _instance;
+
+  final TRes Function(Input$OrganizationTypeInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$OrganizationTypeInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (schema != _undefined) 'schema': (schema as Map<String, dynamic>?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$OrganizationTypeInsertInput<TRes>
+    implements CopyWith$Input$OrganizationTypeInsertInput<TRes> {
+  _CopyWithStubImpl$Input$OrganizationTypeInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$OrganizationTypeOrderBy {
+  factory Input$OrganizationTypeOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$OrganizationTypeOrderBy._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$OrganizationTypeOrderBy._(this._$data);
+
+  factory Input$OrganizationTypeOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$key as String));
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$managingTable as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$OrganizationTypeOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get key => (_$data['key'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get managingTable =>
+      (_$data['managingTable'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] =
+          l$key == null ? null : toJson$Enum$OrderByDirection(l$key);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$managingTable);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationTypeOrderBy<Input$OrganizationTypeOrderBy>
+      get copyWith => CopyWith$Input$OrganizationTypeOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationTypeOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationTypeOrderBy<TRes> {
+  factory CopyWith$Input$OrganizationTypeOrderBy(
+    Input$OrganizationTypeOrderBy instance,
+    TRes Function(Input$OrganizationTypeOrderBy) then,
+  ) = _CopyWithImpl$Input$OrganizationTypeOrderBy;
+
+  factory CopyWith$Input$OrganizationTypeOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationTypeOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$OrganizationTypeOrderBy<TRes>
+    implements CopyWith$Input$OrganizationTypeOrderBy<TRes> {
+  _CopyWithImpl$Input$OrganizationTypeOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationTypeOrderBy _instance;
+
+  final TRes Function(Input$OrganizationTypeOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$OrganizationTypeOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (key != _undefined) 'key': (key as Enum$OrderByDirection?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$OrganizationTypeOrderBy<TRes>
+    implements CopyWith$Input$OrganizationTypeOrderBy<TRes> {
+  _CopyWithStubImpl$Input$OrganizationTypeOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$OrganizationTypeUpdateInput {
+  factory Input$OrganizationTypeUpdateInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      Input$OrganizationTypeUpdateInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (schema != null) r'schema': schema,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$OrganizationTypeUpdateInput._(this._$data);
+
+  factory Input$OrganizationTypeUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('schema')) {
+      final l$schema = data['schema'];
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldFromJson(l$schema);
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = (l$managingTable as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$OrganizationTypeUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get schema =>
+      (_$data['schema'] as Map<String, dynamic>?);
+
+  String? get managingTable => (_$data['managingTable'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('schema')) {
+      final l$schema = schema;
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldToJson(l$schema);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationTypeUpdateInput<Input$OrganizationTypeUpdateInput>
+      get copyWith => CopyWith$Input$OrganizationTypeUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationTypeUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (_$data.containsKey('schema') != other._$data.containsKey('schema')) {
+      return false;
+    }
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('schema') ? l$schema : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationTypeUpdateInput<TRes> {
+  factory CopyWith$Input$OrganizationTypeUpdateInput(
+    Input$OrganizationTypeUpdateInput instance,
+    TRes Function(Input$OrganizationTypeUpdateInput) then,
+  ) = _CopyWithImpl$Input$OrganizationTypeUpdateInput;
+
+  factory CopyWith$Input$OrganizationTypeUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationTypeUpdateInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$OrganizationTypeUpdateInput<TRes>
+    implements CopyWith$Input$OrganizationTypeUpdateInput<TRes> {
+  _CopyWithImpl$Input$OrganizationTypeUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationTypeUpdateInput _instance;
+
+  final TRes Function(Input$OrganizationTypeUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$OrganizationTypeUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (schema != _undefined) 'schema': (schema as Map<String, dynamic>?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$OrganizationTypeUpdateInput<TRes>
+    implements CopyWith$Input$OrganizationTypeUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$OrganizationTypeUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$OrganizationUpdateInput {
+  factory Input$OrganizationUpdateInput({
+    String? id,
+    String? organizationTypeId,
+    String? name,
+    String? logoUrl,
+    String? coverUrl,
+    String? description,
+    String? longDescriptionMarkdown,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  }) =>
+      Input$OrganizationUpdateInput._({
+        if (id != null) r'id': id,
+        if (organizationTypeId != null)
+          r'organizationTypeId': organizationTypeId,
+        if (name != null) r'name': name,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (description != null) r'description': description,
+        if (longDescriptionMarkdown != null)
+          r'longDescriptionMarkdown': longDescriptionMarkdown,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$OrganizationUpdateInput._(this._$data);
+
+  factory Input$OrganizationUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = data['organizationTypeId'];
+      result$data['organizationTypeId'] = (l$organizationTypeId as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = (l$logoUrl as String?);
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = (l$coverUrl as String?);
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = (l$description as String?);
+    }
+    if (data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = data['longDescriptionMarkdown'];
+      result$data['longDescriptionMarkdown'] =
+          (l$longDescriptionMarkdown as String?);
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = (l$webUrl as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$OrganizationUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get organizationTypeId => (_$data['organizationTypeId'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get logoUrl => (_$data['logoUrl'] as String?);
+
+  String? get coverUrl => (_$data['coverUrl'] as String?);
+
+  String? get description => (_$data['description'] as String?);
+
+  String? get longDescriptionMarkdown =>
+      (_$data['longDescriptionMarkdown'] as String?);
+
+  String? get webUrl => (_$data['webUrl'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('organizationTypeId')) {
+      final l$organizationTypeId = organizationTypeId;
+      result$data['organizationTypeId'] = l$organizationTypeId;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] = l$logoUrl;
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] = l$coverUrl;
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description;
+    }
+    if (_$data.containsKey('longDescriptionMarkdown')) {
+      final l$longDescriptionMarkdown = longDescriptionMarkdown;
+      result$data['longDescriptionMarkdown'] = l$longDescriptionMarkdown;
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] = l$webUrl;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OrganizationUpdateInput<Input$OrganizationUpdateInput>
+      get copyWith => CopyWith$Input$OrganizationUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OrganizationUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$organizationTypeId = organizationTypeId;
+    final lOther$organizationTypeId = other.organizationTypeId;
+    if (_$data.containsKey('organizationTypeId') !=
+        other._$data.containsKey('organizationTypeId')) {
+      return false;
+    }
+    if (l$organizationTypeId != lOther$organizationTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final lOther$longDescriptionMarkdown = other.longDescriptionMarkdown;
+    if (_$data.containsKey('longDescriptionMarkdown') !=
+        other._$data.containsKey('longDescriptionMarkdown')) {
+      return false;
+    }
+    if (l$longDescriptionMarkdown != lOther$longDescriptionMarkdown) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$organizationTypeId = organizationTypeId;
+    final l$name = name;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$description = description;
+    final l$longDescriptionMarkdown = longDescriptionMarkdown;
+    final l$webUrl = webUrl;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('organizationTypeId')
+          ? l$organizationTypeId
+          : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('longDescriptionMarkdown')
+          ? l$longDescriptionMarkdown
+          : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OrganizationUpdateInput<TRes> {
+  factory CopyWith$Input$OrganizationUpdateInput(
+    Input$OrganizationUpdateInput instance,
+    TRes Function(Input$OrganizationUpdateInput) then,
+  ) = _CopyWithImpl$Input$OrganizationUpdateInput;
+
+  factory CopyWith$Input$OrganizationUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$OrganizationUpdateInput;
+
+  TRes call({
+    String? id,
+    String? organizationTypeId,
+    String? name,
+    String? logoUrl,
+    String? coverUrl,
+    String? description,
+    String? longDescriptionMarkdown,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$OrganizationUpdateInput<TRes>
+    implements CopyWith$Input$OrganizationUpdateInput<TRes> {
+  _CopyWithImpl$Input$OrganizationUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OrganizationUpdateInput _instance;
+
+  final TRes Function(Input$OrganizationUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? organizationTypeId = _undefined,
+    Object? name = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? description = _undefined,
+    Object? longDescriptionMarkdown = _undefined,
+    Object? webUrl = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$OrganizationUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (organizationTypeId != _undefined)
+          'organizationTypeId': (organizationTypeId as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (logoUrl != _undefined) 'logoUrl': (logoUrl as String?),
+        if (coverUrl != _undefined) 'coverUrl': (coverUrl as String?),
+        if (description != _undefined) 'description': (description as String?),
+        if (longDescriptionMarkdown != _undefined)
+          'longDescriptionMarkdown': (longDescriptionMarkdown as String?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$OrganizationUpdateInput<TRes>
+    implements CopyWith$Input$OrganizationUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$OrganizationUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? organizationTypeId,
+    String? name,
+    String? logoUrl,
+    String? coverUrl,
+    String? description,
+    String? longDescriptionMarkdown,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
 class Input$PermissionsFilter {
   factory Input$PermissionsFilter({
     Input$UUIDFilter? id,
@@ -21190,6 +24363,1147 @@ class _CopyWithStubImpl$Input$ProductInventoryUpdateInput<TRes>
       _res;
 }
 
+class Input$ProductProviderFilter {
+  factory Input$ProductProviderFilter({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? productId,
+    Input$UUIDFilter? providerId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProductProviderFilter>? and,
+    List<Input$ProductProviderFilter>? or,
+    Input$ProductProviderFilter? not,
+  }) =>
+      Input$ProductProviderFilter._({
+        if (id != null) r'id': id,
+        if (productId != null) r'productId': productId,
+        if (providerId != null) r'providerId': providerId,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$ProductProviderFilter._(this._$data);
+
+  factory Input$ProductProviderFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('productId')) {
+      final l$productId = data['productId'];
+      result$data['productId'] = l$productId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$productId as Map<String, dynamic>));
+    }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = l$providerId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$providerId as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) =>
+              Input$ProductProviderFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) =>
+              Input$ProductProviderFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$ProductProviderFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$ProductProviderFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get productId => (_$data['productId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get providerId =>
+      (_$data['providerId'] as Input$UUIDFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$ProductProviderFilter>? get and =>
+      (_$data['and'] as List<Input$ProductProviderFilter>?);
+
+  List<Input$ProductProviderFilter>? get or =>
+      (_$data['or'] as List<Input$ProductProviderFilter>?);
+
+  Input$ProductProviderFilter? get not =>
+      (_$data['not'] as Input$ProductProviderFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('productId')) {
+      final l$productId = productId;
+      result$data['productId'] = l$productId?.toJson();
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductProviderFilter<Input$ProductProviderFilter>
+      get copyWith => CopyWith$Input$ProductProviderFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductProviderFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$productId = productId;
+    final lOther$productId = other.productId;
+    if (_$data.containsKey('productId') !=
+        other._$data.containsKey('productId')) {
+      return false;
+    }
+    if (l$productId != lOther$productId) {
+      return false;
+    }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$productId = productId;
+    final l$providerId = providerId;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('productId') ? l$productId : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductProviderFilter<TRes> {
+  factory CopyWith$Input$ProductProviderFilter(
+    Input$ProductProviderFilter instance,
+    TRes Function(Input$ProductProviderFilter) then,
+  ) = _CopyWithImpl$Input$ProductProviderFilter;
+
+  factory CopyWith$Input$ProductProviderFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductProviderFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? productId,
+    Input$UUIDFilter? providerId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProductProviderFilter>? and,
+    List<Input$ProductProviderFilter>? or,
+    Input$ProductProviderFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$UUIDFilter<TRes> get productId;
+  CopyWith$Input$UUIDFilter<TRes> get providerId;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$ProductProviderFilter>? Function(
+              Iterable<
+                  CopyWith$Input$ProductProviderFilter<
+                      Input$ProductProviderFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$ProductProviderFilter>? Function(
+              Iterable<
+                  CopyWith$Input$ProductProviderFilter<
+                      Input$ProductProviderFilter>>?)
+          _fn);
+  CopyWith$Input$ProductProviderFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$ProductProviderFilter<TRes>
+    implements CopyWith$Input$ProductProviderFilter<TRes> {
+  _CopyWithImpl$Input$ProductProviderFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductProviderFilter _instance;
+
+  final TRes Function(Input$ProductProviderFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? productId = _undefined,
+    Object? providerId = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$ProductProviderFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (productId != _undefined)
+          'productId': (productId as Input$UUIDFilter?),
+        if (providerId != _undefined)
+          'providerId': (providerId as Input$UUIDFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$ProductProviderFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$ProductProviderFilter>?),
+        if (not != _undefined) 'not': (not as Input$ProductProviderFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get productId {
+    final local$productId = _instance.productId;
+    return local$productId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$productId, (e) => call(productId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get providerId {
+    final local$providerId = _instance.providerId;
+    return local$providerId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$providerId, (e) => call(providerId: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$ProductProviderFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProductProviderFilter<
+                          Input$ProductProviderFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(
+              _instance.and?.map((e) => CopyWith$Input$ProductProviderFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$ProductProviderFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProductProviderFilter<
+                          Input$ProductProviderFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$ProductProviderFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$ProductProviderFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$ProductProviderFilter.stub(_then(_instance))
+        : CopyWith$Input$ProductProviderFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$ProductProviderFilter<TRes>
+    implements CopyWith$Input$ProductProviderFilter<TRes> {
+  _CopyWithStubImpl$Input$ProductProviderFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? productId,
+    Input$UUIDFilter? providerId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProductProviderFilter>? and,
+    List<Input$ProductProviderFilter>? or,
+    Input$ProductProviderFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get productId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get providerId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$ProductProviderFilter<TRes> get not =>
+      CopyWith$Input$ProductProviderFilter.stub(_res);
+}
+
+class Input$ProductProviderInsertInput {
+  factory Input$ProductProviderInsertInput({
+    String? id,
+    String? productId,
+    String? providerId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+  }) =>
+      Input$ProductProviderInsertInput._({
+        if (id != null) r'id': id,
+        if (productId != null) r'productId': productId,
+        if (providerId != null) r'providerId': providerId,
+        if (metadata != null) r'metadata': metadata,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$ProductProviderInsertInput._(this._$data);
+
+  factory Input$ProductProviderInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('productId')) {
+      final l$productId = data['productId'];
+      result$data['productId'] = (l$productId as String?);
+    }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = (l$providerId as String?);
+    }
+    if (data.containsKey('metadata')) {
+      final l$metadata = data['metadata'];
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldFromJson(l$metadata);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$ProductProviderInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get productId => (_$data['productId'] as String?);
+
+  String? get providerId => (_$data['providerId'] as String?);
+
+  Map<String, dynamic>? get metadata =>
+      (_$data['metadata'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('productId')) {
+      final l$productId = productId;
+      result$data['productId'] = l$productId;
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId;
+    }
+    if (_$data.containsKey('metadata')) {
+      final l$metadata = metadata;
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldToJson(l$metadata);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductProviderInsertInput<Input$ProductProviderInsertInput>
+      get copyWith => CopyWith$Input$ProductProviderInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductProviderInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$productId = productId;
+    final lOther$productId = other.productId;
+    if (_$data.containsKey('productId') !=
+        other._$data.containsKey('productId')) {
+      return false;
+    }
+    if (l$productId != lOther$productId) {
+      return false;
+    }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
+    final l$metadata = metadata;
+    final lOther$metadata = other.metadata;
+    if (_$data.containsKey('metadata') !=
+        other._$data.containsKey('metadata')) {
+      return false;
+    }
+    if (l$metadata != lOther$metadata) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$productId = productId;
+    final l$providerId = providerId;
+    final l$metadata = metadata;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('productId') ? l$productId : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('metadata') ? l$metadata : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductProviderInsertInput<TRes> {
+  factory CopyWith$Input$ProductProviderInsertInput(
+    Input$ProductProviderInsertInput instance,
+    TRes Function(Input$ProductProviderInsertInput) then,
+  ) = _CopyWithImpl$Input$ProductProviderInsertInput;
+
+  factory CopyWith$Input$ProductProviderInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductProviderInsertInput;
+
+  TRes call({
+    String? id,
+    String? productId,
+    String? providerId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProductProviderInsertInput<TRes>
+    implements CopyWith$Input$ProductProviderInsertInput<TRes> {
+  _CopyWithImpl$Input$ProductProviderInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductProviderInsertInput _instance;
+
+  final TRes Function(Input$ProductProviderInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? productId = _undefined,
+    Object? providerId = _undefined,
+    Object? metadata = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$ProductProviderInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (productId != _undefined) 'productId': (productId as String?),
+        if (providerId != _undefined) 'providerId': (providerId as String?),
+        if (metadata != _undefined)
+          'metadata': (metadata as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProductProviderInsertInput<TRes>
+    implements CopyWith$Input$ProductProviderInsertInput<TRes> {
+  _CopyWithStubImpl$Input$ProductProviderInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? productId,
+    String? providerId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$ProductProviderOrderBy {
+  factory Input$ProductProviderOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? productId,
+    Enum$OrderByDirection? providerId,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$ProductProviderOrderBy._({
+        if (id != null) r'id': id,
+        if (productId != null) r'productId': productId,
+        if (providerId != null) r'providerId': providerId,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$ProductProviderOrderBy._(this._$data);
+
+  factory Input$ProductProviderOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('productId')) {
+      final l$productId = data['productId'];
+      result$data['productId'] = l$productId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$productId as String));
+    }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = l$providerId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$providerId as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$ProductProviderOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get productId =>
+      (_$data['productId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get providerId =>
+      (_$data['providerId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('productId')) {
+      final l$productId = productId;
+      result$data['productId'] = l$productId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$productId);
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$providerId);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductProviderOrderBy<Input$ProductProviderOrderBy>
+      get copyWith => CopyWith$Input$ProductProviderOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductProviderOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$productId = productId;
+    final lOther$productId = other.productId;
+    if (_$data.containsKey('productId') !=
+        other._$data.containsKey('productId')) {
+      return false;
+    }
+    if (l$productId != lOther$productId) {
+      return false;
+    }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$productId = productId;
+    final l$providerId = providerId;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('productId') ? l$productId : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductProviderOrderBy<TRes> {
+  factory CopyWith$Input$ProductProviderOrderBy(
+    Input$ProductProviderOrderBy instance,
+    TRes Function(Input$ProductProviderOrderBy) then,
+  ) = _CopyWithImpl$Input$ProductProviderOrderBy;
+
+  factory CopyWith$Input$ProductProviderOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductProviderOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? productId,
+    Enum$OrderByDirection? providerId,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProductProviderOrderBy<TRes>
+    implements CopyWith$Input$ProductProviderOrderBy<TRes> {
+  _CopyWithImpl$Input$ProductProviderOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductProviderOrderBy _instance;
+
+  final TRes Function(Input$ProductProviderOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? productId = _undefined,
+    Object? providerId = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$ProductProviderOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (productId != _undefined)
+          'productId': (productId as Enum$OrderByDirection?),
+        if (providerId != _undefined)
+          'providerId': (providerId as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProductProviderOrderBy<TRes>
+    implements CopyWith$Input$ProductProviderOrderBy<TRes> {
+  _CopyWithStubImpl$Input$ProductProviderOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? productId,
+    Enum$OrderByDirection? providerId,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$ProductProviderUpdateInput {
+  factory Input$ProductProviderUpdateInput({
+    String? id,
+    String? productId,
+    String? providerId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+  }) =>
+      Input$ProductProviderUpdateInput._({
+        if (id != null) r'id': id,
+        if (productId != null) r'productId': productId,
+        if (providerId != null) r'providerId': providerId,
+        if (metadata != null) r'metadata': metadata,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$ProductProviderUpdateInput._(this._$data);
+
+  factory Input$ProductProviderUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('productId')) {
+      final l$productId = data['productId'];
+      result$data['productId'] = (l$productId as String?);
+    }
+    if (data.containsKey('providerId')) {
+      final l$providerId = data['providerId'];
+      result$data['providerId'] = (l$providerId as String?);
+    }
+    if (data.containsKey('metadata')) {
+      final l$metadata = data['metadata'];
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldFromJson(l$metadata);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$ProductProviderUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get productId => (_$data['productId'] as String?);
+
+  String? get providerId => (_$data['providerId'] as String?);
+
+  Map<String, dynamic>? get metadata =>
+      (_$data['metadata'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('productId')) {
+      final l$productId = productId;
+      result$data['productId'] = l$productId;
+    }
+    if (_$data.containsKey('providerId')) {
+      final l$providerId = providerId;
+      result$data['providerId'] = l$providerId;
+    }
+    if (_$data.containsKey('metadata')) {
+      final l$metadata = metadata;
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldToJson(l$metadata);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductProviderUpdateInput<Input$ProductProviderUpdateInput>
+      get copyWith => CopyWith$Input$ProductProviderUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductProviderUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$productId = productId;
+    final lOther$productId = other.productId;
+    if (_$data.containsKey('productId') !=
+        other._$data.containsKey('productId')) {
+      return false;
+    }
+    if (l$productId != lOther$productId) {
+      return false;
+    }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (_$data.containsKey('providerId') !=
+        other._$data.containsKey('providerId')) {
+      return false;
+    }
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
+    final l$metadata = metadata;
+    final lOther$metadata = other.metadata;
+    if (_$data.containsKey('metadata') !=
+        other._$data.containsKey('metadata')) {
+      return false;
+    }
+    if (l$metadata != lOther$metadata) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$productId = productId;
+    final l$providerId = providerId;
+    final l$metadata = metadata;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('productId') ? l$productId : const {},
+      _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('metadata') ? l$metadata : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductProviderUpdateInput<TRes> {
+  factory CopyWith$Input$ProductProviderUpdateInput(
+    Input$ProductProviderUpdateInput instance,
+    TRes Function(Input$ProductProviderUpdateInput) then,
+  ) = _CopyWithImpl$Input$ProductProviderUpdateInput;
+
+  factory CopyWith$Input$ProductProviderUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductProviderUpdateInput;
+
+  TRes call({
+    String? id,
+    String? productId,
+    String? providerId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProductProviderUpdateInput<TRes>
+    implements CopyWith$Input$ProductProviderUpdateInput<TRes> {
+  _CopyWithImpl$Input$ProductProviderUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductProviderUpdateInput _instance;
+
+  final TRes Function(Input$ProductProviderUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? productId = _undefined,
+    Object? providerId = _undefined,
+    Object? metadata = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$ProductProviderUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (productId != _undefined) 'productId': (productId as String?),
+        if (providerId != _undefined) 'providerId': (providerId as String?),
+        if (metadata != _undefined)
+          'metadata': (metadata as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProductProviderUpdateInput<TRes>
+    implements CopyWith$Input$ProductProviderUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$ProductProviderUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? productId,
+    String? providerId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
 class Input$ProductsFilter {
   factory Input$ProductsFilter({
     Input$UUIDFilter? id,
@@ -21203,6 +25517,7 @@ class Input$ProductsFilter {
     Input$FloatFilter? unitPrice,
     Input$StringFilter? unit,
     Input$StringFilter? instructions,
+    Input$StringFilter? stripeProductId,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -21220,6 +25535,7 @@ class Input$ProductsFilter {
         if (unitPrice != null) r'unitPrice': unitPrice,
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
+        if (stripeProductId != null) r'stripeProductId': stripeProductId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -21302,6 +25618,13 @@ class Input$ProductsFilter {
           : Input$StringFilter.fromJson(
               (l$instructions as Map<String, dynamic>));
     }
+    if (data.containsKey('stripeProductId')) {
+      final l$stripeProductId = data['stripeProductId'];
+      result$data['stripeProductId'] = l$stripeProductId == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$stripeProductId as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -21363,6 +25686,9 @@ class Input$ProductsFilter {
   Input$StringFilter? get instructions =>
       (_$data['instructions'] as Input$StringFilter?);
 
+  Input$StringFilter? get stripeProductId =>
+      (_$data['stripeProductId'] as Input$StringFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$ProductsFilter>? get and =>
@@ -21418,6 +25744,10 @@ class Input$ProductsFilter {
     if (_$data.containsKey('instructions')) {
       final l$instructions = instructions;
       result$data['instructions'] = l$instructions?.toJson();
+    }
+    if (_$data.containsKey('stripeProductId')) {
+      final l$stripeProductId = stripeProductId;
+      result$data['stripeProductId'] = l$stripeProductId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -21548,6 +25878,15 @@ class Input$ProductsFilter {
     if (l$instructions != lOther$instructions) {
       return false;
     }
+    final l$stripeProductId = stripeProductId;
+    final lOther$stripeProductId = other.stripeProductId;
+    if (_$data.containsKey('stripeProductId') !=
+        other._$data.containsKey('stripeProductId')) {
+      return false;
+    }
+    if (l$stripeProductId != lOther$stripeProductId) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -21618,6 +25957,7 @@ class Input$ProductsFilter {
     final l$unitPrice = unitPrice;
     final l$unit = unit;
     final l$instructions = instructions;
+    final l$stripeProductId = stripeProductId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -21634,6 +25974,7 @@ class Input$ProductsFilter {
       _$data.containsKey('unitPrice') ? l$unitPrice : const {},
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
+      _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -21671,6 +26012,7 @@ abstract class CopyWith$Input$ProductsFilter<TRes> {
     Input$FloatFilter? unitPrice,
     Input$StringFilter? unit,
     Input$StringFilter? instructions,
+    Input$StringFilter? stripeProductId,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -21687,6 +26029,7 @@ abstract class CopyWith$Input$ProductsFilter<TRes> {
   CopyWith$Input$FloatFilter<TRes> get unitPrice;
   CopyWith$Input$StringFilter<TRes> get unit;
   CopyWith$Input$StringFilter<TRes> get instructions;
+  CopyWith$Input$StringFilter<TRes> get stripeProductId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$ProductsFilter>? Function(
@@ -21724,6 +26067,7 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
     Object? unitPrice = _undefined,
     Object? unit = _undefined,
     Object? instructions = _undefined,
+    Object? stripeProductId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -21750,6 +26094,8 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
         if (unit != _undefined) 'unit': (unit as Input$StringFilter?),
         if (instructions != _undefined)
           'instructions': (instructions as Input$StringFilter?),
+        if (stripeProductId != _undefined)
+          'stripeProductId': (stripeProductId as Input$StringFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$ProductsFilter>?),
         if (or != _undefined) 'or': (or as List<Input$ProductsFilter>?),
@@ -21840,6 +26186,14 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
             local$instructions, (e) => call(instructions: e));
   }
 
+  CopyWith$Input$StringFilter<TRes> get stripeProductId {
+    final local$stripeProductId = _instance.stripeProductId;
+    return local$stripeProductId == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$stripeProductId, (e) => call(stripeProductId: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -21895,6 +26249,7 @@ class _CopyWithStubImpl$Input$ProductsFilter<TRes>
     Input$FloatFilter? unitPrice,
     Input$StringFilter? unit,
     Input$StringFilter? instructions,
+    Input$StringFilter? stripeProductId,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -21935,6 +26290,9 @@ class _CopyWithStubImpl$Input$ProductsFilter<TRes>
   CopyWith$Input$StringFilter<TRes> get instructions =>
       CopyWith$Input$StringFilter.stub(_res);
 
+  CopyWith$Input$StringFilter<TRes> get stripeProductId =>
+      CopyWith$Input$StringFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -21960,6 +26318,7 @@ class Input$ProductsInsertInput {
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
   }) =>
       Input$ProductsInsertInput._({
         if (id != null) r'id': id,
@@ -21974,6 +26333,7 @@ class Input$ProductsInsertInput {
         if (unitPrice != null) r'unitPrice': unitPrice,
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
+        if (stripeProductId != null) r'stripeProductId': stripeProductId,
       });
 
   Input$ProductsInsertInput._(this._$data);
@@ -22030,6 +26390,10 @@ class Input$ProductsInsertInput {
       final l$instructions = data['instructions'];
       result$data['instructions'] = (l$instructions as String?);
     }
+    if (data.containsKey('stripeProductId')) {
+      final l$stripeProductId = data['stripeProductId'];
+      result$data['stripeProductId'] = (l$stripeProductId as String?);
+    }
     return Input$ProductsInsertInput._(result$data);
   }
 
@@ -22058,6 +26422,8 @@ class Input$ProductsInsertInput {
   String? get unit => (_$data['unit'] as String?);
 
   String? get instructions => (_$data['instructions'] as String?);
+
+  String? get stripeProductId => (_$data['stripeProductId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -22108,6 +26474,10 @@ class Input$ProductsInsertInput {
     if (_$data.containsKey('instructions')) {
       final l$instructions = instructions;
       result$data['instructions'] = l$instructions;
+    }
+    if (_$data.containsKey('stripeProductId')) {
+      final l$stripeProductId = stripeProductId;
+      result$data['stripeProductId'] = l$stripeProductId;
     }
     return result$data;
   }
@@ -22231,6 +26601,15 @@ class Input$ProductsInsertInput {
     if (l$instructions != lOther$instructions) {
       return false;
     }
+    final l$stripeProductId = stripeProductId;
+    final lOther$stripeProductId = other.stripeProductId;
+    if (_$data.containsKey('stripeProductId') !=
+        other._$data.containsKey('stripeProductId')) {
+      return false;
+    }
+    if (l$stripeProductId != lOther$stripeProductId) {
+      return false;
+    }
     return true;
   }
 
@@ -22248,6 +26627,7 @@ class Input$ProductsInsertInput {
     final l$unitPrice = unitPrice;
     final l$unit = unit;
     final l$instructions = instructions;
+    final l$stripeProductId = stripeProductId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -22261,6 +26641,7 @@ class Input$ProductsInsertInput {
       _$data.containsKey('unitPrice') ? l$unitPrice : const {},
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
+      _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
     ]);
   }
 }
@@ -22287,6 +26668,7 @@ abstract class CopyWith$Input$ProductsInsertInput<TRes> {
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
   });
 }
 
@@ -22316,6 +26698,7 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
     Object? unitPrice = _undefined,
     Object? unit = _undefined,
     Object? instructions = _undefined,
+    Object? stripeProductId = _undefined,
   }) =>
       _then(Input$ProductsInsertInput._({
         ..._instance._$data,
@@ -22335,6 +26718,8 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
         if (unit != _undefined) 'unit': (unit as String?),
         if (instructions != _undefined)
           'instructions': (instructions as String?),
+        if (stripeProductId != _undefined)
+          'stripeProductId': (stripeProductId as String?),
       }));
 }
 
@@ -22357,6 +26742,7 @@ class _CopyWithStubImpl$Input$ProductsInsertInput<TRes>
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
   }) =>
       _res;
 }
@@ -22374,6 +26760,7 @@ class Input$ProductsOrderBy {
     Enum$OrderByDirection? unitPrice,
     Enum$OrderByDirection? unit,
     Enum$OrderByDirection? instructions,
+    Enum$OrderByDirection? stripeProductId,
   }) =>
       Input$ProductsOrderBy._({
         if (id != null) r'id': id,
@@ -22387,6 +26774,7 @@ class Input$ProductsOrderBy {
         if (unitPrice != null) r'unitPrice': unitPrice,
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
+        if (stripeProductId != null) r'stripeProductId': stripeProductId,
       });
 
   Input$ProductsOrderBy._(this._$data);
@@ -22459,6 +26847,12 @@ class Input$ProductsOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$instructions as String));
     }
+    if (data.containsKey('stripeProductId')) {
+      final l$stripeProductId = data['stripeProductId'];
+      result$data['stripeProductId'] = l$stripeProductId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$stripeProductId as String));
+    }
     return Input$ProductsOrderBy._(result$data);
   }
 
@@ -22493,6 +26887,9 @@ class Input$ProductsOrderBy {
 
   Enum$OrderByDirection? get instructions =>
       (_$data['instructions'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get stripeProductId =>
+      (_$data['stripeProductId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -22557,6 +26954,12 @@ class Input$ProductsOrderBy {
       result$data['instructions'] = l$instructions == null
           ? null
           : toJson$Enum$OrderByDirection(l$instructions);
+    }
+    if (_$data.containsKey('stripeProductId')) {
+      final l$stripeProductId = stripeProductId;
+      result$data['stripeProductId'] = l$stripeProductId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$stripeProductId);
     }
     return result$data;
   }
@@ -22671,6 +27074,15 @@ class Input$ProductsOrderBy {
     if (l$instructions != lOther$instructions) {
       return false;
     }
+    final l$stripeProductId = stripeProductId;
+    final lOther$stripeProductId = other.stripeProductId;
+    if (_$data.containsKey('stripeProductId') !=
+        other._$data.containsKey('stripeProductId')) {
+      return false;
+    }
+    if (l$stripeProductId != lOther$stripeProductId) {
+      return false;
+    }
     return true;
   }
 
@@ -22687,6 +27099,7 @@ class Input$ProductsOrderBy {
     final l$unitPrice = unitPrice;
     final l$unit = unit;
     final l$instructions = instructions;
+    final l$stripeProductId = stripeProductId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -22699,6 +27112,7 @@ class Input$ProductsOrderBy {
       _$data.containsKey('unitPrice') ? l$unitPrice : const {},
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
+      _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
     ]);
   }
 }
@@ -22724,6 +27138,7 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
     Enum$OrderByDirection? unitPrice,
     Enum$OrderByDirection? unit,
     Enum$OrderByDirection? instructions,
+    Enum$OrderByDirection? stripeProductId,
   });
 }
 
@@ -22752,6 +27167,7 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
     Object? unitPrice = _undefined,
     Object? unit = _undefined,
     Object? instructions = _undefined,
+    Object? stripeProductId = _undefined,
   }) =>
       _then(Input$ProductsOrderBy._({
         ..._instance._$data,
@@ -22774,6 +27190,8 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
         if (unit != _undefined) 'unit': (unit as Enum$OrderByDirection?),
         if (instructions != _undefined)
           'instructions': (instructions as Enum$OrderByDirection?),
+        if (stripeProductId != _undefined)
+          'stripeProductId': (stripeProductId as Enum$OrderByDirection?),
       }));
 }
 
@@ -22795,6 +27213,7 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
     Enum$OrderByDirection? unitPrice,
     Enum$OrderByDirection? unit,
     Enum$OrderByDirection? instructions,
+    Enum$OrderByDirection? stripeProductId,
   }) =>
       _res;
 }
@@ -22813,6 +27232,7 @@ class Input$ProductsUpdateInput {
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
   }) =>
       Input$ProductsUpdateInput._({
         if (id != null) r'id': id,
@@ -22827,6 +27247,7 @@ class Input$ProductsUpdateInput {
         if (unitPrice != null) r'unitPrice': unitPrice,
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
+        if (stripeProductId != null) r'stripeProductId': stripeProductId,
       });
 
   Input$ProductsUpdateInput._(this._$data);
@@ -22883,6 +27304,10 @@ class Input$ProductsUpdateInput {
       final l$instructions = data['instructions'];
       result$data['instructions'] = (l$instructions as String?);
     }
+    if (data.containsKey('stripeProductId')) {
+      final l$stripeProductId = data['stripeProductId'];
+      result$data['stripeProductId'] = (l$stripeProductId as String?);
+    }
     return Input$ProductsUpdateInput._(result$data);
   }
 
@@ -22911,6 +27336,8 @@ class Input$ProductsUpdateInput {
   String? get unit => (_$data['unit'] as String?);
 
   String? get instructions => (_$data['instructions'] as String?);
+
+  String? get stripeProductId => (_$data['stripeProductId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -22961,6 +27388,10 @@ class Input$ProductsUpdateInput {
     if (_$data.containsKey('instructions')) {
       final l$instructions = instructions;
       result$data['instructions'] = l$instructions;
+    }
+    if (_$data.containsKey('stripeProductId')) {
+      final l$stripeProductId = stripeProductId;
+      result$data['stripeProductId'] = l$stripeProductId;
     }
     return result$data;
   }
@@ -23084,6 +27515,15 @@ class Input$ProductsUpdateInput {
     if (l$instructions != lOther$instructions) {
       return false;
     }
+    final l$stripeProductId = stripeProductId;
+    final lOther$stripeProductId = other.stripeProductId;
+    if (_$data.containsKey('stripeProductId') !=
+        other._$data.containsKey('stripeProductId')) {
+      return false;
+    }
+    if (l$stripeProductId != lOther$stripeProductId) {
+      return false;
+    }
     return true;
   }
 
@@ -23101,6 +27541,7 @@ class Input$ProductsUpdateInput {
     final l$unitPrice = unitPrice;
     final l$unit = unit;
     final l$instructions = instructions;
+    final l$stripeProductId = stripeProductId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -23114,6 +27555,7 @@ class Input$ProductsUpdateInput {
       _$data.containsKey('unitPrice') ? l$unitPrice : const {},
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
+      _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
     ]);
   }
 }
@@ -23140,6 +27582,7 @@ abstract class CopyWith$Input$ProductsUpdateInput<TRes> {
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
   });
 }
 
@@ -23169,6 +27612,7 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
     Object? unitPrice = _undefined,
     Object? unit = _undefined,
     Object? instructions = _undefined,
+    Object? stripeProductId = _undefined,
   }) =>
       _then(Input$ProductsUpdateInput._({
         ..._instance._$data,
@@ -23188,6 +27632,8 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
         if (unit != _undefined) 'unit': (unit as String?),
         if (instructions != _undefined)
           'instructions': (instructions as String?),
+        if (stripeProductId != _undefined)
+          'stripeProductId': (stripeProductId as String?),
       }));
 }
 
@@ -23210,6 +27656,7 @@ class _CopyWithStubImpl$Input$ProductsUpdateInput<TRes>
     double? unitPrice,
     String? unit,
     String? instructions,
+    String? stripeProductId,
   }) =>
       _res;
 }
@@ -24574,6 +29021,3135 @@ class _CopyWithStubImpl$Input$ProductTypesUpdateInput<TRes>
     String? iconUrl,
     String? coverUrl,
     DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$ProviderFilter {
+  factory Input$ProviderFilter({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? providerTypeId,
+    Input$UUIDFilter? organizationId,
+    Input$StringFilter? name,
+    Input$StringFilter? description,
+    Input$StringFilter? logoUrl,
+    Input$StringFilter? coverUrl,
+    Input$StringFilter? webUrl,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProviderFilter>? and,
+    List<Input$ProviderFilter>? or,
+    Input$ProviderFilter? not,
+  }) =>
+      Input$ProviderFilter._({
+        if (id != null) r'id': id,
+        if (providerTypeId != null) r'providerTypeId': providerTypeId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (name != null) r'name': name,
+        if (description != null) r'description': description,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$ProviderFilter._(this._$data);
+
+  factory Input$ProviderFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('providerTypeId')) {
+      final l$providerTypeId = data['providerTypeId'];
+      result$data['providerTypeId'] = l$providerTypeId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$providerTypeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$organizationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = l$description == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$description as Map<String, dynamic>));
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = l$logoUrl == null
+          ? null
+          : Input$StringFilter.fromJson((l$logoUrl as Map<String, dynamic>));
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = l$coverUrl == null
+          ? null
+          : Input$StringFilter.fromJson((l$coverUrl as Map<String, dynamic>));
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = l$webUrl == null
+          ? null
+          : Input$StringFilter.fromJson((l$webUrl as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$updatedAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map(
+              (e) => Input$ProviderFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map(
+              (e) => Input$ProviderFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$ProviderFilter.fromJson((l$not as Map<String, dynamic>));
+    }
+    return Input$ProviderFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get providerTypeId =>
+      (_$data['providerTypeId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get organizationId =>
+      (_$data['organizationId'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get description =>
+      (_$data['description'] as Input$StringFilter?);
+
+  Input$StringFilter? get logoUrl => (_$data['logoUrl'] as Input$StringFilter?);
+
+  Input$StringFilter? get coverUrl =>
+      (_$data['coverUrl'] as Input$StringFilter?);
+
+  Input$StringFilter? get webUrl => (_$data['webUrl'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$DatetimeFilter? get updatedAt =>
+      (_$data['updatedAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$ProviderFilter>? get and =>
+      (_$data['and'] as List<Input$ProviderFilter>?);
+
+  List<Input$ProviderFilter>? get or =>
+      (_$data['or'] as List<Input$ProviderFilter>?);
+
+  Input$ProviderFilter? get not => (_$data['not'] as Input$ProviderFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('providerTypeId')) {
+      final l$providerTypeId = providerTypeId;
+      result$data['providerTypeId'] = l$providerTypeId?.toJson();
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description?.toJson();
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] = l$logoUrl?.toJson();
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] = l$coverUrl?.toJson();
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] = l$webUrl?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderFilter<Input$ProviderFilter> get copyWith =>
+      CopyWith$Input$ProviderFilter(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderFilter || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$providerTypeId = providerTypeId;
+    final lOther$providerTypeId = other.providerTypeId;
+    if (_$data.containsKey('providerTypeId') !=
+        other._$data.containsKey('providerTypeId')) {
+      return false;
+    }
+    if (l$providerTypeId != lOther$providerTypeId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$providerTypeId = providerTypeId;
+    final l$organizationId = organizationId;
+    final l$name = name;
+    final l$description = description;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$webUrl = webUrl;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('providerTypeId') ? l$providerTypeId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderFilter<TRes> {
+  factory CopyWith$Input$ProviderFilter(
+    Input$ProviderFilter instance,
+    TRes Function(Input$ProviderFilter) then,
+  ) = _CopyWithImpl$Input$ProviderFilter;
+
+  factory CopyWith$Input$ProviderFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? providerTypeId,
+    Input$UUIDFilter? organizationId,
+    Input$StringFilter? name,
+    Input$StringFilter? description,
+    Input$StringFilter? logoUrl,
+    Input$StringFilter? coverUrl,
+    Input$StringFilter? webUrl,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProviderFilter>? and,
+    List<Input$ProviderFilter>? or,
+    Input$ProviderFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$UUIDFilter<TRes> get providerTypeId;
+  CopyWith$Input$UUIDFilter<TRes> get organizationId;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get description;
+  CopyWith$Input$StringFilter<TRes> get logoUrl;
+  CopyWith$Input$StringFilter<TRes> get coverUrl;
+  CopyWith$Input$StringFilter<TRes> get webUrl;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$ProviderFilter>? Function(
+              Iterable<CopyWith$Input$ProviderFilter<Input$ProviderFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$ProviderFilter>? Function(
+              Iterable<CopyWith$Input$ProviderFilter<Input$ProviderFilter>>?)
+          _fn);
+  CopyWith$Input$ProviderFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$ProviderFilter<TRes>
+    implements CopyWith$Input$ProviderFilter<TRes> {
+  _CopyWithImpl$Input$ProviderFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderFilter _instance;
+
+  final TRes Function(Input$ProviderFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? providerTypeId = _undefined,
+    Object? organizationId = _undefined,
+    Object? name = _undefined,
+    Object? description = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? webUrl = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$ProviderFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (providerTypeId != _undefined)
+          'providerTypeId': (providerTypeId as Input$UUIDFilter?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (description != _undefined)
+          'description': (description as Input$StringFilter?),
+        if (logoUrl != _undefined) 'logoUrl': (logoUrl as Input$StringFilter?),
+        if (coverUrl != _undefined)
+          'coverUrl': (coverUrl as Input$StringFilter?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (updatedAt != _undefined)
+          'updatedAt': (updatedAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined) 'and': (and as List<Input$ProviderFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$ProviderFilter>?),
+        if (not != _undefined) 'not': (not as Input$ProviderFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get providerTypeId {
+    final local$providerTypeId = _instance.providerTypeId;
+    return local$providerTypeId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$providerTypeId, (e) => call(providerTypeId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId {
+    final local$organizationId = _instance.organizationId;
+    return local$organizationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$organizationId, (e) => call(organizationId: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get description {
+    final local$description = _instance.description;
+    return local$description == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$description, (e) => call(description: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get logoUrl {
+    final local$logoUrl = _instance.logoUrl;
+    return local$logoUrl == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$logoUrl, (e) => call(logoUrl: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get coverUrl {
+    final local$coverUrl = _instance.coverUrl;
+    return local$coverUrl == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$coverUrl, (e) => call(coverUrl: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get webUrl {
+    final local$webUrl = _instance.webUrl;
+    return local$webUrl == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$webUrl, (e) => call(webUrl: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt {
+    final local$updatedAt = _instance.updatedAt;
+    return local$updatedAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$updatedAt, (e) => call(updatedAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$ProviderFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProviderFilter<Input$ProviderFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$ProviderFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  TRes or(
+          Iterable<Input$ProviderFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProviderFilter<Input$ProviderFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$ProviderFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$ProviderFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$ProviderFilter.stub(_then(_instance))
+        : CopyWith$Input$ProviderFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$ProviderFilter<TRes>
+    implements CopyWith$Input$ProviderFilter<TRes> {
+  _CopyWithStubImpl$Input$ProviderFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? providerTypeId,
+    Input$UUIDFilter? organizationId,
+    Input$StringFilter? name,
+    Input$StringFilter? description,
+    Input$StringFilter? logoUrl,
+    Input$StringFilter? coverUrl,
+    Input$StringFilter? webUrl,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProviderFilter>? and,
+    List<Input$ProviderFilter>? or,
+    Input$ProviderFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get providerTypeId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get description =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get logoUrl =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get coverUrl =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get webUrl =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$ProviderFilter<TRes> get not =>
+      CopyWith$Input$ProviderFilter.stub(_res);
+}
+
+class Input$ProviderInsertInput {
+  factory Input$ProviderInsertInput({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Input$ProviderInsertInput._({
+        if (id != null) r'id': id,
+        if (providerTypeId != null) r'providerTypeId': providerTypeId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (name != null) r'name': name,
+        if (description != null) r'description': description,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$ProviderInsertInput._(this._$data);
+
+  factory Input$ProviderInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('providerTypeId')) {
+      final l$providerTypeId = data['providerTypeId'];
+      result$data['providerTypeId'] = (l$providerTypeId as String?);
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = (l$description as String?);
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = (l$logoUrl as String?);
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = (l$coverUrl as String?);
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = (l$webUrl as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] =
+          l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String));
+    }
+    return Input$ProviderInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get providerTypeId => (_$data['providerTypeId'] as String?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get description => (_$data['description'] as String?);
+
+  String? get logoUrl => (_$data['logoUrl'] as String?);
+
+  String? get coverUrl => (_$data['coverUrl'] as String?);
+
+  String? get webUrl => (_$data['webUrl'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('providerTypeId')) {
+      final l$providerTypeId = providerTypeId;
+      result$data['providerTypeId'] = l$providerTypeId;
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description;
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] = l$logoUrl;
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] = l$coverUrl;
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] = l$webUrl;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderInsertInput<Input$ProviderInsertInput> get copyWith =>
+      CopyWith$Input$ProviderInsertInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$providerTypeId = providerTypeId;
+    final lOther$providerTypeId = other.providerTypeId;
+    if (_$data.containsKey('providerTypeId') !=
+        other._$data.containsKey('providerTypeId')) {
+      return false;
+    }
+    if (l$providerTypeId != lOther$providerTypeId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$providerTypeId = providerTypeId;
+    final l$organizationId = organizationId;
+    final l$name = name;
+    final l$description = description;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$webUrl = webUrl;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('providerTypeId') ? l$providerTypeId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderInsertInput<TRes> {
+  factory CopyWith$Input$ProviderInsertInput(
+    Input$ProviderInsertInput instance,
+    TRes Function(Input$ProviderInsertInput) then,
+  ) = _CopyWithImpl$Input$ProviderInsertInput;
+
+  factory CopyWith$Input$ProviderInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderInsertInput;
+
+  TRes call({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProviderInsertInput<TRes>
+    implements CopyWith$Input$ProviderInsertInput<TRes> {
+  _CopyWithImpl$Input$ProviderInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderInsertInput _instance;
+
+  final TRes Function(Input$ProviderInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? providerTypeId = _undefined,
+    Object? organizationId = _undefined,
+    Object? name = _undefined,
+    Object? description = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? webUrl = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$ProviderInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (providerTypeId != _undefined)
+          'providerTypeId': (providerTypeId as String?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (description != _undefined) 'description': (description as String?),
+        if (logoUrl != _undefined) 'logoUrl': (logoUrl as String?),
+        if (coverUrl != _undefined) 'coverUrl': (coverUrl as String?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProviderInsertInput<TRes>
+    implements CopyWith$Input$ProviderInsertInput<TRes> {
+  _CopyWithStubImpl$Input$ProviderInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      _res;
+}
+
+class Input$ProviderOrderBy {
+  factory Input$ProviderOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? providerTypeId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? description,
+    Enum$OrderByDirection? logoUrl,
+    Enum$OrderByDirection? coverUrl,
+    Enum$OrderByDirection? webUrl,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  }) =>
+      Input$ProviderOrderBy._({
+        if (id != null) r'id': id,
+        if (providerTypeId != null) r'providerTypeId': providerTypeId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (name != null) r'name': name,
+        if (description != null) r'description': description,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$ProviderOrderBy._(this._$data);
+
+  factory Input$ProviderOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('providerTypeId')) {
+      final l$providerTypeId = data['providerTypeId'];
+      result$data['providerTypeId'] = l$providerTypeId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$providerTypeId as String));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$organizationId as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = l$description == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$description as String));
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = l$logoUrl == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$logoUrl as String));
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = l$coverUrl == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$coverUrl as String));
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = l$webUrl == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$webUrl as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$updatedAt as String));
+    }
+    return Input$ProviderOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get providerTypeId =>
+      (_$data['providerTypeId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get organizationId =>
+      (_$data['organizationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get description =>
+      (_$data['description'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get logoUrl =>
+      (_$data['logoUrl'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get coverUrl =>
+      (_$data['coverUrl'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get webUrl =>
+      (_$data['webUrl'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get updatedAt =>
+      (_$data['updatedAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('providerTypeId')) {
+      final l$providerTypeId = providerTypeId;
+      result$data['providerTypeId'] = l$providerTypeId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$providerTypeId);
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$organizationId);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$description);
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] =
+          l$logoUrl == null ? null : toJson$Enum$OrderByDirection(l$logoUrl);
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] =
+          l$coverUrl == null ? null : toJson$Enum$OrderByDirection(l$coverUrl);
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] =
+          l$webUrl == null ? null : toJson$Enum$OrderByDirection(l$webUrl);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$updatedAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderOrderBy<Input$ProviderOrderBy> get copyWith =>
+      CopyWith$Input$ProviderOrderBy(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderOrderBy || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$providerTypeId = providerTypeId;
+    final lOther$providerTypeId = other.providerTypeId;
+    if (_$data.containsKey('providerTypeId') !=
+        other._$data.containsKey('providerTypeId')) {
+      return false;
+    }
+    if (l$providerTypeId != lOther$providerTypeId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$providerTypeId = providerTypeId;
+    final l$organizationId = organizationId;
+    final l$name = name;
+    final l$description = description;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$webUrl = webUrl;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('providerTypeId') ? l$providerTypeId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderOrderBy<TRes> {
+  factory CopyWith$Input$ProviderOrderBy(
+    Input$ProviderOrderBy instance,
+    TRes Function(Input$ProviderOrderBy) then,
+  ) = _CopyWithImpl$Input$ProviderOrderBy;
+
+  factory CopyWith$Input$ProviderOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? providerTypeId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? description,
+    Enum$OrderByDirection? logoUrl,
+    Enum$OrderByDirection? coverUrl,
+    Enum$OrderByDirection? webUrl,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProviderOrderBy<TRes>
+    implements CopyWith$Input$ProviderOrderBy<TRes> {
+  _CopyWithImpl$Input$ProviderOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderOrderBy _instance;
+
+  final TRes Function(Input$ProviderOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? providerTypeId = _undefined,
+    Object? organizationId = _undefined,
+    Object? name = _undefined,
+    Object? description = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? webUrl = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$ProviderOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (providerTypeId != _undefined)
+          'providerTypeId': (providerTypeId as Enum$OrderByDirection?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (description != _undefined)
+          'description': (description as Enum$OrderByDirection?),
+        if (logoUrl != _undefined)
+          'logoUrl': (logoUrl as Enum$OrderByDirection?),
+        if (coverUrl != _undefined)
+          'coverUrl': (coverUrl as Enum$OrderByDirection?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (updatedAt != _undefined)
+          'updatedAt': (updatedAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProviderOrderBy<TRes>
+    implements CopyWith$Input$ProviderOrderBy<TRes> {
+  _CopyWithStubImpl$Input$ProviderOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? providerTypeId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? description,
+    Enum$OrderByDirection? logoUrl,
+    Enum$OrderByDirection? coverUrl,
+    Enum$OrderByDirection? webUrl,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  }) =>
+      _res;
+}
+
+class Input$ProviderTypeFilter {
+  factory Input$ProviderTypeFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProviderTypeFilter>? and,
+    List<Input$ProviderTypeFilter>? or,
+    Input$ProviderTypeFilter? not,
+  }) =>
+      Input$ProviderTypeFilter._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$ProviderTypeFilter._(this._$data);
+
+  factory Input$ProviderTypeFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : Input$StringFilter.fromJson((l$key as Map<String, dynamic>));
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$managingTable as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) =>
+              Input$ProviderTypeFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) =>
+              Input$ProviderTypeFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$ProviderTypeFilter.fromJson((l$not as Map<String, dynamic>));
+    }
+    return Input$ProviderTypeFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get key => (_$data['key'] as Input$StringFilter?);
+
+  Input$StringFilter? get managingTable =>
+      (_$data['managingTable'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$ProviderTypeFilter>? get and =>
+      (_$data['and'] as List<Input$ProviderTypeFilter>?);
+
+  List<Input$ProviderTypeFilter>? get or =>
+      (_$data['or'] as List<Input$ProviderTypeFilter>?);
+
+  Input$ProviderTypeFilter? get not =>
+      (_$data['not'] as Input$ProviderTypeFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key?.toJson();
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderTypeFilter<Input$ProviderTypeFilter> get copyWith =>
+      CopyWith$Input$ProviderTypeFilter(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderTypeFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderTypeFilter<TRes> {
+  factory CopyWith$Input$ProviderTypeFilter(
+    Input$ProviderTypeFilter instance,
+    TRes Function(Input$ProviderTypeFilter) then,
+  ) = _CopyWithImpl$Input$ProviderTypeFilter;
+
+  factory CopyWith$Input$ProviderTypeFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderTypeFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProviderTypeFilter>? and,
+    List<Input$ProviderTypeFilter>? or,
+    Input$ProviderTypeFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get key;
+  CopyWith$Input$StringFilter<TRes> get managingTable;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$ProviderTypeFilter>? Function(
+              Iterable<
+                  CopyWith$Input$ProviderTypeFilter<Input$ProviderTypeFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$ProviderTypeFilter>? Function(
+              Iterable<
+                  CopyWith$Input$ProviderTypeFilter<Input$ProviderTypeFilter>>?)
+          _fn);
+  CopyWith$Input$ProviderTypeFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$ProviderTypeFilter<TRes>
+    implements CopyWith$Input$ProviderTypeFilter<TRes> {
+  _CopyWithImpl$Input$ProviderTypeFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderTypeFilter _instance;
+
+  final TRes Function(Input$ProviderTypeFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$ProviderTypeFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (key != _undefined) 'key': (key as Input$StringFilter?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined) 'and': (and as List<Input$ProviderTypeFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$ProviderTypeFilter>?),
+        if (not != _undefined) 'not': (not as Input$ProviderTypeFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get key {
+    final local$key = _instance.key;
+    return local$key == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$key, (e) => call(key: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get managingTable {
+    final local$managingTable = _instance.managingTable;
+    return local$managingTable == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$managingTable, (e) => call(managingTable: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$ProviderTypeFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProviderTypeFilter<
+                          Input$ProviderTypeFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$ProviderTypeFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  TRes or(
+          Iterable<Input$ProviderTypeFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$ProviderTypeFilter<
+                          Input$ProviderTypeFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$ProviderTypeFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$ProviderTypeFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$ProviderTypeFilter.stub(_then(_instance))
+        : CopyWith$Input$ProviderTypeFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$ProviderTypeFilter<TRes>
+    implements CopyWith$Input$ProviderTypeFilter<TRes> {
+  _CopyWithStubImpl$Input$ProviderTypeFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$ProviderTypeFilter>? and,
+    List<Input$ProviderTypeFilter>? or,
+    Input$ProviderTypeFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get key =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get managingTable =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$ProviderTypeFilter<TRes> get not =>
+      CopyWith$Input$ProviderTypeFilter.stub(_res);
+}
+
+class Input$ProviderTypeInsertInput {
+  factory Input$ProviderTypeInsertInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      Input$ProviderTypeInsertInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (schema != null) r'schema': schema,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$ProviderTypeInsertInput._(this._$data);
+
+  factory Input$ProviderTypeInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('schema')) {
+      final l$schema = data['schema'];
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldFromJson(l$schema);
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = (l$managingTable as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$ProviderTypeInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get schema =>
+      (_$data['schema'] as Map<String, dynamic>?);
+
+  String? get managingTable => (_$data['managingTable'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('schema')) {
+      final l$schema = schema;
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldToJson(l$schema);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderTypeInsertInput<Input$ProviderTypeInsertInput>
+      get copyWith => CopyWith$Input$ProviderTypeInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderTypeInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (_$data.containsKey('schema') != other._$data.containsKey('schema')) {
+      return false;
+    }
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('schema') ? l$schema : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderTypeInsertInput<TRes> {
+  factory CopyWith$Input$ProviderTypeInsertInput(
+    Input$ProviderTypeInsertInput instance,
+    TRes Function(Input$ProviderTypeInsertInput) then,
+  ) = _CopyWithImpl$Input$ProviderTypeInsertInput;
+
+  factory CopyWith$Input$ProviderTypeInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderTypeInsertInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProviderTypeInsertInput<TRes>
+    implements CopyWith$Input$ProviderTypeInsertInput<TRes> {
+  _CopyWithImpl$Input$ProviderTypeInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderTypeInsertInput _instance;
+
+  final TRes Function(Input$ProviderTypeInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$ProviderTypeInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (schema != _undefined) 'schema': (schema as Map<String, dynamic>?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProviderTypeInsertInput<TRes>
+    implements CopyWith$Input$ProviderTypeInsertInput<TRes> {
+  _CopyWithStubImpl$Input$ProviderTypeInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$ProviderTypeOrderBy {
+  factory Input$ProviderTypeOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$ProviderTypeOrderBy._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$ProviderTypeOrderBy._(this._$data);
+
+  factory Input$ProviderTypeOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$key as String));
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$managingTable as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$ProviderTypeOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get key => (_$data['key'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get managingTable =>
+      (_$data['managingTable'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] =
+          l$key == null ? null : toJson$Enum$OrderByDirection(l$key);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$managingTable);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderTypeOrderBy<Input$ProviderTypeOrderBy> get copyWith =>
+      CopyWith$Input$ProviderTypeOrderBy(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderTypeOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderTypeOrderBy<TRes> {
+  factory CopyWith$Input$ProviderTypeOrderBy(
+    Input$ProviderTypeOrderBy instance,
+    TRes Function(Input$ProviderTypeOrderBy) then,
+  ) = _CopyWithImpl$Input$ProviderTypeOrderBy;
+
+  factory CopyWith$Input$ProviderTypeOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderTypeOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProviderTypeOrderBy<TRes>
+    implements CopyWith$Input$ProviderTypeOrderBy<TRes> {
+  _CopyWithImpl$Input$ProviderTypeOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderTypeOrderBy _instance;
+
+  final TRes Function(Input$ProviderTypeOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$ProviderTypeOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (key != _undefined) 'key': (key as Enum$OrderByDirection?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProviderTypeOrderBy<TRes>
+    implements CopyWith$Input$ProviderTypeOrderBy<TRes> {
+  _CopyWithStubImpl$Input$ProviderTypeOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$ProviderTypeUpdateInput {
+  factory Input$ProviderTypeUpdateInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      Input$ProviderTypeUpdateInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (schema != null) r'schema': schema,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$ProviderTypeUpdateInput._(this._$data);
+
+  factory Input$ProviderTypeUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('schema')) {
+      final l$schema = data['schema'];
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldFromJson(l$schema);
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = (l$managingTable as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$ProviderTypeUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get schema =>
+      (_$data['schema'] as Map<String, dynamic>?);
+
+  String? get managingTable => (_$data['managingTable'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('schema')) {
+      final l$schema = schema;
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldToJson(l$schema);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderTypeUpdateInput<Input$ProviderTypeUpdateInput>
+      get copyWith => CopyWith$Input$ProviderTypeUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderTypeUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (_$data.containsKey('schema') != other._$data.containsKey('schema')) {
+      return false;
+    }
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('schema') ? l$schema : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderTypeUpdateInput<TRes> {
+  factory CopyWith$Input$ProviderTypeUpdateInput(
+    Input$ProviderTypeUpdateInput instance,
+    TRes Function(Input$ProviderTypeUpdateInput) then,
+  ) = _CopyWithImpl$Input$ProviderTypeUpdateInput;
+
+  factory CopyWith$Input$ProviderTypeUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderTypeUpdateInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProviderTypeUpdateInput<TRes>
+    implements CopyWith$Input$ProviderTypeUpdateInput<TRes> {
+  _CopyWithImpl$Input$ProviderTypeUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderTypeUpdateInput _instance;
+
+  final TRes Function(Input$ProviderTypeUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$ProviderTypeUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (schema != _undefined) 'schema': (schema as Map<String, dynamic>?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProviderTypeUpdateInput<TRes>
+    implements CopyWith$Input$ProviderTypeUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$ProviderTypeUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$ProviderUpdateInput {
+  factory Input$ProviderUpdateInput({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Input$ProviderUpdateInput._({
+        if (id != null) r'id': id,
+        if (providerTypeId != null) r'providerTypeId': providerTypeId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (name != null) r'name': name,
+        if (description != null) r'description': description,
+        if (logoUrl != null) r'logoUrl': logoUrl,
+        if (coverUrl != null) r'coverUrl': coverUrl,
+        if (webUrl != null) r'webUrl': webUrl,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$ProviderUpdateInput._(this._$data);
+
+  factory Input$ProviderUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('providerTypeId')) {
+      final l$providerTypeId = data['providerTypeId'];
+      result$data['providerTypeId'] = (l$providerTypeId as String?);
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('description')) {
+      final l$description = data['description'];
+      result$data['description'] = (l$description as String?);
+    }
+    if (data.containsKey('logoUrl')) {
+      final l$logoUrl = data['logoUrl'];
+      result$data['logoUrl'] = (l$logoUrl as String?);
+    }
+    if (data.containsKey('coverUrl')) {
+      final l$coverUrl = data['coverUrl'];
+      result$data['coverUrl'] = (l$coverUrl as String?);
+    }
+    if (data.containsKey('webUrl')) {
+      final l$webUrl = data['webUrl'];
+      result$data['webUrl'] = (l$webUrl as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] =
+          l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String));
+    }
+    return Input$ProviderUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get providerTypeId => (_$data['providerTypeId'] as String?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get description => (_$data['description'] as String?);
+
+  String? get logoUrl => (_$data['logoUrl'] as String?);
+
+  String? get coverUrl => (_$data['coverUrl'] as String?);
+
+  String? get webUrl => (_$data['webUrl'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('providerTypeId')) {
+      final l$providerTypeId = providerTypeId;
+      result$data['providerTypeId'] = l$providerTypeId;
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('description')) {
+      final l$description = description;
+      result$data['description'] = l$description;
+    }
+    if (_$data.containsKey('logoUrl')) {
+      final l$logoUrl = logoUrl;
+      result$data['logoUrl'] = l$logoUrl;
+    }
+    if (_$data.containsKey('coverUrl')) {
+      final l$coverUrl = coverUrl;
+      result$data['coverUrl'] = l$coverUrl;
+    }
+    if (_$data.containsKey('webUrl')) {
+      final l$webUrl = webUrl;
+      result$data['webUrl'] = l$webUrl;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProviderUpdateInput<Input$ProviderUpdateInput> get copyWith =>
+      CopyWith$Input$ProviderUpdateInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProviderUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$providerTypeId = providerTypeId;
+    final lOther$providerTypeId = other.providerTypeId;
+    if (_$data.containsKey('providerTypeId') !=
+        other._$data.containsKey('providerTypeId')) {
+      return false;
+    }
+    if (l$providerTypeId != lOther$providerTypeId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (_$data.containsKey('description') !=
+        other._$data.containsKey('description')) {
+      return false;
+    }
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (_$data.containsKey('logoUrl') != other._$data.containsKey('logoUrl')) {
+      return false;
+    }
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (_$data.containsKey('coverUrl') !=
+        other._$data.containsKey('coverUrl')) {
+      return false;
+    }
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (_$data.containsKey('webUrl') != other._$data.containsKey('webUrl')) {
+      return false;
+    }
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$providerTypeId = providerTypeId;
+    final l$organizationId = organizationId;
+    final l$name = name;
+    final l$description = description;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$webUrl = webUrl;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('providerTypeId') ? l$providerTypeId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('description') ? l$description : const {},
+      _$data.containsKey('logoUrl') ? l$logoUrl : const {},
+      _$data.containsKey('coverUrl') ? l$coverUrl : const {},
+      _$data.containsKey('webUrl') ? l$webUrl : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProviderUpdateInput<TRes> {
+  factory CopyWith$Input$ProviderUpdateInput(
+    Input$ProviderUpdateInput instance,
+    TRes Function(Input$ProviderUpdateInput) then,
+  ) = _CopyWithImpl$Input$ProviderUpdateInput;
+
+  factory CopyWith$Input$ProviderUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProviderUpdateInput;
+
+  TRes call({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$ProviderUpdateInput<TRes>
+    implements CopyWith$Input$ProviderUpdateInput<TRes> {
+  _CopyWithImpl$Input$ProviderUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProviderUpdateInput _instance;
+
+  final TRes Function(Input$ProviderUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? providerTypeId = _undefined,
+    Object? organizationId = _undefined,
+    Object? name = _undefined,
+    Object? description = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? webUrl = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$ProviderUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (providerTypeId != _undefined)
+          'providerTypeId': (providerTypeId as String?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (description != _undefined) 'description': (description as String?),
+        if (logoUrl != _undefined) 'logoUrl': (logoUrl as String?),
+        if (coverUrl != _undefined) 'coverUrl': (coverUrl as String?),
+        if (webUrl != _undefined) 'webUrl': (webUrl as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$ProviderUpdateInput<TRes>
+    implements CopyWith$Input$ProviderUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$ProviderUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) =>
       _res;
 }
@@ -30156,6 +37732,2482 @@ class _CopyWithStubImpl$Input$ShoppingCartsUpdateInput<TRes>
       _res;
 }
 
+class Input$SiteFilter {
+  factory Input$SiteFilter({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? siteTypeId,
+    Input$StringFilter? name,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? organizationId,
+    Input$IDFilter? nodeId,
+    List<Input$SiteFilter>? and,
+    List<Input$SiteFilter>? or,
+    Input$SiteFilter? not,
+  }) =>
+      Input$SiteFilter._({
+        if (id != null) r'id': id,
+        if (siteTypeId != null) r'siteTypeId': siteTypeId,
+        if (name != null) r'name': name,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$SiteFilter._(this._$data);
+
+  factory Input$SiteFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('siteTypeId')) {
+      final l$siteTypeId = data['siteTypeId'];
+      result$data['siteTypeId'] = l$siteTypeId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$siteTypeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$organizationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$SiteFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$SiteFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$SiteFilter.fromJson((l$not as Map<String, dynamic>));
+    }
+    return Input$SiteFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get siteTypeId =>
+      (_$data['siteTypeId'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$UUIDFilter? get organizationId =>
+      (_$data['organizationId'] as Input$UUIDFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$SiteFilter>? get and => (_$data['and'] as List<Input$SiteFilter>?);
+
+  List<Input$SiteFilter>? get or => (_$data['or'] as List<Input$SiteFilter>?);
+
+  Input$SiteFilter? get not => (_$data['not'] as Input$SiteFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('siteTypeId')) {
+      final l$siteTypeId = siteTypeId;
+      result$data['siteTypeId'] = l$siteTypeId?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteFilter<Input$SiteFilter> get copyWith =>
+      CopyWith$Input$SiteFilter(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteFilter || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteTypeId = siteTypeId;
+    final lOther$siteTypeId = other.siteTypeId;
+    if (_$data.containsKey('siteTypeId') !=
+        other._$data.containsKey('siteTypeId')) {
+      return false;
+    }
+    if (l$siteTypeId != lOther$siteTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteTypeId = siteTypeId;
+    final l$name = name;
+    final l$createdAt = createdAt;
+    final l$organizationId = organizationId;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteTypeId') ? l$siteTypeId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteFilter<TRes> {
+  factory CopyWith$Input$SiteFilter(
+    Input$SiteFilter instance,
+    TRes Function(Input$SiteFilter) then,
+  ) = _CopyWithImpl$Input$SiteFilter;
+
+  factory CopyWith$Input$SiteFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? siteTypeId,
+    Input$StringFilter? name,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? organizationId,
+    Input$IDFilter? nodeId,
+    List<Input$SiteFilter>? and,
+    List<Input$SiteFilter>? or,
+    Input$SiteFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$UUIDFilter<TRes> get siteTypeId;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$UUIDFilter<TRes> get organizationId;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$SiteFilter>? Function(
+              Iterable<CopyWith$Input$SiteFilter<Input$SiteFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$SiteFilter>? Function(
+              Iterable<CopyWith$Input$SiteFilter<Input$SiteFilter>>?)
+          _fn);
+  CopyWith$Input$SiteFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$SiteFilter<TRes>
+    implements CopyWith$Input$SiteFilter<TRes> {
+  _CopyWithImpl$Input$SiteFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteFilter _instance;
+
+  final TRes Function(Input$SiteFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteTypeId = _undefined,
+    Object? name = _undefined,
+    Object? createdAt = _undefined,
+    Object? organizationId = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$SiteFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (siteTypeId != _undefined)
+          'siteTypeId': (siteTypeId as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Input$UUIDFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined) 'and': (and as List<Input$SiteFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$SiteFilter>?),
+        if (not != _undefined) 'not': (not as Input$SiteFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get siteTypeId {
+    final local$siteTypeId = _instance.siteTypeId;
+    return local$siteTypeId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$siteTypeId, (e) => call(siteTypeId: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId {
+    final local$organizationId = _instance.organizationId;
+    return local$organizationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$organizationId, (e) => call(organizationId: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$SiteFilter>? Function(
+                  Iterable<CopyWith$Input$SiteFilter<Input$SiteFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$SiteFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  TRes or(
+          Iterable<Input$SiteFilter>? Function(
+                  Iterable<CopyWith$Input$SiteFilter<Input$SiteFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$SiteFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$SiteFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$SiteFilter.stub(_then(_instance))
+        : CopyWith$Input$SiteFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$SiteFilter<TRes>
+    implements CopyWith$Input$SiteFilter<TRes> {
+  _CopyWithStubImpl$Input$SiteFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? siteTypeId,
+    Input$StringFilter? name,
+    Input$DatetimeFilter? createdAt,
+    Input$UUIDFilter? organizationId,
+    Input$IDFilter? nodeId,
+    List<Input$SiteFilter>? and,
+    List<Input$SiteFilter>? or,
+    Input$SiteFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get siteTypeId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$SiteFilter<TRes> get not =>
+      CopyWith$Input$SiteFilter.stub(_res);
+}
+
+class Input$SiteInsertInput {
+  factory Input$SiteInsertInput({
+    String? id,
+    String? siteTypeId,
+    String? name,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    String? organizationId,
+  }) =>
+      Input$SiteInsertInput._({
+        if (id != null) r'id': id,
+        if (siteTypeId != null) r'siteTypeId': siteTypeId,
+        if (name != null) r'name': name,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (organizationId != null) r'organizationId': organizationId,
+      });
+
+  Input$SiteInsertInput._(this._$data);
+
+  factory Input$SiteInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('siteTypeId')) {
+      final l$siteTypeId = data['siteTypeId'];
+      result$data['siteTypeId'] = (l$siteTypeId as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    return Input$SiteInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get siteTypeId => (_$data['siteTypeId'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('siteTypeId')) {
+      final l$siteTypeId = siteTypeId;
+      result$data['siteTypeId'] = l$siteTypeId;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteInsertInput<Input$SiteInsertInput> get copyWith =>
+      CopyWith$Input$SiteInsertInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteInsertInput || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteTypeId = siteTypeId;
+    final lOther$siteTypeId = other.siteTypeId;
+    if (_$data.containsKey('siteTypeId') !=
+        other._$data.containsKey('siteTypeId')) {
+      return false;
+    }
+    if (l$siteTypeId != lOther$siteTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteTypeId = siteTypeId;
+    final l$name = name;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    final l$organizationId = organizationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteTypeId') ? l$siteTypeId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteInsertInput<TRes> {
+  factory CopyWith$Input$SiteInsertInput(
+    Input$SiteInsertInput instance,
+    TRes Function(Input$SiteInsertInput) then,
+  ) = _CopyWithImpl$Input$SiteInsertInput;
+
+  factory CopyWith$Input$SiteInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteInsertInput;
+
+  TRes call({
+    String? id,
+    String? siteTypeId,
+    String? name,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    String? organizationId,
+  });
+}
+
+class _CopyWithImpl$Input$SiteInsertInput<TRes>
+    implements CopyWith$Input$SiteInsertInput<TRes> {
+  _CopyWithImpl$Input$SiteInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteInsertInput _instance;
+
+  final TRes Function(Input$SiteInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteTypeId = _undefined,
+    Object? name = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+    Object? organizationId = _undefined,
+  }) =>
+      _then(Input$SiteInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (siteTypeId != _undefined) 'siteTypeId': (siteTypeId as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteInsertInput<TRes>
+    implements CopyWith$Input$SiteInsertInput<TRes> {
+  _CopyWithStubImpl$Input$SiteInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? siteTypeId,
+    String? name,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    String? organizationId,
+  }) =>
+      _res;
+}
+
+class Input$SiteOrderBy {
+  factory Input$SiteOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? siteTypeId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? organizationId,
+  }) =>
+      Input$SiteOrderBy._({
+        if (id != null) r'id': id,
+        if (siteTypeId != null) r'siteTypeId': siteTypeId,
+        if (name != null) r'name': name,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (organizationId != null) r'organizationId': organizationId,
+      });
+
+  Input$SiteOrderBy._(this._$data);
+
+  factory Input$SiteOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('siteTypeId')) {
+      final l$siteTypeId = data['siteTypeId'];
+      result$data['siteTypeId'] = l$siteTypeId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$siteTypeId as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$organizationId as String));
+    }
+    return Input$SiteOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get siteTypeId =>
+      (_$data['siteTypeId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get organizationId =>
+      (_$data['organizationId'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('siteTypeId')) {
+      final l$siteTypeId = siteTypeId;
+      result$data['siteTypeId'] = l$siteTypeId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$siteTypeId);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$organizationId);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteOrderBy<Input$SiteOrderBy> get copyWith =>
+      CopyWith$Input$SiteOrderBy(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteOrderBy || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteTypeId = siteTypeId;
+    final lOther$siteTypeId = other.siteTypeId;
+    if (_$data.containsKey('siteTypeId') !=
+        other._$data.containsKey('siteTypeId')) {
+      return false;
+    }
+    if (l$siteTypeId != lOther$siteTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteTypeId = siteTypeId;
+    final l$name = name;
+    final l$createdAt = createdAt;
+    final l$organizationId = organizationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteTypeId') ? l$siteTypeId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteOrderBy<TRes> {
+  factory CopyWith$Input$SiteOrderBy(
+    Input$SiteOrderBy instance,
+    TRes Function(Input$SiteOrderBy) then,
+  ) = _CopyWithImpl$Input$SiteOrderBy;
+
+  factory CopyWith$Input$SiteOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? siteTypeId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? organizationId,
+  });
+}
+
+class _CopyWithImpl$Input$SiteOrderBy<TRes>
+    implements CopyWith$Input$SiteOrderBy<TRes> {
+  _CopyWithImpl$Input$SiteOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteOrderBy _instance;
+
+  final TRes Function(Input$SiteOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteTypeId = _undefined,
+    Object? name = _undefined,
+    Object? createdAt = _undefined,
+    Object? organizationId = _undefined,
+  }) =>
+      _then(Input$SiteOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (siteTypeId != _undefined)
+          'siteTypeId': (siteTypeId as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteOrderBy<TRes>
+    implements CopyWith$Input$SiteOrderBy<TRes> {
+  _CopyWithStubImpl$Input$SiteOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? siteTypeId,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? organizationId,
+  }) =>
+      _res;
+}
+
+class Input$SiteTypeFilter {
+  factory Input$SiteTypeFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$SiteTypeFilter>? and,
+    List<Input$SiteTypeFilter>? or,
+    Input$SiteTypeFilter? not,
+  }) =>
+      Input$SiteTypeFilter._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$SiteTypeFilter._(this._$data);
+
+  factory Input$SiteTypeFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : Input$StringFilter.fromJson((l$key as Map<String, dynamic>));
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$managingTable as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map(
+              (e) => Input$SiteTypeFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map(
+              (e) => Input$SiteTypeFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$SiteTypeFilter.fromJson((l$not as Map<String, dynamic>));
+    }
+    return Input$SiteTypeFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get key => (_$data['key'] as Input$StringFilter?);
+
+  Input$StringFilter? get managingTable =>
+      (_$data['managingTable'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$SiteTypeFilter>? get and =>
+      (_$data['and'] as List<Input$SiteTypeFilter>?);
+
+  List<Input$SiteTypeFilter>? get or =>
+      (_$data['or'] as List<Input$SiteTypeFilter>?);
+
+  Input$SiteTypeFilter? get not => (_$data['not'] as Input$SiteTypeFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key?.toJson();
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteTypeFilter<Input$SiteTypeFilter> get copyWith =>
+      CopyWith$Input$SiteTypeFilter(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteTypeFilter || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteTypeFilter<TRes> {
+  factory CopyWith$Input$SiteTypeFilter(
+    Input$SiteTypeFilter instance,
+    TRes Function(Input$SiteTypeFilter) then,
+  ) = _CopyWithImpl$Input$SiteTypeFilter;
+
+  factory CopyWith$Input$SiteTypeFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteTypeFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$SiteTypeFilter>? and,
+    List<Input$SiteTypeFilter>? or,
+    Input$SiteTypeFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get key;
+  CopyWith$Input$StringFilter<TRes> get managingTable;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$SiteTypeFilter>? Function(
+              Iterable<CopyWith$Input$SiteTypeFilter<Input$SiteTypeFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$SiteTypeFilter>? Function(
+              Iterable<CopyWith$Input$SiteTypeFilter<Input$SiteTypeFilter>>?)
+          _fn);
+  CopyWith$Input$SiteTypeFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$SiteTypeFilter<TRes>
+    implements CopyWith$Input$SiteTypeFilter<TRes> {
+  _CopyWithImpl$Input$SiteTypeFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteTypeFilter _instance;
+
+  final TRes Function(Input$SiteTypeFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$SiteTypeFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (key != _undefined) 'key': (key as Input$StringFilter?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined) 'and': (and as List<Input$SiteTypeFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$SiteTypeFilter>?),
+        if (not != _undefined) 'not': (not as Input$SiteTypeFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get key {
+    final local$key = _instance.key;
+    return local$key == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$key, (e) => call(key: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get managingTable {
+    final local$managingTable = _instance.managingTable;
+    return local$managingTable == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$managingTable, (e) => call(managingTable: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$SiteTypeFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$SiteTypeFilter<Input$SiteTypeFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$SiteTypeFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  TRes or(
+          Iterable<Input$SiteTypeFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$SiteTypeFilter<Input$SiteTypeFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$SiteTypeFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$SiteTypeFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$SiteTypeFilter.stub(_then(_instance))
+        : CopyWith$Input$SiteTypeFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$SiteTypeFilter<TRes>
+    implements CopyWith$Input$SiteTypeFilter<TRes> {
+  _CopyWithStubImpl$Input$SiteTypeFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? key,
+    Input$StringFilter? managingTable,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$SiteTypeFilter>? and,
+    List<Input$SiteTypeFilter>? or,
+    Input$SiteTypeFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get key =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get managingTable =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$SiteTypeFilter<TRes> get not =>
+      CopyWith$Input$SiteTypeFilter.stub(_res);
+}
+
+class Input$SiteTypeInsertInput {
+  factory Input$SiteTypeInsertInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      Input$SiteTypeInsertInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (schema != null) r'schema': schema,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$SiteTypeInsertInput._(this._$data);
+
+  factory Input$SiteTypeInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('schema')) {
+      final l$schema = data['schema'];
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldFromJson(l$schema);
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = (l$managingTable as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$SiteTypeInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get schema =>
+      (_$data['schema'] as Map<String, dynamic>?);
+
+  String? get managingTable => (_$data['managingTable'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('schema')) {
+      final l$schema = schema;
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldToJson(l$schema);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteTypeInsertInput<Input$SiteTypeInsertInput> get copyWith =>
+      CopyWith$Input$SiteTypeInsertInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteTypeInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (_$data.containsKey('schema') != other._$data.containsKey('schema')) {
+      return false;
+    }
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('schema') ? l$schema : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteTypeInsertInput<TRes> {
+  factory CopyWith$Input$SiteTypeInsertInput(
+    Input$SiteTypeInsertInput instance,
+    TRes Function(Input$SiteTypeInsertInput) then,
+  ) = _CopyWithImpl$Input$SiteTypeInsertInput;
+
+  factory CopyWith$Input$SiteTypeInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteTypeInsertInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$SiteTypeInsertInput<TRes>
+    implements CopyWith$Input$SiteTypeInsertInput<TRes> {
+  _CopyWithImpl$Input$SiteTypeInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteTypeInsertInput _instance;
+
+  final TRes Function(Input$SiteTypeInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$SiteTypeInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (schema != _undefined) 'schema': (schema as Map<String, dynamic>?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteTypeInsertInput<TRes>
+    implements CopyWith$Input$SiteTypeInsertInput<TRes> {
+  _CopyWithStubImpl$Input$SiteTypeInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$SiteTypeOrderBy {
+  factory Input$SiteTypeOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$SiteTypeOrderBy._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$SiteTypeOrderBy._(this._$data);
+
+  factory Input$SiteTypeOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = l$key == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$key as String));
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$managingTable as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$SiteTypeOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get key => (_$data['key'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get managingTable =>
+      (_$data['managingTable'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] =
+          l$key == null ? null : toJson$Enum$OrderByDirection(l$key);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$managingTable);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteTypeOrderBy<Input$SiteTypeOrderBy> get copyWith =>
+      CopyWith$Input$SiteTypeOrderBy(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteTypeOrderBy || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteTypeOrderBy<TRes> {
+  factory CopyWith$Input$SiteTypeOrderBy(
+    Input$SiteTypeOrderBy instance,
+    TRes Function(Input$SiteTypeOrderBy) then,
+  ) = _CopyWithImpl$Input$SiteTypeOrderBy;
+
+  factory CopyWith$Input$SiteTypeOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteTypeOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$SiteTypeOrderBy<TRes>
+    implements CopyWith$Input$SiteTypeOrderBy<TRes> {
+  _CopyWithImpl$Input$SiteTypeOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteTypeOrderBy _instance;
+
+  final TRes Function(Input$SiteTypeOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$SiteTypeOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (key != _undefined) 'key': (key as Enum$OrderByDirection?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteTypeOrderBy<TRes>
+    implements CopyWith$Input$SiteTypeOrderBy<TRes> {
+  _CopyWithStubImpl$Input$SiteTypeOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? key,
+    Enum$OrderByDirection? managingTable,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$SiteTypeUpdateInput {
+  factory Input$SiteTypeUpdateInput({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      Input$SiteTypeUpdateInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (key != null) r'key': key,
+        if (schema != null) r'schema': schema,
+        if (managingTable != null) r'managingTable': managingTable,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$SiteTypeUpdateInput._(this._$data);
+
+  factory Input$SiteTypeUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('key')) {
+      final l$key = data['key'];
+      result$data['key'] = (l$key as String?);
+    }
+    if (data.containsKey('schema')) {
+      final l$schema = data['schema'];
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldFromJson(l$schema);
+    }
+    if (data.containsKey('managingTable')) {
+      final l$managingTable = data['managingTable'];
+      result$data['managingTable'] = (l$managingTable as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$SiteTypeUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get key => (_$data['key'] as String?);
+
+  Map<String, dynamic>? get schema =>
+      (_$data['schema'] as Map<String, dynamic>?);
+
+  String? get managingTable => (_$data['managingTable'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('key')) {
+      final l$key = key;
+      result$data['key'] = l$key;
+    }
+    if (_$data.containsKey('schema')) {
+      final l$schema = schema;
+      result$data['schema'] =
+          l$schema == null ? null : jsonFieldToJson(l$schema);
+    }
+    if (_$data.containsKey('managingTable')) {
+      final l$managingTable = managingTable;
+      result$data['managingTable'] = l$managingTable;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteTypeUpdateInput<Input$SiteTypeUpdateInput> get copyWith =>
+      CopyWith$Input$SiteTypeUpdateInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteTypeUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (_$data.containsKey('key') != other._$data.containsKey('key')) {
+      return false;
+    }
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (_$data.containsKey('schema') != other._$data.containsKey('schema')) {
+      return false;
+    }
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$managingTable = managingTable;
+    final lOther$managingTable = other.managingTable;
+    if (_$data.containsKey('managingTable') !=
+        other._$data.containsKey('managingTable')) {
+      return false;
+    }
+    if (l$managingTable != lOther$managingTable) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$managingTable = managingTable;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('key') ? l$key : const {},
+      _$data.containsKey('schema') ? l$schema : const {},
+      _$data.containsKey('managingTable') ? l$managingTable : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteTypeUpdateInput<TRes> {
+  factory CopyWith$Input$SiteTypeUpdateInput(
+    Input$SiteTypeUpdateInput instance,
+    TRes Function(Input$SiteTypeUpdateInput) then,
+  ) = _CopyWithImpl$Input$SiteTypeUpdateInput;
+
+  factory CopyWith$Input$SiteTypeUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteTypeUpdateInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$SiteTypeUpdateInput<TRes>
+    implements CopyWith$Input$SiteTypeUpdateInput<TRes> {
+  _CopyWithImpl$Input$SiteTypeUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteTypeUpdateInput _instance;
+
+  final TRes Function(Input$SiteTypeUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? managingTable = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$SiteTypeUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (key != _undefined) 'key': (key as String?),
+        if (schema != _undefined) 'schema': (schema as Map<String, dynamic>?),
+        if (managingTable != _undefined)
+          'managingTable': (managingTable as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteTypeUpdateInput<TRes>
+    implements CopyWith$Input$SiteTypeUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$SiteTypeUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    String? managingTable,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$SiteUpdateInput {
+  factory Input$SiteUpdateInput({
+    String? id,
+    String? siteTypeId,
+    String? name,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    String? organizationId,
+  }) =>
+      Input$SiteUpdateInput._({
+        if (id != null) r'id': id,
+        if (siteTypeId != null) r'siteTypeId': siteTypeId,
+        if (name != null) r'name': name,
+        if (data != null) r'data': data,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (organizationId != null) r'organizationId': organizationId,
+      });
+
+  Input$SiteUpdateInput._(this._$data);
+
+  factory Input$SiteUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('siteTypeId')) {
+      final l$siteTypeId = data['siteTypeId'];
+      result$data['siteTypeId'] = (l$siteTypeId as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('data')) {
+      final l$data = data['data'];
+      result$data['data'] = l$data == null ? null : jsonFieldFromJson(l$data);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    return Input$SiteUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get siteTypeId => (_$data['siteTypeId'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  Map<String, dynamic>? get data => (_$data['data'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('siteTypeId')) {
+      final l$siteTypeId = siteTypeId;
+      result$data['siteTypeId'] = l$siteTypeId;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('data')) {
+      final l$data = data;
+      result$data['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteUpdateInput<Input$SiteUpdateInput> get copyWith =>
+      CopyWith$Input$SiteUpdateInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteUpdateInput || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteTypeId = siteTypeId;
+    final lOther$siteTypeId = other.siteTypeId;
+    if (_$data.containsKey('siteTypeId') !=
+        other._$data.containsKey('siteTypeId')) {
+      return false;
+    }
+    if (l$siteTypeId != lOther$siteTypeId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (_$data.containsKey('data') != other._$data.containsKey('data')) {
+      return false;
+    }
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteTypeId = siteTypeId;
+    final l$name = name;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    final l$organizationId = organizationId;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteTypeId') ? l$siteTypeId : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('data') ? l$data : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteUpdateInput<TRes> {
+  factory CopyWith$Input$SiteUpdateInput(
+    Input$SiteUpdateInput instance,
+    TRes Function(Input$SiteUpdateInput) then,
+  ) = _CopyWithImpl$Input$SiteUpdateInput;
+
+  factory CopyWith$Input$SiteUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteUpdateInput;
+
+  TRes call({
+    String? id,
+    String? siteTypeId,
+    String? name,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    String? organizationId,
+  });
+}
+
+class _CopyWithImpl$Input$SiteUpdateInput<TRes>
+    implements CopyWith$Input$SiteUpdateInput<TRes> {
+  _CopyWithImpl$Input$SiteUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteUpdateInput _instance;
+
+  final TRes Function(Input$SiteUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteTypeId = _undefined,
+    Object? name = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+    Object? organizationId = _undefined,
+  }) =>
+      _then(Input$SiteUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (siteTypeId != _undefined) 'siteTypeId': (siteTypeId as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (data != _undefined) 'data': (data as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteUpdateInput<TRes>
+    implements CopyWith$Input$SiteUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$SiteUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? siteTypeId,
+    String? name,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    String? organizationId,
+  }) =>
+      _res;
+}
+
 class Input$StationDeliveryLocationsFilter {
   factory Input$StationDeliveryLocationsFilter({
     Input$UUIDFilter? id,
@@ -32532,6 +42584,7 @@ class Input$StationsFilter {
     Input$StringFilter? description,
     Input$StringFilter? longDescription,
     Input$StringFilter? registrationCode,
+    Input$UUIDFilter? siteId,
     Input$IDFilter? nodeId,
     List<Input$StationsFilter>? and,
     List<Input$StationsFilter>? or,
@@ -32554,6 +42607,7 @@ class Input$StationsFilter {
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
+        if (siteId != null) r'siteId': siteId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -32664,6 +42718,12 @@ class Input$StationsFilter {
           : Input$StringFilter.fromJson(
               (l$registrationCode as Map<String, dynamic>));
     }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = l$siteId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$siteId as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -32734,6 +42794,8 @@ class Input$StationsFilter {
 
   Input$StringFilter? get registrationCode =>
       (_$data['registrationCode'] as Input$StringFilter?);
+
+  Input$UUIDFilter? get siteId => (_$data['siteId'] as Input$UUIDFilter?);
 
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
@@ -32810,6 +42872,10 @@ class Input$StationsFilter {
     if (_$data.containsKey('registrationCode')) {
       final l$registrationCode = registrationCode;
       result$data['registrationCode'] = l$registrationCode?.toJson();
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] = l$siteId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -32981,6 +43047,14 @@ class Input$StationsFilter {
     if (l$registrationCode != lOther$registrationCode) {
       return false;
     }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -33056,6 +43130,7 @@ class Input$StationsFilter {
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
+    final l$siteId = siteId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -33077,6 +43152,7 @@ class Input$StationsFilter {
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -33119,6 +43195,7 @@ abstract class CopyWith$Input$StationsFilter<TRes> {
     Input$StringFilter? description,
     Input$StringFilter? longDescription,
     Input$StringFilter? registrationCode,
+    Input$UUIDFilter? siteId,
     Input$IDFilter? nodeId,
     List<Input$StationsFilter>? and,
     List<Input$StationsFilter>? or,
@@ -33140,6 +43217,7 @@ abstract class CopyWith$Input$StationsFilter<TRes> {
   CopyWith$Input$StringFilter<TRes> get description;
   CopyWith$Input$StringFilter<TRes> get longDescription;
   CopyWith$Input$StringFilter<TRes> get registrationCode;
+  CopyWith$Input$UUIDFilter<TRes> get siteId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$StationsFilter>? Function(
@@ -33182,6 +43260,7 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
+    Object? siteId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -33214,6 +43293,7 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
           'longDescription': (longDescription as Input$StringFilter?),
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as Input$StringFilter?),
+        if (siteId != _undefined) 'siteId': (siteId as Input$UUIDFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$StationsFilter>?),
         if (or != _undefined) 'or': (or as List<Input$StationsFilter>?),
@@ -33337,6 +43417,13 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
             local$registrationCode, (e) => call(registrationCode: e));
   }
 
+  CopyWith$Input$UUIDFilter<TRes> get siteId {
+    final local$siteId = _instance.siteId;
+    return local$siteId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$siteId, (e) => call(siteId: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -33397,6 +43484,7 @@ class _CopyWithStubImpl$Input$StationsFilter<TRes>
     Input$StringFilter? description,
     Input$StringFilter? longDescription,
     Input$StringFilter? registrationCode,
+    Input$UUIDFilter? siteId,
     Input$IDFilter? nodeId,
     List<Input$StationsFilter>? and,
     List<Input$StationsFilter>? or,
@@ -33452,6 +43540,9 @@ class _CopyWithStubImpl$Input$StationsFilter<TRes>
   CopyWith$Input$StringFilter<TRes> get registrationCode =>
       CopyWith$Input$StringFilter.stub(_res);
 
+  CopyWith$Input$UUIDFilter<TRes> get siteId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -33481,6 +43572,7 @@ class Input$StationsInsertInput {
     String? description,
     String? longDescription,
     String? registrationCode,
+    String? siteId,
   }) =>
       Input$StationsInsertInput._({
         if (id != null) r'id': id,
@@ -33499,6 +43591,7 @@ class Input$StationsInsertInput {
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
+        if (siteId != null) r'siteId': siteId,
       });
 
   Input$StationsInsertInput._(this._$data);
@@ -33570,6 +43663,10 @@ class Input$StationsInsertInput {
       final l$registrationCode = data['registrationCode'];
       result$data['registrationCode'] = (l$registrationCode as String?);
     }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = (l$siteId as String?);
+    }
     return Input$StationsInsertInput._(result$data);
   }
 
@@ -33606,6 +43703,8 @@ class Input$StationsInsertInput {
   String? get longDescription => (_$data['longDescription'] as String?);
 
   String? get registrationCode => (_$data['registrationCode'] as String?);
+
+  String? get siteId => (_$data['siteId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -33672,6 +43771,10 @@ class Input$StationsInsertInput {
     if (_$data.containsKey('registrationCode')) {
       final l$registrationCode = registrationCode;
       result$data['registrationCode'] = l$registrationCode;
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] = l$siteId;
     }
     return result$data;
   }
@@ -33828,6 +43931,14 @@ class Input$StationsInsertInput {
     if (l$registrationCode != lOther$registrationCode) {
       return false;
     }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
     return true;
   }
 
@@ -33849,6 +43960,7 @@ class Input$StationsInsertInput {
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
+    final l$siteId = siteId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
@@ -33866,6 +43978,7 @@ class Input$StationsInsertInput {
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
     ]);
   }
 }
@@ -33896,6 +44009,7 @@ abstract class CopyWith$Input$StationsInsertInput<TRes> {
     String? description,
     String? longDescription,
     String? registrationCode,
+    String? siteId,
   });
 }
 
@@ -33929,6 +44043,7 @@ class _CopyWithImpl$Input$StationsInsertInput<TRes>
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
+    Object? siteId = _undefined,
   }) =>
       _then(Input$StationsInsertInput._({
         ..._instance._$data,
@@ -33950,6 +44065,7 @@ class _CopyWithImpl$Input$StationsInsertInput<TRes>
           'longDescription': (longDescription as String?),
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as String?),
+        if (siteId != _undefined) 'siteId': (siteId as String?),
       }));
 }
 
@@ -33976,6 +44092,7 @@ class _CopyWithStubImpl$Input$StationsInsertInput<TRes>
     String? description,
     String? longDescription,
     String? registrationCode,
+    String? siteId,
   }) =>
       _res;
 }
@@ -33998,6 +44115,7 @@ class Input$StationsOrderBy {
     Enum$OrderByDirection? description,
     Enum$OrderByDirection? longDescription,
     Enum$OrderByDirection? registrationCode,
+    Enum$OrderByDirection? siteId,
   }) =>
       Input$StationsOrderBy._({
         if (id != null) r'id': id,
@@ -34016,6 +44134,7 @@ class Input$StationsOrderBy {
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
+        if (siteId != null) r'siteId': siteId,
       });
 
   Input$StationsOrderBy._(this._$data);
@@ -34118,6 +44237,12 @@ class Input$StationsOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$registrationCode as String));
     }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = l$siteId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$siteId as String));
+    }
     return Input$StationsOrderBy._(result$data);
   }
 
@@ -34166,6 +44291,9 @@ class Input$StationsOrderBy {
 
   Enum$OrderByDirection? get registrationCode =>
       (_$data['registrationCode'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get siteId =>
+      (_$data['siteId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -34253,6 +44381,11 @@ class Input$StationsOrderBy {
       result$data['registrationCode'] = l$registrationCode == null
           ? null
           : toJson$Enum$OrderByDirection(l$registrationCode);
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] =
+          l$siteId == null ? null : toJson$Enum$OrderByDirection(l$siteId);
     }
     return result$data;
   }
@@ -34408,6 +44541,14 @@ class Input$StationsOrderBy {
     if (l$registrationCode != lOther$registrationCode) {
       return false;
     }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
     return true;
   }
 
@@ -34429,6 +44570,7 @@ class Input$StationsOrderBy {
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
+    final l$siteId = siteId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
@@ -34446,6 +44588,7 @@ class Input$StationsOrderBy {
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
     ]);
   }
 }
@@ -34476,6 +44619,7 @@ abstract class CopyWith$Input$StationsOrderBy<TRes> {
     Enum$OrderByDirection? description,
     Enum$OrderByDirection? longDescription,
     Enum$OrderByDirection? registrationCode,
+    Enum$OrderByDirection? siteId,
   });
 }
 
@@ -34509,6 +44653,7 @@ class _CopyWithImpl$Input$StationsOrderBy<TRes>
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
+    Object? siteId = _undefined,
   }) =>
       _then(Input$StationsOrderBy._({
         ..._instance._$data,
@@ -34538,6 +44683,7 @@ class _CopyWithImpl$Input$StationsOrderBy<TRes>
           'longDescription': (longDescription as Enum$OrderByDirection?),
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as Enum$OrderByDirection?),
+        if (siteId != _undefined) 'siteId': (siteId as Enum$OrderByDirection?),
       }));
 }
 
@@ -34564,6 +44710,7 @@ class _CopyWithStubImpl$Input$StationsOrderBy<TRes>
     Enum$OrderByDirection? description,
     Enum$OrderByDirection? longDescription,
     Enum$OrderByDirection? registrationCode,
+    Enum$OrderByDirection? siteId,
   }) =>
       _res;
 }
@@ -34586,6 +44733,7 @@ class Input$StationsUpdateInput {
     String? description,
     String? longDescription,
     String? registrationCode,
+    String? siteId,
   }) =>
       Input$StationsUpdateInput._({
         if (id != null) r'id': id,
@@ -34604,6 +44752,7 @@ class Input$StationsUpdateInput {
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
+        if (siteId != null) r'siteId': siteId,
       });
 
   Input$StationsUpdateInput._(this._$data);
@@ -34675,6 +44824,10 @@ class Input$StationsUpdateInput {
       final l$registrationCode = data['registrationCode'];
       result$data['registrationCode'] = (l$registrationCode as String?);
     }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = (l$siteId as String?);
+    }
     return Input$StationsUpdateInput._(result$data);
   }
 
@@ -34711,6 +44864,8 @@ class Input$StationsUpdateInput {
   String? get longDescription => (_$data['longDescription'] as String?);
 
   String? get registrationCode => (_$data['registrationCode'] as String?);
+
+  String? get siteId => (_$data['siteId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -34777,6 +44932,10 @@ class Input$StationsUpdateInput {
     if (_$data.containsKey('registrationCode')) {
       final l$registrationCode = registrationCode;
       result$data['registrationCode'] = l$registrationCode;
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] = l$siteId;
     }
     return result$data;
   }
@@ -34933,6 +45092,14 @@ class Input$StationsUpdateInput {
     if (l$registrationCode != lOther$registrationCode) {
       return false;
     }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
     return true;
   }
 
@@ -34954,6 +45121,7 @@ class Input$StationsUpdateInput {
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
+    final l$siteId = siteId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
@@ -34971,6 +45139,7 @@ class Input$StationsUpdateInput {
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
     ]);
   }
 }
@@ -35001,6 +45170,7 @@ abstract class CopyWith$Input$StationsUpdateInput<TRes> {
     String? description,
     String? longDescription,
     String? registrationCode,
+    String? siteId,
   });
 }
 
@@ -35034,6 +45204,7 @@ class _CopyWithImpl$Input$StationsUpdateInput<TRes>
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
+    Object? siteId = _undefined,
   }) =>
       _then(Input$StationsUpdateInput._({
         ..._instance._$data,
@@ -35055,6 +45226,7 @@ class _CopyWithImpl$Input$StationsUpdateInput<TRes>
           'longDescription': (longDescription as String?),
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as String?),
+        if (siteId != _undefined) 'siteId': (siteId as String?),
       }));
 }
 
@@ -35081,6 +45253,7 @@ class _CopyWithStubImpl$Input$StationsUpdateInput<TRes>
     String? description,
     String? longDescription,
     String? registrationCode,
+    String? siteId,
   }) =>
       _res;
 }
@@ -36426,6 +46599,2486 @@ class _CopyWithStubImpl$Input$TimeListFilter<TRes>
     List<DateTime>? eq,
     Enum$FilterIs? $is,
     List<DateTime>? overlaps,
+  }) =>
+      _res;
+}
+
+class Input$UserOrganizationFilter {
+  factory Input$UserOrganizationFilter({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? userId,
+    Input$UUIDFilter? organizationId,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$UserOrganizationFilter>? and,
+    List<Input$UserOrganizationFilter>? or,
+    Input$UserOrganizationFilter? not,
+  }) =>
+      Input$UserOrganizationFilter._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$UserOrganizationFilter._(this._$data);
+
+  factory Input$UserOrganizationFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = l$userId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$userId as Map<String, dynamic>));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$organizationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$updatedAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$UserOrganizationFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$UserOrganizationFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$UserOrganizationFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$UserOrganizationFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get userId => (_$data['userId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get organizationId =>
+      (_$data['organizationId'] as Input$UUIDFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$DatetimeFilter? get updatedAt =>
+      (_$data['updatedAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$UserOrganizationFilter>? get and =>
+      (_$data['and'] as List<Input$UserOrganizationFilter>?);
+
+  List<Input$UserOrganizationFilter>? get or =>
+      (_$data['or'] as List<Input$UserOrganizationFilter>?);
+
+  Input$UserOrganizationFilter? get not =>
+      (_$data['not'] as Input$UserOrganizationFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId?.toJson();
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationFilter<Input$UserOrganizationFilter>
+      get copyWith => CopyWith$Input$UserOrganizationFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationFilter<TRes> {
+  factory CopyWith$Input$UserOrganizationFilter(
+    Input$UserOrganizationFilter instance,
+    TRes Function(Input$UserOrganizationFilter) then,
+  ) = _CopyWithImpl$Input$UserOrganizationFilter;
+
+  factory CopyWith$Input$UserOrganizationFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? userId,
+    Input$UUIDFilter? organizationId,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$UserOrganizationFilter>? and,
+    List<Input$UserOrganizationFilter>? or,
+    Input$UserOrganizationFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$UUIDFilter<TRes> get userId;
+  CopyWith$Input$UUIDFilter<TRes> get organizationId;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$UserOrganizationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$UserOrganizationFilter<
+                      Input$UserOrganizationFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$UserOrganizationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$UserOrganizationFilter<
+                      Input$UserOrganizationFilter>>?)
+          _fn);
+  CopyWith$Input$UserOrganizationFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$UserOrganizationFilter<TRes>
+    implements CopyWith$Input$UserOrganizationFilter<TRes> {
+  _CopyWithImpl$Input$UserOrganizationFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationFilter _instance;
+
+  final TRes Function(Input$UserOrganizationFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$UserOrganizationFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (userId != _undefined) 'userId': (userId as Input$UUIDFilter?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Input$UUIDFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (updatedAt != _undefined)
+          'updatedAt': (updatedAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$UserOrganizationFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$UserOrganizationFilter>?),
+        if (not != _undefined) 'not': (not as Input$UserOrganizationFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get userId {
+    final local$userId = _instance.userId;
+    return local$userId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$userId, (e) => call(userId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId {
+    final local$organizationId = _instance.organizationId;
+    return local$organizationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$organizationId, (e) => call(organizationId: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt {
+    final local$updatedAt = _instance.updatedAt;
+    return local$updatedAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$updatedAt, (e) => call(updatedAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$UserOrganizationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$UserOrganizationFilter<
+                          Input$UserOrganizationFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(
+              _instance.and?.map((e) => CopyWith$Input$UserOrganizationFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$UserOrganizationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$UserOrganizationFilter<
+                          Input$UserOrganizationFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(
+              _instance.or?.map((e) => CopyWith$Input$UserOrganizationFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$UserOrganizationFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$UserOrganizationFilter.stub(_then(_instance))
+        : CopyWith$Input$UserOrganizationFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationFilter<TRes>
+    implements CopyWith$Input$UserOrganizationFilter<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? userId,
+    Input$UUIDFilter? organizationId,
+    Input$DatetimeFilter? createdAt,
+    Input$DatetimeFilter? updatedAt,
+    Input$IDFilter? nodeId,
+    List<Input$UserOrganizationFilter>? and,
+    List<Input$UserOrganizationFilter>? or,
+    Input$UserOrganizationFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get userId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get updatedAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$UserOrganizationFilter<TRes> get not =>
+      CopyWith$Input$UserOrganizationFilter.stub(_res);
+}
+
+class Input$UserOrganizationInsertInput {
+  factory Input$UserOrganizationInsertInput({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Input$UserOrganizationInsertInput._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (metadata != null) r'metadata': metadata,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$UserOrganizationInsertInput._(this._$data);
+
+  factory Input$UserOrganizationInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = (l$userId as String?);
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    if (data.containsKey('metadata')) {
+      final l$metadata = data['metadata'];
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldFromJson(l$metadata);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] =
+          l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String));
+    }
+    return Input$UserOrganizationInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get userId => (_$data['userId'] as String?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  Map<String, dynamic>? get metadata =>
+      (_$data['metadata'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId;
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('metadata')) {
+      final l$metadata = metadata;
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldToJson(l$metadata);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationInsertInput<Input$UserOrganizationInsertInput>
+      get copyWith => CopyWith$Input$UserOrganizationInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$metadata = metadata;
+    final lOther$metadata = other.metadata;
+    if (_$data.containsKey('metadata') !=
+        other._$data.containsKey('metadata')) {
+      return false;
+    }
+    if (l$metadata != lOther$metadata) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$metadata = metadata;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('metadata') ? l$metadata : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationInsertInput<TRes> {
+  factory CopyWith$Input$UserOrganizationInsertInput(
+    Input$UserOrganizationInsertInput instance,
+    TRes Function(Input$UserOrganizationInsertInput) then,
+  ) = _CopyWithImpl$Input$UserOrganizationInsertInput;
+
+  factory CopyWith$Input$UserOrganizationInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationInsertInput;
+
+  TRes call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$UserOrganizationInsertInput<TRes>
+    implements CopyWith$Input$UserOrganizationInsertInput<TRes> {
+  _CopyWithImpl$Input$UserOrganizationInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationInsertInput _instance;
+
+  final TRes Function(Input$UserOrganizationInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? metadata = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$UserOrganizationInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (userId != _undefined) 'userId': (userId as String?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+        if (metadata != _undefined)
+          'metadata': (metadata as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationInsertInput<TRes>
+    implements CopyWith$Input$UserOrganizationInsertInput<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      _res;
+}
+
+class Input$UserOrganizationOrderBy {
+  factory Input$UserOrganizationOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? userId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  }) =>
+      Input$UserOrganizationOrderBy._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$UserOrganizationOrderBy._(this._$data);
+
+  factory Input$UserOrganizationOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = l$userId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$userId as String));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$organizationId as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$updatedAt as String));
+    }
+    return Input$UserOrganizationOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get userId =>
+      (_$data['userId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get organizationId =>
+      (_$data['organizationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get updatedAt =>
+      (_$data['updatedAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] =
+          l$userId == null ? null : toJson$Enum$OrderByDirection(l$userId);
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$organizationId);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$updatedAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationOrderBy<Input$UserOrganizationOrderBy>
+      get copyWith => CopyWith$Input$UserOrganizationOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationOrderBy<TRes> {
+  factory CopyWith$Input$UserOrganizationOrderBy(
+    Input$UserOrganizationOrderBy instance,
+    TRes Function(Input$UserOrganizationOrderBy) then,
+  ) = _CopyWithImpl$Input$UserOrganizationOrderBy;
+
+  factory CopyWith$Input$UserOrganizationOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? userId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$UserOrganizationOrderBy<TRes>
+    implements CopyWith$Input$UserOrganizationOrderBy<TRes> {
+  _CopyWithImpl$Input$UserOrganizationOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationOrderBy _instance;
+
+  final TRes Function(Input$UserOrganizationOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$UserOrganizationOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (userId != _undefined) 'userId': (userId as Enum$OrderByDirection?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (updatedAt != _undefined)
+          'updatedAt': (updatedAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationOrderBy<TRes>
+    implements CopyWith$Input$UserOrganizationOrderBy<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? userId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? updatedAt,
+  }) =>
+      _res;
+}
+
+class Input$UserOrganizationRolesFilter {
+  factory Input$UserOrganizationRolesFilter({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? userId,
+    Input$UUIDFilter? organizationId,
+    Input$UUIDFilter? roleId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$UserOrganizationRolesFilter>? and,
+    List<Input$UserOrganizationRolesFilter>? or,
+    Input$UserOrganizationRolesFilter? not,
+  }) =>
+      Input$UserOrganizationRolesFilter._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (roleId != null) r'roleId': roleId,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$UserOrganizationRolesFilter._(this._$data);
+
+  factory Input$UserOrganizationRolesFilter.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = l$userId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$userId as Map<String, dynamic>));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$organizationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('roleId')) {
+      final l$roleId = data['roleId'];
+      result$data['roleId'] = l$roleId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$roleId as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$UserOrganizationRolesFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$UserOrganizationRolesFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$UserOrganizationRolesFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$UserOrganizationRolesFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get userId => (_$data['userId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get organizationId =>
+      (_$data['organizationId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get roleId => (_$data['roleId'] as Input$UUIDFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$UserOrganizationRolesFilter>? get and =>
+      (_$data['and'] as List<Input$UserOrganizationRolesFilter>?);
+
+  List<Input$UserOrganizationRolesFilter>? get or =>
+      (_$data['or'] as List<Input$UserOrganizationRolesFilter>?);
+
+  Input$UserOrganizationRolesFilter? get not =>
+      (_$data['not'] as Input$UserOrganizationRolesFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId?.toJson();
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId?.toJson();
+    }
+    if (_$data.containsKey('roleId')) {
+      final l$roleId = roleId;
+      result$data['roleId'] = l$roleId?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationRolesFilter<Input$UserOrganizationRolesFilter>
+      get copyWith => CopyWith$Input$UserOrganizationRolesFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationRolesFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$roleId = roleId;
+    final lOther$roleId = other.roleId;
+    if (_$data.containsKey('roleId') != other._$data.containsKey('roleId')) {
+      return false;
+    }
+    if (l$roleId != lOther$roleId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$roleId = roleId;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('roleId') ? l$roleId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationRolesFilter<TRes> {
+  factory CopyWith$Input$UserOrganizationRolesFilter(
+    Input$UserOrganizationRolesFilter instance,
+    TRes Function(Input$UserOrganizationRolesFilter) then,
+  ) = _CopyWithImpl$Input$UserOrganizationRolesFilter;
+
+  factory CopyWith$Input$UserOrganizationRolesFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationRolesFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? userId,
+    Input$UUIDFilter? organizationId,
+    Input$UUIDFilter? roleId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$UserOrganizationRolesFilter>? and,
+    List<Input$UserOrganizationRolesFilter>? or,
+    Input$UserOrganizationRolesFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$UUIDFilter<TRes> get userId;
+  CopyWith$Input$UUIDFilter<TRes> get organizationId;
+  CopyWith$Input$UUIDFilter<TRes> get roleId;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$UserOrganizationRolesFilter>? Function(
+              Iterable<
+                  CopyWith$Input$UserOrganizationRolesFilter<
+                      Input$UserOrganizationRolesFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$UserOrganizationRolesFilter>? Function(
+              Iterable<
+                  CopyWith$Input$UserOrganizationRolesFilter<
+                      Input$UserOrganizationRolesFilter>>?)
+          _fn);
+  CopyWith$Input$UserOrganizationRolesFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$UserOrganizationRolesFilter<TRes>
+    implements CopyWith$Input$UserOrganizationRolesFilter<TRes> {
+  _CopyWithImpl$Input$UserOrganizationRolesFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationRolesFilter _instance;
+
+  final TRes Function(Input$UserOrganizationRolesFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? roleId = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$UserOrganizationRolesFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (userId != _undefined) 'userId': (userId as Input$UUIDFilter?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Input$UUIDFilter?),
+        if (roleId != _undefined) 'roleId': (roleId as Input$UUIDFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$UserOrganizationRolesFilter>?),
+        if (or != _undefined)
+          'or': (or as List<Input$UserOrganizationRolesFilter>?),
+        if (not != _undefined)
+          'not': (not as Input$UserOrganizationRolesFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get userId {
+    final local$userId = _instance.userId;
+    return local$userId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$userId, (e) => call(userId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId {
+    final local$organizationId = _instance.organizationId;
+    return local$organizationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$organizationId, (e) => call(organizationId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get roleId {
+    final local$roleId = _instance.roleId;
+    return local$roleId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$roleId, (e) => call(roleId: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$UserOrganizationRolesFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$UserOrganizationRolesFilter<
+                          Input$UserOrganizationRolesFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and
+              ?.map((e) => CopyWith$Input$UserOrganizationRolesFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$UserOrganizationRolesFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$UserOrganizationRolesFilter<
+                          Input$UserOrganizationRolesFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or
+              ?.map((e) => CopyWith$Input$UserOrganizationRolesFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$UserOrganizationRolesFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$UserOrganizationRolesFilter.stub(_then(_instance))
+        : CopyWith$Input$UserOrganizationRolesFilter(
+            local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationRolesFilter<TRes>
+    implements CopyWith$Input$UserOrganizationRolesFilter<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationRolesFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? userId,
+    Input$UUIDFilter? organizationId,
+    Input$UUIDFilter? roleId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$UserOrganizationRolesFilter>? and,
+    List<Input$UserOrganizationRolesFilter>? or,
+    Input$UserOrganizationRolesFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get userId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get organizationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get roleId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$UserOrganizationRolesFilter<TRes> get not =>
+      CopyWith$Input$UserOrganizationRolesFilter.stub(_res);
+}
+
+class Input$UserOrganizationRolesInsertInput {
+  factory Input$UserOrganizationRolesInsertInput({
+    String? id,
+    String? userId,
+    String? organizationId,
+    String? roleId,
+    DateTime? createdAt,
+  }) =>
+      Input$UserOrganizationRolesInsertInput._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (roleId != null) r'roleId': roleId,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$UserOrganizationRolesInsertInput._(this._$data);
+
+  factory Input$UserOrganizationRolesInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = (l$userId as String?);
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    if (data.containsKey('roleId')) {
+      final l$roleId = data['roleId'];
+      result$data['roleId'] = (l$roleId as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$UserOrganizationRolesInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get userId => (_$data['userId'] as String?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  String? get roleId => (_$data['roleId'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId;
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('roleId')) {
+      final l$roleId = roleId;
+      result$data['roleId'] = l$roleId;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationRolesInsertInput<
+          Input$UserOrganizationRolesInsertInput>
+      get copyWith => CopyWith$Input$UserOrganizationRolesInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationRolesInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$roleId = roleId;
+    final lOther$roleId = other.roleId;
+    if (_$data.containsKey('roleId') != other._$data.containsKey('roleId')) {
+      return false;
+    }
+    if (l$roleId != lOther$roleId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$roleId = roleId;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('roleId') ? l$roleId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationRolesInsertInput<TRes> {
+  factory CopyWith$Input$UserOrganizationRolesInsertInput(
+    Input$UserOrganizationRolesInsertInput instance,
+    TRes Function(Input$UserOrganizationRolesInsertInput) then,
+  ) = _CopyWithImpl$Input$UserOrganizationRolesInsertInput;
+
+  factory CopyWith$Input$UserOrganizationRolesInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationRolesInsertInput;
+
+  TRes call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    String? roleId,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$UserOrganizationRolesInsertInput<TRes>
+    implements CopyWith$Input$UserOrganizationRolesInsertInput<TRes> {
+  _CopyWithImpl$Input$UserOrganizationRolesInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationRolesInsertInput _instance;
+
+  final TRes Function(Input$UserOrganizationRolesInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? roleId = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$UserOrganizationRolesInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (userId != _undefined) 'userId': (userId as String?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+        if (roleId != _undefined) 'roleId': (roleId as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationRolesInsertInput<TRes>
+    implements CopyWith$Input$UserOrganizationRolesInsertInput<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationRolesInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    String? roleId,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$UserOrganizationRolesOrderBy {
+  factory Input$UserOrganizationRolesOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? userId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? roleId,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$UserOrganizationRolesOrderBy._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (roleId != null) r'roleId': roleId,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$UserOrganizationRolesOrderBy._(this._$data);
+
+  factory Input$UserOrganizationRolesOrderBy.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = l$userId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$userId as String));
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$organizationId as String));
+    }
+    if (data.containsKey('roleId')) {
+      final l$roleId = data['roleId'];
+      result$data['roleId'] = l$roleId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$roleId as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$UserOrganizationRolesOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get userId =>
+      (_$data['userId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get organizationId =>
+      (_$data['organizationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get roleId =>
+      (_$data['roleId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] =
+          l$userId == null ? null : toJson$Enum$OrderByDirection(l$userId);
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$organizationId);
+    }
+    if (_$data.containsKey('roleId')) {
+      final l$roleId = roleId;
+      result$data['roleId'] =
+          l$roleId == null ? null : toJson$Enum$OrderByDirection(l$roleId);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationRolesOrderBy<
+          Input$UserOrganizationRolesOrderBy>
+      get copyWith => CopyWith$Input$UserOrganizationRolesOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationRolesOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$roleId = roleId;
+    final lOther$roleId = other.roleId;
+    if (_$data.containsKey('roleId') != other._$data.containsKey('roleId')) {
+      return false;
+    }
+    if (l$roleId != lOther$roleId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$roleId = roleId;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('roleId') ? l$roleId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationRolesOrderBy<TRes> {
+  factory CopyWith$Input$UserOrganizationRolesOrderBy(
+    Input$UserOrganizationRolesOrderBy instance,
+    TRes Function(Input$UserOrganizationRolesOrderBy) then,
+  ) = _CopyWithImpl$Input$UserOrganizationRolesOrderBy;
+
+  factory CopyWith$Input$UserOrganizationRolesOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationRolesOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? userId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? roleId,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$UserOrganizationRolesOrderBy<TRes>
+    implements CopyWith$Input$UserOrganizationRolesOrderBy<TRes> {
+  _CopyWithImpl$Input$UserOrganizationRolesOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationRolesOrderBy _instance;
+
+  final TRes Function(Input$UserOrganizationRolesOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? roleId = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$UserOrganizationRolesOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (userId != _undefined) 'userId': (userId as Enum$OrderByDirection?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as Enum$OrderByDirection?),
+        if (roleId != _undefined) 'roleId': (roleId as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationRolesOrderBy<TRes>
+    implements CopyWith$Input$UserOrganizationRolesOrderBy<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationRolesOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? userId,
+    Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? roleId,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$UserOrganizationRolesUpdateInput {
+  factory Input$UserOrganizationRolesUpdateInput({
+    String? id,
+    String? userId,
+    String? organizationId,
+    String? roleId,
+    DateTime? createdAt,
+  }) =>
+      Input$UserOrganizationRolesUpdateInput._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (roleId != null) r'roleId': roleId,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$UserOrganizationRolesUpdateInput._(this._$data);
+
+  factory Input$UserOrganizationRolesUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = (l$userId as String?);
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    if (data.containsKey('roleId')) {
+      final l$roleId = data['roleId'];
+      result$data['roleId'] = (l$roleId as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$UserOrganizationRolesUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get userId => (_$data['userId'] as String?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  String? get roleId => (_$data['roleId'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId;
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('roleId')) {
+      final l$roleId = roleId;
+      result$data['roleId'] = l$roleId;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationRolesUpdateInput<
+          Input$UserOrganizationRolesUpdateInput>
+      get copyWith => CopyWith$Input$UserOrganizationRolesUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationRolesUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$roleId = roleId;
+    final lOther$roleId = other.roleId;
+    if (_$data.containsKey('roleId') != other._$data.containsKey('roleId')) {
+      return false;
+    }
+    if (l$roleId != lOther$roleId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$roleId = roleId;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('roleId') ? l$roleId : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationRolesUpdateInput<TRes> {
+  factory CopyWith$Input$UserOrganizationRolesUpdateInput(
+    Input$UserOrganizationRolesUpdateInput instance,
+    TRes Function(Input$UserOrganizationRolesUpdateInput) then,
+  ) = _CopyWithImpl$Input$UserOrganizationRolesUpdateInput;
+
+  factory CopyWith$Input$UserOrganizationRolesUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationRolesUpdateInput;
+
+  TRes call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    String? roleId,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$UserOrganizationRolesUpdateInput<TRes>
+    implements CopyWith$Input$UserOrganizationRolesUpdateInput<TRes> {
+  _CopyWithImpl$Input$UserOrganizationRolesUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationRolesUpdateInput _instance;
+
+  final TRes Function(Input$UserOrganizationRolesUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? roleId = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$UserOrganizationRolesUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (userId != _undefined) 'userId': (userId as String?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+        if (roleId != _undefined) 'roleId': (roleId as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationRolesUpdateInput<TRes>
+    implements CopyWith$Input$UserOrganizationRolesUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationRolesUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    String? roleId,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$UserOrganizationUpdateInput {
+  factory Input$UserOrganizationUpdateInput({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Input$UserOrganizationUpdateInput._({
+        if (id != null) r'id': id,
+        if (userId != null) r'userId': userId,
+        if (organizationId != null) r'organizationId': organizationId,
+        if (metadata != null) r'metadata': metadata,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (updatedAt != null) r'updatedAt': updatedAt,
+      });
+
+  Input$UserOrganizationUpdateInput._(this._$data);
+
+  factory Input$UserOrganizationUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = (l$userId as String?);
+    }
+    if (data.containsKey('organizationId')) {
+      final l$organizationId = data['organizationId'];
+      result$data['organizationId'] = (l$organizationId as String?);
+    }
+    if (data.containsKey('metadata')) {
+      final l$metadata = data['metadata'];
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldFromJson(l$metadata);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] =
+          l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String));
+    }
+    return Input$UserOrganizationUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get userId => (_$data['userId'] as String?);
+
+  String? get organizationId => (_$data['organizationId'] as String?);
+
+  Map<String, dynamic>? get metadata =>
+      (_$data['metadata'] as Map<String, dynamic>?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId;
+    }
+    if (_$data.containsKey('organizationId')) {
+      final l$organizationId = organizationId;
+      result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('metadata')) {
+      final l$metadata = metadata;
+      result$data['metadata'] =
+          l$metadata == null ? null : jsonFieldToJson(l$metadata);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UserOrganizationUpdateInput<Input$UserOrganizationUpdateInput>
+      get copyWith => CopyWith$Input$UserOrganizationUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$UserOrganizationUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (_$data.containsKey('organizationId') !=
+        other._$data.containsKey('organizationId')) {
+      return false;
+    }
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$metadata = metadata;
+    final lOther$metadata = other.metadata;
+    if (_$data.containsKey('metadata') !=
+        other._$data.containsKey('metadata')) {
+      return false;
+    }
+    if (l$metadata != lOther$metadata) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$organizationId = organizationId;
+    final l$metadata = metadata;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('metadata') ? l$metadata : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UserOrganizationUpdateInput<TRes> {
+  factory CopyWith$Input$UserOrganizationUpdateInput(
+    Input$UserOrganizationUpdateInput instance,
+    TRes Function(Input$UserOrganizationUpdateInput) then,
+  ) = _CopyWithImpl$Input$UserOrganizationUpdateInput;
+
+  factory CopyWith$Input$UserOrganizationUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$UserOrganizationUpdateInput;
+
+  TRes call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$UserOrganizationUpdateInput<TRes>
+    implements CopyWith$Input$UserOrganizationUpdateInput<TRes> {
+  _CopyWithImpl$Input$UserOrganizationUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$UserOrganizationUpdateInput _instance;
+
+  final TRes Function(Input$UserOrganizationUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? organizationId = _undefined,
+    Object? metadata = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) =>
+      _then(Input$UserOrganizationUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (userId != _undefined) 'userId': (userId as String?),
+        if (organizationId != _undefined)
+          'organizationId': (organizationId as String?),
+        if (metadata != _undefined)
+          'metadata': (metadata as Map<String, dynamic>?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UserOrganizationUpdateInput<TRes>
+    implements CopyWith$Input$UserOrganizationUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$UserOrganizationUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? userId,
+    String? organizationId,
+    Map<String, dynamic>? metadata,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) =>
       _res;
 }
@@ -38752,6 +51405,7 @@ class Input$UsersFilter {
     Input$DatetimeFilter? createdAt,
     Input$DatetimeFilter? updatedAt,
     Input$UUIDFilter? primaryStationId,
+    Input$StringFilter? stripeCustomerId,
     Input$IDFilter? nodeId,
     List<Input$UsersFilter>? and,
     List<Input$UsersFilter>? or,
@@ -38768,6 +51422,7 @@ class Input$UsersFilter {
         if (createdAt != null) r'createdAt': createdAt,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
+        if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -38841,6 +51496,13 @@ class Input$UsersFilter {
           : Input$UUIDFilter.fromJson(
               (l$primaryStationId as Map<String, dynamic>));
     }
+    if (data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = data['stripeCustomerId'];
+      result$data['stripeCustomerId'] = l$stripeCustomerId == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$stripeCustomerId as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -38895,6 +51557,9 @@ class Input$UsersFilter {
   Input$UUIDFilter? get primaryStationId =>
       (_$data['primaryStationId'] as Input$UUIDFilter?);
 
+  Input$StringFilter? get stripeCustomerId =>
+      (_$data['stripeCustomerId'] as Input$StringFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$UsersFilter>? get and =>
@@ -38945,6 +51610,10 @@ class Input$UsersFilter {
     if (_$data.containsKey('primaryStationId')) {
       final l$primaryStationId = primaryStationId;
       result$data['primaryStationId'] = l$primaryStationId?.toJson();
+    }
+    if (_$data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = stripeCustomerId;
+      result$data['stripeCustomerId'] = l$stripeCustomerId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -39064,6 +51733,15 @@ class Input$UsersFilter {
     if (l$primaryStationId != lOther$primaryStationId) {
       return false;
     }
+    final l$stripeCustomerId = stripeCustomerId;
+    final lOther$stripeCustomerId = other.stripeCustomerId;
+    if (_$data.containsKey('stripeCustomerId') !=
+        other._$data.containsKey('stripeCustomerId')) {
+      return false;
+    }
+    if (l$stripeCustomerId != lOther$stripeCustomerId) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -39133,6 +51811,7 @@ class Input$UsersFilter {
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
+    final l$stripeCustomerId = stripeCustomerId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -39148,6 +51827,7 @@ class Input$UsersFilter {
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
+      _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -39184,6 +51864,7 @@ abstract class CopyWith$Input$UsersFilter<TRes> {
     Input$DatetimeFilter? createdAt,
     Input$DatetimeFilter? updatedAt,
     Input$UUIDFilter? primaryStationId,
+    Input$StringFilter? stripeCustomerId,
     Input$IDFilter? nodeId,
     List<Input$UsersFilter>? and,
     List<Input$UsersFilter>? or,
@@ -39199,6 +51880,7 @@ abstract class CopyWith$Input$UsersFilter<TRes> {
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
   CopyWith$Input$DatetimeFilter<TRes> get updatedAt;
   CopyWith$Input$UUIDFilter<TRes> get primaryStationId;
+  CopyWith$Input$StringFilter<TRes> get stripeCustomerId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$UsersFilter>? Function(
@@ -39235,6 +51917,7 @@ class _CopyWithImpl$Input$UsersFilter<TRes>
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
+    Object? stripeCustomerId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -39257,6 +51940,8 @@ class _CopyWithImpl$Input$UsersFilter<TRes>
           'updatedAt': (updatedAt as Input$DatetimeFilter?),
         if (primaryStationId != _undefined)
           'primaryStationId': (primaryStationId as Input$UUIDFilter?),
+        if (stripeCustomerId != _undefined)
+          'stripeCustomerId': (stripeCustomerId as Input$StringFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$UsersFilter>?),
         if (or != _undefined) 'or': (or as List<Input$UsersFilter>?),
@@ -39337,6 +52022,14 @@ class _CopyWithImpl$Input$UsersFilter<TRes>
             local$primaryStationId, (e) => call(primaryStationId: e));
   }
 
+  CopyWith$Input$StringFilter<TRes> get stripeCustomerId {
+    final local$stripeCustomerId = _instance.stripeCustomerId;
+    return local$stripeCustomerId == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$stripeCustomerId, (e) => call(stripeCustomerId: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -39389,6 +52082,7 @@ class _CopyWithStubImpl$Input$UsersFilter<TRes>
     Input$DatetimeFilter? createdAt,
     Input$DatetimeFilter? updatedAt,
     Input$UUIDFilter? primaryStationId,
+    Input$StringFilter? stripeCustomerId,
     Input$IDFilter? nodeId,
     List<Input$UsersFilter>? and,
     List<Input$UsersFilter>? or,
@@ -39426,6 +52120,9 @@ class _CopyWithStubImpl$Input$UsersFilter<TRes>
   CopyWith$Input$UUIDFilter<TRes> get primaryStationId =>
       CopyWith$Input$UUIDFilter.stub(_res);
 
+  CopyWith$Input$StringFilter<TRes> get stripeCustomerId =>
+      CopyWith$Input$StringFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -39450,6 +52147,7 @@ class Input$UsersInsertInput {
     DateTime? createdAt,
     DateTime? updatedAt,
     String? primaryStationId,
+    String? stripeCustomerId,
   }) =>
       Input$UsersInsertInput._({
         if (id != null) r'id': id,
@@ -39463,6 +52161,7 @@ class Input$UsersInsertInput {
         if (createdAt != null) r'createdAt': createdAt,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
+        if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
       });
 
   Input$UsersInsertInput._(this._$data);
@@ -39516,6 +52215,10 @@ class Input$UsersInsertInput {
       final l$primaryStationId = data['primaryStationId'];
       result$data['primaryStationId'] = (l$primaryStationId as String?);
     }
+    if (data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = data['stripeCustomerId'];
+      result$data['stripeCustomerId'] = (l$stripeCustomerId as String?);
+    }
     return Input$UsersInsertInput._(result$data);
   }
 
@@ -39543,6 +52246,8 @@ class Input$UsersInsertInput {
   DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
 
   String? get primaryStationId => (_$data['primaryStationId'] as String?);
+
+  String? get stripeCustomerId => (_$data['stripeCustomerId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -39590,6 +52295,10 @@ class Input$UsersInsertInput {
     if (_$data.containsKey('primaryStationId')) {
       final l$primaryStationId = primaryStationId;
       result$data['primaryStationId'] = l$primaryStationId;
+    }
+    if (_$data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = stripeCustomerId;
+      result$data['stripeCustomerId'] = l$stripeCustomerId;
     }
     return result$data;
   }
@@ -39702,6 +52411,15 @@ class Input$UsersInsertInput {
     if (l$primaryStationId != lOther$primaryStationId) {
       return false;
     }
+    final l$stripeCustomerId = stripeCustomerId;
+    final lOther$stripeCustomerId = other.stripeCustomerId;
+    if (_$data.containsKey('stripeCustomerId') !=
+        other._$data.containsKey('stripeCustomerId')) {
+      return false;
+    }
+    if (l$stripeCustomerId != lOther$stripeCustomerId) {
+      return false;
+    }
     return true;
   }
 
@@ -39718,6 +52436,7 @@ class Input$UsersInsertInput {
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
+    final l$stripeCustomerId = stripeCustomerId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('did') ? l$did : const {},
@@ -39730,6 +52449,7 @@ class Input$UsersInsertInput {
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
+      _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
     ]);
   }
 }
@@ -39755,6 +52475,7 @@ abstract class CopyWith$Input$UsersInsertInput<TRes> {
     DateTime? createdAt,
     DateTime? updatedAt,
     String? primaryStationId,
+    String? stripeCustomerId,
   });
 }
 
@@ -39783,6 +52504,7 @@ class _CopyWithImpl$Input$UsersInsertInput<TRes>
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
+    Object? stripeCustomerId = _undefined,
   }) =>
       _then(Input$UsersInsertInput._({
         ..._instance._$data,
@@ -39799,6 +52521,8 @@ class _CopyWithImpl$Input$UsersInsertInput<TRes>
         if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
         if (primaryStationId != _undefined)
           'primaryStationId': (primaryStationId as String?),
+        if (stripeCustomerId != _undefined)
+          'stripeCustomerId': (stripeCustomerId as String?),
       }));
 }
 
@@ -39820,6 +52544,7 @@ class _CopyWithStubImpl$Input$UsersInsertInput<TRes>
     DateTime? createdAt,
     DateTime? updatedAt,
     String? primaryStationId,
+    String? stripeCustomerId,
   }) =>
       _res;
 }
@@ -39836,6 +52561,7 @@ class Input$UsersOrderBy {
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? primaryStationId,
+    Enum$OrderByDirection? stripeCustomerId,
   }) =>
       Input$UsersOrderBy._({
         if (id != null) r'id': id,
@@ -39848,6 +52574,7 @@ class Input$UsersOrderBy {
         if (createdAt != null) r'createdAt': createdAt,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
+        if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
       });
 
   Input$UsersOrderBy._(this._$data);
@@ -39914,6 +52641,12 @@ class Input$UsersOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$primaryStationId as String));
     }
+    if (data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = data['stripeCustomerId'];
+      result$data['stripeCustomerId'] = l$stripeCustomerId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$stripeCustomerId as String));
+    }
     return Input$UsersOrderBy._(result$data);
   }
 
@@ -39946,6 +52679,9 @@ class Input$UsersOrderBy {
 
   Enum$OrderByDirection? get primaryStationId =>
       (_$data['primaryStationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get stripeCustomerId =>
+      (_$data['stripeCustomerId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -40002,6 +52738,12 @@ class Input$UsersOrderBy {
       result$data['primaryStationId'] = l$primaryStationId == null
           ? null
           : toJson$Enum$OrderByDirection(l$primaryStationId);
+    }
+    if (_$data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = stripeCustomerId;
+      result$data['stripeCustomerId'] = l$stripeCustomerId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$stripeCustomerId);
     }
     return result$data;
   }
@@ -40105,6 +52847,15 @@ class Input$UsersOrderBy {
     if (l$primaryStationId != lOther$primaryStationId) {
       return false;
     }
+    final l$stripeCustomerId = stripeCustomerId;
+    final lOther$stripeCustomerId = other.stripeCustomerId;
+    if (_$data.containsKey('stripeCustomerId') !=
+        other._$data.containsKey('stripeCustomerId')) {
+      return false;
+    }
+    if (l$stripeCustomerId != lOther$stripeCustomerId) {
+      return false;
+    }
     return true;
   }
 
@@ -40120,6 +52871,7 @@ class Input$UsersOrderBy {
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
+    final l$stripeCustomerId = stripeCustomerId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('did') ? l$did : const {},
@@ -40131,6 +52883,7 @@ class Input$UsersOrderBy {
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
+      _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
     ]);
   }
 }
@@ -40155,6 +52908,7 @@ abstract class CopyWith$Input$UsersOrderBy<TRes> {
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? primaryStationId,
+    Enum$OrderByDirection? stripeCustomerId,
   });
 }
 
@@ -40182,6 +52936,7 @@ class _CopyWithImpl$Input$UsersOrderBy<TRes>
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
+    Object? stripeCustomerId = _undefined,
   }) =>
       _then(Input$UsersOrderBy._({
         ..._instance._$data,
@@ -40200,6 +52955,8 @@ class _CopyWithImpl$Input$UsersOrderBy<TRes>
           'updatedAt': (updatedAt as Enum$OrderByDirection?),
         if (primaryStationId != _undefined)
           'primaryStationId': (primaryStationId as Enum$OrderByDirection?),
+        if (stripeCustomerId != _undefined)
+          'stripeCustomerId': (stripeCustomerId as Enum$OrderByDirection?),
       }));
 }
 
@@ -40220,6 +52977,7 @@ class _CopyWithStubImpl$Input$UsersOrderBy<TRes>
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? primaryStationId,
+    Enum$OrderByDirection? stripeCustomerId,
   }) =>
       _res;
 }
@@ -41302,6 +54060,7 @@ class Input$UsersUpdateInput {
     DateTime? createdAt,
     DateTime? updatedAt,
     String? primaryStationId,
+    String? stripeCustomerId,
   }) =>
       Input$UsersUpdateInput._({
         if (id != null) r'id': id,
@@ -41315,6 +54074,7 @@ class Input$UsersUpdateInput {
         if (createdAt != null) r'createdAt': createdAt,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
+        if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
       });
 
   Input$UsersUpdateInput._(this._$data);
@@ -41368,6 +54128,10 @@ class Input$UsersUpdateInput {
       final l$primaryStationId = data['primaryStationId'];
       result$data['primaryStationId'] = (l$primaryStationId as String?);
     }
+    if (data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = data['stripeCustomerId'];
+      result$data['stripeCustomerId'] = (l$stripeCustomerId as String?);
+    }
     return Input$UsersUpdateInput._(result$data);
   }
 
@@ -41395,6 +54159,8 @@ class Input$UsersUpdateInput {
   DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
 
   String? get primaryStationId => (_$data['primaryStationId'] as String?);
+
+  String? get stripeCustomerId => (_$data['stripeCustomerId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -41442,6 +54208,10 @@ class Input$UsersUpdateInput {
     if (_$data.containsKey('primaryStationId')) {
       final l$primaryStationId = primaryStationId;
       result$data['primaryStationId'] = l$primaryStationId;
+    }
+    if (_$data.containsKey('stripeCustomerId')) {
+      final l$stripeCustomerId = stripeCustomerId;
+      result$data['stripeCustomerId'] = l$stripeCustomerId;
     }
     return result$data;
   }
@@ -41554,6 +54324,15 @@ class Input$UsersUpdateInput {
     if (l$primaryStationId != lOther$primaryStationId) {
       return false;
     }
+    final l$stripeCustomerId = stripeCustomerId;
+    final lOther$stripeCustomerId = other.stripeCustomerId;
+    if (_$data.containsKey('stripeCustomerId') !=
+        other._$data.containsKey('stripeCustomerId')) {
+      return false;
+    }
+    if (l$stripeCustomerId != lOther$stripeCustomerId) {
+      return false;
+    }
     return true;
   }
 
@@ -41570,6 +54349,7 @@ class Input$UsersUpdateInput {
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
+    final l$stripeCustomerId = stripeCustomerId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('did') ? l$did : const {},
@@ -41582,6 +54362,7 @@ class Input$UsersUpdateInput {
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
+      _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
     ]);
   }
 }
@@ -41607,6 +54388,7 @@ abstract class CopyWith$Input$UsersUpdateInput<TRes> {
     DateTime? createdAt,
     DateTime? updatedAt,
     String? primaryStationId,
+    String? stripeCustomerId,
   });
 }
 
@@ -41635,6 +54417,7 @@ class _CopyWithImpl$Input$UsersUpdateInput<TRes>
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
+    Object? stripeCustomerId = _undefined,
   }) =>
       _then(Input$UsersUpdateInput._({
         ..._instance._$data,
@@ -41651,6 +54434,8 @@ class _CopyWithImpl$Input$UsersUpdateInput<TRes>
         if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
         if (primaryStationId != _undefined)
           'primaryStationId': (primaryStationId as String?),
+        if (stripeCustomerId != _undefined)
+          'stripeCustomerId': (stripeCustomerId as String?),
       }));
 }
 
@@ -41672,6 +54457,7 @@ class _CopyWithStubImpl$Input$UsersUpdateInput<TRes>
     DateTime? createdAt,
     DateTime? updatedAt,
     String? primaryStationId,
+    String? stripeCustomerId,
   }) =>
       _res;
 }
@@ -42496,18 +55282,27 @@ const possibleTypesMap = <String, Set<String>>{
     'OrderItems',
     'Orders',
     'OrderTransactions',
+    'Organization',
+    'OrganizationType',
     'Permissions',
     'ProductInventory',
+    'ProductProvider',
     'Products',
     'ProductTypes',
+    'Provider',
+    'ProviderType',
     'RolePermissions',
     'Roles',
     'Sessions',
     'ShoppingCartItems',
     'ShoppingCarts',
+    'Site',
+    'SiteType',
     'StationDeliveryLocations',
     'StationDeliveryLocationTimeslots',
     'Stations',
+    'UserOrganization',
+    'UserOrganizationRoles',
     'UserPermissions',
     'UserRoles',
     'Users',

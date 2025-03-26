@@ -17,6 +17,8 @@ class Fragment$Station {
     required this.city,
     required this.state,
     required this.zip,
+    this.latitude,
+    this.longitude,
     this.imageUrl,
     this.coverUrl,
     required this.registrationCode,
@@ -35,6 +37,8 @@ class Fragment$Station {
     final l$city = json['city'];
     final l$state = json['state'];
     final l$zip = json['zip'];
+    final l$latitude = json['latitude'];
+    final l$longitude = json['longitude'];
     final l$imageUrl = json['imageUrl'];
     final l$coverUrl = json['coverUrl'];
     final l$registrationCode = json['registrationCode'];
@@ -51,6 +55,8 @@ class Fragment$Station {
       city: (l$city as String),
       state: (l$state as String),
       zip: (l$zip as String),
+      latitude: (l$latitude as num?)?.toDouble(),
+      longitude: (l$longitude as num?)?.toDouble(),
       imageUrl: (l$imageUrl as String?),
       coverUrl: (l$coverUrl as String?),
       registrationCode: (l$registrationCode as String),
@@ -78,6 +84,10 @@ class Fragment$Station {
   final String state;
 
   final String zip;
+
+  final double? latitude;
+
+  final double? longitude;
 
   final String? imageUrl;
 
@@ -111,6 +121,10 @@ class Fragment$Station {
     _resultData['state'] = l$state;
     final l$zip = zip;
     _resultData['zip'] = l$zip;
+    final l$latitude = latitude;
+    _resultData['latitude'] = l$latitude;
+    final l$longitude = longitude;
+    _resultData['longitude'] = l$longitude;
     final l$imageUrl = imageUrl;
     _resultData['imageUrl'] = l$imageUrl;
     final l$coverUrl = coverUrl;
@@ -136,6 +150,8 @@ class Fragment$Station {
     final l$city = city;
     final l$state = state;
     final l$zip = zip;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
     final l$imageUrl = imageUrl;
     final l$coverUrl = coverUrl;
     final l$registrationCode = registrationCode;
@@ -152,6 +168,8 @@ class Fragment$Station {
       l$city,
       l$state,
       l$zip,
+      l$latitude,
+      l$longitude,
       l$imageUrl,
       l$coverUrl,
       l$registrationCode,
@@ -218,6 +236,16 @@ class Fragment$Station {
     if (l$zip != lOther$zip) {
       return false;
     }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
     final l$imageUrl = imageUrl;
     final lOther$imageUrl = other.imageUrl;
     if (l$imageUrl != lOther$imageUrl) {
@@ -275,6 +303,8 @@ abstract class CopyWith$Fragment$Station<TRes> {
     String? city,
     String? state,
     String? zip,
+    double? latitude,
+    double? longitude,
     String? imageUrl,
     String? coverUrl,
     String? registrationCode,
@@ -307,6 +337,8 @@ class _CopyWithImpl$Fragment$Station<TRes>
     Object? city = _undefined,
     Object? state = _undefined,
     Object? zip = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
     Object? imageUrl = _undefined,
     Object? coverUrl = _undefined,
     Object? registrationCode = _undefined,
@@ -337,6 +369,11 @@ class _CopyWithImpl$Fragment$Station<TRes>
             ? _instance.state
             : (state as String),
         zip: zip == _undefined || zip == null ? _instance.zip : (zip as String),
+        latitude:
+            latitude == _undefined ? _instance.latitude : (latitude as double?),
+        longitude: longitude == _undefined
+            ? _instance.longitude
+            : (longitude as double?),
         imageUrl:
             imageUrl == _undefined ? _instance.imageUrl : (imageUrl as String?),
         coverUrl:
@@ -371,6 +408,8 @@ class _CopyWithStubImpl$Fragment$Station<TRes>
     String? city,
     String? state,
     String? zip,
+    double? latitude,
+    double? longitude,
     String? imageUrl,
     String? coverUrl,
     String? registrationCode,
@@ -454,6 +493,20 @@ const fragmentDefinitionStation = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'zip'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'latitude'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'longitude'),
       alias: null,
       arguments: [],
       directives: [],

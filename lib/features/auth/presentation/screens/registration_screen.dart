@@ -335,7 +335,6 @@ class RegistrationScreen extends HookConsumerWidget {
                                             .value
                                             ?.toString() ??
                                         'bsky.social';
-                                    print('PDS Server: $pdsServer');
                                     authNotifier.register(
                                       email: formData['email'].toString(),
                                       password: formData['password'].toString(),

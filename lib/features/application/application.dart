@@ -1,9 +1,11 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:app_links/app_links.dart';
 import 'package:firefit/config/providers.dart';
 import 'package:firefit/config/router.dart';
 import 'package:firefit/theme/dark_theme.dart';
 import 'package:firefit/theme/light_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -16,16 +18,20 @@ class Application extends ConsumerStatefulWidget {
 
 class ApplicationState extends ConsumerState<Application>
     with WidgetsBindingObserver {
+  late AppLinks _appLinks;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _initializeApplication();
+    _initializeDeepLinks();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    // No need to explicitly dispose AppLinks as it doesn't have a dispose method
     super.dispose();
   }
 
@@ -38,6 +44,46 @@ class ApplicationState extends ConsumerState<Application>
       logging.debug('Application initialized successfully');
     } catch (error, _) {
       logging.error('Failed to initialize application: $error');
+    }
+  }
+
+  void _initializeDeepLinks() {
+    final logging = ref.read(loggingProvider);
+    try {
+      logging.debug('Initializing deep links...');
+      _appLinks = AppLinks();
+
+      // The app_links package automatically handles the initial link
+      // Listen to app links while the app is running (includes both initial and subsequent links)
+      _appLinks.uriLinkStream.listen((Uri uri) {
+        logging.debug('Got app link: $uri');
+        _handleDeepLink(uri);
+      });
+
+      logging.debug('Deep links initialized successfully');
+    } catch (error) {
+      logging.error('Failed to initialize deep links: $error');
+    }
+  }
+
+  void _handleDeepLink(Uri uri) {
+    if (!mounted) return;
+
+    final router = GoRouter.of(context);
+    final logging = ref.read(loggingProvider);
+
+    logging.debug('Handling deep link: $uri');
+
+    if (uri.path.contains('payment-success')) {
+      // Handle successful payment
+      final sessionId = uri.queryParameters['session_id'];
+      logging.debug('Payment success with session ID: $sessionId');
+      // Verify payment with backend if needed
+      router.go('/success');
+    } else if (uri.path.contains('payment-cancel')) {
+      // Handle canceled payment
+      logging.debug('Payment canceled');
+      router.go('/cancel');
     }
   }
 

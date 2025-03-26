@@ -11,6 +11,8 @@ fragment Station on Stations {
   city
   state
   zip
+  latitude
+  longitude
   imageUrl
   coverUrl
   registrationCode

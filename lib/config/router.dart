@@ -3,12 +3,14 @@ import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/station_code_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/orders_screen.dart';
+import 'package:firefit/features/commerce/presentation/screens/payment_cancel_screen.dart';
+import 'package:firefit/features/commerce/presentation/screens/payment_success_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
-import 'package:firefit/features/menu/presentation/screens/menu_item_detail_page.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_product_screen.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_screen.dart';
+import 'package:firefit/features/profiles/presentation/screens/profile_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -27,7 +29,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final isAuthenticated = routerNotifier.isAuthenticated;
       final isAuthRoute = state.matchedLocation == '/login' ||
-          state.matchedLocation == '/register';
+          state.matchedLocation == '/register' ||
+          state.matchedLocation == '/station-code';
 
       if (!isAuthenticated && !isAuthRoute) return '/login';
       if (isAuthenticated && isAuthRoute) return '/';
@@ -64,9 +67,21 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: '/settings',
             builder: (context, state) => const SettingsScreen(),
           ),
+          GoRoute(
+            path: '/profile',
+            builder: (context, state) => const ProfileScreen(),
+          ),
         ],
       ),
       GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
+      GoRoute(
+          path: '/success',
+          builder: (context, state) {
+            return PaymentSuccessScreen();
+          }),
+      GoRoute(
+          path: '/cancel',
+          builder: (context, state) => const PaymentCancelScreen()),
       GoRoute(
         path: '/register/:stationCode',
         builder: (context, state) {

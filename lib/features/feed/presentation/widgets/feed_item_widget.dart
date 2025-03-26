@@ -1,6 +1,6 @@
+import 'package:firefit/features/feed/domain/models/feed_post.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import '../../domain/models/feed_post.dart';
 
 class FeedItemWidget extends StatelessWidget {
   final FeedPost post;
@@ -28,7 +28,8 @@ class FeedItemWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(
-            color: Theme.of(context).dividerColor.withOpacity(0.1),
+            color:
+                Theme.of(context).dividerColor.withAlpha((255 * 0.1).round()),
           ),
         ),
         child: Padding(
@@ -207,7 +208,7 @@ class FeedItemWidget extends StatelessWidget {
               ),
               if (index == 3 && post.images.length > 4)
                 Container(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withAlpha((255 * 0.5).round()),
                   child: Center(
                     child: Text(
                       '+${post.images.length - 4}',

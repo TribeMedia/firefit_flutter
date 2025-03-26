@@ -182,6 +182,25 @@ class UserNotifier extends AsyncNotifier<UserState> {
     }
   }
 
+  Future<void> logout() async {
+    final logging = ref.read(loggingProvider);
+    try {
+      state = const AsyncValue.loading();
+      await authenticationService.logout();
+      state = const AsyncValue.data(UserState(
+        isLoggedIn: false,
+        isLoading: false,
+        user: null,
+        station: null,
+        error: null,
+      ));
+    } catch (err, stackTrace) {
+      logging.error('Failed to logout');
+      logging.debug('Error: $err\nStackTrace: $stackTrace');
+      state = AsyncValue.error(err, stackTrace);
+    }
+  }
+
   Future<bool> validateStationCode(String code) async {
     final logging = ref.read(loggingProvider);
     final stationRepository = ref.read(stationRepositoryProvider);

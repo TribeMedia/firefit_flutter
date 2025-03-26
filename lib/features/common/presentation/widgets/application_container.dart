@@ -1,12 +1,17 @@
+import 'package:core/commerce/domain/models/order.dart';
 import 'package:core/commerce/graphql/orders.graphql.dart';
+import 'package:core/commerce/tax/domain/services/stripe_payment_service_interface.dart';
 import 'package:core/core.dart';
+import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
+import 'package:firefit/features/commerce/providers/providers.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_icon.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:firefit/theme/dark_theme.dart';
 import 'package:firefit/theme/light_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -58,7 +63,8 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
       data: (homeState) {
         final user = homeState.user!.user;
         final cart = user.shoppingCartsCollection?.edges.first.node;
-        final cartItemCount = cart?.shoppingCartItemsCollection?.edges.length ?? 0;
+        final cartItemCount =
+            cart?.shoppingCartItemsCollection?.edges.length ?? 0;
 
         return Scaffold(
           key: scaffoldKey,
@@ -95,21 +101,64 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                         ),
                   ),
                   actions: [
-                    cart != null ? CartIcon(
-                      onPressed: () {
-                        showCart(
-                          context,
-                          cart,
-                          user,
-                        );
-                      },
-                      count: cartItemCount,
-                    ) : SizedBox.shrink(),
+                    cart != null
+                        ? CartIcon(
+                            onPressed: () {
+                              showCart(
+                                context,
+                                cart,
+                                user,
+                              );
+                            },
+                            count: cartItemCount,
+                          )
+                        : SizedBox.shrink(),
                     IconButton(
                       icon: const Icon(Icons.notifications),
                       onPressed: () {
                         // Handle notifications
                       },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: GestureDetector(
+                        onTap: () => context.push('/profile'),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.surface,
+                              width: 2,
+                            ),
+                          ),
+                          child: CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.1),
+                            backgroundImage: homeState.user!.profile.avatar !=
+                                    null
+                                ? NetworkImage(homeState.user!.profile.avatar!)
+                                : null,
+                            child: homeState.user!.profile.avatar == null
+                                ? Text(
+                                    homeState.user!.profile.displayName?[0]
+                                            .toUpperCase() ??
+                                        '',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
+                                  )
+                                : null,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 )
@@ -127,9 +176,9 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
                 vertical: 10.0,
               ),
               duration: const Duration(milliseconds: 400),
-              tabBackgroundColor:
-              isDarkMode ?
-              DarkThemeData.surfaceContainer : LightThemeData.surfaceContainer,
+              tabBackgroundColor: isDarkMode
+                  ? DarkThemeData.surfaceContainer
+                  : LightThemeData.surfaceContainer,
               color: Theme.of(context)
                   .colorScheme
                   .onSurface
@@ -171,10 +220,11 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
     );
   }
 
-  void showCart(BuildContext context,
-      Fragment$ShoppingCart cart,
-      User user,
-      ) {
+  void showCart(
+    BuildContext context,
+    Fragment$ShoppingCart cart,
+    User user,
+  ) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -198,9 +248,165 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
           child: CartOverlay(
             cart: cart,
             user: user,
-            onUpdateQuantity: (String itemId, int quantity) {  },
-            onCheckout: () {  },
-            onClose: () { Navigator.pop(context); },
+            onUpdateQuantity: (String itemId, int quantity) {},
+            onCheckout: () async {
+              // Capture current context for later use
+              final currentContext = context;
+
+              try {
+                // Show loading indicator
+                await showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => const AlertDialog(
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircularProgressIndicator(),
+                        SizedBox(height: 16),
+                        Text('Preparing checkout...'),
+                      ],
+                    ),
+                  ),
+                );
+
+                // Add a mounted check here
+                if (!mounted) return;
+
+                // Get cart items from the Fragment$ShoppingCart structure
+                final items = cart.shoppingCartItemsCollection?.edges
+                        .map((e) => e.node)
+                        .toList() ??
+                    [];
+
+                // Calculate total amount from cart items
+                final totalAmount = items.fold(
+                  0.0,
+                  (sum, item) => sum + (item.unitPrice * item.quantity),
+                );
+
+                // Format items for metadata
+                List<Map<String, dynamic>> lineItems = [];
+                for (var item in items) {
+                  lineItems.add({
+                    'price': item.product.stripeProductId,
+                    'productId': item.productId,
+                    'quantity': item.quantity,
+                  });
+                }
+
+                // Create payment intent request
+                final paymentIntentRequest = PaymentIntentRequest(
+                  currency: 'usd',
+                  amount: (totalAmount * 100)
+                      .toInt()
+                      .toDouble(), // Convert to cents
+                  metadata: {
+                    'userId': user.id,
+                    'items': lineItems,
+                  },
+                );
+
+                // Create payment intent
+                final paymentIntentResponse = await ref.read(
+                    stripePaymentIntentProvider(paymentIntentRequest).future);
+
+                // Add a mounted check before using context
+                if (!mounted) return;
+
+                // Close loading dialog
+                Navigator.pop(context);
+
+                if (paymentIntentResponse.success == null ||
+                    !paymentIntentResponse.success!) {
+                  // Show error message
+                  ScaffoldMessenger.of(currentContext).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          'Error: ${paymentIntentResponse.errorMessage ?? "Unknown error creating payment intent"}'),
+                    ),
+                  );
+                  return;
+                }
+
+                // Initialize the payment sheet
+                await Stripe.instance.initPaymentSheet(
+                  paymentSheetParameters: SetupPaymentSheetParameters(
+                    merchantDisplayName: 'FireFit Store',
+                    paymentIntentClientSecret:
+                        paymentIntentResponse.clientSecret,
+                    customerId: user.id,
+                    style: ThemeMode.system,
+                  ),
+                );
+
+                // Add a mounted check
+                if (!mounted) return;
+
+                // Present the payment sheet
+                await Stripe.instance.presentPaymentSheet();
+
+                // Add a mounted check
+                if (!mounted) return;
+
+                // Handle successful payment
+                // Create a ShoppingCart instance for createOrder with required fields
+                final cartForOrder = ShoppingCart(
+                  id: cart.id,
+                  userId: user.id,
+                  createdAt: DateTime.now(),
+                );
+
+                final orderController =
+                    ref.read(orderControllerProvider(user.id).notifier);
+                final result = await orderController.createOrder(cartForOrder);
+
+                // Add a mounted check before using context
+                if (!mounted) return;
+
+                result.fold(
+                  (failure) {
+                    ScaffoldMessenger.of(currentContext).showSnackBar(
+                      SnackBar(
+                        content: Text('Error creating order: ${failure.error}'),
+                      ),
+                    );
+                  },
+                  (order) {
+                    // Clear the cart using the method in ShoppingCartNotifier
+                    ref.read(shoppingCartProvider.notifier).clearCart();
+
+                    // Show success message
+                    ScaffoldMessenger.of(currentContext).showSnackBar(
+                      const SnackBar(
+                        content: Text('Payment successful! Order created.'),
+                      ),
+                    );
+
+                    // Close the cart overlay
+                    Navigator.of(currentContext).pop();
+                  },
+                );
+              } catch (e) {
+                // Check if mounted before using context
+                if (!mounted) return;
+
+                // Close loading dialog if open
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
+
+                // Handle errors
+                ScaffoldMessenger.of(currentContext).showSnackBar(
+                  SnackBar(
+                    content: Text('An error occurred: $e'),
+                  ),
+                );
+              }
+            },
+            onClose: () {
+              Navigator.pop(context);
+            },
           ),
         ),
       ),
