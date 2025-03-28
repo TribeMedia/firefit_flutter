@@ -8,6 +8,7 @@ import 'package:core/commerce/tax/infrastructure/services/stripe_payment_service
 import 'package:core/core.dart';
 import 'package:firefit/config/providers.dart';
 import 'package:firefit/env/env.dart';
+import 'package:firefit/features/commerce/domain/database/database.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 import 'package:http/http.dart' as http;
@@ -192,3 +193,9 @@ final stripePaymentIntentProvider =
     );
   },
 );
+
+// Force a new database instance with updated schema
+final cartDatabaseProvider = Provider<AppDatabase>((ref) {
+  // Force a completely new database instance with our updated schema
+  return AppDatabase();
+});

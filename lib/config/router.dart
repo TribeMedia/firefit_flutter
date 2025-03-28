@@ -3,7 +3,6 @@ import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/station_code_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/orders_screen.dart';
-import 'package:firefit/features/commerce/presentation/screens/payment_cancel_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/payment_success_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
@@ -79,9 +78,6 @@ final routerProvider = Provider<GoRouter>((ref) {
           builder: (context, state) {
             return PaymentSuccessScreen();
           }),
-      GoRoute(
-          path: '/cancel',
-          builder: (context, state) => const PaymentCancelScreen()),
       GoRoute(
         path: '/register/:stationCode',
         builder: (context, state) {

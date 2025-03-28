@@ -1,0 +1,11 @@
+# Replace deprecated withOpacity calls with Color.fromRGBO
+s/colorScheme.surfaceVariant.withOpacity\(([0-9.]+)\)/Color.fromRGBO(colorScheme.surfaceContainerHighest.red, colorScheme.surfaceContainerHighest.green, colorScheme.surfaceContainerHighest.blue, \1)/g
+s/colorScheme.onBackground.withOpacity\(([0-9.]+)\)/Color.fromRGBO(colorScheme.onSurface.red, colorScheme.onSurface.green, colorScheme.onSurface.blue, \1)/g
+s/colorScheme.primary.withOpacity\(([0-9.]+)\)/Color.fromRGBO(colorScheme.primary.red, colorScheme.primary.green, colorScheme.primary.blue, \1)/g
+s/colorScheme.outline.withOpacity\(([0-9.]+)\)/Color.fromRGBO(colorScheme.outline.red, colorScheme.outline.green, colorScheme.outline.blue, \1)/g
+s/Colors.black.withOpacity\(([0-9.]+)\)/Color.fromRGBO(0, 0, 0, \1)/g
+
+# Replace deprecated color scheme properties
+s/colorScheme.background/colorScheme.surface/g
+s/colorScheme.surfaceVariant/colorScheme.surfaceContainerHighest/g
+s/colorScheme.onBackground/colorScheme.onSurface/g

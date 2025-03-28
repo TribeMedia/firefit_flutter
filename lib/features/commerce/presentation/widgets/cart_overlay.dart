@@ -1,46 +1,116 @@
 // cart_overlay.dart
-import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/core.dart';
+
+import 'package:firefit/features/commerce/domain/database/database.dart';
+import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/empty_view_state.dart';
+import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-class CartOverlay extends StatelessWidget {
+final productsMapProvider =
+    FutureProvider.family<Either<Failure, Map<int, Product>>, List<CartItem>>(
+        (ref, items) async {
+  // Skip if cart is empty
+  if (items.isEmpty) {
+    return right(<int, Product>{});
+  }
+
+  // Extract unique productIds from cart items
+  final productIds = items.map((item) => item.productId).toSet().toList();
+
+  // Query all products - we'll filter them in memory
+  // This approach is used as the GraphQL API might not support direct 'in' filters
+  final repository = ref.read(productRepositoryProvider);
+  final result = await repository.queryProducts();
+
+  return result.fold(
+    (failure) => left(failure),
+    (products) {
+      // Filter products that match our cart item productIds
+      final matchingProducts =
+          products.where((product) => productIds.contains(product.id)).toList();
+
+      // Create a map of productId -> Product for faster lookup
+      final productByIdMap = {
+        for (var product in matchingProducts) product.id: product
+      };
+
+      // Create the final map of cartItemId -> Product
+      final cartItemProductMap = <int, Product>{};
+      for (var item in items) {
+        final product = productByIdMap[item.productId];
+        if (product != null) {
+          cartItemProductMap[item.id] = product;
+        }
+      }
+
+      return right(cartItemProductMap);
+    },
+  );
+});
+
+class CartOverlay extends ConsumerWidget {
   static const double kImageSize = 64.0;
   final ScrollController scrollController = ScrollController();
-
-  final Fragment$ShoppingCart cart;
   final User user;
   final bool isLoading;
   final String? errorMessage;
-  final Function(String itemId, int quantity) onUpdateQuantity;
-  final Function() onCheckout;
+  final Function(int itemId, int quantity) onUpdateQuantity;
+  final Function()? onCheckout;
   final Function() onClose;
 
   CartOverlay({
     super.key,
-    required this.cart,
     required this.user,
     this.isLoading = false,
     this.errorMessage,
     required this.onUpdateQuantity,
-    required this.onCheckout,
+    this.onCheckout,
     required this.onClose,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cartsAsync = ref.watch(productCartProvider);
     final theme = ShadTheme.of(context);
-    final items =
-        cart.shoppingCartItemsCollection?.edges.map((e) => e.node).toList() ??
-            [];
-    final cartIsEmpty = items.isEmpty;
 
-    // Calculate total
-    final total = items.fold(
-      0.0,
-      (sum, item) => sum + (item.unitPrice * item.quantity),
+    return cartsAsync.when(
+      data: (cart) {
+        final productsAsync =
+            ref.watch(productsMapProvider(cart.shoppingCartItems));
+
+        // Calculate total
+        final total = cart.shoppingCartItems.fold(
+          0.0,
+          (sum, item) => sum + (item.unitPrice * item.quantity),
+        );
+
+        return productsAsync.when(
+          data: (products) {
+            return products.fold(
+              (l) => const SizedBox.shrink(),
+              (r) => _buildCartOverlay(context, theme, r, cart, total),
+            );
+          },
+          error: (e, s) =>
+              ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
+          loading: () => const Center(child: CircularProgressIndicator()),
+        );
+      },
+      error: (e, s) => ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
+      loading: () => const Center(child: CircularProgressIndicator()),
     );
+  }
+
+  Widget _buildCartOverlay(BuildContext context, ShadThemeData theme,
+      Map<int, Product> products, ProductCartModel cart, double total) {
+    Product? productForItem(int itemId) => products[itemId];
+
+    final cartIsEmpty = cart.shoppingCartItems.isEmpty;
 
     return Container(
       color: theme.colorScheme.background,
@@ -77,7 +147,7 @@ class CartOverlay extends StatelessWidget {
                       )
                     : Column(
                         children: [
-                          ...items.map((item) => Padding(
+                          ...cart.shoppingCartItems.map((item) => Padding(
                                 padding: const EdgeInsets.only(bottom: 12),
                                 child: ShadCard(
                                   child: Padding(
@@ -86,12 +156,14 @@ class CartOverlay extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        if (item.product.photoUrl != null)
+                                        if (productForItem(item.id)?.photoUrl !=
+                                            null)
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             child: Image.network(
-                                              item.product.photoUrl!,
+                                              productForItem(item.id)!
+                                                  .photoUrl!,
                                               width: kImageSize,
                                               height: kImageSize,
                                               fit: BoxFit.cover,
@@ -116,7 +188,7 @@ class CartOverlay extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                item.product.name,
+                                                productForItem(item.id)!.name,
                                                 style:
                                                     theme.textTheme.p.copyWith(
                                                   fontWeight: FontWeight.bold,
@@ -135,6 +207,7 @@ class CartOverlay extends StatelessWidget {
                                               ),
                                               const SizedBox(height: 8),
                                               QuantitySelector(
+                                                itemId: item.id,
                                                 value: item.quantity,
                                                 onChanged: (value) =>
                                                     onUpdateQuantity(
@@ -212,23 +285,39 @@ class CartOverlay extends StatelessWidget {
   }
 }
 
-class QuantitySelector extends StatelessWidget {
+class QuantitySelector extends ConsumerWidget {
   final int value;
   final ValueChanged<int> onChanged;
+  final int itemId;
 
   const QuantitySelector({
     super.key,
     required this.value,
     required this.onChanged,
+    required this.itemId,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
         ShadButton(
           icon: const Icon(Icons.remove),
-          onPressed: value > 1 ? () => onChanged(value - 1) : null,
+          onPressed: () {
+            if (value < 1) {
+              Fluttertoast.showToast(
+                msg: 'Quantity must be greater than 1',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+              );
+              return;
+            }
+            // Call the onChanged callback instead of directly calling the notifier
+            onChanged(-1);
+          },
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -239,7 +328,10 @@ class QuantitySelector extends StatelessWidget {
         ),
         ShadButton(
           icon: const Icon(Icons.add),
-          onPressed: () => onChanged(value + 1),
+          onPressed: () {
+            // Call the onChanged callback instead of directly calling the notifier
+            onChanged(1);
+          },
         ),
       ],
     );

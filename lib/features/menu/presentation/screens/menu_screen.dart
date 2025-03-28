@@ -1,6 +1,4 @@
 import 'package:core/core.dart';
-import 'package:firefit/features/commerce/domain/entities/cart_item.dart';
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/empty_view_state.dart';
 import 'package:firefit/features/menu/providers.dart';
@@ -93,13 +91,10 @@ class MenuScreen extends HookConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ...products
-                  .map((e) => Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: _buildMenuItem(context, ref, e),
-                      ))
-                  .toList() ??
-              [],
+          ...products.map((e) => Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: _buildMenuItem(context, ref, e),
+              )),
         ],
       ),
     );
@@ -107,15 +102,15 @@ class MenuScreen extends HookConsumerWidget {
 
   Widget _buildMenuItem(BuildContext context, WidgetRef ref, Product item) {
     final theme = Theme.of(context);
-    final cartNotifier = ref.watch(shoppingCartProvider.notifier);
-    final cartState = ref.watch(shoppingCartProvider);
+    final cartNotifier = ref.watch(productCartProvider.notifier);
+    final cartState = ref.watch(productCartProvider);
     final processingItem = ref.watch(processingItemProvider);
     final errorItem = ref.watch(errorItemProvider);
 
     return cartState.when(
       data: (cartModel) {
-        final itemInCart = cartModel.items
-            .where((cartItem) => cartItem.id == item.id)
+        final itemInCart = cartModel.shoppingCartItems
+            .where((cartItem) => cartItem.productId == item.id)
             .isNotEmpty;
         final isProcessing = processingItem == item.id;
         final hasError = errorItem == item.id;
@@ -241,20 +236,18 @@ class MenuScreen extends HookConsumerWidget {
   Future<void> _handleAddToCart(
     BuildContext context,
     WidgetRef ref,
-    ShoppingCartNotifier cartNotifier,
+    ProductCartNotifier cartNotifier,
     Product item,
   ) async {
     try {
       ref.read(processingItemProvider.notifier).state = item.id;
       ref.read(errorItemProvider.notifier).state = null;
 
-      await cartNotifier.addItem(CartItem(
-        id: item.id,
-        name: item.name,
-        price: item.unitPrice,
-        quantity: 1,
-        imageUrl: item.photoUrl,
-      ));
+      cartNotifier.addProductToCart(item, 1);
+      final res = ref.refresh(productCartProvider);
+      res.whenData((value) {
+        debugPrint('Cart updated: $value');
+      });
 
       if (context.mounted) {
         ShadToaster.of(context).show(

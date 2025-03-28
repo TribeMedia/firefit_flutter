@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:firefit/features/menu/presentation/widgets/menu_product_card.dart';
 import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -41,11 +42,47 @@ class MenuProductScreen extends ConsumerWidget {
           return Center(child: Text('Product not found'));
         }
         return MenuProductCard(
-            productMenuItem: productMenuItem,
-            onBackPressed: () {
-              context.pop();
-            },
-          );
+          productMenuItem: productMenuItem,
+          onAddToCart: (product, quantity) {
+            // Show loading indicator
+            Fluttertoast.showToast(
+              msg: 'Adding to cart...',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              textColor: Theme.of(context).colorScheme.onPrimary,
+              fontSize: 16.0,
+            );
+
+            // Add to cart in the background - don't await
+            ref
+                .read(productCartProvider.notifier)
+                .addProductToCart(product, quantity);
+            final res = ref.refresh(productCartProvider);
+            res.whenData((cart) {
+              debugPrint(
+                  'Adding item to cart: ${cart.shoppingCartItems.length}, UI will update automatically via stream');
+            });
+
+            // Show confirmation immediately
+            Fluttertoast.showToast(
+              msg: '${product.name} added to cart ($quantity items)!',
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2,
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              textColor: Theme.of(context).colorScheme.onSecondary,
+              fontSize: 16.0,
+            );
+
+            // Navigate back immediately
+            context.pop();
+          },
+          onBackPressed: () {
+            context.pop();
+          },
+        );
       },
       error: (error, stackTrace) => Center(child: Text(error.toString())),
       loading: () => const Center(child: CircularProgressIndicator()),

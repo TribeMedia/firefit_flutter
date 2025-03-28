@@ -1,9 +1,9 @@
-import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/core.dart';
 import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_badge.dart';
 import 'package:firefit/features/common/presentation/widgets/initials_avatar.dart';
+import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
@@ -143,151 +143,192 @@ class HomeSliverAppBar extends HookConsumerWidget {
         ? Colors.white // Stay white in dark mode
         : Colors.black; // Transition to black in light mode
 
-    final cart = user.user.shoppingCartsCollection?.edges.first.node;
-    final cartItemCount = cart?.shoppingCartItemsCollection?.edges.length ?? 0;
+    // Watch the cart status for changes - this is a lightweight provider
+    // that only contains the minimal information needed for the cart badge
+    final cartResult = ref.watch(productCartProvider);
 
-    Widget cartWidget = const SizedBox.shrink();
-    if (cartItemCount > 0) {
-      cartWidget = Stack(
-        clipBehavior: Clip.none,
-        children: [
-          IconButton(
-            onPressed: () => showCartDrawer(
-              context,
-              cart!,
-              user.user,
-            ),
-            icon: const Icon(Icons.shopping_cart_outlined),
-            tooltip: 'Shopping Cart',
-            style: IconButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.onSurface,
-            ),
-          ),
-          Positioned(
-            right: 8,
-            top: 8,
-            child: CartBadge(itemCount: cartItemCount),
-          ),
-        ],
-      );
-    }
+    return cartResult.when(
+      data: (cartModel) {
+        final cart = cartModel.currentCart!;
+        final items = cartModel.shoppingCartItems;
 
-    return SliverLayoutBuilder(
-      builder: (BuildContext context, SliverConstraints constraints) {
-        final homeAppBarState = ref.watch(
-          homeAppBarProvider(
-            HomeAppBarInput(
-              scrollController: parentScrollController,
-              startTextColor: startTextColor,
-              endTextColor: endTextColor,
-              constraints: constraints,
-            ),
-          ),
-        );
+        // Get the cart information directly from the status
+        final cartItemCount = items.length;
+        final hasItems = items.isNotEmpty;
+        final cartId = cart.id;
 
-        return homeAppBarState.when(
-          data: (HomeAppBarState state) => SliverAppBar(
-            actions: [
-              cartWidget,
+        // Debug the items list
+        debugPrint('🛒 Items in cart: $cartItemCount, hasCart: $cartId');
+
+        // When there are no items, don't show any cart widget
+        Widget cartWidget = const SizedBox.shrink();
+
+        // Only show cart when there are items
+        if (hasItems && cartItemCount > 0) {
+          cartWidget = Stack(
+            clipBehavior: Clip.none,
+            children: [
               IconButton(
-                icon: const Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 8),
-                child: GestureDetector(
-                  onTap: () => context.push('/profile'),
-                  child: user.profile.avatar != null
-                      ? ShadAvatar(user.profile.avatar!)
-                      : InitialsAvatar(name: user.profile.displayName!),
+                key: const Key('cart_icon_button'),
+                onPressed: () {
+                  showCartDrawer(
+                    context,
+                    user.user,
+                    ref,
+                  );
+                },
+                icon: const Icon(Icons.shopping_cart_outlined),
+                tooltip: 'Shopping Cart',
+                style: IconButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.onSurface,
                 ),
+              ),
+              Positioned(
+                right: 8,
+                top: 8,
+                child: CartBadge(itemCount: cartItemCount),
               ),
             ],
-            leading: Padding(
-              padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
-              child: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withAlpha((255 * 0.1).round()),
-                  BlendMode.srcATop,
-                ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/fots-logo-favicon-100x100.png',
-                    height: 60,
-                    width: 60,
-                  ),
-                ),
-              ),
+          );
+        } else {
+          // For debugging: Show where the cart would be, but transparent - remove in production
+          cartWidget = Opacity(
+            opacity: 0.0,
+            child: IconButton(
+              key: const Key('invisible_cart_icon'),
+              onPressed: null,
+              icon: const Icon(Icons.shopping_cart_outlined),
             ),
-            expandedHeight: 200.0,
-            floating: false,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                station.name,
-                style: TextStyle(
-                  color: state.currentTextColor,
-                  fontWeight: FontWeight.bold,
+          );
+        }
+
+        return SliverLayoutBuilder(
+          builder: (BuildContext context, SliverConstraints constraints) {
+            final homeAppBarState = ref.watch(
+              homeAppBarProvider(
+                HomeAppBarInput(
+                  scrollController: parentScrollController,
+                  startTextColor: startTextColor,
+                  endTextColor: endTextColor,
+                  constraints: constraints,
                 ),
               ),
-              background: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.network(
-                    station.coverUrl ?? '',
-                    fit: BoxFit.cover,
+            );
+
+            return homeAppBarState.when(
+              data: (HomeAppBarState state) => SliverAppBar(
+                actions: [
+                  cartWidget,
+                  IconButton(
+                    icon: const Icon(Icons.notifications),
+                    onPressed: () {},
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withAlpha((255 * 0.7).round()),
-                        ],
-                      ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 8),
+                    child: GestureDetector(
+                      onTap: () => context.push('/profile'),
+                      child: user.profile.avatar != null
+                          ? ShadAvatar(user.profile.avatar!)
+                          : InitialsAvatar(
+                              name: user.profile.displayName!,
+                            ),
                     ),
                   ),
                 ],
-              ),
-            ),
-          ),
-          loading: () => SliverAppBar(
-            expandedHeight: 200.0,
-            floating: false,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                station.name,
-                style: TextStyle(
-                  color: startTextColor,
-                  fontWeight: FontWeight.bold,
+                leading: Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withAlpha((255 * 0.1).round()),
+                      BlendMode.srcATop,
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset(
+                        'assets/images/fots-logo-favicon-100x100.png',
+                        height: 60,
+                        width: 60,
+                      ),
+                    ),
+                  ),
+                ),
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text(
+                    station.name,
+                    style: TextStyle(
+                      color: state.currentTextColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.network(
+                        station.coverUrl ?? '',
+                        fit: BoxFit.cover,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.transparent,
+                              Colors.black.withAlpha((255 * 0.7).round()),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ),
-          error: (Object error, StackTrace stackTrace) => SliverToBoxAdapter(
-            child: ErrorScreen(
-              errorMessage: error.toString(),
-              onRetry: () => context.go('/'),
-            ),
-          ),
+              loading: () => SliverAppBar(
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text(
+                    station.name,
+                    style: TextStyle(
+                      color: startTextColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              error: (Object error, StackTrace stackTrace) =>
+                  SliverToBoxAdapter(
+                child: ErrorScreen(
+                  errorMessage: error.toString(),
+                  onRetry: () => context.go('/'),
+                ),
+              ),
+            );
+          },
         );
       },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => Center(
+        child: Text(error.toString()),
+      ),
     );
   }
 }
 
+// Modified to fetch cart data when needed instead of requiring it upfront
 void showCartDrawer(
   BuildContext context,
-  Fragment$ShoppingCart cart,
   User user,
+  WidgetRef ref,
 ) {
+  // Show cart overlay with the fetched cart
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -297,12 +338,18 @@ void showCartDrawer(
       minChildSize: 0.5,
       maxChildSize: 0.9,
       builder: (_, controller) => CartOverlay(
-        cart: cart,
         user: user,
-        onUpdateQuantity: (String itemId, int quantity) {},
-        onCheckout: () {
-
+        onUpdateQuantity: (int itemId, int quantity) {
+          // Call the notifier to update the quantity
+          ref
+              .read(productCartProvider.notifier)
+              .updateCartItemQuantity(itemId, quantity);
+          final refresh = ref.refresh(productCartProvider);
+          refresh.whenData((data) {
+            debugPrint(data.toString());
+          });
         },
+        onCheckout: () {},
         onClose: () {
           Navigator.pop(context);
         },

@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -27,6 +28,8 @@ void enableClineDebugging() {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initHiveForFlutter();
 
   // Initialize Talker early
   final talker = globalContainer.read(loggingProvider);

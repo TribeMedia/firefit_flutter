@@ -40,7 +40,7 @@ class ProfileScreen extends HookConsumerWidget {
                           ),
                           // Black overlay with 20% opacity
                           Container(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Color.fromRGBO(0, 0, 0, 0.2),
                           ),
                           // Gradient overlay
                           Container(
@@ -50,7 +50,12 @@ class ProfileScreen extends HookConsumerWidget {
                                 end: Alignment.bottomCenter,
                                 colors: [
                                   Colors.transparent,
-                                  theme.colorScheme.surface.withOpacity(0.8),
+                                  Color.fromRGBO(
+                                    theme.colorScheme.surface.r.round(),
+                                    theme.colorScheme.surface.g.round(),
+                                    theme.colorScheme.surface.b.round(),
+                                    0.8
+                                  ),
                                 ],
                               ),
                             ),
@@ -79,8 +84,12 @@ class ProfileScreen extends HookConsumerWidget {
                               Text(
                                 '@${user.profile.handle}',
                                 style: theme.textTheme.titleMedium?.copyWith(
-                                  color: theme.colorScheme.onSurface
-                                      .withOpacity(0.7),
+                                  color: Color.fromRGBO(
+                                    theme.colorScheme.onSurface.r.round(),
+                                    theme.colorScheme.onSurface.g.round(),
+                                    theme.colorScheme.onSurface.b.round(),
+                                    0.7
+                                  ),
                                 ),
                               ),
                               if (user.profile.description != null) ...[
@@ -99,8 +108,12 @@ class ProfileScreen extends HookConsumerWidget {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 12, horizontal: 24),
                                 decoration: BoxDecoration(
-                                  color: theme.colorScheme.surfaceVariant
-                                      .withOpacity(0.5),
+                                  color: Color.fromRGBO(
+                                    theme.colorScheme.surfaceContainerHighest.r.round(),
+                                    theme.colorScheme.surfaceContainerHighest.g.round(),
+                                    theme.colorScheme.surfaceContainerHighest.b.round(),
+                                    0.5
+                                  ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -117,8 +130,12 @@ class ProfileScreen extends HookConsumerWidget {
                                       width: 1,
                                       margin: const EdgeInsets.symmetric(
                                           horizontal: 24),
-                                      color: theme.colorScheme.onSurface
-                                          .withOpacity(0.1),
+                                      color: Color.fromRGBO(
+                                        theme.colorScheme.onSurface.r.round(),
+                                        theme.colorScheme.onSurface.g.round(),
+                                        theme.colorScheme.onSurface.b.round(),
+                                        0.1
+                                      ),
                                     ),
                                     _buildStat(
                                         context,
@@ -152,7 +169,12 @@ class ProfileScreen extends HookConsumerWidget {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: theme.colorScheme.shadow.withOpacity(0.1),
+                          color: Color.fromRGBO(
+                            theme.colorScheme.shadow.r.round(),
+                            theme.colorScheme.shadow.g.round(),
+                            theme.colorScheme.shadow.b.round(),
+                            0.1
+                          ),
                           blurRadius: 10,
                           spreadRadius: 2,
                         ),
@@ -161,7 +183,12 @@ class ProfileScreen extends HookConsumerWidget {
                     child: CircleAvatar(
                       radius: 50,
                       backgroundColor:
-                          theme.colorScheme.primary.withOpacity(0.1),
+                          Color.fromRGBO(
+                            theme.colorScheme.primary.r.round(),
+                            theme.colorScheme.primary.g.round(),
+                            theme.colorScheme.primary.b.round(),
+                            0.1
+                          ),
                       backgroundImage: user.profile.avatar != null
                           ? NetworkImage(user.profile.avatar!)
                           : null,
@@ -200,7 +227,12 @@ class ProfileScreen extends HookConsumerWidget {
         Text(
           label,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withOpacity(0.7),
+            color: Color.fromRGBO(
+              theme.colorScheme.onSurface.r.round(),
+              theme.colorScheme.onSurface.g.round(),
+              theme.colorScheme.onSurface.b.round(),
+              0.7
+            ),
           ),
         ),
       ],

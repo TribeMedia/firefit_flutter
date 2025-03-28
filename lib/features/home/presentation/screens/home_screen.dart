@@ -4,6 +4,7 @@ import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
 import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -115,6 +116,28 @@ class HomeContent extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(menuControllerProvider.notifier);
     final featuredMenuItemsValue = ref.watch(featuredMenuItemsProvider);
+
+    // Just listen to cart state directly in build (this is allowed)
+    final cartState = ref.watch(productCartProvider);
+
+    // Debug logging when cart state changes
+    cartState.whenData((cart) {
+      debugPrint(
+          '🔄 Home screen cart has ${cart.shoppingCartItems.length} items');
+    });
+
+    // Use a standard hook to perform one-time initialization
+    // This will only run once when the widget is first built
+    final isInitialized = useState(false);
+    useEffect(() {
+      if (!isInitialized.value) {
+        debugPrint(
+            '🛒 Home screen initialized - no manual refresh needed with reactive streams');
+        // No need for manual refresh - the stream will handle cart updates
+        isInitialized.value = true;
+      }
+      return null;
+    }, []);
 
     return featuredMenuItemsValue.when(
       data: (featuredMenuItems) {

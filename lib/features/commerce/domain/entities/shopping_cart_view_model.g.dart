@@ -31,6 +31,10 @@ _ShoppingCartViewModel _$ShoppingCartViewModelFromJson(
       items: (json['items'] as List<dynamic>)
           .map((e) => MenuItemViewModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      shoppingCartItems: (json['shoppingCartItems'] as List<dynamic>)
+          .map((e) =>
+              Fragment$ShoppingCartItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
       subtotal: (json['subtotal'] as num?)?.toDouble(),
       total: (json['total'] as num?)?.toDouble(),
       itemCount: (json['itemCount'] as num?)?.toInt(),
@@ -41,6 +45,8 @@ Map<String, dynamic> _$ShoppingCartViewModelToJson(
     <String, dynamic>{
       'id': instance.id,
       'items': instance.items.map((e) => e.toJson()).toList(),
+      'shoppingCartItems':
+          instance.shoppingCartItems.map((e) => e.toJson()).toList(),
       'subtotal': instance.subtotal,
       'total': instance.total,
       'itemCount': instance.itemCount,

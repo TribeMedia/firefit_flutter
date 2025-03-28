@@ -1,5 +1,6 @@
 import 'package:core/commerce/commerce.dart';
 import 'package:core/commerce/domain/models/order.dart';
+import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/common/common.dart';
 import 'package:core/schema.graphql.dart';
 import 'package:fpdart/fpdart.dart' as fp;
@@ -32,7 +33,10 @@ abstract class OrderRepositoryInterface {
   Future<fp.Either<Failure, ShoppingCart>> updateShoppingCart(
       {required String id, required Input$ShoppingCartsUpdateInput input});
 
-  Future<fp.Either<Failure, ShoppingCartItem>> deleteShoppingCartMenuItem(
+  Future<fp.Either<Failure, ShoppingCartItem>> updateShoppingCartItem(
+      {required String id, required Input$ShoppingCartItemsUpdateInput input});
+
+  Future<fp.Either<Failure, bool>> deleteShoppingCartMenuItem(
       {required String id});
 
   Future<fp.Either<Failure, List<ShoppingCart>>> queryShoppingCarts({
@@ -42,5 +46,10 @@ abstract class OrderRepositoryInterface {
     String? after,
     Input$ShoppingCartsFilter? filter,
     List<Input$ShoppingCartsOrderBy>? orderBy,
+  });
+
+  Future<fp.Either<Failure, Fragment$ShoppingCartItemWithCart?>>
+      getShoppingCartItem({
+    required String id,
   });
 }

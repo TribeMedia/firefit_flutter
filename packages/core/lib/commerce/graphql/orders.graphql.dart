@@ -379,6 +379,433 @@ extension ClientExtension$Fragment$ShoppingCartItem on graphql.GraphQLClient {
   }
 }
 
+class Fragment$ShoppingCartItemWithCart {
+  Fragment$ShoppingCartItemWithCart({
+    required this.id,
+    required this.shoppingCartId,
+    required this.shoppingCart,
+    required this.productId,
+    required this.product,
+    required this.createdAt,
+    required this.unitPrice,
+    required this.quantity,
+    this.$__typename = 'ShoppingCartItems',
+  });
+
+  factory Fragment$ShoppingCartItemWithCart.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$shoppingCartId = json['shoppingCartId'];
+    final l$shoppingCart = json['shoppingCart'];
+    final l$productId = json['productId'];
+    final l$product = json['product'];
+    final l$createdAt = json['createdAt'];
+    final l$unitPrice = json['unitPrice'];
+    final l$quantity = json['quantity'];
+    final l$$__typename = json['__typename'];
+    return Fragment$ShoppingCartItemWithCart(
+      id: (l$id as String),
+      shoppingCartId: (l$shoppingCartId as String),
+      shoppingCart: Fragment$ShoppingCart.fromJson(
+          (l$shoppingCart as Map<String, dynamic>)),
+      productId: (l$productId as String),
+      product: Fragment$Product.fromJson((l$product as Map<String, dynamic>)),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      unitPrice: (l$unitPrice as num).toDouble(),
+      quantity: (l$quantity as int),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String shoppingCartId;
+
+  final Fragment$ShoppingCart shoppingCart;
+
+  final String productId;
+
+  final Fragment$Product product;
+
+  final DateTime createdAt;
+
+  final double unitPrice;
+
+  final int quantity;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$shoppingCartId = shoppingCartId;
+    _resultData['shoppingCartId'] = l$shoppingCartId;
+    final l$shoppingCart = shoppingCart;
+    _resultData['shoppingCart'] = l$shoppingCart.toJson();
+    final l$productId = productId;
+    _resultData['productId'] = l$productId;
+    final l$product = product;
+    _resultData['product'] = l$product.toJson();
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$unitPrice = unitPrice;
+    _resultData['unitPrice'] = l$unitPrice;
+    final l$quantity = quantity;
+    _resultData['quantity'] = l$quantity;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$shoppingCartId = shoppingCartId;
+    final l$shoppingCart = shoppingCart;
+    final l$productId = productId;
+    final l$product = product;
+    final l$createdAt = createdAt;
+    final l$unitPrice = unitPrice;
+    final l$quantity = quantity;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$shoppingCartId,
+      l$shoppingCart,
+      l$productId,
+      l$product,
+      l$createdAt,
+      l$unitPrice,
+      l$quantity,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$ShoppingCartItemWithCart ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$shoppingCartId = shoppingCartId;
+    final lOther$shoppingCartId = other.shoppingCartId;
+    if (l$shoppingCartId != lOther$shoppingCartId) {
+      return false;
+    }
+    final l$shoppingCart = shoppingCart;
+    final lOther$shoppingCart = other.shoppingCart;
+    if (l$shoppingCart != lOther$shoppingCart) {
+      return false;
+    }
+    final l$productId = productId;
+    final lOther$productId = other.productId;
+    if (l$productId != lOther$productId) {
+      return false;
+    }
+    final l$product = product;
+    final lOther$product = other.product;
+    if (l$product != lOther$product) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$unitPrice = unitPrice;
+    final lOther$unitPrice = other.unitPrice;
+    if (l$unitPrice != lOther$unitPrice) {
+      return false;
+    }
+    final l$quantity = quantity;
+    final lOther$quantity = other.quantity;
+    if (l$quantity != lOther$quantity) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$ShoppingCartItemWithCart
+    on Fragment$ShoppingCartItemWithCart {
+  CopyWith$Fragment$ShoppingCartItemWithCart<Fragment$ShoppingCartItemWithCart>
+      get copyWith => CopyWith$Fragment$ShoppingCartItemWithCart(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$ShoppingCartItemWithCart<TRes> {
+  factory CopyWith$Fragment$ShoppingCartItemWithCart(
+    Fragment$ShoppingCartItemWithCart instance,
+    TRes Function(Fragment$ShoppingCartItemWithCart) then,
+  ) = _CopyWithImpl$Fragment$ShoppingCartItemWithCart;
+
+  factory CopyWith$Fragment$ShoppingCartItemWithCart.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$ShoppingCartItemWithCart;
+
+  TRes call({
+    String? id,
+    String? shoppingCartId,
+    Fragment$ShoppingCart? shoppingCart,
+    String? productId,
+    Fragment$Product? product,
+    DateTime? createdAt,
+    double? unitPrice,
+    int? quantity,
+    String? $__typename,
+  });
+  CopyWith$Fragment$ShoppingCart<TRes> get shoppingCart;
+  CopyWith$Fragment$Product<TRes> get product;
+}
+
+class _CopyWithImpl$Fragment$ShoppingCartItemWithCart<TRes>
+    implements CopyWith$Fragment$ShoppingCartItemWithCart<TRes> {
+  _CopyWithImpl$Fragment$ShoppingCartItemWithCart(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$ShoppingCartItemWithCart _instance;
+
+  final TRes Function(Fragment$ShoppingCartItemWithCart) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? shoppingCartId = _undefined,
+    Object? shoppingCart = _undefined,
+    Object? productId = _undefined,
+    Object? product = _undefined,
+    Object? createdAt = _undefined,
+    Object? unitPrice = _undefined,
+    Object? quantity = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$ShoppingCartItemWithCart(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        shoppingCartId: shoppingCartId == _undefined || shoppingCartId == null
+            ? _instance.shoppingCartId
+            : (shoppingCartId as String),
+        shoppingCart: shoppingCart == _undefined || shoppingCart == null
+            ? _instance.shoppingCart
+            : (shoppingCart as Fragment$ShoppingCart),
+        productId: productId == _undefined || productId == null
+            ? _instance.productId
+            : (productId as String),
+        product: product == _undefined || product == null
+            ? _instance.product
+            : (product as Fragment$Product),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        unitPrice: unitPrice == _undefined || unitPrice == null
+            ? _instance.unitPrice
+            : (unitPrice as double),
+        quantity: quantity == _undefined || quantity == null
+            ? _instance.quantity
+            : (quantity as int),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$ShoppingCart<TRes> get shoppingCart {
+    final local$shoppingCart = _instance.shoppingCart;
+    return CopyWith$Fragment$ShoppingCart(
+        local$shoppingCart, (e) => call(shoppingCart: e));
+  }
+
+  CopyWith$Fragment$Product<TRes> get product {
+    final local$product = _instance.product;
+    return CopyWith$Fragment$Product(local$product, (e) => call(product: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$ShoppingCartItemWithCart<TRes>
+    implements CopyWith$Fragment$ShoppingCartItemWithCart<TRes> {
+  _CopyWithStubImpl$Fragment$ShoppingCartItemWithCart(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? shoppingCartId,
+    Fragment$ShoppingCart? shoppingCart,
+    String? productId,
+    Fragment$Product? product,
+    DateTime? createdAt,
+    double? unitPrice,
+    int? quantity,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$ShoppingCart<TRes> get shoppingCart =>
+      CopyWith$Fragment$ShoppingCart.stub(_res);
+
+  CopyWith$Fragment$Product<TRes> get product =>
+      CopyWith$Fragment$Product.stub(_res);
+}
+
+const fragmentDefinitionShoppingCartItemWithCart = FragmentDefinitionNode(
+  name: NameNode(value: 'ShoppingCartItemWithCart'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'ShoppingCartItems'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'shoppingCartId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'shoppingCart'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'ShoppingCart'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'productId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'product'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Product'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'unitPrice'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'quantity'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentShoppingCartItemWithCart = DocumentNode(definitions: [
+  fragmentDefinitionShoppingCartItemWithCart,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
+]);
+
+extension ClientExtension$Fragment$ShoppingCartItemWithCart
+    on graphql.GraphQLClient {
+  void writeFragment$ShoppingCartItemWithCart({
+    required Fragment$ShoppingCartItemWithCart data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'ShoppingCartItemWithCart',
+            document: documentNodeFragmentShoppingCartItemWithCart,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$ShoppingCartItemWithCart? readFragment$ShoppingCartItemWithCart({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'ShoppingCartItemWithCart',
+          document: documentNodeFragmentShoppingCartItemWithCart,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Fragment$ShoppingCartItemWithCart.fromJson(result);
+  }
+}
+
 class Fragment$ShoppingCart {
   Fragment$ShoppingCart({
     required this.id,
@@ -10946,27 +11373,19 @@ class Mutation$DeleteShoppingCartItem$Widget
 
 class Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection {
   Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection({
-    required this.records,
     required this.affectedCount,
     this.$__typename = 'ShoppingCartItemsDeleteResponse',
   });
 
   factory Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection.fromJson(
       Map<String, dynamic> json) {
-    final l$records = json['records'];
     final l$affectedCount = json['affectedCount'];
     final l$$__typename = json['__typename'];
     return Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection(
-      records: (l$records as List<dynamic>)
-          .map((e) =>
-              Fragment$ShoppingCartItem.fromJson((e as Map<String, dynamic>)))
-          .toList(),
       affectedCount: (l$affectedCount as int),
       $__typename: (l$$__typename as String),
     );
   }
-
-  final List<Fragment$ShoppingCartItem> records;
 
   final int affectedCount;
 
@@ -10974,8 +11393,6 @@ class Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$records = records;
-    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
     final l$affectedCount = affectedCount;
     _resultData['affectedCount'] = l$affectedCount;
     final l$$__typename = $__typename;
@@ -10985,11 +11402,9 @@ class Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection {
 
   @override
   int get hashCode {
-    final l$records = records;
     final l$affectedCount = affectedCount;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      Object.hashAll(l$records.map((v) => v)),
       l$affectedCount,
       l$$__typename,
     ]);
@@ -11004,18 +11419,6 @@ class Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection {
             is! Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection ||
         runtimeType != other.runtimeType) {
       return false;
-    }
-    final l$records = records;
-    final lOther$records = other.records;
-    if (l$records.length != lOther$records.length) {
-      return false;
-    }
-    for (int i = 0; i < l$records.length; i++) {
-      final l$records$entry = l$records[i];
-      final lOther$records$entry = lOther$records[i];
-      if (l$records$entry != lOther$records$entry) {
-        return false;
-      }
     }
     final l$affectedCount = affectedCount;
     final lOther$affectedCount = other.affectedCount;
@@ -11057,16 +11460,9 @@ abstract class CopyWith$Mutation$DeleteShoppingCartItem$deleteFromShoppingCartIt
       _CopyWithStubImpl$Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection;
 
   TRes call({
-    List<Fragment$ShoppingCartItem>? records,
     int? affectedCount,
     String? $__typename,
   });
-  TRes records(
-      Iterable<Fragment$ShoppingCartItem> Function(
-              Iterable<
-                  CopyWith$Fragment$ShoppingCartItem<
-                      Fragment$ShoppingCartItem>>)
-          _fn);
 }
 
 class _CopyWithImpl$Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection<
@@ -11089,15 +11485,11 @@ class _CopyWithImpl$Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsC
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? records = _undefined,
     Object? affectedCount = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(
           Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection(
-        records: records == _undefined || records == null
-            ? _instance.records
-            : (records as List<Fragment$ShoppingCartItem>),
         affectedCount: affectedCount == _undefined || affectedCount == null
             ? _instance.affectedCount
             : (affectedCount as int),
@@ -11105,19 +11497,6 @@ class _CopyWithImpl$Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsC
             ? _instance.$__typename
             : ($__typename as String),
       ));
-
-  TRes records(
-          Iterable<Fragment$ShoppingCartItem> Function(
-                  Iterable<
-                      CopyWith$Fragment$ShoppingCartItem<
-                          Fragment$ShoppingCartItem>>)
-              _fn) =>
-      call(
-          records: _fn(
-              _instance.records.map((e) => CopyWith$Fragment$ShoppingCartItem(
-                    e,
-                    (i) => i,
-                  ))).toList());
 }
 
 class _CopyWithStubImpl$Mutation$DeleteShoppingCartItem$deleteFromShoppingCartItemsCollection<
@@ -11131,13 +11510,10 @@ class _CopyWithStubImpl$Mutation$DeleteShoppingCartItem$deleteFromShoppingCartIt
   TRes _res;
 
   call({
-    List<Fragment$ShoppingCartItem>? records,
     int? affectedCount,
     String? $__typename,
   }) =>
       _res;
-
-  records(_fn) => _res;
 }
 
 class Variables$Mutation$DeleteShoppingCart {
@@ -17775,4 +18151,829 @@ class _CopyWithStubImpl$Mutation$DeleteOrderTransaction$deleteFromOrderTransacti
     String? $__typename,
   }) =>
       _res;
+}
+
+class Variables$Query$GetShoppingCartItem {
+  factory Variables$Query$GetShoppingCartItem({required String id}) =>
+      Variables$Query$GetShoppingCartItem._({
+        r'id': id,
+      });
+
+  Variables$Query$GetShoppingCartItem._(this._$data);
+
+  factory Variables$Query$GetShoppingCartItem.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as String);
+    return Variables$Query$GetShoppingCartItem._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get id => (_$data['id'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$GetShoppingCartItem<
+          Variables$Query$GetShoppingCartItem>
+      get copyWith => CopyWith$Variables$Query$GetShoppingCartItem(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Query$GetShoppingCartItem ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    return Object.hashAll([l$id]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$GetShoppingCartItem<TRes> {
+  factory CopyWith$Variables$Query$GetShoppingCartItem(
+    Variables$Query$GetShoppingCartItem instance,
+    TRes Function(Variables$Query$GetShoppingCartItem) then,
+  ) = _CopyWithImpl$Variables$Query$GetShoppingCartItem;
+
+  factory CopyWith$Variables$Query$GetShoppingCartItem.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$GetShoppingCartItem;
+
+  TRes call({String? id});
+}
+
+class _CopyWithImpl$Variables$Query$GetShoppingCartItem<TRes>
+    implements CopyWith$Variables$Query$GetShoppingCartItem<TRes> {
+  _CopyWithImpl$Variables$Query$GetShoppingCartItem(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$GetShoppingCartItem _instance;
+
+  final TRes Function(Variables$Query$GetShoppingCartItem) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? id = _undefined}) =>
+      _then(Variables$Query$GetShoppingCartItem._({
+        ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$GetShoppingCartItem<TRes>
+    implements CopyWith$Variables$Query$GetShoppingCartItem<TRes> {
+  _CopyWithStubImpl$Variables$Query$GetShoppingCartItem(this._res);
+
+  TRes _res;
+
+  call({String? id}) => _res;
+}
+
+class Query$GetShoppingCartItem {
+  Query$GetShoppingCartItem({
+    this.shoppingCartItemsCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$GetShoppingCartItem.fromJson(Map<String, dynamic> json) {
+    final l$shoppingCartItemsCollection = json['shoppingCartItemsCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$GetShoppingCartItem(
+      shoppingCartItemsCollection: l$shoppingCartItemsCollection == null
+          ? null
+          : Query$GetShoppingCartItem$shoppingCartItemsCollection.fromJson(
+              (l$shoppingCartItemsCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$GetShoppingCartItem$shoppingCartItemsCollection?
+      shoppingCartItemsCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$shoppingCartItemsCollection = shoppingCartItemsCollection;
+    _resultData['shoppingCartItemsCollection'] =
+        l$shoppingCartItemsCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$shoppingCartItemsCollection = shoppingCartItemsCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$shoppingCartItemsCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$GetShoppingCartItem ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$shoppingCartItemsCollection = shoppingCartItemsCollection;
+    final lOther$shoppingCartItemsCollection =
+        other.shoppingCartItemsCollection;
+    if (l$shoppingCartItemsCollection != lOther$shoppingCartItemsCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$GetShoppingCartItem
+    on Query$GetShoppingCartItem {
+  CopyWith$Query$GetShoppingCartItem<Query$GetShoppingCartItem> get copyWith =>
+      CopyWith$Query$GetShoppingCartItem(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$GetShoppingCartItem<TRes> {
+  factory CopyWith$Query$GetShoppingCartItem(
+    Query$GetShoppingCartItem instance,
+    TRes Function(Query$GetShoppingCartItem) then,
+  ) = _CopyWithImpl$Query$GetShoppingCartItem;
+
+  factory CopyWith$Query$GetShoppingCartItem.stub(TRes res) =
+      _CopyWithStubImpl$Query$GetShoppingCartItem;
+
+  TRes call({
+    Query$GetShoppingCartItem$shoppingCartItemsCollection?
+        shoppingCartItemsCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection<TRes>
+      get shoppingCartItemsCollection;
+}
+
+class _CopyWithImpl$Query$GetShoppingCartItem<TRes>
+    implements CopyWith$Query$GetShoppingCartItem<TRes> {
+  _CopyWithImpl$Query$GetShoppingCartItem(
+    this._instance,
+    this._then,
+  );
+
+  final Query$GetShoppingCartItem _instance;
+
+  final TRes Function(Query$GetShoppingCartItem) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? shoppingCartItemsCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$GetShoppingCartItem(
+        shoppingCartItemsCollection: shoppingCartItemsCollection == _undefined
+            ? _instance.shoppingCartItemsCollection
+            : (shoppingCartItemsCollection
+                as Query$GetShoppingCartItem$shoppingCartItemsCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection<TRes>
+      get shoppingCartItemsCollection {
+    final local$shoppingCartItemsCollection =
+        _instance.shoppingCartItemsCollection;
+    return local$shoppingCartItemsCollection == null
+        ? CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection.stub(
+            _then(_instance))
+        : CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection(
+            local$shoppingCartItemsCollection,
+            (e) => call(shoppingCartItemsCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$GetShoppingCartItem<TRes>
+    implements CopyWith$Query$GetShoppingCartItem<TRes> {
+  _CopyWithStubImpl$Query$GetShoppingCartItem(this._res);
+
+  TRes _res;
+
+  call({
+    Query$GetShoppingCartItem$shoppingCartItemsCollection?
+        shoppingCartItemsCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection<TRes>
+      get shoppingCartItemsCollection =>
+          CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection.stub(
+              _res);
+}
+
+const documentNodeQueryGetShoppingCartItem = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'GetShoppingCartItem'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'id')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'shoppingCartItemsCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'id'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'id')),
+                  )
+                ]),
+              )
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'ShoppingCartItemWithCart'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionShoppingCartItemWithCart,
+  fragmentDefinitionShoppingCart,
+  fragmentDefinitionShoppingCartItem,
+  fragmentDefinitionProduct,
+]);
+Query$GetShoppingCartItem _parserFn$Query$GetShoppingCartItem(
+        Map<String, dynamic> data) =>
+    Query$GetShoppingCartItem.fromJson(data);
+typedef OnQueryComplete$Query$GetShoppingCartItem = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$GetShoppingCartItem?,
+);
+
+class Options$Query$GetShoppingCartItem
+    extends graphql.QueryOptions<Query$GetShoppingCartItem> {
+  Options$Query$GetShoppingCartItem({
+    String? operationName,
+    required Variables$Query$GetShoppingCartItem variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$GetShoppingCartItem? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$GetShoppingCartItem? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$GetShoppingCartItem(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryGetShoppingCartItem,
+          parserFn: _parserFn$Query$GetShoppingCartItem,
+        );
+
+  final OnQueryComplete$Query$GetShoppingCartItem? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$GetShoppingCartItem
+    extends graphql.WatchQueryOptions<Query$GetShoppingCartItem> {
+  WatchOptions$Query$GetShoppingCartItem({
+    String? operationName,
+    required Variables$Query$GetShoppingCartItem variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$GetShoppingCartItem? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryGetShoppingCartItem,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$GetShoppingCartItem,
+        );
+}
+
+class FetchMoreOptions$Query$GetShoppingCartItem
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$GetShoppingCartItem({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$GetShoppingCartItem variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryGetShoppingCartItem,
+        );
+}
+
+extension ClientExtension$Query$GetShoppingCartItem on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$GetShoppingCartItem>>
+      query$GetShoppingCartItem(
+              Options$Query$GetShoppingCartItem options) async =>
+          await this.query(options);
+  graphql.ObservableQuery<Query$GetShoppingCartItem>
+      watchQuery$GetShoppingCartItem(
+              WatchOptions$Query$GetShoppingCartItem options) =>
+          this.watchQuery(options);
+  void writeQuery$GetShoppingCartItem({
+    required Query$GetShoppingCartItem data,
+    required Variables$Query$GetShoppingCartItem variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation:
+              graphql.Operation(document: documentNodeQueryGetShoppingCartItem),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$GetShoppingCartItem? readQuery$GetShoppingCartItem({
+    required Variables$Query$GetShoppingCartItem variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation:
+            graphql.Operation(document: documentNodeQueryGetShoppingCartItem),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$GetShoppingCartItem.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$GetShoppingCartItem>
+    useQuery$GetShoppingCartItem(Options$Query$GetShoppingCartItem options) =>
+        graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$GetShoppingCartItem>
+    useWatchQuery$GetShoppingCartItem(
+            WatchOptions$Query$GetShoppingCartItem options) =>
+        graphql_flutter.useWatchQuery(options);
+
+class Query$GetShoppingCartItem$Widget
+    extends graphql_flutter.Query<Query$GetShoppingCartItem> {
+  Query$GetShoppingCartItem$Widget({
+    widgets.Key? key,
+    required Options$Query$GetShoppingCartItem options,
+    required graphql_flutter.QueryBuilder<Query$GetShoppingCartItem> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
+}
+
+class Query$GetShoppingCartItem$shoppingCartItemsCollection {
+  Query$GetShoppingCartItem$shoppingCartItemsCollection({
+    required this.edges,
+    this.$__typename = 'ShoppingCartItemsConnection',
+  });
+
+  factory Query$GetShoppingCartItem$shoppingCartItemsCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$GetShoppingCartItem$shoppingCartItemsCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Query$GetShoppingCartItem$shoppingCartItemsCollection$edges
+                  .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$GetShoppingCartItem$shoppingCartItemsCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$GetShoppingCartItem$shoppingCartItemsCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$GetShoppingCartItem$shoppingCartItemsCollection
+    on Query$GetShoppingCartItem$shoppingCartItemsCollection {
+  CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection<
+          Query$GetShoppingCartItem$shoppingCartItemsCollection>
+      get copyWith =>
+          CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection<
+    TRes> {
+  factory CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection(
+    Query$GetShoppingCartItem$shoppingCartItemsCollection instance,
+    TRes Function(Query$GetShoppingCartItem$shoppingCartItemsCollection) then,
+  ) = _CopyWithImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection;
+
+  factory CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection;
+
+  TRes call({
+    List<Query$GetShoppingCartItem$shoppingCartItemsCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$GetShoppingCartItem$shoppingCartItemsCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+                      Query$GetShoppingCartItem$shoppingCartItemsCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection<TRes>
+    implements
+        CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection<TRes> {
+  _CopyWithImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$GetShoppingCartItem$shoppingCartItemsCollection _instance;
+
+  final TRes Function(Query$GetShoppingCartItem$shoppingCartItemsCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$GetShoppingCartItem$shoppingCartItemsCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<
+                Query$GetShoppingCartItem$shoppingCartItemsCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$GetShoppingCartItem$shoppingCartItemsCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+                          Query$GetShoppingCartItem$shoppingCartItemsCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection<
+        TRes>
+    implements
+        CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection<TRes> {
+  _CopyWithStubImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$GetShoppingCartItem$shoppingCartItemsCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Query$GetShoppingCartItem$shoppingCartItemsCollection$edges {
+  Query$GetShoppingCartItem$shoppingCartItemsCollection$edges({
+    required this.node,
+    this.$__typename = 'ShoppingCartItemsEdge',
+  });
+
+  factory Query$GetShoppingCartItem$shoppingCartItemsCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$GetShoppingCartItem$shoppingCartItemsCollection$edges(
+      node: Fragment$ShoppingCartItemWithCart.fromJson(
+          (l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$ShoppingCartItemWithCart node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$GetShoppingCartItem$shoppingCartItemsCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges
+    on Query$GetShoppingCartItem$shoppingCartItemsCollection$edges {
+  CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+          Query$GetShoppingCartItem$shoppingCartItemsCollection$edges>
+      get copyWith =>
+          CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+    TRes> {
+  factory CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges(
+    Query$GetShoppingCartItem$shoppingCartItemsCollection$edges instance,
+    TRes Function(Query$GetShoppingCartItem$shoppingCartItemsCollection$edges)
+        then,
+  ) = _CopyWithImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges;
+
+  factory CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges;
+
+  TRes call({
+    Fragment$ShoppingCartItemWithCart? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$ShoppingCartItemWithCart<TRes> get node;
+}
+
+class _CopyWithImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+            TRes> {
+  _CopyWithImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$GetShoppingCartItem$shoppingCartItemsCollection$edges _instance;
+
+  final TRes Function(
+      Query$GetShoppingCartItem$shoppingCartItemsCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$GetShoppingCartItem$shoppingCartItemsCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$ShoppingCartItemWithCart),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$ShoppingCartItemWithCart<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$ShoppingCartItemWithCart(
+        local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges<
+            TRes> {
+  _CopyWithStubImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$ShoppingCartItemWithCart? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$ShoppingCartItemWithCart<TRes> get node =>
+      CopyWith$Fragment$ShoppingCartItemWithCart.stub(_res);
 }

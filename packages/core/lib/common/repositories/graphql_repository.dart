@@ -5,12 +5,13 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 class GraphQLRepository {
-  GraphQLRepository(
-      {
-        required this.talker,
-        required this.env,
-      }) {
+  HiveStore? hiveStore;
 
+  GraphQLRepository({
+    required this.talker,
+    required this.env,
+    this.hiveStore,
+  }) {
     final AuthLink authLink = AuthLink(
       getToken: () => env.supabaseKey,
     );
@@ -31,5 +32,3 @@ class GraphQLRepository {
   final Talker talker;
   final EnvInterface env;
 }
-
-

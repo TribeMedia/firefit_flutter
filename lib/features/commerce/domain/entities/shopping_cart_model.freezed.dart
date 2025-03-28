@@ -15,11 +15,11 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ShoppingCartModel {
-  List<Fragment$ShoppingCartItem>
-      get items; // Use Fragment$ShoppingCartItem directly
-  double get totalPrice;
-  List<ShoppingCartViewModel> get shoppingCarts;
+  List<Fragment$ShoppingCart> get shoppingCarts;
   String? get currentCartId;
+  Fragment$ShoppingCart? get currentCart;
+  String? get error;
+  bool get isLoading;
 
   /// Create a copy of ShoppingCartModel
   /// with the given fields replaced by the non-null parameter values.
@@ -34,26 +34,29 @@ mixin _$ShoppingCartModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ShoppingCartModel &&
-            const DeepCollectionEquality().equals(other.items, items) &&
-            (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice) &&
             const DeepCollectionEquality()
                 .equals(other.shoppingCarts, shoppingCarts) &&
             (identical(other.currentCartId, currentCartId) ||
-                other.currentCartId == currentCartId));
+                other.currentCartId == currentCartId) &&
+            (identical(other.currentCart, currentCart) ||
+                other.currentCart == currentCart) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(items),
-      totalPrice,
       const DeepCollectionEquality().hash(shoppingCarts),
-      currentCartId);
+      currentCartId,
+      currentCart,
+      error,
+      isLoading);
 
   @override
   String toString() {
-    return 'ShoppingCartModel(items: $items, totalPrice: $totalPrice, shoppingCarts: $shoppingCarts, currentCartId: $currentCartId)';
+    return 'ShoppingCartModel(shoppingCarts: $shoppingCarts, currentCartId: $currentCartId, currentCart: $currentCart, error: $error, isLoading: $isLoading)';
   }
 }
 
@@ -64,10 +67,11 @@ abstract mixin class $ShoppingCartModelCopyWith<$Res> {
       _$ShoppingCartModelCopyWithImpl;
   @useResult
   $Res call(
-      {List<Fragment$ShoppingCartItem> items,
-      double totalPrice,
-      List<ShoppingCartViewModel> shoppingCarts,
-      String? currentCartId});
+      {List<Fragment$ShoppingCart> shoppingCarts,
+      String? currentCartId,
+      Fragment$ShoppingCart? currentCart,
+      String? error,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -83,60 +87,53 @@ class _$ShoppingCartModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = null,
-    Object? totalPrice = null,
     Object? shoppingCarts = null,
     Object? currentCartId = freezed,
+    Object? currentCart = freezed,
+    Object? error = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_self.copyWith(
-      items: null == items
-          ? _self.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Fragment$ShoppingCartItem>,
-      totalPrice: null == totalPrice
-          ? _self.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
-              as double,
       shoppingCarts: null == shoppingCarts
           ? _self.shoppingCarts
           : shoppingCarts // ignore: cast_nullable_to_non_nullable
-              as List<ShoppingCartViewModel>,
+              as List<Fragment$ShoppingCart>,
       currentCartId: freezed == currentCartId
           ? _self.currentCartId
           : currentCartId // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentCart: freezed == currentCart
+          ? _self.currentCart
+          : currentCart // ignore: cast_nullable_to_non_nullable
+              as Fragment$ShoppingCart?,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _ShoppingCartModel implements ShoppingCartModel {
+class _ShoppingCartModel extends ShoppingCartModel {
   const _ShoppingCartModel(
-      {final List<Fragment$ShoppingCartItem> items = const [],
-      this.totalPrice = 0.0,
-      final List<ShoppingCartViewModel> shoppingCarts = const [],
-      this.currentCartId})
-      : _items = items,
-        _shoppingCarts = shoppingCarts;
+      {final List<Fragment$ShoppingCart> shoppingCarts = const [],
+      this.currentCartId,
+      this.currentCart,
+      this.error,
+      this.isLoading = false})
+      : _shoppingCarts = shoppingCarts,
+        super._();
 
-  final List<Fragment$ShoppingCartItem> _items;
+  final List<Fragment$ShoppingCart> _shoppingCarts;
   @override
   @JsonKey()
-  List<Fragment$ShoppingCartItem> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-// Use Fragment$ShoppingCartItem directly
-  @override
-  @JsonKey()
-  final double totalPrice;
-  final List<ShoppingCartViewModel> _shoppingCarts;
-  @override
-  @JsonKey()
-  List<ShoppingCartViewModel> get shoppingCarts {
+  List<Fragment$ShoppingCart> get shoppingCarts {
     if (_shoppingCarts is EqualUnmodifiableListView) return _shoppingCarts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_shoppingCarts);
@@ -144,6 +141,13 @@ class _ShoppingCartModel implements ShoppingCartModel {
 
   @override
   final String? currentCartId;
+  @override
+  final Fragment$ShoppingCart? currentCart;
+  @override
+  final String? error;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   /// Create a copy of ShoppingCartModel
   /// with the given fields replaced by the non-null parameter values.
@@ -158,26 +162,29 @@ class _ShoppingCartModel implements ShoppingCartModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ShoppingCartModel &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice) &&
             const DeepCollectionEquality()
                 .equals(other._shoppingCarts, _shoppingCarts) &&
             (identical(other.currentCartId, currentCartId) ||
-                other.currentCartId == currentCartId));
+                other.currentCartId == currentCartId) &&
+            (identical(other.currentCart, currentCart) ||
+                other.currentCart == currentCart) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_items),
-      totalPrice,
       const DeepCollectionEquality().hash(_shoppingCarts),
-      currentCartId);
+      currentCartId,
+      currentCart,
+      error,
+      isLoading);
 
   @override
   String toString() {
-    return 'ShoppingCartModel(items: $items, totalPrice: $totalPrice, shoppingCarts: $shoppingCarts, currentCartId: $currentCartId)';
+    return 'ShoppingCartModel(shoppingCarts: $shoppingCarts, currentCartId: $currentCartId, currentCart: $currentCart, error: $error, isLoading: $isLoading)';
   }
 }
 
@@ -190,10 +197,11 @@ abstract mixin class _$ShoppingCartModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Fragment$ShoppingCartItem> items,
-      double totalPrice,
-      List<ShoppingCartViewModel> shoppingCarts,
-      String? currentCartId});
+      {List<Fragment$ShoppingCart> shoppingCarts,
+      String? currentCartId,
+      Fragment$ShoppingCart? currentCart,
+      String? error,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -209,28 +217,33 @@ class __$ShoppingCartModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? items = null,
-    Object? totalPrice = null,
     Object? shoppingCarts = null,
     Object? currentCartId = freezed,
+    Object? currentCart = freezed,
+    Object? error = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_ShoppingCartModel(
-      items: null == items
-          ? _self._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Fragment$ShoppingCartItem>,
-      totalPrice: null == totalPrice
-          ? _self.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
-              as double,
       shoppingCarts: null == shoppingCarts
           ? _self._shoppingCarts
           : shoppingCarts // ignore: cast_nullable_to_non_nullable
-              as List<ShoppingCartViewModel>,
+              as List<Fragment$ShoppingCart>,
       currentCartId: freezed == currentCartId
           ? _self.currentCartId
           : currentCartId // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentCart: freezed == currentCart
+          ? _self.currentCart
+          : currentCart // ignore: cast_nullable_to_non_nullable
+              as Fragment$ShoppingCart?,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoading: null == isLoading
+          ? _self.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }

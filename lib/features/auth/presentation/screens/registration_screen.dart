@@ -330,11 +330,6 @@ class RegistrationScreen extends HookConsumerWidget {
                                 onPressed: () {
                                   if (formGroup.valid) {
                                     final formData = formGroup.value;
-                                    final pdsServer = formGroup
-                                            .control('pdsServer')
-                                            .value
-                                            ?.toString() ??
-                                        'bsky.social';
                                     authNotifier.register(
                                       email: formData['email'].toString(),
                                       password: formData['password'].toString(),

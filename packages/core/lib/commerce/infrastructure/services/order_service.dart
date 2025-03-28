@@ -22,7 +22,11 @@ class OrderService implements OrderServiceInterface {
         return fp.Either.left(Failure.unprocessableEntity(message: 'Cart is empty'));
       }
       final newOrderId = const Uuid().v4();
-      final shoppingCartItems = cart.shoppingCartItemsCollection!.edges;
+      // For future implementation, we'll use these cart items
+      // final shoppingCartItems = cart.shoppingCartItemsCollection!.edges;
+      // Create order items (will be used when actual creation is implemented)
+      // For now we're tracking it in a comment to document the planned functionality
+      /* 
       final orderItems = shoppingCartItems.map((item) {
         return Input$OrderItemsInsertInput(
           productId: item.node.product.id,
@@ -31,6 +35,7 @@ class OrderService implements OrderServiceInterface {
           unitPrice: item.node.unitPrice,
         );
       });
+      */
 
       final userResult = await userRepository.queryUsers(
         filter: Input$UsersFilter(

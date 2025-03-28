@@ -11,8 +11,13 @@ import 'package:graphql/client.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 class ProductRepository extends ProductRepositoryInterface {
-  ProductRepository({required this.talker, required this.env}) {
-    graphQLRepository = GraphQLRepository(talker: talker, env: env);
+  ProductRepository({
+    required this.talker,
+    required this.env,
+    this.hiveStore,
+  }) {
+    graphQLRepository =
+        GraphQLRepository(talker: talker, env: env, hiveStore: hiveStore);
     graphqlClient = graphQLRepository.graphqlClient;
   }
 
@@ -20,6 +25,7 @@ class ProductRepository extends ProductRepositoryInterface {
   late GraphQLClient graphqlClient;
   final EnvInterface env;
   final Talker talker;
+  final HiveStore? hiveStore;
 
   @override
   Future<Either<Failure, List<Product>>> queryProducts({

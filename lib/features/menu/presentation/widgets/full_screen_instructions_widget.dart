@@ -2,6 +2,7 @@ import 'package:firefit/features/menu/presentation/widgets/timer_notifier.dart';
 import 'package:firefit/features/menu/presentation/widgets/tiny_timer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FullScreenInstructions extends ConsumerWidget {
@@ -21,7 +22,7 @@ class FullScreenInstructions extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         backgroundColor: colorScheme.surface,
         elevation: 0,
@@ -48,12 +49,14 @@ class FullScreenInstructions extends ConsumerWidget {
             ),
             onPressed: () {
               // Implement sharing functionality here
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text('Sharing instructions...'),
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: colorScheme.primary,
-                ),
+              Fluttertoast.showToast(
+                msg: 'Sharing instructions...',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: colorScheme.primary,
+                textColor: colorScheme.onPrimary,
+                fontSize: 16.0,
               );
             },
           ),
@@ -65,12 +68,14 @@ class FullScreenInstructions extends ConsumerWidget {
             ),
             onPressed: () {
               // Implement print functionality here
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text('Preparing to print...'),
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: colorScheme.primary,
-                ),
+              Fluttertoast.showToast(
+                msg: 'Preparing to print...',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: colorScheme.primary,
+                textColor: colorScheme.onPrimary,
+                fontSize: 16.0,
               );
             },
           ),
@@ -87,7 +92,7 @@ class FullScreenInstructions extends ConsumerWidget {
                 title,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: colorScheme.onBackground,
+                  color: colorScheme.onSurface,
                 ),
               ),
             ),
@@ -95,7 +100,7 @@ class FullScreenInstructions extends ConsumerWidget {
             // Divider
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Divider(color: colorScheme.outline.withOpacity(0.3)),
+              child: Divider(color: colorScheme.outline.withValues(alpha: 0.3)),
             ),
 
             // Instructions in a scrollable container
@@ -105,7 +110,7 @@ class FullScreenInstructions extends ConsumerWidget {
                 padding: const EdgeInsets.all(20),
                 styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
                   p: theme.textTheme.bodyLarge?.copyWith(
-                    color: colorScheme.onBackground,
+                    color: colorScheme.onSurface,
                     height: 1.6,
                   ),
                   h1: theme.textTheme.headlineMedium?.copyWith(
@@ -134,23 +139,23 @@ class FullScreenInstructions extends ConsumerWidget {
                     decoration: TextDecoration.underline,
                   ),
                   blockquote: theme.textTheme.bodyLarge?.copyWith(
-                    color: colorScheme.onBackground.withOpacity(0.8),
+                    color: colorScheme.onSurface.withValues(alpha: 0.8),
                     fontStyle: FontStyle.italic,
                   ),
                   blockquoteDecoration: BoxDecoration(
-                    color: colorScheme.surfaceVariant.withOpacity(0.3),
+                    color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: colorScheme.primary.withOpacity(0.2),
+                      color: colorScheme.primary.withValues(alpha: 0.2),
                     ),
                   ),
                   blockquotePadding: const EdgeInsets.all(16),
                   tableHead: theme.textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: colorScheme.onBackground,
+                    color: colorScheme.onSurface,
                   ),
                   tableBorder: TableBorder.all(
-                    color: colorScheme.outline.withOpacity(0.3),
+                    color: colorScheme.outline.withValues(alpha: 0.3),
                     width: 1,
                     borderRadius: BorderRadius.circular(4),
                   ),
@@ -159,15 +164,15 @@ class FullScreenInstructions extends ConsumerWidget {
                   code: theme.textTheme.bodyMedium?.copyWith(
                     fontFamily: 'monospace',
                     backgroundColor: colorScheme.surfaceContainerHighest
-                        .withAlpha((255 * 0.5).round()),
+                        .withValues(alpha: 0.5),
                     color: colorScheme.primary,
                   ),
                   codeblockDecoration: BoxDecoration(
                     color: colorScheme.surfaceContainerHighest
-                        .withAlpha((255 * 0.2).round()),
+                        .withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: colorScheme.outline.withAlpha((255 * 0.2).round()),
+                      color: colorScheme.outline.withValues(alpha: 0.2),
                     ),
                   ),
                   codeblockPadding: const EdgeInsets.all(16),
@@ -185,7 +190,7 @@ class FullScreenInstructions extends ConsumerWidget {
                   BoxShadow(
                     offset: const Offset(0, -2),
                     blurRadius: 6,
-                    color: Colors.black.withOpacity(0.06),
+                    color: Colors.black.withValues(alpha: 0.06),
                   ),
                 ],
               ),
@@ -197,12 +202,14 @@ class FullScreenInstructions extends ConsumerWidget {
                     child: OutlinedButton.icon(
                       onPressed: () {
                         // Save to favorites logic
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('Saved to favorites!'),
-                            behavior: SnackBarBehavior.floating,
-                            backgroundColor: colorScheme.primary,
-                          ),
+                        Fluttertoast.showToast(
+                          msg: 'Saved to favorites!',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: colorScheme.primary,
+                          textColor: colorScheme.onPrimary,
+                          fontSize: 16.0,
                         );
                       },
                       icon: const Icon(Icons.bookmark_border),
@@ -246,13 +253,14 @@ class FullScreenInstructions extends ConsumerWidget {
                               duration: timerState.initial,
                               onComplete: () {
                                 // Timer completed notification
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: const Text('Timer completed!'),
-                                    behavior: SnackBarBehavior.floating,
-                                    backgroundColor: colorScheme.primary,
-                                    duration: const Duration(seconds: 5),
-                                  ),
+                                Fluttertoast.showToast(
+                                  msg: 'Timer completed!',
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 5,
+                                  backgroundColor: colorScheme.primary,
+                                  textColor: colorScheme.onPrimary,
+                                  fontSize: 16.0,
                                 );
                               },
                               onCancel: () {
@@ -290,12 +298,14 @@ class FullScreenInstructions extends ConsumerWidget {
       Navigator.pop(context);
       ref.read(timerProvider.notifier).start(duration);
 
-      scaffoldMessenger.showSnackBar(
-        SnackBar(
-          content: Text('Timer set for $label'),
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: colorScheme.primary,
-        ),
+      Fluttertoast.showToast(
+        msg: 'Timer set for $label',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 2,
+        backgroundColor: colorScheme.primary,
+        textColor: colorScheme.onPrimary,
+        fontSize: 16.0,
       );
     }
 
@@ -486,22 +496,27 @@ class FullScreenInstructions extends ConsumerWidget {
 
                     // Show confirmation
                     String durationText = '';
-                    if (hours > 0)
+                    if (hours > 0) {
                       durationText += '$hours hour${hours > 1 ? 's' : ''} ';
-                    if (minutes > 0)
+                    }
+                    if (minutes > 0) {
                       durationText +=
                           '$minutes minute${minutes > 1 ? 's' : ''} ';
-                    if (seconds > 0)
+                    }
+                    if (seconds > 0) {
                       durationText +=
                           '$seconds second${seconds > 1 ? 's' : ''}';
+                    }
                     if (durationText.isEmpty) durationText = '0 seconds';
 
-                    scaffoldMessenger.showSnackBar(
-                      SnackBar(
-                        content: Text('Timer set for $durationText'),
-                        behavior: SnackBarBehavior.floating,
-                        backgroundColor: colorScheme.primary,
-                      ),
+                    Fluttertoast.showToast(
+                      msg: 'Timer set for $durationText',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 2,
+                      backgroundColor: colorScheme.primary,
+                      textColor: colorScheme.onPrimary,
+                      fontSize: 16.0,
                     );
                   }
                 },
@@ -536,7 +551,7 @@ class FullScreenInstructions extends ConsumerWidget {
         Container(
           width: 80,
           decoration: BoxDecoration(
-            border: Border.all(color: colorScheme.outline.withOpacity(0.3)),
+            border: Border.all(color: colorScheme.outline.withValues(alpha: 0.3)),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
@@ -585,7 +600,7 @@ class FullScreenInstructions extends ConsumerWidget {
       VoidCallback onPressed, ThemeData theme, ColorScheme colorScheme) {
     return ActionChip(
       label: Text(timeLabel),
-      backgroundColor: colorScheme.surfaceVariant,
+      backgroundColor: colorScheme.surfaceContainerHighest,
       labelStyle: theme.textTheme.bodyMedium?.copyWith(
         color: colorScheme.onSurfaceVariant,
         fontWeight: FontWeight.bold,

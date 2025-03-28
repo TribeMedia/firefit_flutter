@@ -103,12 +103,13 @@ class _$MenuItemViewModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _MenuItemViewModel implements MenuItemViewModel {
+class _MenuItemViewModel extends MenuItemViewModel {
   const _MenuItemViewModel(
       {required this.id,
       required this.name,
       required this.price,
-      this.imageUrl});
+      this.imageUrl})
+      : super._();
   factory _MenuItemViewModel.fromJson(Map<String, dynamic> json) =>
       _$MenuItemViewModelFromJson(json);
 
@@ -212,6 +213,7 @@ class __$MenuItemViewModelCopyWithImpl<$Res>
 mixin _$ShoppingCartViewModel {
   String get id;
   List<MenuItemViewModel> get items;
+  List<ShoppingCartItem> get shoppingCartItems;
   double? get subtotal;
   double? get total;
   int? get itemCount;
@@ -234,6 +236,8 @@ mixin _$ShoppingCartViewModel {
             other is ShoppingCartViewModel &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other.items, items) &&
+            const DeepCollectionEquality()
+                .equals(other.shoppingCartItems, shoppingCartItems) &&
             (identical(other.subtotal, subtotal) ||
                 other.subtotal == subtotal) &&
             (identical(other.total, total) || other.total == total) &&
@@ -243,12 +247,18 @@ mixin _$ShoppingCartViewModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id,
-      const DeepCollectionEquality().hash(items), subtotal, total, itemCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      const DeepCollectionEquality().hash(items),
+      const DeepCollectionEquality().hash(shoppingCartItems),
+      subtotal,
+      total,
+      itemCount);
 
   @override
   String toString() {
-    return 'ShoppingCartViewModel(id: $id, items: $items, subtotal: $subtotal, total: $total, itemCount: $itemCount)';
+    return 'ShoppingCartViewModel(id: $id, items: $items, shoppingCartItems: $shoppingCartItems, subtotal: $subtotal, total: $total, itemCount: $itemCount)';
   }
 }
 
@@ -261,6 +271,7 @@ abstract mixin class $ShoppingCartViewModelCopyWith<$Res> {
   $Res call(
       {String id,
       List<MenuItemViewModel> items,
+      List<Fragment$ShoppingCartItem> shoppingCartItems,
       double? subtotal,
       double? total,
       int? itemCount});
@@ -281,6 +292,7 @@ class _$ShoppingCartViewModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? items = null,
+    Object? shoppingCartItems = null,
     Object? subtotal = freezed,
     Object? total = freezed,
     Object? itemCount = freezed,
@@ -294,6 +306,10 @@ class _$ShoppingCartViewModelCopyWithImpl<$Res>
           ? _self.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<MenuItemViewModel>,
+      shoppingCartItems: null == shoppingCartItems
+          ? _self.shoppingCartItems!
+          : shoppingCartItems // ignore: cast_nullable_to_non_nullable
+              as List<Fragment$ShoppingCartItem>,
       subtotal: freezed == subtotal
           ? _self.subtotal
           : subtotal // ignore: cast_nullable_to_non_nullable
@@ -312,14 +328,17 @@ class _$ShoppingCartViewModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _ShoppingCartViewModel implements ShoppingCartViewModel {
+class _ShoppingCartViewModel extends ShoppingCartViewModel {
   const _ShoppingCartViewModel(
       {required this.id,
       required final List<MenuItemViewModel> items,
+      required final List<Fragment$ShoppingCartItem> shoppingCartItems,
       this.subtotal,
       this.total,
       this.itemCount})
-      : _items = items;
+      : _items = items,
+        _shoppingCartItems = shoppingCartItems,
+        super._();
   factory _ShoppingCartViewModel.fromJson(Map<String, dynamic> json) =>
       _$ShoppingCartViewModelFromJson(json);
 
@@ -331,6 +350,15 @@ class _ShoppingCartViewModel implements ShoppingCartViewModel {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
+  }
+
+  final List<Fragment$ShoppingCartItem> _shoppingCartItems;
+  @override
+  List<Fragment$ShoppingCartItem> get shoppingCartItems {
+    if (_shoppingCartItems is EqualUnmodifiableListView)
+      return _shoppingCartItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_shoppingCartItems);
   }
 
   @override
@@ -363,6 +391,8 @@ class _ShoppingCartViewModel implements ShoppingCartViewModel {
             other is _ShoppingCartViewModel &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
+            const DeepCollectionEquality()
+                .equals(other._shoppingCartItems, _shoppingCartItems) &&
             (identical(other.subtotal, subtotal) ||
                 other.subtotal == subtotal) &&
             (identical(other.total, total) || other.total == total) &&
@@ -372,12 +402,18 @@ class _ShoppingCartViewModel implements ShoppingCartViewModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id,
-      const DeepCollectionEquality().hash(_items), subtotal, total, itemCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      const DeepCollectionEquality().hash(_items),
+      const DeepCollectionEquality().hash(_shoppingCartItems),
+      subtotal,
+      total,
+      itemCount);
 
   @override
   String toString() {
-    return 'ShoppingCartViewModel(id: $id, items: $items, subtotal: $subtotal, total: $total, itemCount: $itemCount)';
+    return 'ShoppingCartViewModel(id: $id, items: $items, shoppingCartItems: $shoppingCartItems, subtotal: $subtotal, total: $total, itemCount: $itemCount)';
   }
 }
 
@@ -392,6 +428,7 @@ abstract mixin class _$ShoppingCartViewModelCopyWith<$Res>
   $Res call(
       {String id,
       List<MenuItemViewModel> items,
+      List<Fragment$ShoppingCartItem> shoppingCartItems,
       double? subtotal,
       double? total,
       int? itemCount});
@@ -412,6 +449,7 @@ class __$ShoppingCartViewModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? items = null,
+    Object? shoppingCartItems = null,
     Object? subtotal = freezed,
     Object? total = freezed,
     Object? itemCount = freezed,
@@ -425,6 +463,10 @@ class __$ShoppingCartViewModelCopyWithImpl<$Res>
           ? _self._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<MenuItemViewModel>,
+      shoppingCartItems: null == shoppingCartItems
+          ? _self._shoppingCartItems
+          : shoppingCartItems // ignore: cast_nullable_to_non_nullable
+              as List<Fragment$ShoppingCartItem>,
       subtotal: freezed == subtotal
           ? _self.subtotal
           : subtotal // ignore: cast_nullable_to_non_nullable

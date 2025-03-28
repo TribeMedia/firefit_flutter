@@ -37,6 +37,9 @@ class TimerState {
 // A notifier to handle timer state
 class TimerNotifier extends StateNotifier<TimerState> {
   Timer? _timer;
+  // We need to keep the Ref for future feature expansion
+  // where we might need to access other providers
+  // ignore: unused_field
   final Ref _ref;
 
   TimerNotifier(this._ref)

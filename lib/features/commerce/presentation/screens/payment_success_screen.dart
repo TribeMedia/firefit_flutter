@@ -90,7 +90,9 @@ class PaymentSuccessScreen extends ConsumerWidget {
                 Text(
                   'Thank you for your purchase',
                   style: theme.textTheme.titleMedium?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(
+                      alpha: 0.7,
+                    ),
                   ),
                   textAlign: TextAlign.center,
                 ).animate().fadeIn(delay: const Duration(milliseconds: 400)),
@@ -261,7 +263,7 @@ class PaymentSuccessScreen extends ConsumerWidget {
         Icon(
           icon,
           size: 20,
-          color: theme.colorScheme.primary.withOpacity(0.7),
+          color: theme.colorScheme.primary.withValues(alpha: 0.7),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -269,7 +271,9 @@ class PaymentSuccessScreen extends ConsumerWidget {
           child: Text(
             label,
             style: theme.textTheme.bodyLarge?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(
+                alpha: 0.7,
+              ),
             ),
           ),
         ),

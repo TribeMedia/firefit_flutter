@@ -57,8 +57,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       return fp.Right(response
@@ -82,8 +81,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       return fp.Right(response
@@ -107,8 +105,7 @@ class OrderRepository extends OrderRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return fp.Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       return fp.Right(
@@ -120,7 +117,7 @@ class OrderRepository extends OrderRepositoryInterface {
   }
 
   @override
-  Future<fp.Either<Failure, ShoppingCartItem>> deleteShoppingCartMenuItem(
+  Future<fp.Either<Failure, bool>> deleteShoppingCartMenuItem(
       {required String id}) async {
     try {
       final response = await graphqlClient.mutate$DeleteShoppingCartItem(
@@ -136,7 +133,8 @@ class OrderRepository extends OrderRepositoryInterface {
       }
 
       return fp.Right(response
-          .parsedData!.deleteFromShoppingCartItemsCollection.records.first);
+              .parsedData!.deleteFromShoppingCartItemsCollection.affectedCount >
+          0);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
@@ -276,6 +274,62 @@ class OrderRepository extends OrderRepositoryInterface {
 
       return fp.Right(response
           .parsedData!.insertIntoShoppingCartItemsCollection!.records.first);
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<fp.Either<Failure, ShoppingCartItem>> updateShoppingCartItem(
+      {required String id,
+      required Input$ShoppingCartItemsUpdateInput input}) async {
+    try {
+      final response = await graphqlClient.mutate$UpdateShoppingCartItem(
+        Options$Mutation$UpdateShoppingCartItem(
+          variables: Variables$Mutation$UpdateShoppingCartItem(
+            id: id,
+            input: input,
+          ),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      if (response.parsedData != null) {
+        return fp.Right(response
+            .parsedData!.updateShoppingCartItemsCollection.records.first);
+      }
+      return const fp.Left(Failure.empty());
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+  
+  @override
+  Future<fp.Either<Failure, Fragment$ShoppingCartItemWithCart?>> getShoppingCartItem({required String id}) async {
+    try {
+      final response = await graphqlClient.query$GetShoppingCartItem(
+        Options$Query$GetShoppingCartItem(
+          variables: Variables$Query$GetShoppingCartItem(id: id),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      if (response.parsedData != null && response.parsedData!.shoppingCartItemsCollection?.edges.isNotEmpty == true) {
+        return fp.Right(response.parsedData!.shoppingCartItemsCollection?.edges.first.node);
+      }
+      return fp.Right(null);
     } catch (e) {
       debugPrint('$e');
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));

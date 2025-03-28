@@ -1,6 +1,7 @@
 import 'package:firefit/features/feed/domain/models/feed_post.dart';
 import 'package:firefit/features/feed/presentation/widgets/feed_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FeedScreen extends ConsumerWidget {
@@ -19,8 +20,14 @@ class FeedScreen extends ConsumerWidget {
             icon: const Icon(Icons.refresh),
             onPressed: () {
               // In a real app, you would refresh the feed here
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Refreshing feed...')),
+              Fluttertoast.showToast(
+                msg: 'Refreshing feed...',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                textColor: Theme.of(context).colorScheme.onPrimary,
+                fontSize: 16.0,
               );
             },
           ),

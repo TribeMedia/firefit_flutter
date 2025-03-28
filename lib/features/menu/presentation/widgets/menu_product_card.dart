@@ -1,12 +1,14 @@
 import 'package:core/core.dart';
 import 'package:firefit/features/menu/presentation/widgets/full_screen_instructions_widget.dart';
-import 'package:firefit/features/menu/presentation/widgets/timer_notifier.dart';
+// Timer import removed as it's no longer needed
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // TabController provider
-final tabControllerProvider = Provider.autoDispose.family<TabController, BuildContext>((ref, context) {
+final tabControllerProvider =
+    Provider.autoDispose.family<TabController, BuildContext>((ref, context) {
   final controller = TabController(length: 2, vsync: Scaffold.of(context));
   ref.onDispose(() {
     controller.dispose();
@@ -44,7 +46,8 @@ class MenuProductCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timerState = ref.watch(timerProvider);
+    // Timer state is no longer needed directly in this widget
+    // final timerState = ref.watch(timerProvider);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final quantity = ref.watch(quantityProvider);
@@ -56,7 +59,7 @@ class MenuProductCard extends ConsumerWidget {
     return SafeArea(
       bottom: true,
       child: Scaffold(
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         appBar: AppBar(
           backgroundColor: colorScheme.surface,
           elevation: 0,
@@ -76,101 +79,108 @@ class MenuProductCard extends ConsumerWidget {
           ),
         ),
         // Add persistent bottom button for cart
-        bottomNavigationBar: _buildAddToCartBar(context, ref, colorScheme, theme, quantity),
-        body: Builder(
-            builder: (scaffoldContext) {
-              // Get the TabController from the provider with the correct BuildContext
-              final tabController = ref.watch(tabControllerProvider(scaffoldContext));
+        bottomNavigationBar:
+            _buildAddToCartBar(context, ref, colorScheme, theme, quantity),
+        body: Builder(builder: (scaffoldContext) {
+          // Get the TabController from the provider with the correct BuildContext
+          final tabController =
+              ref.watch(tabControllerProvider(scaffoldContext));
 
-              return LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Product Image
-                      _buildProductImage(colorScheme),
+          return LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Product Image
+                  _buildProductImage(colorScheme),
 
-                      // Product Details
-                      _buildProductDetails(theme, colorScheme),
+                  // Product Details
+                  _buildProductDetails(theme, colorScheme),
 
-                      // Tab bar for Overview and Instructions
-                      if (productMenuItem.instructions != null &&
-                          productMenuItem.instructions!.isNotEmpty) ...[
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: colorScheme.surfaceVariant.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: TabBar(
-                              controller: tabController,
-                              labelColor: colorScheme.primary,
-                              unselectedLabelColor: colorScheme.onSurfaceVariant,
-                              indicatorColor: colorScheme.primary,
-                              indicatorSize: TabBarIndicatorSize.tab,
-                              dividerColor: Colors.transparent,
-                              tabs: [
-                                // Simple text tab for Overview
-                                const Tab(text: 'Overview'),
+                  // Tab bar for Overview and Instructions
+                  if (productMenuItem.instructions != null &&
+                      productMenuItem.instructions!.isNotEmpty) ...[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(
+                              colorScheme.surfaceContainerHighest.r.round(),
+                              colorScheme.surfaceContainerHighest.g.round(),
+                              colorScheme.surfaceContainerHighest.b.round(),
+                              0.3),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: TabBar(
+                          controller: tabController,
+                          labelColor: colorScheme.primary,
+                          unselectedLabelColor: colorScheme.onSurfaceVariant,
+                          indicatorColor: colorScheme.primary,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          dividerColor: Colors.transparent,
+                          tabs: [
+                            // Simple text tab for Overview
+                            const Tab(text: 'Overview'),
 
-                                // Custom tab with text and button for Instructions
-                                Tab(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Text('Instructions'),
-                                      const SizedBox(width: 8),
-                                      // Small button for fullscreen
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) => FullScreenInstructions(
-                                                title: productMenuItem.name,
-                                                instructions: productMenuItem.instructions ?? '',
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        borderRadius: BorderRadius.circular(4),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
-                                          child: Icon(
-                                            Icons.fullscreen,
-                                            size: 18,
-                                            color: colorScheme.primary,
+                            // Custom tab with text and button for Instructions
+                            Tab(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text('Instructions'),
+                                  const SizedBox(width: 8),
+                                  // Small button for fullscreen
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              FullScreenInstructions(
+                                            title: productMenuItem.name,
+                                            instructions:
+                                                productMenuItem.instructions ??
+                                                    '',
                                           ),
                                         ),
+                                      );
+                                    },
+                                    borderRadius: BorderRadius.circular(4),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Icon(
+                                        Icons.fullscreen,
+                                        size: 18,
+                                        color: colorScheme.primary,
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
+                      ),
+                    ),
 
-                        // Tab content - expanded to fill remaining space
-                        Expanded(
-                          child: TabBarView(
-                            controller: tabController,
-                            children: [
-                              // Overview Tab
-                              _buildOverviewTab(theme, colorScheme),
+                    // Tab content - expanded to fill remaining space
+                    Expanded(
+                      child: TabBarView(
+                        controller: tabController,
+                        children: [
+                          // Overview Tab
+                          _buildOverviewTab(theme, colorScheme),
 
-                              // Instructions Tab
-                              _buildInstructionsTab(context, theme, colorScheme),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ],
-                  );
-                },
+                          // Instructions Tab
+                          _buildInstructionsTab(context, theme, colorScheme),
+                        ],
+                      ),
+                    ),
+                  ],
+                ],
               );
-            }
-        ),
+            },
+          );
+        }),
       ),
     );
   }
@@ -178,41 +188,41 @@ class MenuProductCard extends ConsumerWidget {
   Widget _buildProductImage(ColorScheme colorScheme) {
     return productMenuItem.photoUrl != null
         ? SizedBox(
-      width: double.infinity,
-      child: AspectRatio(
-        aspectRatio: 16 / 9,
-        child: Image.network(
-          productMenuItem.photoUrl!,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) => Container(
-            color: colorScheme.surfaceVariant,
-            child: Center(
-              child: Icon(
-                Icons.image_not_supported,
-                size: 40,
-                color: colorScheme.onSurfaceVariant,
+            width: double.infinity,
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Image.network(
+                productMenuItem.photoUrl!,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: colorScheme.surfaceContainerHighest,
+                  child: Center(
+                    child: Icon(
+                      Icons.image_not_supported,
+                      size: 40,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      ),
-    )
+          )
         : AspectRatio(
-      aspectRatio: 16 / 9,
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: colorScheme.surfaceVariant,
-        ),
-        child: Center(
-          child: Icon(
-            Icons.fastfood,
-            size: 40,
-            color: colorScheme.onSurfaceVariant,
-          ),
-        ),
-      ),
-    );
+            aspectRatio: 16 / 9,
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: colorScheme.surfaceContainerHighest,
+              ),
+              child: Center(
+                child: Icon(
+                  Icons.fastfood,
+                  size: 40,
+                  color: colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ),
+          );
   }
 
   Widget _buildProductDetails(ThemeData theme, ColorScheme colorScheme) {
@@ -230,7 +240,7 @@ class MenuProductCard extends ConsumerWidget {
                   productMenuItem.name,
                   style: theme.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: colorScheme.onBackground,
+                    color: colorScheme.onSurface,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -253,7 +263,7 @@ class MenuProductCard extends ConsumerWidget {
             Text(
               productMenuItem.shortDescription!,
               style: theme.textTheme.bodyLarge?.copyWith(
-                color: colorScheme.onBackground,
+                color: colorScheme.onSurface,
               ),
             ),
           ],
@@ -264,7 +274,11 @@ class MenuProductCard extends ConsumerWidget {
             Text(
               'Unit: ${productMenuItem.unit}',
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: colorScheme.onBackground.withOpacity(0.8),
+                color: Color.fromRGBO(
+                    colorScheme.onSurface.r.round(),
+                    colorScheme.onSurface.g.round(),
+                    colorScheme.onSurface.b.round(),
+                    0.8),
               ),
             ),
           ],
@@ -283,7 +297,7 @@ class MenuProductCard extends ConsumerWidget {
             'About this item',
             style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
-              color: colorScheme.onBackground,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 8),
@@ -291,7 +305,7 @@ class MenuProductCard extends ConsumerWidget {
           Text(
             'This product is prepared freshly for your enjoyment. Our dishes are made with high-quality ingredients sourced locally when possible.',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onBackground,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
@@ -301,7 +315,8 @@ class MenuProductCard extends ConsumerWidget {
     );
   }
 
-  Widget _buildInstructionsTab(BuildContext context, ThemeData theme, ColorScheme colorScheme) {
+  Widget _buildInstructionsTab(
+      BuildContext context, ThemeData theme, ColorScheme colorScheme) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
@@ -311,7 +326,7 @@ class MenuProductCard extends ConsumerWidget {
           color: colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Color.fromRGBO(0, 0, 0, 0.05),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -322,7 +337,7 @@ class MenuProductCard extends ConsumerWidget {
           padding: const EdgeInsets.all(16),
           styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
             p: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onBackground,
+              color: colorScheme.onSurface,
               height: 1.5,
             ),
             h1: theme.textTheme.headlineSmall?.copyWith(
@@ -345,20 +360,32 @@ class MenuProductCard extends ConsumerWidget {
               decoration: TextDecoration.underline,
             ),
             blockquote: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onBackground.withOpacity(0.8),
+              color: Color.fromRGBO(
+                  colorScheme.onSurface.r.round(),
+                  colorScheme.onSurface.g.round(),
+                  colorScheme.onSurface.b.round(),
+                  0.8),
               fontStyle: FontStyle.italic,
             ),
             blockquoteDecoration: BoxDecoration(
-              color: colorScheme.surfaceVariant.withOpacity(0.3),
+              color: Color.fromRGBO(
+                  colorScheme.surfaceContainerHighest.r.round(),
+                  colorScheme.surfaceContainerHighest.g.round(),
+                  colorScheme.surfaceContainerHighest.b.round(),
+                  0.3),
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
-                color: colorScheme.primary.withOpacity(0.2),
+                color: Color.fromRGBO(
+                    colorScheme.primary.r.round(),
+                    colorScheme.primary.g.round(),
+                    colorScheme.primary.b.round(),
+                    0.2),
               ),
             ),
             blockquotePadding: const EdgeInsets.all(16),
             tableHead: theme.textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.bold,
-              color: colorScheme.onBackground,
+              color: colorScheme.onSurface,
             ),
           ),
           shrinkWrap: false,
@@ -368,7 +395,8 @@ class MenuProductCard extends ConsumerWidget {
     );
   }
 
-  Widget _buildAddToCartBar(BuildContext context, WidgetRef ref, ColorScheme colorScheme, ThemeData theme, int quantity) {
+  Widget _buildAddToCartBar(BuildContext context, WidgetRef ref,
+      ColorScheme colorScheme, ThemeData theme, int quantity) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
@@ -377,7 +405,7 @@ class MenuProductCard extends ConsumerWidget {
           BoxShadow(
             offset: const Offset(0, -2),
             blurRadius: 6,
-            color: Colors.black.withOpacity(0.1),
+            color: Color.fromRGBO(0, 0, 0, 0.1),
           ),
         ],
       ),
@@ -386,7 +414,12 @@ class MenuProductCard extends ConsumerWidget {
           // Quantity Controls
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: colorScheme.outline.withOpacity(0.3)),
+              border: Border.all(
+                  color: Color.fromRGBO(
+                      colorScheme.outline.r.round(),
+                      colorScheme.outline.g.round(),
+                      colorScheme.outline.b.round(),
+                      0.3)),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -398,7 +431,11 @@ class MenuProductCard extends ConsumerWidget {
                     Icons.remove,
                     color: quantity > 1
                         ? colorScheme.primary
-                        : colorScheme.outline.withOpacity(0.3),
+                        : Color.fromRGBO(
+                            colorScheme.outline.r.round(),
+                            colorScheme.outline.g.round(),
+                            colorScheme.outline.b.round(),
+                            0.3),
                   ),
                   onPressed: () => _decrementQuantity(ref),
                   constraints: const BoxConstraints(
@@ -447,14 +484,14 @@ class MenuProductCard extends ConsumerWidget {
                   // Reset quantity after adding to cart
                   ref.read(quantityProvider.notifier).state = 1;
 
-                  // Show a snackbar confirmation
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Added to cart!'),
-                      behavior: SnackBarBehavior.floating,
-                      backgroundColor: colorScheme.primary,
-                      duration: const Duration(seconds: 2),
-                    ),
+                  Fluttertoast.showToast(
+                    msg: 'Added to cart!',
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: colorScheme.primary,
+                    textColor: colorScheme.onPrimary,
+                    fontSize: 16.0,
                   );
                 }
               },

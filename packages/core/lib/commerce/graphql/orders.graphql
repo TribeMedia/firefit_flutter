@@ -11,6 +11,21 @@ fragment ShoppingCartItem on ShoppingCartItems {
   quantity
 }
 
+fragment ShoppingCartItemWithCart on ShoppingCartItems {
+  id
+  shoppingCartId
+  shoppingCart {
+    ...ShoppingCart
+  }
+  productId
+  product {
+    ...Product
+  }
+  createdAt
+  unitPrice
+  quantity
+}
+
 fragment ShoppingCart on ShoppingCarts {
   id
   userId
@@ -204,9 +219,6 @@ mutation CreateShoppingCartItem($input: ShoppingCartItemsInsertInput!) {
 
 mutation DeleteShoppingCartItem($id: UUID!) {
   deleteFromShoppingCartItemsCollection(filter: { id: { eq: $id } }) {
-    records {
-      ...ShoppingCartItem
-    }
     affectedCount
   }
 }
@@ -328,3 +340,12 @@ mutation DeleteOrderTransaction($id: UUID!) {
   }
 }
 
+query GetShoppingCartItem($id: UUID!) {
+  shoppingCartItemsCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...ShoppingCartItemWithCart
+      }
+    }
+  }
+}

@@ -55,7 +55,7 @@ class OrderDetailScreen extends ConsumerWidget {
         color: theme.scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Color.fromRGBO(0, 0, 0, 0.05),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -117,8 +117,10 @@ class OrderDetailScreen extends ConsumerWidget {
   Widget _buildOrderItemsList(BuildContext context) {
     final shadTheme = ShadTheme.of(context);
 
-    if (order.orderItemsCollection?.edges == null ||
-        order.orderItemsCollection!.edges!.isEmpty) {
+    final collection = order.orderItemsCollection;
+    final edges = collection?.edges;
+    
+    if (collection == null || edges == null || edges.isEmpty) {
       return Center(
         child: Text(
           'No items in this order',
@@ -129,10 +131,11 @@ class OrderDetailScreen extends ConsumerWidget {
 
     return ListView.separated(
       padding: const EdgeInsets.all(16.0),
-      itemCount: order.orderItemsCollection!.edges!.length,
+      // We've checked that edges isn't null above
+      itemCount: edges.length,
       separatorBuilder: (context, index) => const Divider(),
       itemBuilder: (context, index) {
-        final item = order.orderItemsCollection!.edges![index].node;
+        final item = edges[index].node;
         final product = item.product;
         final totalPrice = item.unitPrice * item.quantity;
         final formattedPrice =
@@ -207,7 +210,7 @@ class OrderDetailScreen extends ConsumerWidget {
             color: theme.scaffoldBackgroundColor,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Color.fromRGBO(0, 0, 0, 0.1),
                 blurRadius: 4,
                 offset: const Offset(0, -2),
               ),
@@ -233,7 +236,7 @@ class OrderDetailScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Tax (${formattedTax})',
+                    'Tax ($formattedTax)',
                     style: shadTheme.textTheme.p,
                   ),
                   Text(

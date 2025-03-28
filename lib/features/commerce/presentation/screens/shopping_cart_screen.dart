@@ -1,11 +1,12 @@
 import 'package:core/commerce/domain/models/order.dart';
 import 'package:core/commerce/tax/domain/services/stripe_payment_service_interface.dart';
+import 'package:firefit/config/providers.dart';
 import 'package:firefit/features/auth/providers/user_notifier.dart';
-import 'package:firefit/features/commerce/domain/entities/shopping_cart_view_model.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/commerce/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
@@ -46,7 +47,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
                           if (item.quantity > 1) {
                             ref
                                 .read(shoppingCartProvider.notifier)
-                                .updateQuantity(item.id, item.quantity - 1);
+                                .updateItemQuantity(item.id, -1);
                           } else {
                             ref
                                 .read(shoppingCartProvider.notifier)
@@ -60,7 +61,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
                         onPressed: () {
                           ref
                               .read(shoppingCartProvider.notifier)
-                              .updateQuantity(item.id, item.quantity + 1);
+                              .updateItemQuantity(item.id, 1);
                         },
                       ),
                     ],
@@ -142,8 +143,14 @@ class ShoppingCartScreen extends HookConsumerWidget {
       if (userState.user == null) {
         // Close loading dialog
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('You need to be logged in to checkout')),
+        Fluttertoast.showToast(
+          msg: 'You need to be logged in to checkout',
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
         );
         return;
       }
@@ -167,10 +174,13 @@ class ShoppingCartScreen extends HookConsumerWidget {
       }
 
       // Check if we need to add clearCart method
-      if (!cartState.shoppingCarts
-          .any((cart) => cart.id == cartState.currentCartId)) {
+      if (cartState.currentCartId != null &&
+          !cartState.shoppingCarts
+              .any((cart) => cart.id == cartState.currentCartId)) {
         // Log error but continue with payment
-        print('Warning: Could not find current cart in shopping carts list');
+        ref
+            .read(loggingProvider)
+            .warning('Could not find current cart in shopping carts list');
       }
 
       // Create payment intent request
@@ -196,10 +206,14 @@ class ShoppingCartScreen extends HookConsumerWidget {
       if (paymentIntentResponse.success == null ||
           !paymentIntentResponse.success!) {
         // Show error message
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  'Error: ${paymentIntentResponse.errorMessage ?? "Unknown error creating payment intent"}')),
+        Fluttertoast.showToast(
+          msg: 'Error: ${paymentIntentResponse.errorMessage ?? "Unknown error creating payment intent"}',
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
         );
         return;
       }
@@ -226,15 +240,7 @@ class ShoppingCartScreen extends HookConsumerWidget {
       // Handle successful payment - get current cart from the shopping cart state
       if (cartState.currentCartId != null) {
         // Find the current cart from shopping carts list
-        ShoppingCartViewModel? currentCart;
-        try {
-          currentCart = cartState.shoppingCarts.firstWhere(
-            (cart) => cart.id == cartState.currentCartId,
-          );
-        } catch (_) {
-          // Cart not found
-          currentCart = null;
-        }
+        final currentCart = cartState.currentCart; // Get current cart directly
 
         if (currentCart != null) {
           // Create a ShoppingCart instance for createOrder with required fields
@@ -253,9 +259,14 @@ class ShoppingCartScreen extends HookConsumerWidget {
 
           result.fold(
             (failure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                    content: Text('Error creating order: ${failure.error}')),
+              Fluttertoast.showToast(
+                msg: 'Error creating order: ${failure.error}',
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 3,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0,
               );
             },
             (order) {
@@ -263,9 +274,14 @@ class ShoppingCartScreen extends HookConsumerWidget {
               ref.read(shoppingCartProvider.notifier).clearCart();
 
               // Show success message
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                    content: Text('Payment successful! Order created.')),
+              Fluttertoast.showToast(
+                msg: 'Payment successful! Order created.',
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 3,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0,
               );
 
               // Navigate to orders screen or home
@@ -273,14 +289,25 @@ class ShoppingCartScreen extends HookConsumerWidget {
             },
           );
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text('Error: Could not find shopping cart')),
+          Fluttertoast.showToast(
+            msg: 'Error: Could not find shopping cart',
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0,
           );
         }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Error: No active shopping cart')),
+        Fluttertoast.showToast(
+          msg: 'Error: No active shopping cart',
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
         );
       }
     } catch (e) {
@@ -294,12 +321,24 @@ class ShoppingCartScreen extends HookConsumerWidget {
 
       // Handle errors from Stripe
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Payment error: ${e.error.localizedMessage}')),
+        Fluttertoast.showToast(
+          msg: 'Payment error: ${e.error.localizedMessage}',
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
+        Fluttertoast.showToast(
+          msg: 'Error: $e',
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
         );
       }
     }

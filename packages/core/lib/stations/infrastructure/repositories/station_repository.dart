@@ -161,7 +161,8 @@ class StationRepository extends StationRepositoryInterface {
   }
 
   @override
-  Future<Either<Failure, Station>> getStationByCode({required String id}) async {
+  Future<Either<Failure, Station>> getStationByCode(
+      {required String id}) async {
     try {
       final response = await graphqlClient.query$Station(
         Options$Query$Station(
@@ -172,8 +173,7 @@ class StationRepository extends StationRepositoryInterface {
       if (response.hasException) {
         debugPrint('${response.exception}');
         return Left(Failure.unprocessableEntity(
-            message:
-                response.exception.toString() ?? 'Unknown error occurred'));
+            message: response.exception.toString()));
       }
 
       if (response.parsedData != null &&

@@ -3,9 +3,9 @@ import 'package:firefit/config/providers.dart';
 import 'package:firefit/env/env.dart';
 import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
-import 'package:fpdart/fpdart.dart' as fp;
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:fpdart/fpdart.dart' as fp;
+import 'package:intl/intl.dart' hide TextDirection;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'providers.g.dart';
