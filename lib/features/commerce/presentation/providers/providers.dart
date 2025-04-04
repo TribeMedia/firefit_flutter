@@ -1,8 +1,12 @@
 import 'package:core/core.dart';
 import 'package:firefit/config/providers.dart';
 import 'package:firefit/env/env.dart';
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
+import 'package:firefit/features/commerce/presentation/providers/delivery_location_provider.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
+import 'package:firefit/features/menu/providers.dart';
+
+// Re-export providers
+export 'package:firefit/features/commerce/presentation/providers/delivery_location_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 import 'package:intl/intl.dart' hide TextDirection;
@@ -99,7 +103,7 @@ class OrderController extends _$OrderController {
           },
           (r) async {
             await load(homeState.user!);
-            ref.invalidate(shoppingCartProvider);
+            ref.invalidate(productCartProvider);
             return fp.right(order);
           },
         );
@@ -165,7 +169,7 @@ class OrderTotals {
   final String formattedSubtotal;
   final String formattedTax;
   final String formattedTotal;
-  
+
   OrderTotals({
     required this.subtotal,
     required this.tax,
@@ -183,7 +187,7 @@ final orderTotalsProvider = Provider.family<OrderTotals, Order>(
     // Calculate total items and order amount
     int totalItems = 0;
     double subtotal = 0;
-    
+
     if (order.orderItemsCollection?.edges != null) {
       for (final edge in order.orderItemsCollection!.edges) {
         final item = edge.node;
@@ -191,17 +195,17 @@ final orderTotalsProvider = Provider.family<OrderTotals, Order>(
         subtotal += (item.unitPrice * item.quantity);
       }
     }
-    
+
     // Calculate tax and total (assuming 8.25% tax rate)
     final tax = subtotal * 0.0825;
     final total = subtotal + tax;
-    
+
     // Format currency amounts
     final currencyFormat = NumberFormat.currency(symbol: '\$');
     final formattedSubtotal = currencyFormat.format(subtotal);
     final formattedTax = currencyFormat.format(tax);
     final formattedTotal = currencyFormat.format(total);
-    
+
     return OrderTotals(
       subtotal: subtotal,
       tax: tax,

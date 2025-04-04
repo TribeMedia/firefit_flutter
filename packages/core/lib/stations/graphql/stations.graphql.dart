@@ -1,3 +1,4 @@
+import '../../common/graphql/address.graphql.dart';
 import '../../schema.graphql.dart';
 import 'dart:async';
 import 'package:flutter/widgets.dart' as widgets;
@@ -8,17 +9,13 @@ import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 class Fragment$Station {
   Fragment$Station({
     required this.id,
+    required this.siteId,
     required this.name,
     this.number,
     this.description,
     this.longDescription,
+    required this.addressId,
     required this.address,
-    this.address1,
-    required this.city,
-    required this.state,
-    required this.zip,
-    this.latitude,
-    this.longitude,
     this.imageUrl,
     this.coverUrl,
     required this.registrationCode,
@@ -28,17 +25,13 @@ class Fragment$Station {
 
   factory Fragment$Station.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
+    final l$siteId = json['siteId'];
     final l$name = json['name'];
     final l$number = json['number'];
     final l$description = json['description'];
     final l$longDescription = json['longDescription'];
+    final l$addressId = json['addressId'];
     final l$address = json['address'];
-    final l$address1 = json['address1'];
-    final l$city = json['city'];
-    final l$state = json['state'];
-    final l$zip = json['zip'];
-    final l$latitude = json['latitude'];
-    final l$longitude = json['longitude'];
     final l$imageUrl = json['imageUrl'];
     final l$coverUrl = json['coverUrl'];
     final l$registrationCode = json['registrationCode'];
@@ -46,17 +39,13 @@ class Fragment$Station {
     final l$$__typename = json['__typename'];
     return Fragment$Station(
       id: (l$id as String),
+      siteId: (l$siteId as String),
       name: (l$name as String),
       number: (l$number as int?),
       description: (l$description as String?),
       longDescription: (l$longDescription as String?),
-      address: (l$address as String),
-      address1: (l$address1 as String?),
-      city: (l$city as String),
-      state: (l$state as String),
-      zip: (l$zip as String),
-      latitude: (l$latitude as num?)?.toDouble(),
-      longitude: (l$longitude as num?)?.toDouble(),
+      addressId: (l$addressId as String),
+      address: Fragment$Address.fromJson((l$address as Map<String, dynamic>)),
       imageUrl: (l$imageUrl as String?),
       coverUrl: (l$coverUrl as String?),
       registrationCode: (l$registrationCode as String),
@@ -67,6 +56,8 @@ class Fragment$Station {
 
   final String id;
 
+  final String siteId;
+
   final String name;
 
   final int? number;
@@ -75,19 +66,9 @@ class Fragment$Station {
 
   final String? longDescription;
 
-  final String address;
+  final String addressId;
 
-  final String? address1;
-
-  final String city;
-
-  final String state;
-
-  final String zip;
-
-  final double? latitude;
-
-  final double? longitude;
+  final Fragment$Address address;
 
   final String? imageUrl;
 
@@ -103,6 +84,8 @@ class Fragment$Station {
     final _resultData = <String, dynamic>{};
     final l$id = id;
     _resultData['id'] = l$id;
+    final l$siteId = siteId;
+    _resultData['siteId'] = l$siteId;
     final l$name = name;
     _resultData['name'] = l$name;
     final l$number = number;
@@ -111,20 +94,10 @@ class Fragment$Station {
     _resultData['description'] = l$description;
     final l$longDescription = longDescription;
     _resultData['longDescription'] = l$longDescription;
+    final l$addressId = addressId;
+    _resultData['addressId'] = l$addressId;
     final l$address = address;
-    _resultData['address'] = l$address;
-    final l$address1 = address1;
-    _resultData['address1'] = l$address1;
-    final l$city = city;
-    _resultData['city'] = l$city;
-    final l$state = state;
-    _resultData['state'] = l$state;
-    final l$zip = zip;
-    _resultData['zip'] = l$zip;
-    final l$latitude = latitude;
-    _resultData['latitude'] = l$latitude;
-    final l$longitude = longitude;
-    _resultData['longitude'] = l$longitude;
+    _resultData['address'] = l$address.toJson();
     final l$imageUrl = imageUrl;
     _resultData['imageUrl'] = l$imageUrl;
     final l$coverUrl = coverUrl;
@@ -141,17 +114,13 @@ class Fragment$Station {
   @override
   int get hashCode {
     final l$id = id;
+    final l$siteId = siteId;
     final l$name = name;
     final l$number = number;
     final l$description = description;
     final l$longDescription = longDescription;
+    final l$addressId = addressId;
     final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$imageUrl = imageUrl;
     final l$coverUrl = coverUrl;
     final l$registrationCode = registrationCode;
@@ -159,17 +128,13 @@ class Fragment$Station {
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
+      l$siteId,
       l$name,
       l$number,
       l$description,
       l$longDescription,
+      l$addressId,
       l$address,
-      l$address1,
-      l$city,
-      l$state,
-      l$zip,
-      l$latitude,
-      l$longitude,
       l$imageUrl,
       l$coverUrl,
       l$registrationCode,
@@ -189,6 +154,11 @@ class Fragment$Station {
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (l$siteId != lOther$siteId) {
       return false;
     }
     final l$name = name;
@@ -211,39 +181,14 @@ class Fragment$Station {
     if (l$longDescription != lOther$longDescription) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     final l$address = address;
     final lOther$address = other.address;
     if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (l$zip != lOther$zip) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (l$longitude != lOther$longitude) {
       return false;
     }
     final l$imageUrl = imageUrl;
@@ -294,23 +239,20 @@ abstract class CopyWith$Fragment$Station<TRes> {
 
   TRes call({
     String? id,
+    String? siteId,
     String? name,
     int? number,
     String? description,
     String? longDescription,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
+    String? addressId,
+    Fragment$Address? address,
     String? imageUrl,
     String? coverUrl,
     String? registrationCode,
     DateTime? createdAt,
     String? $__typename,
   });
+  CopyWith$Fragment$Address<TRes> get address;
 }
 
 class _CopyWithImpl$Fragment$Station<TRes>
@@ -328,17 +270,13 @@ class _CopyWithImpl$Fragment$Station<TRes>
 
   TRes call({
     Object? id = _undefined,
+    Object? siteId = _undefined,
     Object? name = _undefined,
     Object? number = _undefined,
     Object? description = _undefined,
     Object? longDescription = _undefined,
+    Object? addressId = _undefined,
     Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? imageUrl = _undefined,
     Object? coverUrl = _undefined,
     Object? registrationCode = _undefined,
@@ -347,6 +285,9 @@ class _CopyWithImpl$Fragment$Station<TRes>
   }) =>
       _then(Fragment$Station(
         id: id == _undefined || id == null ? _instance.id : (id as String),
+        siteId: siteId == _undefined || siteId == null
+            ? _instance.siteId
+            : (siteId as String),
         name: name == _undefined || name == null
             ? _instance.name
             : (name as String),
@@ -357,23 +298,12 @@ class _CopyWithImpl$Fragment$Station<TRes>
         longDescription: longDescription == _undefined
             ? _instance.longDescription
             : (longDescription as String?),
+        addressId: addressId == _undefined || addressId == null
+            ? _instance.addressId
+            : (addressId as String),
         address: address == _undefined || address == null
             ? _instance.address
-            : (address as String),
-        address1:
-            address1 == _undefined ? _instance.address1 : (address1 as String?),
-        city: city == _undefined || city == null
-            ? _instance.city
-            : (city as String),
-        state: state == _undefined || state == null
-            ? _instance.state
-            : (state as String),
-        zip: zip == _undefined || zip == null ? _instance.zip : (zip as String),
-        latitude:
-            latitude == _undefined ? _instance.latitude : (latitude as double?),
-        longitude: longitude == _undefined
-            ? _instance.longitude
-            : (longitude as double?),
+            : (address as Fragment$Address),
         imageUrl:
             imageUrl == _undefined ? _instance.imageUrl : (imageUrl as String?),
         coverUrl:
@@ -389,6 +319,11 @@ class _CopyWithImpl$Fragment$Station<TRes>
             ? _instance.$__typename
             : ($__typename as String),
       ));
+
+  CopyWith$Fragment$Address<TRes> get address {
+    final local$address = _instance.address;
+    return CopyWith$Fragment$Address(local$address, (e) => call(address: e));
+  }
 }
 
 class _CopyWithStubImpl$Fragment$Station<TRes>
@@ -399,17 +334,13 @@ class _CopyWithStubImpl$Fragment$Station<TRes>
 
   call({
     String? id,
+    String? siteId,
     String? name,
     int? number,
     String? description,
     String? longDescription,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
+    String? addressId,
+    Fragment$Address? address,
     String? imageUrl,
     String? coverUrl,
     String? registrationCode,
@@ -417,6 +348,9 @@ class _CopyWithStubImpl$Fragment$Station<TRes>
     String? $__typename,
   }) =>
       _res;
+
+  CopyWith$Fragment$Address<TRes> get address =>
+      CopyWith$Fragment$Address.stub(_res);
 }
 
 const fragmentDefinitionStation = FragmentDefinitionNode(
@@ -430,6 +364,13 @@ const fragmentDefinitionStation = FragmentDefinitionNode(
   selectionSet: SelectionSetNode(selections: [
     FieldNode(
       name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'siteId'),
       alias: null,
       arguments: [],
       directives: [],
@@ -464,53 +405,30 @@ const fragmentDefinitionStation = FragmentDefinitionNode(
       selectionSet: null,
     ),
     FieldNode(
+      name: NameNode(value: 'addressId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
       name: NameNode(value: 'address'),
       alias: null,
       arguments: [],
       directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'address1'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'city'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'state'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'zip'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'latitude'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'longitude'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Address'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
     ),
     FieldNode(
       name: NameNode(value: 'imageUrl'),
@@ -551,6 +469,7 @@ const fragmentDefinitionStation = FragmentDefinitionNode(
 );
 const documentNodeFragmentStation = DocumentNode(definitions: [
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 
 extension ClientExtension$Fragment$Station on graphql.GraphQLClient {
@@ -954,6 +873,7 @@ const documentNodeQueryStation = DocumentNode(definitions: [
     ]),
   ),
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 Query$Station _parserFn$Query$Station(Map<String, dynamic> data) =>
     Query$Station.fromJson(data);
@@ -2258,6 +2178,7 @@ const documentNodeQueryStationCollection = DocumentNode(definitions: [
     ]),
   ),
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 Query$StationCollection _parserFn$Query$StationCollection(
         Map<String, dynamic> data) =>
@@ -3313,6 +3234,7 @@ const documentNodeMutationUpdateStation = DocumentNode(definitions: [
     ]),
   ),
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 Mutation$UpdateStation _parserFn$Mutation$UpdateStation(
         Map<String, dynamic> data) =>
@@ -4025,6 +3947,7 @@ const documentNodeMutationCreateStation = DocumentNode(definitions: [
     ]),
   ),
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 Mutation$CreateStation _parserFn$Mutation$CreateStation(
         Map<String, dynamic> data) =>
@@ -4747,6 +4670,7 @@ const documentNodeMutationDeleteStation = DocumentNode(definitions: [
     ]),
   ),
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 Mutation$DeleteStation _parserFn$Mutation$DeleteStation(
         Map<String, dynamic> data) =>

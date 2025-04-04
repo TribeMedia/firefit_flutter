@@ -1,7 +1,10 @@
+import '../../common/graphql/address.graphql.dart';
+import '../../organizations/graphql/organizations.graphql.dart';
 import '../../schema.graphql.dart';
 import '../../stations/graphql/stations.graphql.dart';
 import '../../users/graphql/users.graphql.dart';
 import 'dart:async';
+import 'package:core/scalars.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
@@ -804,6 +807,2248 @@ extension ClientExtension$Fragment$ShoppingCartItemWithCart
         ? null
         : Fragment$ShoppingCartItemWithCart.fromJson(result);
   }
+}
+
+class Fragment$DeliveryPeriod {
+  Fragment$DeliveryPeriod({
+    required this.id,
+    this.title,
+    required this.startDate,
+    required this.endDate,
+    this.deliveryLocationCollection,
+    required this.isCurrent,
+    required this.createdAt,
+    this.$__typename = 'DeliveryPeriod',
+  });
+
+  factory Fragment$DeliveryPeriod.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$startDate = json['startDate'];
+    final l$endDate = json['endDate'];
+    final l$deliveryLocationCollection = json['deliveryLocationCollection'];
+    final l$isCurrent = json['isCurrent'];
+    final l$createdAt = json['createdAt'];
+    final l$$__typename = json['__typename'];
+    return Fragment$DeliveryPeriod(
+      id: (l$id as String),
+      title: (l$title as String?),
+      startDate: DateTime.parse((l$startDate as String)),
+      endDate: DateTime.parse((l$endDate as String)),
+      deliveryLocationCollection: l$deliveryLocationCollection == null
+          ? null
+          : Fragment$DeliveryPeriod$deliveryLocationCollection.fromJson(
+              (l$deliveryLocationCollection as Map<String, dynamic>)),
+      isCurrent: (l$isCurrent as bool),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String? title;
+
+  final DateTime startDate;
+
+  final DateTime endDate;
+
+  final Fragment$DeliveryPeriod$deliveryLocationCollection?
+      deliveryLocationCollection;
+
+  final bool isCurrent;
+
+  final DateTime createdAt;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$startDate = startDate;
+    _resultData['startDate'] = l$startDate.toIso8601String();
+    final l$endDate = endDate;
+    _resultData['endDate'] = l$endDate.toIso8601String();
+    final l$deliveryLocationCollection = deliveryLocationCollection;
+    _resultData['deliveryLocationCollection'] =
+        l$deliveryLocationCollection?.toJson();
+    final l$isCurrent = isCurrent;
+    _resultData['isCurrent'] = l$isCurrent;
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$startDate = startDate;
+    final l$endDate = endDate;
+    final l$deliveryLocationCollection = deliveryLocationCollection;
+    final l$isCurrent = isCurrent;
+    final l$createdAt = createdAt;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$title,
+      l$startDate,
+      l$endDate,
+      l$deliveryLocationCollection,
+      l$isCurrent,
+      l$createdAt,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$DeliveryPeriod || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$startDate = startDate;
+    final lOther$startDate = other.startDate;
+    if (l$startDate != lOther$startDate) {
+      return false;
+    }
+    final l$endDate = endDate;
+    final lOther$endDate = other.endDate;
+    if (l$endDate != lOther$endDate) {
+      return false;
+    }
+    final l$deliveryLocationCollection = deliveryLocationCollection;
+    final lOther$deliveryLocationCollection = other.deliveryLocationCollection;
+    if (l$deliveryLocationCollection != lOther$deliveryLocationCollection) {
+      return false;
+    }
+    final l$isCurrent = isCurrent;
+    final lOther$isCurrent = other.isCurrent;
+    if (l$isCurrent != lOther$isCurrent) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$DeliveryPeriod on Fragment$DeliveryPeriod {
+  CopyWith$Fragment$DeliveryPeriod<Fragment$DeliveryPeriod> get copyWith =>
+      CopyWith$Fragment$DeliveryPeriod(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Fragment$DeliveryPeriod<TRes> {
+  factory CopyWith$Fragment$DeliveryPeriod(
+    Fragment$DeliveryPeriod instance,
+    TRes Function(Fragment$DeliveryPeriod) then,
+  ) = _CopyWithImpl$Fragment$DeliveryPeriod;
+
+  factory CopyWith$Fragment$DeliveryPeriod.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$DeliveryPeriod;
+
+  TRes call({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    Fragment$DeliveryPeriod$deliveryLocationCollection?
+        deliveryLocationCollection,
+    bool? isCurrent,
+    DateTime? createdAt,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection<TRes>
+      get deliveryLocationCollection;
+}
+
+class _CopyWithImpl$Fragment$DeliveryPeriod<TRes>
+    implements CopyWith$Fragment$DeliveryPeriod<TRes> {
+  _CopyWithImpl$Fragment$DeliveryPeriod(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$DeliveryPeriod _instance;
+
+  final TRes Function(Fragment$DeliveryPeriod) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? startDate = _undefined,
+    Object? endDate = _undefined,
+    Object? deliveryLocationCollection = _undefined,
+    Object? isCurrent = _undefined,
+    Object? createdAt = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$DeliveryPeriod(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        title: title == _undefined ? _instance.title : (title as String?),
+        startDate: startDate == _undefined || startDate == null
+            ? _instance.startDate
+            : (startDate as DateTime),
+        endDate: endDate == _undefined || endDate == null
+            ? _instance.endDate
+            : (endDate as DateTime),
+        deliveryLocationCollection: deliveryLocationCollection == _undefined
+            ? _instance.deliveryLocationCollection
+            : (deliveryLocationCollection
+                as Fragment$DeliveryPeriod$deliveryLocationCollection?),
+        isCurrent: isCurrent == _undefined || isCurrent == null
+            ? _instance.isCurrent
+            : (isCurrent as bool),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection<TRes>
+      get deliveryLocationCollection {
+    final local$deliveryLocationCollection =
+        _instance.deliveryLocationCollection;
+    return local$deliveryLocationCollection == null
+        ? CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection.stub(
+            _then(_instance))
+        : CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection(
+            local$deliveryLocationCollection,
+            (e) => call(deliveryLocationCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$DeliveryPeriod<TRes>
+    implements CopyWith$Fragment$DeliveryPeriod<TRes> {
+  _CopyWithStubImpl$Fragment$DeliveryPeriod(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    Fragment$DeliveryPeriod$deliveryLocationCollection?
+        deliveryLocationCollection,
+    bool? isCurrent,
+    DateTime? createdAt,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection<TRes>
+      get deliveryLocationCollection =>
+          CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection.stub(
+              _res);
+}
+
+const fragmentDefinitionDeliveryPeriod = FragmentDefinitionNode(
+  name: NameNode(value: 'DeliveryPeriod'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'DeliveryPeriod'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'title'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'startDate'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'endDate'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'deliveryLocationCollection'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'edges'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'node'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'DeliveryLocation'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ]),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'isCurrent'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentDeliveryPeriod = DocumentNode(definitions: [
+  fragmentDefinitionDeliveryPeriod,
+  fragmentDefinitionDeliveryLocation,
+]);
+
+extension ClientExtension$Fragment$DeliveryPeriod on graphql.GraphQLClient {
+  void writeFragment$DeliveryPeriod({
+    required Fragment$DeliveryPeriod data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'DeliveryPeriod',
+            document: documentNodeFragmentDeliveryPeriod,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$DeliveryPeriod? readFragment$DeliveryPeriod({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'DeliveryPeriod',
+          document: documentNodeFragmentDeliveryPeriod,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Fragment$DeliveryPeriod.fromJson(result);
+  }
+}
+
+class Fragment$DeliveryPeriod$deliveryLocationCollection {
+  Fragment$DeliveryPeriod$deliveryLocationCollection({
+    required this.edges,
+    this.$__typename = 'DeliveryLocationConnection',
+  });
+
+  factory Fragment$DeliveryPeriod$deliveryLocationCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Fragment$DeliveryPeriod$deliveryLocationCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Fragment$DeliveryPeriod$deliveryLocationCollection$edges.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$DeliveryPeriod$deliveryLocationCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$DeliveryPeriod$deliveryLocationCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$DeliveryPeriod$deliveryLocationCollection
+    on Fragment$DeliveryPeriod$deliveryLocationCollection {
+  CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection<
+          Fragment$DeliveryPeriod$deliveryLocationCollection>
+      get copyWith =>
+          CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection<
+    TRes> {
+  factory CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection(
+    Fragment$DeliveryPeriod$deliveryLocationCollection instance,
+    TRes Function(Fragment$DeliveryPeriod$deliveryLocationCollection) then,
+  ) = _CopyWithImpl$Fragment$DeliveryPeriod$deliveryLocationCollection;
+
+  factory CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$DeliveryPeriod$deliveryLocationCollection;
+
+  TRes call({
+    List<Fragment$DeliveryPeriod$deliveryLocationCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Fragment$DeliveryPeriod$deliveryLocationCollection$edges> Function(
+              Iterable<
+                  CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+                      Fragment$DeliveryPeriod$deliveryLocationCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Fragment$DeliveryPeriod$deliveryLocationCollection<TRes>
+    implements
+        CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection<TRes> {
+  _CopyWithImpl$Fragment$DeliveryPeriod$deliveryLocationCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$DeliveryPeriod$deliveryLocationCollection _instance;
+
+  final TRes Function(Fragment$DeliveryPeriod$deliveryLocationCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$DeliveryPeriod$deliveryLocationCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<
+                Fragment$DeliveryPeriod$deliveryLocationCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Fragment$DeliveryPeriod$deliveryLocationCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+                          Fragment$DeliveryPeriod$deliveryLocationCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Fragment$DeliveryPeriod$deliveryLocationCollection<TRes>
+    implements
+        CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection<TRes> {
+  _CopyWithStubImpl$Fragment$DeliveryPeriod$deliveryLocationCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$DeliveryPeriod$deliveryLocationCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Fragment$DeliveryPeriod$deliveryLocationCollection$edges {
+  Fragment$DeliveryPeriod$deliveryLocationCollection$edges({
+    required this.node,
+    this.$__typename = 'DeliveryLocationEdge',
+  });
+
+  factory Fragment$DeliveryPeriod$deliveryLocationCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Fragment$DeliveryPeriod$deliveryLocationCollection$edges(
+      node:
+          Fragment$DeliveryLocation.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$DeliveryLocation node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$DeliveryPeriod$deliveryLocationCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$DeliveryPeriod$deliveryLocationCollection$edges
+    on Fragment$DeliveryPeriod$deliveryLocationCollection$edges {
+  CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+          Fragment$DeliveryPeriod$deliveryLocationCollection$edges>
+      get copyWith =>
+          CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+    TRes> {
+  factory CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges(
+    Fragment$DeliveryPeriod$deliveryLocationCollection$edges instance,
+    TRes Function(Fragment$DeliveryPeriod$deliveryLocationCollection$edges)
+        then,
+  ) = _CopyWithImpl$Fragment$DeliveryPeriod$deliveryLocationCollection$edges;
+
+  factory CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Fragment$DeliveryPeriod$deliveryLocationCollection$edges;
+
+  TRes call({
+    Fragment$DeliveryLocation? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryLocation<TRes> get node;
+}
+
+class _CopyWithImpl$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithImpl$Fragment$DeliveryPeriod$deliveryLocationCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$DeliveryPeriod$deliveryLocationCollection$edges _instance;
+
+  final TRes Function(Fragment$DeliveryPeriod$deliveryLocationCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$DeliveryPeriod$deliveryLocationCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$DeliveryLocation),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$DeliveryLocation(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Fragment$DeliveryPeriod$deliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithStubImpl$Fragment$DeliveryPeriod$deliveryLocationCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$DeliveryLocation? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get node =>
+      CopyWith$Fragment$DeliveryLocation.stub(_res);
+}
+
+class Fragment$ProviderType {
+  Fragment$ProviderType({
+    required this.id,
+    required this.name,
+    required this.key,
+    this.schema,
+    required this.createdAt,
+    this.$__typename = 'ProviderType',
+  });
+
+  factory Fragment$ProviderType.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$key = json['key'];
+    final l$schema = json['schema'];
+    final l$createdAt = json['createdAt'];
+    final l$$__typename = json['__typename'];
+    return Fragment$ProviderType(
+      id: (l$id as String),
+      name: (l$name as String),
+      key: (l$key as String),
+      schema: l$schema == null ? null : jsonFieldFromJson(l$schema),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String name;
+
+  final String key;
+
+  final Map<String, dynamic>? schema;
+
+  final DateTime createdAt;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$key = key;
+    _resultData['key'] = l$key;
+    final l$schema = schema;
+    _resultData['schema'] = l$schema == null ? null : jsonFieldToJson(l$schema);
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$key = key;
+    final l$schema = schema;
+    final l$createdAt = createdAt;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$key,
+      l$schema,
+      l$createdAt,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$ProviderType || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$key = key;
+    final lOther$key = other.key;
+    if (l$key != lOther$key) {
+      return false;
+    }
+    final l$schema = schema;
+    final lOther$schema = other.schema;
+    if (l$schema != lOther$schema) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$ProviderType on Fragment$ProviderType {
+  CopyWith$Fragment$ProviderType<Fragment$ProviderType> get copyWith =>
+      CopyWith$Fragment$ProviderType(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Fragment$ProviderType<TRes> {
+  factory CopyWith$Fragment$ProviderType(
+    Fragment$ProviderType instance,
+    TRes Function(Fragment$ProviderType) then,
+  ) = _CopyWithImpl$Fragment$ProviderType;
+
+  factory CopyWith$Fragment$ProviderType.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$ProviderType;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    DateTime? createdAt,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$ProviderType<TRes>
+    implements CopyWith$Fragment$ProviderType<TRes> {
+  _CopyWithImpl$Fragment$ProviderType(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$ProviderType _instance;
+
+  final TRes Function(Fragment$ProviderType) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? key = _undefined,
+    Object? schema = _undefined,
+    Object? createdAt = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$ProviderType(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        key: key == _undefined || key == null ? _instance.key : (key as String),
+        schema: schema == _undefined
+            ? _instance.schema
+            : (schema as Map<String, dynamic>?),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$ProviderType<TRes>
+    implements CopyWith$Fragment$ProviderType<TRes> {
+  _CopyWithStubImpl$Fragment$ProviderType(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? key,
+    Map<String, dynamic>? schema,
+    DateTime? createdAt,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+const fragmentDefinitionProviderType = FragmentDefinitionNode(
+  name: NameNode(value: 'ProviderType'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'ProviderType'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'name'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'key'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'schema'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentProviderType = DocumentNode(definitions: [
+  fragmentDefinitionProviderType,
+]);
+
+extension ClientExtension$Fragment$ProviderType on graphql.GraphQLClient {
+  void writeFragment$ProviderType({
+    required Fragment$ProviderType data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'ProviderType',
+            document: documentNodeFragmentProviderType,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$ProviderType? readFragment$ProviderType({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'ProviderType',
+          document: documentNodeFragmentProviderType,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Fragment$ProviderType.fromJson(result);
+  }
+}
+
+class Fragment$Provider {
+  Fragment$Provider({
+    required this.id,
+    this.providerTypeId,
+    this.organizationId,
+    required this.name,
+    this.description,
+    this.logoUrl,
+    this.coverUrl,
+    this.webUrl,
+    this.data,
+    required this.createdAt,
+    this.updatedAt,
+    this.organization,
+    this.providerType,
+    this.$__typename = 'Provider',
+  });
+
+  factory Fragment$Provider.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$providerTypeId = json['providerTypeId'];
+    final l$organizationId = json['organizationId'];
+    final l$name = json['name'];
+    final l$description = json['description'];
+    final l$logoUrl = json['logoUrl'];
+    final l$coverUrl = json['coverUrl'];
+    final l$webUrl = json['webUrl'];
+    final l$data = json['data'];
+    final l$createdAt = json['createdAt'];
+    final l$updatedAt = json['updatedAt'];
+    final l$organization = json['organization'];
+    final l$providerType = json['providerType'];
+    final l$$__typename = json['__typename'];
+    return Fragment$Provider(
+      id: (l$id as String),
+      providerTypeId: (l$providerTypeId as String?),
+      organizationId: (l$organizationId as String?),
+      name: (l$name as String),
+      description: (l$description as String?),
+      logoUrl: (l$logoUrl as String?),
+      coverUrl: (l$coverUrl as String?),
+      webUrl: (l$webUrl as String?),
+      data: l$data == null ? null : jsonFieldFromJson(l$data),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      updatedAt:
+          l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String)),
+      organization: l$organization == null
+          ? null
+          : Fragment$Organization.fromJson(
+              (l$organization as Map<String, dynamic>)),
+      providerType: l$providerType == null
+          ? null
+          : Fragment$ProviderType.fromJson(
+              (l$providerType as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String? providerTypeId;
+
+  final String? organizationId;
+
+  final String name;
+
+  final String? description;
+
+  final String? logoUrl;
+
+  final String? coverUrl;
+
+  final String? webUrl;
+
+  final Map<String, dynamic>? data;
+
+  final DateTime createdAt;
+
+  final DateTime? updatedAt;
+
+  final Fragment$Organization? organization;
+
+  final Fragment$ProviderType? providerType;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$providerTypeId = providerTypeId;
+    _resultData['providerTypeId'] = l$providerTypeId;
+    final l$organizationId = organizationId;
+    _resultData['organizationId'] = l$organizationId;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$description = description;
+    _resultData['description'] = l$description;
+    final l$logoUrl = logoUrl;
+    _resultData['logoUrl'] = l$logoUrl;
+    final l$coverUrl = coverUrl;
+    _resultData['coverUrl'] = l$coverUrl;
+    final l$webUrl = webUrl;
+    _resultData['webUrl'] = l$webUrl;
+    final l$data = data;
+    _resultData['data'] = l$data == null ? null : jsonFieldToJson(l$data);
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$updatedAt = updatedAt;
+    _resultData['updatedAt'] = l$updatedAt?.toIso8601String();
+    final l$organization = organization;
+    _resultData['organization'] = l$organization?.toJson();
+    final l$providerType = providerType;
+    _resultData['providerType'] = l$providerType?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$providerTypeId = providerTypeId;
+    final l$organizationId = organizationId;
+    final l$name = name;
+    final l$description = description;
+    final l$logoUrl = logoUrl;
+    final l$coverUrl = coverUrl;
+    final l$webUrl = webUrl;
+    final l$data = data;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    final l$organization = organization;
+    final l$providerType = providerType;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$providerTypeId,
+      l$organizationId,
+      l$name,
+      l$description,
+      l$logoUrl,
+      l$coverUrl,
+      l$webUrl,
+      l$data,
+      l$createdAt,
+      l$updatedAt,
+      l$organization,
+      l$providerType,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$Provider || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$providerTypeId = providerTypeId;
+    final lOther$providerTypeId = other.providerTypeId;
+    if (l$providerTypeId != lOther$providerTypeId) {
+      return false;
+    }
+    final l$organizationId = organizationId;
+    final lOther$organizationId = other.organizationId;
+    if (l$organizationId != lOther$organizationId) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$description = description;
+    final lOther$description = other.description;
+    if (l$description != lOther$description) {
+      return false;
+    }
+    final l$logoUrl = logoUrl;
+    final lOther$logoUrl = other.logoUrl;
+    if (l$logoUrl != lOther$logoUrl) {
+      return false;
+    }
+    final l$coverUrl = coverUrl;
+    final lOther$coverUrl = other.coverUrl;
+    if (l$coverUrl != lOther$coverUrl) {
+      return false;
+    }
+    final l$webUrl = webUrl;
+    final lOther$webUrl = other.webUrl;
+    if (l$webUrl != lOther$webUrl) {
+      return false;
+    }
+    final l$data = data;
+    final lOther$data = other.data;
+    if (l$data != lOther$data) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    final l$organization = organization;
+    final lOther$organization = other.organization;
+    if (l$organization != lOther$organization) {
+      return false;
+    }
+    final l$providerType = providerType;
+    final lOther$providerType = other.providerType;
+    if (l$providerType != lOther$providerType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$Provider on Fragment$Provider {
+  CopyWith$Fragment$Provider<Fragment$Provider> get copyWith =>
+      CopyWith$Fragment$Provider(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Fragment$Provider<TRes> {
+  factory CopyWith$Fragment$Provider(
+    Fragment$Provider instance,
+    TRes Function(Fragment$Provider) then,
+  ) = _CopyWithImpl$Fragment$Provider;
+
+  factory CopyWith$Fragment$Provider.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$Provider;
+
+  TRes call({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    Fragment$Organization? organization,
+    Fragment$ProviderType? providerType,
+    String? $__typename,
+  });
+  CopyWith$Fragment$Organization<TRes> get organization;
+  CopyWith$Fragment$ProviderType<TRes> get providerType;
+}
+
+class _CopyWithImpl$Fragment$Provider<TRes>
+    implements CopyWith$Fragment$Provider<TRes> {
+  _CopyWithImpl$Fragment$Provider(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$Provider _instance;
+
+  final TRes Function(Fragment$Provider) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? providerTypeId = _undefined,
+    Object? organizationId = _undefined,
+    Object? name = _undefined,
+    Object? description = _undefined,
+    Object? logoUrl = _undefined,
+    Object? coverUrl = _undefined,
+    Object? webUrl = _undefined,
+    Object? data = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+    Object? organization = _undefined,
+    Object? providerType = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$Provider(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        providerTypeId: providerTypeId == _undefined
+            ? _instance.providerTypeId
+            : (providerTypeId as String?),
+        organizationId: organizationId == _undefined
+            ? _instance.organizationId
+            : (organizationId as String?),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        description: description == _undefined
+            ? _instance.description
+            : (description as String?),
+        logoUrl:
+            logoUrl == _undefined ? _instance.logoUrl : (logoUrl as String?),
+        coverUrl:
+            coverUrl == _undefined ? _instance.coverUrl : (coverUrl as String?),
+        webUrl: webUrl == _undefined ? _instance.webUrl : (webUrl as String?),
+        data: data == _undefined
+            ? _instance.data
+            : (data as Map<String, dynamic>?),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        updatedAt: updatedAt == _undefined
+            ? _instance.updatedAt
+            : (updatedAt as DateTime?),
+        organization: organization == _undefined
+            ? _instance.organization
+            : (organization as Fragment$Organization?),
+        providerType: providerType == _undefined
+            ? _instance.providerType
+            : (providerType as Fragment$ProviderType?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$Organization<TRes> get organization {
+    final local$organization = _instance.organization;
+    return local$organization == null
+        ? CopyWith$Fragment$Organization.stub(_then(_instance))
+        : CopyWith$Fragment$Organization(
+            local$organization, (e) => call(organization: e));
+  }
+
+  CopyWith$Fragment$ProviderType<TRes> get providerType {
+    final local$providerType = _instance.providerType;
+    return local$providerType == null
+        ? CopyWith$Fragment$ProviderType.stub(_then(_instance))
+        : CopyWith$Fragment$ProviderType(
+            local$providerType, (e) => call(providerType: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$Provider<TRes>
+    implements CopyWith$Fragment$Provider<TRes> {
+  _CopyWithStubImpl$Fragment$Provider(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? providerTypeId,
+    String? organizationId,
+    String? name,
+    String? description,
+    String? logoUrl,
+    String? coverUrl,
+    String? webUrl,
+    Map<String, dynamic>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    Fragment$Organization? organization,
+    Fragment$ProviderType? providerType,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$Organization<TRes> get organization =>
+      CopyWith$Fragment$Organization.stub(_res);
+
+  CopyWith$Fragment$ProviderType<TRes> get providerType =>
+      CopyWith$Fragment$ProviderType.stub(_res);
+}
+
+const fragmentDefinitionProvider = FragmentDefinitionNode(
+  name: NameNode(value: 'Provider'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'Provider'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'providerTypeId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'organizationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'name'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'description'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'logoUrl'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'coverUrl'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'webUrl'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'data'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'updatedAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'organization'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'Organization'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'providerType'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'ProviderType'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentProvider = DocumentNode(definitions: [
+  fragmentDefinitionProvider,
+  fragmentDefinitionOrganization,
+  fragmentDefinitionOrganizationType,
+  fragmentDefinitionProviderType,
+]);
+
+extension ClientExtension$Fragment$Provider on graphql.GraphQLClient {
+  void writeFragment$Provider({
+    required Fragment$Provider data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'Provider',
+            document: documentNodeFragmentProvider,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$Provider? readFragment$Provider({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'Provider',
+          document: documentNodeFragmentProvider,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Fragment$Provider.fromJson(result);
+  }
+}
+
+class Fragment$DeliveryLocation {
+  Fragment$DeliveryLocation({
+    required this.id,
+    required this.name,
+    required this.address,
+    this.startOpenTime,
+    this.endOpenTime,
+    required this.providerId,
+    this.deliveryPeriodId,
+    this.$__typename = 'DeliveryLocation',
+  });
+
+  factory Fragment$DeliveryLocation.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$address = json['address'];
+    final l$startOpenTime = json['startOpenTime'];
+    final l$endOpenTime = json['endOpenTime'];
+    final l$providerId = json['providerId'];
+    final l$deliveryPeriodId = json['deliveryPeriodId'];
+    final l$$__typename = json['__typename'];
+    return Fragment$DeliveryLocation(
+      id: (l$id as String),
+      name: (l$name as String),
+      address: Fragment$DeliveryLocation$address.fromJson(
+          (l$address as Map<String, dynamic>)),
+      startOpenTime: (l$startOpenTime as dynamic?),
+      endOpenTime: (l$endOpenTime as dynamic?),
+      providerId: (l$providerId as String),
+      deliveryPeriodId: (l$deliveryPeriodId as String?),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String name;
+
+  final Fragment$DeliveryLocation$address address;
+
+  final dynamic? startOpenTime;
+
+  final dynamic? endOpenTime;
+
+  final String providerId;
+
+  final String? deliveryPeriodId;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$address = address;
+    _resultData['address'] = l$address.toJson();
+    final l$startOpenTime = startOpenTime;
+    _resultData['startOpenTime'] = l$startOpenTime;
+    final l$endOpenTime = endOpenTime;
+    _resultData['endOpenTime'] = l$endOpenTime;
+    final l$providerId = providerId;
+    _resultData['providerId'] = l$providerId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    _resultData['deliveryPeriodId'] = l$deliveryPeriodId;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$address = address;
+    final l$startOpenTime = startOpenTime;
+    final l$endOpenTime = endOpenTime;
+    final l$providerId = providerId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$address,
+      l$startOpenTime,
+      l$endOpenTime,
+      l$providerId,
+      l$deliveryPeriodId,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$DeliveryLocation ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$startOpenTime = startOpenTime;
+    final lOther$startOpenTime = other.startOpenTime;
+    if (l$startOpenTime != lOther$startOpenTime) {
+      return false;
+    }
+    final l$endOpenTime = endOpenTime;
+    final lOther$endOpenTime = other.endOpenTime;
+    if (l$endOpenTime != lOther$endOpenTime) {
+      return false;
+    }
+    final l$providerId = providerId;
+    final lOther$providerId = other.providerId;
+    if (l$providerId != lOther$providerId) {
+      return false;
+    }
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final lOther$deliveryPeriodId = other.deliveryPeriodId;
+    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$DeliveryLocation
+    on Fragment$DeliveryLocation {
+  CopyWith$Fragment$DeliveryLocation<Fragment$DeliveryLocation> get copyWith =>
+      CopyWith$Fragment$DeliveryLocation(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Fragment$DeliveryLocation<TRes> {
+  factory CopyWith$Fragment$DeliveryLocation(
+    Fragment$DeliveryLocation instance,
+    TRes Function(Fragment$DeliveryLocation) then,
+  ) = _CopyWithImpl$Fragment$DeliveryLocation;
+
+  factory CopyWith$Fragment$DeliveryLocation.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$DeliveryLocation;
+
+  TRes call({
+    String? id,
+    String? name,
+    Fragment$DeliveryLocation$address? address,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+    String? providerId,
+    String? deliveryPeriodId,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryLocation$address<TRes> get address;
+}
+
+class _CopyWithImpl$Fragment$DeliveryLocation<TRes>
+    implements CopyWith$Fragment$DeliveryLocation<TRes> {
+  _CopyWithImpl$Fragment$DeliveryLocation(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$DeliveryLocation _instance;
+
+  final TRes Function(Fragment$DeliveryLocation) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? address = _undefined,
+    Object? startOpenTime = _undefined,
+    Object? endOpenTime = _undefined,
+    Object? providerId = _undefined,
+    Object? deliveryPeriodId = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$DeliveryLocation(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        address: address == _undefined || address == null
+            ? _instance.address
+            : (address as Fragment$DeliveryLocation$address),
+        startOpenTime: startOpenTime == _undefined
+            ? _instance.startOpenTime
+            : (startOpenTime as dynamic?),
+        endOpenTime: endOpenTime == _undefined
+            ? _instance.endOpenTime
+            : (endOpenTime as dynamic?),
+        providerId: providerId == _undefined || providerId == null
+            ? _instance.providerId
+            : (providerId as String),
+        deliveryPeriodId: deliveryPeriodId == _undefined
+            ? _instance.deliveryPeriodId
+            : (deliveryPeriodId as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryLocation$address<TRes> get address {
+    final local$address = _instance.address;
+    return CopyWith$Fragment$DeliveryLocation$address(
+        local$address, (e) => call(address: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$DeliveryLocation<TRes>
+    implements CopyWith$Fragment$DeliveryLocation<TRes> {
+  _CopyWithStubImpl$Fragment$DeliveryLocation(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    Fragment$DeliveryLocation$address? address,
+    dynamic? startOpenTime,
+    dynamic? endOpenTime,
+    String? providerId,
+    String? deliveryPeriodId,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryLocation$address<TRes> get address =>
+      CopyWith$Fragment$DeliveryLocation$address.stub(_res);
+}
+
+const fragmentDefinitionDeliveryLocation = FragmentDefinitionNode(
+  name: NameNode(value: 'DeliveryLocation'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'DeliveryLocation'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'name'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'address'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'id'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'name'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'address'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'address1'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'city'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'state'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'zip'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'startOpenTime'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'endOpenTime'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'providerId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'deliveryPeriodId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentDeliveryLocation = DocumentNode(definitions: [
+  fragmentDefinitionDeliveryLocation,
+]);
+
+extension ClientExtension$Fragment$DeliveryLocation on graphql.GraphQLClient {
+  void writeFragment$DeliveryLocation({
+    required Fragment$DeliveryLocation data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'DeliveryLocation',
+            document: documentNodeFragmentDeliveryLocation,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$DeliveryLocation? readFragment$DeliveryLocation({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'DeliveryLocation',
+          document: documentNodeFragmentDeliveryLocation,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Fragment$DeliveryLocation.fromJson(result);
+  }
+}
+
+class Fragment$DeliveryLocation$address {
+  Fragment$DeliveryLocation$address({
+    required this.id,
+    required this.name,
+    required this.address,
+    this.address1,
+    required this.city,
+    required this.state,
+    required this.zip,
+    this.$__typename = 'Address',
+  });
+
+  factory Fragment$DeliveryLocation$address.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$address = json['address'];
+    final l$address1 = json['address1'];
+    final l$city = json['city'];
+    final l$state = json['state'];
+    final l$zip = json['zip'];
+    final l$$__typename = json['__typename'];
+    return Fragment$DeliveryLocation$address(
+      id: (l$id as String),
+      name: (l$name as String),
+      address: (l$address as String),
+      address1: (l$address1 as String?),
+      city: (l$city as String),
+      state: (l$state as String),
+      zip: (l$zip as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String name;
+
+  final String address;
+
+  final String? address1;
+
+  final String city;
+
+  final String state;
+
+  final String zip;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$address = address;
+    _resultData['address'] = l$address;
+    final l$address1 = address1;
+    _resultData['address1'] = l$address1;
+    final l$city = city;
+    _resultData['city'] = l$city;
+    final l$state = state;
+    _resultData['state'] = l$state;
+    final l$zip = zip;
+    _resultData['zip'] = l$zip;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$address,
+      l$address1,
+      l$city,
+      l$state,
+      l$zip,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$DeliveryLocation$address ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$DeliveryLocation$address
+    on Fragment$DeliveryLocation$address {
+  CopyWith$Fragment$DeliveryLocation$address<Fragment$DeliveryLocation$address>
+      get copyWith => CopyWith$Fragment$DeliveryLocation$address(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$DeliveryLocation$address<TRes> {
+  factory CopyWith$Fragment$DeliveryLocation$address(
+    Fragment$DeliveryLocation$address instance,
+    TRes Function(Fragment$DeliveryLocation$address) then,
+  ) = _CopyWithImpl$Fragment$DeliveryLocation$address;
+
+  factory CopyWith$Fragment$DeliveryLocation$address.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$DeliveryLocation$address;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$DeliveryLocation$address<TRes>
+    implements CopyWith$Fragment$DeliveryLocation$address<TRes> {
+  _CopyWithImpl$Fragment$DeliveryLocation$address(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$DeliveryLocation$address _instance;
+
+  final TRes Function(Fragment$DeliveryLocation$address) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$DeliveryLocation$address(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        address: address == _undefined || address == null
+            ? _instance.address
+            : (address as String),
+        address1:
+            address1 == _undefined ? _instance.address1 : (address1 as String?),
+        city: city == _undefined || city == null
+            ? _instance.city
+            : (city as String),
+        state: state == _undefined || state == null
+            ? _instance.state
+            : (state as String),
+        zip: zip == _undefined || zip == null ? _instance.zip : (zip as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$DeliveryLocation$address<TRes>
+    implements CopyWith$Fragment$DeliveryLocation$address<TRes> {
+  _CopyWithStubImpl$Fragment$DeliveryLocation$address(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Fragment$ShoppingCart {
@@ -2262,12 +4507,9 @@ class Fragment$Order {
     required this.user,
     required this.orderStatus,
     this.orderItemsCollection,
+    this.deliveryLocationId,
+    this.deliveryLocation,
     this.orderTransactionsCollection,
-    this.deliveryAddress,
-    this.deliveryCity,
-    this.deliveryZip,
-    this.deliveryLocationName,
-    this.deliveryAddress1,
     this.notes,
     this.updatedAt,
     required this.createdAt,
@@ -2280,12 +4522,9 @@ class Fragment$Order {
     final l$user = json['user'];
     final l$orderStatus = json['orderStatus'];
     final l$orderItemsCollection = json['orderItemsCollection'];
+    final l$deliveryLocationId = json['deliveryLocationId'];
+    final l$deliveryLocation = json['deliveryLocation'];
     final l$orderTransactionsCollection = json['orderTransactionsCollection'];
-    final l$deliveryAddress = json['deliveryAddress'];
-    final l$deliveryCity = json['deliveryCity'];
-    final l$deliveryZip = json['deliveryZip'];
-    final l$deliveryLocationName = json['deliveryLocationName'];
-    final l$deliveryAddress1 = json['deliveryAddress1'];
     final l$notes = json['notes'];
     final l$updatedAt = json['updatedAt'];
     final l$createdAt = json['createdAt'];
@@ -2299,15 +4538,15 @@ class Fragment$Order {
           ? null
           : Fragment$Order$orderItemsCollection.fromJson(
               (l$orderItemsCollection as Map<String, dynamic>)),
+      deliveryLocationId: (l$deliveryLocationId as String?),
+      deliveryLocation: l$deliveryLocation == null
+          ? null
+          : Fragment$DeliveryLocation.fromJson(
+              (l$deliveryLocation as Map<String, dynamic>)),
       orderTransactionsCollection: l$orderTransactionsCollection == null
           ? null
           : Fragment$Order$orderTransactionsCollection.fromJson(
               (l$orderTransactionsCollection as Map<String, dynamic>)),
-      deliveryAddress: (l$deliveryAddress as String?),
-      deliveryCity: (l$deliveryCity as String?),
-      deliveryZip: (l$deliveryZip as String?),
-      deliveryLocationName: (l$deliveryLocationName as String?),
-      deliveryAddress1: (l$deliveryAddress1 as String?),
       notes: (l$notes as String?),
       updatedAt:
           l$updatedAt == null ? null : DateTime.parse((l$updatedAt as String)),
@@ -2326,17 +4565,11 @@ class Fragment$Order {
 
   final Fragment$Order$orderItemsCollection? orderItemsCollection;
 
+  final String? deliveryLocationId;
+
+  final Fragment$DeliveryLocation? deliveryLocation;
+
   final Fragment$Order$orderTransactionsCollection? orderTransactionsCollection;
-
-  final String? deliveryAddress;
-
-  final String? deliveryCity;
-
-  final String? deliveryZip;
-
-  final String? deliveryLocationName;
-
-  final String? deliveryAddress1;
 
   final String? notes;
 
@@ -2358,19 +4591,13 @@ class Fragment$Order {
     _resultData['orderStatus'] = toJson$Enum$OrderStatus(l$orderStatus);
     final l$orderItemsCollection = orderItemsCollection;
     _resultData['orderItemsCollection'] = l$orderItemsCollection?.toJson();
+    final l$deliveryLocationId = deliveryLocationId;
+    _resultData['deliveryLocationId'] = l$deliveryLocationId;
+    final l$deliveryLocation = deliveryLocation;
+    _resultData['deliveryLocation'] = l$deliveryLocation?.toJson();
     final l$orderTransactionsCollection = orderTransactionsCollection;
     _resultData['orderTransactionsCollection'] =
         l$orderTransactionsCollection?.toJson();
-    final l$deliveryAddress = deliveryAddress;
-    _resultData['deliveryAddress'] = l$deliveryAddress;
-    final l$deliveryCity = deliveryCity;
-    _resultData['deliveryCity'] = l$deliveryCity;
-    final l$deliveryZip = deliveryZip;
-    _resultData['deliveryZip'] = l$deliveryZip;
-    final l$deliveryLocationName = deliveryLocationName;
-    _resultData['deliveryLocationName'] = l$deliveryLocationName;
-    final l$deliveryAddress1 = deliveryAddress1;
-    _resultData['deliveryAddress1'] = l$deliveryAddress1;
     final l$notes = notes;
     _resultData['notes'] = l$notes;
     final l$updatedAt = updatedAt;
@@ -2389,12 +4616,9 @@ class Fragment$Order {
     final l$user = user;
     final l$orderStatus = orderStatus;
     final l$orderItemsCollection = orderItemsCollection;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$deliveryLocation = deliveryLocation;
     final l$orderTransactionsCollection = orderTransactionsCollection;
-    final l$deliveryAddress = deliveryAddress;
-    final l$deliveryCity = deliveryCity;
-    final l$deliveryZip = deliveryZip;
-    final l$deliveryLocationName = deliveryLocationName;
-    final l$deliveryAddress1 = deliveryAddress1;
     final l$notes = notes;
     final l$updatedAt = updatedAt;
     final l$createdAt = createdAt;
@@ -2405,12 +4629,9 @@ class Fragment$Order {
       l$user,
       l$orderStatus,
       l$orderItemsCollection,
+      l$deliveryLocationId,
+      l$deliveryLocation,
       l$orderTransactionsCollection,
-      l$deliveryAddress,
-      l$deliveryCity,
-      l$deliveryZip,
-      l$deliveryLocationName,
-      l$deliveryAddress1,
       l$notes,
       l$updatedAt,
       l$createdAt,
@@ -2451,35 +4672,20 @@ class Fragment$Order {
     if (l$orderItemsCollection != lOther$orderItemsCollection) {
       return false;
     }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$deliveryLocation = deliveryLocation;
+    final lOther$deliveryLocation = other.deliveryLocation;
+    if (l$deliveryLocation != lOther$deliveryLocation) {
+      return false;
+    }
     final l$orderTransactionsCollection = orderTransactionsCollection;
     final lOther$orderTransactionsCollection =
         other.orderTransactionsCollection;
     if (l$orderTransactionsCollection != lOther$orderTransactionsCollection) {
-      return false;
-    }
-    final l$deliveryAddress = deliveryAddress;
-    final lOther$deliveryAddress = other.deliveryAddress;
-    if (l$deliveryAddress != lOther$deliveryAddress) {
-      return false;
-    }
-    final l$deliveryCity = deliveryCity;
-    final lOther$deliveryCity = other.deliveryCity;
-    if (l$deliveryCity != lOther$deliveryCity) {
-      return false;
-    }
-    final l$deliveryZip = deliveryZip;
-    final lOther$deliveryZip = other.deliveryZip;
-    if (l$deliveryZip != lOther$deliveryZip) {
-      return false;
-    }
-    final l$deliveryLocationName = deliveryLocationName;
-    final lOther$deliveryLocationName = other.deliveryLocationName;
-    if (l$deliveryLocationName != lOther$deliveryLocationName) {
-      return false;
-    }
-    final l$deliveryAddress1 = deliveryAddress1;
-    final lOther$deliveryAddress1 = other.deliveryAddress1;
-    if (l$deliveryAddress1 != lOther$deliveryAddress1) {
       return false;
     }
     final l$notes = notes;
@@ -2529,12 +4735,9 @@ abstract class CopyWith$Fragment$Order<TRes> {
     Fragment$User? user,
     Enum$OrderStatus? orderStatus,
     Fragment$Order$orderItemsCollection? orderItemsCollection,
+    String? deliveryLocationId,
+    Fragment$DeliveryLocation? deliveryLocation,
     Fragment$Order$orderTransactionsCollection? orderTransactionsCollection,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     String? notes,
     DateTime? updatedAt,
     DateTime? createdAt,
@@ -2542,6 +4745,7 @@ abstract class CopyWith$Fragment$Order<TRes> {
   });
   CopyWith$Fragment$User<TRes> get user;
   CopyWith$Fragment$Order$orderItemsCollection<TRes> get orderItemsCollection;
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation;
   CopyWith$Fragment$Order$orderTransactionsCollection<TRes>
       get orderTransactionsCollection;
 }
@@ -2565,12 +4769,9 @@ class _CopyWithImpl$Fragment$Order<TRes>
     Object? user = _undefined,
     Object? orderStatus = _undefined,
     Object? orderItemsCollection = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? deliveryLocation = _undefined,
     Object? orderTransactionsCollection = _undefined,
-    Object? deliveryAddress = _undefined,
-    Object? deliveryCity = _undefined,
-    Object? deliveryZip = _undefined,
-    Object? deliveryLocationName = _undefined,
-    Object? deliveryAddress1 = _undefined,
     Object? notes = _undefined,
     Object? updatedAt = _undefined,
     Object? createdAt = _undefined,
@@ -2590,25 +4791,16 @@ class _CopyWithImpl$Fragment$Order<TRes>
         orderItemsCollection: orderItemsCollection == _undefined
             ? _instance.orderItemsCollection
             : (orderItemsCollection as Fragment$Order$orderItemsCollection?),
+        deliveryLocationId: deliveryLocationId == _undefined
+            ? _instance.deliveryLocationId
+            : (deliveryLocationId as String?),
+        deliveryLocation: deliveryLocation == _undefined
+            ? _instance.deliveryLocation
+            : (deliveryLocation as Fragment$DeliveryLocation?),
         orderTransactionsCollection: orderTransactionsCollection == _undefined
             ? _instance.orderTransactionsCollection
             : (orderTransactionsCollection
                 as Fragment$Order$orderTransactionsCollection?),
-        deliveryAddress: deliveryAddress == _undefined
-            ? _instance.deliveryAddress
-            : (deliveryAddress as String?),
-        deliveryCity: deliveryCity == _undefined
-            ? _instance.deliveryCity
-            : (deliveryCity as String?),
-        deliveryZip: deliveryZip == _undefined
-            ? _instance.deliveryZip
-            : (deliveryZip as String?),
-        deliveryLocationName: deliveryLocationName == _undefined
-            ? _instance.deliveryLocationName
-            : (deliveryLocationName as String?),
-        deliveryAddress1: deliveryAddress1 == _undefined
-            ? _instance.deliveryAddress1
-            : (deliveryAddress1 as String?),
         notes: notes == _undefined ? _instance.notes : (notes as String?),
         updatedAt: updatedAt == _undefined
             ? _instance.updatedAt
@@ -2632,6 +4824,14 @@ class _CopyWithImpl$Fragment$Order<TRes>
         ? CopyWith$Fragment$Order$orderItemsCollection.stub(_then(_instance))
         : CopyWith$Fragment$Order$orderItemsCollection(
             local$orderItemsCollection, (e) => call(orderItemsCollection: e));
+  }
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation {
+    final local$deliveryLocation = _instance.deliveryLocation;
+    return local$deliveryLocation == null
+        ? CopyWith$Fragment$DeliveryLocation.stub(_then(_instance))
+        : CopyWith$Fragment$DeliveryLocation(
+            local$deliveryLocation, (e) => call(deliveryLocation: e));
   }
 
   CopyWith$Fragment$Order$orderTransactionsCollection<TRes>
@@ -2659,12 +4859,9 @@ class _CopyWithStubImpl$Fragment$Order<TRes>
     Fragment$User? user,
     Enum$OrderStatus? orderStatus,
     Fragment$Order$orderItemsCollection? orderItemsCollection,
+    String? deliveryLocationId,
+    Fragment$DeliveryLocation? deliveryLocation,
     Fragment$Order$orderTransactionsCollection? orderTransactionsCollection,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     String? notes,
     DateTime? updatedAt,
     DateTime? createdAt,
@@ -2676,6 +4873,9 @@ class _CopyWithStubImpl$Fragment$Order<TRes>
 
   CopyWith$Fragment$Order$orderItemsCollection<TRes> get orderItemsCollection =>
       CopyWith$Fragment$Order$orderItemsCollection.stub(_res);
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation =>
+      CopyWith$Fragment$DeliveryLocation.stub(_res);
 
   CopyWith$Fragment$Order$orderTransactionsCollection<TRes>
       get orderTransactionsCollection =>
@@ -2781,6 +4981,32 @@ const fragmentDefinitionOrder = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
+      name: NameNode(value: 'deliveryLocationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'deliveryLocation'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'DeliveryLocation'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
       name: NameNode(value: 'orderTransactionsCollection'),
       alias: null,
       arguments: [],
@@ -2873,41 +5099,6 @@ const fragmentDefinitionOrder = FragmentDefinitionNode(
       ]),
     ),
     FieldNode(
-      name: NameNode(value: 'deliveryAddress'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'deliveryCity'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'deliveryZip'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'deliveryLocationName'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'deliveryAddress1'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
       name: NameNode(value: 'notes'),
       alias: null,
       arguments: [],
@@ -2943,11 +5134,13 @@ const documentNodeFragmentOrder = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
   fragmentDefinitionOrderItem,
+  fragmentDefinitionDeliveryLocation,
   fragmentDefinitionOrderTransaction,
 ]);
 
@@ -3807,6 +6000,904 @@ class _CopyWithStubImpl$Fragment$Order$orderTransactionsCollection$pageInfo<
       _res;
 }
 
+class Fragment$SiteDeliveryLocation {
+  Fragment$SiteDeliveryLocation({
+    required this.id,
+    required this.siteId,
+    required this.site,
+    required this.deliveryLocationId,
+    required this.createdAt,
+    required this.deliveryLocation,
+    this.$__typename = 'SiteDeliveryLocation',
+  });
+
+  factory Fragment$SiteDeliveryLocation.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$siteId = json['siteId'];
+    final l$site = json['site'];
+    final l$deliveryLocationId = json['deliveryLocationId'];
+    final l$createdAt = json['createdAt'];
+    final l$deliveryLocation = json['deliveryLocation'];
+    final l$$__typename = json['__typename'];
+    return Fragment$SiteDeliveryLocation(
+      id: (l$id as String),
+      siteId: (l$siteId as String),
+      site: Fragment$SiteDeliveryLocation$site.fromJson(
+          (l$site as Map<String, dynamic>)),
+      deliveryLocationId: (l$deliveryLocationId as String),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      deliveryLocation: Fragment$DeliveryLocation.fromJson(
+          (l$deliveryLocation as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String siteId;
+
+  final Fragment$SiteDeliveryLocation$site site;
+
+  final String deliveryLocationId;
+
+  final DateTime createdAt;
+
+  final Fragment$DeliveryLocation deliveryLocation;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$siteId = siteId;
+    _resultData['siteId'] = l$siteId;
+    final l$site = site;
+    _resultData['site'] = l$site.toJson();
+    final l$deliveryLocationId = deliveryLocationId;
+    _resultData['deliveryLocationId'] = l$deliveryLocationId;
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$deliveryLocation = deliveryLocation;
+    _resultData['deliveryLocation'] = l$deliveryLocation.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteId = siteId;
+    final l$site = site;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$createdAt = createdAt;
+    final l$deliveryLocation = deliveryLocation;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$siteId,
+      l$site,
+      l$deliveryLocationId,
+      l$createdAt,
+      l$deliveryLocation,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$SiteDeliveryLocation ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$site = site;
+    final lOther$site = other.site;
+    if (l$site != lOther$site) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$deliveryLocation = deliveryLocation;
+    final lOther$deliveryLocation = other.deliveryLocation;
+    if (l$deliveryLocation != lOther$deliveryLocation) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$SiteDeliveryLocation
+    on Fragment$SiteDeliveryLocation {
+  CopyWith$Fragment$SiteDeliveryLocation<Fragment$SiteDeliveryLocation>
+      get copyWith => CopyWith$Fragment$SiteDeliveryLocation(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$SiteDeliveryLocation<TRes> {
+  factory CopyWith$Fragment$SiteDeliveryLocation(
+    Fragment$SiteDeliveryLocation instance,
+    TRes Function(Fragment$SiteDeliveryLocation) then,
+  ) = _CopyWithImpl$Fragment$SiteDeliveryLocation;
+
+  factory CopyWith$Fragment$SiteDeliveryLocation.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$SiteDeliveryLocation;
+
+  TRes call({
+    String? id,
+    String? siteId,
+    Fragment$SiteDeliveryLocation$site? site,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+    Fragment$DeliveryLocation? deliveryLocation,
+    String? $__typename,
+  });
+  CopyWith$Fragment$SiteDeliveryLocation$site<TRes> get site;
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation;
+}
+
+class _CopyWithImpl$Fragment$SiteDeliveryLocation<TRes>
+    implements CopyWith$Fragment$SiteDeliveryLocation<TRes> {
+  _CopyWithImpl$Fragment$SiteDeliveryLocation(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$SiteDeliveryLocation _instance;
+
+  final TRes Function(Fragment$SiteDeliveryLocation) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteId = _undefined,
+    Object? site = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? createdAt = _undefined,
+    Object? deliveryLocation = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$SiteDeliveryLocation(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        siteId: siteId == _undefined || siteId == null
+            ? _instance.siteId
+            : (siteId as String),
+        site: site == _undefined || site == null
+            ? _instance.site
+            : (site as Fragment$SiteDeliveryLocation$site),
+        deliveryLocationId:
+            deliveryLocationId == _undefined || deliveryLocationId == null
+                ? _instance.deliveryLocationId
+                : (deliveryLocationId as String),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        deliveryLocation:
+            deliveryLocation == _undefined || deliveryLocation == null
+                ? _instance.deliveryLocation
+                : (deliveryLocation as Fragment$DeliveryLocation),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$SiteDeliveryLocation$site<TRes> get site {
+    final local$site = _instance.site;
+    return CopyWith$Fragment$SiteDeliveryLocation$site(
+        local$site, (e) => call(site: e));
+  }
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation {
+    final local$deliveryLocation = _instance.deliveryLocation;
+    return CopyWith$Fragment$DeliveryLocation(
+        local$deliveryLocation, (e) => call(deliveryLocation: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$SiteDeliveryLocation<TRes>
+    implements CopyWith$Fragment$SiteDeliveryLocation<TRes> {
+  _CopyWithStubImpl$Fragment$SiteDeliveryLocation(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? siteId,
+    Fragment$SiteDeliveryLocation$site? site,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+    Fragment$DeliveryLocation? deliveryLocation,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$SiteDeliveryLocation$site<TRes> get site =>
+      CopyWith$Fragment$SiteDeliveryLocation$site.stub(_res);
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation =>
+      CopyWith$Fragment$DeliveryLocation.stub(_res);
+}
+
+const fragmentDefinitionSiteDeliveryLocation = FragmentDefinitionNode(
+  name: NameNode(value: 'SiteDeliveryLocation'),
+  typeCondition: TypeConditionNode(
+      on: NamedTypeNode(
+    name: NameNode(value: 'SiteDeliveryLocation'),
+    isNonNull: false,
+  )),
+  directives: [],
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'id'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'siteId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'site'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'id'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'name'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'addressId'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'address'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'address'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'address1'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'city'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'state'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'zip'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ]),
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'deliveryLocationId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'createdAt'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'deliveryLocation'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FragmentSpreadNode(
+          name: NameNode(value: 'DeliveryLocation'),
+          directives: [],
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
+);
+const documentNodeFragmentSiteDeliveryLocation = DocumentNode(definitions: [
+  fragmentDefinitionSiteDeliveryLocation,
+  fragmentDefinitionDeliveryLocation,
+]);
+
+extension ClientExtension$Fragment$SiteDeliveryLocation
+    on graphql.GraphQLClient {
+  void writeFragment$SiteDeliveryLocation({
+    required Fragment$SiteDeliveryLocation data,
+    required Map<String, dynamic> idFields,
+    bool broadcast = true,
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'SiteDeliveryLocation',
+            document: documentNodeFragmentSiteDeliveryLocation,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Fragment$SiteDeliveryLocation? readFragment$SiteDeliveryLocation({
+    required Map<String, dynamic> idFields,
+    bool optimistic = true,
+  }) {
+    final result = this.readFragment(
+      graphql.FragmentRequest(
+        idFields: idFields,
+        fragment: const graphql.Fragment(
+          fragmentName: 'SiteDeliveryLocation',
+          document: documentNodeFragmentSiteDeliveryLocation,
+        ),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Fragment$SiteDeliveryLocation.fromJson(result);
+  }
+}
+
+class Fragment$SiteDeliveryLocation$site {
+  Fragment$SiteDeliveryLocation$site({
+    required this.id,
+    required this.name,
+    this.addressId,
+    this.address,
+    this.$__typename = 'Site',
+  });
+
+  factory Fragment$SiteDeliveryLocation$site.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$addressId = json['addressId'];
+    final l$address = json['address'];
+    final l$$__typename = json['__typename'];
+    return Fragment$SiteDeliveryLocation$site(
+      id: (l$id as String),
+      name: (l$name as String),
+      addressId: (l$addressId as String?),
+      address: l$address == null
+          ? null
+          : Fragment$SiteDeliveryLocation$site$address.fromJson(
+              (l$address as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String name;
+
+  final String? addressId;
+
+  final Fragment$SiteDeliveryLocation$site$address? address;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$addressId = addressId;
+    _resultData['addressId'] = l$addressId;
+    final l$address = address;
+    _resultData['address'] = l$address?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$addressId = addressId;
+    final l$address = address;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$addressId,
+      l$address,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$SiteDeliveryLocation$site ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$SiteDeliveryLocation$site
+    on Fragment$SiteDeliveryLocation$site {
+  CopyWith$Fragment$SiteDeliveryLocation$site<
+          Fragment$SiteDeliveryLocation$site>
+      get copyWith => CopyWith$Fragment$SiteDeliveryLocation$site(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$SiteDeliveryLocation$site<TRes> {
+  factory CopyWith$Fragment$SiteDeliveryLocation$site(
+    Fragment$SiteDeliveryLocation$site instance,
+    TRes Function(Fragment$SiteDeliveryLocation$site) then,
+  ) = _CopyWithImpl$Fragment$SiteDeliveryLocation$site;
+
+  factory CopyWith$Fragment$SiteDeliveryLocation$site.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$SiteDeliveryLocation$site;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? addressId,
+    Fragment$SiteDeliveryLocation$site$address? address,
+    String? $__typename,
+  });
+  CopyWith$Fragment$SiteDeliveryLocation$site$address<TRes> get address;
+}
+
+class _CopyWithImpl$Fragment$SiteDeliveryLocation$site<TRes>
+    implements CopyWith$Fragment$SiteDeliveryLocation$site<TRes> {
+  _CopyWithImpl$Fragment$SiteDeliveryLocation$site(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$SiteDeliveryLocation$site _instance;
+
+  final TRes Function(Fragment$SiteDeliveryLocation$site) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? addressId = _undefined,
+    Object? address = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$SiteDeliveryLocation$site(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        addressId: addressId == _undefined
+            ? _instance.addressId
+            : (addressId as String?),
+        address: address == _undefined
+            ? _instance.address
+            : (address as Fragment$SiteDeliveryLocation$site$address?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$SiteDeliveryLocation$site$address<TRes> get address {
+    final local$address = _instance.address;
+    return local$address == null
+        ? CopyWith$Fragment$SiteDeliveryLocation$site$address.stub(
+            _then(_instance))
+        : CopyWith$Fragment$SiteDeliveryLocation$site$address(
+            local$address, (e) => call(address: e));
+  }
+}
+
+class _CopyWithStubImpl$Fragment$SiteDeliveryLocation$site<TRes>
+    implements CopyWith$Fragment$SiteDeliveryLocation$site<TRes> {
+  _CopyWithStubImpl$Fragment$SiteDeliveryLocation$site(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? addressId,
+    Fragment$SiteDeliveryLocation$site$address? address,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$SiteDeliveryLocation$site$address<TRes> get address =>
+      CopyWith$Fragment$SiteDeliveryLocation$site$address.stub(_res);
+}
+
+class Fragment$SiteDeliveryLocation$site$address {
+  Fragment$SiteDeliveryLocation$site$address({
+    required this.id,
+    required this.name,
+    required this.address,
+    this.address1,
+    required this.city,
+    required this.state,
+    required this.zip,
+    this.$__typename = 'Address',
+  });
+
+  factory Fragment$SiteDeliveryLocation$site$address.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$address = json['address'];
+    final l$address1 = json['address1'];
+    final l$city = json['city'];
+    final l$state = json['state'];
+    final l$zip = json['zip'];
+    final l$$__typename = json['__typename'];
+    return Fragment$SiteDeliveryLocation$site$address(
+      id: (l$id as String),
+      name: (l$name as String),
+      address: (l$address as String),
+      address1: (l$address1 as String?),
+      city: (l$city as String),
+      state: (l$state as String),
+      zip: (l$zip as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String name;
+
+  final String address;
+
+  final String? address1;
+
+  final String city;
+
+  final String state;
+
+  final String zip;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$address = address;
+    _resultData['address'] = l$address;
+    final l$address1 = address1;
+    _resultData['address1'] = l$address1;
+    final l$city = city;
+    _resultData['city'] = l$city;
+    final l$state = state;
+    _resultData['state'] = l$state;
+    final l$zip = zip;
+    _resultData['zip'] = l$zip;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$address,
+      l$address1,
+      l$city,
+      l$state,
+      l$zip,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$SiteDeliveryLocation$site$address ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$SiteDeliveryLocation$site$address
+    on Fragment$SiteDeliveryLocation$site$address {
+  CopyWith$Fragment$SiteDeliveryLocation$site$address<
+          Fragment$SiteDeliveryLocation$site$address>
+      get copyWith => CopyWith$Fragment$SiteDeliveryLocation$site$address(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$SiteDeliveryLocation$site$address<TRes> {
+  factory CopyWith$Fragment$SiteDeliveryLocation$site$address(
+    Fragment$SiteDeliveryLocation$site$address instance,
+    TRes Function(Fragment$SiteDeliveryLocation$site$address) then,
+  ) = _CopyWithImpl$Fragment$SiteDeliveryLocation$site$address;
+
+  factory CopyWith$Fragment$SiteDeliveryLocation$site$address.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$SiteDeliveryLocation$site$address;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$SiteDeliveryLocation$site$address<TRes>
+    implements CopyWith$Fragment$SiteDeliveryLocation$site$address<TRes> {
+  _CopyWithImpl$Fragment$SiteDeliveryLocation$site$address(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$SiteDeliveryLocation$site$address _instance;
+
+  final TRes Function(Fragment$SiteDeliveryLocation$site$address) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$SiteDeliveryLocation$site$address(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        address: address == _undefined || address == null
+            ? _instance.address
+            : (address as String),
+        address1:
+            address1 == _undefined ? _instance.address1 : (address1 as String?),
+        city: city == _undefined || city == null
+            ? _instance.city
+            : (city as String),
+        state: state == _undefined || state == null
+            ? _instance.state
+            : (state as String),
+        zip: zip == _undefined || zip == null ? _instance.zip : (zip as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$SiteDeliveryLocation$site$address<TRes>
+    implements CopyWith$Fragment$SiteDeliveryLocation$site$address<TRes> {
+  _CopyWithStubImpl$Fragment$SiteDeliveryLocation$site$address(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
 class Variables$Query$Order {
   factory Variables$Query$Order({required String id}) =>
       Variables$Query$Order._({
@@ -4132,11 +7223,13 @@ const documentNodeQueryOrder = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
   fragmentDefinitionOrderItem,
+  fragmentDefinitionDeliveryLocation,
   fragmentDefinitionOrderTransaction,
 ]);
 Query$Order _parserFn$Query$Order(Map<String, dynamic> data) =>
@@ -5179,11 +8272,13 @@ const documentNodeQueryOrderCollection = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
   fragmentDefinitionOrderItem,
+  fragmentDefinitionDeliveryLocation,
   fragmentDefinitionOrderTransaction,
 ]);
 Query$OrderCollection _parserFn$Query$OrderCollection(
@@ -6180,11 +9275,13 @@ const documentNodeMutationCreateOrder = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
   fragmentDefinitionOrderItem,
+  fragmentDefinitionDeliveryLocation,
   fragmentDefinitionOrderTransaction,
 ]);
 Mutation$CreateOrder _parserFn$Mutation$CreateOrder(
@@ -6938,11 +10035,13 @@ const documentNodeMutationUpdateOrder = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
   fragmentDefinitionProduct,
   fragmentDefinitionOrderItem,
+  fragmentDefinitionDeliveryLocation,
   fragmentDefinitionOrderTransaction,
 ]);
 Mutation$UpdateOrder _parserFn$Mutation$UpdateOrder(
@@ -18976,4 +22075,5758 @@ class _CopyWithStubImpl$Query$GetShoppingCartItem$shoppingCartItemsCollection$ed
 
   CopyWith$Fragment$ShoppingCartItemWithCart<TRes> get node =>
       CopyWith$Fragment$ShoppingCartItemWithCart.stub(_res);
+}
+
+class Variables$Mutation$CreateOrderItems {
+  factory Variables$Mutation$CreateOrderItems(
+          {required List<Input$OrderItemsInsertInput> input}) =>
+      Variables$Mutation$CreateOrderItems._({
+        r'input': input,
+      });
+
+  Variables$Mutation$CreateOrderItems._(this._$data);
+
+  factory Variables$Mutation$CreateOrderItems.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$input = data['input'];
+    result$data['input'] = (l$input as List<dynamic>)
+        .map((e) =>
+            Input$OrderItemsInsertInput.fromJson((e as Map<String, dynamic>)))
+        .toList();
+    return Variables$Mutation$CreateOrderItems._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  List<Input$OrderItemsInsertInput> get input =>
+      (_$data['input'] as List<Input$OrderItemsInsertInput>);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$input = input;
+    result$data['input'] = l$input.map((e) => e.toJson()).toList();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$CreateOrderItems<
+          Variables$Mutation$CreateOrderItems>
+      get copyWith => CopyWith$Variables$Mutation$CreateOrderItems(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Mutation$CreateOrderItems ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input.length != lOther$input.length) {
+      return false;
+    }
+    for (int i = 0; i < l$input.length; i++) {
+      final l$input$entry = l$input[i];
+      final lOther$input$entry = lOther$input[i];
+      if (l$input$entry != lOther$input$entry) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$input = input;
+    return Object.hashAll([Object.hashAll(l$input.map((v) => v))]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$CreateOrderItems<TRes> {
+  factory CopyWith$Variables$Mutation$CreateOrderItems(
+    Variables$Mutation$CreateOrderItems instance,
+    TRes Function(Variables$Mutation$CreateOrderItems) then,
+  ) = _CopyWithImpl$Variables$Mutation$CreateOrderItems;
+
+  factory CopyWith$Variables$Mutation$CreateOrderItems.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$CreateOrderItems;
+
+  TRes call({List<Input$OrderItemsInsertInput>? input});
+}
+
+class _CopyWithImpl$Variables$Mutation$CreateOrderItems<TRes>
+    implements CopyWith$Variables$Mutation$CreateOrderItems<TRes> {
+  _CopyWithImpl$Variables$Mutation$CreateOrderItems(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Mutation$CreateOrderItems _instance;
+
+  final TRes Function(Variables$Mutation$CreateOrderItems) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? input = _undefined}) =>
+      _then(Variables$Mutation$CreateOrderItems._({
+        ..._instance._$data,
+        if (input != _undefined && input != null)
+          'input': (input as List<Input$OrderItemsInsertInput>),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$CreateOrderItems<TRes>
+    implements CopyWith$Variables$Mutation$CreateOrderItems<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$CreateOrderItems(this._res);
+
+  TRes _res;
+
+  call({List<Input$OrderItemsInsertInput>? input}) => _res;
+}
+
+class Mutation$CreateOrderItems {
+  Mutation$CreateOrderItems({
+    this.insertIntoOrderItemsCollection,
+    this.$__typename = 'Mutation',
+  });
+
+  factory Mutation$CreateOrderItems.fromJson(Map<String, dynamic> json) {
+    final l$insertIntoOrderItemsCollection =
+        json['insertIntoOrderItemsCollection'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreateOrderItems(
+      insertIntoOrderItemsCollection: l$insertIntoOrderItemsCollection == null
+          ? null
+          : Mutation$CreateOrderItems$insertIntoOrderItemsCollection.fromJson(
+              (l$insertIntoOrderItemsCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$CreateOrderItems$insertIntoOrderItemsCollection?
+      insertIntoOrderItemsCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$insertIntoOrderItemsCollection = insertIntoOrderItemsCollection;
+    _resultData['insertIntoOrderItemsCollection'] =
+        l$insertIntoOrderItemsCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$insertIntoOrderItemsCollection = insertIntoOrderItemsCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$insertIntoOrderItemsCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$CreateOrderItems ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$insertIntoOrderItemsCollection = insertIntoOrderItemsCollection;
+    final lOther$insertIntoOrderItemsCollection =
+        other.insertIntoOrderItemsCollection;
+    if (l$insertIntoOrderItemsCollection !=
+        lOther$insertIntoOrderItemsCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreateOrderItems
+    on Mutation$CreateOrderItems {
+  CopyWith$Mutation$CreateOrderItems<Mutation$CreateOrderItems> get copyWith =>
+      CopyWith$Mutation$CreateOrderItems(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Mutation$CreateOrderItems<TRes> {
+  factory CopyWith$Mutation$CreateOrderItems(
+    Mutation$CreateOrderItems instance,
+    TRes Function(Mutation$CreateOrderItems) then,
+  ) = _CopyWithImpl$Mutation$CreateOrderItems;
+
+  factory CopyWith$Mutation$CreateOrderItems.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$CreateOrderItems;
+
+  TRes call({
+    Mutation$CreateOrderItems$insertIntoOrderItemsCollection?
+        insertIntoOrderItemsCollection,
+    String? $__typename,
+  });
+  CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<TRes>
+      get insertIntoOrderItemsCollection;
+}
+
+class _CopyWithImpl$Mutation$CreateOrderItems<TRes>
+    implements CopyWith$Mutation$CreateOrderItems<TRes> {
+  _CopyWithImpl$Mutation$CreateOrderItems(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$CreateOrderItems _instance;
+
+  final TRes Function(Mutation$CreateOrderItems) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? insertIntoOrderItemsCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$CreateOrderItems(
+        insertIntoOrderItemsCollection: insertIntoOrderItemsCollection ==
+                _undefined
+            ? _instance.insertIntoOrderItemsCollection
+            : (insertIntoOrderItemsCollection
+                as Mutation$CreateOrderItems$insertIntoOrderItemsCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<TRes>
+      get insertIntoOrderItemsCollection {
+    final local$insertIntoOrderItemsCollection =
+        _instance.insertIntoOrderItemsCollection;
+    return local$insertIntoOrderItemsCollection == null
+        ? CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection
+            .stub(_then(_instance))
+        : CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection(
+            local$insertIntoOrderItemsCollection,
+            (e) => call(insertIntoOrderItemsCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$CreateOrderItems<TRes>
+    implements CopyWith$Mutation$CreateOrderItems<TRes> {
+  _CopyWithStubImpl$Mutation$CreateOrderItems(this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$CreateOrderItems$insertIntoOrderItemsCollection?
+        insertIntoOrderItemsCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<TRes>
+      get insertIntoOrderItemsCollection =>
+          CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection
+              .stub(_res);
+}
+
+const documentNodeMutationCreateOrderItems = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'CreateOrderItems'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: ListTypeNode(
+          type: NamedTypeNode(
+            name: NameNode(value: 'OrderItemsInsertInput'),
+            isNonNull: true,
+          ),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'insertIntoOrderItemsCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'objects'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'records'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'OrderItem'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'affectedCount'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionOrderItem,
+  fragmentDefinitionProduct,
+]);
+Mutation$CreateOrderItems _parserFn$Mutation$CreateOrderItems(
+        Map<String, dynamic> data) =>
+    Mutation$CreateOrderItems.fromJson(data);
+typedef OnMutationCompleted$Mutation$CreateOrderItems = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$CreateOrderItems?,
+);
+
+class Options$Mutation$CreateOrderItems
+    extends graphql.MutationOptions<Mutation$CreateOrderItems> {
+  Options$Mutation$CreateOrderItems({
+    String? operationName,
+    required Variables$Mutation$CreateOrderItems variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$CreateOrderItems? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$CreateOrderItems? onCompleted,
+    graphql.OnMutationUpdate<Mutation$CreateOrderItems>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$CreateOrderItems(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationCreateOrderItems,
+          parserFn: _parserFn$Mutation$CreateOrderItems,
+        );
+
+  final OnMutationCompleted$Mutation$CreateOrderItems? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$CreateOrderItems
+    extends graphql.WatchQueryOptions<Mutation$CreateOrderItems> {
+  WatchOptions$Mutation$CreateOrderItems({
+    String? operationName,
+    required Variables$Mutation$CreateOrderItems variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$CreateOrderItems? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationCreateOrderItems,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$CreateOrderItems,
+        );
+}
+
+extension ClientExtension$Mutation$CreateOrderItems on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$CreateOrderItems>>
+      mutate$CreateOrderItems(
+              Options$Mutation$CreateOrderItems options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$CreateOrderItems>
+      watchMutation$CreateOrderItems(
+              WatchOptions$Mutation$CreateOrderItems options) =>
+          this.watchMutation(options);
+}
+
+class Mutation$CreateOrderItems$HookResult {
+  Mutation$CreateOrderItems$HookResult(
+    this.runMutation,
+    this.result,
+  );
+
+  final RunMutation$Mutation$CreateOrderItems runMutation;
+
+  final graphql.QueryResult<Mutation$CreateOrderItems> result;
+}
+
+Mutation$CreateOrderItems$HookResult useMutation$CreateOrderItems(
+    [WidgetOptions$Mutation$CreateOrderItems? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$CreateOrderItems());
+  return Mutation$CreateOrderItems$HookResult(
+    (variables, {optimisticResult, typedOptimisticResult}) =>
+        result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$CreateOrderItems>
+    useWatchMutation$CreateOrderItems(
+            WatchOptions$Mutation$CreateOrderItems options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$CreateOrderItems
+    extends graphql.MutationOptions<Mutation$CreateOrderItems> {
+  WidgetOptions$Mutation$CreateOrderItems({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$CreateOrderItems? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$CreateOrderItems? onCompleted,
+    graphql.OnMutationUpdate<Mutation$CreateOrderItems>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$CreateOrderItems(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationCreateOrderItems,
+          parserFn: _parserFn$Mutation$CreateOrderItems,
+        );
+
+  final OnMutationCompleted$Mutation$CreateOrderItems? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+typedef RunMutation$Mutation$CreateOrderItems
+    = graphql.MultiSourceResult<Mutation$CreateOrderItems> Function(
+  Variables$Mutation$CreateOrderItems, {
+  Object? optimisticResult,
+  Mutation$CreateOrderItems? typedOptimisticResult,
+});
+typedef Builder$Mutation$CreateOrderItems = widgets.Widget Function(
+  RunMutation$Mutation$CreateOrderItems,
+  graphql.QueryResult<Mutation$CreateOrderItems>?,
+);
+
+class Mutation$CreateOrderItems$Widget
+    extends graphql_flutter.Mutation<Mutation$CreateOrderItems> {
+  Mutation$CreateOrderItems$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$CreateOrderItems? options,
+    required Builder$Mutation$CreateOrderItems builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$CreateOrderItems(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+              typedOptimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult:
+                  optimisticResult ?? typedOptimisticResult?.toJson(),
+            ),
+            result,
+          ),
+        );
+}
+
+class Mutation$CreateOrderItems$insertIntoOrderItemsCollection {
+  Mutation$CreateOrderItems$insertIntoOrderItemsCollection({
+    required this.records,
+    required this.affectedCount,
+    this.$__typename = 'OrderItemsInsertResponse',
+  });
+
+  factory Mutation$CreateOrderItems$insertIntoOrderItemsCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$records = json['records'];
+    final l$affectedCount = json['affectedCount'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreateOrderItems$insertIntoOrderItemsCollection(
+      records: (l$records as List<dynamic>)
+          .map((e) => Fragment$OrderItem.fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      affectedCount: (l$affectedCount as int),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Fragment$OrderItem> records;
+
+  final int affectedCount;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$records = records;
+    _resultData['records'] = l$records.map((e) => e.toJson()).toList();
+    final l$affectedCount = affectedCount;
+    _resultData['affectedCount'] = l$affectedCount;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$records = records;
+    final l$affectedCount = affectedCount;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$records.map((v) => v)),
+      l$affectedCount,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Mutation$CreateOrderItems$insertIntoOrderItemsCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$records = records;
+    final lOther$records = other.records;
+    if (l$records.length != lOther$records.length) {
+      return false;
+    }
+    for (int i = 0; i < l$records.length; i++) {
+      final l$records$entry = l$records[i];
+      final lOther$records$entry = lOther$records[i];
+      if (l$records$entry != lOther$records$entry) {
+        return false;
+      }
+    }
+    final l$affectedCount = affectedCount;
+    final lOther$affectedCount = other.affectedCount;
+    if (l$affectedCount != lOther$affectedCount) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreateOrderItems$insertIntoOrderItemsCollection
+    on Mutation$CreateOrderItems$insertIntoOrderItemsCollection {
+  CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<
+          Mutation$CreateOrderItems$insertIntoOrderItemsCollection>
+      get copyWith =>
+          CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<
+    TRes> {
+  factory CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection(
+    Mutation$CreateOrderItems$insertIntoOrderItemsCollection instance,
+    TRes Function(Mutation$CreateOrderItems$insertIntoOrderItemsCollection)
+        then,
+  ) = _CopyWithImpl$Mutation$CreateOrderItems$insertIntoOrderItemsCollection;
+
+  factory CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$CreateOrderItems$insertIntoOrderItemsCollection;
+
+  TRes call({
+    List<Fragment$OrderItem>? records,
+    int? affectedCount,
+    String? $__typename,
+  });
+  TRes records(
+      Iterable<Fragment$OrderItem> Function(
+              Iterable<CopyWith$Fragment$OrderItem<Fragment$OrderItem>>)
+          _fn);
+}
+
+class _CopyWithImpl$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<
+            TRes> {
+  _CopyWithImpl$Mutation$CreateOrderItems$insertIntoOrderItemsCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$CreateOrderItems$insertIntoOrderItemsCollection _instance;
+
+  final TRes Function(Mutation$CreateOrderItems$insertIntoOrderItemsCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? records = _undefined,
+    Object? affectedCount = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$CreateOrderItems$insertIntoOrderItemsCollection(
+        records: records == _undefined || records == null
+            ? _instance.records
+            : (records as List<Fragment$OrderItem>),
+        affectedCount: affectedCount == _undefined || affectedCount == null
+            ? _instance.affectedCount
+            : (affectedCount as int),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes records(
+          Iterable<Fragment$OrderItem> Function(
+                  Iterable<CopyWith$Fragment$OrderItem<Fragment$OrderItem>>)
+              _fn) =>
+      call(
+          records: _fn(_instance.records.map((e) => CopyWith$Fragment$OrderItem(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<
+        TRes>
+    implements
+        CopyWith$Mutation$CreateOrderItems$insertIntoOrderItemsCollection<
+            TRes> {
+  _CopyWithStubImpl$Mutation$CreateOrderItems$insertIntoOrderItemsCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Fragment$OrderItem>? records,
+    int? affectedCount,
+    String? $__typename,
+  }) =>
+      _res;
+
+  records(_fn) => _res;
+}
+
+class Variables$Query$SiteDeliveryLocationsForSite {
+  factory Variables$Query$SiteDeliveryLocationsForSite(
+          {required String siteId}) =>
+      Variables$Query$SiteDeliveryLocationsForSite._({
+        r'siteId': siteId,
+      });
+
+  Variables$Query$SiteDeliveryLocationsForSite._(this._$data);
+
+  factory Variables$Query$SiteDeliveryLocationsForSite.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$siteId = data['siteId'];
+    result$data['siteId'] = (l$siteId as String);
+    return Variables$Query$SiteDeliveryLocationsForSite._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get siteId => (_$data['siteId'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$siteId = siteId;
+    result$data['siteId'] = l$siteId;
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$SiteDeliveryLocationsForSite<
+          Variables$Query$SiteDeliveryLocationsForSite>
+      get copyWith => CopyWith$Variables$Query$SiteDeliveryLocationsForSite(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Query$SiteDeliveryLocationsForSite ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$siteId = siteId;
+    return Object.hashAll([l$siteId]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$SiteDeliveryLocationsForSite<TRes> {
+  factory CopyWith$Variables$Query$SiteDeliveryLocationsForSite(
+    Variables$Query$SiteDeliveryLocationsForSite instance,
+    TRes Function(Variables$Query$SiteDeliveryLocationsForSite) then,
+  ) = _CopyWithImpl$Variables$Query$SiteDeliveryLocationsForSite;
+
+  factory CopyWith$Variables$Query$SiteDeliveryLocationsForSite.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$SiteDeliveryLocationsForSite;
+
+  TRes call({String? siteId});
+}
+
+class _CopyWithImpl$Variables$Query$SiteDeliveryLocationsForSite<TRes>
+    implements CopyWith$Variables$Query$SiteDeliveryLocationsForSite<TRes> {
+  _CopyWithImpl$Variables$Query$SiteDeliveryLocationsForSite(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$SiteDeliveryLocationsForSite _instance;
+
+  final TRes Function(Variables$Query$SiteDeliveryLocationsForSite) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? siteId = _undefined}) =>
+      _then(Variables$Query$SiteDeliveryLocationsForSite._({
+        ..._instance._$data,
+        if (siteId != _undefined && siteId != null)
+          'siteId': (siteId as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$SiteDeliveryLocationsForSite<TRes>
+    implements CopyWith$Variables$Query$SiteDeliveryLocationsForSite<TRes> {
+  _CopyWithStubImpl$Variables$Query$SiteDeliveryLocationsForSite(this._res);
+
+  TRes _res;
+
+  call({String? siteId}) => _res;
+}
+
+class Query$SiteDeliveryLocationsForSite {
+  Query$SiteDeliveryLocationsForSite({
+    this.siteDeliveryLocationCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$SiteDeliveryLocationsForSite.fromJson(
+      Map<String, dynamic> json) {
+    final l$siteDeliveryLocationCollection =
+        json['siteDeliveryLocationCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$SiteDeliveryLocationsForSite(
+      siteDeliveryLocationCollection: l$siteDeliveryLocationCollection == null
+          ? null
+          : Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection
+              .fromJson(
+                  (l$siteDeliveryLocationCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection?
+      siteDeliveryLocationCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$siteDeliveryLocationCollection = siteDeliveryLocationCollection;
+    _resultData['siteDeliveryLocationCollection'] =
+        l$siteDeliveryLocationCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$siteDeliveryLocationCollection = siteDeliveryLocationCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$siteDeliveryLocationCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$SiteDeliveryLocationsForSite ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$siteDeliveryLocationCollection = siteDeliveryLocationCollection;
+    final lOther$siteDeliveryLocationCollection =
+        other.siteDeliveryLocationCollection;
+    if (l$siteDeliveryLocationCollection !=
+        lOther$siteDeliveryLocationCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SiteDeliveryLocationsForSite
+    on Query$SiteDeliveryLocationsForSite {
+  CopyWith$Query$SiteDeliveryLocationsForSite<
+          Query$SiteDeliveryLocationsForSite>
+      get copyWith => CopyWith$Query$SiteDeliveryLocationsForSite(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$SiteDeliveryLocationsForSite<TRes> {
+  factory CopyWith$Query$SiteDeliveryLocationsForSite(
+    Query$SiteDeliveryLocationsForSite instance,
+    TRes Function(Query$SiteDeliveryLocationsForSite) then,
+  ) = _CopyWithImpl$Query$SiteDeliveryLocationsForSite;
+
+  factory CopyWith$Query$SiteDeliveryLocationsForSite.stub(TRes res) =
+      _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite;
+
+  TRes call({
+    Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection?
+        siteDeliveryLocationCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+      TRes> get siteDeliveryLocationCollection;
+}
+
+class _CopyWithImpl$Query$SiteDeliveryLocationsForSite<TRes>
+    implements CopyWith$Query$SiteDeliveryLocationsForSite<TRes> {
+  _CopyWithImpl$Query$SiteDeliveryLocationsForSite(
+    this._instance,
+    this._then,
+  );
+
+  final Query$SiteDeliveryLocationsForSite _instance;
+
+  final TRes Function(Query$SiteDeliveryLocationsForSite) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? siteDeliveryLocationCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$SiteDeliveryLocationsForSite(
+        siteDeliveryLocationCollection: siteDeliveryLocationCollection ==
+                _undefined
+            ? _instance.siteDeliveryLocationCollection
+            : (siteDeliveryLocationCollection
+                as Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+      TRes> get siteDeliveryLocationCollection {
+    final local$siteDeliveryLocationCollection =
+        _instance.siteDeliveryLocationCollection;
+    return local$siteDeliveryLocationCollection == null
+        ? CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection
+            .stub(_then(_instance))
+        : CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection(
+            local$siteDeliveryLocationCollection,
+            (e) => call(siteDeliveryLocationCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite<TRes>
+    implements CopyWith$Query$SiteDeliveryLocationsForSite<TRes> {
+  _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite(this._res);
+
+  TRes _res;
+
+  call({
+    Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection?
+        siteDeliveryLocationCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+          TRes>
+      get siteDeliveryLocationCollection =>
+          CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection
+              .stub(_res);
+}
+
+const documentNodeQuerySiteDeliveryLocationsForSite =
+    DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'SiteDeliveryLocationsForSite'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'siteId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'siteDeliveryLocationCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'siteId'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'siteId')),
+                  )
+                ]),
+              )
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'SiteDeliveryLocation'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'pageInfo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'hasPreviousPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hasNextPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'startCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'endCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionSiteDeliveryLocation,
+  fragmentDefinitionDeliveryLocation,
+]);
+Query$SiteDeliveryLocationsForSite _parserFn$Query$SiteDeliveryLocationsForSite(
+        Map<String, dynamic> data) =>
+    Query$SiteDeliveryLocationsForSite.fromJson(data);
+typedef OnQueryComplete$Query$SiteDeliveryLocationsForSite = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Query$SiteDeliveryLocationsForSite?,
+);
+
+class Options$Query$SiteDeliveryLocationsForSite
+    extends graphql.QueryOptions<Query$SiteDeliveryLocationsForSite> {
+  Options$Query$SiteDeliveryLocationsForSite({
+    String? operationName,
+    required Variables$Query$SiteDeliveryLocationsForSite variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$SiteDeliveryLocationsForSite? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$SiteDeliveryLocationsForSite? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$SiteDeliveryLocationsForSite(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerySiteDeliveryLocationsForSite,
+          parserFn: _parserFn$Query$SiteDeliveryLocationsForSite,
+        );
+
+  final OnQueryComplete$Query$SiteDeliveryLocationsForSite?
+      onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$SiteDeliveryLocationsForSite
+    extends graphql.WatchQueryOptions<Query$SiteDeliveryLocationsForSite> {
+  WatchOptions$Query$SiteDeliveryLocationsForSite({
+    String? operationName,
+    required Variables$Query$SiteDeliveryLocationsForSite variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$SiteDeliveryLocationsForSite? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerySiteDeliveryLocationsForSite,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$SiteDeliveryLocationsForSite,
+        );
+}
+
+class FetchMoreOptions$Query$SiteDeliveryLocationsForSite
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$SiteDeliveryLocationsForSite({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$SiteDeliveryLocationsForSite variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQuerySiteDeliveryLocationsForSite,
+        );
+}
+
+extension ClientExtension$Query$SiteDeliveryLocationsForSite
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$SiteDeliveryLocationsForSite>>
+      query$SiteDeliveryLocationsForSite(
+              Options$Query$SiteDeliveryLocationsForSite options) async =>
+          await this.query(options);
+  graphql.ObservableQuery<Query$SiteDeliveryLocationsForSite>
+      watchQuery$SiteDeliveryLocationsForSite(
+              WatchOptions$Query$SiteDeliveryLocationsForSite options) =>
+          this.watchQuery(options);
+  void writeQuery$SiteDeliveryLocationsForSite({
+    required Query$SiteDeliveryLocationsForSite data,
+    required Variables$Query$SiteDeliveryLocationsForSite variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(
+              document: documentNodeQuerySiteDeliveryLocationsForSite),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$SiteDeliveryLocationsForSite? readQuery$SiteDeliveryLocationsForSite({
+    required Variables$Query$SiteDeliveryLocationsForSite variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(
+            document: documentNodeQuerySiteDeliveryLocationsForSite),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Query$SiteDeliveryLocationsForSite.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$SiteDeliveryLocationsForSite>
+    useQuery$SiteDeliveryLocationsForSite(
+            Options$Query$SiteDeliveryLocationsForSite options) =>
+        graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$SiteDeliveryLocationsForSite>
+    useWatchQuery$SiteDeliveryLocationsForSite(
+            WatchOptions$Query$SiteDeliveryLocationsForSite options) =>
+        graphql_flutter.useWatchQuery(options);
+
+class Query$SiteDeliveryLocationsForSite$Widget
+    extends graphql_flutter.Query<Query$SiteDeliveryLocationsForSite> {
+  Query$SiteDeliveryLocationsForSite$Widget({
+    widgets.Key? key,
+    required Options$Query$SiteDeliveryLocationsForSite options,
+    required graphql_flutter.QueryBuilder<Query$SiteDeliveryLocationsForSite>
+        builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
+}
+
+class Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection {
+  Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection({
+    required this.edges,
+    required this.pageInfo,
+    this.$__typename = 'SiteDeliveryLocationConnection',
+  });
+
+  factory Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges
+                  .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo:
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo
+              .fromJson((l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges>
+      edges;
+
+  final Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo
+      pageInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection
+    on Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection {
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection>
+      get copyWith =>
+          CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+    TRes> {
+  factory CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection(
+    Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection instance,
+    TRes Function(
+            Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection)
+        then,
+  ) = _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection;
+
+  factory CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection;
+
+  TRes call({
+    List<Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges>?
+        edges,
+    Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo?
+        pageInfo,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+                      Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges>>)
+          _fn);
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+      TRes> get pageInfo;
+}
+
+class _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+        TRes>
+    implements
+        CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+            TRes> {
+  _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection
+      _instance;
+
+  final TRes Function(
+      Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<
+                Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges>),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo
+                as Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+                          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+      TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+        TRes>
+    implements
+        CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection<
+            TRes> {
+  _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges>?
+        edges,
+    Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo?
+        pageInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+          TRes>
+      get pageInfo =>
+          CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo
+              .stub(_res);
+}
+
+class Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges {
+  Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges({
+    required this.node,
+    this.$__typename = 'SiteDeliveryLocationEdge',
+  });
+
+  factory Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges(
+      node: Fragment$SiteDeliveryLocation.fromJson(
+          (l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$SiteDeliveryLocation node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges
+    on Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges {
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges>
+      get copyWith =>
+          CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+    TRes> {
+  factory CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges(
+    Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges
+        instance,
+    TRes Function(
+            Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges)
+        then,
+  ) = _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges;
+
+  factory CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges;
+
+  TRes call({
+    Fragment$SiteDeliveryLocation? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$SiteDeliveryLocation<TRes> get node;
+}
+
+class _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges
+      _instance;
+
+  final TRes Function(
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$SiteDeliveryLocation),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$SiteDeliveryLocation<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$SiteDeliveryLocation(
+        local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$SiteDeliveryLocation? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$SiteDeliveryLocation<TRes> get node =>
+      CopyWith$Fragment$SiteDeliveryLocation.stub(_res);
+}
+
+class Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo {
+  Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo({
+    required this.hasPreviousPage,
+    required this.hasNextPage,
+    this.startCursor,
+    this.endCursor,
+    this.$__typename = 'PageInfo',
+  });
+
+  factory Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$hasPreviousPage = json['hasPreviousPage'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$startCursor = json['startCursor'];
+    final l$endCursor = json['endCursor'];
+    final l$$__typename = json['__typename'];
+    return Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo(
+      hasPreviousPage: (l$hasPreviousPage as bool),
+      hasNextPage: (l$hasNextPage as bool),
+      startCursor: (l$startCursor as String?),
+      endCursor: (l$endCursor as String?),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final bool hasPreviousPage;
+
+  final bool hasNextPage;
+
+  final String? startCursor;
+
+  final String? endCursor;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$hasPreviousPage = hasPreviousPage;
+    _resultData['hasPreviousPage'] = l$hasPreviousPage;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$startCursor = startCursor;
+    _resultData['startCursor'] = l$startCursor;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$hasPreviousPage = hasPreviousPage;
+    final l$hasNextPage = hasNextPage;
+    final l$startCursor = startCursor;
+    final l$endCursor = endCursor;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$hasPreviousPage,
+      l$hasNextPage,
+      l$startCursor,
+      l$endCursor,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$hasPreviousPage = hasPreviousPage;
+    final lOther$hasPreviousPage = other.hasPreviousPage;
+    if (l$hasPreviousPage != lOther$hasPreviousPage) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$startCursor = startCursor;
+    final lOther$startCursor = other.startCursor;
+    if (l$startCursor != lOther$startCursor) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo
+    on Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo {
+  CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo>
+      get copyWith =>
+          CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+    TRes> {
+  factory CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo(
+    Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo
+        instance,
+    TRes Function(
+            Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo)
+        then,
+  ) = _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo;
+
+  factory CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo;
+
+  TRes call({
+    bool? hasPreviousPage,
+    bool? hasNextPage,
+    String? startCursor,
+    String? endCursor,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+            TRes> {
+  _CopyWithImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo
+      _instance;
+
+  final TRes Function(
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? hasPreviousPage = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? startCursor = _undefined,
+    Object? endCursor = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo(
+        hasPreviousPage:
+            hasPreviousPage == _undefined || hasPreviousPage == null
+                ? _instance.hasPreviousPage
+                : (hasPreviousPage as bool),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        startCursor: startCursor == _undefined
+            ? _instance.startCursor
+            : (startCursor as String?),
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo<
+            TRes> {
+  _CopyWithStubImpl$Query$SiteDeliveryLocationsForSite$siteDeliveryLocationCollection$pageInfo(
+      this._res);
+
+  TRes _res;
+
+  call({
+    bool? hasPreviousPage,
+    bool? hasNextPage,
+    String? startCursor,
+    String? endCursor,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Variables$Query$DeliveryPeriod {
+  factory Variables$Query$DeliveryPeriod({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) =>
+      Variables$Query$DeliveryPeriod._({
+        r'startDate': startDate,
+        r'endDate': endDate,
+      });
+
+  Variables$Query$DeliveryPeriod._(this._$data);
+
+  factory Variables$Query$DeliveryPeriod.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$startDate = data['startDate'];
+    result$data['startDate'] = DateTime.parse((l$startDate as String));
+    final l$endDate = data['endDate'];
+    result$data['endDate'] = DateTime.parse((l$endDate as String));
+    return Variables$Query$DeliveryPeriod._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  DateTime get startDate => (_$data['startDate'] as DateTime);
+
+  DateTime get endDate => (_$data['endDate'] as DateTime);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$startDate = startDate;
+    result$data['startDate'] = l$startDate.toIso8601String();
+    final l$endDate = endDate;
+    result$data['endDate'] = l$endDate.toIso8601String();
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$DeliveryPeriod<Variables$Query$DeliveryPeriod>
+      get copyWith => CopyWith$Variables$Query$DeliveryPeriod(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Query$DeliveryPeriod ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$startDate = startDate;
+    final lOther$startDate = other.startDate;
+    if (l$startDate != lOther$startDate) {
+      return false;
+    }
+    final l$endDate = endDate;
+    final lOther$endDate = other.endDate;
+    if (l$endDate != lOther$endDate) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$startDate = startDate;
+    final l$endDate = endDate;
+    return Object.hashAll([
+      l$startDate,
+      l$endDate,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$DeliveryPeriod<TRes> {
+  factory CopyWith$Variables$Query$DeliveryPeriod(
+    Variables$Query$DeliveryPeriod instance,
+    TRes Function(Variables$Query$DeliveryPeriod) then,
+  ) = _CopyWithImpl$Variables$Query$DeliveryPeriod;
+
+  factory CopyWith$Variables$Query$DeliveryPeriod.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$DeliveryPeriod;
+
+  TRes call({
+    DateTime? startDate,
+    DateTime? endDate,
+  });
+}
+
+class _CopyWithImpl$Variables$Query$DeliveryPeriod<TRes>
+    implements CopyWith$Variables$Query$DeliveryPeriod<TRes> {
+  _CopyWithImpl$Variables$Query$DeliveryPeriod(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$DeliveryPeriod _instance;
+
+  final TRes Function(Variables$Query$DeliveryPeriod) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? startDate = _undefined,
+    Object? endDate = _undefined,
+  }) =>
+      _then(Variables$Query$DeliveryPeriod._({
+        ..._instance._$data,
+        if (startDate != _undefined && startDate != null)
+          'startDate': (startDate as DateTime),
+        if (endDate != _undefined && endDate != null)
+          'endDate': (endDate as DateTime),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$DeliveryPeriod<TRes>
+    implements CopyWith$Variables$Query$DeliveryPeriod<TRes> {
+  _CopyWithStubImpl$Variables$Query$DeliveryPeriod(this._res);
+
+  TRes _res;
+
+  call({
+    DateTime? startDate,
+    DateTime? endDate,
+  }) =>
+      _res;
+}
+
+class Query$DeliveryPeriod {
+  Query$DeliveryPeriod({
+    this.deliveryPeriodCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$DeliveryPeriod.fromJson(Map<String, dynamic> json) {
+    final l$deliveryPeriodCollection = json['deliveryPeriodCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$DeliveryPeriod(
+      deliveryPeriodCollection: l$deliveryPeriodCollection == null
+          ? null
+          : Query$DeliveryPeriod$deliveryPeriodCollection.fromJson(
+              (l$deliveryPeriodCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$DeliveryPeriod$deliveryPeriodCollection? deliveryPeriodCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    _resultData['deliveryPeriodCollection'] =
+        l$deliveryPeriodCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$deliveryPeriodCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$DeliveryPeriod || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    final lOther$deliveryPeriodCollection = other.deliveryPeriodCollection;
+    if (l$deliveryPeriodCollection != lOther$deliveryPeriodCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$DeliveryPeriod on Query$DeliveryPeriod {
+  CopyWith$Query$DeliveryPeriod<Query$DeliveryPeriod> get copyWith =>
+      CopyWith$Query$DeliveryPeriod(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$DeliveryPeriod<TRes> {
+  factory CopyWith$Query$DeliveryPeriod(
+    Query$DeliveryPeriod instance,
+    TRes Function(Query$DeliveryPeriod) then,
+  ) = _CopyWithImpl$Query$DeliveryPeriod;
+
+  factory CopyWith$Query$DeliveryPeriod.stub(TRes res) =
+      _CopyWithStubImpl$Query$DeliveryPeriod;
+
+  TRes call({
+    Query$DeliveryPeriod$deliveryPeriodCollection? deliveryPeriodCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection<TRes>
+      get deliveryPeriodCollection;
+}
+
+class _CopyWithImpl$Query$DeliveryPeriod<TRes>
+    implements CopyWith$Query$DeliveryPeriod<TRes> {
+  _CopyWithImpl$Query$DeliveryPeriod(
+    this._instance,
+    this._then,
+  );
+
+  final Query$DeliveryPeriod _instance;
+
+  final TRes Function(Query$DeliveryPeriod) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? deliveryPeriodCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$DeliveryPeriod(
+        deliveryPeriodCollection: deliveryPeriodCollection == _undefined
+            ? _instance.deliveryPeriodCollection
+            : (deliveryPeriodCollection
+                as Query$DeliveryPeriod$deliveryPeriodCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection<TRes>
+      get deliveryPeriodCollection {
+    final local$deliveryPeriodCollection = _instance.deliveryPeriodCollection;
+    return local$deliveryPeriodCollection == null
+        ? CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection.stub(
+            _then(_instance))
+        : CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection(
+            local$deliveryPeriodCollection,
+            (e) => call(deliveryPeriodCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$DeliveryPeriod<TRes>
+    implements CopyWith$Query$DeliveryPeriod<TRes> {
+  _CopyWithStubImpl$Query$DeliveryPeriod(this._res);
+
+  TRes _res;
+
+  call({
+    Query$DeliveryPeriod$deliveryPeriodCollection? deliveryPeriodCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection<TRes>
+      get deliveryPeriodCollection =>
+          CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection.stub(_res);
+}
+
+const documentNodeQueryDeliveryPeriod = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'DeliveryPeriod'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'startDate')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Datetime'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'endDate')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Datetime'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'deliveryPeriodCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'startDate'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'gte'),
+                    value: VariableNode(name: NameNode(value: 'startDate')),
+                  )
+                ]),
+              ),
+              ObjectFieldNode(
+                name: NameNode(value: 'endDate'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'lte'),
+                    value: VariableNode(name: NameNode(value: 'endDate')),
+                  )
+                ]),
+              ),
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'DeliveryPeriod'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionDeliveryPeriod,
+  fragmentDefinitionDeliveryLocation,
+]);
+Query$DeliveryPeriod _parserFn$Query$DeliveryPeriod(
+        Map<String, dynamic> data) =>
+    Query$DeliveryPeriod.fromJson(data);
+typedef OnQueryComplete$Query$DeliveryPeriod = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$DeliveryPeriod?,
+);
+
+class Options$Query$DeliveryPeriod
+    extends graphql.QueryOptions<Query$DeliveryPeriod> {
+  Options$Query$DeliveryPeriod({
+    String? operationName,
+    required Variables$Query$DeliveryPeriod variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$DeliveryPeriod? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$DeliveryPeriod? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$DeliveryPeriod(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryDeliveryPeriod,
+          parserFn: _parserFn$Query$DeliveryPeriod,
+        );
+
+  final OnQueryComplete$Query$DeliveryPeriod? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$DeliveryPeriod
+    extends graphql.WatchQueryOptions<Query$DeliveryPeriod> {
+  WatchOptions$Query$DeliveryPeriod({
+    String? operationName,
+    required Variables$Query$DeliveryPeriod variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$DeliveryPeriod? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryDeliveryPeriod,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$DeliveryPeriod,
+        );
+}
+
+class FetchMoreOptions$Query$DeliveryPeriod extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$DeliveryPeriod({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$DeliveryPeriod variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryDeliveryPeriod,
+        );
+}
+
+extension ClientExtension$Query$DeliveryPeriod on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$DeliveryPeriod>> query$DeliveryPeriod(
+          Options$Query$DeliveryPeriod options) async =>
+      await this.query(options);
+  graphql.ObservableQuery<Query$DeliveryPeriod> watchQuery$DeliveryPeriod(
+          WatchOptions$Query$DeliveryPeriod options) =>
+      this.watchQuery(options);
+  void writeQuery$DeliveryPeriod({
+    required Query$DeliveryPeriod data,
+    required Variables$Query$DeliveryPeriod variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation:
+              graphql.Operation(document: documentNodeQueryDeliveryPeriod),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$DeliveryPeriod? readQuery$DeliveryPeriod({
+    required Variables$Query$DeliveryPeriod variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(document: documentNodeQueryDeliveryPeriod),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$DeliveryPeriod.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$DeliveryPeriod> useQuery$DeliveryPeriod(
+        Options$Query$DeliveryPeriod options) =>
+    graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$DeliveryPeriod> useWatchQuery$DeliveryPeriod(
+        WatchOptions$Query$DeliveryPeriod options) =>
+    graphql_flutter.useWatchQuery(options);
+
+class Query$DeliveryPeriod$Widget
+    extends graphql_flutter.Query<Query$DeliveryPeriod> {
+  Query$DeliveryPeriod$Widget({
+    widgets.Key? key,
+    required Options$Query$DeliveryPeriod options,
+    required graphql_flutter.QueryBuilder<Query$DeliveryPeriod> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
+}
+
+class Query$DeliveryPeriod$deliveryPeriodCollection {
+  Query$DeliveryPeriod$deliveryPeriodCollection({
+    required this.edges,
+    this.$__typename = 'DeliveryPeriodConnection',
+  });
+
+  factory Query$DeliveryPeriod$deliveryPeriodCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$DeliveryPeriod$deliveryPeriodCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Query$DeliveryPeriod$deliveryPeriodCollection$edges.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$DeliveryPeriod$deliveryPeriodCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$DeliveryPeriod$deliveryPeriodCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$DeliveryPeriod$deliveryPeriodCollection
+    on Query$DeliveryPeriod$deliveryPeriodCollection {
+  CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection<
+          Query$DeliveryPeriod$deliveryPeriodCollection>
+      get copyWith => CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection<TRes> {
+  factory CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection(
+    Query$DeliveryPeriod$deliveryPeriodCollection instance,
+    TRes Function(Query$DeliveryPeriod$deliveryPeriodCollection) then,
+  ) = _CopyWithImpl$Query$DeliveryPeriod$deliveryPeriodCollection;
+
+  factory CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$DeliveryPeriod$deliveryPeriodCollection;
+
+  TRes call({
+    List<Query$DeliveryPeriod$deliveryPeriodCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$DeliveryPeriod$deliveryPeriodCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges<
+                      Query$DeliveryPeriod$deliveryPeriodCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$DeliveryPeriod$deliveryPeriodCollection<TRes>
+    implements CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection<TRes> {
+  _CopyWithImpl$Query$DeliveryPeriod$deliveryPeriodCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$DeliveryPeriod$deliveryPeriodCollection _instance;
+
+  final TRes Function(Query$DeliveryPeriod$deliveryPeriodCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$DeliveryPeriod$deliveryPeriodCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges
+                as List<Query$DeliveryPeriod$deliveryPeriodCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$DeliveryPeriod$deliveryPeriodCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges<
+                          Query$DeliveryPeriod$deliveryPeriodCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Query$DeliveryPeriod$deliveryPeriodCollection<TRes>
+    implements CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection<TRes> {
+  _CopyWithStubImpl$Query$DeliveryPeriod$deliveryPeriodCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$DeliveryPeriod$deliveryPeriodCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Query$DeliveryPeriod$deliveryPeriodCollection$edges {
+  Query$DeliveryPeriod$deliveryPeriodCollection$edges({
+    required this.node,
+    this.$__typename = 'DeliveryPeriodEdge',
+  });
+
+  factory Query$DeliveryPeriod$deliveryPeriodCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$DeliveryPeriod$deliveryPeriodCollection$edges(
+      node: Fragment$DeliveryPeriod.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$DeliveryPeriod node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$DeliveryPeriod$deliveryPeriodCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$DeliveryPeriod$deliveryPeriodCollection$edges
+    on Query$DeliveryPeriod$deliveryPeriodCollection$edges {
+  CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges<
+          Query$DeliveryPeriod$deliveryPeriodCollection$edges>
+      get copyWith =>
+          CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges<
+    TRes> {
+  factory CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges(
+    Query$DeliveryPeriod$deliveryPeriodCollection$edges instance,
+    TRes Function(Query$DeliveryPeriod$deliveryPeriodCollection$edges) then,
+  ) = _CopyWithImpl$Query$DeliveryPeriod$deliveryPeriodCollection$edges;
+
+  factory CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$DeliveryPeriod$deliveryPeriodCollection$edges;
+
+  TRes call({
+    Fragment$DeliveryPeriod? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node;
+}
+
+class _CopyWithImpl$Query$DeliveryPeriod$deliveryPeriodCollection$edges<TRes>
+    implements
+        CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges<TRes> {
+  _CopyWithImpl$Query$DeliveryPeriod$deliveryPeriodCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$DeliveryPeriod$deliveryPeriodCollection$edges _instance;
+
+  final TRes Function(Query$DeliveryPeriod$deliveryPeriodCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$DeliveryPeriod$deliveryPeriodCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$DeliveryPeriod),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$DeliveryPeriod(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$DeliveryPeriod$deliveryPeriodCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$DeliveryPeriod$deliveryPeriodCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$DeliveryPeriod$deliveryPeriodCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$DeliveryPeriod? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node =>
+      CopyWith$Fragment$DeliveryPeriod.stub(_res);
+}
+
+class Variables$Query$DeliveryPeriods {
+  factory Variables$Query$DeliveryPeriods({
+    int? first,
+    int? last,
+    dynamic? before,
+    dynamic? after,
+    Input$DeliveryPeriodFilter? filter,
+    List<Input$DeliveryPeriodOrderBy>? orderBy,
+  }) =>
+      Variables$Query$DeliveryPeriods._({
+        if (first != null) r'first': first,
+        if (last != null) r'last': last,
+        if (before != null) r'before': before,
+        if (after != null) r'after': after,
+        if (filter != null) r'filter': filter,
+        if (orderBy != null) r'orderBy': orderBy,
+      });
+
+  Variables$Query$DeliveryPeriods._(this._$data);
+
+  factory Variables$Query$DeliveryPeriods.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('first')) {
+      final l$first = data['first'];
+      result$data['first'] = (l$first as int?);
+    }
+    if (data.containsKey('last')) {
+      final l$last = data['last'];
+      result$data['last'] = (l$last as int?);
+    }
+    if (data.containsKey('before')) {
+      final l$before = data['before'];
+      result$data['before'] = (l$before as dynamic?);
+    }
+    if (data.containsKey('after')) {
+      final l$after = data['after'];
+      result$data['after'] = (l$after as dynamic?);
+    }
+    if (data.containsKey('filter')) {
+      final l$filter = data['filter'];
+      result$data['filter'] = l$filter == null
+          ? null
+          : Input$DeliveryPeriodFilter.fromJson(
+              (l$filter as Map<String, dynamic>));
+    }
+    if (data.containsKey('orderBy')) {
+      final l$orderBy = data['orderBy'];
+      result$data['orderBy'] = (l$orderBy as List<dynamic>?)
+          ?.map((e) =>
+              Input$DeliveryPeriodOrderBy.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    return Variables$Query$DeliveryPeriods._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get first => (_$data['first'] as int?);
+
+  int? get last => (_$data['last'] as int?);
+
+  dynamic? get before => (_$data['before'] as dynamic?);
+
+  dynamic? get after => (_$data['after'] as dynamic?);
+
+  Input$DeliveryPeriodFilter? get filter =>
+      (_$data['filter'] as Input$DeliveryPeriodFilter?);
+
+  List<Input$DeliveryPeriodOrderBy>? get orderBy =>
+      (_$data['orderBy'] as List<Input$DeliveryPeriodOrderBy>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('first')) {
+      final l$first = first;
+      result$data['first'] = l$first;
+    }
+    if (_$data.containsKey('last')) {
+      final l$last = last;
+      result$data['last'] = l$last;
+    }
+    if (_$data.containsKey('before')) {
+      final l$before = before;
+      result$data['before'] = l$before;
+    }
+    if (_$data.containsKey('after')) {
+      final l$after = after;
+      result$data['after'] = l$after;
+    }
+    if (_$data.containsKey('filter')) {
+      final l$filter = filter;
+      result$data['filter'] = l$filter?.toJson();
+    }
+    if (_$data.containsKey('orderBy')) {
+      final l$orderBy = orderBy;
+      result$data['orderBy'] = l$orderBy?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$DeliveryPeriods<Variables$Query$DeliveryPeriods>
+      get copyWith => CopyWith$Variables$Query$DeliveryPeriods(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Query$DeliveryPeriods ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$first = first;
+    final lOther$first = other.first;
+    if (_$data.containsKey('first') != other._$data.containsKey('first')) {
+      return false;
+    }
+    if (l$first != lOther$first) {
+      return false;
+    }
+    final l$last = last;
+    final lOther$last = other.last;
+    if (_$data.containsKey('last') != other._$data.containsKey('last')) {
+      return false;
+    }
+    if (l$last != lOther$last) {
+      return false;
+    }
+    final l$before = before;
+    final lOther$before = other.before;
+    if (_$data.containsKey('before') != other._$data.containsKey('before')) {
+      return false;
+    }
+    if (l$before != lOther$before) {
+      return false;
+    }
+    final l$after = after;
+    final lOther$after = other.after;
+    if (_$data.containsKey('after') != other._$data.containsKey('after')) {
+      return false;
+    }
+    if (l$after != lOther$after) {
+      return false;
+    }
+    final l$filter = filter;
+    final lOther$filter = other.filter;
+    if (_$data.containsKey('filter') != other._$data.containsKey('filter')) {
+      return false;
+    }
+    if (l$filter != lOther$filter) {
+      return false;
+    }
+    final l$orderBy = orderBy;
+    final lOther$orderBy = other.orderBy;
+    if (_$data.containsKey('orderBy') != other._$data.containsKey('orderBy')) {
+      return false;
+    }
+    if (l$orderBy != null && lOther$orderBy != null) {
+      if (l$orderBy.length != lOther$orderBy.length) {
+        return false;
+      }
+      for (int i = 0; i < l$orderBy.length; i++) {
+        final l$orderBy$entry = l$orderBy[i];
+        final lOther$orderBy$entry = lOther$orderBy[i];
+        if (l$orderBy$entry != lOther$orderBy$entry) {
+          return false;
+        }
+      }
+    } else if (l$orderBy != lOther$orderBy) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$first = first;
+    final l$last = last;
+    final l$before = before;
+    final l$after = after;
+    final l$filter = filter;
+    final l$orderBy = orderBy;
+    return Object.hashAll([
+      _$data.containsKey('first') ? l$first : const {},
+      _$data.containsKey('last') ? l$last : const {},
+      _$data.containsKey('before') ? l$before : const {},
+      _$data.containsKey('after') ? l$after : const {},
+      _$data.containsKey('filter') ? l$filter : const {},
+      _$data.containsKey('orderBy')
+          ? l$orderBy == null
+              ? null
+              : Object.hashAll(l$orderBy.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$DeliveryPeriods<TRes> {
+  factory CopyWith$Variables$Query$DeliveryPeriods(
+    Variables$Query$DeliveryPeriods instance,
+    TRes Function(Variables$Query$DeliveryPeriods) then,
+  ) = _CopyWithImpl$Variables$Query$DeliveryPeriods;
+
+  factory CopyWith$Variables$Query$DeliveryPeriods.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$DeliveryPeriods;
+
+  TRes call({
+    int? first,
+    int? last,
+    dynamic? before,
+    dynamic? after,
+    Input$DeliveryPeriodFilter? filter,
+    List<Input$DeliveryPeriodOrderBy>? orderBy,
+  });
+}
+
+class _CopyWithImpl$Variables$Query$DeliveryPeriods<TRes>
+    implements CopyWith$Variables$Query$DeliveryPeriods<TRes> {
+  _CopyWithImpl$Variables$Query$DeliveryPeriods(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$DeliveryPeriods _instance;
+
+  final TRes Function(Variables$Query$DeliveryPeriods) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? first = _undefined,
+    Object? last = _undefined,
+    Object? before = _undefined,
+    Object? after = _undefined,
+    Object? filter = _undefined,
+    Object? orderBy = _undefined,
+  }) =>
+      _then(Variables$Query$DeliveryPeriods._({
+        ..._instance._$data,
+        if (first != _undefined) 'first': (first as int?),
+        if (last != _undefined) 'last': (last as int?),
+        if (before != _undefined) 'before': (before as dynamic?),
+        if (after != _undefined) 'after': (after as dynamic?),
+        if (filter != _undefined)
+          'filter': (filter as Input$DeliveryPeriodFilter?),
+        if (orderBy != _undefined)
+          'orderBy': (orderBy as List<Input$DeliveryPeriodOrderBy>?),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$DeliveryPeriods<TRes>
+    implements CopyWith$Variables$Query$DeliveryPeriods<TRes> {
+  _CopyWithStubImpl$Variables$Query$DeliveryPeriods(this._res);
+
+  TRes _res;
+
+  call({
+    int? first,
+    int? last,
+    dynamic? before,
+    dynamic? after,
+    Input$DeliveryPeriodFilter? filter,
+    List<Input$DeliveryPeriodOrderBy>? orderBy,
+  }) =>
+      _res;
+}
+
+class Query$DeliveryPeriods {
+  Query$DeliveryPeriods({
+    this.deliveryPeriodCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$DeliveryPeriods.fromJson(Map<String, dynamic> json) {
+    final l$deliveryPeriodCollection = json['deliveryPeriodCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$DeliveryPeriods(
+      deliveryPeriodCollection: l$deliveryPeriodCollection == null
+          ? null
+          : Query$DeliveryPeriods$deliveryPeriodCollection.fromJson(
+              (l$deliveryPeriodCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$DeliveryPeriods$deliveryPeriodCollection?
+      deliveryPeriodCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    _resultData['deliveryPeriodCollection'] =
+        l$deliveryPeriodCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$deliveryPeriodCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$DeliveryPeriods || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    final lOther$deliveryPeriodCollection = other.deliveryPeriodCollection;
+    if (l$deliveryPeriodCollection != lOther$deliveryPeriodCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$DeliveryPeriods on Query$DeliveryPeriods {
+  CopyWith$Query$DeliveryPeriods<Query$DeliveryPeriods> get copyWith =>
+      CopyWith$Query$DeliveryPeriods(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$DeliveryPeriods<TRes> {
+  factory CopyWith$Query$DeliveryPeriods(
+    Query$DeliveryPeriods instance,
+    TRes Function(Query$DeliveryPeriods) then,
+  ) = _CopyWithImpl$Query$DeliveryPeriods;
+
+  factory CopyWith$Query$DeliveryPeriods.stub(TRes res) =
+      _CopyWithStubImpl$Query$DeliveryPeriods;
+
+  TRes call({
+    Query$DeliveryPeriods$deliveryPeriodCollection? deliveryPeriodCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection<TRes>
+      get deliveryPeriodCollection;
+}
+
+class _CopyWithImpl$Query$DeliveryPeriods<TRes>
+    implements CopyWith$Query$DeliveryPeriods<TRes> {
+  _CopyWithImpl$Query$DeliveryPeriods(
+    this._instance,
+    this._then,
+  );
+
+  final Query$DeliveryPeriods _instance;
+
+  final TRes Function(Query$DeliveryPeriods) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? deliveryPeriodCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$DeliveryPeriods(
+        deliveryPeriodCollection: deliveryPeriodCollection == _undefined
+            ? _instance.deliveryPeriodCollection
+            : (deliveryPeriodCollection
+                as Query$DeliveryPeriods$deliveryPeriodCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection<TRes>
+      get deliveryPeriodCollection {
+    final local$deliveryPeriodCollection = _instance.deliveryPeriodCollection;
+    return local$deliveryPeriodCollection == null
+        ? CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection.stub(
+            _then(_instance))
+        : CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection(
+            local$deliveryPeriodCollection,
+            (e) => call(deliveryPeriodCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$DeliveryPeriods<TRes>
+    implements CopyWith$Query$DeliveryPeriods<TRes> {
+  _CopyWithStubImpl$Query$DeliveryPeriods(this._res);
+
+  TRes _res;
+
+  call({
+    Query$DeliveryPeriods$deliveryPeriodCollection? deliveryPeriodCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection<TRes>
+      get deliveryPeriodCollection =>
+          CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection.stub(_res);
+}
+
+const documentNodeQueryDeliveryPeriods = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'DeliveryPeriods'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'first')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'last')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'before')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Cursor'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'after')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Cursor'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'filter')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'DeliveryPeriodFilter'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'orderBy')),
+        type: ListTypeNode(
+          type: NamedTypeNode(
+            name: NameNode(value: 'DeliveryPeriodOrderBy'),
+            isNonNull: true,
+          ),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'deliveryPeriodCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'first'),
+            value: VariableNode(name: NameNode(value: 'first')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'last'),
+            value: VariableNode(name: NameNode(value: 'last')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'before'),
+            value: VariableNode(name: NameNode(value: 'before')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'after'),
+            value: VariableNode(name: NameNode(value: 'after')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: VariableNode(name: NameNode(value: 'filter')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'orderBy'),
+            value: VariableNode(name: NameNode(value: 'orderBy')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'DeliveryPeriod'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'pageInfo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'hasPreviousPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hasNextPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'startCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'endCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionDeliveryPeriod,
+  fragmentDefinitionDeliveryLocation,
+]);
+Query$DeliveryPeriods _parserFn$Query$DeliveryPeriods(
+        Map<String, dynamic> data) =>
+    Query$DeliveryPeriods.fromJson(data);
+typedef OnQueryComplete$Query$DeliveryPeriods = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$DeliveryPeriods?,
+);
+
+class Options$Query$DeliveryPeriods
+    extends graphql.QueryOptions<Query$DeliveryPeriods> {
+  Options$Query$DeliveryPeriods({
+    String? operationName,
+    Variables$Query$DeliveryPeriods? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$DeliveryPeriods? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$DeliveryPeriods? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$DeliveryPeriods(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryDeliveryPeriods,
+          parserFn: _parserFn$Query$DeliveryPeriods,
+        );
+
+  final OnQueryComplete$Query$DeliveryPeriods? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$DeliveryPeriods
+    extends graphql.WatchQueryOptions<Query$DeliveryPeriods> {
+  WatchOptions$Query$DeliveryPeriods({
+    String? operationName,
+    Variables$Query$DeliveryPeriods? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$DeliveryPeriods? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryDeliveryPeriods,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$DeliveryPeriods,
+        );
+}
+
+class FetchMoreOptions$Query$DeliveryPeriods extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$DeliveryPeriods({
+    required graphql.UpdateQuery updateQuery,
+    Variables$Query$DeliveryPeriods? variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables?.toJson() ?? {},
+          document: documentNodeQueryDeliveryPeriods,
+        );
+}
+
+extension ClientExtension$Query$DeliveryPeriods on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$DeliveryPeriods>> query$DeliveryPeriods(
+          [Options$Query$DeliveryPeriods? options]) async =>
+      await this.query(options ?? Options$Query$DeliveryPeriods());
+  graphql.ObservableQuery<Query$DeliveryPeriods> watchQuery$DeliveryPeriods(
+          [WatchOptions$Query$DeliveryPeriods? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$DeliveryPeriods());
+  void writeQuery$DeliveryPeriods({
+    required Query$DeliveryPeriods data,
+    Variables$Query$DeliveryPeriods? variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation:
+              graphql.Operation(document: documentNodeQueryDeliveryPeriods),
+          variables: variables?.toJson() ?? const {},
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$DeliveryPeriods? readQuery$DeliveryPeriods({
+    Variables$Query$DeliveryPeriods? variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation:
+            graphql.Operation(document: documentNodeQueryDeliveryPeriods),
+        variables: variables?.toJson() ?? const {},
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$DeliveryPeriods.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$DeliveryPeriods> useQuery$DeliveryPeriods(
+        [Options$Query$DeliveryPeriods? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$DeliveryPeriods());
+graphql.ObservableQuery<Query$DeliveryPeriods> useWatchQuery$DeliveryPeriods(
+        [WatchOptions$Query$DeliveryPeriods? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$DeliveryPeriods());
+
+class Query$DeliveryPeriods$Widget
+    extends graphql_flutter.Query<Query$DeliveryPeriods> {
+  Query$DeliveryPeriods$Widget({
+    widgets.Key? key,
+    Options$Query$DeliveryPeriods? options,
+    required graphql_flutter.QueryBuilder<Query$DeliveryPeriods> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$DeliveryPeriods(),
+          builder: builder,
+        );
+}
+
+class Query$DeliveryPeriods$deliveryPeriodCollection {
+  Query$DeliveryPeriods$deliveryPeriodCollection({
+    required this.edges,
+    required this.pageInfo,
+    this.$__typename = 'DeliveryPeriodConnection',
+  });
+
+  factory Query$DeliveryPeriods$deliveryPeriodCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$DeliveryPeriods$deliveryPeriodCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Query$DeliveryPeriods$deliveryPeriodCollection$edges.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo:
+          Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo.fromJson(
+              (l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$DeliveryPeriods$deliveryPeriodCollection$edges> edges;
+
+  final Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo pageInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$DeliveryPeriods$deliveryPeriodCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$DeliveryPeriods$deliveryPeriodCollection
+    on Query$DeliveryPeriods$deliveryPeriodCollection {
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection<
+          Query$DeliveryPeriods$deliveryPeriodCollection>
+      get copyWith => CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection<TRes> {
+  factory CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection(
+    Query$DeliveryPeriods$deliveryPeriodCollection instance,
+    TRes Function(Query$DeliveryPeriods$deliveryPeriodCollection) then,
+  ) = _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection;
+
+  factory CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection;
+
+  TRes call({
+    List<Query$DeliveryPeriods$deliveryPeriodCollection$edges>? edges,
+    Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo? pageInfo,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$DeliveryPeriods$deliveryPeriodCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges<
+                      Query$DeliveryPeriods$deliveryPeriodCollection$edges>>)
+          _fn);
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<TRes>
+      get pageInfo;
+}
+
+class _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection<TRes>
+    implements CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection<TRes> {
+  _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$DeliveryPeriods$deliveryPeriodCollection _instance;
+
+  final TRes Function(Query$DeliveryPeriods$deliveryPeriodCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$DeliveryPeriods$deliveryPeriodCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges
+                as List<Query$DeliveryPeriods$deliveryPeriodCollection$edges>),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo
+                as Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$DeliveryPeriods$deliveryPeriodCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges<
+                          Query$DeliveryPeriods$deliveryPeriodCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<TRes>
+      get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection<TRes>
+    implements CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection<TRes> {
+  _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$DeliveryPeriods$deliveryPeriodCollection$edges>? edges,
+    Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo? pageInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<TRes>
+      get pageInfo =>
+          CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo.stub(
+              _res);
+}
+
+class Query$DeliveryPeriods$deliveryPeriodCollection$edges {
+  Query$DeliveryPeriods$deliveryPeriodCollection$edges({
+    required this.node,
+    this.$__typename = 'DeliveryPeriodEdge',
+  });
+
+  factory Query$DeliveryPeriods$deliveryPeriodCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$DeliveryPeriods$deliveryPeriodCollection$edges(
+      node: Fragment$DeliveryPeriod.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$DeliveryPeriod node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$DeliveryPeriods$deliveryPeriodCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$DeliveryPeriods$deliveryPeriodCollection$edges
+    on Query$DeliveryPeriods$deliveryPeriodCollection$edges {
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges<
+          Query$DeliveryPeriods$deliveryPeriodCollection$edges>
+      get copyWith =>
+          CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges<
+    TRes> {
+  factory CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges(
+    Query$DeliveryPeriods$deliveryPeriodCollection$edges instance,
+    TRes Function(Query$DeliveryPeriods$deliveryPeriodCollection$edges) then,
+  ) = _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection$edges;
+
+  factory CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection$edges;
+
+  TRes call({
+    Fragment$DeliveryPeriod? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node;
+}
+
+class _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection$edges<TRes>
+    implements
+        CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges<TRes> {
+  _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$DeliveryPeriods$deliveryPeriodCollection$edges _instance;
+
+  final TRes Function(Query$DeliveryPeriods$deliveryPeriodCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$DeliveryPeriods$deliveryPeriodCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$DeliveryPeriod),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$DeliveryPeriod(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$DeliveryPeriod? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node =>
+      CopyWith$Fragment$DeliveryPeriod.stub(_res);
+}
+
+class Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo {
+  Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo({
+    required this.hasPreviousPage,
+    required this.hasNextPage,
+    this.startCursor,
+    this.endCursor,
+    this.$__typename = 'PageInfo',
+  });
+
+  factory Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$hasPreviousPage = json['hasPreviousPage'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$startCursor = json['startCursor'];
+    final l$endCursor = json['endCursor'];
+    final l$$__typename = json['__typename'];
+    return Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo(
+      hasPreviousPage: (l$hasPreviousPage as bool),
+      hasNextPage: (l$hasNextPage as bool),
+      startCursor: (l$startCursor as String?),
+      endCursor: (l$endCursor as String?),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final bool hasPreviousPage;
+
+  final bool hasNextPage;
+
+  final String? startCursor;
+
+  final String? endCursor;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$hasPreviousPage = hasPreviousPage;
+    _resultData['hasPreviousPage'] = l$hasPreviousPage;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$startCursor = startCursor;
+    _resultData['startCursor'] = l$startCursor;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$hasPreviousPage = hasPreviousPage;
+    final l$hasNextPage = hasNextPage;
+    final l$startCursor = startCursor;
+    final l$endCursor = endCursor;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$hasPreviousPage,
+      l$hasNextPage,
+      l$startCursor,
+      l$endCursor,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$hasPreviousPage = hasPreviousPage;
+    final lOther$hasPreviousPage = other.hasPreviousPage;
+    if (l$hasPreviousPage != lOther$hasPreviousPage) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$startCursor = startCursor;
+    final lOther$startCursor = other.startCursor;
+    if (l$startCursor != lOther$startCursor) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo
+    on Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo {
+  CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<
+          Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo>
+      get copyWith =>
+          CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<
+    TRes> {
+  factory CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo(
+    Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo instance,
+    TRes Function(Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo) then,
+  ) = _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo;
+
+  factory CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo;
+
+  TRes call({
+    bool? hasPreviousPage,
+    bool? hasNextPage,
+    String? startCursor,
+    String? endCursor,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<TRes> {
+  _CopyWithImpl$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo _instance;
+
+  final TRes Function(Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? hasPreviousPage = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? startCursor = _undefined,
+    Object? endCursor = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo(
+        hasPreviousPage:
+            hasPreviousPage == _undefined || hasPreviousPage == null
+                ? _instance.hasPreviousPage
+                : (hasPreviousPage as bool),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        startCursor: startCursor == _undefined
+            ? _instance.startCursor
+            : (startCursor as String?),
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$DeliveryPeriods$deliveryPeriodCollection$pageInfo(
+      this._res);
+
+  TRes _res;
+
+  call({
+    bool? hasPreviousPage,
+    bool? hasNextPage,
+    String? startCursor,
+    String? endCursor,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Variables$Query$StationWithSiteDeliveryLocationsForPeriod {
+  factory Variables$Query$StationWithSiteDeliveryLocationsForPeriod({
+    required String siteId,
+    required String deliveryPeriodId,
+  }) =>
+      Variables$Query$StationWithSiteDeliveryLocationsForPeriod._({
+        r'siteId': siteId,
+        r'deliveryPeriodId': deliveryPeriodId,
+      });
+
+  Variables$Query$StationWithSiteDeliveryLocationsForPeriod._(this._$data);
+
+  factory Variables$Query$StationWithSiteDeliveryLocationsForPeriod.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$siteId = data['siteId'];
+    result$data['siteId'] = (l$siteId as String);
+    final l$deliveryPeriodId = data['deliveryPeriodId'];
+    result$data['deliveryPeriodId'] = (l$deliveryPeriodId as String);
+    return Variables$Query$StationWithSiteDeliveryLocationsForPeriod._(
+        result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get siteId => (_$data['siteId'] as String);
+
+  String get deliveryPeriodId => (_$data['deliveryPeriodId'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$siteId = siteId;
+    result$data['siteId'] = l$siteId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    result$data['deliveryPeriodId'] = l$deliveryPeriodId;
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$StationWithSiteDeliveryLocationsForPeriod<
+          Variables$Query$StationWithSiteDeliveryLocationsForPeriod>
+      get copyWith =>
+          CopyWith$Variables$Query$StationWithSiteDeliveryLocationsForPeriod(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Query$StationWithSiteDeliveryLocationsForPeriod ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final lOther$deliveryPeriodId = other.deliveryPeriodId;
+    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$siteId = siteId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    return Object.hashAll([
+      l$siteId,
+      l$deliveryPeriodId,
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$StationWithSiteDeliveryLocationsForPeriod<
+    TRes> {
+  factory CopyWith$Variables$Query$StationWithSiteDeliveryLocationsForPeriod(
+    Variables$Query$StationWithSiteDeliveryLocationsForPeriod instance,
+    TRes Function(Variables$Query$StationWithSiteDeliveryLocationsForPeriod)
+        then,
+  ) = _CopyWithImpl$Variables$Query$StationWithSiteDeliveryLocationsForPeriod;
+
+  factory CopyWith$Variables$Query$StationWithSiteDeliveryLocationsForPeriod.stub(
+          TRes res) =
+      _CopyWithStubImpl$Variables$Query$StationWithSiteDeliveryLocationsForPeriod;
+
+  TRes call({
+    String? siteId,
+    String? deliveryPeriodId,
+  });
+}
+
+class _CopyWithImpl$Variables$Query$StationWithSiteDeliveryLocationsForPeriod<
+        TRes>
+    implements
+        CopyWith$Variables$Query$StationWithSiteDeliveryLocationsForPeriod<
+            TRes> {
+  _CopyWithImpl$Variables$Query$StationWithSiteDeliveryLocationsForPeriod(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$StationWithSiteDeliveryLocationsForPeriod _instance;
+
+  final TRes Function(Variables$Query$StationWithSiteDeliveryLocationsForPeriod)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? siteId = _undefined,
+    Object? deliveryPeriodId = _undefined,
+  }) =>
+      _then(Variables$Query$StationWithSiteDeliveryLocationsForPeriod._({
+        ..._instance._$data,
+        if (siteId != _undefined && siteId != null)
+          'siteId': (siteId as String),
+        if (deliveryPeriodId != _undefined && deliveryPeriodId != null)
+          'deliveryPeriodId': (deliveryPeriodId as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$StationWithSiteDeliveryLocationsForPeriod<
+        TRes>
+    implements
+        CopyWith$Variables$Query$StationWithSiteDeliveryLocationsForPeriod<
+            TRes> {
+  _CopyWithStubImpl$Variables$Query$StationWithSiteDeliveryLocationsForPeriod(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? siteId,
+    String? deliveryPeriodId,
+  }) =>
+      _res;
+}
+
+class Query$StationWithSiteDeliveryLocationsForPeriod {
+  Query$StationWithSiteDeliveryLocationsForPeriod({
+    this.siteDeliveryLocationCollection,
+    this.deliveryPeriodCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$StationWithSiteDeliveryLocationsForPeriod.fromJson(
+      Map<String, dynamic> json) {
+    final l$siteDeliveryLocationCollection =
+        json['siteDeliveryLocationCollection'];
+    final l$deliveryPeriodCollection = json['deliveryPeriodCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$StationWithSiteDeliveryLocationsForPeriod(
+      siteDeliveryLocationCollection: l$siteDeliveryLocationCollection == null
+          ? null
+          : Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection
+              .fromJson(
+                  (l$siteDeliveryLocationCollection as Map<String, dynamic>)),
+      deliveryPeriodCollection: l$deliveryPeriodCollection == null
+          ? null
+          : Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection
+              .fromJson((l$deliveryPeriodCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection?
+      siteDeliveryLocationCollection;
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection?
+      deliveryPeriodCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$siteDeliveryLocationCollection = siteDeliveryLocationCollection;
+    _resultData['siteDeliveryLocationCollection'] =
+        l$siteDeliveryLocationCollection?.toJson();
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    _resultData['deliveryPeriodCollection'] =
+        l$deliveryPeriodCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$siteDeliveryLocationCollection = siteDeliveryLocationCollection;
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$siteDeliveryLocationCollection,
+      l$deliveryPeriodCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$StationWithSiteDeliveryLocationsForPeriod ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$siteDeliveryLocationCollection = siteDeliveryLocationCollection;
+    final lOther$siteDeliveryLocationCollection =
+        other.siteDeliveryLocationCollection;
+    if (l$siteDeliveryLocationCollection !=
+        lOther$siteDeliveryLocationCollection) {
+      return false;
+    }
+    final l$deliveryPeriodCollection = deliveryPeriodCollection;
+    final lOther$deliveryPeriodCollection = other.deliveryPeriodCollection;
+    if (l$deliveryPeriodCollection != lOther$deliveryPeriodCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$StationWithSiteDeliveryLocationsForPeriod
+    on Query$StationWithSiteDeliveryLocationsForPeriod {
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod<
+          Query$StationWithSiteDeliveryLocationsForPeriod>
+      get copyWith => CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod<TRes> {
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod(
+    Query$StationWithSiteDeliveryLocationsForPeriod instance,
+    TRes Function(Query$StationWithSiteDeliveryLocationsForPeriod) then,
+  ) = _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod;
+
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod;
+
+  TRes call({
+    Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection?
+        siteDeliveryLocationCollection,
+    Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection?
+        deliveryPeriodCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+      TRes> get siteDeliveryLocationCollection;
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+      TRes> get deliveryPeriodCollection;
+}
+
+class _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod<TRes>
+    implements CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod<TRes> {
+  _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod(
+    this._instance,
+    this._then,
+  );
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod _instance;
+
+  final TRes Function(Query$StationWithSiteDeliveryLocationsForPeriod) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? siteDeliveryLocationCollection = _undefined,
+    Object? deliveryPeriodCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$StationWithSiteDeliveryLocationsForPeriod(
+        siteDeliveryLocationCollection: siteDeliveryLocationCollection ==
+                _undefined
+            ? _instance.siteDeliveryLocationCollection
+            : (siteDeliveryLocationCollection
+                as Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection?),
+        deliveryPeriodCollection: deliveryPeriodCollection == _undefined
+            ? _instance.deliveryPeriodCollection
+            : (deliveryPeriodCollection
+                as Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+      TRes> get siteDeliveryLocationCollection {
+    final local$siteDeliveryLocationCollection =
+        _instance.siteDeliveryLocationCollection;
+    return local$siteDeliveryLocationCollection == null
+        ? CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection
+            .stub(_then(_instance))
+        : CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection(
+            local$siteDeliveryLocationCollection,
+            (e) => call(siteDeliveryLocationCollection: e));
+  }
+
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+      TRes> get deliveryPeriodCollection {
+    final local$deliveryPeriodCollection = _instance.deliveryPeriodCollection;
+    return local$deliveryPeriodCollection == null
+        ? CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection
+            .stub(_then(_instance))
+        : CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection(
+            local$deliveryPeriodCollection,
+            (e) => call(deliveryPeriodCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod<TRes>
+    implements CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod<TRes> {
+  _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod(this._res);
+
+  TRes _res;
+
+  call({
+    Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection?
+        siteDeliveryLocationCollection,
+    Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection?
+        deliveryPeriodCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+          TRes>
+      get siteDeliveryLocationCollection =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection
+              .stub(_res);
+
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+          TRes>
+      get deliveryPeriodCollection =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection
+              .stub(_res);
+}
+
+const documentNodeQueryStationWithSiteDeliveryLocationsForPeriod =
+    DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'StationWithSiteDeliveryLocationsForPeriod'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'siteId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'deliveryPeriodId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UUID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'siteDeliveryLocationCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'siteId'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: VariableNode(name: NameNode(value: 'siteId')),
+                  )
+                ]),
+              )
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'siteId'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'deliveryLocationId'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'createdAt'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'deliveryLocation'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FragmentSpreadNode(
+                        name: NameNode(value: 'DeliveryLocation'),
+                        directives: [],
+                      ),
+                      FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                    ]),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'site'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FragmentSpreadNode(
+                        name: NameNode(value: 'Site'),
+                        directives: [],
+                      ),
+                      FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                    ]),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: 'deliveryPeriodCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'id'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value:
+                        VariableNode(name: NameNode(value: 'deliveryPeriodId')),
+                  )
+                ]),
+              )
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'DeliveryPeriod'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionDeliveryLocation,
+  fragmentDefinitionSite,
+  fragmentDefinitionSiteDeliveryLocation,
+  fragmentDefinitionDeliveryPeriod,
+]);
+Query$StationWithSiteDeliveryLocationsForPeriod
+    _parserFn$Query$StationWithSiteDeliveryLocationsForPeriod(
+            Map<String, dynamic> data) =>
+        Query$StationWithSiteDeliveryLocationsForPeriod.fromJson(data);
+typedef OnQueryComplete$Query$StationWithSiteDeliveryLocationsForPeriod
+    = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$StationWithSiteDeliveryLocationsForPeriod?,
+);
+
+class Options$Query$StationWithSiteDeliveryLocationsForPeriod extends graphql
+    .QueryOptions<Query$StationWithSiteDeliveryLocationsForPeriod> {
+  Options$Query$StationWithSiteDeliveryLocationsForPeriod({
+    String? operationName,
+    required Variables$Query$StationWithSiteDeliveryLocationsForPeriod
+        variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$StationWithSiteDeliveryLocationsForPeriod? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$StationWithSiteDeliveryLocationsForPeriod? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$StationWithSiteDeliveryLocationsForPeriod(
+                            data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryStationWithSiteDeliveryLocationsForPeriod,
+          parserFn: _parserFn$Query$StationWithSiteDeliveryLocationsForPeriod,
+        );
+
+  final OnQueryComplete$Query$StationWithSiteDeliveryLocationsForPeriod?
+      onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$StationWithSiteDeliveryLocationsForPeriod
+    extends graphql
+    .WatchQueryOptions<Query$StationWithSiteDeliveryLocationsForPeriod> {
+  WatchOptions$Query$StationWithSiteDeliveryLocationsForPeriod({
+    String? operationName,
+    required Variables$Query$StationWithSiteDeliveryLocationsForPeriod
+        variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$StationWithSiteDeliveryLocationsForPeriod? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryStationWithSiteDeliveryLocationsForPeriod,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$StationWithSiteDeliveryLocationsForPeriod,
+        );
+}
+
+class FetchMoreOptions$Query$StationWithSiteDeliveryLocationsForPeriod
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$StationWithSiteDeliveryLocationsForPeriod({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$StationWithSiteDeliveryLocationsForPeriod
+        variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryStationWithSiteDeliveryLocationsForPeriod,
+        );
+}
+
+extension ClientExtension$Query$StationWithSiteDeliveryLocationsForPeriod
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$StationWithSiteDeliveryLocationsForPeriod>>
+      query$StationWithSiteDeliveryLocationsForPeriod(
+              Options$Query$StationWithSiteDeliveryLocationsForPeriod
+                  options) async =>
+          await this.query(options);
+  graphql.ObservableQuery<Query$StationWithSiteDeliveryLocationsForPeriod>
+      watchQuery$StationWithSiteDeliveryLocationsForPeriod(
+              WatchOptions$Query$StationWithSiteDeliveryLocationsForPeriod
+                  options) =>
+          this.watchQuery(options);
+  void writeQuery$StationWithSiteDeliveryLocationsForPeriod({
+    required Query$StationWithSiteDeliveryLocationsForPeriod data,
+    required Variables$Query$StationWithSiteDeliveryLocationsForPeriod
+        variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(
+              document:
+                  documentNodeQueryStationWithSiteDeliveryLocationsForPeriod),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$StationWithSiteDeliveryLocationsForPeriod?
+      readQuery$StationWithSiteDeliveryLocationsForPeriod({
+    required Variables$Query$StationWithSiteDeliveryLocationsForPeriod
+        variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(
+            document:
+                documentNodeQueryStationWithSiteDeliveryLocationsForPeriod),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Query$StationWithSiteDeliveryLocationsForPeriod.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$StationWithSiteDeliveryLocationsForPeriod>
+    useQuery$StationWithSiteDeliveryLocationsForPeriod(
+            Options$Query$StationWithSiteDeliveryLocationsForPeriod options) =>
+        graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$StationWithSiteDeliveryLocationsForPeriod>
+    useWatchQuery$StationWithSiteDeliveryLocationsForPeriod(
+            WatchOptions$Query$StationWithSiteDeliveryLocationsForPeriod
+                options) =>
+        graphql_flutter.useWatchQuery(options);
+
+class Query$StationWithSiteDeliveryLocationsForPeriod$Widget
+    extends graphql_flutter
+    .Query<Query$StationWithSiteDeliveryLocationsForPeriod> {
+  Query$StationWithSiteDeliveryLocationsForPeriod$Widget({
+    widgets.Key? key,
+    required Options$Query$StationWithSiteDeliveryLocationsForPeriod options,
+    required graphql_flutter
+        .QueryBuilder<Query$StationWithSiteDeliveryLocationsForPeriod>
+        builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
+}
+
+class Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection {
+  Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection({
+    required this.edges,
+    this.$__typename = 'SiteDeliveryLocationConnection',
+  });
+
+  factory Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges
+                  .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges>
+      edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection
+    on Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection {
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection>
+      get copyWith =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+    TRes> {
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection(
+    Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection
+        instance,
+    TRes Function(
+            Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection)
+        then,
+  ) = _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection;
+
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection;
+
+  TRes call({
+    List<Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges>?
+        edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+                      Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+            TRes> {
+  _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection
+      _instance;
+
+  final TRes Function(
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<
+                Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+                          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection<
+            TRes> {
+  _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges>?
+        edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges {
+  Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges({
+    required this.node,
+    this.$__typename = 'SiteDeliveryLocationEdge',
+  });
+
+  factory Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges(
+      node:
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node
+              .fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node
+      node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges
+    on Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges {
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges>
+      get copyWith =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+    TRes> {
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges(
+    Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges
+        instance,
+    TRes Function(
+            Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges)
+        then,
+  ) = _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges;
+
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges;
+
+  TRes call({
+    Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node?
+        node,
+    String? $__typename,
+  });
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+      TRes> get node;
+}
+
+class _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges
+      _instance;
+
+  final TRes Function(
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node
+                as Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+      TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node(
+        local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node?
+        node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+          TRes>
+      get node =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node
+              .stub(_res);
+}
+
+class Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node {
+  Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node({
+    required this.id,
+    required this.siteId,
+    required this.deliveryLocationId,
+    required this.createdAt,
+    required this.deliveryLocation,
+    required this.site,
+    this.$__typename = 'SiteDeliveryLocation',
+  });
+
+  factory Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$siteId = json['siteId'];
+    final l$deliveryLocationId = json['deliveryLocationId'];
+    final l$createdAt = json['createdAt'];
+    final l$deliveryLocation = json['deliveryLocation'];
+    final l$site = json['site'];
+    final l$$__typename = json['__typename'];
+    return Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node(
+      id: (l$id as String),
+      siteId: (l$siteId as String),
+      deliveryLocationId: (l$deliveryLocationId as String),
+      createdAt: DateTime.parse((l$createdAt as String)),
+      deliveryLocation: Fragment$DeliveryLocation.fromJson(
+          (l$deliveryLocation as Map<String, dynamic>)),
+      site: Fragment$Site.fromJson((l$site as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String siteId;
+
+  final String deliveryLocationId;
+
+  final DateTime createdAt;
+
+  final Fragment$DeliveryLocation deliveryLocation;
+
+  final Fragment$Site site;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$siteId = siteId;
+    _resultData['siteId'] = l$siteId;
+    final l$deliveryLocationId = deliveryLocationId;
+    _resultData['deliveryLocationId'] = l$deliveryLocationId;
+    final l$createdAt = createdAt;
+    _resultData['createdAt'] = l$createdAt.toIso8601String();
+    final l$deliveryLocation = deliveryLocation;
+    _resultData['deliveryLocation'] = l$deliveryLocation.toJson();
+    final l$site = site;
+    _resultData['site'] = l$site.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteId = siteId;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$createdAt = createdAt;
+    final l$deliveryLocation = deliveryLocation;
+    final l$site = site;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$siteId,
+      l$deliveryLocationId,
+      l$createdAt,
+      l$deliveryLocation,
+      l$site,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$deliveryLocation = deliveryLocation;
+    final lOther$deliveryLocation = other.deliveryLocation;
+    if (l$deliveryLocation != lOther$deliveryLocation) {
+      return false;
+    }
+    final l$site = site;
+    final lOther$site = other.site;
+    if (l$site != lOther$site) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node
+    on Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node {
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node>
+      get copyWith =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+    TRes> {
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node(
+    Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node
+        instance,
+    TRes Function(
+            Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node)
+        then,
+  ) = _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node;
+
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node;
+
+  TRes call({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+    Fragment$DeliveryLocation? deliveryLocation,
+    Fragment$Site? site,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation;
+  CopyWith$Fragment$Site<TRes> get site;
+}
+
+class _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+            TRes> {
+  _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node(
+    this._instance,
+    this._then,
+  );
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node
+      _instance;
+
+  final TRes Function(
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteId = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? createdAt = _undefined,
+    Object? deliveryLocation = _undefined,
+    Object? site = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        siteId: siteId == _undefined || siteId == null
+            ? _instance.siteId
+            : (siteId as String),
+        deliveryLocationId:
+            deliveryLocationId == _undefined || deliveryLocationId == null
+                ? _instance.deliveryLocationId
+                : (deliveryLocationId as String),
+        createdAt: createdAt == _undefined || createdAt == null
+            ? _instance.createdAt
+            : (createdAt as DateTime),
+        deliveryLocation:
+            deliveryLocation == _undefined || deliveryLocation == null
+                ? _instance.deliveryLocation
+                : (deliveryLocation as Fragment$DeliveryLocation),
+        site: site == _undefined || site == null
+            ? _instance.site
+            : (site as Fragment$Site),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation {
+    final local$deliveryLocation = _instance.deliveryLocation;
+    return CopyWith$Fragment$DeliveryLocation(
+        local$deliveryLocation, (e) => call(deliveryLocation: e));
+  }
+
+  CopyWith$Fragment$Site<TRes> get site {
+    final local$site = _instance.site;
+    return CopyWith$Fragment$Site(local$site, (e) => call(site: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node<
+            TRes> {
+  _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$siteDeliveryLocationCollection$edges$node(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+    Fragment$DeliveryLocation? deliveryLocation,
+    Fragment$Site? site,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get deliveryLocation =>
+      CopyWith$Fragment$DeliveryLocation.stub(_res);
+
+  CopyWith$Fragment$Site<TRes> get site => CopyWith$Fragment$Site.stub(_res);
+}
+
+class Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection {
+  Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection({
+    required this.edges,
+    this.$__typename = 'DeliveryPeriodConnection',
+  });
+
+  factory Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges
+                  .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<
+          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges>
+      edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection
+    on Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection {
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection>
+      get copyWith =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+    TRes> {
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection(
+    Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection
+        instance,
+    TRes Function(
+            Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection)
+        then,
+  ) = _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection;
+
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection;
+
+  TRes call({
+    List<Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges>?
+        edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+                      Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+            TRes> {
+  _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection
+      _instance;
+
+  final TRes Function(
+          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<
+                Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+                          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+}
+
+class _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection<
+            TRes> {
+  _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges>?
+        edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges {
+  Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges({
+    required this.node,
+    this.$__typename = 'DeliveryPeriodEdge',
+  });
+
+  factory Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges(
+      node: Fragment$DeliveryPeriod.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$DeliveryPeriod node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges
+    on Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges {
+  CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges>
+      get copyWith =>
+          CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+    TRes> {
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges(
+    Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges
+        instance,
+    TRes Function(
+            Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges)
+        then,
+  ) = _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges;
+
+  factory CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges;
+
+  TRes call({
+    Fragment$DeliveryPeriod? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node;
+}
+
+class _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+            TRes> {
+  _CopyWithImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges
+      _instance;
+
+  final TRes Function(
+          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$DeliveryPeriod),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$DeliveryPeriod(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges<
+            TRes> {
+  _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$deliveryPeriodCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$DeliveryPeriod? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryPeriod<TRes> get node =>
+      CopyWith$Fragment$DeliveryPeriod.stub(_res);
 }

@@ -54,6 +54,14 @@
         </array>
       </dict>
     </array>
+	<key>NSCameraUsageDescription</key>
+	<string>Scan your card to add it automatically</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To scan cards</string>
 
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer> <!-- iPhone only -->
+	</array>
 </dict>
 </plist>

@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/commerce/tax/domain/services/stripe_payment_service_interface.dart';
 import 'package:core/core.dart';
 import 'package:firefit/features/commerce/domain/database/database.dart';
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
+import 'package:firefit/features/commerce/presentation/widgets/delivery_location_selector.dart';
 import 'package:firefit/features/commerce/providers/providers.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_icon.dart';
@@ -17,6 +18,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 final scaffoldKeyProvider = Provider.family<GlobalKey<ScaffoldState>, String>(
     (ref, name) => GlobalKey<ScaffoldState>(debugLabel: name));
@@ -314,6 +316,26 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
     final productsMap = ref.read(productsMapProvider(items));
     final productCartNotifier = ref.read(productCartProvider.notifier);
 
+    final chosenLocation = await showShadDialog<Fragment$DeliveryLocation?>(
+      context: context, 
+      builder: (context) {
+        return DeliveryLocationSelector(onDeliveryLocationSelected: (location){
+          Navigator.of(context).pop(location);
+        });
+      },
+      barrierDismissible: false,
+      );
+
+    if (chosenLocation == null) {
+      Fluttertoast.showToast(
+        msg: 'Please select a delivery location',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+      );
+      return;
+    }
+
     productsMap.whenData((data) async {
       if (data.isLeft()) {
         return;
@@ -336,7 +358,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
         final dialogContext = currentContext;
 
         // Show loading indicator
-        await showDialog(
+        showDialog(
           context: dialogContext,
           barrierDismissible: false,
           builder: (context) => const AlertDialog(
@@ -353,11 +375,22 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
 
         if (!mounted) return;
 
-        // Calculate total amount from cart items
-        final totalAmount = items.fold(
+        // Calculate subtotal from cart items
+        final subtotal = items.fold(
           0.0,
           (sum, item) => sum + (item.unitPrice * item.quantity),
         );
+        
+        // Get zip code from the chosen delivery location
+        final zipCode = chosenLocation.address.zip;
+        
+        // Calculate tax using the sales tax service
+        final taxResponse = await ref.read(salesTaxProvider(zipCode).future);
+        final taxRate = taxResponse.totalRate;
+        final tax = subtotal * taxRate;
+        
+        // Calculate total with tax
+        final totalAmount = subtotal + tax;
 
         // Format items for metadata
         List<Map<String, dynamic>> lineItems = [];
@@ -373,10 +406,10 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
           });
         }
 
-        // Create payment intent request
+        // Create payment intent request - amount is already in dollars, no need to multiply by 100
         final paymentIntentRequest = PaymentIntentRequest(
           currency: 'usd',
-          amount: (totalAmount * 100).toInt().toDouble(), // Convert to cents
+          amount: totalAmount,
           metadata: {
             'order_type': 'meal_payment',
           },
@@ -442,7 +475,7 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
           return;
         }
 
-        final result = await productCartNotifier.createOrder();
+        final result = await productCartNotifier.createOrder(chosenLocation);
 
         // Add a mounted check before using context
         if (!mounted) return;
@@ -458,7 +491,11 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
           },
           (order) {
             // Clear the cart using the method in ShoppingCartNotifier
-            ref.read(shoppingCartProvider.notifier).clearCart();
+            ref.read(productCartProvider.notifier).clearCart();
+            final res = ref.refresh(productCartProvider);
+            res.whenData((data) {
+              debugPrint(data.toString());
+            });
 
             Fluttertoast.showToast(
               msg: 'Payment successful! Order created.',

@@ -1,3 +1,4 @@
+import 'package:core/commerce/domain/models/product.dart';
 import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
@@ -53,7 +54,41 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: 'item/:id',
                 builder: (context, state) {
                   final id = state.pathParameters['id'];
-                  return MenuProductScreen(productId: id!);
+                  // If product is provided in extra, use it directly
+                  if (state.extra != null &&
+                      (state.extra as Map<String, dynamic>)['product'] !=
+                          null) {
+                    final product = (state.extra
+                        as Map<String, dynamic>)['product'] as Product;
+                    return MenuProductScreen(product: product);
+                  }
+
+                  // Otherwise, use the provider to fetch the product
+                  return Consumer(
+                    builder: (context, ref, _) {
+                      final productAsync =
+                          ref.watch(productFutureProvider(id!));
+
+                      return productAsync.when(
+                        data: (product) {
+                          if (product == null) {
+                            return ErrorScreen(
+                              errorMessage: 'Product not found',
+                              onRetry: () => context.go('/menu'),
+                            );
+                          }
+                          return MenuProductScreen(product: product);
+                        },
+                        loading: () => const Scaffold(
+                          body: Center(child: CircularProgressIndicator()),
+                        ),
+                        error: (error, stack) => ErrorScreen(
+                          errorMessage: error.toString(),
+                          onRetry: () => context.go('/menu'),
+                        ),
+                      );
+                    },
+                  );
                 },
               ),
             ],

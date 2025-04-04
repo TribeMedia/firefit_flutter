@@ -26,6 +26,68 @@ fragment ShoppingCartItemWithCart on ShoppingCartItems {
   quantity
 }
 
+fragment DeliveryPeriod on DeliveryPeriod {
+  id
+  title
+  startDate
+  endDate
+  deliveryLocationCollection {
+    edges {
+      node {
+        ...DeliveryLocation
+      }
+    }
+  }
+  isCurrent
+  createdAt
+}
+
+fragment ProviderType on ProviderType {
+  id
+  name
+  key
+  schema
+  createdAt
+}
+
+fragment Provider on Provider {
+  id
+  providerTypeId
+  organizationId
+  name
+  description
+  logoUrl
+  coverUrl
+  webUrl
+  data
+  createdAt
+  updatedAt
+  organization {
+    ...Organization
+  }
+  providerType {
+    ...ProviderType
+  }
+}
+
+fragment DeliveryLocation on DeliveryLocation {
+  id
+  name
+  address {
+    id
+    name
+    address
+    address1
+    city
+    state
+    zip
+  }
+  startOpenTime
+  endOpenTime
+  providerId
+  deliveryPeriodId
+}
+
 fragment ShoppingCart on ShoppingCarts {
   id
   userId
@@ -78,6 +140,10 @@ fragment Order on Orders {
       }
     }
   }
+  deliveryLocationId
+  deliveryLocation {
+    ...DeliveryLocation
+  }
   orderTransactionsCollection {
     edges {
       node {
@@ -91,11 +157,6 @@ fragment Order on Orders {
       hasPreviousPage
     }
   }
-  deliveryAddress
-  deliveryCity
-  deliveryZip
-  deliveryLocationName
-  deliveryAddress1
   notes
   updatedAt
   createdAt
@@ -345,6 +406,132 @@ query GetShoppingCartItem($id: UUID!) {
     edges {
       node {
         ...ShoppingCartItemWithCart
+      }
+    }
+  }
+}
+
+mutation CreateOrderItems($input: [OrderItemsInsertInput!]!) {
+  insertIntoOrderItemsCollection(objects: $input) {
+    records {
+      ...OrderItem
+    }
+    affectedCount
+  }
+}
+
+fragment SiteDeliveryLocation on SiteDeliveryLocation {
+  id
+  siteId
+  site {
+    id
+    name
+    addressId
+    address {
+      id
+      name
+      address
+      address1
+      city
+      state
+      zip
+    }
+  }
+  deliveryLocationId
+  createdAt
+  deliveryLocation {
+    ...DeliveryLocation
+  }
+}
+
+query SiteDeliveryLocationsForSite($siteId: UUID!) {
+  siteDeliveryLocationCollection(filter: { siteId: { eq: $siteId } }) {
+    edges {
+      node {
+        ...SiteDeliveryLocation
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query DeliveryPeriod(
+  $startDate: Datetime!
+  $endDate: Datetime!
+) {
+  deliveryPeriodCollection(filter: {
+    startDate: { gte: $startDate}
+    endDate: { lte: $endDate}
+  }) {
+    edges {
+      node {
+        ...DeliveryPeriod
+      }
+    }
+  }
+}
+
+query DeliveryPeriods(
+  $first: Int,
+  $last: Int,
+  $before: Cursor,
+  $after: Cursor,
+  $filter: DeliveryPeriodFilter,
+  $orderBy: [DeliveryPeriodOrderBy!],
+) {
+  deliveryPeriodCollection(
+    first: $first,
+    last: $last,
+    before: $before,
+    after: $after,
+    filter: $filter,
+    orderBy: $orderBy,
+  ) {
+    edges {
+      node {
+        ...DeliveryPeriod
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+query StationWithSiteDeliveryLocationsForPeriod(
+  $siteId: UUID!
+  $deliveryPeriodId: UUID!
+) {
+  siteDeliveryLocationCollection(filter: {
+    siteId: { eq: $siteId }
+  }) {
+    edges {
+      node {
+        id
+        siteId
+        deliveryLocationId
+        createdAt
+        deliveryLocation {
+          ...DeliveryLocation
+        }
+        site {
+          ...Site
+        }
+      }
+    }
+  }
+  deliveryPeriodCollection(filter: {id: {eq: $deliveryPeriodId}}) {
+    edges {
+      node {
+        ...DeliveryPeriod
       }
     }
   }

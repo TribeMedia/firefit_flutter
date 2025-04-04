@@ -1,7 +1,6 @@
-import 'package:firefit/features/commerce/domain/entities/shopping_cart_model.dart';
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/common/presentation/theme/app_spacing.dart';
 import 'package:firefit/features/common/presentation/widgets/app_logo.dart';
+import 'package:firefit/features/menu/providers.dart';
 import 'package:firefit/features/notifications/providers/providers.dart' as np;
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -25,7 +24,7 @@ class AppHeader extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final notificationsValue = ref.watch(np.notificationProvider);
-    final cart = ref.watch(shoppingCartProvider);
+    final cart = ref.watch(productCartProvider);
     final isDarkMode = theme.brightness == Brightness.dark;
 
     return notificationsValue.when(
@@ -134,7 +133,7 @@ class AppHeader extends ConsumerWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildCartButton(BuildContext context, ShoppingCartModel cart) {
+  Widget _buildCartButton(BuildContext context, ProductCartModel cart) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -146,11 +145,11 @@ class AppHeader extends ConsumerWidget implements PreferredSizeWidget {
             foregroundColor: Theme.of(context).colorScheme.onSurface,
           ),
         ),
-        if (cart.items.isNotEmpty)
+        if (cart.shoppingCartItems.isNotEmpty)
           Positioned(
             right: 8,
             top: 8,
-            child: CartBadge(count: cart.items.length),
+            child: CartBadge(count: cart.shoppingCartItems.length),
           ),
       ],
     );

@@ -9,6 +9,7 @@ import 'package:core/core.dart';
 import 'package:firefit/config/providers.dart';
 import 'package:firefit/env/env.dart';
 import 'package:firefit/features/commerce/domain/database/database.dart';
+import 'package:firefit/features/commerce/presentation/providers/delivery_location_provider.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 import 'package:http/http.dart' as http;
@@ -74,11 +75,6 @@ class OrderController extends _$OrderController {
     return await orderRepository.createOrder(
         input: Input$OrdersInsertInput(
       userId: cart.userId,
-      deliveryAddress1: currentStation.address1,
-      deliveryAddress: currentStation.address,
-      deliveryCity: currentStation.city,
-      deliveryLocationName: currentStation.name,
-      deliveryZip: currentStation.zip,
     ));
   }
 }
@@ -198,4 +194,12 @@ final stripePaymentIntentProvider =
 final cartDatabaseProvider = Provider<AppDatabase>((ref) {
   // Force a completely new database instance with our updated schema
   return AppDatabase();
+});
+
+final deliveryLocationsAvailableProvider = FutureProvider<bool>((ref) async {
+  final deliveryLocations = await ref.watch(siteDeliveryLocationProvider.future);
+  return deliveryLocations.fold(
+      (l) => false,
+      (r) => r.isNotEmpty,
+  );
 });

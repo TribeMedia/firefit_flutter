@@ -1,5 +1,1800 @@
 import 'package:core/scalars.dart';
 
+class Input$AddressFilter {
+  factory Input$AddressFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? address,
+    Input$StringFilter? address1,
+    Input$StringFilter? city,
+    Input$StringFilter? state,
+    Input$StringFilter? zip,
+    Input$DatetimeFilter? createdAt,
+    Input$FloatFilter? latitude,
+    Input$FloatFilter? longitude,
+    Input$IDFilter? nodeId,
+    List<Input$AddressFilter>? and,
+    List<Input$AddressFilter>? or,
+    Input$AddressFilter? not,
+  }) =>
+      Input$AddressFilter._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$AddressFilter._(this._$data);
+
+  factory Input$AddressFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = l$address == null
+          ? null
+          : Input$StringFilter.fromJson((l$address as Map<String, dynamic>));
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = l$address1 == null
+          ? null
+          : Input$StringFilter.fromJson((l$address1 as Map<String, dynamic>));
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = l$city == null
+          ? null
+          : Input$StringFilter.fromJson((l$city as Map<String, dynamic>));
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = l$state == null
+          ? null
+          : Input$StringFilter.fromJson((l$state as Map<String, dynamic>));
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = l$zip == null
+          ? null
+          : Input$StringFilter.fromJson((l$zip as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = l$latitude == null
+          ? null
+          : Input$FloatFilter.fromJson((l$latitude as Map<String, dynamic>));
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = l$longitude == null
+          ? null
+          : Input$FloatFilter.fromJson((l$longitude as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map(
+              (e) => Input$AddressFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map(
+              (e) => Input$AddressFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$AddressFilter.fromJson((l$not as Map<String, dynamic>));
+    }
+    return Input$AddressFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
+
+  Input$StringFilter? get address => (_$data['address'] as Input$StringFilter?);
+
+  Input$StringFilter? get address1 =>
+      (_$data['address1'] as Input$StringFilter?);
+
+  Input$StringFilter? get city => (_$data['city'] as Input$StringFilter?);
+
+  Input$StringFilter? get state => (_$data['state'] as Input$StringFilter?);
+
+  Input$StringFilter? get zip => (_$data['zip'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$FloatFilter? get latitude => (_$data['latitude'] as Input$FloatFilter?);
+
+  Input$FloatFilter? get longitude =>
+      (_$data['longitude'] as Input$FloatFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$AddressFilter>? get and =>
+      (_$data['and'] as List<Input$AddressFilter>?);
+
+  List<Input$AddressFilter>? get or =>
+      (_$data['or'] as List<Input$AddressFilter>?);
+
+  Input$AddressFilter? get not => (_$data['not'] as Input$AddressFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] = l$address?.toJson();
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] = l$address1?.toJson();
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] = l$city?.toJson();
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] = l$state?.toJson();
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] = l$zip?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] = l$latitude?.toJson();
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$AddressFilter<Input$AddressFilter> get copyWith =>
+      CopyWith$Input$AddressFilter(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$AddressFilter || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$createdAt = createdAt;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$AddressFilter<TRes> {
+  factory CopyWith$Input$AddressFilter(
+    Input$AddressFilter instance,
+    TRes Function(Input$AddressFilter) then,
+  ) = _CopyWithImpl$Input$AddressFilter;
+
+  factory CopyWith$Input$AddressFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$AddressFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? address,
+    Input$StringFilter? address1,
+    Input$StringFilter? city,
+    Input$StringFilter? state,
+    Input$StringFilter? zip,
+    Input$DatetimeFilter? createdAt,
+    Input$FloatFilter? latitude,
+    Input$FloatFilter? longitude,
+    Input$IDFilter? nodeId,
+    List<Input$AddressFilter>? and,
+    List<Input$AddressFilter>? or,
+    Input$AddressFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$StringFilter<TRes> get address;
+  CopyWith$Input$StringFilter<TRes> get address1;
+  CopyWith$Input$StringFilter<TRes> get city;
+  CopyWith$Input$StringFilter<TRes> get state;
+  CopyWith$Input$StringFilter<TRes> get zip;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$FloatFilter<TRes> get latitude;
+  CopyWith$Input$FloatFilter<TRes> get longitude;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$AddressFilter>? Function(
+              Iterable<CopyWith$Input$AddressFilter<Input$AddressFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$AddressFilter>? Function(
+              Iterable<CopyWith$Input$AddressFilter<Input$AddressFilter>>?)
+          _fn);
+  CopyWith$Input$AddressFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$AddressFilter<TRes>
+    implements CopyWith$Input$AddressFilter<TRes> {
+  _CopyWithImpl$Input$AddressFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$AddressFilter _instance;
+
+  final TRes Function(Input$AddressFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? createdAt = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$AddressFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (address != _undefined) 'address': (address as Input$StringFilter?),
+        if (address1 != _undefined)
+          'address1': (address1 as Input$StringFilter?),
+        if (city != _undefined) 'city': (city as Input$StringFilter?),
+        if (state != _undefined) 'state': (state as Input$StringFilter?),
+        if (zip != _undefined) 'zip': (zip as Input$StringFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (latitude != _undefined)
+          'latitude': (latitude as Input$FloatFilter?),
+        if (longitude != _undefined)
+          'longitude': (longitude as Input$FloatFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined) 'and': (and as List<Input$AddressFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$AddressFilter>?),
+        if (not != _undefined) 'not': (not as Input$AddressFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get name {
+    final local$name = _instance.name;
+    return local$name == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get address {
+    final local$address = _instance.address;
+    return local$address == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$address, (e) => call(address: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get address1 {
+    final local$address1 = _instance.address1;
+    return local$address1 == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$address1, (e) => call(address1: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get city {
+    final local$city = _instance.city;
+    return local$city == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$city, (e) => call(city: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get state {
+    final local$state = _instance.state;
+    return local$state == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$state, (e) => call(state: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get zip {
+    final local$zip = _instance.zip;
+    return local$zip == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$zip, (e) => call(zip: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$FloatFilter<TRes> get latitude {
+    final local$latitude = _instance.latitude;
+    return local$latitude == null
+        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
+        : CopyWith$Input$FloatFilter(local$latitude, (e) => call(latitude: e));
+  }
+
+  CopyWith$Input$FloatFilter<TRes> get longitude {
+    final local$longitude = _instance.longitude;
+    return local$longitude == null
+        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
+        : CopyWith$Input$FloatFilter(
+            local$longitude, (e) => call(longitude: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$AddressFilter>? Function(
+                  Iterable<CopyWith$Input$AddressFilter<Input$AddressFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$AddressFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  TRes or(
+          Iterable<Input$AddressFilter>? Function(
+                  Iterable<CopyWith$Input$AddressFilter<Input$AddressFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$AddressFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$AddressFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$AddressFilter.stub(_then(_instance))
+        : CopyWith$Input$AddressFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$AddressFilter<TRes>
+    implements CopyWith$Input$AddressFilter<TRes> {
+  _CopyWithStubImpl$Input$AddressFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? name,
+    Input$StringFilter? address,
+    Input$StringFilter? address1,
+    Input$StringFilter? city,
+    Input$StringFilter? state,
+    Input$StringFilter? zip,
+    Input$DatetimeFilter? createdAt,
+    Input$FloatFilter? latitude,
+    Input$FloatFilter? longitude,
+    Input$IDFilter? nodeId,
+    List<Input$AddressFilter>? and,
+    List<Input$AddressFilter>? or,
+    Input$AddressFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get name =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get address =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get address1 =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get city =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get state =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get zip =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$FloatFilter<TRes> get latitude =>
+      CopyWith$Input$FloatFilter.stub(_res);
+
+  CopyWith$Input$FloatFilter<TRes> get longitude =>
+      CopyWith$Input$FloatFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$AddressFilter<TRes> get not =>
+      CopyWith$Input$AddressFilter.stub(_res);
+}
+
+class Input$AddressInsertInput {
+  factory Input$AddressInsertInput({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    DateTime? createdAt,
+    double? latitude,
+    double? longitude,
+  }) =>
+      Input$AddressInsertInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+      });
+
+  Input$AddressInsertInput._(this._$data);
+
+  factory Input$AddressInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = (l$address as String?);
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = (l$address1 as String?);
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = (l$city as String?);
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = (l$state as String?);
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = (l$zip as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = (l$latitude as num?)?.toDouble();
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = (l$longitude as num?)?.toDouble();
+    }
+    return Input$AddressInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get address => (_$data['address'] as String?);
+
+  String? get address1 => (_$data['address1'] as String?);
+
+  String? get city => (_$data['city'] as String?);
+
+  String? get state => (_$data['state'] as String?);
+
+  String? get zip => (_$data['zip'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  double? get latitude => (_$data['latitude'] as double?);
+
+  double? get longitude => (_$data['longitude'] as double?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] = l$address;
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] = l$address1;
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] = l$city;
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] = l$state;
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] = l$zip;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] = l$latitude;
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$AddressInsertInput<Input$AddressInsertInput> get copyWith =>
+      CopyWith$Input$AddressInsertInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$AddressInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$createdAt = createdAt;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$AddressInsertInput<TRes> {
+  factory CopyWith$Input$AddressInsertInput(
+    Input$AddressInsertInput instance,
+    TRes Function(Input$AddressInsertInput) then,
+  ) = _CopyWithImpl$Input$AddressInsertInput;
+
+  factory CopyWith$Input$AddressInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$AddressInsertInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    DateTime? createdAt,
+    double? latitude,
+    double? longitude,
+  });
+}
+
+class _CopyWithImpl$Input$AddressInsertInput<TRes>
+    implements CopyWith$Input$AddressInsertInput<TRes> {
+  _CopyWithImpl$Input$AddressInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$AddressInsertInput _instance;
+
+  final TRes Function(Input$AddressInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? createdAt = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+  }) =>
+      _then(Input$AddressInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (address != _undefined) 'address': (address as String?),
+        if (address1 != _undefined) 'address1': (address1 as String?),
+        if (city != _undefined) 'city': (city as String?),
+        if (state != _undefined) 'state': (state as String?),
+        if (zip != _undefined) 'zip': (zip as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (latitude != _undefined) 'latitude': (latitude as double?),
+        if (longitude != _undefined) 'longitude': (longitude as double?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$AddressInsertInput<TRes>
+    implements CopyWith$Input$AddressInsertInput<TRes> {
+  _CopyWithStubImpl$Input$AddressInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    DateTime? createdAt,
+    double? latitude,
+    double? longitude,
+  }) =>
+      _res;
+}
+
+class Input$AddressOrderBy {
+  factory Input$AddressOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? address,
+    Enum$OrderByDirection? address1,
+    Enum$OrderByDirection? city,
+    Enum$OrderByDirection? state,
+    Enum$OrderByDirection? zip,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? latitude,
+    Enum$OrderByDirection? longitude,
+  }) =>
+      Input$AddressOrderBy._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+      });
+
+  Input$AddressOrderBy._(this._$data);
+
+  factory Input$AddressOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = l$name == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$name as String));
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = l$address == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$address as String));
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = l$address1 == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$address1 as String));
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = l$city == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$city as String));
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = l$state == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$state as String));
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = l$zip == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$zip as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = l$latitude == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$latitude as String));
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = l$longitude == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$longitude as String));
+    }
+    return Input$AddressOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get address =>
+      (_$data['address'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get address1 =>
+      (_$data['address1'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get city => (_$data['city'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get state =>
+      (_$data['state'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get zip => (_$data['zip'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get latitude =>
+      (_$data['latitude'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get longitude =>
+      (_$data['longitude'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] =
+          l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] =
+          l$address == null ? null : toJson$Enum$OrderByDirection(l$address);
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] =
+          l$address1 == null ? null : toJson$Enum$OrderByDirection(l$address1);
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] =
+          l$city == null ? null : toJson$Enum$OrderByDirection(l$city);
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] =
+          l$state == null ? null : toJson$Enum$OrderByDirection(l$state);
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] =
+          l$zip == null ? null : toJson$Enum$OrderByDirection(l$zip);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] =
+          l$latitude == null ? null : toJson$Enum$OrderByDirection(l$latitude);
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$longitude);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$AddressOrderBy<Input$AddressOrderBy> get copyWith =>
+      CopyWith$Input$AddressOrderBy(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$AddressOrderBy || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$createdAt = createdAt;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$AddressOrderBy<TRes> {
+  factory CopyWith$Input$AddressOrderBy(
+    Input$AddressOrderBy instance,
+    TRes Function(Input$AddressOrderBy) then,
+  ) = _CopyWithImpl$Input$AddressOrderBy;
+
+  factory CopyWith$Input$AddressOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$AddressOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? address,
+    Enum$OrderByDirection? address1,
+    Enum$OrderByDirection? city,
+    Enum$OrderByDirection? state,
+    Enum$OrderByDirection? zip,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? latitude,
+    Enum$OrderByDirection? longitude,
+  });
+}
+
+class _CopyWithImpl$Input$AddressOrderBy<TRes>
+    implements CopyWith$Input$AddressOrderBy<TRes> {
+  _CopyWithImpl$Input$AddressOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$AddressOrderBy _instance;
+
+  final TRes Function(Input$AddressOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? createdAt = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+  }) =>
+      _then(Input$AddressOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
+        if (address != _undefined)
+          'address': (address as Enum$OrderByDirection?),
+        if (address1 != _undefined)
+          'address1': (address1 as Enum$OrderByDirection?),
+        if (city != _undefined) 'city': (city as Enum$OrderByDirection?),
+        if (state != _undefined) 'state': (state as Enum$OrderByDirection?),
+        if (zip != _undefined) 'zip': (zip as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (latitude != _undefined)
+          'latitude': (latitude as Enum$OrderByDirection?),
+        if (longitude != _undefined)
+          'longitude': (longitude as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$AddressOrderBy<TRes>
+    implements CopyWith$Input$AddressOrderBy<TRes> {
+  _CopyWithStubImpl$Input$AddressOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? name,
+    Enum$OrderByDirection? address,
+    Enum$OrderByDirection? address1,
+    Enum$OrderByDirection? city,
+    Enum$OrderByDirection? state,
+    Enum$OrderByDirection? zip,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? latitude,
+    Enum$OrderByDirection? longitude,
+  }) =>
+      _res;
+}
+
+class Input$AddressUpdateInput {
+  factory Input$AddressUpdateInput({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    DateTime? createdAt,
+    double? latitude,
+    double? longitude,
+  }) =>
+      Input$AddressUpdateInput._({
+        if (id != null) r'id': id,
+        if (name != null) r'name': name,
+        if (address != null) r'address': address,
+        if (address1 != null) r'address1': address1,
+        if (city != null) r'city': city,
+        if (state != null) r'state': state,
+        if (zip != null) r'zip': zip,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (latitude != null) r'latitude': latitude,
+        if (longitude != null) r'longitude': longitude,
+      });
+
+  Input$AddressUpdateInput._(this._$data);
+
+  factory Input$AddressUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('name')) {
+      final l$name = data['name'];
+      result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('address')) {
+      final l$address = data['address'];
+      result$data['address'] = (l$address as String?);
+    }
+    if (data.containsKey('address1')) {
+      final l$address1 = data['address1'];
+      result$data['address1'] = (l$address1 as String?);
+    }
+    if (data.containsKey('city')) {
+      final l$city = data['city'];
+      result$data['city'] = (l$city as String?);
+    }
+    if (data.containsKey('state')) {
+      final l$state = data['state'];
+      result$data['state'] = (l$state as String?);
+    }
+    if (data.containsKey('zip')) {
+      final l$zip = data['zip'];
+      result$data['zip'] = (l$zip as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('latitude')) {
+      final l$latitude = data['latitude'];
+      result$data['latitude'] = (l$latitude as num?)?.toDouble();
+    }
+    if (data.containsKey('longitude')) {
+      final l$longitude = data['longitude'];
+      result$data['longitude'] = (l$longitude as num?)?.toDouble();
+    }
+    return Input$AddressUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get name => (_$data['name'] as String?);
+
+  String? get address => (_$data['address'] as String?);
+
+  String? get address1 => (_$data['address1'] as String?);
+
+  String? get city => (_$data['city'] as String?);
+
+  String? get state => (_$data['state'] as String?);
+
+  String? get zip => (_$data['zip'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  double? get latitude => (_$data['latitude'] as double?);
+
+  double? get longitude => (_$data['longitude'] as double?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('name')) {
+      final l$name = name;
+      result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('address')) {
+      final l$address = address;
+      result$data['address'] = l$address;
+    }
+    if (_$data.containsKey('address1')) {
+      final l$address1 = address1;
+      result$data['address1'] = l$address1;
+    }
+    if (_$data.containsKey('city')) {
+      final l$city = city;
+      result$data['city'] = l$city;
+    }
+    if (_$data.containsKey('state')) {
+      final l$state = state;
+      result$data['state'] = l$state;
+    }
+    if (_$data.containsKey('zip')) {
+      final l$zip = zip;
+      result$data['zip'] = l$zip;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('latitude')) {
+      final l$latitude = latitude;
+      result$data['latitude'] = l$latitude;
+    }
+    if (_$data.containsKey('longitude')) {
+      final l$longitude = longitude;
+      result$data['longitude'] = l$longitude;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$AddressUpdateInput<Input$AddressUpdateInput> get copyWith =>
+      CopyWith$Input$AddressUpdateInput(
+        this,
+        (i) => i,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$AddressUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (_$data.containsKey('name') != other._$data.containsKey('name')) {
+      return false;
+    }
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
+      return false;
+    }
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$address1 = address1;
+    final lOther$address1 = other.address1;
+    if (_$data.containsKey('address1') !=
+        other._$data.containsKey('address1')) {
+      return false;
+    }
+    if (l$address1 != lOther$address1) {
+      return false;
+    }
+    final l$city = city;
+    final lOther$city = other.city;
+    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
+      return false;
+    }
+    if (l$city != lOther$city) {
+      return false;
+    }
+    final l$state = state;
+    final lOther$state = other.state;
+    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
+      return false;
+    }
+    if (l$state != lOther$state) {
+      return false;
+    }
+    final l$zip = zip;
+    final lOther$zip = other.zip;
+    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
+      return false;
+    }
+    if (l$zip != lOther$zip) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$latitude = latitude;
+    final lOther$latitude = other.latitude;
+    if (_$data.containsKey('latitude') !=
+        other._$data.containsKey('latitude')) {
+      return false;
+    }
+    if (l$latitude != lOther$latitude) {
+      return false;
+    }
+    final l$longitude = longitude;
+    final lOther$longitude = other.longitude;
+    if (_$data.containsKey('longitude') !=
+        other._$data.containsKey('longitude')) {
+      return false;
+    }
+    if (l$longitude != lOther$longitude) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$address = address;
+    final l$address1 = address1;
+    final l$city = city;
+    final l$state = state;
+    final l$zip = zip;
+    final l$createdAt = createdAt;
+    final l$latitude = latitude;
+    final l$longitude = longitude;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('address') ? l$address : const {},
+      _$data.containsKey('address1') ? l$address1 : const {},
+      _$data.containsKey('city') ? l$city : const {},
+      _$data.containsKey('state') ? l$state : const {},
+      _$data.containsKey('zip') ? l$zip : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('latitude') ? l$latitude : const {},
+      _$data.containsKey('longitude') ? l$longitude : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$AddressUpdateInput<TRes> {
+  factory CopyWith$Input$AddressUpdateInput(
+    Input$AddressUpdateInput instance,
+    TRes Function(Input$AddressUpdateInput) then,
+  ) = _CopyWithImpl$Input$AddressUpdateInput;
+
+  factory CopyWith$Input$AddressUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$AddressUpdateInput;
+
+  TRes call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    DateTime? createdAt,
+    double? latitude,
+    double? longitude,
+  });
+}
+
+class _CopyWithImpl$Input$AddressUpdateInput<TRes>
+    implements CopyWith$Input$AddressUpdateInput<TRes> {
+  _CopyWithImpl$Input$AddressUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$AddressUpdateInput _instance;
+
+  final TRes Function(Input$AddressUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? address = _undefined,
+    Object? address1 = _undefined,
+    Object? city = _undefined,
+    Object? state = _undefined,
+    Object? zip = _undefined,
+    Object? createdAt = _undefined,
+    Object? latitude = _undefined,
+    Object? longitude = _undefined,
+  }) =>
+      _then(Input$AddressUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (name != _undefined) 'name': (name as String?),
+        if (address != _undefined) 'address': (address as String?),
+        if (address1 != _undefined) 'address1': (address1 as String?),
+        if (city != _undefined) 'city': (city as String?),
+        if (state != _undefined) 'state': (state as String?),
+        if (zip != _undefined) 'zip': (zip as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (latitude != _undefined) 'latitude': (latitude as double?),
+        if (longitude != _undefined) 'longitude': (longitude as double?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$AddressUpdateInput<TRes>
+    implements CopyWith$Input$AddressUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$AddressUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? name,
+    String? address,
+    String? address1,
+    String? city,
+    String? state,
+    String? zip,
+    DateTime? createdAt,
+    double? latitude,
+    double? longitude,
+  }) =>
+      _res;
+}
+
 class Input$BigFloatFilter {
   factory Input$BigFloatFilter({
     double? eq,
@@ -2866,16 +4661,11 @@ class Input$DeliveryLocationFilter {
     Input$UUIDFilter? id,
     Input$StringFilter? name,
     Input$DatetimeFilter? createdAt,
-    Input$StringFilter? address,
-    Input$StringFilter? address1,
-    Input$StringFilter? city,
-    Input$StringFilter? state,
-    Input$StringFilter? zip,
-    Input$FloatFilter? latitude,
-    Input$FloatFilter? longitude,
     Input$OpaqueFilter? startOpenTime,
     Input$OpaqueFilter? endOpenTime,
     Input$UUIDFilter? providerId,
+    Input$UUIDFilter? deliveryPeriodId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -2885,16 +4675,11 @@ class Input$DeliveryLocationFilter {
         if (id != null) r'id': id,
         if (name != null) r'name': name,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
         if (providerId != null) r'providerId': providerId,
+        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
+        if (addressId != null) r'addressId': addressId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -2924,48 +4709,6 @@ class Input$DeliveryLocationFilter {
           : Input$DatetimeFilter.fromJson(
               (l$createdAt as Map<String, dynamic>));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = l$address == null
-          ? null
-          : Input$StringFilter.fromJson((l$address as Map<String, dynamic>));
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = l$address1 == null
-          ? null
-          : Input$StringFilter.fromJson((l$address1 as Map<String, dynamic>));
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = l$city == null
-          ? null
-          : Input$StringFilter.fromJson((l$city as Map<String, dynamic>));
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = l$state == null
-          ? null
-          : Input$StringFilter.fromJson((l$state as Map<String, dynamic>));
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = l$zip == null
-          ? null
-          : Input$StringFilter.fromJson((l$zip as Map<String, dynamic>));
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = l$latitude == null
-          ? null
-          : Input$FloatFilter.fromJson((l$latitude as Map<String, dynamic>));
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = l$longitude == null
-          ? null
-          : Input$FloatFilter.fromJson((l$longitude as Map<String, dynamic>));
-    }
     if (data.containsKey('startOpenTime')) {
       final l$startOpenTime = data['startOpenTime'];
       result$data['startOpenTime'] = l$startOpenTime == null
@@ -2985,6 +4728,19 @@ class Input$DeliveryLocationFilter {
       result$data['providerId'] = l$providerId == null
           ? null
           : Input$UUIDFilter.fromJson((l$providerId as Map<String, dynamic>));
+    }
+    if (data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = data['deliveryPeriodId'];
+      result$data['deliveryPeriodId'] = l$deliveryPeriodId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$deliveryPeriodId as Map<String, dynamic>));
+    }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$addressId as Map<String, dynamic>));
     }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
@@ -3025,22 +4781,6 @@ class Input$DeliveryLocationFilter {
   Input$DatetimeFilter? get createdAt =>
       (_$data['createdAt'] as Input$DatetimeFilter?);
 
-  Input$StringFilter? get address => (_$data['address'] as Input$StringFilter?);
-
-  Input$StringFilter? get address1 =>
-      (_$data['address1'] as Input$StringFilter?);
-
-  Input$StringFilter? get city => (_$data['city'] as Input$StringFilter?);
-
-  Input$StringFilter? get state => (_$data['state'] as Input$StringFilter?);
-
-  Input$StringFilter? get zip => (_$data['zip'] as Input$StringFilter?);
-
-  Input$FloatFilter? get latitude => (_$data['latitude'] as Input$FloatFilter?);
-
-  Input$FloatFilter? get longitude =>
-      (_$data['longitude'] as Input$FloatFilter?);
-
   Input$OpaqueFilter? get startOpenTime =>
       (_$data['startOpenTime'] as Input$OpaqueFilter?);
 
@@ -3049,6 +4789,11 @@ class Input$DeliveryLocationFilter {
 
   Input$UUIDFilter? get providerId =>
       (_$data['providerId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get deliveryPeriodId =>
+      (_$data['deliveryPeriodId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get addressId => (_$data['addressId'] as Input$UUIDFilter?);
 
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
@@ -3075,34 +4820,6 @@ class Input$DeliveryLocationFilter {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toJson();
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] = l$address?.toJson();
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] = l$address1?.toJson();
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] = l$city?.toJson();
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] = l$state?.toJson();
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] = l$zip?.toJson();
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] = l$latitude?.toJson();
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude?.toJson();
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
       result$data['startOpenTime'] = l$startOpenTime?.toJson();
@@ -3114,6 +4831,14 @@ class Input$DeliveryLocationFilter {
     if (_$data.containsKey('providerId')) {
       final l$providerId = providerId;
       result$data['providerId'] = l$providerId?.toJson();
+    }
+    if (_$data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = deliveryPeriodId;
+      result$data['deliveryPeriodId'] = l$deliveryPeriodId?.toJson();
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -3174,65 +4899,6 @@ class Input$DeliveryLocationFilter {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -3258,6 +4924,24 @@ class Input$DeliveryLocationFilter {
       return false;
     }
     if (l$providerId != lOther$providerId) {
+      return false;
+    }
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final lOther$deliveryPeriodId = other.deliveryPeriodId;
+    if (_$data.containsKey('deliveryPeriodId') !=
+        other._$data.containsKey('deliveryPeriodId')) {
+      return false;
+    }
+    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
+      return false;
+    }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
       return false;
     }
     final l$nodeId = nodeId;
@@ -3322,16 +5006,11 @@ class Input$DeliveryLocationFilter {
     final l$id = id;
     final l$name = name;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
     final l$providerId = providerId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final l$addressId = addressId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -3340,16 +5019,11 @@ class Input$DeliveryLocationFilter {
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -3379,16 +5053,11 @@ abstract class CopyWith$Input$DeliveryLocationFilter<TRes> {
     Input$UUIDFilter? id,
     Input$StringFilter? name,
     Input$DatetimeFilter? createdAt,
-    Input$StringFilter? address,
-    Input$StringFilter? address1,
-    Input$StringFilter? city,
-    Input$StringFilter? state,
-    Input$StringFilter? zip,
-    Input$FloatFilter? latitude,
-    Input$FloatFilter? longitude,
     Input$OpaqueFilter? startOpenTime,
     Input$OpaqueFilter? endOpenTime,
     Input$UUIDFilter? providerId,
+    Input$UUIDFilter? deliveryPeriodId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -3397,16 +5066,11 @@ abstract class CopyWith$Input$DeliveryLocationFilter<TRes> {
   CopyWith$Input$UUIDFilter<TRes> get id;
   CopyWith$Input$StringFilter<TRes> get name;
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$StringFilter<TRes> get address;
-  CopyWith$Input$StringFilter<TRes> get address1;
-  CopyWith$Input$StringFilter<TRes> get city;
-  CopyWith$Input$StringFilter<TRes> get state;
-  CopyWith$Input$StringFilter<TRes> get zip;
-  CopyWith$Input$FloatFilter<TRes> get latitude;
-  CopyWith$Input$FloatFilter<TRes> get longitude;
   CopyWith$Input$OpaqueFilter<TRes> get startOpenTime;
   CopyWith$Input$OpaqueFilter<TRes> get endOpenTime;
   CopyWith$Input$UUIDFilter<TRes> get providerId;
+  CopyWith$Input$UUIDFilter<TRes> get deliveryPeriodId;
+  CopyWith$Input$UUIDFilter<TRes> get addressId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$DeliveryLocationFilter>? Function(
@@ -3440,16 +5104,11 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
     Object? providerId = _undefined,
+    Object? deliveryPeriodId = _undefined,
+    Object? addressId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -3461,22 +5120,16 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
         if (name != _undefined) 'name': (name as Input$StringFilter?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (address != _undefined) 'address': (address as Input$StringFilter?),
-        if (address1 != _undefined)
-          'address1': (address1 as Input$StringFilter?),
-        if (city != _undefined) 'city': (city as Input$StringFilter?),
-        if (state != _undefined) 'state': (state as Input$StringFilter?),
-        if (zip != _undefined) 'zip': (zip as Input$StringFilter?),
-        if (latitude != _undefined)
-          'latitude': (latitude as Input$FloatFilter?),
-        if (longitude != _undefined)
-          'longitude': (longitude as Input$FloatFilter?),
         if (startOpenTime != _undefined)
           'startOpenTime': (startOpenTime as Input$OpaqueFilter?),
         if (endOpenTime != _undefined)
           'endOpenTime': (endOpenTime as Input$OpaqueFilter?),
         if (providerId != _undefined)
           'providerId': (providerId as Input$UUIDFilter?),
+        if (deliveryPeriodId != _undefined)
+          'deliveryPeriodId': (deliveryPeriodId as Input$UUIDFilter?),
+        if (addressId != _undefined)
+          'addressId': (addressId as Input$UUIDFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined)
           'and': (and as List<Input$DeliveryLocationFilter>?),
@@ -3506,56 +5159,6 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
             local$createdAt, (e) => call(createdAt: e));
   }
 
-  CopyWith$Input$StringFilter<TRes> get address {
-    final local$address = _instance.address;
-    return local$address == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$address, (e) => call(address: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get address1 {
-    final local$address1 = _instance.address1;
-    return local$address1 == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$address1, (e) => call(address1: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get city {
-    final local$city = _instance.city;
-    return local$city == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$city, (e) => call(city: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get state {
-    final local$state = _instance.state;
-    return local$state == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$state, (e) => call(state: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get zip {
-    final local$zip = _instance.zip;
-    return local$zip == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$zip, (e) => call(zip: e));
-  }
-
-  CopyWith$Input$FloatFilter<TRes> get latitude {
-    final local$latitude = _instance.latitude;
-    return local$latitude == null
-        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
-        : CopyWith$Input$FloatFilter(local$latitude, (e) => call(latitude: e));
-  }
-
-  CopyWith$Input$FloatFilter<TRes> get longitude {
-    final local$longitude = _instance.longitude;
-    return local$longitude == null
-        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
-        : CopyWith$Input$FloatFilter(
-            local$longitude, (e) => call(longitude: e));
-  }
-
   CopyWith$Input$OpaqueFilter<TRes> get startOpenTime {
     final local$startOpenTime = _instance.startOpenTime;
     return local$startOpenTime == null
@@ -3578,6 +5181,21 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
         ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
         : CopyWith$Input$UUIDFilter(
             local$providerId, (e) => call(providerId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get deliveryPeriodId {
+    final local$deliveryPeriodId = _instance.deliveryPeriodId;
+    return local$deliveryPeriodId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$deliveryPeriodId, (e) => call(deliveryPeriodId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get addressId {
+    final local$addressId = _instance.addressId;
+    return local$addressId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$addressId, (e) => call(addressId: e));
   }
 
   CopyWith$Input$IDFilter<TRes> get nodeId {
@@ -3631,16 +5249,11 @@ class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
     Input$UUIDFilter? id,
     Input$StringFilter? name,
     Input$DatetimeFilter? createdAt,
-    Input$StringFilter? address,
-    Input$StringFilter? address1,
-    Input$StringFilter? city,
-    Input$StringFilter? state,
-    Input$StringFilter? zip,
-    Input$FloatFilter? latitude,
-    Input$FloatFilter? longitude,
     Input$OpaqueFilter? startOpenTime,
     Input$OpaqueFilter? endOpenTime,
     Input$UUIDFilter? providerId,
+    Input$UUIDFilter? deliveryPeriodId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -3657,27 +5270,6 @@ class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
   CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
       CopyWith$Input$DatetimeFilter.stub(_res);
 
-  CopyWith$Input$StringFilter<TRes> get address =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get address1 =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get city =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get state =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get zip =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$FloatFilter<TRes> get latitude =>
-      CopyWith$Input$FloatFilter.stub(_res);
-
-  CopyWith$Input$FloatFilter<TRes> get longitude =>
-      CopyWith$Input$FloatFilter.stub(_res);
-
   CopyWith$Input$OpaqueFilter<TRes> get startOpenTime =>
       CopyWith$Input$OpaqueFilter.stub(_res);
 
@@ -3685,6 +5277,12 @@ class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
       CopyWith$Input$OpaqueFilter.stub(_res);
 
   CopyWith$Input$UUIDFilter<TRes> get providerId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get deliveryPeriodId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get addressId =>
       CopyWith$Input$UUIDFilter.stub(_res);
 
   CopyWith$Input$IDFilter<TRes> get nodeId =>
@@ -3703,31 +5301,21 @@ class Input$DeliveryLocationInsertInput {
     String? id,
     String? name,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
     String? providerId,
+    String? deliveryPeriodId,
+    String? addressId,
   }) =>
       Input$DeliveryLocationInsertInput._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
         if (providerId != null) r'providerId': providerId,
+        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$DeliveryLocationInsertInput._(this._$data);
@@ -3748,34 +5336,6 @@ class Input$DeliveryLocationInsertInput {
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = (l$address as String?);
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = (l$address1 as String?);
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = (l$city as String?);
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = (l$state as String?);
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = (l$zip as String?);
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = (l$latitude as num?)?.toDouble();
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = (l$longitude as num?)?.toDouble();
-    }
     if (data.containsKey('startOpenTime')) {
       final l$startOpenTime = data['startOpenTime'];
       result$data['startOpenTime'] = (l$startOpenTime as dynamic?);
@@ -3788,6 +5348,14 @@ class Input$DeliveryLocationInsertInput {
       final l$providerId = data['providerId'];
       result$data['providerId'] = (l$providerId as String?);
     }
+    if (data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = data['deliveryPeriodId'];
+      result$data['deliveryPeriodId'] = (l$deliveryPeriodId as String?);
+    }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = (l$addressId as String?);
+    }
     return Input$DeliveryLocationInsertInput._(result$data);
   }
 
@@ -3799,25 +5367,15 @@ class Input$DeliveryLocationInsertInput {
 
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
-  String? get address => (_$data['address'] as String?);
-
-  String? get address1 => (_$data['address1'] as String?);
-
-  String? get city => (_$data['city'] as String?);
-
-  String? get state => (_$data['state'] as String?);
-
-  String? get zip => (_$data['zip'] as String?);
-
-  double? get latitude => (_$data['latitude'] as double?);
-
-  double? get longitude => (_$data['longitude'] as double?);
-
   dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
 
   dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
 
   String? get providerId => (_$data['providerId'] as String?);
+
+  String? get deliveryPeriodId => (_$data['deliveryPeriodId'] as String?);
+
+  String? get addressId => (_$data['addressId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -3833,34 +5391,6 @@ class Input$DeliveryLocationInsertInput {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] = l$address;
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] = l$address1;
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] = l$city;
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] = l$state;
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] = l$zip;
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] = l$latitude;
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude;
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
       result$data['startOpenTime'] = l$startOpenTime;
@@ -3872,6 +5402,14 @@ class Input$DeliveryLocationInsertInput {
     if (_$data.containsKey('providerId')) {
       final l$providerId = providerId;
       result$data['providerId'] = l$providerId;
+    }
+    if (_$data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = deliveryPeriodId;
+      result$data['deliveryPeriodId'] = l$deliveryPeriodId;
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId;
     }
     return result$data;
   }
@@ -3916,65 +5454,6 @@ class Input$DeliveryLocationInsertInput {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -4002,6 +5481,24 @@ class Input$DeliveryLocationInsertInput {
     if (l$providerId != lOther$providerId) {
       return false;
     }
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final lOther$deliveryPeriodId = other.deliveryPeriodId;
+    if (_$data.containsKey('deliveryPeriodId') !=
+        other._$data.containsKey('deliveryPeriodId')) {
+      return false;
+    }
+    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
+      return false;
+    }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -4010,30 +5507,20 @@ class Input$DeliveryLocationInsertInput {
     final l$id = id;
     final l$name = name;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
     final l$providerId = providerId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -4051,16 +5538,11 @@ abstract class CopyWith$Input$DeliveryLocationInsertInput<TRes> {
     String? id,
     String? name,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
     String? providerId,
+    String? deliveryPeriodId,
+    String? addressId,
   });
 }
 
@@ -4081,33 +5563,24 @@ class _CopyWithImpl$Input$DeliveryLocationInsertInput<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
     Object? providerId = _undefined,
+    Object? deliveryPeriodId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$DeliveryLocationInsertInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
         if (name != _undefined) 'name': (name as String?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (address != _undefined) 'address': (address as String?),
-        if (address1 != _undefined) 'address1': (address1 as String?),
-        if (city != _undefined) 'city': (city as String?),
-        if (state != _undefined) 'state': (state as String?),
-        if (zip != _undefined) 'zip': (zip as String?),
-        if (latitude != _undefined) 'latitude': (latitude as double?),
-        if (longitude != _undefined) 'longitude': (longitude as double?),
         if (startOpenTime != _undefined)
           'startOpenTime': (startOpenTime as dynamic?),
         if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
         if (providerId != _undefined) 'providerId': (providerId as String?),
+        if (deliveryPeriodId != _undefined)
+          'deliveryPeriodId': (deliveryPeriodId as String?),
+        if (addressId != _undefined) 'addressId': (addressId as String?),
       }));
 }
 
@@ -4121,16 +5594,11 @@ class _CopyWithStubImpl$Input$DeliveryLocationInsertInput<TRes>
     String? id,
     String? name,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
     String? providerId,
+    String? deliveryPeriodId,
+    String? addressId,
   }) =>
       _res;
 }
@@ -4140,31 +5608,21 @@ class Input$DeliveryLocationOrderBy {
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? address,
-    Enum$OrderByDirection? address1,
-    Enum$OrderByDirection? city,
-    Enum$OrderByDirection? state,
-    Enum$OrderByDirection? zip,
-    Enum$OrderByDirection? latitude,
-    Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
     Enum$OrderByDirection? providerId,
+    Enum$OrderByDirection? deliveryPeriodId,
+    Enum$OrderByDirection? addressId,
   }) =>
       Input$DeliveryLocationOrderBy._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
         if (providerId != null) r'providerId': providerId,
+        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$DeliveryLocationOrderBy._(this._$data);
@@ -4189,48 +5647,6 @@ class Input$DeliveryLocationOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$createdAt as String));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = l$address == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$address as String));
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = l$address1 == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$address1 as String));
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = l$city == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$city as String));
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = l$state == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$state as String));
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = l$zip == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$zip as String));
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = l$latitude == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$latitude as String));
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = l$longitude == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$longitude as String));
-    }
     if (data.containsKey('startOpenTime')) {
       final l$startOpenTime = data['startOpenTime'];
       result$data['startOpenTime'] = l$startOpenTime == null
@@ -4249,6 +5665,18 @@ class Input$DeliveryLocationOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$providerId as String));
     }
+    if (data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = data['deliveryPeriodId'];
+      result$data['deliveryPeriodId'] = l$deliveryPeriodId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$deliveryPeriodId as String));
+    }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$addressId as String));
+    }
     return Input$DeliveryLocationOrderBy._(result$data);
   }
 
@@ -4261,25 +5689,6 @@ class Input$DeliveryLocationOrderBy {
   Enum$OrderByDirection? get createdAt =>
       (_$data['createdAt'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get address =>
-      (_$data['address'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get address1 =>
-      (_$data['address1'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get city => (_$data['city'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get state =>
-      (_$data['state'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get zip => (_$data['zip'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get latitude =>
-      (_$data['latitude'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get longitude =>
-      (_$data['longitude'] as Enum$OrderByDirection?);
-
   Enum$OrderByDirection? get startOpenTime =>
       (_$data['startOpenTime'] as Enum$OrderByDirection?);
 
@@ -4288,6 +5697,12 @@ class Input$DeliveryLocationOrderBy {
 
   Enum$OrderByDirection? get providerId =>
       (_$data['providerId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get deliveryPeriodId =>
+      (_$data['deliveryPeriodId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get addressId =>
+      (_$data['addressId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -4307,42 +5722,6 @@ class Input$DeliveryLocationOrderBy {
           ? null
           : toJson$Enum$OrderByDirection(l$createdAt);
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] =
-          l$address == null ? null : toJson$Enum$OrderByDirection(l$address);
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] =
-          l$address1 == null ? null : toJson$Enum$OrderByDirection(l$address1);
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] =
-          l$city == null ? null : toJson$Enum$OrderByDirection(l$city);
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] =
-          l$state == null ? null : toJson$Enum$OrderByDirection(l$state);
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] =
-          l$zip == null ? null : toJson$Enum$OrderByDirection(l$zip);
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] =
-          l$latitude == null ? null : toJson$Enum$OrderByDirection(l$latitude);
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$longitude);
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
       result$data['startOpenTime'] = l$startOpenTime == null
@@ -4360,6 +5739,18 @@ class Input$DeliveryLocationOrderBy {
       result$data['providerId'] = l$providerId == null
           ? null
           : toJson$Enum$OrderByDirection(l$providerId);
+    }
+    if (_$data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = deliveryPeriodId;
+      result$data['deliveryPeriodId'] = l$deliveryPeriodId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$deliveryPeriodId);
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$addressId);
     }
     return result$data;
   }
@@ -4404,65 +5795,6 @@ class Input$DeliveryLocationOrderBy {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -4490,6 +5822,24 @@ class Input$DeliveryLocationOrderBy {
     if (l$providerId != lOther$providerId) {
       return false;
     }
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final lOther$deliveryPeriodId = other.deliveryPeriodId;
+    if (_$data.containsKey('deliveryPeriodId') !=
+        other._$data.containsKey('deliveryPeriodId')) {
+      return false;
+    }
+    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
+      return false;
+    }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -4498,30 +5848,20 @@ class Input$DeliveryLocationOrderBy {
     final l$id = id;
     final l$name = name;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
     final l$providerId = providerId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -4539,16 +5879,11 @@ abstract class CopyWith$Input$DeliveryLocationOrderBy<TRes> {
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? address,
-    Enum$OrderByDirection? address1,
-    Enum$OrderByDirection? city,
-    Enum$OrderByDirection? state,
-    Enum$OrderByDirection? zip,
-    Enum$OrderByDirection? latitude,
-    Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
     Enum$OrderByDirection? providerId,
+    Enum$OrderByDirection? deliveryPeriodId,
+    Enum$OrderByDirection? addressId,
   });
 }
 
@@ -4569,16 +5904,11 @@ class _CopyWithImpl$Input$DeliveryLocationOrderBy<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
     Object? providerId = _undefined,
+    Object? deliveryPeriodId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$DeliveryLocationOrderBy._({
         ..._instance._$data,
@@ -4586,23 +5916,16 @@ class _CopyWithImpl$Input$DeliveryLocationOrderBy<TRes>
         if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Enum$OrderByDirection?),
-        if (address != _undefined)
-          'address': (address as Enum$OrderByDirection?),
-        if (address1 != _undefined)
-          'address1': (address1 as Enum$OrderByDirection?),
-        if (city != _undefined) 'city': (city as Enum$OrderByDirection?),
-        if (state != _undefined) 'state': (state as Enum$OrderByDirection?),
-        if (zip != _undefined) 'zip': (zip as Enum$OrderByDirection?),
-        if (latitude != _undefined)
-          'latitude': (latitude as Enum$OrderByDirection?),
-        if (longitude != _undefined)
-          'longitude': (longitude as Enum$OrderByDirection?),
         if (startOpenTime != _undefined)
           'startOpenTime': (startOpenTime as Enum$OrderByDirection?),
         if (endOpenTime != _undefined)
           'endOpenTime': (endOpenTime as Enum$OrderByDirection?),
         if (providerId != _undefined)
           'providerId': (providerId as Enum$OrderByDirection?),
+        if (deliveryPeriodId != _undefined)
+          'deliveryPeriodId': (deliveryPeriodId as Enum$OrderByDirection?),
+        if (addressId != _undefined)
+          'addressId': (addressId as Enum$OrderByDirection?),
       }));
 }
 
@@ -4616,16 +5939,11 @@ class _CopyWithStubImpl$Input$DeliveryLocationOrderBy<TRes>
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? address,
-    Enum$OrderByDirection? address1,
-    Enum$OrderByDirection? city,
-    Enum$OrderByDirection? state,
-    Enum$OrderByDirection? zip,
-    Enum$OrderByDirection? latitude,
-    Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
     Enum$OrderByDirection? providerId,
+    Enum$OrderByDirection? deliveryPeriodId,
+    Enum$OrderByDirection? addressId,
   }) =>
       _res;
 }
@@ -4635,31 +5953,21 @@ class Input$DeliveryLocationUpdateInput {
     String? id,
     String? name,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
     String? providerId,
+    String? deliveryPeriodId,
+    String? addressId,
   }) =>
       Input$DeliveryLocationUpdateInput._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
         if (providerId != null) r'providerId': providerId,
+        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$DeliveryLocationUpdateInput._(this._$data);
@@ -4680,34 +5988,6 @@ class Input$DeliveryLocationUpdateInput {
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = (l$address as String?);
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = (l$address1 as String?);
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = (l$city as String?);
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = (l$state as String?);
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = (l$zip as String?);
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = (l$latitude as num?)?.toDouble();
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = (l$longitude as num?)?.toDouble();
-    }
     if (data.containsKey('startOpenTime')) {
       final l$startOpenTime = data['startOpenTime'];
       result$data['startOpenTime'] = (l$startOpenTime as dynamic?);
@@ -4720,6 +6000,14 @@ class Input$DeliveryLocationUpdateInput {
       final l$providerId = data['providerId'];
       result$data['providerId'] = (l$providerId as String?);
     }
+    if (data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = data['deliveryPeriodId'];
+      result$data['deliveryPeriodId'] = (l$deliveryPeriodId as String?);
+    }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = (l$addressId as String?);
+    }
     return Input$DeliveryLocationUpdateInput._(result$data);
   }
 
@@ -4731,25 +6019,15 @@ class Input$DeliveryLocationUpdateInput {
 
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
-  String? get address => (_$data['address'] as String?);
-
-  String? get address1 => (_$data['address1'] as String?);
-
-  String? get city => (_$data['city'] as String?);
-
-  String? get state => (_$data['state'] as String?);
-
-  String? get zip => (_$data['zip'] as String?);
-
-  double? get latitude => (_$data['latitude'] as double?);
-
-  double? get longitude => (_$data['longitude'] as double?);
-
   dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
 
   dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
 
   String? get providerId => (_$data['providerId'] as String?);
+
+  String? get deliveryPeriodId => (_$data['deliveryPeriodId'] as String?);
+
+  String? get addressId => (_$data['addressId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -4765,34 +6043,6 @@ class Input$DeliveryLocationUpdateInput {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] = l$address;
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] = l$address1;
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] = l$city;
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] = l$state;
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] = l$zip;
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] = l$latitude;
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude;
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
       result$data['startOpenTime'] = l$startOpenTime;
@@ -4804,6 +6054,14 @@ class Input$DeliveryLocationUpdateInput {
     if (_$data.containsKey('providerId')) {
       final l$providerId = providerId;
       result$data['providerId'] = l$providerId;
+    }
+    if (_$data.containsKey('deliveryPeriodId')) {
+      final l$deliveryPeriodId = deliveryPeriodId;
+      result$data['deliveryPeriodId'] = l$deliveryPeriodId;
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId;
     }
     return result$data;
   }
@@ -4848,65 +6106,6 @@ class Input$DeliveryLocationUpdateInput {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -4934,6 +6133,24 @@ class Input$DeliveryLocationUpdateInput {
     if (l$providerId != lOther$providerId) {
       return false;
     }
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final lOther$deliveryPeriodId = other.deliveryPeriodId;
+    if (_$data.containsKey('deliveryPeriodId') !=
+        other._$data.containsKey('deliveryPeriodId')) {
+      return false;
+    }
+    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
+      return false;
+    }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -4942,30 +6159,20 @@ class Input$DeliveryLocationUpdateInput {
     final l$id = id;
     final l$name = name;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
     final l$providerId = providerId;
+    final l$deliveryPeriodId = deliveryPeriodId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
+      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -4983,16 +6190,11 @@ abstract class CopyWith$Input$DeliveryLocationUpdateInput<TRes> {
     String? id,
     String? name,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
     String? providerId,
+    String? deliveryPeriodId,
+    String? addressId,
   });
 }
 
@@ -5013,33 +6215,24 @@ class _CopyWithImpl$Input$DeliveryLocationUpdateInput<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
     Object? providerId = _undefined,
+    Object? deliveryPeriodId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$DeliveryLocationUpdateInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
         if (name != _undefined) 'name': (name as String?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (address != _undefined) 'address': (address as String?),
-        if (address1 != _undefined) 'address1': (address1 as String?),
-        if (city != _undefined) 'city': (city as String?),
-        if (state != _undefined) 'state': (state as String?),
-        if (zip != _undefined) 'zip': (zip as String?),
-        if (latitude != _undefined) 'latitude': (latitude as double?),
-        if (longitude != _undefined) 'longitude': (longitude as double?),
         if (startOpenTime != _undefined)
           'startOpenTime': (startOpenTime as dynamic?),
         if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
         if (providerId != _undefined) 'providerId': (providerId as String?),
+        if (deliveryPeriodId != _undefined)
+          'deliveryPeriodId': (deliveryPeriodId as String?),
+        if (addressId != _undefined) 'addressId': (addressId as String?),
       }));
 }
 
@@ -5053,16 +6246,1342 @@ class _CopyWithStubImpl$Input$DeliveryLocationUpdateInput<TRes>
     String? id,
     String? name,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
-    double? latitude,
-    double? longitude,
     dynamic? startOpenTime,
     dynamic? endOpenTime,
     String? providerId,
+    String? deliveryPeriodId,
+    String? addressId,
+  }) =>
+      _res;
+}
+
+class Input$DeliveryPeriodFilter {
+  factory Input$DeliveryPeriodFilter({
+    Input$UUIDFilter? id,
+    Input$StringFilter? title,
+    Input$DatetimeFilter? startDate,
+    Input$DatetimeFilter? endDate,
+    Input$DatetimeFilter? createdAt,
+    Input$BooleanFilter? isCurrent,
+    Input$IDFilter? nodeId,
+    List<Input$DeliveryPeriodFilter>? and,
+    List<Input$DeliveryPeriodFilter>? or,
+    Input$DeliveryPeriodFilter? not,
+  }) =>
+      Input$DeliveryPeriodFilter._({
+        if (id != null) r'id': id,
+        if (title != null) r'title': title,
+        if (startDate != null) r'startDate': startDate,
+        if (endDate != null) r'endDate': endDate,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (isCurrent != null) r'isCurrent': isCurrent,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$DeliveryPeriodFilter._(this._$data);
+
+  factory Input$DeliveryPeriodFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('title')) {
+      final l$title = data['title'];
+      result$data['title'] = l$title == null
+          ? null
+          : Input$StringFilter.fromJson((l$title as Map<String, dynamic>));
+    }
+    if (data.containsKey('startDate')) {
+      final l$startDate = data['startDate'];
+      result$data['startDate'] = l$startDate == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$startDate as Map<String, dynamic>));
+    }
+    if (data.containsKey('endDate')) {
+      final l$endDate = data['endDate'];
+      result$data['endDate'] = l$endDate == null
+          ? null
+          : Input$DatetimeFilter.fromJson((l$endDate as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('isCurrent')) {
+      final l$isCurrent = data['isCurrent'];
+      result$data['isCurrent'] = l$isCurrent == null
+          ? null
+          : Input$BooleanFilter.fromJson((l$isCurrent as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) =>
+              Input$DeliveryPeriodFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) =>
+              Input$DeliveryPeriodFilter.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$DeliveryPeriodFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$DeliveryPeriodFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$StringFilter? get title => (_$data['title'] as Input$StringFilter?);
+
+  Input$DatetimeFilter? get startDate =>
+      (_$data['startDate'] as Input$DatetimeFilter?);
+
+  Input$DatetimeFilter? get endDate =>
+      (_$data['endDate'] as Input$DatetimeFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$BooleanFilter? get isCurrent =>
+      (_$data['isCurrent'] as Input$BooleanFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$DeliveryPeriodFilter>? get and =>
+      (_$data['and'] as List<Input$DeliveryPeriodFilter>?);
+
+  List<Input$DeliveryPeriodFilter>? get or =>
+      (_$data['or'] as List<Input$DeliveryPeriodFilter>?);
+
+  Input$DeliveryPeriodFilter? get not =>
+      (_$data['not'] as Input$DeliveryPeriodFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('title')) {
+      final l$title = title;
+      result$data['title'] = l$title?.toJson();
+    }
+    if (_$data.containsKey('startDate')) {
+      final l$startDate = startDate;
+      result$data['startDate'] = l$startDate?.toJson();
+    }
+    if (_$data.containsKey('endDate')) {
+      final l$endDate = endDate;
+      result$data['endDate'] = l$endDate?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('isCurrent')) {
+      final l$isCurrent = isCurrent;
+      result$data['isCurrent'] = l$isCurrent?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryPeriodFilter<Input$DeliveryPeriodFilter>
+      get copyWith => CopyWith$Input$DeliveryPeriodFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryPeriodFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
+      return false;
+    }
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$startDate = startDate;
+    final lOther$startDate = other.startDate;
+    if (_$data.containsKey('startDate') !=
+        other._$data.containsKey('startDate')) {
+      return false;
+    }
+    if (l$startDate != lOther$startDate) {
+      return false;
+    }
+    final l$endDate = endDate;
+    final lOther$endDate = other.endDate;
+    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
+      return false;
+    }
+    if (l$endDate != lOther$endDate) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$isCurrent = isCurrent;
+    final lOther$isCurrent = other.isCurrent;
+    if (_$data.containsKey('isCurrent') !=
+        other._$data.containsKey('isCurrent')) {
+      return false;
+    }
+    if (l$isCurrent != lOther$isCurrent) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$startDate = startDate;
+    final l$endDate = endDate;
+    final l$createdAt = createdAt;
+    final l$isCurrent = isCurrent;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('title') ? l$title : const {},
+      _$data.containsKey('startDate') ? l$startDate : const {},
+      _$data.containsKey('endDate') ? l$endDate : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryPeriodFilter<TRes> {
+  factory CopyWith$Input$DeliveryPeriodFilter(
+    Input$DeliveryPeriodFilter instance,
+    TRes Function(Input$DeliveryPeriodFilter) then,
+  ) = _CopyWithImpl$Input$DeliveryPeriodFilter;
+
+  factory CopyWith$Input$DeliveryPeriodFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryPeriodFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? title,
+    Input$DatetimeFilter? startDate,
+    Input$DatetimeFilter? endDate,
+    Input$DatetimeFilter? createdAt,
+    Input$BooleanFilter? isCurrent,
+    Input$IDFilter? nodeId,
+    List<Input$DeliveryPeriodFilter>? and,
+    List<Input$DeliveryPeriodFilter>? or,
+    Input$DeliveryPeriodFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$StringFilter<TRes> get title;
+  CopyWith$Input$DatetimeFilter<TRes> get startDate;
+  CopyWith$Input$DatetimeFilter<TRes> get endDate;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$BooleanFilter<TRes> get isCurrent;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$DeliveryPeriodFilter>? Function(
+              Iterable<
+                  CopyWith$Input$DeliveryPeriodFilter<
+                      Input$DeliveryPeriodFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$DeliveryPeriodFilter>? Function(
+              Iterable<
+                  CopyWith$Input$DeliveryPeriodFilter<
+                      Input$DeliveryPeriodFilter>>?)
+          _fn);
+  CopyWith$Input$DeliveryPeriodFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$DeliveryPeriodFilter<TRes>
+    implements CopyWith$Input$DeliveryPeriodFilter<TRes> {
+  _CopyWithImpl$Input$DeliveryPeriodFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryPeriodFilter _instance;
+
+  final TRes Function(Input$DeliveryPeriodFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? startDate = _undefined,
+    Object? endDate = _undefined,
+    Object? createdAt = _undefined,
+    Object? isCurrent = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$DeliveryPeriodFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (title != _undefined) 'title': (title as Input$StringFilter?),
+        if (startDate != _undefined)
+          'startDate': (startDate as Input$DatetimeFilter?),
+        if (endDate != _undefined)
+          'endDate': (endDate as Input$DatetimeFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (isCurrent != _undefined)
+          'isCurrent': (isCurrent as Input$BooleanFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$DeliveryPeriodFilter>?),
+        if (or != _undefined) 'or': (or as List<Input$DeliveryPeriodFilter>?),
+        if (not != _undefined) 'not': (not as Input$DeliveryPeriodFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$StringFilter<TRes> get title {
+    final local$title = _instance.title;
+    return local$title == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(local$title, (e) => call(title: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get startDate {
+    final local$startDate = _instance.startDate;
+    return local$startDate == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$startDate, (e) => call(startDate: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get endDate {
+    final local$endDate = _instance.endDate;
+    return local$endDate == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(local$endDate, (e) => call(endDate: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$BooleanFilter<TRes> get isCurrent {
+    final local$isCurrent = _instance.isCurrent;
+    return local$isCurrent == null
+        ? CopyWith$Input$BooleanFilter.stub(_then(_instance))
+        : CopyWith$Input$BooleanFilter(
+            local$isCurrent, (e) => call(isCurrent: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$DeliveryPeriodFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$DeliveryPeriodFilter<
+                          Input$DeliveryPeriodFilter>>?)
+              _fn) =>
+      call(
+          and:
+              _fn(_instance.and?.map((e) => CopyWith$Input$DeliveryPeriodFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$DeliveryPeriodFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$DeliveryPeriodFilter<
+                          Input$DeliveryPeriodFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$DeliveryPeriodFilter(
+                e,
+                (i) => i,
+              )))?.toList());
+
+  CopyWith$Input$DeliveryPeriodFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$DeliveryPeriodFilter.stub(_then(_instance))
+        : CopyWith$Input$DeliveryPeriodFilter(local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$DeliveryPeriodFilter<TRes>
+    implements CopyWith$Input$DeliveryPeriodFilter<TRes> {
+  _CopyWithStubImpl$Input$DeliveryPeriodFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$StringFilter? title,
+    Input$DatetimeFilter? startDate,
+    Input$DatetimeFilter? endDate,
+    Input$DatetimeFilter? createdAt,
+    Input$BooleanFilter? isCurrent,
+    Input$IDFilter? nodeId,
+    List<Input$DeliveryPeriodFilter>? and,
+    List<Input$DeliveryPeriodFilter>? or,
+    Input$DeliveryPeriodFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$StringFilter<TRes> get title =>
+      CopyWith$Input$StringFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get startDate =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get endDate =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$BooleanFilter<TRes> get isCurrent =>
+      CopyWith$Input$BooleanFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$DeliveryPeriodFilter<TRes> get not =>
+      CopyWith$Input$DeliveryPeriodFilter.stub(_res);
+}
+
+class Input$DeliveryPeriodInsertInput {
+  factory Input$DeliveryPeriodInsertInput({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    DateTime? createdAt,
+    bool? isCurrent,
+  }) =>
+      Input$DeliveryPeriodInsertInput._({
+        if (id != null) r'id': id,
+        if (title != null) r'title': title,
+        if (startDate != null) r'startDate': startDate,
+        if (endDate != null) r'endDate': endDate,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (isCurrent != null) r'isCurrent': isCurrent,
+      });
+
+  Input$DeliveryPeriodInsertInput._(this._$data);
+
+  factory Input$DeliveryPeriodInsertInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('title')) {
+      final l$title = data['title'];
+      result$data['title'] = (l$title as String?);
+    }
+    if (data.containsKey('startDate')) {
+      final l$startDate = data['startDate'];
+      result$data['startDate'] =
+          l$startDate == null ? null : DateTime.parse((l$startDate as String));
+    }
+    if (data.containsKey('endDate')) {
+      final l$endDate = data['endDate'];
+      result$data['endDate'] =
+          l$endDate == null ? null : DateTime.parse((l$endDate as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('isCurrent')) {
+      final l$isCurrent = data['isCurrent'];
+      result$data['isCurrent'] = (l$isCurrent as bool?);
+    }
+    return Input$DeliveryPeriodInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get title => (_$data['title'] as String?);
+
+  DateTime? get startDate => (_$data['startDate'] as DateTime?);
+
+  DateTime? get endDate => (_$data['endDate'] as DateTime?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  bool? get isCurrent => (_$data['isCurrent'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('title')) {
+      final l$title = title;
+      result$data['title'] = l$title;
+    }
+    if (_$data.containsKey('startDate')) {
+      final l$startDate = startDate;
+      result$data['startDate'] = l$startDate?.toIso8601String();
+    }
+    if (_$data.containsKey('endDate')) {
+      final l$endDate = endDate;
+      result$data['endDate'] = l$endDate?.toIso8601String();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('isCurrent')) {
+      final l$isCurrent = isCurrent;
+      result$data['isCurrent'] = l$isCurrent;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryPeriodInsertInput<Input$DeliveryPeriodInsertInput>
+      get copyWith => CopyWith$Input$DeliveryPeriodInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryPeriodInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
+      return false;
+    }
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$startDate = startDate;
+    final lOther$startDate = other.startDate;
+    if (_$data.containsKey('startDate') !=
+        other._$data.containsKey('startDate')) {
+      return false;
+    }
+    if (l$startDate != lOther$startDate) {
+      return false;
+    }
+    final l$endDate = endDate;
+    final lOther$endDate = other.endDate;
+    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
+      return false;
+    }
+    if (l$endDate != lOther$endDate) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$isCurrent = isCurrent;
+    final lOther$isCurrent = other.isCurrent;
+    if (_$data.containsKey('isCurrent') !=
+        other._$data.containsKey('isCurrent')) {
+      return false;
+    }
+    if (l$isCurrent != lOther$isCurrent) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$startDate = startDate;
+    final l$endDate = endDate;
+    final l$createdAt = createdAt;
+    final l$isCurrent = isCurrent;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('title') ? l$title : const {},
+      _$data.containsKey('startDate') ? l$startDate : const {},
+      _$data.containsKey('endDate') ? l$endDate : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryPeriodInsertInput<TRes> {
+  factory CopyWith$Input$DeliveryPeriodInsertInput(
+    Input$DeliveryPeriodInsertInput instance,
+    TRes Function(Input$DeliveryPeriodInsertInput) then,
+  ) = _CopyWithImpl$Input$DeliveryPeriodInsertInput;
+
+  factory CopyWith$Input$DeliveryPeriodInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryPeriodInsertInput;
+
+  TRes call({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    DateTime? createdAt,
+    bool? isCurrent,
+  });
+}
+
+class _CopyWithImpl$Input$DeliveryPeriodInsertInput<TRes>
+    implements CopyWith$Input$DeliveryPeriodInsertInput<TRes> {
+  _CopyWithImpl$Input$DeliveryPeriodInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryPeriodInsertInput _instance;
+
+  final TRes Function(Input$DeliveryPeriodInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? startDate = _undefined,
+    Object? endDate = _undefined,
+    Object? createdAt = _undefined,
+    Object? isCurrent = _undefined,
+  }) =>
+      _then(Input$DeliveryPeriodInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (title != _undefined) 'title': (title as String?),
+        if (startDate != _undefined) 'startDate': (startDate as DateTime?),
+        if (endDate != _undefined) 'endDate': (endDate as DateTime?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (isCurrent != _undefined) 'isCurrent': (isCurrent as bool?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DeliveryPeriodInsertInput<TRes>
+    implements CopyWith$Input$DeliveryPeriodInsertInput<TRes> {
+  _CopyWithStubImpl$Input$DeliveryPeriodInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    DateTime? createdAt,
+    bool? isCurrent,
+  }) =>
+      _res;
+}
+
+class Input$DeliveryPeriodOrderBy {
+  factory Input$DeliveryPeriodOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? title,
+    Enum$OrderByDirection? startDate,
+    Enum$OrderByDirection? endDate,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? isCurrent,
+  }) =>
+      Input$DeliveryPeriodOrderBy._({
+        if (id != null) r'id': id,
+        if (title != null) r'title': title,
+        if (startDate != null) r'startDate': startDate,
+        if (endDate != null) r'endDate': endDate,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (isCurrent != null) r'isCurrent': isCurrent,
+      });
+
+  Input$DeliveryPeriodOrderBy._(this._$data);
+
+  factory Input$DeliveryPeriodOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('title')) {
+      final l$title = data['title'];
+      result$data['title'] = l$title == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$title as String));
+    }
+    if (data.containsKey('startDate')) {
+      final l$startDate = data['startDate'];
+      result$data['startDate'] = l$startDate == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$startDate as String));
+    }
+    if (data.containsKey('endDate')) {
+      final l$endDate = data['endDate'];
+      result$data['endDate'] = l$endDate == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$endDate as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    if (data.containsKey('isCurrent')) {
+      final l$isCurrent = data['isCurrent'];
+      result$data['isCurrent'] = l$isCurrent == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$isCurrent as String));
+    }
+    return Input$DeliveryPeriodOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get title =>
+      (_$data['title'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get startDate =>
+      (_$data['startDate'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get endDate =>
+      (_$data['endDate'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get isCurrent =>
+      (_$data['isCurrent'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('title')) {
+      final l$title = title;
+      result$data['title'] =
+          l$title == null ? null : toJson$Enum$OrderByDirection(l$title);
+    }
+    if (_$data.containsKey('startDate')) {
+      final l$startDate = startDate;
+      result$data['startDate'] = l$startDate == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$startDate);
+    }
+    if (_$data.containsKey('endDate')) {
+      final l$endDate = endDate;
+      result$data['endDate'] =
+          l$endDate == null ? null : toJson$Enum$OrderByDirection(l$endDate);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    if (_$data.containsKey('isCurrent')) {
+      final l$isCurrent = isCurrent;
+      result$data['isCurrent'] = l$isCurrent == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$isCurrent);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryPeriodOrderBy<Input$DeliveryPeriodOrderBy>
+      get copyWith => CopyWith$Input$DeliveryPeriodOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryPeriodOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
+      return false;
+    }
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$startDate = startDate;
+    final lOther$startDate = other.startDate;
+    if (_$data.containsKey('startDate') !=
+        other._$data.containsKey('startDate')) {
+      return false;
+    }
+    if (l$startDate != lOther$startDate) {
+      return false;
+    }
+    final l$endDate = endDate;
+    final lOther$endDate = other.endDate;
+    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
+      return false;
+    }
+    if (l$endDate != lOther$endDate) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$isCurrent = isCurrent;
+    final lOther$isCurrent = other.isCurrent;
+    if (_$data.containsKey('isCurrent') !=
+        other._$data.containsKey('isCurrent')) {
+      return false;
+    }
+    if (l$isCurrent != lOther$isCurrent) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$startDate = startDate;
+    final l$endDate = endDate;
+    final l$createdAt = createdAt;
+    final l$isCurrent = isCurrent;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('title') ? l$title : const {},
+      _$data.containsKey('startDate') ? l$startDate : const {},
+      _$data.containsKey('endDate') ? l$endDate : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryPeriodOrderBy<TRes> {
+  factory CopyWith$Input$DeliveryPeriodOrderBy(
+    Input$DeliveryPeriodOrderBy instance,
+    TRes Function(Input$DeliveryPeriodOrderBy) then,
+  ) = _CopyWithImpl$Input$DeliveryPeriodOrderBy;
+
+  factory CopyWith$Input$DeliveryPeriodOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryPeriodOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? title,
+    Enum$OrderByDirection? startDate,
+    Enum$OrderByDirection? endDate,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? isCurrent,
+  });
+}
+
+class _CopyWithImpl$Input$DeliveryPeriodOrderBy<TRes>
+    implements CopyWith$Input$DeliveryPeriodOrderBy<TRes> {
+  _CopyWithImpl$Input$DeliveryPeriodOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryPeriodOrderBy _instance;
+
+  final TRes Function(Input$DeliveryPeriodOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? startDate = _undefined,
+    Object? endDate = _undefined,
+    Object? createdAt = _undefined,
+    Object? isCurrent = _undefined,
+  }) =>
+      _then(Input$DeliveryPeriodOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (title != _undefined) 'title': (title as Enum$OrderByDirection?),
+        if (startDate != _undefined)
+          'startDate': (startDate as Enum$OrderByDirection?),
+        if (endDate != _undefined)
+          'endDate': (endDate as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+        if (isCurrent != _undefined)
+          'isCurrent': (isCurrent as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DeliveryPeriodOrderBy<TRes>
+    implements CopyWith$Input$DeliveryPeriodOrderBy<TRes> {
+  _CopyWithStubImpl$Input$DeliveryPeriodOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? title,
+    Enum$OrderByDirection? startDate,
+    Enum$OrderByDirection? endDate,
+    Enum$OrderByDirection? createdAt,
+    Enum$OrderByDirection? isCurrent,
+  }) =>
+      _res;
+}
+
+class Input$DeliveryPeriodUpdateInput {
+  factory Input$DeliveryPeriodUpdateInput({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    DateTime? createdAt,
+    bool? isCurrent,
+  }) =>
+      Input$DeliveryPeriodUpdateInput._({
+        if (id != null) r'id': id,
+        if (title != null) r'title': title,
+        if (startDate != null) r'startDate': startDate,
+        if (endDate != null) r'endDate': endDate,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (isCurrent != null) r'isCurrent': isCurrent,
+      });
+
+  Input$DeliveryPeriodUpdateInput._(this._$data);
+
+  factory Input$DeliveryPeriodUpdateInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('title')) {
+      final l$title = data['title'];
+      result$data['title'] = (l$title as String?);
+    }
+    if (data.containsKey('startDate')) {
+      final l$startDate = data['startDate'];
+      result$data['startDate'] =
+          l$startDate == null ? null : DateTime.parse((l$startDate as String));
+    }
+    if (data.containsKey('endDate')) {
+      final l$endDate = data['endDate'];
+      result$data['endDate'] =
+          l$endDate == null ? null : DateTime.parse((l$endDate as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    if (data.containsKey('isCurrent')) {
+      final l$isCurrent = data['isCurrent'];
+      result$data['isCurrent'] = (l$isCurrent as bool?);
+    }
+    return Input$DeliveryPeriodUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get title => (_$data['title'] as String?);
+
+  DateTime? get startDate => (_$data['startDate'] as DateTime?);
+
+  DateTime? get endDate => (_$data['endDate'] as DateTime?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  bool? get isCurrent => (_$data['isCurrent'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('title')) {
+      final l$title = title;
+      result$data['title'] = l$title;
+    }
+    if (_$data.containsKey('startDate')) {
+      final l$startDate = startDate;
+      result$data['startDate'] = l$startDate?.toIso8601String();
+    }
+    if (_$data.containsKey('endDate')) {
+      final l$endDate = endDate;
+      result$data['endDate'] = l$endDate?.toIso8601String();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    if (_$data.containsKey('isCurrent')) {
+      final l$isCurrent = isCurrent;
+      result$data['isCurrent'] = l$isCurrent;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeliveryPeriodUpdateInput<Input$DeliveryPeriodUpdateInput>
+      get copyWith => CopyWith$Input$DeliveryPeriodUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeliveryPeriodUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
+      return false;
+    }
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$startDate = startDate;
+    final lOther$startDate = other.startDate;
+    if (_$data.containsKey('startDate') !=
+        other._$data.containsKey('startDate')) {
+      return false;
+    }
+    if (l$startDate != lOther$startDate) {
+      return false;
+    }
+    final l$endDate = endDate;
+    final lOther$endDate = other.endDate;
+    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
+      return false;
+    }
+    if (l$endDate != lOther$endDate) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$isCurrent = isCurrent;
+    final lOther$isCurrent = other.isCurrent;
+    if (_$data.containsKey('isCurrent') !=
+        other._$data.containsKey('isCurrent')) {
+      return false;
+    }
+    if (l$isCurrent != lOther$isCurrent) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$startDate = startDate;
+    final l$endDate = endDate;
+    final l$createdAt = createdAt;
+    final l$isCurrent = isCurrent;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('title') ? l$title : const {},
+      _$data.containsKey('startDate') ? l$startDate : const {},
+      _$data.containsKey('endDate') ? l$endDate : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeliveryPeriodUpdateInput<TRes> {
+  factory CopyWith$Input$DeliveryPeriodUpdateInput(
+    Input$DeliveryPeriodUpdateInput instance,
+    TRes Function(Input$DeliveryPeriodUpdateInput) then,
+  ) = _CopyWithImpl$Input$DeliveryPeriodUpdateInput;
+
+  factory CopyWith$Input$DeliveryPeriodUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeliveryPeriodUpdateInput;
+
+  TRes call({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    DateTime? createdAt,
+    bool? isCurrent,
+  });
+}
+
+class _CopyWithImpl$Input$DeliveryPeriodUpdateInput<TRes>
+    implements CopyWith$Input$DeliveryPeriodUpdateInput<TRes> {
+  _CopyWithImpl$Input$DeliveryPeriodUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeliveryPeriodUpdateInput _instance;
+
+  final TRes Function(Input$DeliveryPeriodUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? startDate = _undefined,
+    Object? endDate = _undefined,
+    Object? createdAt = _undefined,
+    Object? isCurrent = _undefined,
+  }) =>
+      _then(Input$DeliveryPeriodUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (title != _undefined) 'title': (title as String?),
+        if (startDate != _undefined) 'startDate': (startDate as DateTime?),
+        if (endDate != _undefined) 'endDate': (endDate as DateTime?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+        if (isCurrent != _undefined) 'isCurrent': (isCurrent as bool?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DeliveryPeriodUpdateInput<TRes>
+    implements CopyWith$Input$DeliveryPeriodUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$DeliveryPeriodUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? title,
+    DateTime? startDate,
+    DateTime? endDate,
+    DateTime? createdAt,
+    bool? isCurrent,
   }) =>
       _res;
 }
@@ -13931,21 +16450,13 @@ class Input$OrdersFilter {
     Input$UUIDFilter? id,
     Input$UUIDFilter? userId,
     Input$DatetimeFilter? createdAt,
-    Input$DatetimeFilter? scheduledDeliveryAt,
     Input$OrderStatusFilter? orderStatus,
-    Input$StringFilter? deliveryAddress,
-    Input$StringFilter? deliveryCity,
-    Input$StringFilter? deliveryZip,
-    Input$StringFilter? deliveryLocationName,
-    Input$StringFilter? deliveryAddress1,
     Input$DatetimeFilter? updatedAt,
     Input$StringFilter? notes,
-    Input$FloatFilter? deliveryLat,
-    Input$FloatFilter? deliveryLong,
     Input$BigFloatFilter? subtotal,
     Input$BigFloatFilter? tax,
     Input$BigFloatFilter? total,
-    Input$StringFilter? deliveryState,
+    Input$UUIDFilter? deliveryLocationId,
     Input$IDFilter? nodeId,
     List<Input$OrdersFilter>? and,
     List<Input$OrdersFilter>? or,
@@ -13955,23 +16466,14 @@ class Input$OrdersFilter {
         if (id != null) r'id': id,
         if (userId != null) r'userId': userId,
         if (createdAt != null) r'createdAt': createdAt,
-        if (scheduledDeliveryAt != null)
-          r'scheduledDeliveryAt': scheduledDeliveryAt,
         if (orderStatus != null) r'orderStatus': orderStatus,
-        if (deliveryAddress != null) r'deliveryAddress': deliveryAddress,
-        if (deliveryCity != null) r'deliveryCity': deliveryCity,
-        if (deliveryZip != null) r'deliveryZip': deliveryZip,
-        if (deliveryLocationName != null)
-          r'deliveryLocationName': deliveryLocationName,
-        if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
-        if (deliveryLat != null) r'deliveryLat': deliveryLat,
-        if (deliveryLong != null) r'deliveryLong': deliveryLong,
         if (subtotal != null) r'subtotal': subtotal,
         if (tax != null) r'tax': tax,
         if (total != null) r'total': total,
-        if (deliveryState != null) r'deliveryState': deliveryState,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -14001,54 +16503,12 @@ class Input$OrdersFilter {
           : Input$DatetimeFilter.fromJson(
               (l$createdAt as Map<String, dynamic>));
     }
-    if (data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = data['scheduledDeliveryAt'];
-      result$data['scheduledDeliveryAt'] = l$scheduledDeliveryAt == null
-          ? null
-          : Input$DatetimeFilter.fromJson(
-              (l$scheduledDeliveryAt as Map<String, dynamic>));
-    }
     if (data.containsKey('orderStatus')) {
       final l$orderStatus = data['orderStatus'];
       result$data['orderStatus'] = l$orderStatus == null
           ? null
           : Input$OrderStatusFilter.fromJson(
               (l$orderStatus as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = data['deliveryAddress'];
-      result$data['deliveryAddress'] = l$deliveryAddress == null
-          ? null
-          : Input$StringFilter.fromJson(
-              (l$deliveryAddress as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryCity')) {
-      final l$deliveryCity = data['deliveryCity'];
-      result$data['deliveryCity'] = l$deliveryCity == null
-          ? null
-          : Input$StringFilter.fromJson(
-              (l$deliveryCity as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryZip')) {
-      final l$deliveryZip = data['deliveryZip'];
-      result$data['deliveryZip'] = l$deliveryZip == null
-          ? null
-          : Input$StringFilter.fromJson(
-              (l$deliveryZip as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = data['deliveryLocationName'];
-      result$data['deliveryLocationName'] = l$deliveryLocationName == null
-          ? null
-          : Input$StringFilter.fromJson(
-              (l$deliveryLocationName as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = data['deliveryAddress1'];
-      result$data['deliveryAddress1'] = l$deliveryAddress1 == null
-          ? null
-          : Input$StringFilter.fromJson(
-              (l$deliveryAddress1 as Map<String, dynamic>));
     }
     if (data.containsKey('updatedAt')) {
       final l$updatedAt = data['updatedAt'];
@@ -14062,19 +16522,6 @@ class Input$OrdersFilter {
       result$data['notes'] = l$notes == null
           ? null
           : Input$StringFilter.fromJson((l$notes as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryLat')) {
-      final l$deliveryLat = data['deliveryLat'];
-      result$data['deliveryLat'] = l$deliveryLat == null
-          ? null
-          : Input$FloatFilter.fromJson((l$deliveryLat as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryLong')) {
-      final l$deliveryLong = data['deliveryLong'];
-      result$data['deliveryLong'] = l$deliveryLong == null
-          ? null
-          : Input$FloatFilter.fromJson(
-              (l$deliveryLong as Map<String, dynamic>));
     }
     if (data.containsKey('subtotal')) {
       final l$subtotal = data['subtotal'];
@@ -14094,12 +16541,12 @@ class Input$OrdersFilter {
           ? null
           : Input$BigFloatFilter.fromJson((l$total as Map<String, dynamic>));
     }
-    if (data.containsKey('deliveryState')) {
-      final l$deliveryState = data['deliveryState'];
-      result$data['deliveryState'] = l$deliveryState == null
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
           ? null
-          : Input$StringFilter.fromJson(
-              (l$deliveryState as Map<String, dynamic>));
+          : Input$UUIDFilter.fromJson(
+              (l$deliveryLocationId as Map<String, dynamic>));
     }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
@@ -14137,37 +16584,13 @@ class Input$OrdersFilter {
   Input$DatetimeFilter? get createdAt =>
       (_$data['createdAt'] as Input$DatetimeFilter?);
 
-  Input$DatetimeFilter? get scheduledDeliveryAt =>
-      (_$data['scheduledDeliveryAt'] as Input$DatetimeFilter?);
-
   Input$OrderStatusFilter? get orderStatus =>
       (_$data['orderStatus'] as Input$OrderStatusFilter?);
-
-  Input$StringFilter? get deliveryAddress =>
-      (_$data['deliveryAddress'] as Input$StringFilter?);
-
-  Input$StringFilter? get deliveryCity =>
-      (_$data['deliveryCity'] as Input$StringFilter?);
-
-  Input$StringFilter? get deliveryZip =>
-      (_$data['deliveryZip'] as Input$StringFilter?);
-
-  Input$StringFilter? get deliveryLocationName =>
-      (_$data['deliveryLocationName'] as Input$StringFilter?);
-
-  Input$StringFilter? get deliveryAddress1 =>
-      (_$data['deliveryAddress1'] as Input$StringFilter?);
 
   Input$DatetimeFilter? get updatedAt =>
       (_$data['updatedAt'] as Input$DatetimeFilter?);
 
   Input$StringFilter? get notes => (_$data['notes'] as Input$StringFilter?);
-
-  Input$FloatFilter? get deliveryLat =>
-      (_$data['deliveryLat'] as Input$FloatFilter?);
-
-  Input$FloatFilter? get deliveryLong =>
-      (_$data['deliveryLong'] as Input$FloatFilter?);
 
   Input$BigFloatFilter? get subtotal =>
       (_$data['subtotal'] as Input$BigFloatFilter?);
@@ -14176,8 +16599,8 @@ class Input$OrdersFilter {
 
   Input$BigFloatFilter? get total => (_$data['total'] as Input$BigFloatFilter?);
 
-  Input$StringFilter? get deliveryState =>
-      (_$data['deliveryState'] as Input$StringFilter?);
+  Input$UUIDFilter? get deliveryLocationId =>
+      (_$data['deliveryLocationId'] as Input$UUIDFilter?);
 
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
@@ -14203,33 +16626,9 @@ class Input$OrdersFilter {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toJson();
     }
-    if (_$data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = scheduledDeliveryAt;
-      result$data['scheduledDeliveryAt'] = l$scheduledDeliveryAt?.toJson();
-    }
     if (_$data.containsKey('orderStatus')) {
       final l$orderStatus = orderStatus;
       result$data['orderStatus'] = l$orderStatus?.toJson();
-    }
-    if (_$data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = deliveryAddress;
-      result$data['deliveryAddress'] = l$deliveryAddress?.toJson();
-    }
-    if (_$data.containsKey('deliveryCity')) {
-      final l$deliveryCity = deliveryCity;
-      result$data['deliveryCity'] = l$deliveryCity?.toJson();
-    }
-    if (_$data.containsKey('deliveryZip')) {
-      final l$deliveryZip = deliveryZip;
-      result$data['deliveryZip'] = l$deliveryZip?.toJson();
-    }
-    if (_$data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = deliveryLocationName;
-      result$data['deliveryLocationName'] = l$deliveryLocationName?.toJson();
-    }
-    if (_$data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = deliveryAddress1;
-      result$data['deliveryAddress1'] = l$deliveryAddress1?.toJson();
     }
     if (_$data.containsKey('updatedAt')) {
       final l$updatedAt = updatedAt;
@@ -14238,14 +16637,6 @@ class Input$OrdersFilter {
     if (_$data.containsKey('notes')) {
       final l$notes = notes;
       result$data['notes'] = l$notes?.toJson();
-    }
-    if (_$data.containsKey('deliveryLat')) {
-      final l$deliveryLat = deliveryLat;
-      result$data['deliveryLat'] = l$deliveryLat?.toJson();
-    }
-    if (_$data.containsKey('deliveryLong')) {
-      final l$deliveryLong = deliveryLong;
-      result$data['deliveryLong'] = l$deliveryLong?.toJson();
     }
     if (_$data.containsKey('subtotal')) {
       final l$subtotal = subtotal;
@@ -14259,9 +16650,9 @@ class Input$OrdersFilter {
       final l$total = total;
       result$data['total'] = l$total?.toJson();
     }
-    if (_$data.containsKey('deliveryState')) {
-      final l$deliveryState = deliveryState;
-      result$data['deliveryState'] = l$deliveryState?.toJson();
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -14321,15 +16712,6 @@ class Input$OrdersFilter {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
-    final lOther$scheduledDeliveryAt = other.scheduledDeliveryAt;
-    if (_$data.containsKey('scheduledDeliveryAt') !=
-        other._$data.containsKey('scheduledDeliveryAt')) {
-      return false;
-    }
-    if (l$scheduledDeliveryAt != lOther$scheduledDeliveryAt) {
-      return false;
-    }
     final l$orderStatus = orderStatus;
     final lOther$orderStatus = other.orderStatus;
     if (_$data.containsKey('orderStatus') !=
@@ -14337,51 +16719,6 @@ class Input$OrdersFilter {
       return false;
     }
     if (l$orderStatus != lOther$orderStatus) {
-      return false;
-    }
-    final l$deliveryAddress = deliveryAddress;
-    final lOther$deliveryAddress = other.deliveryAddress;
-    if (_$data.containsKey('deliveryAddress') !=
-        other._$data.containsKey('deliveryAddress')) {
-      return false;
-    }
-    if (l$deliveryAddress != lOther$deliveryAddress) {
-      return false;
-    }
-    final l$deliveryCity = deliveryCity;
-    final lOther$deliveryCity = other.deliveryCity;
-    if (_$data.containsKey('deliveryCity') !=
-        other._$data.containsKey('deliveryCity')) {
-      return false;
-    }
-    if (l$deliveryCity != lOther$deliveryCity) {
-      return false;
-    }
-    final l$deliveryZip = deliveryZip;
-    final lOther$deliveryZip = other.deliveryZip;
-    if (_$data.containsKey('deliveryZip') !=
-        other._$data.containsKey('deliveryZip')) {
-      return false;
-    }
-    if (l$deliveryZip != lOther$deliveryZip) {
-      return false;
-    }
-    final l$deliveryLocationName = deliveryLocationName;
-    final lOther$deliveryLocationName = other.deliveryLocationName;
-    if (_$data.containsKey('deliveryLocationName') !=
-        other._$data.containsKey('deliveryLocationName')) {
-      return false;
-    }
-    if (l$deliveryLocationName != lOther$deliveryLocationName) {
-      return false;
-    }
-    final l$deliveryAddress1 = deliveryAddress1;
-    final lOther$deliveryAddress1 = other.deliveryAddress1;
-    if (_$data.containsKey('deliveryAddress1') !=
-        other._$data.containsKey('deliveryAddress1')) {
-      return false;
-    }
-    if (l$deliveryAddress1 != lOther$deliveryAddress1) {
       return false;
     }
     final l$updatedAt = updatedAt;
@@ -14399,24 +16736,6 @@ class Input$OrdersFilter {
       return false;
     }
     if (l$notes != lOther$notes) {
-      return false;
-    }
-    final l$deliveryLat = deliveryLat;
-    final lOther$deliveryLat = other.deliveryLat;
-    if (_$data.containsKey('deliveryLat') !=
-        other._$data.containsKey('deliveryLat')) {
-      return false;
-    }
-    if (l$deliveryLat != lOther$deliveryLat) {
-      return false;
-    }
-    final l$deliveryLong = deliveryLong;
-    final lOther$deliveryLong = other.deliveryLong;
-    if (_$data.containsKey('deliveryLong') !=
-        other._$data.containsKey('deliveryLong')) {
-      return false;
-    }
-    if (l$deliveryLong != lOther$deliveryLong) {
       return false;
     }
     final l$subtotal = subtotal;
@@ -14444,13 +16763,13 @@ class Input$OrdersFilter {
     if (l$total != lOther$total) {
       return false;
     }
-    final l$deliveryState = deliveryState;
-    final lOther$deliveryState = other.deliveryState;
-    if (_$data.containsKey('deliveryState') !=
-        other._$data.containsKey('deliveryState')) {
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
       return false;
     }
-    if (l$deliveryState != lOther$deliveryState) {
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
       return false;
     }
     final l$nodeId = nodeId;
@@ -14515,21 +16834,13 @@ class Input$OrdersFilter {
     final l$id = id;
     final l$userId = userId;
     final l$createdAt = createdAt;
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
     final l$orderStatus = orderStatus;
-    final l$deliveryAddress = deliveryAddress;
-    final l$deliveryCity = deliveryCity;
-    final l$deliveryZip = deliveryZip;
-    final l$deliveryLocationName = deliveryLocationName;
-    final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
-    final l$deliveryLat = deliveryLat;
-    final l$deliveryLong = deliveryLong;
     final l$subtotal = subtotal;
     final l$tax = tax;
     final l$total = total;
-    final l$deliveryState = deliveryState;
+    final l$deliveryLocationId = deliveryLocationId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -14538,25 +16849,15 @@ class Input$OrdersFilter {
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('scheduledDeliveryAt')
-          ? l$scheduledDeliveryAt
-          : const {},
       _$data.containsKey('orderStatus') ? l$orderStatus : const {},
-      _$data.containsKey('deliveryAddress') ? l$deliveryAddress : const {},
-      _$data.containsKey('deliveryCity') ? l$deliveryCity : const {},
-      _$data.containsKey('deliveryZip') ? l$deliveryZip : const {},
-      _$data.containsKey('deliveryLocationName')
-          ? l$deliveryLocationName
-          : const {},
-      _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
-      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
-      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
       _$data.containsKey('subtotal') ? l$subtotal : const {},
       _$data.containsKey('tax') ? l$tax : const {},
       _$data.containsKey('total') ? l$total : const {},
-      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -14586,21 +16887,13 @@ abstract class CopyWith$Input$OrdersFilter<TRes> {
     Input$UUIDFilter? id,
     Input$UUIDFilter? userId,
     Input$DatetimeFilter? createdAt,
-    Input$DatetimeFilter? scheduledDeliveryAt,
     Input$OrderStatusFilter? orderStatus,
-    Input$StringFilter? deliveryAddress,
-    Input$StringFilter? deliveryCity,
-    Input$StringFilter? deliveryZip,
-    Input$StringFilter? deliveryLocationName,
-    Input$StringFilter? deliveryAddress1,
     Input$DatetimeFilter? updatedAt,
     Input$StringFilter? notes,
-    Input$FloatFilter? deliveryLat,
-    Input$FloatFilter? deliveryLong,
     Input$BigFloatFilter? subtotal,
     Input$BigFloatFilter? tax,
     Input$BigFloatFilter? total,
-    Input$StringFilter? deliveryState,
+    Input$UUIDFilter? deliveryLocationId,
     Input$IDFilter? nodeId,
     List<Input$OrdersFilter>? and,
     List<Input$OrdersFilter>? or,
@@ -14609,21 +16902,13 @@ abstract class CopyWith$Input$OrdersFilter<TRes> {
   CopyWith$Input$UUIDFilter<TRes> get id;
   CopyWith$Input$UUIDFilter<TRes> get userId;
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$DatetimeFilter<TRes> get scheduledDeliveryAt;
   CopyWith$Input$OrderStatusFilter<TRes> get orderStatus;
-  CopyWith$Input$StringFilter<TRes> get deliveryAddress;
-  CopyWith$Input$StringFilter<TRes> get deliveryCity;
-  CopyWith$Input$StringFilter<TRes> get deliveryZip;
-  CopyWith$Input$StringFilter<TRes> get deliveryLocationName;
-  CopyWith$Input$StringFilter<TRes> get deliveryAddress1;
   CopyWith$Input$DatetimeFilter<TRes> get updatedAt;
   CopyWith$Input$StringFilter<TRes> get notes;
-  CopyWith$Input$FloatFilter<TRes> get deliveryLat;
-  CopyWith$Input$FloatFilter<TRes> get deliveryLong;
   CopyWith$Input$BigFloatFilter<TRes> get subtotal;
   CopyWith$Input$BigFloatFilter<TRes> get tax;
   CopyWith$Input$BigFloatFilter<TRes> get total;
-  CopyWith$Input$StringFilter<TRes> get deliveryState;
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$OrdersFilter>? Function(
@@ -14653,21 +16938,13 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
     Object? id = _undefined,
     Object? userId = _undefined,
     Object? createdAt = _undefined,
-    Object? scheduledDeliveryAt = _undefined,
     Object? orderStatus = _undefined,
-    Object? deliveryAddress = _undefined,
-    Object? deliveryCity = _undefined,
-    Object? deliveryZip = _undefined,
-    Object? deliveryLocationName = _undefined,
-    Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
-    Object? deliveryLat = _undefined,
-    Object? deliveryLong = _undefined,
     Object? subtotal = _undefined,
     Object? tax = _undefined,
     Object? total = _undefined,
-    Object? deliveryState = _undefined,
+    Object? deliveryLocationId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -14679,33 +16956,17 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
         if (userId != _undefined) 'userId': (userId as Input$UUIDFilter?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (scheduledDeliveryAt != _undefined)
-          'scheduledDeliveryAt': (scheduledDeliveryAt as Input$DatetimeFilter?),
         if (orderStatus != _undefined)
           'orderStatus': (orderStatus as Input$OrderStatusFilter?),
-        if (deliveryAddress != _undefined)
-          'deliveryAddress': (deliveryAddress as Input$StringFilter?),
-        if (deliveryCity != _undefined)
-          'deliveryCity': (deliveryCity as Input$StringFilter?),
-        if (deliveryZip != _undefined)
-          'deliveryZip': (deliveryZip as Input$StringFilter?),
-        if (deliveryLocationName != _undefined)
-          'deliveryLocationName': (deliveryLocationName as Input$StringFilter?),
-        if (deliveryAddress1 != _undefined)
-          'deliveryAddress1': (deliveryAddress1 as Input$StringFilter?),
         if (updatedAt != _undefined)
           'updatedAt': (updatedAt as Input$DatetimeFilter?),
         if (notes != _undefined) 'notes': (notes as Input$StringFilter?),
-        if (deliveryLat != _undefined)
-          'deliveryLat': (deliveryLat as Input$FloatFilter?),
-        if (deliveryLong != _undefined)
-          'deliveryLong': (deliveryLong as Input$FloatFilter?),
         if (subtotal != _undefined)
           'subtotal': (subtotal as Input$BigFloatFilter?),
         if (tax != _undefined) 'tax': (tax as Input$BigFloatFilter?),
         if (total != _undefined) 'total': (total as Input$BigFloatFilter?),
-        if (deliveryState != _undefined)
-          'deliveryState': (deliveryState as Input$StringFilter?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as Input$UUIDFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$OrdersFilter>?),
         if (or != _undefined) 'or': (or as List<Input$OrdersFilter>?),
@@ -14734,60 +16995,12 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
             local$createdAt, (e) => call(createdAt: e));
   }
 
-  CopyWith$Input$DatetimeFilter<TRes> get scheduledDeliveryAt {
-    final local$scheduledDeliveryAt = _instance.scheduledDeliveryAt;
-    return local$scheduledDeliveryAt == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(
-            local$scheduledDeliveryAt, (e) => call(scheduledDeliveryAt: e));
-  }
-
   CopyWith$Input$OrderStatusFilter<TRes> get orderStatus {
     final local$orderStatus = _instance.orderStatus;
     return local$orderStatus == null
         ? CopyWith$Input$OrderStatusFilter.stub(_then(_instance))
         : CopyWith$Input$OrderStatusFilter(
             local$orderStatus, (e) => call(orderStatus: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get deliveryAddress {
-    final local$deliveryAddress = _instance.deliveryAddress;
-    return local$deliveryAddress == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(
-            local$deliveryAddress, (e) => call(deliveryAddress: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get deliveryCity {
-    final local$deliveryCity = _instance.deliveryCity;
-    return local$deliveryCity == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(
-            local$deliveryCity, (e) => call(deliveryCity: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get deliveryZip {
-    final local$deliveryZip = _instance.deliveryZip;
-    return local$deliveryZip == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(
-            local$deliveryZip, (e) => call(deliveryZip: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get deliveryLocationName {
-    final local$deliveryLocationName = _instance.deliveryLocationName;
-    return local$deliveryLocationName == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(
-            local$deliveryLocationName, (e) => call(deliveryLocationName: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get deliveryAddress1 {
-    final local$deliveryAddress1 = _instance.deliveryAddress1;
-    return local$deliveryAddress1 == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(
-            local$deliveryAddress1, (e) => call(deliveryAddress1: e));
   }
 
   CopyWith$Input$DatetimeFilter<TRes> get updatedAt {
@@ -14803,22 +17016,6 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
     return local$notes == null
         ? CopyWith$Input$StringFilter.stub(_then(_instance))
         : CopyWith$Input$StringFilter(local$notes, (e) => call(notes: e));
-  }
-
-  CopyWith$Input$FloatFilter<TRes> get deliveryLat {
-    final local$deliveryLat = _instance.deliveryLat;
-    return local$deliveryLat == null
-        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
-        : CopyWith$Input$FloatFilter(
-            local$deliveryLat, (e) => call(deliveryLat: e));
-  }
-
-  CopyWith$Input$FloatFilter<TRes> get deliveryLong {
-    final local$deliveryLong = _instance.deliveryLong;
-    return local$deliveryLong == null
-        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
-        : CopyWith$Input$FloatFilter(
-            local$deliveryLong, (e) => call(deliveryLong: e));
   }
 
   CopyWith$Input$BigFloatFilter<TRes> get subtotal {
@@ -14843,12 +17040,12 @@ class _CopyWithImpl$Input$OrdersFilter<TRes>
         : CopyWith$Input$BigFloatFilter(local$total, (e) => call(total: e));
   }
 
-  CopyWith$Input$StringFilter<TRes> get deliveryState {
-    final local$deliveryState = _instance.deliveryState;
-    return local$deliveryState == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(
-            local$deliveryState, (e) => call(deliveryState: e));
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId {
+    final local$deliveryLocationId = _instance.deliveryLocationId;
+    return local$deliveryLocationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$deliveryLocationId, (e) => call(deliveryLocationId: e));
   }
 
   CopyWith$Input$IDFilter<TRes> get nodeId {
@@ -14896,21 +17093,13 @@ class _CopyWithStubImpl$Input$OrdersFilter<TRes>
     Input$UUIDFilter? id,
     Input$UUIDFilter? userId,
     Input$DatetimeFilter? createdAt,
-    Input$DatetimeFilter? scheduledDeliveryAt,
     Input$OrderStatusFilter? orderStatus,
-    Input$StringFilter? deliveryAddress,
-    Input$StringFilter? deliveryCity,
-    Input$StringFilter? deliveryZip,
-    Input$StringFilter? deliveryLocationName,
-    Input$StringFilter? deliveryAddress1,
     Input$DatetimeFilter? updatedAt,
     Input$StringFilter? notes,
-    Input$FloatFilter? deliveryLat,
-    Input$FloatFilter? deliveryLong,
     Input$BigFloatFilter? subtotal,
     Input$BigFloatFilter? tax,
     Input$BigFloatFilter? total,
-    Input$StringFilter? deliveryState,
+    Input$UUIDFilter? deliveryLocationId,
     Input$IDFilter? nodeId,
     List<Input$OrdersFilter>? and,
     List<Input$OrdersFilter>? or,
@@ -14927,38 +17116,14 @@ class _CopyWithStubImpl$Input$OrdersFilter<TRes>
   CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
       CopyWith$Input$DatetimeFilter.stub(_res);
 
-  CopyWith$Input$DatetimeFilter<TRes> get scheduledDeliveryAt =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
   CopyWith$Input$OrderStatusFilter<TRes> get orderStatus =>
       CopyWith$Input$OrderStatusFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get deliveryAddress =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get deliveryCity =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get deliveryZip =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get deliveryLocationName =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get deliveryAddress1 =>
-      CopyWith$Input$StringFilter.stub(_res);
 
   CopyWith$Input$DatetimeFilter<TRes> get updatedAt =>
       CopyWith$Input$DatetimeFilter.stub(_res);
 
   CopyWith$Input$StringFilter<TRes> get notes =>
       CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$FloatFilter<TRes> get deliveryLat =>
-      CopyWith$Input$FloatFilter.stub(_res);
-
-  CopyWith$Input$FloatFilter<TRes> get deliveryLong =>
-      CopyWith$Input$FloatFilter.stub(_res);
 
   CopyWith$Input$BigFloatFilter<TRes> get subtotal =>
       CopyWith$Input$BigFloatFilter.stub(_res);
@@ -14969,8 +17134,8 @@ class _CopyWithStubImpl$Input$OrdersFilter<TRes>
   CopyWith$Input$BigFloatFilter<TRes> get total =>
       CopyWith$Input$BigFloatFilter.stub(_res);
 
-  CopyWith$Input$StringFilter<TRes> get deliveryState =>
-      CopyWith$Input$StringFilter.stub(_res);
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
 
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
@@ -14988,43 +17153,26 @@ class Input$OrdersInsertInput {
     String? id,
     String? userId,
     DateTime? createdAt,
-    DateTime? scheduledDeliveryAt,
     Enum$OrderStatus? orderStatus,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
-    double? deliveryLat,
-    double? deliveryLong,
     double? subtotal,
     double? tax,
     double? total,
-    String? deliveryState,
+    String? deliveryLocationId,
   }) =>
       Input$OrdersInsertInput._({
         if (id != null) r'id': id,
         if (userId != null) r'userId': userId,
         if (createdAt != null) r'createdAt': createdAt,
-        if (scheduledDeliveryAt != null)
-          r'scheduledDeliveryAt': scheduledDeliveryAt,
         if (orderStatus != null) r'orderStatus': orderStatus,
-        if (deliveryAddress != null) r'deliveryAddress': deliveryAddress,
-        if (deliveryCity != null) r'deliveryCity': deliveryCity,
-        if (deliveryZip != null) r'deliveryZip': deliveryZip,
-        if (deliveryLocationName != null)
-          r'deliveryLocationName': deliveryLocationName,
-        if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
-        if (deliveryLat != null) r'deliveryLat': deliveryLat,
-        if (deliveryLong != null) r'deliveryLong': deliveryLong,
         if (subtotal != null) r'subtotal': subtotal,
         if (tax != null) r'tax': tax,
         if (total != null) r'total': total,
-        if (deliveryState != null) r'deliveryState': deliveryState,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
       });
 
   Input$OrdersInsertInput._(this._$data);
@@ -15044,37 +17192,11 @@ class Input$OrdersInsertInput {
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = data['scheduledDeliveryAt'];
-      result$data['scheduledDeliveryAt'] = l$scheduledDeliveryAt == null
-          ? null
-          : DateTime.parse((l$scheduledDeliveryAt as String));
-    }
     if (data.containsKey('orderStatus')) {
       final l$orderStatus = data['orderStatus'];
       result$data['orderStatus'] = l$orderStatus == null
           ? null
           : fromJson$Enum$OrderStatus((l$orderStatus as String));
-    }
-    if (data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = data['deliveryAddress'];
-      result$data['deliveryAddress'] = (l$deliveryAddress as String?);
-    }
-    if (data.containsKey('deliveryCity')) {
-      final l$deliveryCity = data['deliveryCity'];
-      result$data['deliveryCity'] = (l$deliveryCity as String?);
-    }
-    if (data.containsKey('deliveryZip')) {
-      final l$deliveryZip = data['deliveryZip'];
-      result$data['deliveryZip'] = (l$deliveryZip as String?);
-    }
-    if (data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = data['deliveryLocationName'];
-      result$data['deliveryLocationName'] = (l$deliveryLocationName as String?);
-    }
-    if (data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = data['deliveryAddress1'];
-      result$data['deliveryAddress1'] = (l$deliveryAddress1 as String?);
     }
     if (data.containsKey('updatedAt')) {
       final l$updatedAt = data['updatedAt'];
@@ -15084,14 +17206,6 @@ class Input$OrdersInsertInput {
     if (data.containsKey('notes')) {
       final l$notes = data['notes'];
       result$data['notes'] = (l$notes as String?);
-    }
-    if (data.containsKey('deliveryLat')) {
-      final l$deliveryLat = data['deliveryLat'];
-      result$data['deliveryLat'] = (l$deliveryLat as num?)?.toDouble();
-    }
-    if (data.containsKey('deliveryLong')) {
-      final l$deliveryLong = data['deliveryLong'];
-      result$data['deliveryLong'] = (l$deliveryLong as num?)?.toDouble();
     }
     if (data.containsKey('subtotal')) {
       final l$subtotal = data['subtotal'];
@@ -15105,9 +17219,9 @@ class Input$OrdersInsertInput {
       final l$total = data['total'];
       result$data['total'] = (l$total as num?)?.toDouble();
     }
-    if (data.containsKey('deliveryState')) {
-      final l$deliveryState = data['deliveryState'];
-      result$data['deliveryState'] = (l$deliveryState as String?);
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
     }
     return Input$OrdersInsertInput._(result$data);
   }
@@ -15120,30 +17234,12 @@ class Input$OrdersInsertInput {
 
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
-  DateTime? get scheduledDeliveryAt =>
-      (_$data['scheduledDeliveryAt'] as DateTime?);
-
   Enum$OrderStatus? get orderStatus =>
       (_$data['orderStatus'] as Enum$OrderStatus?);
-
-  String? get deliveryAddress => (_$data['deliveryAddress'] as String?);
-
-  String? get deliveryCity => (_$data['deliveryCity'] as String?);
-
-  String? get deliveryZip => (_$data['deliveryZip'] as String?);
-
-  String? get deliveryLocationName =>
-      (_$data['deliveryLocationName'] as String?);
-
-  String? get deliveryAddress1 => (_$data['deliveryAddress1'] as String?);
 
   DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
 
   String? get notes => (_$data['notes'] as String?);
-
-  double? get deliveryLat => (_$data['deliveryLat'] as double?);
-
-  double? get deliveryLong => (_$data['deliveryLong'] as double?);
 
   double? get subtotal => (_$data['subtotal'] as double?);
 
@@ -15151,7 +17247,7 @@ class Input$OrdersInsertInput {
 
   double? get total => (_$data['total'] as double?);
 
-  String? get deliveryState => (_$data['deliveryState'] as String?);
+  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -15167,35 +17263,10 @@ class Input$OrdersInsertInput {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
-    if (_$data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = scheduledDeliveryAt;
-      result$data['scheduledDeliveryAt'] =
-          l$scheduledDeliveryAt?.toIso8601String();
-    }
     if (_$data.containsKey('orderStatus')) {
       final l$orderStatus = orderStatus;
       result$data['orderStatus'] =
           l$orderStatus == null ? null : toJson$Enum$OrderStatus(l$orderStatus);
-    }
-    if (_$data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = deliveryAddress;
-      result$data['deliveryAddress'] = l$deliveryAddress;
-    }
-    if (_$data.containsKey('deliveryCity')) {
-      final l$deliveryCity = deliveryCity;
-      result$data['deliveryCity'] = l$deliveryCity;
-    }
-    if (_$data.containsKey('deliveryZip')) {
-      final l$deliveryZip = deliveryZip;
-      result$data['deliveryZip'] = l$deliveryZip;
-    }
-    if (_$data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = deliveryLocationName;
-      result$data['deliveryLocationName'] = l$deliveryLocationName;
-    }
-    if (_$data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = deliveryAddress1;
-      result$data['deliveryAddress1'] = l$deliveryAddress1;
     }
     if (_$data.containsKey('updatedAt')) {
       final l$updatedAt = updatedAt;
@@ -15204,14 +17275,6 @@ class Input$OrdersInsertInput {
     if (_$data.containsKey('notes')) {
       final l$notes = notes;
       result$data['notes'] = l$notes;
-    }
-    if (_$data.containsKey('deliveryLat')) {
-      final l$deliveryLat = deliveryLat;
-      result$data['deliveryLat'] = l$deliveryLat;
-    }
-    if (_$data.containsKey('deliveryLong')) {
-      final l$deliveryLong = deliveryLong;
-      result$data['deliveryLong'] = l$deliveryLong;
     }
     if (_$data.containsKey('subtotal')) {
       final l$subtotal = subtotal;
@@ -15225,9 +17288,9 @@ class Input$OrdersInsertInput {
       final l$total = total;
       result$data['total'] = l$total;
     }
-    if (_$data.containsKey('deliveryState')) {
-      final l$deliveryState = deliveryState;
-      result$data['deliveryState'] = l$deliveryState;
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId;
     }
     return result$data;
   }
@@ -15271,15 +17334,6 @@ class Input$OrdersInsertInput {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
-    final lOther$scheduledDeliveryAt = other.scheduledDeliveryAt;
-    if (_$data.containsKey('scheduledDeliveryAt') !=
-        other._$data.containsKey('scheduledDeliveryAt')) {
-      return false;
-    }
-    if (l$scheduledDeliveryAt != lOther$scheduledDeliveryAt) {
-      return false;
-    }
     final l$orderStatus = orderStatus;
     final lOther$orderStatus = other.orderStatus;
     if (_$data.containsKey('orderStatus') !=
@@ -15287,51 +17341,6 @@ class Input$OrdersInsertInput {
       return false;
     }
     if (l$orderStatus != lOther$orderStatus) {
-      return false;
-    }
-    final l$deliveryAddress = deliveryAddress;
-    final lOther$deliveryAddress = other.deliveryAddress;
-    if (_$data.containsKey('deliveryAddress') !=
-        other._$data.containsKey('deliveryAddress')) {
-      return false;
-    }
-    if (l$deliveryAddress != lOther$deliveryAddress) {
-      return false;
-    }
-    final l$deliveryCity = deliveryCity;
-    final lOther$deliveryCity = other.deliveryCity;
-    if (_$data.containsKey('deliveryCity') !=
-        other._$data.containsKey('deliveryCity')) {
-      return false;
-    }
-    if (l$deliveryCity != lOther$deliveryCity) {
-      return false;
-    }
-    final l$deliveryZip = deliveryZip;
-    final lOther$deliveryZip = other.deliveryZip;
-    if (_$data.containsKey('deliveryZip') !=
-        other._$data.containsKey('deliveryZip')) {
-      return false;
-    }
-    if (l$deliveryZip != lOther$deliveryZip) {
-      return false;
-    }
-    final l$deliveryLocationName = deliveryLocationName;
-    final lOther$deliveryLocationName = other.deliveryLocationName;
-    if (_$data.containsKey('deliveryLocationName') !=
-        other._$data.containsKey('deliveryLocationName')) {
-      return false;
-    }
-    if (l$deliveryLocationName != lOther$deliveryLocationName) {
-      return false;
-    }
-    final l$deliveryAddress1 = deliveryAddress1;
-    final lOther$deliveryAddress1 = other.deliveryAddress1;
-    if (_$data.containsKey('deliveryAddress1') !=
-        other._$data.containsKey('deliveryAddress1')) {
-      return false;
-    }
-    if (l$deliveryAddress1 != lOther$deliveryAddress1) {
       return false;
     }
     final l$updatedAt = updatedAt;
@@ -15349,24 +17358,6 @@ class Input$OrdersInsertInput {
       return false;
     }
     if (l$notes != lOther$notes) {
-      return false;
-    }
-    final l$deliveryLat = deliveryLat;
-    final lOther$deliveryLat = other.deliveryLat;
-    if (_$data.containsKey('deliveryLat') !=
-        other._$data.containsKey('deliveryLat')) {
-      return false;
-    }
-    if (l$deliveryLat != lOther$deliveryLat) {
-      return false;
-    }
-    final l$deliveryLong = deliveryLong;
-    final lOther$deliveryLong = other.deliveryLong;
-    if (_$data.containsKey('deliveryLong') !=
-        other._$data.containsKey('deliveryLong')) {
-      return false;
-    }
-    if (l$deliveryLong != lOther$deliveryLong) {
       return false;
     }
     final l$subtotal = subtotal;
@@ -15394,13 +17385,13 @@ class Input$OrdersInsertInput {
     if (l$total != lOther$total) {
       return false;
     }
-    final l$deliveryState = deliveryState;
-    final lOther$deliveryState = other.deliveryState;
-    if (_$data.containsKey('deliveryState') !=
-        other._$data.containsKey('deliveryState')) {
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
       return false;
     }
-    if (l$deliveryState != lOther$deliveryState) {
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
       return false;
     }
     return true;
@@ -15411,44 +17402,26 @@ class Input$OrdersInsertInput {
     final l$id = id;
     final l$userId = userId;
     final l$createdAt = createdAt;
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
     final l$orderStatus = orderStatus;
-    final l$deliveryAddress = deliveryAddress;
-    final l$deliveryCity = deliveryCity;
-    final l$deliveryZip = deliveryZip;
-    final l$deliveryLocationName = deliveryLocationName;
-    final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
-    final l$deliveryLat = deliveryLat;
-    final l$deliveryLong = deliveryLong;
     final l$subtotal = subtotal;
     final l$tax = tax;
     final l$total = total;
-    final l$deliveryState = deliveryState;
+    final l$deliveryLocationId = deliveryLocationId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('scheduledDeliveryAt')
-          ? l$scheduledDeliveryAt
-          : const {},
       _$data.containsKey('orderStatus') ? l$orderStatus : const {},
-      _$data.containsKey('deliveryAddress') ? l$deliveryAddress : const {},
-      _$data.containsKey('deliveryCity') ? l$deliveryCity : const {},
-      _$data.containsKey('deliveryZip') ? l$deliveryZip : const {},
-      _$data.containsKey('deliveryLocationName')
-          ? l$deliveryLocationName
-          : const {},
-      _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
-      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
-      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
       _$data.containsKey('subtotal') ? l$subtotal : const {},
       _$data.containsKey('tax') ? l$tax : const {},
       _$data.containsKey('total') ? l$total : const {},
-      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
     ]);
   }
 }
@@ -15466,21 +17439,13 @@ abstract class CopyWith$Input$OrdersInsertInput<TRes> {
     String? id,
     String? userId,
     DateTime? createdAt,
-    DateTime? scheduledDeliveryAt,
     Enum$OrderStatus? orderStatus,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
-    double? deliveryLat,
-    double? deliveryLong,
     double? subtotal,
     double? tax,
     double? total,
-    String? deliveryState,
+    String? deliveryLocationId,
   });
 }
 
@@ -15501,50 +17466,28 @@ class _CopyWithImpl$Input$OrdersInsertInput<TRes>
     Object? id = _undefined,
     Object? userId = _undefined,
     Object? createdAt = _undefined,
-    Object? scheduledDeliveryAt = _undefined,
     Object? orderStatus = _undefined,
-    Object? deliveryAddress = _undefined,
-    Object? deliveryCity = _undefined,
-    Object? deliveryZip = _undefined,
-    Object? deliveryLocationName = _undefined,
-    Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
-    Object? deliveryLat = _undefined,
-    Object? deliveryLong = _undefined,
     Object? subtotal = _undefined,
     Object? tax = _undefined,
     Object? total = _undefined,
-    Object? deliveryState = _undefined,
+    Object? deliveryLocationId = _undefined,
   }) =>
       _then(Input$OrdersInsertInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
         if (userId != _undefined) 'userId': (userId as String?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (scheduledDeliveryAt != _undefined)
-          'scheduledDeliveryAt': (scheduledDeliveryAt as DateTime?),
         if (orderStatus != _undefined)
           'orderStatus': (orderStatus as Enum$OrderStatus?),
-        if (deliveryAddress != _undefined)
-          'deliveryAddress': (deliveryAddress as String?),
-        if (deliveryCity != _undefined)
-          'deliveryCity': (deliveryCity as String?),
-        if (deliveryZip != _undefined) 'deliveryZip': (deliveryZip as String?),
-        if (deliveryLocationName != _undefined)
-          'deliveryLocationName': (deliveryLocationName as String?),
-        if (deliveryAddress1 != _undefined)
-          'deliveryAddress1': (deliveryAddress1 as String?),
         if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
         if (notes != _undefined) 'notes': (notes as String?),
-        if (deliveryLat != _undefined) 'deliveryLat': (deliveryLat as double?),
-        if (deliveryLong != _undefined)
-          'deliveryLong': (deliveryLong as double?),
         if (subtotal != _undefined) 'subtotal': (subtotal as double?),
         if (tax != _undefined) 'tax': (tax as double?),
         if (total != _undefined) 'total': (total as double?),
-        if (deliveryState != _undefined)
-          'deliveryState': (deliveryState as String?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as String?),
       }));
 }
 
@@ -15558,21 +17501,13 @@ class _CopyWithStubImpl$Input$OrdersInsertInput<TRes>
     String? id,
     String? userId,
     DateTime? createdAt,
-    DateTime? scheduledDeliveryAt,
     Enum$OrderStatus? orderStatus,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
-    double? deliveryLat,
-    double? deliveryLong,
     double? subtotal,
     double? tax,
     double? total,
-    String? deliveryState,
+    String? deliveryLocationId,
   }) =>
       _res;
 }
@@ -15582,43 +17517,26 @@ class Input$OrdersOrderBy {
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? userId,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? scheduledDeliveryAt,
     Enum$OrderByDirection? orderStatus,
-    Enum$OrderByDirection? deliveryAddress,
-    Enum$OrderByDirection? deliveryCity,
-    Enum$OrderByDirection? deliveryZip,
-    Enum$OrderByDirection? deliveryLocationName,
-    Enum$OrderByDirection? deliveryAddress1,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? notes,
-    Enum$OrderByDirection? deliveryLat,
-    Enum$OrderByDirection? deliveryLong,
     Enum$OrderByDirection? subtotal,
     Enum$OrderByDirection? tax,
     Enum$OrderByDirection? total,
-    Enum$OrderByDirection? deliveryState,
+    Enum$OrderByDirection? deliveryLocationId,
   }) =>
       Input$OrdersOrderBy._({
         if (id != null) r'id': id,
         if (userId != null) r'userId': userId,
         if (createdAt != null) r'createdAt': createdAt,
-        if (scheduledDeliveryAt != null)
-          r'scheduledDeliveryAt': scheduledDeliveryAt,
         if (orderStatus != null) r'orderStatus': orderStatus,
-        if (deliveryAddress != null) r'deliveryAddress': deliveryAddress,
-        if (deliveryCity != null) r'deliveryCity': deliveryCity,
-        if (deliveryZip != null) r'deliveryZip': deliveryZip,
-        if (deliveryLocationName != null)
-          r'deliveryLocationName': deliveryLocationName,
-        if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
-        if (deliveryLat != null) r'deliveryLat': deliveryLat,
-        if (deliveryLong != null) r'deliveryLong': deliveryLong,
         if (subtotal != null) r'subtotal': subtotal,
         if (tax != null) r'tax': tax,
         if (total != null) r'total': total,
-        if (deliveryState != null) r'deliveryState': deliveryState,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
       });
 
   Input$OrdersOrderBy._(this._$data);
@@ -15643,47 +17561,11 @@ class Input$OrdersOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$createdAt as String));
     }
-    if (data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = data['scheduledDeliveryAt'];
-      result$data['scheduledDeliveryAt'] = l$scheduledDeliveryAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$scheduledDeliveryAt as String));
-    }
     if (data.containsKey('orderStatus')) {
       final l$orderStatus = data['orderStatus'];
       result$data['orderStatus'] = l$orderStatus == null
           ? null
           : fromJson$Enum$OrderByDirection((l$orderStatus as String));
-    }
-    if (data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = data['deliveryAddress'];
-      result$data['deliveryAddress'] = l$deliveryAddress == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryAddress as String));
-    }
-    if (data.containsKey('deliveryCity')) {
-      final l$deliveryCity = data['deliveryCity'];
-      result$data['deliveryCity'] = l$deliveryCity == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryCity as String));
-    }
-    if (data.containsKey('deliveryZip')) {
-      final l$deliveryZip = data['deliveryZip'];
-      result$data['deliveryZip'] = l$deliveryZip == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryZip as String));
-    }
-    if (data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = data['deliveryLocationName'];
-      result$data['deliveryLocationName'] = l$deliveryLocationName == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryLocationName as String));
-    }
-    if (data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = data['deliveryAddress1'];
-      result$data['deliveryAddress1'] = l$deliveryAddress1 == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryAddress1 as String));
     }
     if (data.containsKey('updatedAt')) {
       final l$updatedAt = data['updatedAt'];
@@ -15696,18 +17578,6 @@ class Input$OrdersOrderBy {
       result$data['notes'] = l$notes == null
           ? null
           : fromJson$Enum$OrderByDirection((l$notes as String));
-    }
-    if (data.containsKey('deliveryLat')) {
-      final l$deliveryLat = data['deliveryLat'];
-      result$data['deliveryLat'] = l$deliveryLat == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryLat as String));
-    }
-    if (data.containsKey('deliveryLong')) {
-      final l$deliveryLong = data['deliveryLong'];
-      result$data['deliveryLong'] = l$deliveryLong == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryLong as String));
     }
     if (data.containsKey('subtotal')) {
       final l$subtotal = data['subtotal'];
@@ -15727,11 +17597,11 @@ class Input$OrdersOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$total as String));
     }
-    if (data.containsKey('deliveryState')) {
-      final l$deliveryState = data['deliveryState'];
-      result$data['deliveryState'] = l$deliveryState == null
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
           ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryState as String));
+          : fromJson$Enum$OrderByDirection((l$deliveryLocationId as String));
     }
     return Input$OrdersOrderBy._(result$data);
   }
@@ -15746,38 +17616,14 @@ class Input$OrdersOrderBy {
   Enum$OrderByDirection? get createdAt =>
       (_$data['createdAt'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get scheduledDeliveryAt =>
-      (_$data['scheduledDeliveryAt'] as Enum$OrderByDirection?);
-
   Enum$OrderByDirection? get orderStatus =>
       (_$data['orderStatus'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryAddress =>
-      (_$data['deliveryAddress'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryCity =>
-      (_$data['deliveryCity'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryZip =>
-      (_$data['deliveryZip'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryLocationName =>
-      (_$data['deliveryLocationName'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryAddress1 =>
-      (_$data['deliveryAddress1'] as Enum$OrderByDirection?);
 
   Enum$OrderByDirection? get updatedAt =>
       (_$data['updatedAt'] as Enum$OrderByDirection?);
 
   Enum$OrderByDirection? get notes =>
       (_$data['notes'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryLat =>
-      (_$data['deliveryLat'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryLong =>
-      (_$data['deliveryLong'] as Enum$OrderByDirection?);
 
   Enum$OrderByDirection? get subtotal =>
       (_$data['subtotal'] as Enum$OrderByDirection?);
@@ -15787,8 +17633,8 @@ class Input$OrdersOrderBy {
   Enum$OrderByDirection? get total =>
       (_$data['total'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get deliveryState =>
-      (_$data['deliveryState'] as Enum$OrderByDirection?);
+  Enum$OrderByDirection? get deliveryLocationId =>
+      (_$data['deliveryLocationId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -15808,47 +17654,11 @@ class Input$OrdersOrderBy {
           ? null
           : toJson$Enum$OrderByDirection(l$createdAt);
     }
-    if (_$data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = scheduledDeliveryAt;
-      result$data['scheduledDeliveryAt'] = l$scheduledDeliveryAt == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$scheduledDeliveryAt);
-    }
     if (_$data.containsKey('orderStatus')) {
       final l$orderStatus = orderStatus;
       result$data['orderStatus'] = l$orderStatus == null
           ? null
           : toJson$Enum$OrderByDirection(l$orderStatus);
-    }
-    if (_$data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = deliveryAddress;
-      result$data['deliveryAddress'] = l$deliveryAddress == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryAddress);
-    }
-    if (_$data.containsKey('deliveryCity')) {
-      final l$deliveryCity = deliveryCity;
-      result$data['deliveryCity'] = l$deliveryCity == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryCity);
-    }
-    if (_$data.containsKey('deliveryZip')) {
-      final l$deliveryZip = deliveryZip;
-      result$data['deliveryZip'] = l$deliveryZip == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryZip);
-    }
-    if (_$data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = deliveryLocationName;
-      result$data['deliveryLocationName'] = l$deliveryLocationName == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryLocationName);
-    }
-    if (_$data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = deliveryAddress1;
-      result$data['deliveryAddress1'] = l$deliveryAddress1 == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryAddress1);
     }
     if (_$data.containsKey('updatedAt')) {
       final l$updatedAt = updatedAt;
@@ -15860,18 +17670,6 @@ class Input$OrdersOrderBy {
       final l$notes = notes;
       result$data['notes'] =
           l$notes == null ? null : toJson$Enum$OrderByDirection(l$notes);
-    }
-    if (_$data.containsKey('deliveryLat')) {
-      final l$deliveryLat = deliveryLat;
-      result$data['deliveryLat'] = l$deliveryLat == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryLat);
-    }
-    if (_$data.containsKey('deliveryLong')) {
-      final l$deliveryLong = deliveryLong;
-      result$data['deliveryLong'] = l$deliveryLong == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryLong);
     }
     if (_$data.containsKey('subtotal')) {
       final l$subtotal = subtotal;
@@ -15888,11 +17686,11 @@ class Input$OrdersOrderBy {
       result$data['total'] =
           l$total == null ? null : toJson$Enum$OrderByDirection(l$total);
     }
-    if (_$data.containsKey('deliveryState')) {
-      final l$deliveryState = deliveryState;
-      result$data['deliveryState'] = l$deliveryState == null
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
           ? null
-          : toJson$Enum$OrderByDirection(l$deliveryState);
+          : toJson$Enum$OrderByDirection(l$deliveryLocationId);
     }
     return result$data;
   }
@@ -15936,15 +17734,6 @@ class Input$OrdersOrderBy {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
-    final lOther$scheduledDeliveryAt = other.scheduledDeliveryAt;
-    if (_$data.containsKey('scheduledDeliveryAt') !=
-        other._$data.containsKey('scheduledDeliveryAt')) {
-      return false;
-    }
-    if (l$scheduledDeliveryAt != lOther$scheduledDeliveryAt) {
-      return false;
-    }
     final l$orderStatus = orderStatus;
     final lOther$orderStatus = other.orderStatus;
     if (_$data.containsKey('orderStatus') !=
@@ -15952,51 +17741,6 @@ class Input$OrdersOrderBy {
       return false;
     }
     if (l$orderStatus != lOther$orderStatus) {
-      return false;
-    }
-    final l$deliveryAddress = deliveryAddress;
-    final lOther$deliveryAddress = other.deliveryAddress;
-    if (_$data.containsKey('deliveryAddress') !=
-        other._$data.containsKey('deliveryAddress')) {
-      return false;
-    }
-    if (l$deliveryAddress != lOther$deliveryAddress) {
-      return false;
-    }
-    final l$deliveryCity = deliveryCity;
-    final lOther$deliveryCity = other.deliveryCity;
-    if (_$data.containsKey('deliveryCity') !=
-        other._$data.containsKey('deliveryCity')) {
-      return false;
-    }
-    if (l$deliveryCity != lOther$deliveryCity) {
-      return false;
-    }
-    final l$deliveryZip = deliveryZip;
-    final lOther$deliveryZip = other.deliveryZip;
-    if (_$data.containsKey('deliveryZip') !=
-        other._$data.containsKey('deliveryZip')) {
-      return false;
-    }
-    if (l$deliveryZip != lOther$deliveryZip) {
-      return false;
-    }
-    final l$deliveryLocationName = deliveryLocationName;
-    final lOther$deliveryLocationName = other.deliveryLocationName;
-    if (_$data.containsKey('deliveryLocationName') !=
-        other._$data.containsKey('deliveryLocationName')) {
-      return false;
-    }
-    if (l$deliveryLocationName != lOther$deliveryLocationName) {
-      return false;
-    }
-    final l$deliveryAddress1 = deliveryAddress1;
-    final lOther$deliveryAddress1 = other.deliveryAddress1;
-    if (_$data.containsKey('deliveryAddress1') !=
-        other._$data.containsKey('deliveryAddress1')) {
-      return false;
-    }
-    if (l$deliveryAddress1 != lOther$deliveryAddress1) {
       return false;
     }
     final l$updatedAt = updatedAt;
@@ -16014,24 +17758,6 @@ class Input$OrdersOrderBy {
       return false;
     }
     if (l$notes != lOther$notes) {
-      return false;
-    }
-    final l$deliveryLat = deliveryLat;
-    final lOther$deliveryLat = other.deliveryLat;
-    if (_$data.containsKey('deliveryLat') !=
-        other._$data.containsKey('deliveryLat')) {
-      return false;
-    }
-    if (l$deliveryLat != lOther$deliveryLat) {
-      return false;
-    }
-    final l$deliveryLong = deliveryLong;
-    final lOther$deliveryLong = other.deliveryLong;
-    if (_$data.containsKey('deliveryLong') !=
-        other._$data.containsKey('deliveryLong')) {
-      return false;
-    }
-    if (l$deliveryLong != lOther$deliveryLong) {
       return false;
     }
     final l$subtotal = subtotal;
@@ -16059,13 +17785,13 @@ class Input$OrdersOrderBy {
     if (l$total != lOther$total) {
       return false;
     }
-    final l$deliveryState = deliveryState;
-    final lOther$deliveryState = other.deliveryState;
-    if (_$data.containsKey('deliveryState') !=
-        other._$data.containsKey('deliveryState')) {
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
       return false;
     }
-    if (l$deliveryState != lOther$deliveryState) {
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
       return false;
     }
     return true;
@@ -16076,44 +17802,26 @@ class Input$OrdersOrderBy {
     final l$id = id;
     final l$userId = userId;
     final l$createdAt = createdAt;
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
     final l$orderStatus = orderStatus;
-    final l$deliveryAddress = deliveryAddress;
-    final l$deliveryCity = deliveryCity;
-    final l$deliveryZip = deliveryZip;
-    final l$deliveryLocationName = deliveryLocationName;
-    final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
-    final l$deliveryLat = deliveryLat;
-    final l$deliveryLong = deliveryLong;
     final l$subtotal = subtotal;
     final l$tax = tax;
     final l$total = total;
-    final l$deliveryState = deliveryState;
+    final l$deliveryLocationId = deliveryLocationId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('scheduledDeliveryAt')
-          ? l$scheduledDeliveryAt
-          : const {},
       _$data.containsKey('orderStatus') ? l$orderStatus : const {},
-      _$data.containsKey('deliveryAddress') ? l$deliveryAddress : const {},
-      _$data.containsKey('deliveryCity') ? l$deliveryCity : const {},
-      _$data.containsKey('deliveryZip') ? l$deliveryZip : const {},
-      _$data.containsKey('deliveryLocationName')
-          ? l$deliveryLocationName
-          : const {},
-      _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
-      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
-      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
       _$data.containsKey('subtotal') ? l$subtotal : const {},
       _$data.containsKey('tax') ? l$tax : const {},
       _$data.containsKey('total') ? l$total : const {},
-      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
     ]);
   }
 }
@@ -16131,21 +17839,13 @@ abstract class CopyWith$Input$OrdersOrderBy<TRes> {
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? userId,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? scheduledDeliveryAt,
     Enum$OrderByDirection? orderStatus,
-    Enum$OrderByDirection? deliveryAddress,
-    Enum$OrderByDirection? deliveryCity,
-    Enum$OrderByDirection? deliveryZip,
-    Enum$OrderByDirection? deliveryLocationName,
-    Enum$OrderByDirection? deliveryAddress1,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? notes,
-    Enum$OrderByDirection? deliveryLat,
-    Enum$OrderByDirection? deliveryLong,
     Enum$OrderByDirection? subtotal,
     Enum$OrderByDirection? tax,
     Enum$OrderByDirection? total,
-    Enum$OrderByDirection? deliveryState,
+    Enum$OrderByDirection? deliveryLocationId,
   });
 }
 
@@ -16166,21 +17866,13 @@ class _CopyWithImpl$Input$OrdersOrderBy<TRes>
     Object? id = _undefined,
     Object? userId = _undefined,
     Object? createdAt = _undefined,
-    Object? scheduledDeliveryAt = _undefined,
     Object? orderStatus = _undefined,
-    Object? deliveryAddress = _undefined,
-    Object? deliveryCity = _undefined,
-    Object? deliveryZip = _undefined,
-    Object? deliveryLocationName = _undefined,
-    Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
-    Object? deliveryLat = _undefined,
-    Object? deliveryLong = _undefined,
     Object? subtotal = _undefined,
     Object? tax = _undefined,
     Object? total = _undefined,
-    Object? deliveryState = _undefined,
+    Object? deliveryLocationId = _undefined,
   }) =>
       _then(Input$OrdersOrderBy._({
         ..._instance._$data,
@@ -16188,35 +17880,17 @@ class _CopyWithImpl$Input$OrdersOrderBy<TRes>
         if (userId != _undefined) 'userId': (userId as Enum$OrderByDirection?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Enum$OrderByDirection?),
-        if (scheduledDeliveryAt != _undefined)
-          'scheduledDeliveryAt':
-              (scheduledDeliveryAt as Enum$OrderByDirection?),
         if (orderStatus != _undefined)
           'orderStatus': (orderStatus as Enum$OrderByDirection?),
-        if (deliveryAddress != _undefined)
-          'deliveryAddress': (deliveryAddress as Enum$OrderByDirection?),
-        if (deliveryCity != _undefined)
-          'deliveryCity': (deliveryCity as Enum$OrderByDirection?),
-        if (deliveryZip != _undefined)
-          'deliveryZip': (deliveryZip as Enum$OrderByDirection?),
-        if (deliveryLocationName != _undefined)
-          'deliveryLocationName':
-              (deliveryLocationName as Enum$OrderByDirection?),
-        if (deliveryAddress1 != _undefined)
-          'deliveryAddress1': (deliveryAddress1 as Enum$OrderByDirection?),
         if (updatedAt != _undefined)
           'updatedAt': (updatedAt as Enum$OrderByDirection?),
         if (notes != _undefined) 'notes': (notes as Enum$OrderByDirection?),
-        if (deliveryLat != _undefined)
-          'deliveryLat': (deliveryLat as Enum$OrderByDirection?),
-        if (deliveryLong != _undefined)
-          'deliveryLong': (deliveryLong as Enum$OrderByDirection?),
         if (subtotal != _undefined)
           'subtotal': (subtotal as Enum$OrderByDirection?),
         if (tax != _undefined) 'tax': (tax as Enum$OrderByDirection?),
         if (total != _undefined) 'total': (total as Enum$OrderByDirection?),
-        if (deliveryState != _undefined)
-          'deliveryState': (deliveryState as Enum$OrderByDirection?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as Enum$OrderByDirection?),
       }));
 }
 
@@ -16230,21 +17904,13 @@ class _CopyWithStubImpl$Input$OrdersOrderBy<TRes>
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? userId,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? scheduledDeliveryAt,
     Enum$OrderByDirection? orderStatus,
-    Enum$OrderByDirection? deliveryAddress,
-    Enum$OrderByDirection? deliveryCity,
-    Enum$OrderByDirection? deliveryZip,
-    Enum$OrderByDirection? deliveryLocationName,
-    Enum$OrderByDirection? deliveryAddress1,
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? notes,
-    Enum$OrderByDirection? deliveryLat,
-    Enum$OrderByDirection? deliveryLong,
     Enum$OrderByDirection? subtotal,
     Enum$OrderByDirection? tax,
     Enum$OrderByDirection? total,
-    Enum$OrderByDirection? deliveryState,
+    Enum$OrderByDirection? deliveryLocationId,
   }) =>
       _res;
 }
@@ -16468,43 +18134,26 @@ class Input$OrdersUpdateInput {
     String? id,
     String? userId,
     DateTime? createdAt,
-    DateTime? scheduledDeliveryAt,
     Enum$OrderStatus? orderStatus,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
-    double? deliveryLat,
-    double? deliveryLong,
     double? subtotal,
     double? tax,
     double? total,
-    String? deliveryState,
+    String? deliveryLocationId,
   }) =>
       Input$OrdersUpdateInput._({
         if (id != null) r'id': id,
         if (userId != null) r'userId': userId,
         if (createdAt != null) r'createdAt': createdAt,
-        if (scheduledDeliveryAt != null)
-          r'scheduledDeliveryAt': scheduledDeliveryAt,
         if (orderStatus != null) r'orderStatus': orderStatus,
-        if (deliveryAddress != null) r'deliveryAddress': deliveryAddress,
-        if (deliveryCity != null) r'deliveryCity': deliveryCity,
-        if (deliveryZip != null) r'deliveryZip': deliveryZip,
-        if (deliveryLocationName != null)
-          r'deliveryLocationName': deliveryLocationName,
-        if (deliveryAddress1 != null) r'deliveryAddress1': deliveryAddress1,
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (notes != null) r'notes': notes,
-        if (deliveryLat != null) r'deliveryLat': deliveryLat,
-        if (deliveryLong != null) r'deliveryLong': deliveryLong,
         if (subtotal != null) r'subtotal': subtotal,
         if (tax != null) r'tax': tax,
         if (total != null) r'total': total,
-        if (deliveryState != null) r'deliveryState': deliveryState,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
       });
 
   Input$OrdersUpdateInput._(this._$data);
@@ -16524,37 +18173,11 @@ class Input$OrdersUpdateInput {
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = data['scheduledDeliveryAt'];
-      result$data['scheduledDeliveryAt'] = l$scheduledDeliveryAt == null
-          ? null
-          : DateTime.parse((l$scheduledDeliveryAt as String));
-    }
     if (data.containsKey('orderStatus')) {
       final l$orderStatus = data['orderStatus'];
       result$data['orderStatus'] = l$orderStatus == null
           ? null
           : fromJson$Enum$OrderStatus((l$orderStatus as String));
-    }
-    if (data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = data['deliveryAddress'];
-      result$data['deliveryAddress'] = (l$deliveryAddress as String?);
-    }
-    if (data.containsKey('deliveryCity')) {
-      final l$deliveryCity = data['deliveryCity'];
-      result$data['deliveryCity'] = (l$deliveryCity as String?);
-    }
-    if (data.containsKey('deliveryZip')) {
-      final l$deliveryZip = data['deliveryZip'];
-      result$data['deliveryZip'] = (l$deliveryZip as String?);
-    }
-    if (data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = data['deliveryLocationName'];
-      result$data['deliveryLocationName'] = (l$deliveryLocationName as String?);
-    }
-    if (data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = data['deliveryAddress1'];
-      result$data['deliveryAddress1'] = (l$deliveryAddress1 as String?);
     }
     if (data.containsKey('updatedAt')) {
       final l$updatedAt = data['updatedAt'];
@@ -16564,14 +18187,6 @@ class Input$OrdersUpdateInput {
     if (data.containsKey('notes')) {
       final l$notes = data['notes'];
       result$data['notes'] = (l$notes as String?);
-    }
-    if (data.containsKey('deliveryLat')) {
-      final l$deliveryLat = data['deliveryLat'];
-      result$data['deliveryLat'] = (l$deliveryLat as num?)?.toDouble();
-    }
-    if (data.containsKey('deliveryLong')) {
-      final l$deliveryLong = data['deliveryLong'];
-      result$data['deliveryLong'] = (l$deliveryLong as num?)?.toDouble();
     }
     if (data.containsKey('subtotal')) {
       final l$subtotal = data['subtotal'];
@@ -16585,9 +18200,9 @@ class Input$OrdersUpdateInput {
       final l$total = data['total'];
       result$data['total'] = (l$total as num?)?.toDouble();
     }
-    if (data.containsKey('deliveryState')) {
-      final l$deliveryState = data['deliveryState'];
-      result$data['deliveryState'] = (l$deliveryState as String?);
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
     }
     return Input$OrdersUpdateInput._(result$data);
   }
@@ -16600,30 +18215,12 @@ class Input$OrdersUpdateInput {
 
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
-  DateTime? get scheduledDeliveryAt =>
-      (_$data['scheduledDeliveryAt'] as DateTime?);
-
   Enum$OrderStatus? get orderStatus =>
       (_$data['orderStatus'] as Enum$OrderStatus?);
-
-  String? get deliveryAddress => (_$data['deliveryAddress'] as String?);
-
-  String? get deliveryCity => (_$data['deliveryCity'] as String?);
-
-  String? get deliveryZip => (_$data['deliveryZip'] as String?);
-
-  String? get deliveryLocationName =>
-      (_$data['deliveryLocationName'] as String?);
-
-  String? get deliveryAddress1 => (_$data['deliveryAddress1'] as String?);
 
   DateTime? get updatedAt => (_$data['updatedAt'] as DateTime?);
 
   String? get notes => (_$data['notes'] as String?);
-
-  double? get deliveryLat => (_$data['deliveryLat'] as double?);
-
-  double? get deliveryLong => (_$data['deliveryLong'] as double?);
 
   double? get subtotal => (_$data['subtotal'] as double?);
 
@@ -16631,7 +18228,7 @@ class Input$OrdersUpdateInput {
 
   double? get total => (_$data['total'] as double?);
 
-  String? get deliveryState => (_$data['deliveryState'] as String?);
+  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -16647,35 +18244,10 @@ class Input$OrdersUpdateInput {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
-    if (_$data.containsKey('scheduledDeliveryAt')) {
-      final l$scheduledDeliveryAt = scheduledDeliveryAt;
-      result$data['scheduledDeliveryAt'] =
-          l$scheduledDeliveryAt?.toIso8601String();
-    }
     if (_$data.containsKey('orderStatus')) {
       final l$orderStatus = orderStatus;
       result$data['orderStatus'] =
           l$orderStatus == null ? null : toJson$Enum$OrderStatus(l$orderStatus);
-    }
-    if (_$data.containsKey('deliveryAddress')) {
-      final l$deliveryAddress = deliveryAddress;
-      result$data['deliveryAddress'] = l$deliveryAddress;
-    }
-    if (_$data.containsKey('deliveryCity')) {
-      final l$deliveryCity = deliveryCity;
-      result$data['deliveryCity'] = l$deliveryCity;
-    }
-    if (_$data.containsKey('deliveryZip')) {
-      final l$deliveryZip = deliveryZip;
-      result$data['deliveryZip'] = l$deliveryZip;
-    }
-    if (_$data.containsKey('deliveryLocationName')) {
-      final l$deliveryLocationName = deliveryLocationName;
-      result$data['deliveryLocationName'] = l$deliveryLocationName;
-    }
-    if (_$data.containsKey('deliveryAddress1')) {
-      final l$deliveryAddress1 = deliveryAddress1;
-      result$data['deliveryAddress1'] = l$deliveryAddress1;
     }
     if (_$data.containsKey('updatedAt')) {
       final l$updatedAt = updatedAt;
@@ -16684,14 +18256,6 @@ class Input$OrdersUpdateInput {
     if (_$data.containsKey('notes')) {
       final l$notes = notes;
       result$data['notes'] = l$notes;
-    }
-    if (_$data.containsKey('deliveryLat')) {
-      final l$deliveryLat = deliveryLat;
-      result$data['deliveryLat'] = l$deliveryLat;
-    }
-    if (_$data.containsKey('deliveryLong')) {
-      final l$deliveryLong = deliveryLong;
-      result$data['deliveryLong'] = l$deliveryLong;
     }
     if (_$data.containsKey('subtotal')) {
       final l$subtotal = subtotal;
@@ -16705,9 +18269,9 @@ class Input$OrdersUpdateInput {
       final l$total = total;
       result$data['total'] = l$total;
     }
-    if (_$data.containsKey('deliveryState')) {
-      final l$deliveryState = deliveryState;
-      result$data['deliveryState'] = l$deliveryState;
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId;
     }
     return result$data;
   }
@@ -16751,15 +18315,6 @@ class Input$OrdersUpdateInput {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
-    final lOther$scheduledDeliveryAt = other.scheduledDeliveryAt;
-    if (_$data.containsKey('scheduledDeliveryAt') !=
-        other._$data.containsKey('scheduledDeliveryAt')) {
-      return false;
-    }
-    if (l$scheduledDeliveryAt != lOther$scheduledDeliveryAt) {
-      return false;
-    }
     final l$orderStatus = orderStatus;
     final lOther$orderStatus = other.orderStatus;
     if (_$data.containsKey('orderStatus') !=
@@ -16767,51 +18322,6 @@ class Input$OrdersUpdateInput {
       return false;
     }
     if (l$orderStatus != lOther$orderStatus) {
-      return false;
-    }
-    final l$deliveryAddress = deliveryAddress;
-    final lOther$deliveryAddress = other.deliveryAddress;
-    if (_$data.containsKey('deliveryAddress') !=
-        other._$data.containsKey('deliveryAddress')) {
-      return false;
-    }
-    if (l$deliveryAddress != lOther$deliveryAddress) {
-      return false;
-    }
-    final l$deliveryCity = deliveryCity;
-    final lOther$deliveryCity = other.deliveryCity;
-    if (_$data.containsKey('deliveryCity') !=
-        other._$data.containsKey('deliveryCity')) {
-      return false;
-    }
-    if (l$deliveryCity != lOther$deliveryCity) {
-      return false;
-    }
-    final l$deliveryZip = deliveryZip;
-    final lOther$deliveryZip = other.deliveryZip;
-    if (_$data.containsKey('deliveryZip') !=
-        other._$data.containsKey('deliveryZip')) {
-      return false;
-    }
-    if (l$deliveryZip != lOther$deliveryZip) {
-      return false;
-    }
-    final l$deliveryLocationName = deliveryLocationName;
-    final lOther$deliveryLocationName = other.deliveryLocationName;
-    if (_$data.containsKey('deliveryLocationName') !=
-        other._$data.containsKey('deliveryLocationName')) {
-      return false;
-    }
-    if (l$deliveryLocationName != lOther$deliveryLocationName) {
-      return false;
-    }
-    final l$deliveryAddress1 = deliveryAddress1;
-    final lOther$deliveryAddress1 = other.deliveryAddress1;
-    if (_$data.containsKey('deliveryAddress1') !=
-        other._$data.containsKey('deliveryAddress1')) {
-      return false;
-    }
-    if (l$deliveryAddress1 != lOther$deliveryAddress1) {
       return false;
     }
     final l$updatedAt = updatedAt;
@@ -16829,24 +18339,6 @@ class Input$OrdersUpdateInput {
       return false;
     }
     if (l$notes != lOther$notes) {
-      return false;
-    }
-    final l$deliveryLat = deliveryLat;
-    final lOther$deliveryLat = other.deliveryLat;
-    if (_$data.containsKey('deliveryLat') !=
-        other._$data.containsKey('deliveryLat')) {
-      return false;
-    }
-    if (l$deliveryLat != lOther$deliveryLat) {
-      return false;
-    }
-    final l$deliveryLong = deliveryLong;
-    final lOther$deliveryLong = other.deliveryLong;
-    if (_$data.containsKey('deliveryLong') !=
-        other._$data.containsKey('deliveryLong')) {
-      return false;
-    }
-    if (l$deliveryLong != lOther$deliveryLong) {
       return false;
     }
     final l$subtotal = subtotal;
@@ -16874,13 +18366,13 @@ class Input$OrdersUpdateInput {
     if (l$total != lOther$total) {
       return false;
     }
-    final l$deliveryState = deliveryState;
-    final lOther$deliveryState = other.deliveryState;
-    if (_$data.containsKey('deliveryState') !=
-        other._$data.containsKey('deliveryState')) {
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
       return false;
     }
-    if (l$deliveryState != lOther$deliveryState) {
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
       return false;
     }
     return true;
@@ -16891,44 +18383,26 @@ class Input$OrdersUpdateInput {
     final l$id = id;
     final l$userId = userId;
     final l$createdAt = createdAt;
-    final l$scheduledDeliveryAt = scheduledDeliveryAt;
     final l$orderStatus = orderStatus;
-    final l$deliveryAddress = deliveryAddress;
-    final l$deliveryCity = deliveryCity;
-    final l$deliveryZip = deliveryZip;
-    final l$deliveryLocationName = deliveryLocationName;
-    final l$deliveryAddress1 = deliveryAddress1;
     final l$updatedAt = updatedAt;
     final l$notes = notes;
-    final l$deliveryLat = deliveryLat;
-    final l$deliveryLong = deliveryLong;
     final l$subtotal = subtotal;
     final l$tax = tax;
     final l$total = total;
-    final l$deliveryState = deliveryState;
+    final l$deliveryLocationId = deliveryLocationId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('userId') ? l$userId : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('scheduledDeliveryAt')
-          ? l$scheduledDeliveryAt
-          : const {},
       _$data.containsKey('orderStatus') ? l$orderStatus : const {},
-      _$data.containsKey('deliveryAddress') ? l$deliveryAddress : const {},
-      _$data.containsKey('deliveryCity') ? l$deliveryCity : const {},
-      _$data.containsKey('deliveryZip') ? l$deliveryZip : const {},
-      _$data.containsKey('deliveryLocationName')
-          ? l$deliveryLocationName
-          : const {},
-      _$data.containsKey('deliveryAddress1') ? l$deliveryAddress1 : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('notes') ? l$notes : const {},
-      _$data.containsKey('deliveryLat') ? l$deliveryLat : const {},
-      _$data.containsKey('deliveryLong') ? l$deliveryLong : const {},
       _$data.containsKey('subtotal') ? l$subtotal : const {},
       _$data.containsKey('tax') ? l$tax : const {},
       _$data.containsKey('total') ? l$total : const {},
-      _$data.containsKey('deliveryState') ? l$deliveryState : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
     ]);
   }
 }
@@ -16946,21 +18420,13 @@ abstract class CopyWith$Input$OrdersUpdateInput<TRes> {
     String? id,
     String? userId,
     DateTime? createdAt,
-    DateTime? scheduledDeliveryAt,
     Enum$OrderStatus? orderStatus,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
-    double? deliveryLat,
-    double? deliveryLong,
     double? subtotal,
     double? tax,
     double? total,
-    String? deliveryState,
+    String? deliveryLocationId,
   });
 }
 
@@ -16981,50 +18447,28 @@ class _CopyWithImpl$Input$OrdersUpdateInput<TRes>
     Object? id = _undefined,
     Object? userId = _undefined,
     Object? createdAt = _undefined,
-    Object? scheduledDeliveryAt = _undefined,
     Object? orderStatus = _undefined,
-    Object? deliveryAddress = _undefined,
-    Object? deliveryCity = _undefined,
-    Object? deliveryZip = _undefined,
-    Object? deliveryLocationName = _undefined,
-    Object? deliveryAddress1 = _undefined,
     Object? updatedAt = _undefined,
     Object? notes = _undefined,
-    Object? deliveryLat = _undefined,
-    Object? deliveryLong = _undefined,
     Object? subtotal = _undefined,
     Object? tax = _undefined,
     Object? total = _undefined,
-    Object? deliveryState = _undefined,
+    Object? deliveryLocationId = _undefined,
   }) =>
       _then(Input$OrdersUpdateInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
         if (userId != _undefined) 'userId': (userId as String?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (scheduledDeliveryAt != _undefined)
-          'scheduledDeliveryAt': (scheduledDeliveryAt as DateTime?),
         if (orderStatus != _undefined)
           'orderStatus': (orderStatus as Enum$OrderStatus?),
-        if (deliveryAddress != _undefined)
-          'deliveryAddress': (deliveryAddress as String?),
-        if (deliveryCity != _undefined)
-          'deliveryCity': (deliveryCity as String?),
-        if (deliveryZip != _undefined) 'deliveryZip': (deliveryZip as String?),
-        if (deliveryLocationName != _undefined)
-          'deliveryLocationName': (deliveryLocationName as String?),
-        if (deliveryAddress1 != _undefined)
-          'deliveryAddress1': (deliveryAddress1 as String?),
         if (updatedAt != _undefined) 'updatedAt': (updatedAt as DateTime?),
         if (notes != _undefined) 'notes': (notes as String?),
-        if (deliveryLat != _undefined) 'deliveryLat': (deliveryLat as double?),
-        if (deliveryLong != _undefined)
-          'deliveryLong': (deliveryLong as double?),
         if (subtotal != _undefined) 'subtotal': (subtotal as double?),
         if (tax != _undefined) 'tax': (tax as double?),
         if (total != _undefined) 'total': (total as double?),
-        if (deliveryState != _undefined)
-          'deliveryState': (deliveryState as String?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as String?),
       }));
 }
 
@@ -17038,21 +18482,13 @@ class _CopyWithStubImpl$Input$OrdersUpdateInput<TRes>
     String? id,
     String? userId,
     DateTime? createdAt,
-    DateTime? scheduledDeliveryAt,
     Enum$OrderStatus? orderStatus,
-    String? deliveryAddress,
-    String? deliveryCity,
-    String? deliveryZip,
-    String? deliveryLocationName,
-    String? deliveryAddress1,
     DateTime? updatedAt,
     String? notes,
-    double? deliveryLat,
-    double? deliveryLong,
     double? subtotal,
     double? tax,
     double? total,
-    String? deliveryState,
+    String? deliveryLocationId,
   }) =>
       _res;
 }
@@ -25518,6 +26954,7 @@ class Input$ProductsFilter {
     Input$StringFilter? unit,
     Input$StringFilter? instructions,
     Input$StringFilter? stripeProductId,
+    Input$StringFilter? nutritionDetails,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -25536,6 +26973,7 @@ class Input$ProductsFilter {
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
+        if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -25625,6 +27063,13 @@ class Input$ProductsFilter {
           : Input$StringFilter.fromJson(
               (l$stripeProductId as Map<String, dynamic>));
     }
+    if (data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = data['nutritionDetails'];
+      result$data['nutritionDetails'] = l$nutritionDetails == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$nutritionDetails as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -25689,6 +27134,9 @@ class Input$ProductsFilter {
   Input$StringFilter? get stripeProductId =>
       (_$data['stripeProductId'] as Input$StringFilter?);
 
+  Input$StringFilter? get nutritionDetails =>
+      (_$data['nutritionDetails'] as Input$StringFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$ProductsFilter>? get and =>
@@ -25748,6 +27196,10 @@ class Input$ProductsFilter {
     if (_$data.containsKey('stripeProductId')) {
       final l$stripeProductId = stripeProductId;
       result$data['stripeProductId'] = l$stripeProductId?.toJson();
+    }
+    if (_$data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = nutritionDetails;
+      result$data['nutritionDetails'] = l$nutritionDetails?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -25887,6 +27339,15 @@ class Input$ProductsFilter {
     if (l$stripeProductId != lOther$stripeProductId) {
       return false;
     }
+    final l$nutritionDetails = nutritionDetails;
+    final lOther$nutritionDetails = other.nutritionDetails;
+    if (_$data.containsKey('nutritionDetails') !=
+        other._$data.containsKey('nutritionDetails')) {
+      return false;
+    }
+    if (l$nutritionDetails != lOther$nutritionDetails) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -25958,6 +27419,7 @@ class Input$ProductsFilter {
     final l$unit = unit;
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
+    final l$nutritionDetails = nutritionDetails;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -25975,6 +27437,7 @@ class Input$ProductsFilter {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
+      _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -26013,6 +27476,7 @@ abstract class CopyWith$Input$ProductsFilter<TRes> {
     Input$StringFilter? unit,
     Input$StringFilter? instructions,
     Input$StringFilter? stripeProductId,
+    Input$StringFilter? nutritionDetails,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -26030,6 +27494,7 @@ abstract class CopyWith$Input$ProductsFilter<TRes> {
   CopyWith$Input$StringFilter<TRes> get unit;
   CopyWith$Input$StringFilter<TRes> get instructions;
   CopyWith$Input$StringFilter<TRes> get stripeProductId;
+  CopyWith$Input$StringFilter<TRes> get nutritionDetails;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$ProductsFilter>? Function(
@@ -26068,6 +27533,7 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
     Object? unit = _undefined,
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
+    Object? nutritionDetails = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -26096,6 +27562,8 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
           'instructions': (instructions as Input$StringFilter?),
         if (stripeProductId != _undefined)
           'stripeProductId': (stripeProductId as Input$StringFilter?),
+        if (nutritionDetails != _undefined)
+          'nutritionDetails': (nutritionDetails as Input$StringFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$ProductsFilter>?),
         if (or != _undefined) 'or': (or as List<Input$ProductsFilter>?),
@@ -26194,6 +27662,14 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
             local$stripeProductId, (e) => call(stripeProductId: e));
   }
 
+  CopyWith$Input$StringFilter<TRes> get nutritionDetails {
+    final local$nutritionDetails = _instance.nutritionDetails;
+    return local$nutritionDetails == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$nutritionDetails, (e) => call(nutritionDetails: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -26250,6 +27726,7 @@ class _CopyWithStubImpl$Input$ProductsFilter<TRes>
     Input$StringFilter? unit,
     Input$StringFilter? instructions,
     Input$StringFilter? stripeProductId,
+    Input$StringFilter? nutritionDetails,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -26293,6 +27770,9 @@ class _CopyWithStubImpl$Input$ProductsFilter<TRes>
   CopyWith$Input$StringFilter<TRes> get stripeProductId =>
       CopyWith$Input$StringFilter.stub(_res);
 
+  CopyWith$Input$StringFilter<TRes> get nutritionDetails =>
+      CopyWith$Input$StringFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -26319,6 +27799,7 @@ class Input$ProductsInsertInput {
     String? unit,
     String? instructions,
     String? stripeProductId,
+    String? nutritionDetails,
   }) =>
       Input$ProductsInsertInput._({
         if (id != null) r'id': id,
@@ -26334,6 +27815,7 @@ class Input$ProductsInsertInput {
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
+        if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
       });
 
   Input$ProductsInsertInput._(this._$data);
@@ -26394,6 +27876,10 @@ class Input$ProductsInsertInput {
       final l$stripeProductId = data['stripeProductId'];
       result$data['stripeProductId'] = (l$stripeProductId as String?);
     }
+    if (data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = data['nutritionDetails'];
+      result$data['nutritionDetails'] = (l$nutritionDetails as String?);
+    }
     return Input$ProductsInsertInput._(result$data);
   }
 
@@ -26424,6 +27910,8 @@ class Input$ProductsInsertInput {
   String? get instructions => (_$data['instructions'] as String?);
 
   String? get stripeProductId => (_$data['stripeProductId'] as String?);
+
+  String? get nutritionDetails => (_$data['nutritionDetails'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -26478,6 +27966,10 @@ class Input$ProductsInsertInput {
     if (_$data.containsKey('stripeProductId')) {
       final l$stripeProductId = stripeProductId;
       result$data['stripeProductId'] = l$stripeProductId;
+    }
+    if (_$data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = nutritionDetails;
+      result$data['nutritionDetails'] = l$nutritionDetails;
     }
     return result$data;
   }
@@ -26610,6 +28102,15 @@ class Input$ProductsInsertInput {
     if (l$stripeProductId != lOther$stripeProductId) {
       return false;
     }
+    final l$nutritionDetails = nutritionDetails;
+    final lOther$nutritionDetails = other.nutritionDetails;
+    if (_$data.containsKey('nutritionDetails') !=
+        other._$data.containsKey('nutritionDetails')) {
+      return false;
+    }
+    if (l$nutritionDetails != lOther$nutritionDetails) {
+      return false;
+    }
     return true;
   }
 
@@ -26628,6 +28129,7 @@ class Input$ProductsInsertInput {
     final l$unit = unit;
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
+    final l$nutritionDetails = nutritionDetails;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -26642,6 +28144,7 @@ class Input$ProductsInsertInput {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
+      _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
     ]);
   }
 }
@@ -26669,6 +28172,7 @@ abstract class CopyWith$Input$ProductsInsertInput<TRes> {
     String? unit,
     String? instructions,
     String? stripeProductId,
+    String? nutritionDetails,
   });
 }
 
@@ -26699,6 +28203,7 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
     Object? unit = _undefined,
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
+    Object? nutritionDetails = _undefined,
   }) =>
       _then(Input$ProductsInsertInput._({
         ..._instance._$data,
@@ -26720,6 +28225,8 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
           'instructions': (instructions as String?),
         if (stripeProductId != _undefined)
           'stripeProductId': (stripeProductId as String?),
+        if (nutritionDetails != _undefined)
+          'nutritionDetails': (nutritionDetails as String?),
       }));
 }
 
@@ -26743,6 +28250,7 @@ class _CopyWithStubImpl$Input$ProductsInsertInput<TRes>
     String? unit,
     String? instructions,
     String? stripeProductId,
+    String? nutritionDetails,
   }) =>
       _res;
 }
@@ -26761,6 +28269,7 @@ class Input$ProductsOrderBy {
     Enum$OrderByDirection? unit,
     Enum$OrderByDirection? instructions,
     Enum$OrderByDirection? stripeProductId,
+    Enum$OrderByDirection? nutritionDetails,
   }) =>
       Input$ProductsOrderBy._({
         if (id != null) r'id': id,
@@ -26775,6 +28284,7 @@ class Input$ProductsOrderBy {
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
+        if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
       });
 
   Input$ProductsOrderBy._(this._$data);
@@ -26853,6 +28363,12 @@ class Input$ProductsOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$stripeProductId as String));
     }
+    if (data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = data['nutritionDetails'];
+      result$data['nutritionDetails'] = l$nutritionDetails == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$nutritionDetails as String));
+    }
     return Input$ProductsOrderBy._(result$data);
   }
 
@@ -26890,6 +28406,9 @@ class Input$ProductsOrderBy {
 
   Enum$OrderByDirection? get stripeProductId =>
       (_$data['stripeProductId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get nutritionDetails =>
+      (_$data['nutritionDetails'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -26960,6 +28479,12 @@ class Input$ProductsOrderBy {
       result$data['stripeProductId'] = l$stripeProductId == null
           ? null
           : toJson$Enum$OrderByDirection(l$stripeProductId);
+    }
+    if (_$data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = nutritionDetails;
+      result$data['nutritionDetails'] = l$nutritionDetails == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$nutritionDetails);
     }
     return result$data;
   }
@@ -27083,6 +28608,15 @@ class Input$ProductsOrderBy {
     if (l$stripeProductId != lOther$stripeProductId) {
       return false;
     }
+    final l$nutritionDetails = nutritionDetails;
+    final lOther$nutritionDetails = other.nutritionDetails;
+    if (_$data.containsKey('nutritionDetails') !=
+        other._$data.containsKey('nutritionDetails')) {
+      return false;
+    }
+    if (l$nutritionDetails != lOther$nutritionDetails) {
+      return false;
+    }
     return true;
   }
 
@@ -27100,6 +28634,7 @@ class Input$ProductsOrderBy {
     final l$unit = unit;
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
+    final l$nutritionDetails = nutritionDetails;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -27113,6 +28648,7 @@ class Input$ProductsOrderBy {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
+      _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
     ]);
   }
 }
@@ -27139,6 +28675,7 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
     Enum$OrderByDirection? unit,
     Enum$OrderByDirection? instructions,
     Enum$OrderByDirection? stripeProductId,
+    Enum$OrderByDirection? nutritionDetails,
   });
 }
 
@@ -27168,6 +28705,7 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
     Object? unit = _undefined,
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
+    Object? nutritionDetails = _undefined,
   }) =>
       _then(Input$ProductsOrderBy._({
         ..._instance._$data,
@@ -27192,6 +28730,8 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
           'instructions': (instructions as Enum$OrderByDirection?),
         if (stripeProductId != _undefined)
           'stripeProductId': (stripeProductId as Enum$OrderByDirection?),
+        if (nutritionDetails != _undefined)
+          'nutritionDetails': (nutritionDetails as Enum$OrderByDirection?),
       }));
 }
 
@@ -27214,6 +28754,7 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
     Enum$OrderByDirection? unit,
     Enum$OrderByDirection? instructions,
     Enum$OrderByDirection? stripeProductId,
+    Enum$OrderByDirection? nutritionDetails,
   }) =>
       _res;
 }
@@ -27233,6 +28774,7 @@ class Input$ProductsUpdateInput {
     String? unit,
     String? instructions,
     String? stripeProductId,
+    String? nutritionDetails,
   }) =>
       Input$ProductsUpdateInput._({
         if (id != null) r'id': id,
@@ -27248,6 +28790,7 @@ class Input$ProductsUpdateInput {
         if (unit != null) r'unit': unit,
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
+        if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
       });
 
   Input$ProductsUpdateInput._(this._$data);
@@ -27308,6 +28851,10 @@ class Input$ProductsUpdateInput {
       final l$stripeProductId = data['stripeProductId'];
       result$data['stripeProductId'] = (l$stripeProductId as String?);
     }
+    if (data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = data['nutritionDetails'];
+      result$data['nutritionDetails'] = (l$nutritionDetails as String?);
+    }
     return Input$ProductsUpdateInput._(result$data);
   }
 
@@ -27338,6 +28885,8 @@ class Input$ProductsUpdateInput {
   String? get instructions => (_$data['instructions'] as String?);
 
   String? get stripeProductId => (_$data['stripeProductId'] as String?);
+
+  String? get nutritionDetails => (_$data['nutritionDetails'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -27392,6 +28941,10 @@ class Input$ProductsUpdateInput {
     if (_$data.containsKey('stripeProductId')) {
       final l$stripeProductId = stripeProductId;
       result$data['stripeProductId'] = l$stripeProductId;
+    }
+    if (_$data.containsKey('nutritionDetails')) {
+      final l$nutritionDetails = nutritionDetails;
+      result$data['nutritionDetails'] = l$nutritionDetails;
     }
     return result$data;
   }
@@ -27524,6 +29077,15 @@ class Input$ProductsUpdateInput {
     if (l$stripeProductId != lOther$stripeProductId) {
       return false;
     }
+    final l$nutritionDetails = nutritionDetails;
+    final lOther$nutritionDetails = other.nutritionDetails;
+    if (_$data.containsKey('nutritionDetails') !=
+        other._$data.containsKey('nutritionDetails')) {
+      return false;
+    }
+    if (l$nutritionDetails != lOther$nutritionDetails) {
+      return false;
+    }
     return true;
   }
 
@@ -27542,6 +29104,7 @@ class Input$ProductsUpdateInput {
     final l$unit = unit;
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
+    final l$nutritionDetails = nutritionDetails;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -27556,6 +29119,7 @@ class Input$ProductsUpdateInput {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
+      _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
     ]);
   }
 }
@@ -27583,6 +29147,7 @@ abstract class CopyWith$Input$ProductsUpdateInput<TRes> {
     String? unit,
     String? instructions,
     String? stripeProductId,
+    String? nutritionDetails,
   });
 }
 
@@ -27613,6 +29178,7 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
     Object? unit = _undefined,
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
+    Object? nutritionDetails = _undefined,
   }) =>
       _then(Input$ProductsUpdateInput._({
         ..._instance._$data,
@@ -27634,6 +29200,8 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
           'instructions': (instructions as String?),
         if (stripeProductId != _undefined)
           'stripeProductId': (stripeProductId as String?),
+        if (nutritionDetails != _undefined)
+          'nutritionDetails': (nutritionDetails as String?),
       }));
 }
 
@@ -27657,6 +29225,7 @@ class _CopyWithStubImpl$Input$ProductsUpdateInput<TRes>
     String? unit,
     String? instructions,
     String? stripeProductId,
+    String? nutritionDetails,
   }) =>
       _res;
 }
@@ -37732,6 +39301,1102 @@ class _CopyWithStubImpl$Input$ShoppingCartsUpdateInput<TRes>
       _res;
 }
 
+class Input$SiteDeliveryLocationFilter {
+  factory Input$SiteDeliveryLocationFilter({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? siteId,
+    Input$UUIDFilter? deliveryLocationId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$SiteDeliveryLocationFilter>? and,
+    List<Input$SiteDeliveryLocationFilter>? or,
+    Input$SiteDeliveryLocationFilter? not,
+  }) =>
+      Input$SiteDeliveryLocationFilter._({
+        if (id != null) r'id': id,
+        if (siteId != null) r'siteId': siteId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+        if (createdAt != null) r'createdAt': createdAt,
+        if (nodeId != null) r'nodeId': nodeId,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (not != null) r'not': not,
+      });
+
+  Input$SiteDeliveryLocationFilter._(this._$data);
+
+  factory Input$SiteDeliveryLocationFilter.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = l$siteId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$siteId as Map<String, dynamic>));
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
+          ? null
+          : Input$UUIDFilter.fromJson(
+              (l$deliveryLocationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('nodeId')) {
+      final l$nodeId = data['nodeId'];
+      result$data['nodeId'] = l$nodeId == null
+          ? null
+          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) => Input$SiteDeliveryLocationFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) => Input$SiteDeliveryLocationFilter.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$SiteDeliveryLocationFilter.fromJson(
+              (l$not as Map<String, dynamic>));
+    }
+    return Input$SiteDeliveryLocationFilter._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get siteId => (_$data['siteId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get deliveryLocationId =>
+      (_$data['deliveryLocationId'] as Input$UUIDFilter?);
+
+  Input$DatetimeFilter? get createdAt =>
+      (_$data['createdAt'] as Input$DatetimeFilter?);
+
+  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
+
+  List<Input$SiteDeliveryLocationFilter>? get and =>
+      (_$data['and'] as List<Input$SiteDeliveryLocationFilter>?);
+
+  List<Input$SiteDeliveryLocationFilter>? get or =>
+      (_$data['or'] as List<Input$SiteDeliveryLocationFilter>?);
+
+  Input$SiteDeliveryLocationFilter? get not =>
+      (_$data['not'] as Input$SiteDeliveryLocationFilter?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] = l$siteId?.toJson();
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('nodeId')) {
+      final l$nodeId = nodeId;
+      result$data['nodeId'] = l$nodeId?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteDeliveryLocationFilter<Input$SiteDeliveryLocationFilter>
+      get copyWith => CopyWith$Input$SiteDeliveryLocationFilter(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteDeliveryLocationFilter ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$nodeId = nodeId;
+    final lOther$nodeId = other.nodeId;
+    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
+      return false;
+    }
+    if (l$nodeId != lOther$nodeId) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteId = siteId;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$createdAt = createdAt;
+    final l$nodeId = nodeId;
+    final l$and = and;
+    final l$or = or;
+    final l$not = not;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('nodeId') ? l$nodeId : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('not') ? l$not : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteDeliveryLocationFilter<TRes> {
+  factory CopyWith$Input$SiteDeliveryLocationFilter(
+    Input$SiteDeliveryLocationFilter instance,
+    TRes Function(Input$SiteDeliveryLocationFilter) then,
+  ) = _CopyWithImpl$Input$SiteDeliveryLocationFilter;
+
+  factory CopyWith$Input$SiteDeliveryLocationFilter.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteDeliveryLocationFilter;
+
+  TRes call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? siteId,
+    Input$UUIDFilter? deliveryLocationId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$SiteDeliveryLocationFilter>? and,
+    List<Input$SiteDeliveryLocationFilter>? or,
+    Input$SiteDeliveryLocationFilter? not,
+  });
+  CopyWith$Input$UUIDFilter<TRes> get id;
+  CopyWith$Input$UUIDFilter<TRes> get siteId;
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId;
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
+  CopyWith$Input$IDFilter<TRes> get nodeId;
+  TRes and(
+      Iterable<Input$SiteDeliveryLocationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$SiteDeliveryLocationFilter<
+                      Input$SiteDeliveryLocationFilter>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$SiteDeliveryLocationFilter>? Function(
+              Iterable<
+                  CopyWith$Input$SiteDeliveryLocationFilter<
+                      Input$SiteDeliveryLocationFilter>>?)
+          _fn);
+  CopyWith$Input$SiteDeliveryLocationFilter<TRes> get not;
+}
+
+class _CopyWithImpl$Input$SiteDeliveryLocationFilter<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationFilter<TRes> {
+  _CopyWithImpl$Input$SiteDeliveryLocationFilter(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteDeliveryLocationFilter _instance;
+
+  final TRes Function(Input$SiteDeliveryLocationFilter) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteId = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? createdAt = _undefined,
+    Object? nodeId = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? not = _undefined,
+  }) =>
+      _then(Input$SiteDeliveryLocationFilter._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
+        if (siteId != _undefined) 'siteId': (siteId as Input$UUIDFilter?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as Input$UUIDFilter?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Input$DatetimeFilter?),
+        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
+        if (and != _undefined)
+          'and': (and as List<Input$SiteDeliveryLocationFilter>?),
+        if (or != _undefined)
+          'or': (or as List<Input$SiteDeliveryLocationFilter>?),
+        if (not != _undefined)
+          'not': (not as Input$SiteDeliveryLocationFilter?),
+      }));
+
+  CopyWith$Input$UUIDFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get siteId {
+    final local$siteId = _instance.siteId;
+    return local$siteId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$siteId, (e) => call(siteId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId {
+    final local$deliveryLocationId = _instance.deliveryLocationId;
+    return local$deliveryLocationId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(
+            local$deliveryLocationId, (e) => call(deliveryLocationId: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$IDFilter<TRes> get nodeId {
+    final local$nodeId = _instance.nodeId;
+    return local$nodeId == null
+        ? CopyWith$Input$IDFilter.stub(_then(_instance))
+        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
+  }
+
+  TRes and(
+          Iterable<Input$SiteDeliveryLocationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$SiteDeliveryLocationFilter<
+                          Input$SiteDeliveryLocationFilter>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and
+              ?.map((e) => CopyWith$Input$SiteDeliveryLocationFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  TRes or(
+          Iterable<Input$SiteDeliveryLocationFilter>? Function(
+                  Iterable<
+                      CopyWith$Input$SiteDeliveryLocationFilter<
+                          Input$SiteDeliveryLocationFilter>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or
+              ?.map((e) => CopyWith$Input$SiteDeliveryLocationFilter(
+                    e,
+                    (i) => i,
+                  )))?.toList());
+
+  CopyWith$Input$SiteDeliveryLocationFilter<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$SiteDeliveryLocationFilter.stub(_then(_instance))
+        : CopyWith$Input$SiteDeliveryLocationFilter(
+            local$not, (e) => call(not: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$SiteDeliveryLocationFilter<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationFilter<TRes> {
+  _CopyWithStubImpl$Input$SiteDeliveryLocationFilter(this._res);
+
+  TRes _res;
+
+  call({
+    Input$UUIDFilter? id,
+    Input$UUIDFilter? siteId,
+    Input$UUIDFilter? deliveryLocationId,
+    Input$DatetimeFilter? createdAt,
+    Input$IDFilter? nodeId,
+    List<Input$SiteDeliveryLocationFilter>? and,
+    List<Input$SiteDeliveryLocationFilter>? or,
+    Input$SiteDeliveryLocationFilter? not,
+  }) =>
+      _res;
+
+  CopyWith$Input$UUIDFilter<TRes> get id =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get siteId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
+
+  CopyWith$Input$IDFilter<TRes> get nodeId =>
+      CopyWith$Input$IDFilter.stub(_res);
+
+  and(_fn) => _res;
+
+  or(_fn) => _res;
+
+  CopyWith$Input$SiteDeliveryLocationFilter<TRes> get not =>
+      CopyWith$Input$SiteDeliveryLocationFilter.stub(_res);
+}
+
+class Input$SiteDeliveryLocationInsertInput {
+  factory Input$SiteDeliveryLocationInsertInput({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+  }) =>
+      Input$SiteDeliveryLocationInsertInput._({
+        if (id != null) r'id': id,
+        if (siteId != null) r'siteId': siteId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$SiteDeliveryLocationInsertInput._(this._$data);
+
+  factory Input$SiteDeliveryLocationInsertInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = (l$siteId as String?);
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$SiteDeliveryLocationInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get siteId => (_$data['siteId'] as String?);
+
+  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] = l$siteId;
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteDeliveryLocationInsertInput<
+          Input$SiteDeliveryLocationInsertInput>
+      get copyWith => CopyWith$Input$SiteDeliveryLocationInsertInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteDeliveryLocationInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteId = siteId;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteDeliveryLocationInsertInput<TRes> {
+  factory CopyWith$Input$SiteDeliveryLocationInsertInput(
+    Input$SiteDeliveryLocationInsertInput instance,
+    TRes Function(Input$SiteDeliveryLocationInsertInput) then,
+  ) = _CopyWithImpl$Input$SiteDeliveryLocationInsertInput;
+
+  factory CopyWith$Input$SiteDeliveryLocationInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteDeliveryLocationInsertInput;
+
+  TRes call({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$SiteDeliveryLocationInsertInput<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationInsertInput<TRes> {
+  _CopyWithImpl$Input$SiteDeliveryLocationInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteDeliveryLocationInsertInput _instance;
+
+  final TRes Function(Input$SiteDeliveryLocationInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteId = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$SiteDeliveryLocationInsertInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (siteId != _undefined) 'siteId': (siteId as String?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteDeliveryLocationInsertInput<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationInsertInput<TRes> {
+  _CopyWithStubImpl$Input$SiteDeliveryLocationInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$SiteDeliveryLocationOrderBy {
+  factory Input$SiteDeliveryLocationOrderBy({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? siteId,
+    Enum$OrderByDirection? deliveryLocationId,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      Input$SiteDeliveryLocationOrderBy._({
+        if (id != null) r'id': id,
+        if (siteId != null) r'siteId': siteId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$SiteDeliveryLocationOrderBy._(this._$data);
+
+  factory Input$SiteDeliveryLocationOrderBy.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$id as String));
+    }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = l$siteId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$siteId as String));
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$deliveryLocationId as String));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
+    return Input$SiteDeliveryLocationOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get siteId =>
+      (_$data['siteId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get deliveryLocationId =>
+      (_$data['deliveryLocationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] =
+          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] =
+          l$siteId == null ? null : toJson$Enum$OrderByDirection(l$siteId);
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$deliveryLocationId);
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteDeliveryLocationOrderBy<Input$SiteDeliveryLocationOrderBy>
+      get copyWith => CopyWith$Input$SiteDeliveryLocationOrderBy(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteDeliveryLocationOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteId = siteId;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteDeliveryLocationOrderBy<TRes> {
+  factory CopyWith$Input$SiteDeliveryLocationOrderBy(
+    Input$SiteDeliveryLocationOrderBy instance,
+    TRes Function(Input$SiteDeliveryLocationOrderBy) then,
+  ) = _CopyWithImpl$Input$SiteDeliveryLocationOrderBy;
+
+  factory CopyWith$Input$SiteDeliveryLocationOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteDeliveryLocationOrderBy;
+
+  TRes call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? siteId,
+    Enum$OrderByDirection? deliveryLocationId,
+    Enum$OrderByDirection? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$SiteDeliveryLocationOrderBy<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationOrderBy<TRes> {
+  _CopyWithImpl$Input$SiteDeliveryLocationOrderBy(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteDeliveryLocationOrderBy _instance;
+
+  final TRes Function(Input$SiteDeliveryLocationOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteId = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$SiteDeliveryLocationOrderBy._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
+        if (siteId != _undefined) 'siteId': (siteId as Enum$OrderByDirection?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteDeliveryLocationOrderBy<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationOrderBy<TRes> {
+  _CopyWithStubImpl$Input$SiteDeliveryLocationOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$OrderByDirection? id,
+    Enum$OrderByDirection? siteId,
+    Enum$OrderByDirection? deliveryLocationId,
+    Enum$OrderByDirection? createdAt,
+  }) =>
+      _res;
+}
+
+class Input$SiteDeliveryLocationUpdateInput {
+  factory Input$SiteDeliveryLocationUpdateInput({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+  }) =>
+      Input$SiteDeliveryLocationUpdateInput._({
+        if (id != null) r'id': id,
+        if (siteId != null) r'siteId': siteId,
+        if (deliveryLocationId != null)
+          r'deliveryLocationId': deliveryLocationId,
+        if (createdAt != null) r'createdAt': createdAt,
+      });
+
+  Input$SiteDeliveryLocationUpdateInput._(this._$data);
+
+  factory Input$SiteDeliveryLocationUpdateInput.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('siteId')) {
+      final l$siteId = data['siteId'];
+      result$data['siteId'] = (l$siteId as String?);
+    }
+    if (data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = data['deliveryLocationId'];
+      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] =
+          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
+    }
+    return Input$SiteDeliveryLocationUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get siteId => (_$data['siteId'] as String?);
+
+  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
+
+  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('siteId')) {
+      final l$siteId = siteId;
+      result$data['siteId'] = l$siteId;
+    }
+    if (_$data.containsKey('deliveryLocationId')) {
+      final l$deliveryLocationId = deliveryLocationId;
+      result$data['deliveryLocationId'] = l$deliveryLocationId;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$SiteDeliveryLocationUpdateInput<
+          Input$SiteDeliveryLocationUpdateInput>
+      get copyWith => CopyWith$Input$SiteDeliveryLocationUpdateInput(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$SiteDeliveryLocationUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$siteId = siteId;
+    final lOther$siteId = other.siteId;
+    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
+      return false;
+    }
+    if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$deliveryLocationId = deliveryLocationId;
+    final lOther$deliveryLocationId = other.deliveryLocationId;
+    if (_$data.containsKey('deliveryLocationId') !=
+        other._$data.containsKey('deliveryLocationId')) {
+      return false;
+    }
+    if (l$deliveryLocationId != lOther$deliveryLocationId) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$siteId = siteId;
+    final l$deliveryLocationId = deliveryLocationId;
+    final l$createdAt = createdAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('deliveryLocationId')
+          ? l$deliveryLocationId
+          : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$SiteDeliveryLocationUpdateInput<TRes> {
+  factory CopyWith$Input$SiteDeliveryLocationUpdateInput(
+    Input$SiteDeliveryLocationUpdateInput instance,
+    TRes Function(Input$SiteDeliveryLocationUpdateInput) then,
+  ) = _CopyWithImpl$Input$SiteDeliveryLocationUpdateInput;
+
+  factory CopyWith$Input$SiteDeliveryLocationUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$SiteDeliveryLocationUpdateInput;
+
+  TRes call({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+  });
+}
+
+class _CopyWithImpl$Input$SiteDeliveryLocationUpdateInput<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationUpdateInput<TRes> {
+  _CopyWithImpl$Input$SiteDeliveryLocationUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$SiteDeliveryLocationUpdateInput _instance;
+
+  final TRes Function(Input$SiteDeliveryLocationUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? siteId = _undefined,
+    Object? deliveryLocationId = _undefined,
+    Object? createdAt = _undefined,
+  }) =>
+      _then(Input$SiteDeliveryLocationUpdateInput._({
+        ..._instance._$data,
+        if (id != _undefined) 'id': (id as String?),
+        if (siteId != _undefined) 'siteId': (siteId as String?),
+        if (deliveryLocationId != _undefined)
+          'deliveryLocationId': (deliveryLocationId as String?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$SiteDeliveryLocationUpdateInput<TRes>
+    implements CopyWith$Input$SiteDeliveryLocationUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$SiteDeliveryLocationUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? siteId,
+    String? deliveryLocationId,
+    DateTime? createdAt,
+  }) =>
+      _res;
+}
+
 class Input$SiteFilter {
   factory Input$SiteFilter({
     Input$UUIDFilter? id,
@@ -37739,6 +40404,7 @@ class Input$SiteFilter {
     Input$StringFilter? name,
     Input$DatetimeFilter? createdAt,
     Input$UUIDFilter? organizationId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$SiteFilter>? and,
     List<Input$SiteFilter>? or,
@@ -37750,6 +40416,7 @@ class Input$SiteFilter {
         if (name != null) r'name': name,
         if (createdAt != null) r'createdAt': createdAt,
         if (organizationId != null) r'organizationId': organizationId,
+        if (addressId != null) r'addressId': addressId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -37791,6 +40458,12 @@ class Input$SiteFilter {
           ? null
           : Input$UUIDFilter.fromJson(
               (l$organizationId as Map<String, dynamic>));
+    }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$addressId as Map<String, dynamic>));
     }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
@@ -37834,6 +40507,8 @@ class Input$SiteFilter {
   Input$UUIDFilter? get organizationId =>
       (_$data['organizationId'] as Input$UUIDFilter?);
 
+  Input$UUIDFilter? get addressId => (_$data['addressId'] as Input$UUIDFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$SiteFilter>? get and => (_$data['and'] as List<Input$SiteFilter>?);
@@ -37863,6 +40538,10 @@ class Input$SiteFilter {
     if (_$data.containsKey('organizationId')) {
       final l$organizationId = organizationId;
       result$data['organizationId'] = l$organizationId?.toJson();
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -37940,6 +40619,15 @@ class Input$SiteFilter {
     if (l$organizationId != lOther$organizationId) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -38004,6 +40692,7 @@ class Input$SiteFilter {
     final l$name = name;
     final l$createdAt = createdAt;
     final l$organizationId = organizationId;
+    final l$addressId = addressId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -38014,6 +40703,7 @@ class Input$SiteFilter {
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -38045,6 +40735,7 @@ abstract class CopyWith$Input$SiteFilter<TRes> {
     Input$StringFilter? name,
     Input$DatetimeFilter? createdAt,
     Input$UUIDFilter? organizationId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$SiteFilter>? and,
     List<Input$SiteFilter>? or,
@@ -38055,6 +40746,7 @@ abstract class CopyWith$Input$SiteFilter<TRes> {
   CopyWith$Input$StringFilter<TRes> get name;
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
   CopyWith$Input$UUIDFilter<TRes> get organizationId;
+  CopyWith$Input$UUIDFilter<TRes> get addressId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$SiteFilter>? Function(
@@ -38086,6 +40778,7 @@ class _CopyWithImpl$Input$SiteFilter<TRes>
     Object? name = _undefined,
     Object? createdAt = _undefined,
     Object? organizationId = _undefined,
+    Object? addressId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -38101,6 +40794,8 @@ class _CopyWithImpl$Input$SiteFilter<TRes>
           'createdAt': (createdAt as Input$DatetimeFilter?),
         if (organizationId != _undefined)
           'organizationId': (organizationId as Input$UUIDFilter?),
+        if (addressId != _undefined)
+          'addressId': (addressId as Input$UUIDFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$SiteFilter>?),
         if (or != _undefined) 'or': (or as List<Input$SiteFilter>?),
@@ -38143,6 +40838,13 @@ class _CopyWithImpl$Input$SiteFilter<TRes>
         ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
         : CopyWith$Input$UUIDFilter(
             local$organizationId, (e) => call(organizationId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get addressId {
+    final local$addressId = _instance.addressId;
+    return local$addressId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$addressId, (e) => call(addressId: e));
   }
 
   CopyWith$Input$IDFilter<TRes> get nodeId {
@@ -38192,6 +40894,7 @@ class _CopyWithStubImpl$Input$SiteFilter<TRes>
     Input$StringFilter? name,
     Input$DatetimeFilter? createdAt,
     Input$UUIDFilter? organizationId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$SiteFilter>? and,
     List<Input$SiteFilter>? or,
@@ -38214,6 +40917,9 @@ class _CopyWithStubImpl$Input$SiteFilter<TRes>
   CopyWith$Input$UUIDFilter<TRes> get organizationId =>
       CopyWith$Input$UUIDFilter.stub(_res);
 
+  CopyWith$Input$UUIDFilter<TRes> get addressId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -38233,6 +40939,7 @@ class Input$SiteInsertInput {
     Map<String, dynamic>? data,
     DateTime? createdAt,
     String? organizationId,
+    String? addressId,
   }) =>
       Input$SiteInsertInput._({
         if (id != null) r'id': id,
@@ -38241,6 +40948,7 @@ class Input$SiteInsertInput {
         if (data != null) r'data': data,
         if (createdAt != null) r'createdAt': createdAt,
         if (organizationId != null) r'organizationId': organizationId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$SiteInsertInput._(this._$data);
@@ -38272,6 +40980,10 @@ class Input$SiteInsertInput {
       final l$organizationId = data['organizationId'];
       result$data['organizationId'] = (l$organizationId as String?);
     }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = (l$addressId as String?);
+    }
     return Input$SiteInsertInput._(result$data);
   }
 
@@ -38288,6 +41000,8 @@ class Input$SiteInsertInput {
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
   String? get organizationId => (_$data['organizationId'] as String?);
+
+  String? get addressId => (_$data['addressId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -38314,6 +41028,10 @@ class Input$SiteInsertInput {
     if (_$data.containsKey('organizationId')) {
       final l$organizationId = organizationId;
       result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId;
     }
     return result$data;
   }
@@ -38383,6 +41101,15 @@ class Input$SiteInsertInput {
     if (l$organizationId != lOther$organizationId) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -38394,6 +41121,7 @@ class Input$SiteInsertInput {
     final l$data = data;
     final l$createdAt = createdAt;
     final l$organizationId = organizationId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('siteTypeId') ? l$siteTypeId : const {},
@@ -38401,6 +41129,7 @@ class Input$SiteInsertInput {
       _$data.containsKey('data') ? l$data : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -38421,6 +41150,7 @@ abstract class CopyWith$Input$SiteInsertInput<TRes> {
     Map<String, dynamic>? data,
     DateTime? createdAt,
     String? organizationId,
+    String? addressId,
   });
 }
 
@@ -38444,6 +41174,7 @@ class _CopyWithImpl$Input$SiteInsertInput<TRes>
     Object? data = _undefined,
     Object? createdAt = _undefined,
     Object? organizationId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$SiteInsertInput._({
         ..._instance._$data,
@@ -38454,6 +41185,7 @@ class _CopyWithImpl$Input$SiteInsertInput<TRes>
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
         if (organizationId != _undefined)
           'organizationId': (organizationId as String?),
+        if (addressId != _undefined) 'addressId': (addressId as String?),
       }));
 }
 
@@ -38470,6 +41202,7 @@ class _CopyWithStubImpl$Input$SiteInsertInput<TRes>
     Map<String, dynamic>? data,
     DateTime? createdAt,
     String? organizationId,
+    String? addressId,
   }) =>
       _res;
 }
@@ -38481,6 +41214,7 @@ class Input$SiteOrderBy {
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? addressId,
   }) =>
       Input$SiteOrderBy._({
         if (id != null) r'id': id,
@@ -38488,6 +41222,7 @@ class Input$SiteOrderBy {
         if (name != null) r'name': name,
         if (createdAt != null) r'createdAt': createdAt,
         if (organizationId != null) r'organizationId': organizationId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$SiteOrderBy._(this._$data);
@@ -38524,6 +41259,12 @@ class Input$SiteOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$organizationId as String));
     }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$addressId as String));
+    }
     return Input$SiteOrderBy._(result$data);
   }
 
@@ -38541,6 +41282,9 @@ class Input$SiteOrderBy {
 
   Enum$OrderByDirection? get organizationId =>
       (_$data['organizationId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get addressId =>
+      (_$data['addressId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -38571,6 +41315,12 @@ class Input$SiteOrderBy {
       result$data['organizationId'] = l$organizationId == null
           ? null
           : toJson$Enum$OrderByDirection(l$organizationId);
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$addressId);
     }
     return result$data;
   }
@@ -38632,6 +41382,15 @@ class Input$SiteOrderBy {
     if (l$organizationId != lOther$organizationId) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -38642,12 +41401,14 @@ class Input$SiteOrderBy {
     final l$name = name;
     final l$createdAt = createdAt;
     final l$organizationId = organizationId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('siteTypeId') ? l$siteTypeId : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -38667,6 +41428,7 @@ abstract class CopyWith$Input$SiteOrderBy<TRes> {
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? addressId,
   });
 }
 
@@ -38689,6 +41451,7 @@ class _CopyWithImpl$Input$SiteOrderBy<TRes>
     Object? name = _undefined,
     Object? createdAt = _undefined,
     Object? organizationId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$SiteOrderBy._({
         ..._instance._$data,
@@ -38700,6 +41463,8 @@ class _CopyWithImpl$Input$SiteOrderBy<TRes>
           'createdAt': (createdAt as Enum$OrderByDirection?),
         if (organizationId != _undefined)
           'organizationId': (organizationId as Enum$OrderByDirection?),
+        if (addressId != _undefined)
+          'addressId': (addressId as Enum$OrderByDirection?),
       }));
 }
 
@@ -38715,6 +41480,7 @@ class _CopyWithStubImpl$Input$SiteOrderBy<TRes>
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? organizationId,
+    Enum$OrderByDirection? addressId,
   }) =>
       _res;
 }
@@ -39967,6 +42733,7 @@ class Input$SiteUpdateInput {
     Map<String, dynamic>? data,
     DateTime? createdAt,
     String? organizationId,
+    String? addressId,
   }) =>
       Input$SiteUpdateInput._({
         if (id != null) r'id': id,
@@ -39975,6 +42742,7 @@ class Input$SiteUpdateInput {
         if (data != null) r'data': data,
         if (createdAt != null) r'createdAt': createdAt,
         if (organizationId != null) r'organizationId': organizationId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$SiteUpdateInput._(this._$data);
@@ -40006,6 +42774,10 @@ class Input$SiteUpdateInput {
       final l$organizationId = data['organizationId'];
       result$data['organizationId'] = (l$organizationId as String?);
     }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = (l$addressId as String?);
+    }
     return Input$SiteUpdateInput._(result$data);
   }
 
@@ -40022,6 +42794,8 @@ class Input$SiteUpdateInput {
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
   String? get organizationId => (_$data['organizationId'] as String?);
+
+  String? get addressId => (_$data['addressId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -40048,6 +42822,10 @@ class Input$SiteUpdateInput {
     if (_$data.containsKey('organizationId')) {
       final l$organizationId = organizationId;
       result$data['organizationId'] = l$organizationId;
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId;
     }
     return result$data;
   }
@@ -40117,6 +42895,15 @@ class Input$SiteUpdateInput {
     if (l$organizationId != lOther$organizationId) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -40128,6 +42915,7 @@ class Input$SiteUpdateInput {
     final l$data = data;
     final l$createdAt = createdAt;
     final l$organizationId = organizationId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('siteTypeId') ? l$siteTypeId : const {},
@@ -40135,6 +42923,7 @@ class Input$SiteUpdateInput {
       _$data.containsKey('data') ? l$data : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('organizationId') ? l$organizationId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -40155,6 +42944,7 @@ abstract class CopyWith$Input$SiteUpdateInput<TRes> {
     Map<String, dynamic>? data,
     DateTime? createdAt,
     String? organizationId,
+    String? addressId,
   });
 }
 
@@ -40178,6 +42968,7 @@ class _CopyWithImpl$Input$SiteUpdateInput<TRes>
     Object? data = _undefined,
     Object? createdAt = _undefined,
     Object? organizationId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$SiteUpdateInput._({
         ..._instance._$data,
@@ -40188,6 +42979,7 @@ class _CopyWithImpl$Input$SiteUpdateInput<TRes>
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
         if (organizationId != _undefined)
           'organizationId': (organizationId as String?),
+        if (addressId != _undefined) 'addressId': (addressId as String?),
       }));
 }
 
@@ -40204,2364 +42996,7 @@ class _CopyWithStubImpl$Input$SiteUpdateInput<TRes>
     Map<String, dynamic>? data,
     DateTime? createdAt,
     String? organizationId,
-  }) =>
-      _res;
-}
-
-class Input$StationDeliveryLocationsFilter {
-  factory Input$StationDeliveryLocationsFilter({
-    Input$UUIDFilter? id,
-    Input$DatetimeFilter? createdAt,
-    Input$UUIDFilter? stationId,
-    Input$UUIDFilter? deliveryLocationId,
-    Input$IDFilter? nodeId,
-    List<Input$StationDeliveryLocationsFilter>? and,
-    List<Input$StationDeliveryLocationsFilter>? or,
-    Input$StationDeliveryLocationsFilter? not,
-  }) =>
-      Input$StationDeliveryLocationsFilter._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationId != null) r'stationId': stationId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-        if (nodeId != null) r'nodeId': nodeId,
-        if (and != null) r'and': and,
-        if (or != null) r'or': or,
-        if (not != null) r'not': not,
-      });
-
-  Input$StationDeliveryLocationsFilter._(this._$data);
-
-  factory Input$StationDeliveryLocationsFilter.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : Input$DatetimeFilter.fromJson(
-              (l$createdAt as Map<String, dynamic>));
-    }
-    if (data.containsKey('stationId')) {
-      final l$stationId = data['stationId'];
-      result$data['stationId'] = l$stationId == null
-          ? null
-          : Input$UUIDFilter.fromJson((l$stationId as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = l$deliveryLocationId == null
-          ? null
-          : Input$UUIDFilter.fromJson(
-              (l$deliveryLocationId as Map<String, dynamic>));
-    }
-    if (data.containsKey('nodeId')) {
-      final l$nodeId = data['nodeId'];
-      result$data['nodeId'] = l$nodeId == null
-          ? null
-          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
-    }
-    if (data.containsKey('and')) {
-      final l$and = data['and'];
-      result$data['and'] = (l$and as List<dynamic>?)
-          ?.map((e) => Input$StationDeliveryLocationsFilter.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('or')) {
-      final l$or = data['or'];
-      result$data['or'] = (l$or as List<dynamic>?)
-          ?.map((e) => Input$StationDeliveryLocationsFilter.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('not')) {
-      final l$not = data['not'];
-      result$data['not'] = l$not == null
-          ? null
-          : Input$StationDeliveryLocationsFilter.fromJson(
-              (l$not as Map<String, dynamic>));
-    }
-    return Input$StationDeliveryLocationsFilter._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
-
-  Input$DatetimeFilter? get createdAt =>
-      (_$data['createdAt'] as Input$DatetimeFilter?);
-
-  Input$UUIDFilter? get stationId => (_$data['stationId'] as Input$UUIDFilter?);
-
-  Input$UUIDFilter? get deliveryLocationId =>
-      (_$data['deliveryLocationId'] as Input$UUIDFilter?);
-
-  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
-
-  List<Input$StationDeliveryLocationsFilter>? get and =>
-      (_$data['and'] as List<Input$StationDeliveryLocationsFilter>?);
-
-  List<Input$StationDeliveryLocationsFilter>? get or =>
-      (_$data['or'] as List<Input$StationDeliveryLocationsFilter>?);
-
-  Input$StationDeliveryLocationsFilter? get not =>
-      (_$data['not'] as Input$StationDeliveryLocationsFilter?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id?.toJson();
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toJson();
-    }
-    if (_$data.containsKey('stationId')) {
-      final l$stationId = stationId;
-      result$data['stationId'] = l$stationId?.toJson();
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId?.toJson();
-    }
-    if (_$data.containsKey('nodeId')) {
-      final l$nodeId = nodeId;
-      result$data['nodeId'] = l$nodeId?.toJson();
-    }
-    if (_$data.containsKey('and')) {
-      final l$and = and;
-      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('or')) {
-      final l$or = or;
-      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('not')) {
-      final l$not = not;
-      result$data['not'] = l$not?.toJson();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationsFilter<
-          Input$StationDeliveryLocationsFilter>
-      get copyWith => CopyWith$Input$StationDeliveryLocationsFilter(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationsFilter ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationId = stationId;
-    final lOther$stationId = other.stationId;
-    if (_$data.containsKey('stationId') !=
-        other._$data.containsKey('stationId')) {
-      return false;
-    }
-    if (l$stationId != lOther$stationId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    final l$nodeId = nodeId;
-    final lOther$nodeId = other.nodeId;
-    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
-      return false;
-    }
-    if (l$nodeId != lOther$nodeId) {
-      return false;
-    }
-    final l$and = and;
-    final lOther$and = other.and;
-    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
-      return false;
-    }
-    if (l$and != null && lOther$and != null) {
-      if (l$and.length != lOther$and.length) {
-        return false;
-      }
-      for (int i = 0; i < l$and.length; i++) {
-        final l$and$entry = l$and[i];
-        final lOther$and$entry = lOther$and[i];
-        if (l$and$entry != lOther$and$entry) {
-          return false;
-        }
-      }
-    } else if (l$and != lOther$and) {
-      return false;
-    }
-    final l$or = or;
-    final lOther$or = other.or;
-    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
-      return false;
-    }
-    if (l$or != null && lOther$or != null) {
-      if (l$or.length != lOther$or.length) {
-        return false;
-      }
-      for (int i = 0; i < l$or.length; i++) {
-        final l$or$entry = l$or[i];
-        final lOther$or$entry = lOther$or[i];
-        if (l$or$entry != lOther$or$entry) {
-          return false;
-        }
-      }
-    } else if (l$or != lOther$or) {
-      return false;
-    }
-    final l$not = not;
-    final lOther$not = other.not;
-    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
-      return false;
-    }
-    if (l$not != lOther$not) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationId = stationId;
-    final l$deliveryLocationId = deliveryLocationId;
-    final l$nodeId = nodeId;
-    final l$and = and;
-    final l$or = or;
-    final l$not = not;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationId') ? l$stationId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-      _$data.containsKey('nodeId') ? l$nodeId : const {},
-      _$data.containsKey('and')
-          ? l$and == null
-              ? null
-              : Object.hashAll(l$and.map((v) => v))
-          : const {},
-      _$data.containsKey('or')
-          ? l$or == null
-              ? null
-              : Object.hashAll(l$or.map((v) => v))
-          : const {},
-      _$data.containsKey('not') ? l$not : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationsFilter<TRes> {
-  factory CopyWith$Input$StationDeliveryLocationsFilter(
-    Input$StationDeliveryLocationsFilter instance,
-    TRes Function(Input$StationDeliveryLocationsFilter) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationsFilter;
-
-  factory CopyWith$Input$StationDeliveryLocationsFilter.stub(TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationsFilter;
-
-  TRes call({
-    Input$UUIDFilter? id,
-    Input$DatetimeFilter? createdAt,
-    Input$UUIDFilter? stationId,
-    Input$UUIDFilter? deliveryLocationId,
-    Input$IDFilter? nodeId,
-    List<Input$StationDeliveryLocationsFilter>? and,
-    List<Input$StationDeliveryLocationsFilter>? or,
-    Input$StationDeliveryLocationsFilter? not,
-  });
-  CopyWith$Input$UUIDFilter<TRes> get id;
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$UUIDFilter<TRes> get stationId;
-  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId;
-  CopyWith$Input$IDFilter<TRes> get nodeId;
-  TRes and(
-      Iterable<Input$StationDeliveryLocationsFilter>? Function(
-              Iterable<
-                  CopyWith$Input$StationDeliveryLocationsFilter<
-                      Input$StationDeliveryLocationsFilter>>?)
-          _fn);
-  TRes or(
-      Iterable<Input$StationDeliveryLocationsFilter>? Function(
-              Iterable<
-                  CopyWith$Input$StationDeliveryLocationsFilter<
-                      Input$StationDeliveryLocationsFilter>>?)
-          _fn);
-  CopyWith$Input$StationDeliveryLocationsFilter<TRes> get not;
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationsFilter<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsFilter<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationsFilter(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationsFilter _instance;
-
-  final TRes Function(Input$StationDeliveryLocationsFilter) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationId = _undefined,
-    Object? deliveryLocationId = _undefined,
-    Object? nodeId = _undefined,
-    Object? and = _undefined,
-    Object? or = _undefined,
-    Object? not = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationsFilter._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (stationId != _undefined)
-          'stationId': (stationId as Input$UUIDFilter?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as Input$UUIDFilter?),
-        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
-        if (and != _undefined)
-          'and': (and as List<Input$StationDeliveryLocationsFilter>?),
-        if (or != _undefined)
-          'or': (or as List<Input$StationDeliveryLocationsFilter>?),
-        if (not != _undefined)
-          'not': (not as Input$StationDeliveryLocationsFilter?),
-      }));
-
-  CopyWith$Input$UUIDFilter<TRes> get id {
-    final local$id = _instance.id;
-    return local$id == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
-    final local$createdAt = _instance.createdAt;
-    return local$createdAt == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(
-            local$createdAt, (e) => call(createdAt: e));
-  }
-
-  CopyWith$Input$UUIDFilter<TRes> get stationId {
-    final local$stationId = _instance.stationId;
-    return local$stationId == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$stationId, (e) => call(stationId: e));
-  }
-
-  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId {
-    final local$deliveryLocationId = _instance.deliveryLocationId;
-    return local$deliveryLocationId == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(
-            local$deliveryLocationId, (e) => call(deliveryLocationId: e));
-  }
-
-  CopyWith$Input$IDFilter<TRes> get nodeId {
-    final local$nodeId = _instance.nodeId;
-    return local$nodeId == null
-        ? CopyWith$Input$IDFilter.stub(_then(_instance))
-        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
-  }
-
-  TRes and(
-          Iterable<Input$StationDeliveryLocationsFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$StationDeliveryLocationsFilter<
-                          Input$StationDeliveryLocationsFilter>>?)
-              _fn) =>
-      call(
-          and: _fn(_instance.and
-              ?.map((e) => CopyWith$Input$StationDeliveryLocationsFilter(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  TRes or(
-          Iterable<Input$StationDeliveryLocationsFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$StationDeliveryLocationsFilter<
-                          Input$StationDeliveryLocationsFilter>>?)
-              _fn) =>
-      call(
-          or: _fn(_instance.or
-              ?.map((e) => CopyWith$Input$StationDeliveryLocationsFilter(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  CopyWith$Input$StationDeliveryLocationsFilter<TRes> get not {
-    final local$not = _instance.not;
-    return local$not == null
-        ? CopyWith$Input$StationDeliveryLocationsFilter.stub(_then(_instance))
-        : CopyWith$Input$StationDeliveryLocationsFilter(
-            local$not, (e) => call(not: e));
-  }
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationsFilter<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsFilter<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationsFilter(this._res);
-
-  TRes _res;
-
-  call({
-    Input$UUIDFilter? id,
-    Input$DatetimeFilter? createdAt,
-    Input$UUIDFilter? stationId,
-    Input$UUIDFilter? deliveryLocationId,
-    Input$IDFilter? nodeId,
-    List<Input$StationDeliveryLocationsFilter>? and,
-    List<Input$StationDeliveryLocationsFilter>? or,
-    Input$StationDeliveryLocationsFilter? not,
-  }) =>
-      _res;
-
-  CopyWith$Input$UUIDFilter<TRes> get id =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$UUIDFilter<TRes> get stationId =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$IDFilter<TRes> get nodeId =>
-      CopyWith$Input$IDFilter.stub(_res);
-
-  and(_fn) => _res;
-
-  or(_fn) => _res;
-
-  CopyWith$Input$StationDeliveryLocationsFilter<TRes> get not =>
-      CopyWith$Input$StationDeliveryLocationsFilter.stub(_res);
-}
-
-class Input$StationDeliveryLocationsInsertInput {
-  factory Input$StationDeliveryLocationsInsertInput({
-    String? id,
-    DateTime? createdAt,
-    String? stationId,
-    String? deliveryLocationId,
-  }) =>
-      Input$StationDeliveryLocationsInsertInput._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationId != null) r'stationId': stationId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-      });
-
-  Input$StationDeliveryLocationsInsertInput._(this._$data);
-
-  factory Input$StationDeliveryLocationsInsertInput.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    if (data.containsKey('stationId')) {
-      final l$stationId = data['stationId'];
-      result$data['stationId'] = (l$stationId as String?);
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
-    }
-    return Input$StationDeliveryLocationsInsertInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  String? get stationId => (_$data['stationId'] as String?);
-
-  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    if (_$data.containsKey('stationId')) {
-      final l$stationId = stationId;
-      result$data['stationId'] = l$stationId;
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationsInsertInput<
-          Input$StationDeliveryLocationsInsertInput>
-      get copyWith => CopyWith$Input$StationDeliveryLocationsInsertInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationsInsertInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationId = stationId;
-    final lOther$stationId = other.stationId;
-    if (_$data.containsKey('stationId') !=
-        other._$data.containsKey('stationId')) {
-      return false;
-    }
-    if (l$stationId != lOther$stationId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationId = stationId;
-    final l$deliveryLocationId = deliveryLocationId;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationId') ? l$stationId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationsInsertInput<TRes> {
-  factory CopyWith$Input$StationDeliveryLocationsInsertInput(
-    Input$StationDeliveryLocationsInsertInput instance,
-    TRes Function(Input$StationDeliveryLocationsInsertInput) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationsInsertInput;
-
-  factory CopyWith$Input$StationDeliveryLocationsInsertInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationsInsertInput;
-
-  TRes call({
-    String? id,
-    DateTime? createdAt,
-    String? stationId,
-    String? deliveryLocationId,
-  });
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationsInsertInput<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsInsertInput<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationsInsertInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationsInsertInput _instance;
-
-  final TRes Function(Input$StationDeliveryLocationsInsertInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationId = _undefined,
-    Object? deliveryLocationId = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationsInsertInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (stationId != _undefined) 'stationId': (stationId as String?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as String?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationsInsertInput<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsInsertInput<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationsInsertInput(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    DateTime? createdAt,
-    String? stationId,
-    String? deliveryLocationId,
-  }) =>
-      _res;
-}
-
-class Input$StationDeliveryLocationsOrderBy {
-  factory Input$StationDeliveryLocationsOrderBy({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? stationId,
-    Enum$OrderByDirection? deliveryLocationId,
-  }) =>
-      Input$StationDeliveryLocationsOrderBy._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationId != null) r'stationId': stationId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-      });
-
-  Input$StationDeliveryLocationsOrderBy._(this._$data);
-
-  factory Input$StationDeliveryLocationsOrderBy.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$id as String));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$createdAt as String));
-    }
-    if (data.containsKey('stationId')) {
-      final l$stationId = data['stationId'];
-      result$data['stationId'] = l$stationId == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$stationId as String));
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = l$deliveryLocationId == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryLocationId as String));
-    }
-    return Input$StationDeliveryLocationsOrderBy._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get createdAt =>
-      (_$data['createdAt'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get stationId =>
-      (_$data['stationId'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryLocationId =>
-      (_$data['deliveryLocationId'] as Enum$OrderByDirection?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] =
-          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$createdAt);
-    }
-    if (_$data.containsKey('stationId')) {
-      final l$stationId = stationId;
-      result$data['stationId'] = l$stationId == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$stationId);
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryLocationId);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationsOrderBy<
-          Input$StationDeliveryLocationsOrderBy>
-      get copyWith => CopyWith$Input$StationDeliveryLocationsOrderBy(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationsOrderBy ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationId = stationId;
-    final lOther$stationId = other.stationId;
-    if (_$data.containsKey('stationId') !=
-        other._$data.containsKey('stationId')) {
-      return false;
-    }
-    if (l$stationId != lOther$stationId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationId = stationId;
-    final l$deliveryLocationId = deliveryLocationId;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationId') ? l$stationId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationsOrderBy<TRes> {
-  factory CopyWith$Input$StationDeliveryLocationsOrderBy(
-    Input$StationDeliveryLocationsOrderBy instance,
-    TRes Function(Input$StationDeliveryLocationsOrderBy) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationsOrderBy;
-
-  factory CopyWith$Input$StationDeliveryLocationsOrderBy.stub(TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationsOrderBy;
-
-  TRes call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? stationId,
-    Enum$OrderByDirection? deliveryLocationId,
-  });
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationsOrderBy<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsOrderBy<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationsOrderBy(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationsOrderBy _instance;
-
-  final TRes Function(Input$StationDeliveryLocationsOrderBy) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationId = _undefined,
-    Object? deliveryLocationId = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationsOrderBy._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Enum$OrderByDirection?),
-        if (stationId != _undefined)
-          'stationId': (stationId as Enum$OrderByDirection?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as Enum$OrderByDirection?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationsOrderBy<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsOrderBy<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationsOrderBy(this._res);
-
-  TRes _res;
-
-  call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? stationId,
-    Enum$OrderByDirection? deliveryLocationId,
-  }) =>
-      _res;
-}
-
-class Input$StationDeliveryLocationsUpdateInput {
-  factory Input$StationDeliveryLocationsUpdateInput({
-    String? id,
-    DateTime? createdAt,
-    String? stationId,
-    String? deliveryLocationId,
-  }) =>
-      Input$StationDeliveryLocationsUpdateInput._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationId != null) r'stationId': stationId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-      });
-
-  Input$StationDeliveryLocationsUpdateInput._(this._$data);
-
-  factory Input$StationDeliveryLocationsUpdateInput.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    if (data.containsKey('stationId')) {
-      final l$stationId = data['stationId'];
-      result$data['stationId'] = (l$stationId as String?);
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
-    }
-    return Input$StationDeliveryLocationsUpdateInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  String? get stationId => (_$data['stationId'] as String?);
-
-  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    if (_$data.containsKey('stationId')) {
-      final l$stationId = stationId;
-      result$data['stationId'] = l$stationId;
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationsUpdateInput<
-          Input$StationDeliveryLocationsUpdateInput>
-      get copyWith => CopyWith$Input$StationDeliveryLocationsUpdateInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationsUpdateInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationId = stationId;
-    final lOther$stationId = other.stationId;
-    if (_$data.containsKey('stationId') !=
-        other._$data.containsKey('stationId')) {
-      return false;
-    }
-    if (l$stationId != lOther$stationId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationId = stationId;
-    final l$deliveryLocationId = deliveryLocationId;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationId') ? l$stationId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationsUpdateInput<TRes> {
-  factory CopyWith$Input$StationDeliveryLocationsUpdateInput(
-    Input$StationDeliveryLocationsUpdateInput instance,
-    TRes Function(Input$StationDeliveryLocationsUpdateInput) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationsUpdateInput;
-
-  factory CopyWith$Input$StationDeliveryLocationsUpdateInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationsUpdateInput;
-
-  TRes call({
-    String? id,
-    DateTime? createdAt,
-    String? stationId,
-    String? deliveryLocationId,
-  });
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationsUpdateInput<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsUpdateInput<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationsUpdateInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationsUpdateInput _instance;
-
-  final TRes Function(Input$StationDeliveryLocationsUpdateInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationId = _undefined,
-    Object? deliveryLocationId = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationsUpdateInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (stationId != _undefined) 'stationId': (stationId as String?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as String?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationsUpdateInput<TRes>
-    implements CopyWith$Input$StationDeliveryLocationsUpdateInput<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationsUpdateInput(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    DateTime? createdAt,
-    String? stationId,
-    String? deliveryLocationId,
-  }) =>
-      _res;
-}
-
-class Input$StationDeliveryLocationTimeslotsFilter {
-  factory Input$StationDeliveryLocationTimeslotsFilter({
-    Input$UUIDFilter? id,
-    Input$DatetimeFilter? createdAt,
-    Input$UUIDFilter? stationDeliveryLocationId,
-    Input$DatetimeFilter? beginAt,
-    Input$DatetimeFilter? endAt,
-    Input$IDFilter? nodeId,
-    List<Input$StationDeliveryLocationTimeslotsFilter>? and,
-    List<Input$StationDeliveryLocationTimeslotsFilter>? or,
-    Input$StationDeliveryLocationTimeslotsFilter? not,
-  }) =>
-      Input$StationDeliveryLocationTimeslotsFilter._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationDeliveryLocationId != null)
-          r'stationDeliveryLocationId': stationDeliveryLocationId,
-        if (beginAt != null) r'beginAt': beginAt,
-        if (endAt != null) r'endAt': endAt,
-        if (nodeId != null) r'nodeId': nodeId,
-        if (and != null) r'and': and,
-        if (or != null) r'or': or,
-        if (not != null) r'not': not,
-      });
-
-  Input$StationDeliveryLocationTimeslotsFilter._(this._$data);
-
-  factory Input$StationDeliveryLocationTimeslotsFilter.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : Input$DatetimeFilter.fromJson(
-              (l$createdAt as Map<String, dynamic>));
-    }
-    if (data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
-      result$data['stationDeliveryLocationId'] =
-          l$stationDeliveryLocationId == null
-              ? null
-              : Input$UUIDFilter.fromJson(
-                  (l$stationDeliveryLocationId as Map<String, dynamic>));
-    }
-    if (data.containsKey('beginAt')) {
-      final l$beginAt = data['beginAt'];
-      result$data['beginAt'] = l$beginAt == null
-          ? null
-          : Input$DatetimeFilter.fromJson((l$beginAt as Map<String, dynamic>));
-    }
-    if (data.containsKey('endAt')) {
-      final l$endAt = data['endAt'];
-      result$data['endAt'] = l$endAt == null
-          ? null
-          : Input$DatetimeFilter.fromJson((l$endAt as Map<String, dynamic>));
-    }
-    if (data.containsKey('nodeId')) {
-      final l$nodeId = data['nodeId'];
-      result$data['nodeId'] = l$nodeId == null
-          ? null
-          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
-    }
-    if (data.containsKey('and')) {
-      final l$and = data['and'];
-      result$data['and'] = (l$and as List<dynamic>?)
-          ?.map((e) => Input$StationDeliveryLocationTimeslotsFilter.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('or')) {
-      final l$or = data['or'];
-      result$data['or'] = (l$or as List<dynamic>?)
-          ?.map((e) => Input$StationDeliveryLocationTimeslotsFilter.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('not')) {
-      final l$not = data['not'];
-      result$data['not'] = l$not == null
-          ? null
-          : Input$StationDeliveryLocationTimeslotsFilter.fromJson(
-              (l$not as Map<String, dynamic>));
-    }
-    return Input$StationDeliveryLocationTimeslotsFilter._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
-
-  Input$DatetimeFilter? get createdAt =>
-      (_$data['createdAt'] as Input$DatetimeFilter?);
-
-  Input$UUIDFilter? get stationDeliveryLocationId =>
-      (_$data['stationDeliveryLocationId'] as Input$UUIDFilter?);
-
-  Input$DatetimeFilter? get beginAt =>
-      (_$data['beginAt'] as Input$DatetimeFilter?);
-
-  Input$DatetimeFilter? get endAt => (_$data['endAt'] as Input$DatetimeFilter?);
-
-  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
-
-  List<Input$StationDeliveryLocationTimeslotsFilter>? get and =>
-      (_$data['and'] as List<Input$StationDeliveryLocationTimeslotsFilter>?);
-
-  List<Input$StationDeliveryLocationTimeslotsFilter>? get or =>
-      (_$data['or'] as List<Input$StationDeliveryLocationTimeslotsFilter>?);
-
-  Input$StationDeliveryLocationTimeslotsFilter? get not =>
-      (_$data['not'] as Input$StationDeliveryLocationTimeslotsFilter?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id?.toJson();
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toJson();
-    }
-    if (_$data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = stationDeliveryLocationId;
-      result$data['stationDeliveryLocationId'] =
-          l$stationDeliveryLocationId?.toJson();
-    }
-    if (_$data.containsKey('beginAt')) {
-      final l$beginAt = beginAt;
-      result$data['beginAt'] = l$beginAt?.toJson();
-    }
-    if (_$data.containsKey('endAt')) {
-      final l$endAt = endAt;
-      result$data['endAt'] = l$endAt?.toJson();
-    }
-    if (_$data.containsKey('nodeId')) {
-      final l$nodeId = nodeId;
-      result$data['nodeId'] = l$nodeId?.toJson();
-    }
-    if (_$data.containsKey('and')) {
-      final l$and = and;
-      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('or')) {
-      final l$or = or;
-      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('not')) {
-      final l$not = not;
-      result$data['not'] = l$not?.toJson();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
-          Input$StationDeliveryLocationTimeslotsFilter>
-      get copyWith => CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationTimeslotsFilter ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
-    if (_$data.containsKey('stationDeliveryLocationId') !=
-        other._$data.containsKey('stationDeliveryLocationId')) {
-      return false;
-    }
-    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
-      return false;
-    }
-    final l$beginAt = beginAt;
-    final lOther$beginAt = other.beginAt;
-    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
-      return false;
-    }
-    if (l$beginAt != lOther$beginAt) {
-      return false;
-    }
-    final l$endAt = endAt;
-    final lOther$endAt = other.endAt;
-    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
-      return false;
-    }
-    if (l$endAt != lOther$endAt) {
-      return false;
-    }
-    final l$nodeId = nodeId;
-    final lOther$nodeId = other.nodeId;
-    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
-      return false;
-    }
-    if (l$nodeId != lOther$nodeId) {
-      return false;
-    }
-    final l$and = and;
-    final lOther$and = other.and;
-    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
-      return false;
-    }
-    if (l$and != null && lOther$and != null) {
-      if (l$and.length != lOther$and.length) {
-        return false;
-      }
-      for (int i = 0; i < l$and.length; i++) {
-        final l$and$entry = l$and[i];
-        final lOther$and$entry = lOther$and[i];
-        if (l$and$entry != lOther$and$entry) {
-          return false;
-        }
-      }
-    } else if (l$and != lOther$and) {
-      return false;
-    }
-    final l$or = or;
-    final lOther$or = other.or;
-    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
-      return false;
-    }
-    if (l$or != null && lOther$or != null) {
-      if (l$or.length != lOther$or.length) {
-        return false;
-      }
-      for (int i = 0; i < l$or.length; i++) {
-        final l$or$entry = l$or[i];
-        final lOther$or$entry = lOther$or[i];
-        if (l$or$entry != lOther$or$entry) {
-          return false;
-        }
-      }
-    } else if (l$or != lOther$or) {
-      return false;
-    }
-    final l$not = not;
-    final lOther$not = other.not;
-    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
-      return false;
-    }
-    if (l$not != lOther$not) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final l$beginAt = beginAt;
-    final l$endAt = endAt;
-    final l$nodeId = nodeId;
-    final l$and = and;
-    final l$or = or;
-    final l$not = not;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationDeliveryLocationId')
-          ? l$stationDeliveryLocationId
-          : const {},
-      _$data.containsKey('beginAt') ? l$beginAt : const {},
-      _$data.containsKey('endAt') ? l$endAt : const {},
-      _$data.containsKey('nodeId') ? l$nodeId : const {},
-      _$data.containsKey('and')
-          ? l$and == null
-              ? null
-              : Object.hashAll(l$and.map((v) => v))
-          : const {},
-      _$data.containsKey('or')
-          ? l$or == null
-              ? null
-              : Object.hashAll(l$or.map((v) => v))
-          : const {},
-      _$data.containsKey('not') ? l$not : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> {
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
-    Input$StationDeliveryLocationTimeslotsFilter instance,
-    TRes Function(Input$StationDeliveryLocationTimeslotsFilter) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsFilter;
-
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsFilter.stub(TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsFilter;
-
-  TRes call({
-    Input$UUIDFilter? id,
-    Input$DatetimeFilter? createdAt,
-    Input$UUIDFilter? stationDeliveryLocationId,
-    Input$DatetimeFilter? beginAt,
-    Input$DatetimeFilter? endAt,
-    Input$IDFilter? nodeId,
-    List<Input$StationDeliveryLocationTimeslotsFilter>? and,
-    List<Input$StationDeliveryLocationTimeslotsFilter>? or,
-    Input$StationDeliveryLocationTimeslotsFilter? not,
-  });
-  CopyWith$Input$UUIDFilter<TRes> get id;
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$UUIDFilter<TRes> get stationDeliveryLocationId;
-  CopyWith$Input$DatetimeFilter<TRes> get beginAt;
-  CopyWith$Input$DatetimeFilter<TRes> get endAt;
-  CopyWith$Input$IDFilter<TRes> get nodeId;
-  TRes and(
-      Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
-              Iterable<
-                  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
-                      Input$StationDeliveryLocationTimeslotsFilter>>?)
-          _fn);
-  TRes or(
-      Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
-              Iterable<
-                  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
-                      Input$StationDeliveryLocationTimeslotsFilter>>?)
-          _fn);
-  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> get not;
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsFilter<TRes>
-    implements CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsFilter(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationTimeslotsFilter _instance;
-
-  final TRes Function(Input$StationDeliveryLocationTimeslotsFilter) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationDeliveryLocationId = _undefined,
-    Object? beginAt = _undefined,
-    Object? endAt = _undefined,
-    Object? nodeId = _undefined,
-    Object? and = _undefined,
-    Object? or = _undefined,
-    Object? not = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationTimeslotsFilter._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (stationDeliveryLocationId != _undefined)
-          'stationDeliveryLocationId':
-              (stationDeliveryLocationId as Input$UUIDFilter?),
-        if (beginAt != _undefined)
-          'beginAt': (beginAt as Input$DatetimeFilter?),
-        if (endAt != _undefined) 'endAt': (endAt as Input$DatetimeFilter?),
-        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
-        if (and != _undefined)
-          'and': (and as List<Input$StationDeliveryLocationTimeslotsFilter>?),
-        if (or != _undefined)
-          'or': (or as List<Input$StationDeliveryLocationTimeslotsFilter>?),
-        if (not != _undefined)
-          'not': (not as Input$StationDeliveryLocationTimeslotsFilter?),
-      }));
-
-  CopyWith$Input$UUIDFilter<TRes> get id {
-    final local$id = _instance.id;
-    return local$id == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
-    final local$createdAt = _instance.createdAt;
-    return local$createdAt == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(
-            local$createdAt, (e) => call(createdAt: e));
-  }
-
-  CopyWith$Input$UUIDFilter<TRes> get stationDeliveryLocationId {
-    final local$stationDeliveryLocationId = _instance.stationDeliveryLocationId;
-    return local$stationDeliveryLocationId == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$stationDeliveryLocationId,
-            (e) => call(stationDeliveryLocationId: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get beginAt {
-    final local$beginAt = _instance.beginAt;
-    return local$beginAt == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(local$beginAt, (e) => call(beginAt: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get endAt {
-    final local$endAt = _instance.endAt;
-    return local$endAt == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(local$endAt, (e) => call(endAt: e));
-  }
-
-  CopyWith$Input$IDFilter<TRes> get nodeId {
-    final local$nodeId = _instance.nodeId;
-    return local$nodeId == null
-        ? CopyWith$Input$IDFilter.stub(_then(_instance))
-        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
-  }
-
-  TRes and(
-          Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
-                          Input$StationDeliveryLocationTimeslotsFilter>>?)
-              _fn) =>
-      call(
-          and: _fn(_instance.and?.map(
-              (e) => CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  TRes or(
-          Iterable<Input$StationDeliveryLocationTimeslotsFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$StationDeliveryLocationTimeslotsFilter<
-                          Input$StationDeliveryLocationTimeslotsFilter>>?)
-              _fn) =>
-      call(
-          or: _fn(_instance.or?.map(
-              (e) => CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> get not {
-    final local$not = _instance.not;
-    return local$not == null
-        ? CopyWith$Input$StationDeliveryLocationTimeslotsFilter.stub(
-            _then(_instance))
-        : CopyWith$Input$StationDeliveryLocationTimeslotsFilter(
-            local$not, (e) => call(not: e));
-  }
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsFilter<TRes>
-    implements CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsFilter(this._res);
-
-  TRes _res;
-
-  call({
-    Input$UUIDFilter? id,
-    Input$DatetimeFilter? createdAt,
-    Input$UUIDFilter? stationDeliveryLocationId,
-    Input$DatetimeFilter? beginAt,
-    Input$DatetimeFilter? endAt,
-    Input$IDFilter? nodeId,
-    List<Input$StationDeliveryLocationTimeslotsFilter>? and,
-    List<Input$StationDeliveryLocationTimeslotsFilter>? or,
-    Input$StationDeliveryLocationTimeslotsFilter? not,
-  }) =>
-      _res;
-
-  CopyWith$Input$UUIDFilter<TRes> get id =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$UUIDFilter<TRes> get stationDeliveryLocationId =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get beginAt =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get endAt =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$IDFilter<TRes> get nodeId =>
-      CopyWith$Input$IDFilter.stub(_res);
-
-  and(_fn) => _res;
-
-  or(_fn) => _res;
-
-  CopyWith$Input$StationDeliveryLocationTimeslotsFilter<TRes> get not =>
-      CopyWith$Input$StationDeliveryLocationTimeslotsFilter.stub(_res);
-}
-
-class Input$StationDeliveryLocationTimeslotsInsertInput {
-  factory Input$StationDeliveryLocationTimeslotsInsertInput({
-    String? id,
-    DateTime? createdAt,
-    String? stationDeliveryLocationId,
-    DateTime? beginAt,
-    DateTime? endAt,
-  }) =>
-      Input$StationDeliveryLocationTimeslotsInsertInput._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationDeliveryLocationId != null)
-          r'stationDeliveryLocationId': stationDeliveryLocationId,
-        if (beginAt != null) r'beginAt': beginAt,
-        if (endAt != null) r'endAt': endAt,
-      });
-
-  Input$StationDeliveryLocationTimeslotsInsertInput._(this._$data);
-
-  factory Input$StationDeliveryLocationTimeslotsInsertInput.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    if (data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
-      result$data['stationDeliveryLocationId'] =
-          (l$stationDeliveryLocationId as String?);
-    }
-    if (data.containsKey('beginAt')) {
-      final l$beginAt = data['beginAt'];
-      result$data['beginAt'] =
-          l$beginAt == null ? null : DateTime.parse((l$beginAt as String));
-    }
-    if (data.containsKey('endAt')) {
-      final l$endAt = data['endAt'];
-      result$data['endAt'] =
-          l$endAt == null ? null : DateTime.parse((l$endAt as String));
-    }
-    return Input$StationDeliveryLocationTimeslotsInsertInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  String? get stationDeliveryLocationId =>
-      (_$data['stationDeliveryLocationId'] as String?);
-
-  DateTime? get beginAt => (_$data['beginAt'] as DateTime?);
-
-  DateTime? get endAt => (_$data['endAt'] as DateTime?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    if (_$data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = stationDeliveryLocationId;
-      result$data['stationDeliveryLocationId'] = l$stationDeliveryLocationId;
-    }
-    if (_$data.containsKey('beginAt')) {
-      final l$beginAt = beginAt;
-      result$data['beginAt'] = l$beginAt?.toIso8601String();
-    }
-    if (_$data.containsKey('endAt')) {
-      final l$endAt = endAt;
-      result$data['endAt'] = l$endAt?.toIso8601String();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<
-          Input$StationDeliveryLocationTimeslotsInsertInput>
-      get copyWith =>
-          CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationTimeslotsInsertInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
-    if (_$data.containsKey('stationDeliveryLocationId') !=
-        other._$data.containsKey('stationDeliveryLocationId')) {
-      return false;
-    }
-    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
-      return false;
-    }
-    final l$beginAt = beginAt;
-    final lOther$beginAt = other.beginAt;
-    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
-      return false;
-    }
-    if (l$beginAt != lOther$beginAt) {
-      return false;
-    }
-    final l$endAt = endAt;
-    final lOther$endAt = other.endAt;
-    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
-      return false;
-    }
-    if (l$endAt != lOther$endAt) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final l$beginAt = beginAt;
-    final l$endAt = endAt;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationDeliveryLocationId')
-          ? l$stationDeliveryLocationId
-          : const {},
-      _$data.containsKey('beginAt') ? l$beginAt : const {},
-      _$data.containsKey('endAt') ? l$endAt : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<
-    TRes> {
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput(
-    Input$StationDeliveryLocationTimeslotsInsertInput instance,
-    TRes Function(Input$StationDeliveryLocationTimeslotsInsertInput) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsInsertInput;
-
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput.stub(
-          TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsInsertInput;
-
-  TRes call({
-    String? id,
-    DateTime? createdAt,
-    String? stationDeliveryLocationId,
-    DateTime? beginAt,
-    DateTime? endAt,
-  });
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsInsertInput<TRes>
-    implements
-        CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsInsertInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationTimeslotsInsertInput _instance;
-
-  final TRes Function(Input$StationDeliveryLocationTimeslotsInsertInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationDeliveryLocationId = _undefined,
-    Object? beginAt = _undefined,
-    Object? endAt = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationTimeslotsInsertInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (stationDeliveryLocationId != _undefined)
-          'stationDeliveryLocationId': (stationDeliveryLocationId as String?),
-        if (beginAt != _undefined) 'beginAt': (beginAt as DateTime?),
-        if (endAt != _undefined) 'endAt': (endAt as DateTime?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsInsertInput<TRes>
-    implements
-        CopyWith$Input$StationDeliveryLocationTimeslotsInsertInput<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsInsertInput(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    DateTime? createdAt,
-    String? stationDeliveryLocationId,
-    DateTime? beginAt,
-    DateTime? endAt,
-  }) =>
-      _res;
-}
-
-class Input$StationDeliveryLocationTimeslotsOrderBy {
-  factory Input$StationDeliveryLocationTimeslotsOrderBy({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? stationDeliveryLocationId,
-    Enum$OrderByDirection? beginAt,
-    Enum$OrderByDirection? endAt,
-  }) =>
-      Input$StationDeliveryLocationTimeslotsOrderBy._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationDeliveryLocationId != null)
-          r'stationDeliveryLocationId': stationDeliveryLocationId,
-        if (beginAt != null) r'beginAt': beginAt,
-        if (endAt != null) r'endAt': endAt,
-      });
-
-  Input$StationDeliveryLocationTimeslotsOrderBy._(this._$data);
-
-  factory Input$StationDeliveryLocationTimeslotsOrderBy.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$id as String));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$createdAt as String));
-    }
-    if (data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
-      result$data['stationDeliveryLocationId'] =
-          l$stationDeliveryLocationId == null
-              ? null
-              : fromJson$Enum$OrderByDirection(
-                  (l$stationDeliveryLocationId as String));
-    }
-    if (data.containsKey('beginAt')) {
-      final l$beginAt = data['beginAt'];
-      result$data['beginAt'] = l$beginAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$beginAt as String));
-    }
-    if (data.containsKey('endAt')) {
-      final l$endAt = data['endAt'];
-      result$data['endAt'] = l$endAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$endAt as String));
-    }
-    return Input$StationDeliveryLocationTimeslotsOrderBy._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get createdAt =>
-      (_$data['createdAt'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get stationDeliveryLocationId =>
-      (_$data['stationDeliveryLocationId'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get beginAt =>
-      (_$data['beginAt'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get endAt =>
-      (_$data['endAt'] as Enum$OrderByDirection?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] =
-          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$createdAt);
-    }
-    if (_$data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = stationDeliveryLocationId;
-      result$data['stationDeliveryLocationId'] =
-          l$stationDeliveryLocationId == null
-              ? null
-              : toJson$Enum$OrderByDirection(l$stationDeliveryLocationId);
-    }
-    if (_$data.containsKey('beginAt')) {
-      final l$beginAt = beginAt;
-      result$data['beginAt'] =
-          l$beginAt == null ? null : toJson$Enum$OrderByDirection(l$beginAt);
-    }
-    if (_$data.containsKey('endAt')) {
-      final l$endAt = endAt;
-      result$data['endAt'] =
-          l$endAt == null ? null : toJson$Enum$OrderByDirection(l$endAt);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<
-          Input$StationDeliveryLocationTimeslotsOrderBy>
-      get copyWith => CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationTimeslotsOrderBy ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
-    if (_$data.containsKey('stationDeliveryLocationId') !=
-        other._$data.containsKey('stationDeliveryLocationId')) {
-      return false;
-    }
-    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
-      return false;
-    }
-    final l$beginAt = beginAt;
-    final lOther$beginAt = other.beginAt;
-    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
-      return false;
-    }
-    if (l$beginAt != lOther$beginAt) {
-      return false;
-    }
-    final l$endAt = endAt;
-    final lOther$endAt = other.endAt;
-    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
-      return false;
-    }
-    if (l$endAt != lOther$endAt) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final l$beginAt = beginAt;
-    final l$endAt = endAt;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationDeliveryLocationId')
-          ? l$stationDeliveryLocationId
-          : const {},
-      _$data.containsKey('beginAt') ? l$beginAt : const {},
-      _$data.containsKey('endAt') ? l$endAt : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<TRes> {
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy(
-    Input$StationDeliveryLocationTimeslotsOrderBy instance,
-    TRes Function(Input$StationDeliveryLocationTimeslotsOrderBy) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsOrderBy;
-
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy.stub(
-          TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsOrderBy;
-
-  TRes call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? stationDeliveryLocationId,
-    Enum$OrderByDirection? beginAt,
-    Enum$OrderByDirection? endAt,
-  });
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsOrderBy<TRes>
-    implements CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsOrderBy(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationTimeslotsOrderBy _instance;
-
-  final TRes Function(Input$StationDeliveryLocationTimeslotsOrderBy) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationDeliveryLocationId = _undefined,
-    Object? beginAt = _undefined,
-    Object? endAt = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationTimeslotsOrderBy._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Enum$OrderByDirection?),
-        if (stationDeliveryLocationId != _undefined)
-          'stationDeliveryLocationId':
-              (stationDeliveryLocationId as Enum$OrderByDirection?),
-        if (beginAt != _undefined)
-          'beginAt': (beginAt as Enum$OrderByDirection?),
-        if (endAt != _undefined) 'endAt': (endAt as Enum$OrderByDirection?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsOrderBy<TRes>
-    implements CopyWith$Input$StationDeliveryLocationTimeslotsOrderBy<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsOrderBy(this._res);
-
-  TRes _res;
-
-  call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? stationDeliveryLocationId,
-    Enum$OrderByDirection? beginAt,
-    Enum$OrderByDirection? endAt,
-  }) =>
-      _res;
-}
-
-class Input$StationDeliveryLocationTimeslotsUpdateInput {
-  factory Input$StationDeliveryLocationTimeslotsUpdateInput({
-    String? id,
-    DateTime? createdAt,
-    String? stationDeliveryLocationId,
-    DateTime? beginAt,
-    DateTime? endAt,
-  }) =>
-      Input$StationDeliveryLocationTimeslotsUpdateInput._({
-        if (id != null) r'id': id,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (stationDeliveryLocationId != null)
-          r'stationDeliveryLocationId': stationDeliveryLocationId,
-        if (beginAt != null) r'beginAt': beginAt,
-        if (endAt != null) r'endAt': endAt,
-      });
-
-  Input$StationDeliveryLocationTimeslotsUpdateInput._(this._$data);
-
-  factory Input$StationDeliveryLocationTimeslotsUpdateInput.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    if (data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = data['stationDeliveryLocationId'];
-      result$data['stationDeliveryLocationId'] =
-          (l$stationDeliveryLocationId as String?);
-    }
-    if (data.containsKey('beginAt')) {
-      final l$beginAt = data['beginAt'];
-      result$data['beginAt'] =
-          l$beginAt == null ? null : DateTime.parse((l$beginAt as String));
-    }
-    if (data.containsKey('endAt')) {
-      final l$endAt = data['endAt'];
-      result$data['endAt'] =
-          l$endAt == null ? null : DateTime.parse((l$endAt as String));
-    }
-    return Input$StationDeliveryLocationTimeslotsUpdateInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  String? get stationDeliveryLocationId =>
-      (_$data['stationDeliveryLocationId'] as String?);
-
-  DateTime? get beginAt => (_$data['beginAt'] as DateTime?);
-
-  DateTime? get endAt => (_$data['endAt'] as DateTime?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    if (_$data.containsKey('stationDeliveryLocationId')) {
-      final l$stationDeliveryLocationId = stationDeliveryLocationId;
-      result$data['stationDeliveryLocationId'] = l$stationDeliveryLocationId;
-    }
-    if (_$data.containsKey('beginAt')) {
-      final l$beginAt = beginAt;
-      result$data['beginAt'] = l$beginAt?.toIso8601String();
-    }
-    if (_$data.containsKey('endAt')) {
-      final l$endAt = endAt;
-      result$data['endAt'] = l$endAt?.toIso8601String();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<
-          Input$StationDeliveryLocationTimeslotsUpdateInput>
-      get copyWith =>
-          CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$StationDeliveryLocationTimeslotsUpdateInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final lOther$stationDeliveryLocationId = other.stationDeliveryLocationId;
-    if (_$data.containsKey('stationDeliveryLocationId') !=
-        other._$data.containsKey('stationDeliveryLocationId')) {
-      return false;
-    }
-    if (l$stationDeliveryLocationId != lOther$stationDeliveryLocationId) {
-      return false;
-    }
-    final l$beginAt = beginAt;
-    final lOther$beginAt = other.beginAt;
-    if (_$data.containsKey('beginAt') != other._$data.containsKey('beginAt')) {
-      return false;
-    }
-    if (l$beginAt != lOther$beginAt) {
-      return false;
-    }
-    final l$endAt = endAt;
-    final lOther$endAt = other.endAt;
-    if (_$data.containsKey('endAt') != other._$data.containsKey('endAt')) {
-      return false;
-    }
-    if (l$endAt != lOther$endAt) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$createdAt = createdAt;
-    final l$stationDeliveryLocationId = stationDeliveryLocationId;
-    final l$beginAt = beginAt;
-    final l$endAt = endAt;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('stationDeliveryLocationId')
-          ? l$stationDeliveryLocationId
-          : const {},
-      _$data.containsKey('beginAt') ? l$beginAt : const {},
-      _$data.containsKey('endAt') ? l$endAt : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<
-    TRes> {
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput(
-    Input$StationDeliveryLocationTimeslotsUpdateInput instance,
-    TRes Function(Input$StationDeliveryLocationTimeslotsUpdateInput) then,
-  ) = _CopyWithImpl$Input$StationDeliveryLocationTimeslotsUpdateInput;
-
-  factory CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput.stub(
-          TRes res) =
-      _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsUpdateInput;
-
-  TRes call({
-    String? id,
-    DateTime? createdAt,
-    String? stationDeliveryLocationId,
-    DateTime? beginAt,
-    DateTime? endAt,
-  });
-}
-
-class _CopyWithImpl$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes>
-    implements
-        CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes> {
-  _CopyWithImpl$Input$StationDeliveryLocationTimeslotsUpdateInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$StationDeliveryLocationTimeslotsUpdateInput _instance;
-
-  final TRes Function(Input$StationDeliveryLocationTimeslotsUpdateInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? createdAt = _undefined,
-    Object? stationDeliveryLocationId = _undefined,
-    Object? beginAt = _undefined,
-    Object? endAt = _undefined,
-  }) =>
-      _then(Input$StationDeliveryLocationTimeslotsUpdateInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (stationDeliveryLocationId != _undefined)
-          'stationDeliveryLocationId': (stationDeliveryLocationId as String?),
-        if (beginAt != _undefined) 'beginAt': (beginAt as DateTime?),
-        if (endAt != _undefined) 'endAt': (endAt as DateTime?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes>
-    implements
-        CopyWith$Input$StationDeliveryLocationTimeslotsUpdateInput<TRes> {
-  _CopyWithStubImpl$Input$StationDeliveryLocationTimeslotsUpdateInput(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    DateTime? createdAt,
-    String? stationDeliveryLocationId,
-    DateTime? beginAt,
-    DateTime? endAt,
+    String? addressId,
   }) =>
       _res;
 }
@@ -42572,19 +43007,13 @@ class Input$StationsFilter {
     Input$StringFilter? name,
     Input$IntFilter? number,
     Input$DatetimeFilter? createdAt,
-    Input$StringFilter? address,
-    Input$StringFilter? address1,
-    Input$StringFilter? city,
-    Input$StringFilter? state,
-    Input$StringFilter? zip,
     Input$StringFilter? imageUrl,
     Input$StringFilter? coverUrl,
-    Input$FloatFilter? latitude,
-    Input$FloatFilter? longitude,
     Input$StringFilter? description,
     Input$StringFilter? longDescription,
     Input$StringFilter? registrationCode,
     Input$UUIDFilter? siteId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$StationsFilter>? and,
     List<Input$StationsFilter>? or,
@@ -42595,19 +43024,13 @@ class Input$StationsFilter {
         if (name != null) r'name': name,
         if (number != null) r'number': number,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
         if (imageUrl != null) r'imageUrl': imageUrl,
         if (coverUrl != null) r'coverUrl': coverUrl,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
         if (siteId != null) r'siteId': siteId,
+        if (addressId != null) r'addressId': addressId,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -42643,36 +43066,6 @@ class Input$StationsFilter {
           : Input$DatetimeFilter.fromJson(
               (l$createdAt as Map<String, dynamic>));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = l$address == null
-          ? null
-          : Input$StringFilter.fromJson((l$address as Map<String, dynamic>));
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = l$address1 == null
-          ? null
-          : Input$StringFilter.fromJson((l$address1 as Map<String, dynamic>));
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = l$city == null
-          ? null
-          : Input$StringFilter.fromJson((l$city as Map<String, dynamic>));
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = l$state == null
-          ? null
-          : Input$StringFilter.fromJson((l$state as Map<String, dynamic>));
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = l$zip == null
-          ? null
-          : Input$StringFilter.fromJson((l$zip as Map<String, dynamic>));
-    }
     if (data.containsKey('imageUrl')) {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = l$imageUrl == null
@@ -42684,18 +43077,6 @@ class Input$StationsFilter {
       result$data['coverUrl'] = l$coverUrl == null
           ? null
           : Input$StringFilter.fromJson((l$coverUrl as Map<String, dynamic>));
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = l$latitude == null
-          ? null
-          : Input$FloatFilter.fromJson((l$latitude as Map<String, dynamic>));
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = l$longitude == null
-          ? null
-          : Input$FloatFilter.fromJson((l$longitude as Map<String, dynamic>));
     }
     if (data.containsKey('description')) {
       final l$description = data['description'];
@@ -42723,6 +43104,12 @@ class Input$StationsFilter {
       result$data['siteId'] = l$siteId == null
           ? null
           : Input$UUIDFilter.fromJson((l$siteId as Map<String, dynamic>));
+    }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : Input$UUIDFilter.fromJson((l$addressId as Map<String, dynamic>));
     }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
@@ -42764,27 +43151,11 @@ class Input$StationsFilter {
   Input$DatetimeFilter? get createdAt =>
       (_$data['createdAt'] as Input$DatetimeFilter?);
 
-  Input$StringFilter? get address => (_$data['address'] as Input$StringFilter?);
-
-  Input$StringFilter? get address1 =>
-      (_$data['address1'] as Input$StringFilter?);
-
-  Input$StringFilter? get city => (_$data['city'] as Input$StringFilter?);
-
-  Input$StringFilter? get state => (_$data['state'] as Input$StringFilter?);
-
-  Input$StringFilter? get zip => (_$data['zip'] as Input$StringFilter?);
-
   Input$StringFilter? get imageUrl =>
       (_$data['imageUrl'] as Input$StringFilter?);
 
   Input$StringFilter? get coverUrl =>
       (_$data['coverUrl'] as Input$StringFilter?);
-
-  Input$FloatFilter? get latitude => (_$data['latitude'] as Input$FloatFilter?);
-
-  Input$FloatFilter? get longitude =>
-      (_$data['longitude'] as Input$FloatFilter?);
 
   Input$StringFilter? get description =>
       (_$data['description'] as Input$StringFilter?);
@@ -42796,6 +43167,8 @@ class Input$StationsFilter {
       (_$data['registrationCode'] as Input$StringFilter?);
 
   Input$UUIDFilter? get siteId => (_$data['siteId'] as Input$UUIDFilter?);
+
+  Input$UUIDFilter? get addressId => (_$data['addressId'] as Input$UUIDFilter?);
 
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
@@ -42825,26 +43198,6 @@ class Input$StationsFilter {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toJson();
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] = l$address?.toJson();
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] = l$address1?.toJson();
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] = l$city?.toJson();
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] = l$state?.toJson();
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] = l$zip?.toJson();
-    }
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl?.toJson();
@@ -42852,14 +43205,6 @@ class Input$StationsFilter {
     if (_$data.containsKey('coverUrl')) {
       final l$coverUrl = coverUrl;
       result$data['coverUrl'] = l$coverUrl?.toJson();
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] = l$latitude?.toJson();
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude?.toJson();
     }
     if (_$data.containsKey('description')) {
       final l$description = description;
@@ -42876,6 +43221,10 @@ class Input$StationsFilter {
     if (_$data.containsKey('siteId')) {
       final l$siteId = siteId;
       result$data['siteId'] = l$siteId?.toJson();
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -42943,47 +43292,6 @@ class Input$StationsFilter {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
     final l$imageUrl = imageUrl;
     final lOther$imageUrl = other.imageUrl;
     if (_$data.containsKey('imageUrl') !=
@@ -43000,24 +43308,6 @@ class Input$StationsFilter {
       return false;
     }
     if (l$coverUrl != lOther$coverUrl) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
       return false;
     }
     final l$description = description;
@@ -43053,6 +43343,15 @@ class Input$StationsFilter {
       return false;
     }
     if (l$siteId != lOther$siteId) {
+      return false;
+    }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
       return false;
     }
     final l$nodeId = nodeId;
@@ -43118,19 +43417,13 @@ class Input$StationsFilter {
     final l$name = name;
     final l$number = number;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
     final l$imageUrl = imageUrl;
     final l$coverUrl = coverUrl;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
     final l$siteId = siteId;
+    final l$addressId = addressId;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -43140,19 +43433,13 @@ class Input$StationsFilter {
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('number') ? l$number : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('coverUrl') ? l$coverUrl : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
       _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -43183,19 +43470,13 @@ abstract class CopyWith$Input$StationsFilter<TRes> {
     Input$StringFilter? name,
     Input$IntFilter? number,
     Input$DatetimeFilter? createdAt,
-    Input$StringFilter? address,
-    Input$StringFilter? address1,
-    Input$StringFilter? city,
-    Input$StringFilter? state,
-    Input$StringFilter? zip,
     Input$StringFilter? imageUrl,
     Input$StringFilter? coverUrl,
-    Input$FloatFilter? latitude,
-    Input$FloatFilter? longitude,
     Input$StringFilter? description,
     Input$StringFilter? longDescription,
     Input$StringFilter? registrationCode,
     Input$UUIDFilter? siteId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$StationsFilter>? and,
     List<Input$StationsFilter>? or,
@@ -43205,19 +43486,13 @@ abstract class CopyWith$Input$StationsFilter<TRes> {
   CopyWith$Input$StringFilter<TRes> get name;
   CopyWith$Input$IntFilter<TRes> get number;
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$StringFilter<TRes> get address;
-  CopyWith$Input$StringFilter<TRes> get address1;
-  CopyWith$Input$StringFilter<TRes> get city;
-  CopyWith$Input$StringFilter<TRes> get state;
-  CopyWith$Input$StringFilter<TRes> get zip;
   CopyWith$Input$StringFilter<TRes> get imageUrl;
   CopyWith$Input$StringFilter<TRes> get coverUrl;
-  CopyWith$Input$FloatFilter<TRes> get latitude;
-  CopyWith$Input$FloatFilter<TRes> get longitude;
   CopyWith$Input$StringFilter<TRes> get description;
   CopyWith$Input$StringFilter<TRes> get longDescription;
   CopyWith$Input$StringFilter<TRes> get registrationCode;
   CopyWith$Input$UUIDFilter<TRes> get siteId;
+  CopyWith$Input$UUIDFilter<TRes> get addressId;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$StationsFilter>? Function(
@@ -43248,19 +43523,13 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
     Object? name = _undefined,
     Object? number = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
     Object? imageUrl = _undefined,
     Object? coverUrl = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
     Object? siteId = _undefined,
+    Object? addressId = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -43273,20 +43542,10 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
         if (number != _undefined) 'number': (number as Input$IntFilter?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (address != _undefined) 'address': (address as Input$StringFilter?),
-        if (address1 != _undefined)
-          'address1': (address1 as Input$StringFilter?),
-        if (city != _undefined) 'city': (city as Input$StringFilter?),
-        if (state != _undefined) 'state': (state as Input$StringFilter?),
-        if (zip != _undefined) 'zip': (zip as Input$StringFilter?),
         if (imageUrl != _undefined)
           'imageUrl': (imageUrl as Input$StringFilter?),
         if (coverUrl != _undefined)
           'coverUrl': (coverUrl as Input$StringFilter?),
-        if (latitude != _undefined)
-          'latitude': (latitude as Input$FloatFilter?),
-        if (longitude != _undefined)
-          'longitude': (longitude as Input$FloatFilter?),
         if (description != _undefined)
           'description': (description as Input$StringFilter?),
         if (longDescription != _undefined)
@@ -43294,6 +43553,8 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as Input$StringFilter?),
         if (siteId != _undefined) 'siteId': (siteId as Input$UUIDFilter?),
+        if (addressId != _undefined)
+          'addressId': (addressId as Input$UUIDFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$StationsFilter>?),
         if (or != _undefined) 'or': (or as List<Input$StationsFilter>?),
@@ -43329,41 +43590,6 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
             local$createdAt, (e) => call(createdAt: e));
   }
 
-  CopyWith$Input$StringFilter<TRes> get address {
-    final local$address = _instance.address;
-    return local$address == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$address, (e) => call(address: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get address1 {
-    final local$address1 = _instance.address1;
-    return local$address1 == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$address1, (e) => call(address1: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get city {
-    final local$city = _instance.city;
-    return local$city == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$city, (e) => call(city: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get state {
-    final local$state = _instance.state;
-    return local$state == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$state, (e) => call(state: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get zip {
-    final local$zip = _instance.zip;
-    return local$zip == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$zip, (e) => call(zip: e));
-  }
-
   CopyWith$Input$StringFilter<TRes> get imageUrl {
     final local$imageUrl = _instance.imageUrl;
     return local$imageUrl == null
@@ -43376,21 +43602,6 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
     return local$coverUrl == null
         ? CopyWith$Input$StringFilter.stub(_then(_instance))
         : CopyWith$Input$StringFilter(local$coverUrl, (e) => call(coverUrl: e));
-  }
-
-  CopyWith$Input$FloatFilter<TRes> get latitude {
-    final local$latitude = _instance.latitude;
-    return local$latitude == null
-        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
-        : CopyWith$Input$FloatFilter(local$latitude, (e) => call(latitude: e));
-  }
-
-  CopyWith$Input$FloatFilter<TRes> get longitude {
-    final local$longitude = _instance.longitude;
-    return local$longitude == null
-        ? CopyWith$Input$FloatFilter.stub(_then(_instance))
-        : CopyWith$Input$FloatFilter(
-            local$longitude, (e) => call(longitude: e));
   }
 
   CopyWith$Input$StringFilter<TRes> get description {
@@ -43422,6 +43633,13 @@ class _CopyWithImpl$Input$StationsFilter<TRes>
     return local$siteId == null
         ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
         : CopyWith$Input$UUIDFilter(local$siteId, (e) => call(siteId: e));
+  }
+
+  CopyWith$Input$UUIDFilter<TRes> get addressId {
+    final local$addressId = _instance.addressId;
+    return local$addressId == null
+        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
+        : CopyWith$Input$UUIDFilter(local$addressId, (e) => call(addressId: e));
   }
 
   CopyWith$Input$IDFilter<TRes> get nodeId {
@@ -43472,19 +43690,13 @@ class _CopyWithStubImpl$Input$StationsFilter<TRes>
     Input$StringFilter? name,
     Input$IntFilter? number,
     Input$DatetimeFilter? createdAt,
-    Input$StringFilter? address,
-    Input$StringFilter? address1,
-    Input$StringFilter? city,
-    Input$StringFilter? state,
-    Input$StringFilter? zip,
     Input$StringFilter? imageUrl,
     Input$StringFilter? coverUrl,
-    Input$FloatFilter? latitude,
-    Input$FloatFilter? longitude,
     Input$StringFilter? description,
     Input$StringFilter? longDescription,
     Input$StringFilter? registrationCode,
     Input$UUIDFilter? siteId,
+    Input$UUIDFilter? addressId,
     Input$IDFilter? nodeId,
     List<Input$StationsFilter>? and,
     List<Input$StationsFilter>? or,
@@ -43504,32 +43716,11 @@ class _CopyWithStubImpl$Input$StationsFilter<TRes>
   CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
       CopyWith$Input$DatetimeFilter.stub(_res);
 
-  CopyWith$Input$StringFilter<TRes> get address =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get address1 =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get city =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get state =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get zip =>
-      CopyWith$Input$StringFilter.stub(_res);
-
   CopyWith$Input$StringFilter<TRes> get imageUrl =>
       CopyWith$Input$StringFilter.stub(_res);
 
   CopyWith$Input$StringFilter<TRes> get coverUrl =>
       CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$FloatFilter<TRes> get latitude =>
-      CopyWith$Input$FloatFilter.stub(_res);
-
-  CopyWith$Input$FloatFilter<TRes> get longitude =>
-      CopyWith$Input$FloatFilter.stub(_res);
 
   CopyWith$Input$StringFilter<TRes> get description =>
       CopyWith$Input$StringFilter.stub(_res);
@@ -43541,6 +43732,9 @@ class _CopyWithStubImpl$Input$StationsFilter<TRes>
       CopyWith$Input$StringFilter.stub(_res);
 
   CopyWith$Input$UUIDFilter<TRes> get siteId =>
+      CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$UUIDFilter<TRes> get addressId =>
       CopyWith$Input$UUIDFilter.stub(_res);
 
   CopyWith$Input$IDFilter<TRes> get nodeId =>
@@ -43560,38 +43754,26 @@ class Input$StationsInsertInput {
     String? name,
     int? number,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
     String? imageUrl,
     String? coverUrl,
-    double? latitude,
-    double? longitude,
     String? description,
     String? longDescription,
     String? registrationCode,
     String? siteId,
+    String? addressId,
   }) =>
       Input$StationsInsertInput._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
         if (number != null) r'number': number,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
         if (imageUrl != null) r'imageUrl': imageUrl,
         if (coverUrl != null) r'coverUrl': coverUrl,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
         if (siteId != null) r'siteId': siteId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$StationsInsertInput._(this._$data);
@@ -43615,26 +43797,6 @@ class Input$StationsInsertInput {
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = (l$address as String?);
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = (l$address1 as String?);
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = (l$city as String?);
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = (l$state as String?);
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = (l$zip as String?);
-    }
     if (data.containsKey('imageUrl')) {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = (l$imageUrl as String?);
@@ -43642,14 +43804,6 @@ class Input$StationsInsertInput {
     if (data.containsKey('coverUrl')) {
       final l$coverUrl = data['coverUrl'];
       result$data['coverUrl'] = (l$coverUrl as String?);
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = (l$latitude as num?)?.toDouble();
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = (l$longitude as num?)?.toDouble();
     }
     if (data.containsKey('description')) {
       final l$description = data['description'];
@@ -43667,6 +43821,10 @@ class Input$StationsInsertInput {
       final l$siteId = data['siteId'];
       result$data['siteId'] = (l$siteId as String?);
     }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = (l$addressId as String?);
+    }
     return Input$StationsInsertInput._(result$data);
   }
 
@@ -43680,23 +43838,9 @@ class Input$StationsInsertInput {
 
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
-  String? get address => (_$data['address'] as String?);
-
-  String? get address1 => (_$data['address1'] as String?);
-
-  String? get city => (_$data['city'] as String?);
-
-  String? get state => (_$data['state'] as String?);
-
-  String? get zip => (_$data['zip'] as String?);
-
   String? get imageUrl => (_$data['imageUrl'] as String?);
 
   String? get coverUrl => (_$data['coverUrl'] as String?);
-
-  double? get latitude => (_$data['latitude'] as double?);
-
-  double? get longitude => (_$data['longitude'] as double?);
 
   String? get description => (_$data['description'] as String?);
 
@@ -43705,6 +43849,8 @@ class Input$StationsInsertInput {
   String? get registrationCode => (_$data['registrationCode'] as String?);
 
   String? get siteId => (_$data['siteId'] as String?);
+
+  String? get addressId => (_$data['addressId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -43724,26 +43870,6 @@ class Input$StationsInsertInput {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] = l$address;
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] = l$address1;
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] = l$city;
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] = l$state;
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] = l$zip;
-    }
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl;
@@ -43751,14 +43877,6 @@ class Input$StationsInsertInput {
     if (_$data.containsKey('coverUrl')) {
       final l$coverUrl = coverUrl;
       result$data['coverUrl'] = l$coverUrl;
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] = l$latitude;
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude;
     }
     if (_$data.containsKey('description')) {
       final l$description = description;
@@ -43775,6 +43893,10 @@ class Input$StationsInsertInput {
     if (_$data.containsKey('siteId')) {
       final l$siteId = siteId;
       result$data['siteId'] = l$siteId;
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId;
     }
     return result$data;
   }
@@ -43827,47 +43949,6 @@ class Input$StationsInsertInput {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
     final l$imageUrl = imageUrl;
     final lOther$imageUrl = other.imageUrl;
     if (_$data.containsKey('imageUrl') !=
@@ -43884,24 +43965,6 @@ class Input$StationsInsertInput {
       return false;
     }
     if (l$coverUrl != lOther$coverUrl) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
       return false;
     }
     final l$description = description;
@@ -43939,6 +44002,15 @@ class Input$StationsInsertInput {
     if (l$siteId != lOther$siteId) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -43948,37 +44020,25 @@ class Input$StationsInsertInput {
     final l$name = name;
     final l$number = number;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
     final l$imageUrl = imageUrl;
     final l$coverUrl = coverUrl;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
     final l$siteId = siteId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('number') ? l$number : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('coverUrl') ? l$coverUrl : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
       _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -43997,19 +44057,13 @@ abstract class CopyWith$Input$StationsInsertInput<TRes> {
     String? name,
     int? number,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
     String? imageUrl,
     String? coverUrl,
-    double? latitude,
-    double? longitude,
     String? description,
     String? longDescription,
     String? registrationCode,
     String? siteId,
+    String? addressId,
   });
 }
 
@@ -44031,19 +44085,13 @@ class _CopyWithImpl$Input$StationsInsertInput<TRes>
     Object? name = _undefined,
     Object? number = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
     Object? imageUrl = _undefined,
     Object? coverUrl = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
     Object? siteId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$StationsInsertInput._({
         ..._instance._$data,
@@ -44051,21 +44099,15 @@ class _CopyWithImpl$Input$StationsInsertInput<TRes>
         if (name != _undefined) 'name': (name as String?),
         if (number != _undefined) 'number': (number as int?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (address != _undefined) 'address': (address as String?),
-        if (address1 != _undefined) 'address1': (address1 as String?),
-        if (city != _undefined) 'city': (city as String?),
-        if (state != _undefined) 'state': (state as String?),
-        if (zip != _undefined) 'zip': (zip as String?),
         if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
         if (coverUrl != _undefined) 'coverUrl': (coverUrl as String?),
-        if (latitude != _undefined) 'latitude': (latitude as double?),
-        if (longitude != _undefined) 'longitude': (longitude as double?),
         if (description != _undefined) 'description': (description as String?),
         if (longDescription != _undefined)
           'longDescription': (longDescription as String?),
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as String?),
         if (siteId != _undefined) 'siteId': (siteId as String?),
+        if (addressId != _undefined) 'addressId': (addressId as String?),
       }));
 }
 
@@ -44080,19 +44122,13 @@ class _CopyWithStubImpl$Input$StationsInsertInput<TRes>
     String? name,
     int? number,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
     String? imageUrl,
     String? coverUrl,
-    double? latitude,
-    double? longitude,
     String? description,
     String? longDescription,
     String? registrationCode,
     String? siteId,
+    String? addressId,
   }) =>
       _res;
 }
@@ -44103,38 +44139,26 @@ class Input$StationsOrderBy {
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? number,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? address,
-    Enum$OrderByDirection? address1,
-    Enum$OrderByDirection? city,
-    Enum$OrderByDirection? state,
-    Enum$OrderByDirection? zip,
     Enum$OrderByDirection? imageUrl,
     Enum$OrderByDirection? coverUrl,
-    Enum$OrderByDirection? latitude,
-    Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? description,
     Enum$OrderByDirection? longDescription,
     Enum$OrderByDirection? registrationCode,
     Enum$OrderByDirection? siteId,
+    Enum$OrderByDirection? addressId,
   }) =>
       Input$StationsOrderBy._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
         if (number != null) r'number': number,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
         if (imageUrl != null) r'imageUrl': imageUrl,
         if (coverUrl != null) r'coverUrl': coverUrl,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
         if (siteId != null) r'siteId': siteId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$StationsOrderBy._(this._$data);
@@ -44165,36 +44189,6 @@ class Input$StationsOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$createdAt as String));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = l$address == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$address as String));
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = l$address1 == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$address1 as String));
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = l$city == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$city as String));
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = l$state == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$state as String));
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = l$zip == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$zip as String));
-    }
     if (data.containsKey('imageUrl')) {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = l$imageUrl == null
@@ -44206,18 +44200,6 @@ class Input$StationsOrderBy {
       result$data['coverUrl'] = l$coverUrl == null
           ? null
           : fromJson$Enum$OrderByDirection((l$coverUrl as String));
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = l$latitude == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$latitude as String));
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = l$longitude == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$longitude as String));
     }
     if (data.containsKey('description')) {
       final l$description = data['description'];
@@ -44243,6 +44225,12 @@ class Input$StationsOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$siteId as String));
     }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$addressId as String));
+    }
     return Input$StationsOrderBy._(result$data);
   }
 
@@ -44258,30 +44246,11 @@ class Input$StationsOrderBy {
   Enum$OrderByDirection? get createdAt =>
       (_$data['createdAt'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get address =>
-      (_$data['address'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get address1 =>
-      (_$data['address1'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get city => (_$data['city'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get state =>
-      (_$data['state'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get zip => (_$data['zip'] as Enum$OrderByDirection?);
-
   Enum$OrderByDirection? get imageUrl =>
       (_$data['imageUrl'] as Enum$OrderByDirection?);
 
   Enum$OrderByDirection? get coverUrl =>
       (_$data['coverUrl'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get latitude =>
-      (_$data['latitude'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get longitude =>
-      (_$data['longitude'] as Enum$OrderByDirection?);
 
   Enum$OrderByDirection? get description =>
       (_$data['description'] as Enum$OrderByDirection?);
@@ -44294,6 +44263,9 @@ class Input$StationsOrderBy {
 
   Enum$OrderByDirection? get siteId =>
       (_$data['siteId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get addressId =>
+      (_$data['addressId'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -44318,31 +44290,6 @@ class Input$StationsOrderBy {
           ? null
           : toJson$Enum$OrderByDirection(l$createdAt);
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] =
-          l$address == null ? null : toJson$Enum$OrderByDirection(l$address);
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] =
-          l$address1 == null ? null : toJson$Enum$OrderByDirection(l$address1);
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] =
-          l$city == null ? null : toJson$Enum$OrderByDirection(l$city);
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] =
-          l$state == null ? null : toJson$Enum$OrderByDirection(l$state);
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] =
-          l$zip == null ? null : toJson$Enum$OrderByDirection(l$zip);
-    }
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] =
@@ -44352,17 +44299,6 @@ class Input$StationsOrderBy {
       final l$coverUrl = coverUrl;
       result$data['coverUrl'] =
           l$coverUrl == null ? null : toJson$Enum$OrderByDirection(l$coverUrl);
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] =
-          l$latitude == null ? null : toJson$Enum$OrderByDirection(l$latitude);
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$longitude);
     }
     if (_$data.containsKey('description')) {
       final l$description = description;
@@ -44386,6 +44322,12 @@ class Input$StationsOrderBy {
       final l$siteId = siteId;
       result$data['siteId'] =
           l$siteId == null ? null : toJson$Enum$OrderByDirection(l$siteId);
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$addressId);
     }
     return result$data;
   }
@@ -44437,47 +44379,6 @@ class Input$StationsOrderBy {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
     final l$imageUrl = imageUrl;
     final lOther$imageUrl = other.imageUrl;
     if (_$data.containsKey('imageUrl') !=
@@ -44494,24 +44395,6 @@ class Input$StationsOrderBy {
       return false;
     }
     if (l$coverUrl != lOther$coverUrl) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
       return false;
     }
     final l$description = description;
@@ -44549,6 +44432,15 @@ class Input$StationsOrderBy {
     if (l$siteId != lOther$siteId) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -44558,37 +44450,25 @@ class Input$StationsOrderBy {
     final l$name = name;
     final l$number = number;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
     final l$imageUrl = imageUrl;
     final l$coverUrl = coverUrl;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
     final l$siteId = siteId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('number') ? l$number : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('coverUrl') ? l$coverUrl : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
       _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -44607,19 +44487,13 @@ abstract class CopyWith$Input$StationsOrderBy<TRes> {
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? number,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? address,
-    Enum$OrderByDirection? address1,
-    Enum$OrderByDirection? city,
-    Enum$OrderByDirection? state,
-    Enum$OrderByDirection? zip,
     Enum$OrderByDirection? imageUrl,
     Enum$OrderByDirection? coverUrl,
-    Enum$OrderByDirection? latitude,
-    Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? description,
     Enum$OrderByDirection? longDescription,
     Enum$OrderByDirection? registrationCode,
     Enum$OrderByDirection? siteId,
+    Enum$OrderByDirection? addressId,
   });
 }
 
@@ -44641,19 +44515,13 @@ class _CopyWithImpl$Input$StationsOrderBy<TRes>
     Object? name = _undefined,
     Object? number = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
     Object? imageUrl = _undefined,
     Object? coverUrl = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
     Object? siteId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$StationsOrderBy._({
         ..._instance._$data,
@@ -44662,21 +44530,10 @@ class _CopyWithImpl$Input$StationsOrderBy<TRes>
         if (number != _undefined) 'number': (number as Enum$OrderByDirection?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Enum$OrderByDirection?),
-        if (address != _undefined)
-          'address': (address as Enum$OrderByDirection?),
-        if (address1 != _undefined)
-          'address1': (address1 as Enum$OrderByDirection?),
-        if (city != _undefined) 'city': (city as Enum$OrderByDirection?),
-        if (state != _undefined) 'state': (state as Enum$OrderByDirection?),
-        if (zip != _undefined) 'zip': (zip as Enum$OrderByDirection?),
         if (imageUrl != _undefined)
           'imageUrl': (imageUrl as Enum$OrderByDirection?),
         if (coverUrl != _undefined)
           'coverUrl': (coverUrl as Enum$OrderByDirection?),
-        if (latitude != _undefined)
-          'latitude': (latitude as Enum$OrderByDirection?),
-        if (longitude != _undefined)
-          'longitude': (longitude as Enum$OrderByDirection?),
         if (description != _undefined)
           'description': (description as Enum$OrderByDirection?),
         if (longDescription != _undefined)
@@ -44684,6 +44541,8 @@ class _CopyWithImpl$Input$StationsOrderBy<TRes>
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as Enum$OrderByDirection?),
         if (siteId != _undefined) 'siteId': (siteId as Enum$OrderByDirection?),
+        if (addressId != _undefined)
+          'addressId': (addressId as Enum$OrderByDirection?),
       }));
 }
 
@@ -44698,19 +44557,13 @@ class _CopyWithStubImpl$Input$StationsOrderBy<TRes>
     Enum$OrderByDirection? name,
     Enum$OrderByDirection? number,
     Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? address,
-    Enum$OrderByDirection? address1,
-    Enum$OrderByDirection? city,
-    Enum$OrderByDirection? state,
-    Enum$OrderByDirection? zip,
     Enum$OrderByDirection? imageUrl,
     Enum$OrderByDirection? coverUrl,
-    Enum$OrderByDirection? latitude,
-    Enum$OrderByDirection? longitude,
     Enum$OrderByDirection? description,
     Enum$OrderByDirection? longDescription,
     Enum$OrderByDirection? registrationCode,
     Enum$OrderByDirection? siteId,
+    Enum$OrderByDirection? addressId,
   }) =>
       _res;
 }
@@ -44721,38 +44574,26 @@ class Input$StationsUpdateInput {
     String? name,
     int? number,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
     String? imageUrl,
     String? coverUrl,
-    double? latitude,
-    double? longitude,
     String? description,
     String? longDescription,
     String? registrationCode,
     String? siteId,
+    String? addressId,
   }) =>
       Input$StationsUpdateInput._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
         if (number != null) r'number': number,
         if (createdAt != null) r'createdAt': createdAt,
-        if (address != null) r'address': address,
-        if (address1 != null) r'address1': address1,
-        if (city != null) r'city': city,
-        if (state != null) r'state': state,
-        if (zip != null) r'zip': zip,
         if (imageUrl != null) r'imageUrl': imageUrl,
         if (coverUrl != null) r'coverUrl': coverUrl,
-        if (latitude != null) r'latitude': latitude,
-        if (longitude != null) r'longitude': longitude,
         if (description != null) r'description': description,
         if (longDescription != null) r'longDescription': longDescription,
         if (registrationCode != null) r'registrationCode': registrationCode,
         if (siteId != null) r'siteId': siteId,
+        if (addressId != null) r'addressId': addressId,
       });
 
   Input$StationsUpdateInput._(this._$data);
@@ -44776,26 +44617,6 @@ class Input$StationsUpdateInput {
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('address')) {
-      final l$address = data['address'];
-      result$data['address'] = (l$address as String?);
-    }
-    if (data.containsKey('address1')) {
-      final l$address1 = data['address1'];
-      result$data['address1'] = (l$address1 as String?);
-    }
-    if (data.containsKey('city')) {
-      final l$city = data['city'];
-      result$data['city'] = (l$city as String?);
-    }
-    if (data.containsKey('state')) {
-      final l$state = data['state'];
-      result$data['state'] = (l$state as String?);
-    }
-    if (data.containsKey('zip')) {
-      final l$zip = data['zip'];
-      result$data['zip'] = (l$zip as String?);
-    }
     if (data.containsKey('imageUrl')) {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = (l$imageUrl as String?);
@@ -44803,14 +44624,6 @@ class Input$StationsUpdateInput {
     if (data.containsKey('coverUrl')) {
       final l$coverUrl = data['coverUrl'];
       result$data['coverUrl'] = (l$coverUrl as String?);
-    }
-    if (data.containsKey('latitude')) {
-      final l$latitude = data['latitude'];
-      result$data['latitude'] = (l$latitude as num?)?.toDouble();
-    }
-    if (data.containsKey('longitude')) {
-      final l$longitude = data['longitude'];
-      result$data['longitude'] = (l$longitude as num?)?.toDouble();
     }
     if (data.containsKey('description')) {
       final l$description = data['description'];
@@ -44828,6 +44641,10 @@ class Input$StationsUpdateInput {
       final l$siteId = data['siteId'];
       result$data['siteId'] = (l$siteId as String?);
     }
+    if (data.containsKey('addressId')) {
+      final l$addressId = data['addressId'];
+      result$data['addressId'] = (l$addressId as String?);
+    }
     return Input$StationsUpdateInput._(result$data);
   }
 
@@ -44841,23 +44658,9 @@ class Input$StationsUpdateInput {
 
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
 
-  String? get address => (_$data['address'] as String?);
-
-  String? get address1 => (_$data['address1'] as String?);
-
-  String? get city => (_$data['city'] as String?);
-
-  String? get state => (_$data['state'] as String?);
-
-  String? get zip => (_$data['zip'] as String?);
-
   String? get imageUrl => (_$data['imageUrl'] as String?);
 
   String? get coverUrl => (_$data['coverUrl'] as String?);
-
-  double? get latitude => (_$data['latitude'] as double?);
-
-  double? get longitude => (_$data['longitude'] as double?);
 
   String? get description => (_$data['description'] as String?);
 
@@ -44866,6 +44669,8 @@ class Input$StationsUpdateInput {
   String? get registrationCode => (_$data['registrationCode'] as String?);
 
   String? get siteId => (_$data['siteId'] as String?);
+
+  String? get addressId => (_$data['addressId'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -44885,26 +44690,6 @@ class Input$StationsUpdateInput {
       final l$createdAt = createdAt;
       result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
-    if (_$data.containsKey('address')) {
-      final l$address = address;
-      result$data['address'] = l$address;
-    }
-    if (_$data.containsKey('address1')) {
-      final l$address1 = address1;
-      result$data['address1'] = l$address1;
-    }
-    if (_$data.containsKey('city')) {
-      final l$city = city;
-      result$data['city'] = l$city;
-    }
-    if (_$data.containsKey('state')) {
-      final l$state = state;
-      result$data['state'] = l$state;
-    }
-    if (_$data.containsKey('zip')) {
-      final l$zip = zip;
-      result$data['zip'] = l$zip;
-    }
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl;
@@ -44912,14 +44697,6 @@ class Input$StationsUpdateInput {
     if (_$data.containsKey('coverUrl')) {
       final l$coverUrl = coverUrl;
       result$data['coverUrl'] = l$coverUrl;
-    }
-    if (_$data.containsKey('latitude')) {
-      final l$latitude = latitude;
-      result$data['latitude'] = l$latitude;
-    }
-    if (_$data.containsKey('longitude')) {
-      final l$longitude = longitude;
-      result$data['longitude'] = l$longitude;
     }
     if (_$data.containsKey('description')) {
       final l$description = description;
@@ -44936,6 +44713,10 @@ class Input$StationsUpdateInput {
     if (_$data.containsKey('siteId')) {
       final l$siteId = siteId;
       result$data['siteId'] = l$siteId;
+    }
+    if (_$data.containsKey('addressId')) {
+      final l$addressId = addressId;
+      result$data['addressId'] = l$addressId;
     }
     return result$data;
   }
@@ -44988,47 +44769,6 @@ class Input$StationsUpdateInput {
     if (l$createdAt != lOther$createdAt) {
       return false;
     }
-    final l$address = address;
-    final lOther$address = other.address;
-    if (_$data.containsKey('address') != other._$data.containsKey('address')) {
-      return false;
-    }
-    if (l$address != lOther$address) {
-      return false;
-    }
-    final l$address1 = address1;
-    final lOther$address1 = other.address1;
-    if (_$data.containsKey('address1') !=
-        other._$data.containsKey('address1')) {
-      return false;
-    }
-    if (l$address1 != lOther$address1) {
-      return false;
-    }
-    final l$city = city;
-    final lOther$city = other.city;
-    if (_$data.containsKey('city') != other._$data.containsKey('city')) {
-      return false;
-    }
-    if (l$city != lOther$city) {
-      return false;
-    }
-    final l$state = state;
-    final lOther$state = other.state;
-    if (_$data.containsKey('state') != other._$data.containsKey('state')) {
-      return false;
-    }
-    if (l$state != lOther$state) {
-      return false;
-    }
-    final l$zip = zip;
-    final lOther$zip = other.zip;
-    if (_$data.containsKey('zip') != other._$data.containsKey('zip')) {
-      return false;
-    }
-    if (l$zip != lOther$zip) {
-      return false;
-    }
     final l$imageUrl = imageUrl;
     final lOther$imageUrl = other.imageUrl;
     if (_$data.containsKey('imageUrl') !=
@@ -45045,24 +44785,6 @@ class Input$StationsUpdateInput {
       return false;
     }
     if (l$coverUrl != lOther$coverUrl) {
-      return false;
-    }
-    final l$latitude = latitude;
-    final lOther$latitude = other.latitude;
-    if (_$data.containsKey('latitude') !=
-        other._$data.containsKey('latitude')) {
-      return false;
-    }
-    if (l$latitude != lOther$latitude) {
-      return false;
-    }
-    final l$longitude = longitude;
-    final lOther$longitude = other.longitude;
-    if (_$data.containsKey('longitude') !=
-        other._$data.containsKey('longitude')) {
-      return false;
-    }
-    if (l$longitude != lOther$longitude) {
       return false;
     }
     final l$description = description;
@@ -45100,6 +44822,15 @@ class Input$StationsUpdateInput {
     if (l$siteId != lOther$siteId) {
       return false;
     }
+    final l$addressId = addressId;
+    final lOther$addressId = other.addressId;
+    if (_$data.containsKey('addressId') !=
+        other._$data.containsKey('addressId')) {
+      return false;
+    }
+    if (l$addressId != lOther$addressId) {
+      return false;
+    }
     return true;
   }
 
@@ -45109,37 +44840,25 @@ class Input$StationsUpdateInput {
     final l$name = name;
     final l$number = number;
     final l$createdAt = createdAt;
-    final l$address = address;
-    final l$address1 = address1;
-    final l$city = city;
-    final l$state = state;
-    final l$zip = zip;
     final l$imageUrl = imageUrl;
     final l$coverUrl = coverUrl;
-    final l$latitude = latitude;
-    final l$longitude = longitude;
     final l$description = description;
     final l$longDescription = longDescription;
     final l$registrationCode = registrationCode;
     final l$siteId = siteId;
+    final l$addressId = addressId;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('number') ? l$number : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('address') ? l$address : const {},
-      _$data.containsKey('address1') ? l$address1 : const {},
-      _$data.containsKey('city') ? l$city : const {},
-      _$data.containsKey('state') ? l$state : const {},
-      _$data.containsKey('zip') ? l$zip : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('coverUrl') ? l$coverUrl : const {},
-      _$data.containsKey('latitude') ? l$latitude : const {},
-      _$data.containsKey('longitude') ? l$longitude : const {},
       _$data.containsKey('description') ? l$description : const {},
       _$data.containsKey('longDescription') ? l$longDescription : const {},
       _$data.containsKey('registrationCode') ? l$registrationCode : const {},
       _$data.containsKey('siteId') ? l$siteId : const {},
+      _$data.containsKey('addressId') ? l$addressId : const {},
     ]);
   }
 }
@@ -45158,19 +44877,13 @@ abstract class CopyWith$Input$StationsUpdateInput<TRes> {
     String? name,
     int? number,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
     String? imageUrl,
     String? coverUrl,
-    double? latitude,
-    double? longitude,
     String? description,
     String? longDescription,
     String? registrationCode,
     String? siteId,
+    String? addressId,
   });
 }
 
@@ -45192,19 +44905,13 @@ class _CopyWithImpl$Input$StationsUpdateInput<TRes>
     Object? name = _undefined,
     Object? number = _undefined,
     Object? createdAt = _undefined,
-    Object? address = _undefined,
-    Object? address1 = _undefined,
-    Object? city = _undefined,
-    Object? state = _undefined,
-    Object? zip = _undefined,
     Object? imageUrl = _undefined,
     Object? coverUrl = _undefined,
-    Object? latitude = _undefined,
-    Object? longitude = _undefined,
     Object? description = _undefined,
     Object? longDescription = _undefined,
     Object? registrationCode = _undefined,
     Object? siteId = _undefined,
+    Object? addressId = _undefined,
   }) =>
       _then(Input$StationsUpdateInput._({
         ..._instance._$data,
@@ -45212,21 +44919,15 @@ class _CopyWithImpl$Input$StationsUpdateInput<TRes>
         if (name != _undefined) 'name': (name as String?),
         if (number != _undefined) 'number': (number as int?),
         if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (address != _undefined) 'address': (address as String?),
-        if (address1 != _undefined) 'address1': (address1 as String?),
-        if (city != _undefined) 'city': (city as String?),
-        if (state != _undefined) 'state': (state as String?),
-        if (zip != _undefined) 'zip': (zip as String?),
         if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
         if (coverUrl != _undefined) 'coverUrl': (coverUrl as String?),
-        if (latitude != _undefined) 'latitude': (latitude as double?),
-        if (longitude != _undefined) 'longitude': (longitude as double?),
         if (description != _undefined) 'description': (description as String?),
         if (longDescription != _undefined)
           'longDescription': (longDescription as String?),
         if (registrationCode != _undefined)
           'registrationCode': (registrationCode as String?),
         if (siteId != _undefined) 'siteId': (siteId as String?),
+        if (addressId != _undefined) 'addressId': (addressId as String?),
       }));
 }
 
@@ -45241,19 +44942,13 @@ class _CopyWithStubImpl$Input$StationsUpdateInput<TRes>
     String? name,
     int? number,
     DateTime? createdAt,
-    String? address,
-    String? address1,
-    String? city,
-    String? state,
-    String? zip,
     String? imageUrl,
     String? coverUrl,
-    double? latitude,
-    double? longitude,
     String? description,
     String? longDescription,
     String? registrationCode,
     String? siteId,
+    String? addressId,
   }) =>
       _res;
 }
@@ -51406,6 +51101,7 @@ class Input$UsersFilter {
     Input$DatetimeFilter? updatedAt,
     Input$UUIDFilter? primaryStationId,
     Input$StringFilter? stripeCustomerId,
+    Input$StringFilter? phoneNumber,
     Input$IDFilter? nodeId,
     List<Input$UsersFilter>? and,
     List<Input$UsersFilter>? or,
@@ -51423,6 +51119,7 @@ class Input$UsersFilter {
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
         if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
+        if (phoneNumber != null) r'phoneNumber': phoneNumber,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -51503,6 +51200,13 @@ class Input$UsersFilter {
           : Input$StringFilter.fromJson(
               (l$stripeCustomerId as Map<String, dynamic>));
     }
+    if (data.containsKey('phoneNumber')) {
+      final l$phoneNumber = data['phoneNumber'];
+      result$data['phoneNumber'] = l$phoneNumber == null
+          ? null
+          : Input$StringFilter.fromJson(
+              (l$phoneNumber as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -51560,6 +51264,9 @@ class Input$UsersFilter {
   Input$StringFilter? get stripeCustomerId =>
       (_$data['stripeCustomerId'] as Input$StringFilter?);
 
+  Input$StringFilter? get phoneNumber =>
+      (_$data['phoneNumber'] as Input$StringFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$UsersFilter>? get and =>
@@ -51614,6 +51321,10 @@ class Input$UsersFilter {
     if (_$data.containsKey('stripeCustomerId')) {
       final l$stripeCustomerId = stripeCustomerId;
       result$data['stripeCustomerId'] = l$stripeCustomerId?.toJson();
+    }
+    if (_$data.containsKey('phoneNumber')) {
+      final l$phoneNumber = phoneNumber;
+      result$data['phoneNumber'] = l$phoneNumber?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -51742,6 +51453,15 @@ class Input$UsersFilter {
     if (l$stripeCustomerId != lOther$stripeCustomerId) {
       return false;
     }
+    final l$phoneNumber = phoneNumber;
+    final lOther$phoneNumber = other.phoneNumber;
+    if (_$data.containsKey('phoneNumber') !=
+        other._$data.containsKey('phoneNumber')) {
+      return false;
+    }
+    if (l$phoneNumber != lOther$phoneNumber) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -51812,6 +51532,7 @@ class Input$UsersFilter {
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
     final l$stripeCustomerId = stripeCustomerId;
+    final l$phoneNumber = phoneNumber;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -51828,6 +51549,7 @@ class Input$UsersFilter {
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
       _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
+      _$data.containsKey('phoneNumber') ? l$phoneNumber : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -51865,6 +51587,7 @@ abstract class CopyWith$Input$UsersFilter<TRes> {
     Input$DatetimeFilter? updatedAt,
     Input$UUIDFilter? primaryStationId,
     Input$StringFilter? stripeCustomerId,
+    Input$StringFilter? phoneNumber,
     Input$IDFilter? nodeId,
     List<Input$UsersFilter>? and,
     List<Input$UsersFilter>? or,
@@ -51881,6 +51604,7 @@ abstract class CopyWith$Input$UsersFilter<TRes> {
   CopyWith$Input$DatetimeFilter<TRes> get updatedAt;
   CopyWith$Input$UUIDFilter<TRes> get primaryStationId;
   CopyWith$Input$StringFilter<TRes> get stripeCustomerId;
+  CopyWith$Input$StringFilter<TRes> get phoneNumber;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$UsersFilter>? Function(
@@ -51918,6 +51642,7 @@ class _CopyWithImpl$Input$UsersFilter<TRes>
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
     Object? stripeCustomerId = _undefined,
+    Object? phoneNumber = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -51942,6 +51667,8 @@ class _CopyWithImpl$Input$UsersFilter<TRes>
           'primaryStationId': (primaryStationId as Input$UUIDFilter?),
         if (stripeCustomerId != _undefined)
           'stripeCustomerId': (stripeCustomerId as Input$StringFilter?),
+        if (phoneNumber != _undefined)
+          'phoneNumber': (phoneNumber as Input$StringFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$UsersFilter>?),
         if (or != _undefined) 'or': (or as List<Input$UsersFilter>?),
@@ -52030,6 +51757,14 @@ class _CopyWithImpl$Input$UsersFilter<TRes>
             local$stripeCustomerId, (e) => call(stripeCustomerId: e));
   }
 
+  CopyWith$Input$StringFilter<TRes> get phoneNumber {
+    final local$phoneNumber = _instance.phoneNumber;
+    return local$phoneNumber == null
+        ? CopyWith$Input$StringFilter.stub(_then(_instance))
+        : CopyWith$Input$StringFilter(
+            local$phoneNumber, (e) => call(phoneNumber: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -52083,6 +51818,7 @@ class _CopyWithStubImpl$Input$UsersFilter<TRes>
     Input$DatetimeFilter? updatedAt,
     Input$UUIDFilter? primaryStationId,
     Input$StringFilter? stripeCustomerId,
+    Input$StringFilter? phoneNumber,
     Input$IDFilter? nodeId,
     List<Input$UsersFilter>? and,
     List<Input$UsersFilter>? or,
@@ -52123,6 +51859,9 @@ class _CopyWithStubImpl$Input$UsersFilter<TRes>
   CopyWith$Input$StringFilter<TRes> get stripeCustomerId =>
       CopyWith$Input$StringFilter.stub(_res);
 
+  CopyWith$Input$StringFilter<TRes> get phoneNumber =>
+      CopyWith$Input$StringFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -52148,6 +51887,7 @@ class Input$UsersInsertInput {
     DateTime? updatedAt,
     String? primaryStationId,
     String? stripeCustomerId,
+    String? phoneNumber,
   }) =>
       Input$UsersInsertInput._({
         if (id != null) r'id': id,
@@ -52162,6 +51902,7 @@ class Input$UsersInsertInput {
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
         if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
+        if (phoneNumber != null) r'phoneNumber': phoneNumber,
       });
 
   Input$UsersInsertInput._(this._$data);
@@ -52219,6 +51960,10 @@ class Input$UsersInsertInput {
       final l$stripeCustomerId = data['stripeCustomerId'];
       result$data['stripeCustomerId'] = (l$stripeCustomerId as String?);
     }
+    if (data.containsKey('phoneNumber')) {
+      final l$phoneNumber = data['phoneNumber'];
+      result$data['phoneNumber'] = (l$phoneNumber as String?);
+    }
     return Input$UsersInsertInput._(result$data);
   }
 
@@ -52248,6 +51993,8 @@ class Input$UsersInsertInput {
   String? get primaryStationId => (_$data['primaryStationId'] as String?);
 
   String? get stripeCustomerId => (_$data['stripeCustomerId'] as String?);
+
+  String? get phoneNumber => (_$data['phoneNumber'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -52299,6 +52046,10 @@ class Input$UsersInsertInput {
     if (_$data.containsKey('stripeCustomerId')) {
       final l$stripeCustomerId = stripeCustomerId;
       result$data['stripeCustomerId'] = l$stripeCustomerId;
+    }
+    if (_$data.containsKey('phoneNumber')) {
+      final l$phoneNumber = phoneNumber;
+      result$data['phoneNumber'] = l$phoneNumber;
     }
     return result$data;
   }
@@ -52420,6 +52171,15 @@ class Input$UsersInsertInput {
     if (l$stripeCustomerId != lOther$stripeCustomerId) {
       return false;
     }
+    final l$phoneNumber = phoneNumber;
+    final lOther$phoneNumber = other.phoneNumber;
+    if (_$data.containsKey('phoneNumber') !=
+        other._$data.containsKey('phoneNumber')) {
+      return false;
+    }
+    if (l$phoneNumber != lOther$phoneNumber) {
+      return false;
+    }
     return true;
   }
 
@@ -52437,6 +52197,7 @@ class Input$UsersInsertInput {
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
     final l$stripeCustomerId = stripeCustomerId;
+    final l$phoneNumber = phoneNumber;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('did') ? l$did : const {},
@@ -52450,6 +52211,7 @@ class Input$UsersInsertInput {
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
       _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
+      _$data.containsKey('phoneNumber') ? l$phoneNumber : const {},
     ]);
   }
 }
@@ -52476,6 +52238,7 @@ abstract class CopyWith$Input$UsersInsertInput<TRes> {
     DateTime? updatedAt,
     String? primaryStationId,
     String? stripeCustomerId,
+    String? phoneNumber,
   });
 }
 
@@ -52505,6 +52268,7 @@ class _CopyWithImpl$Input$UsersInsertInput<TRes>
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
     Object? stripeCustomerId = _undefined,
+    Object? phoneNumber = _undefined,
   }) =>
       _then(Input$UsersInsertInput._({
         ..._instance._$data,
@@ -52523,6 +52287,7 @@ class _CopyWithImpl$Input$UsersInsertInput<TRes>
           'primaryStationId': (primaryStationId as String?),
         if (stripeCustomerId != _undefined)
           'stripeCustomerId': (stripeCustomerId as String?),
+        if (phoneNumber != _undefined) 'phoneNumber': (phoneNumber as String?),
       }));
 }
 
@@ -52545,6 +52310,7 @@ class _CopyWithStubImpl$Input$UsersInsertInput<TRes>
     DateTime? updatedAt,
     String? primaryStationId,
     String? stripeCustomerId,
+    String? phoneNumber,
   }) =>
       _res;
 }
@@ -52562,6 +52328,7 @@ class Input$UsersOrderBy {
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? primaryStationId,
     Enum$OrderByDirection? stripeCustomerId,
+    Enum$OrderByDirection? phoneNumber,
   }) =>
       Input$UsersOrderBy._({
         if (id != null) r'id': id,
@@ -52575,6 +52342,7 @@ class Input$UsersOrderBy {
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
         if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
+        if (phoneNumber != null) r'phoneNumber': phoneNumber,
       });
 
   Input$UsersOrderBy._(this._$data);
@@ -52647,6 +52415,12 @@ class Input$UsersOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$stripeCustomerId as String));
     }
+    if (data.containsKey('phoneNumber')) {
+      final l$phoneNumber = data['phoneNumber'];
+      result$data['phoneNumber'] = l$phoneNumber == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$phoneNumber as String));
+    }
     return Input$UsersOrderBy._(result$data);
   }
 
@@ -52682,6 +52456,9 @@ class Input$UsersOrderBy {
 
   Enum$OrderByDirection? get stripeCustomerId =>
       (_$data['stripeCustomerId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get phoneNumber =>
+      (_$data['phoneNumber'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -52744,6 +52521,12 @@ class Input$UsersOrderBy {
       result$data['stripeCustomerId'] = l$stripeCustomerId == null
           ? null
           : toJson$Enum$OrderByDirection(l$stripeCustomerId);
+    }
+    if (_$data.containsKey('phoneNumber')) {
+      final l$phoneNumber = phoneNumber;
+      result$data['phoneNumber'] = l$phoneNumber == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$phoneNumber);
     }
     return result$data;
   }
@@ -52856,6 +52639,15 @@ class Input$UsersOrderBy {
     if (l$stripeCustomerId != lOther$stripeCustomerId) {
       return false;
     }
+    final l$phoneNumber = phoneNumber;
+    final lOther$phoneNumber = other.phoneNumber;
+    if (_$data.containsKey('phoneNumber') !=
+        other._$data.containsKey('phoneNumber')) {
+      return false;
+    }
+    if (l$phoneNumber != lOther$phoneNumber) {
+      return false;
+    }
     return true;
   }
 
@@ -52872,6 +52664,7 @@ class Input$UsersOrderBy {
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
     final l$stripeCustomerId = stripeCustomerId;
+    final l$phoneNumber = phoneNumber;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('did') ? l$did : const {},
@@ -52884,6 +52677,7 @@ class Input$UsersOrderBy {
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
       _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
+      _$data.containsKey('phoneNumber') ? l$phoneNumber : const {},
     ]);
   }
 }
@@ -52909,6 +52703,7 @@ abstract class CopyWith$Input$UsersOrderBy<TRes> {
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? primaryStationId,
     Enum$OrderByDirection? stripeCustomerId,
+    Enum$OrderByDirection? phoneNumber,
   });
 }
 
@@ -52937,6 +52732,7 @@ class _CopyWithImpl$Input$UsersOrderBy<TRes>
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
     Object? stripeCustomerId = _undefined,
+    Object? phoneNumber = _undefined,
   }) =>
       _then(Input$UsersOrderBy._({
         ..._instance._$data,
@@ -52957,6 +52753,8 @@ class _CopyWithImpl$Input$UsersOrderBy<TRes>
           'primaryStationId': (primaryStationId as Enum$OrderByDirection?),
         if (stripeCustomerId != _undefined)
           'stripeCustomerId': (stripeCustomerId as Enum$OrderByDirection?),
+        if (phoneNumber != _undefined)
+          'phoneNumber': (phoneNumber as Enum$OrderByDirection?),
       }));
 }
 
@@ -52978,6 +52776,7 @@ class _CopyWithStubImpl$Input$UsersOrderBy<TRes>
     Enum$OrderByDirection? updatedAt,
     Enum$OrderByDirection? primaryStationId,
     Enum$OrderByDirection? stripeCustomerId,
+    Enum$OrderByDirection? phoneNumber,
   }) =>
       _res;
 }
@@ -54061,6 +53860,7 @@ class Input$UsersUpdateInput {
     DateTime? updatedAt,
     String? primaryStationId,
     String? stripeCustomerId,
+    String? phoneNumber,
   }) =>
       Input$UsersUpdateInput._({
         if (id != null) r'id': id,
@@ -54075,6 +53875,7 @@ class Input$UsersUpdateInput {
         if (updatedAt != null) r'updatedAt': updatedAt,
         if (primaryStationId != null) r'primaryStationId': primaryStationId,
         if (stripeCustomerId != null) r'stripeCustomerId': stripeCustomerId,
+        if (phoneNumber != null) r'phoneNumber': phoneNumber,
       });
 
   Input$UsersUpdateInput._(this._$data);
@@ -54132,6 +53933,10 @@ class Input$UsersUpdateInput {
       final l$stripeCustomerId = data['stripeCustomerId'];
       result$data['stripeCustomerId'] = (l$stripeCustomerId as String?);
     }
+    if (data.containsKey('phoneNumber')) {
+      final l$phoneNumber = data['phoneNumber'];
+      result$data['phoneNumber'] = (l$phoneNumber as String?);
+    }
     return Input$UsersUpdateInput._(result$data);
   }
 
@@ -54161,6 +53966,8 @@ class Input$UsersUpdateInput {
   String? get primaryStationId => (_$data['primaryStationId'] as String?);
 
   String? get stripeCustomerId => (_$data['stripeCustomerId'] as String?);
+
+  String? get phoneNumber => (_$data['phoneNumber'] as String?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -54212,6 +54019,10 @@ class Input$UsersUpdateInput {
     if (_$data.containsKey('stripeCustomerId')) {
       final l$stripeCustomerId = stripeCustomerId;
       result$data['stripeCustomerId'] = l$stripeCustomerId;
+    }
+    if (_$data.containsKey('phoneNumber')) {
+      final l$phoneNumber = phoneNumber;
+      result$data['phoneNumber'] = l$phoneNumber;
     }
     return result$data;
   }
@@ -54333,6 +54144,15 @@ class Input$UsersUpdateInput {
     if (l$stripeCustomerId != lOther$stripeCustomerId) {
       return false;
     }
+    final l$phoneNumber = phoneNumber;
+    final lOther$phoneNumber = other.phoneNumber;
+    if (_$data.containsKey('phoneNumber') !=
+        other._$data.containsKey('phoneNumber')) {
+      return false;
+    }
+    if (l$phoneNumber != lOther$phoneNumber) {
+      return false;
+    }
     return true;
   }
 
@@ -54350,6 +54170,7 @@ class Input$UsersUpdateInput {
     final l$updatedAt = updatedAt;
     final l$primaryStationId = primaryStationId;
     final l$stripeCustomerId = stripeCustomerId;
+    final l$phoneNumber = phoneNumber;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('did') ? l$did : const {},
@@ -54363,6 +54184,7 @@ class Input$UsersUpdateInput {
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
       _$data.containsKey('primaryStationId') ? l$primaryStationId : const {},
       _$data.containsKey('stripeCustomerId') ? l$stripeCustomerId : const {},
+      _$data.containsKey('phoneNumber') ? l$phoneNumber : const {},
     ]);
   }
 }
@@ -54389,6 +54211,7 @@ abstract class CopyWith$Input$UsersUpdateInput<TRes> {
     DateTime? updatedAt,
     String? primaryStationId,
     String? stripeCustomerId,
+    String? phoneNumber,
   });
 }
 
@@ -54418,6 +54241,7 @@ class _CopyWithImpl$Input$UsersUpdateInput<TRes>
     Object? updatedAt = _undefined,
     Object? primaryStationId = _undefined,
     Object? stripeCustomerId = _undefined,
+    Object? phoneNumber = _undefined,
   }) =>
       _then(Input$UsersUpdateInput._({
         ..._instance._$data,
@@ -54436,6 +54260,7 @@ class _CopyWithImpl$Input$UsersUpdateInput<TRes>
           'primaryStationId': (primaryStationId as String?),
         if (stripeCustomerId != _undefined)
           'stripeCustomerId': (stripeCustomerId as String?),
+        if (phoneNumber != _undefined) 'phoneNumber': (phoneNumber as String?),
       }));
 }
 
@@ -54458,6 +54283,7 @@ class _CopyWithStubImpl$Input$UsersUpdateInput<TRes>
     DateTime? updatedAt,
     String? primaryStationId,
     String? stripeCustomerId,
+    String? phoneNumber,
   }) =>
       _res;
 }
@@ -55274,7 +55100,9 @@ Enum$__DirectiveLocation fromJson$Enum$__DirectiveLocation(String value) {
 
 const possibleTypesMap = <String, Set<String>>{
   'Node': {
+    'Address',
     'DeliveryLocation',
+    'DeliveryPeriod',
     'Navigation',
     'NavigationItems',
     'Notifications',
@@ -55297,9 +55125,8 @@ const possibleTypesMap = <String, Set<String>>{
     'ShoppingCartItems',
     'ShoppingCarts',
     'Site',
+    'SiteDeliveryLocation',
     'SiteType',
-    'StationDeliveryLocations',
-    'StationDeliveryLocationTimeslots',
     'Stations',
     'UserOrganization',
     'UserOrganizationRoles',

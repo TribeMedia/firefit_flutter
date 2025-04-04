@@ -1,5 +1,6 @@
 import '../../commerce/graphql/orders.graphql.dart';
 import '../../commerce/graphql/products.graphql.dart';
+import '../../common/graphql/address.graphql.dart';
 import '../../schema.graphql.dart';
 import '../../stations/graphql/stations.graphql.dart';
 import 'dart:async';
@@ -1283,6 +1284,7 @@ const documentNodeFragmentUser = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
@@ -2703,6 +2705,7 @@ const fragmentDefinitionUserStation = FragmentDefinitionNode(
 const documentNodeFragmentUserStation = DocumentNode(definitions: [
   fragmentDefinitionUserStation,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 
 extension ClientExtension$Fragment$UserStation on graphql.GraphQLClient {
@@ -3339,6 +3342,7 @@ const documentNodeQueryUserCollection = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
@@ -4333,6 +4337,7 @@ const documentNodeQueryUser = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
@@ -5092,6 +5097,7 @@ const documentNodeMutationCreateUser = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
@@ -5782,6 +5788,7 @@ const documentNodeMutationDeleteUser = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,
@@ -6542,6 +6549,7 @@ const documentNodeMutationAddUserToStation = DocumentNode(definitions: [
   ),
   fragmentDefinitionUserStation,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 Mutation$AddUserToStation _parserFn$Mutation$AddUserToStation(
         Map<String, dynamic> data) =>
@@ -7311,6 +7319,7 @@ const documentNodeMutationRemoveUserFromStation = DocumentNode(definitions: [
   ),
   fragmentDefinitionUserStation,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
 ]);
 Mutation$RemoveUserFromStation _parserFn$Mutation$RemoveUserFromStation(
         Map<String, dynamic> data) =>
@@ -9617,6 +9626,7 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
   fragmentDefinitionUserRole,
   fragmentDefinitionRole,
   fragmentDefinitionStation,
+  fragmentDefinitionAddress,
   fragmentDefinitionUserStation,
   fragmentDefinitionShoppingCart,
   fragmentDefinitionShoppingCartItem,

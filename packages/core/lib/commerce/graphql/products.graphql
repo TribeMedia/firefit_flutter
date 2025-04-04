@@ -5,6 +5,7 @@ fragment Product on Products {
     name
     shortDescription
     longDescription
+    nutritionDetails
     photoUrl
     data
     createdAt

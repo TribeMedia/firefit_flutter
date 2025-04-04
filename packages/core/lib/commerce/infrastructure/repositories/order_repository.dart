@@ -335,4 +335,98 @@ class OrderRepository extends OrderRepositoryInterface {
       return fp.Left(Failure.unprocessableEntity(message: e.toString()));
     }
   }
+
+  @override
+  Future<fp.Either<Failure, List<OrderItem>>> createOrderItems({required List<Input$OrderItemsInsertInput> input}) async {
+    try {
+      final response = await graphqlClient.mutate$CreateOrderItems(
+        Options$Mutation$CreateOrderItems(
+          variables: Variables$Mutation$CreateOrderItems(input: input),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+
+      }
+
+      if (response.parsedData != null) {
+        return fp.Right(response.parsedData!.insertIntoOrderItemsCollection!.records);
+      }
+      return const fp.Left(Failure.empty());
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<fp.Either<Failure, List<DeliveryLocation>>> getSiteDeliveryLocations({
+    required String siteId,
+    required String deliveryPeriodId,
+  }) async {
+    try {
+      final response = await graphqlClient.query$StationWithSiteDeliveryLocationsForPeriod(
+        Options$Query$StationWithSiteDeliveryLocationsForPeriod(
+          variables: Variables$Query$StationWithSiteDeliveryLocationsForPeriod(
+              siteId: siteId,
+            deliveryPeriodId: deliveryPeriodId),
+          ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      final locations = <DeliveryLocation>[];
+      if (response.parsedData?.deliveryPeriodCollection != null && response.parsedData!.deliveryPeriodCollection!.edges.isNotEmpty) {
+        for (var edge in response.parsedData!.deliveryPeriodCollection!.edges) {
+          final deliveryPeriod = edge.node;
+          if (deliveryPeriod.deliveryLocationCollection?.edges.isNotEmpty == true) {
+            for (var deliveryLocationEdge in deliveryPeriod.deliveryLocationCollection!.edges) {
+              final deliveryLocation = deliveryLocationEdge.node;
+              locations.add(deliveryLocation);
+            }
+          }
+        }
+      }
+      return fp.Right(locations);
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<fp.Either<Failure, List<DeliveryPeriod>>> getDeliveryPeriods() async {
+    try {
+      final response = await graphqlClient.query$DeliveryPeriods(
+        Options$Query$DeliveryPeriods(
+          variables: Variables$Query$DeliveryPeriods(
+            filter: Input$DeliveryPeriodFilter(
+              isCurrent: Input$BooleanFilter(eq: true),
+            ),
+          ),
+        ),
+      );
+
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      if (response.parsedData != null && response.parsedData!.deliveryPeriodCollection != null) {
+        return fp.Right(response.parsedData!.deliveryPeriodCollection!.edges.map((e) => e.node).toList());
+      }
+      return const fp.Left(Failure.empty());
+    } catch (e) {
+      debugPrint('$e');
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
 }

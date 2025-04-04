@@ -243,7 +243,7 @@ class MenuScreen extends HookConsumerWidget {
       ref.read(processingItemProvider.notifier).state = item.id;
       ref.read(errorItemProvider.notifier).state = null;
 
-      cartNotifier.addProductToCart(item, 1);
+      cartNotifier.addProductToCart(product: item, quantity: 1);
       final res = ref.refresh(productCartProvider);
       res.whenData((value) {
         debugPrint('Cart updated: $value');

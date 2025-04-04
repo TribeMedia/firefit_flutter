@@ -23,7 +23,7 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.moments_in_love"
         // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        // For more information see: https://flutter.dev/to/review-gradle-config.
         minSdk = 21  // Setting explicit minSdk for connectivity_plus
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -33,8 +33,12 @@ android {
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Signing with the debug keys for now so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
+            
+            // Disable R8 completely
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
@@ -42,6 +46,8 @@ android {
 dependencies {
     // Add this line for Stripe support
     implementation("androidx.fragment:fragment:1.3.6")
+    // Add Stripe dependencies explicitly
+    implementation("com.stripe:stripe-android:20.25.8")
 }
 
 flutter {

@@ -184,6 +184,12 @@ class HomeContent extends HookConsumerWidget {
     );
   }
 
+  void _handleMenuTap(BuildContext context, Product product) {
+    debugPrint(
+        '🔍 Navigating to menu item: ${product.id}: ${product.name} ${product.shortDescription}');
+    context.go('/menu/item/${product.id}', extra: {'product': product});
+  }
+
   Widget _buildFeaturedMenuItems(
       BuildContext context, List<Product> featuredItems) {
     if (featuredItems.isEmpty) {
@@ -209,7 +215,7 @@ class HomeContent extends HookConsumerWidget {
           itemBuilder: (BuildContext context, int index) {
             final Product menuItem = featuredItems[index];
             return GestureDetector(
-              onTap: () => context.go('/menu/item/${menuItem.id}'),
+              onTap: () => _handleMenuTap(context, menuItem),
               child: Container(
                 height: 200,
                 decoration: BoxDecoration(

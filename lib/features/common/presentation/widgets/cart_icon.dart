@@ -1,5 +1,5 @@
-import 'package:firefit/features/commerce/presentation/providers/shopping_cart_notifier.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_badge.dart';
+import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -15,29 +15,33 @@ class CartIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartAsync = ref.watch(shoppingCartProvider);
+    final cartAsync = ref.watch(productCartProvider);
 
     return cartAsync.when(
       data: (model) => Stack(
         alignment: Alignment.center,
         children: [
           IconButton(
-            icon: count > 0 ? Badge(label: Text(count.toString()), child: Icon(
-                Icons.shopping_cart,
-            )) : Icon(
-                Icons.shopping_cart,
-            ),
+            icon: count > 0
+                ? Badge(
+                    label: Text(count.toString()),
+                    child: Icon(
+                      Icons.shopping_cart,
+                    ))
+                : Icon(
+                    Icons.shopping_cart,
+                  ),
             onPressed: () {
               if (onPressed != null) {
                 onPressed!();
               }
             },
           ),
-          if (model.items.isNotEmpty)
+          if (model.shoppingCartItems.isNotEmpty)
             Positioned(
               right: 8,
               top: 8,
-              child: CartBadge(itemCount: model.items.length),
+              child: CartBadge(itemCount: model.shoppingCartItems.length),
             ),
         ],
       ),

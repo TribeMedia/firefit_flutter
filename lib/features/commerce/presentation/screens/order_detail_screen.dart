@@ -38,7 +38,7 @@ class OrderDetailScreen extends ConsumerWidget {
           ),
 
           // Pinned bottom pane showing order amount totals
-          _buildOrderTotals(context, ref, orderTotals, order.deliveryZip!),
+          _buildOrderTotals(context, ref, orderTotals, order.deliveryLocation!.address.zip),
         ],
       ),
     );

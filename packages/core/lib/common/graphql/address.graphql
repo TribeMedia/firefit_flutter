@@ -1,0 +1,55 @@
+
+fragment Address on Address {
+  id
+  name
+  address
+  address1
+  city
+  state
+  zip
+  createdAt
+  latitude
+  longitude
+}
+
+query Address($id: UUID!) {
+  addressCollection(filter: { id: { eq: $id } }) {
+    edges {
+      node {
+        ...Address
+      }
+    }
+  }
+}
+
+query AddressCollection(
+  $first: Int
+  $last: Int
+  $before: Cursor
+  $after: Cursor
+  $offset: Int
+  $filter: AddressFilter
+  $orderBy: [AddressOrderBy!]
+) {
+  addressCollection(
+    first: $first
+    last: $last
+    before: $before
+    after: $after
+    offset: $offset
+    filter: $filter
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        ...Address
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}

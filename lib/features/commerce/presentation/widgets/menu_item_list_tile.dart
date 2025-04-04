@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:firefit/features/commerce/presentation/widgets/nutrition_info_widget.dart';
 //import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
 //import 'package:firefit/features/meals/presentation/widgets/nutrition_info_widget.dart.old';
 import 'package:flutter/material.dart';
@@ -67,11 +68,11 @@ class MenuItemListTile extends StatelessWidget {
                   'Nutrition Information',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                /*SizedBox(height: 8),
-                if (menuItem.nutrition != null)
-                  NutritionInfoWidget(nutrition: menuItem.nutrition!)
+                SizedBox(height: 8),
+                if (menuItem.nutritionDetails != null)
+                  NutritionInfoWidget(nutrition: menuItem.nutritionDetails!)
                 else
-                  Text('Nutrition information not available'),*/
+                  Text('Nutrition information not available'),
               ],
             ),
           ),

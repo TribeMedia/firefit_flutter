@@ -13,6 +13,7 @@ class Fragment$Product {
     required this.name,
     this.shortDescription,
     this.longDescription,
+    this.nutritionDetails,
     this.photoUrl,
     this.data,
     required this.createdAt,
@@ -30,6 +31,7 @@ class Fragment$Product {
     final l$name = json['name'];
     final l$shortDescription = json['shortDescription'];
     final l$longDescription = json['longDescription'];
+    final l$nutritionDetails = json['nutritionDetails'];
     final l$photoUrl = json['photoUrl'];
     final l$data = json['data'];
     final l$createdAt = json['createdAt'];
@@ -45,6 +47,7 @@ class Fragment$Product {
       name: (l$name as String),
       shortDescription: (l$shortDescription as String?),
       longDescription: (l$longDescription as String?),
+      nutritionDetails: (l$nutritionDetails as String?),
       photoUrl: (l$photoUrl as String?),
       data: l$data == null ? null : jsonFieldFromJson(l$data),
       createdAt: DateTime.parse((l$createdAt as String)),
@@ -67,6 +70,8 @@ class Fragment$Product {
   final String? shortDescription;
 
   final String? longDescription;
+
+  final String? nutritionDetails;
 
   final String? photoUrl;
 
@@ -98,6 +103,8 @@ class Fragment$Product {
     _resultData['shortDescription'] = l$shortDescription;
     final l$longDescription = longDescription;
     _resultData['longDescription'] = l$longDescription;
+    final l$nutritionDetails = nutritionDetails;
+    _resultData['nutritionDetails'] = l$nutritionDetails;
     final l$photoUrl = photoUrl;
     _resultData['photoUrl'] = l$photoUrl;
     final l$data = data;
@@ -126,6 +133,7 @@ class Fragment$Product {
     final l$name = name;
     final l$shortDescription = shortDescription;
     final l$longDescription = longDescription;
+    final l$nutritionDetails = nutritionDetails;
     final l$photoUrl = photoUrl;
     final l$data = data;
     final l$createdAt = createdAt;
@@ -141,6 +149,7 @@ class Fragment$Product {
       l$name,
       l$shortDescription,
       l$longDescription,
+      l$nutritionDetails,
       l$photoUrl,
       l$data,
       l$createdAt,
@@ -184,6 +193,11 @@ class Fragment$Product {
     final l$longDescription = longDescription;
     final lOther$longDescription = other.longDescription;
     if (l$longDescription != lOther$longDescription) {
+      return false;
+    }
+    final l$nutritionDetails = nutritionDetails;
+    final lOther$nutritionDetails = other.nutritionDetails;
+    if (l$nutritionDetails != lOther$nutritionDetails) {
       return false;
     }
     final l$photoUrl = photoUrl;
@@ -258,6 +272,7 @@ abstract class CopyWith$Fragment$Product<TRes> {
     String? name,
     String? shortDescription,
     String? longDescription,
+    String? nutritionDetails,
     String? photoUrl,
     Map<String, dynamic>? data,
     DateTime? createdAt,
@@ -289,6 +304,7 @@ class _CopyWithImpl$Fragment$Product<TRes>
     Object? name = _undefined,
     Object? shortDescription = _undefined,
     Object? longDescription = _undefined,
+    Object? nutritionDetails = _undefined,
     Object? photoUrl = _undefined,
     Object? data = _undefined,
     Object? createdAt = _undefined,
@@ -313,6 +329,9 @@ class _CopyWithImpl$Fragment$Product<TRes>
         longDescription: longDescription == _undefined
             ? _instance.longDescription
             : (longDescription as String?),
+        nutritionDetails: nutritionDetails == _undefined
+            ? _instance.nutritionDetails
+            : (nutritionDetails as String?),
         photoUrl:
             photoUrl == _undefined ? _instance.photoUrl : (photoUrl as String?),
         data: data == _undefined
@@ -352,6 +371,7 @@ class _CopyWithStubImpl$Fragment$Product<TRes>
     String? name,
     String? shortDescription,
     String? longDescription,
+    String? nutritionDetails,
     String? photoUrl,
     Map<String, dynamic>? data,
     DateTime? createdAt,
@@ -404,6 +424,13 @@ const fragmentDefinitionProduct = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'longDescription'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'nutritionDetails'),
       alias: null,
       arguments: [],
       directives: [],

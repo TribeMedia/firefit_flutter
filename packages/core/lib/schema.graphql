@@ -1,3 +1,156 @@
+type Address implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  name: String!
+  address: String!
+  address1: String
+  city: String!
+  state: String!
+  zip: String!
+  createdAt: Datetime!
+  latitude: Float
+  longitude: Float
+  stationsCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: StationsFilter
+    # Sort order to apply to the collection
+    orderBy: [StationsOrderBy!]
+  ): StationsConnection
+  deliveryLocationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: DeliveryLocationFilter
+    # Sort order to apply to the collection
+    orderBy: [DeliveryLocationOrderBy!]
+  ): DeliveryLocationConnection
+  siteCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: SiteFilter
+    # Sort order to apply to the collection
+    orderBy: [SiteOrderBy!]
+  ): SiteConnection
+}
+
+type AddressConnection {
+  edges: [AddressEdge!]!
+  pageInfo: PageInfo!
+}
+
+type AddressDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Address!]!
+}
+
+type AddressEdge {
+  cursor: String!
+  node: Address!
+}
+
+input AddressFilter {
+  id: UUIDFilter
+  name: StringFilter
+  address: StringFilter
+  address1: StringFilter
+  city: StringFilter
+  state: StringFilter
+  zip: StringFilter
+  createdAt: DatetimeFilter
+  latitude: FloatFilter
+  longitude: FloatFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [AddressFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [AddressFilter!]
+  # Negates a filter
+  not: AddressFilter
+}
+
+input AddressInsertInput {
+  id: UUID
+  name: String
+  address: String
+  address1: String
+  city: String
+  state: String
+  zip: String
+  createdAt: Datetime
+  latitude: Float
+  longitude: Float
+}
+
+type AddressInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Address!]!
+}
+
+input AddressOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  address: OrderByDirection
+  address1: OrderByDirection
+  city: OrderByDirection
+  state: OrderByDirection
+  zip: OrderByDirection
+  createdAt: OrderByDirection
+  latitude: OrderByDirection
+  longitude: OrderByDirection
+}
+
+input AddressUpdateInput {
+  id: UUID
+  name: String
+  address: String
+  address1: String
+  city: String
+  state: String
+  zip: String
+  createdAt: Datetime
+  latitude: Float
+  longitude: Float
+}
+
+type AddressUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [Address!]!
+}
+
 # A high precision floating point value represented as a string
 scalar BigFloat
 
@@ -118,18 +271,15 @@ type DeliveryLocation implements Node {
   id: UUID!
   name: String!
   createdAt: Datetime!
-  address: String!
-  address1: String
-  city: String!
-  state: String!
-  zip: String!
-  latitude: Float
-  longitude: Float
   startOpenTime: Opaque
   endOpenTime: Opaque
   providerId: UUID!
+  deliveryPeriodId: UUID
+  addressId: UUID!
+  deliveryPeriod: DeliveryPeriod
+  address: Address!
   provider: Provider!
-  stationDeliveryLocationsCollection(
+  siteDeliveryLocationCollection(
     # Query the first `n` records in the collection
     first: Int
     # Query the last `n` records in the collection
@@ -141,10 +291,26 @@ type DeliveryLocation implements Node {
     # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
     offset: Int
     # Filters to apply to the results set when querying from the collection
-    filter: StationDeliveryLocationsFilter
+    filter: SiteDeliveryLocationFilter
     # Sort order to apply to the collection
-    orderBy: [StationDeliveryLocationsOrderBy!]
-  ): StationDeliveryLocationsConnection
+    orderBy: [SiteDeliveryLocationOrderBy!]
+  ): SiteDeliveryLocationConnection
+  ordersCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: OrdersFilter
+    # Sort order to apply to the collection
+    orderBy: [OrdersOrderBy!]
+  ): OrdersConnection
 }
 
 type DeliveryLocationConnection {
@@ -168,16 +334,11 @@ input DeliveryLocationFilter {
   id: UUIDFilter
   name: StringFilter
   createdAt: DatetimeFilter
-  address: StringFilter
-  address1: StringFilter
-  city: StringFilter
-  state: StringFilter
-  zip: StringFilter
-  latitude: FloatFilter
-  longitude: FloatFilter
   startOpenTime: OpaqueFilter
   endOpenTime: OpaqueFilter
   providerId: UUIDFilter
+  deliveryPeriodId: UUIDFilter
+  addressId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [DeliveryLocationFilter!]
@@ -191,16 +352,11 @@ input DeliveryLocationInsertInput {
   id: UUID
   name: String
   createdAt: Datetime
-  address: String
-  address1: String
-  city: String
-  state: String
-  zip: String
-  latitude: Float
-  longitude: Float
   startOpenTime: Opaque
   endOpenTime: Opaque
   providerId: UUID
+  deliveryPeriodId: UUID
+  addressId: UUID
 }
 
 type DeliveryLocationInsertResponse {
@@ -214,32 +370,22 @@ input DeliveryLocationOrderBy {
   id: OrderByDirection
   name: OrderByDirection
   createdAt: OrderByDirection
-  address: OrderByDirection
-  address1: OrderByDirection
-  city: OrderByDirection
-  state: OrderByDirection
-  zip: OrderByDirection
-  latitude: OrderByDirection
-  longitude: OrderByDirection
   startOpenTime: OrderByDirection
   endOpenTime: OrderByDirection
   providerId: OrderByDirection
+  deliveryPeriodId: OrderByDirection
+  addressId: OrderByDirection
 }
 
 input DeliveryLocationUpdateInput {
   id: UUID
   name: String
   createdAt: Datetime
-  address: String
-  address1: String
-  city: String
-  state: String
-  zip: String
-  latitude: Float
-  longitude: Float
   startOpenTime: Opaque
   endOpenTime: Opaque
   providerId: UUID
+  deliveryPeriodId: UUID
+  addressId: UUID
 }
 
 type DeliveryLocationUpdateResponse {
@@ -247,6 +393,107 @@ type DeliveryLocationUpdateResponse {
   affectedCount: Int!
   # Array of records impacted by the mutation
   records: [DeliveryLocation!]!
+}
+
+type DeliveryPeriod implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  title: String
+  startDate: Datetime!
+  endDate: Datetime!
+  createdAt: Datetime!
+  isCurrent: Boolean!
+  deliveryLocationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: DeliveryLocationFilter
+    # Sort order to apply to the collection
+    orderBy: [DeliveryLocationOrderBy!]
+  ): DeliveryLocationConnection
+}
+
+type DeliveryPeriodConnection {
+  edges: [DeliveryPeriodEdge!]!
+  pageInfo: PageInfo!
+}
+
+type DeliveryPeriodDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [DeliveryPeriod!]!
+}
+
+type DeliveryPeriodEdge {
+  cursor: String!
+  node: DeliveryPeriod!
+}
+
+input DeliveryPeriodFilter {
+  id: UUIDFilter
+  title: StringFilter
+  startDate: DatetimeFilter
+  endDate: DatetimeFilter
+  createdAt: DatetimeFilter
+  isCurrent: BooleanFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [DeliveryPeriodFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [DeliveryPeriodFilter!]
+  # Negates a filter
+  not: DeliveryPeriodFilter
+}
+
+input DeliveryPeriodInsertInput {
+  id: UUID
+  title: String
+  startDate: Datetime
+  endDate: Datetime
+  createdAt: Datetime
+  isCurrent: Boolean
+}
+
+type DeliveryPeriodInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [DeliveryPeriod!]!
+}
+
+input DeliveryPeriodOrderBy {
+  id: OrderByDirection
+  title: OrderByDirection
+  startDate: OrderByDirection
+  endDate: OrderByDirection
+  createdAt: OrderByDirection
+  isCurrent: OrderByDirection
+}
+
+input DeliveryPeriodUpdateInput {
+  id: UUID
+  title: String
+  startDate: Datetime
+  endDate: Datetime
+  createdAt: Datetime
+  isCurrent: Boolean
+}
+
+type DeliveryPeriodUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [DeliveryPeriod!]!
 }
 
 enum FilterIs {
@@ -306,6 +553,13 @@ scalar JSON
 
 # The root type for creating and mutating data
 type Mutation {
+  # Deletes zero or more records from the `Address` collection
+  deleteFromAddressCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: AddressFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): AddressDeleteResponse!
   # Deletes zero or more records from the `DeliveryLocation` collection
   deleteFromDeliveryLocationCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -313,6 +567,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): DeliveryLocationDeleteResponse!
+  # Deletes zero or more records from the `DeliveryPeriod` collection
+  deleteFromDeliveryPeriodCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: DeliveryPeriodFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): DeliveryPeriodDeleteResponse!
   # Deletes zero or more records from the `Navigation` collection
   deleteFromNavigationCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -467,6 +728,13 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): SiteDeleteResponse!
+  # Deletes zero or more records from the `SiteDeliveryLocation` collection
+  deleteFromSiteDeliveryLocationCollection(
+    # Restricts the mutation's impact to records matching the criteria
+    filter: SiteDeliveryLocationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): SiteDeliveryLocationDeleteResponse!
   # Deletes zero or more records from the `SiteType` collection
   deleteFromSiteTypeCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -474,20 +742,6 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): SiteTypeDeleteResponse!
-  # Deletes zero or more records from the `StationDeliveryLocationTimeslots` collection
-  deleteFromStationDeliveryLocationTimeslotsCollection(
-    # Restricts the mutation's impact to records matching the criteria
-    filter: StationDeliveryLocationTimeslotsFilter
-    # The maximum number of records in the collection permitted to be affected
-    atMost: Int! = 1
-  ): StationDeliveryLocationTimeslotsDeleteResponse!
-  # Deletes zero or more records from the `StationDeliveryLocations` collection
-  deleteFromStationDeliveryLocationsCollection(
-    # Restricts the mutation's impact to records matching the criteria
-    filter: StationDeliveryLocationsFilter
-    # The maximum number of records in the collection permitted to be affected
-    atMost: Int! = 1
-  ): StationDeliveryLocationsDeleteResponse!
   # Deletes zero or more records from the `Stations` collection
   deleteFromStationsCollection(
     # Restricts the mutation's impact to records matching the criteria
@@ -537,10 +791,18 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): UsersDeleteResponse!
+  # Adds one or more `Address` records to the collection
+  insertIntoAddressCollection(
+    objects: [AddressInsertInput!]!
+  ): AddressInsertResponse
   # Adds one or more `DeliveryLocation` records to the collection
   insertIntoDeliveryLocationCollection(
     objects: [DeliveryLocationInsertInput!]!
   ): DeliveryLocationInsertResponse
+  # Adds one or more `DeliveryPeriod` records to the collection
+  insertIntoDeliveryPeriodCollection(
+    objects: [DeliveryPeriodInsertInput!]!
+  ): DeliveryPeriodInsertResponse
   # Adds one or more `Navigation` records to the collection
   insertIntoNavigationCollection(
     objects: [NavigationInsertInput!]!
@@ -625,18 +887,14 @@ type Mutation {
   ): ShoppingCartsInsertResponse
   # Adds one or more `Site` records to the collection
   insertIntoSiteCollection(objects: [SiteInsertInput!]!): SiteInsertResponse
+  # Adds one or more `SiteDeliveryLocation` records to the collection
+  insertIntoSiteDeliveryLocationCollection(
+    objects: [SiteDeliveryLocationInsertInput!]!
+  ): SiteDeliveryLocationInsertResponse
   # Adds one or more `SiteType` records to the collection
   insertIntoSiteTypeCollection(
     objects: [SiteTypeInsertInput!]!
   ): SiteTypeInsertResponse
-  # Adds one or more `StationDeliveryLocationTimeslots` records to the collection
-  insertIntoStationDeliveryLocationTimeslotsCollection(
-    objects: [StationDeliveryLocationTimeslotsInsertInput!]!
-  ): StationDeliveryLocationTimeslotsInsertResponse
-  # Adds one or more `StationDeliveryLocations` records to the collection
-  insertIntoStationDeliveryLocationsCollection(
-    objects: [StationDeliveryLocationsInsertInput!]!
-  ): StationDeliveryLocationsInsertResponse
   # Adds one or more `Stations` records to the collection
   insertIntoStationsCollection(
     objects: [StationsInsertInput!]!
@@ -663,6 +921,15 @@ type Mutation {
   ): UserStationsInsertResponse
   # Adds one or more `Users` records to the collection
   insertIntoUsersCollection(objects: [UsersInsertInput!]!): UsersInsertResponse
+  # Updates zero or more records in the `Address` collection
+  updateAddressCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: AddressUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: AddressFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): AddressUpdateResponse!
   # Updates zero or more records in the `DeliveryLocation` collection
   updateDeliveryLocationCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -672,6 +939,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): DeliveryLocationUpdateResponse!
+  # Updates zero or more records in the `DeliveryPeriod` collection
+  updateDeliveryPeriodCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: DeliveryPeriodUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: DeliveryPeriodFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): DeliveryPeriodUpdateResponse!
   # Updates zero or more records in the `Navigation` collection
   updateNavigationCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -870,6 +1146,15 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): SiteUpdateResponse!
+  # Updates zero or more records in the `SiteDeliveryLocation` collection
+  updateSiteDeliveryLocationCollection(
+    # Fields that are set will be updated for all records matching the `filter`
+    set: SiteDeliveryLocationUpdateInput!
+    # Restricts the mutation's impact to records matching the criteria
+    filter: SiteDeliveryLocationFilter
+    # The maximum number of records in the collection permitted to be affected
+    atMost: Int! = 1
+  ): SiteDeliveryLocationUpdateResponse!
   # Updates zero or more records in the `SiteType` collection
   updateSiteTypeCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -879,24 +1164,6 @@ type Mutation {
     # The maximum number of records in the collection permitted to be affected
     atMost: Int! = 1
   ): SiteTypeUpdateResponse!
-  # Updates zero or more records in the `StationDeliveryLocationTimeslots` collection
-  updateStationDeliveryLocationTimeslotsCollection(
-    # Fields that are set will be updated for all records matching the `filter`
-    set: StationDeliveryLocationTimeslotsUpdateInput!
-    # Restricts the mutation's impact to records matching the criteria
-    filter: StationDeliveryLocationTimeslotsFilter
-    # The maximum number of records in the collection permitted to be affected
-    atMost: Int! = 1
-  ): StationDeliveryLocationTimeslotsUpdateResponse!
-  # Updates zero or more records in the `StationDeliveryLocations` collection
-  updateStationDeliveryLocationsCollection(
-    # Fields that are set will be updated for all records matching the `filter`
-    set: StationDeliveryLocationsUpdateInput!
-    # Restricts the mutation's impact to records matching the criteria
-    filter: StationDeliveryLocationsFilter
-    # The maximum number of records in the collection permitted to be affected
-    atMost: Int! = 1
-  ): StationDeliveryLocationsUpdateResponse!
   # Updates zero or more records in the `Stations` collection
   updateStationsCollection(
     # Fields that are set will be updated for all records matching the `filter`
@@ -1509,22 +1776,15 @@ type Orders implements Node {
   id: UUID!
   userId: UUID!
   createdAt: Datetime!
-  scheduledDeliveryAt: Datetime
   orderStatus: OrderStatus!
-  deliveryAddress: String
-  deliveryCity: String
-  deliveryZip: String
-  deliveryLocationName: String
-  deliveryAddress1: String
   updatedAt: Datetime
   notes: String
-  deliveryLat: Float
-  deliveryLong: Float
   subtotal: BigFloat
   tax: BigFloat
   total: BigFloat
-  deliveryState: String
+  deliveryLocationId: UUID
   user: Users!
+  deliveryLocation: DeliveryLocation
   orderTransactionsCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -1596,21 +1856,13 @@ input OrdersFilter {
   id: UUIDFilter
   userId: UUIDFilter
   createdAt: DatetimeFilter
-  scheduledDeliveryAt: DatetimeFilter
   orderStatus: OrderStatusFilter
-  deliveryAddress: StringFilter
-  deliveryCity: StringFilter
-  deliveryZip: StringFilter
-  deliveryLocationName: StringFilter
-  deliveryAddress1: StringFilter
   updatedAt: DatetimeFilter
   notes: StringFilter
-  deliveryLat: FloatFilter
-  deliveryLong: FloatFilter
   subtotal: BigFloatFilter
   tax: BigFloatFilter
   total: BigFloatFilter
-  deliveryState: StringFilter
+  deliveryLocationId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [OrdersFilter!]
@@ -1624,21 +1876,13 @@ input OrdersInsertInput {
   id: UUID
   userId: UUID
   createdAt: Datetime
-  scheduledDeliveryAt: Datetime
   orderStatus: OrderStatus
-  deliveryAddress: String
-  deliveryCity: String
-  deliveryZip: String
-  deliveryLocationName: String
-  deliveryAddress1: String
   updatedAt: Datetime
   notes: String
-  deliveryLat: Float
-  deliveryLong: Float
   subtotal: BigFloat
   tax: BigFloat
   total: BigFloat
-  deliveryState: String
+  deliveryLocationId: UUID
 }
 
 type OrdersInsertResponse {
@@ -1652,21 +1896,13 @@ input OrdersOrderBy {
   id: OrderByDirection
   userId: OrderByDirection
   createdAt: OrderByDirection
-  scheduledDeliveryAt: OrderByDirection
   orderStatus: OrderByDirection
-  deliveryAddress: OrderByDirection
-  deliveryCity: OrderByDirection
-  deliveryZip: OrderByDirection
-  deliveryLocationName: OrderByDirection
-  deliveryAddress1: OrderByDirection
   updatedAt: OrderByDirection
   notes: OrderByDirection
-  deliveryLat: OrderByDirection
-  deliveryLong: OrderByDirection
   subtotal: OrderByDirection
   tax: OrderByDirection
   total: OrderByDirection
-  deliveryState: OrderByDirection
+  deliveryLocationId: OrderByDirection
 }
 
 enum OrderStatus {
@@ -1691,21 +1927,13 @@ input OrdersUpdateInput {
   id: UUID
   userId: UUID
   createdAt: Datetime
-  scheduledDeliveryAt: Datetime
   orderStatus: OrderStatus
-  deliveryAddress: String
-  deliveryCity: String
-  deliveryZip: String
-  deliveryLocationName: String
-  deliveryAddress1: String
   updatedAt: Datetime
   notes: String
-  deliveryLat: Float
-  deliveryLong: Float
   subtotal: BigFloat
   tax: BigFloat
   total: BigFloat
-  deliveryState: String
+  deliveryLocationId: UUID
 }
 
 type OrdersUpdateResponse {
@@ -2388,6 +2616,7 @@ type Products implements Node {
   unit: String
   instructions: String
   stripeProductId: String
+  nutritionDetails: String
   productType: ProductTypes
   shoppingCartItemsCollection(
     # Query the first `n` records in the collection
@@ -2470,6 +2699,7 @@ input ProductsFilter {
   unit: StringFilter
   instructions: StringFilter
   stripeProductId: StringFilter
+  nutritionDetails: StringFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [ProductsFilter!]
@@ -2493,6 +2723,7 @@ input ProductsInsertInput {
   unit: String
   instructions: String
   stripeProductId: String
+  nutritionDetails: String
 }
 
 type ProductsInsertResponse {
@@ -2515,6 +2746,7 @@ input ProductsOrderBy {
   unit: OrderByDirection
   instructions: OrderByDirection
   stripeProductId: OrderByDirection
+  nutritionDetails: OrderByDirection
 }
 
 input ProductsUpdateInput {
@@ -2531,6 +2763,7 @@ input ProductsUpdateInput {
   unit: String
   instructions: String
   stripeProductId: String
+  nutritionDetails: String
 }
 
 type ProductsUpdateResponse {
@@ -2887,6 +3120,23 @@ type ProviderUpdateResponse {
 
 # The root type for querying data
 type Query {
+  # A pagable collection of type `Address`
+  addressCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: AddressFilter
+    # Sort order to apply to the collection
+    orderBy: [AddressOrderBy!]
+  ): AddressConnection
   # A pagable collection of type `DeliveryLocation`
   deliveryLocationCollection(
     # Query the first `n` records in the collection
@@ -2904,6 +3154,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [DeliveryLocationOrderBy!]
   ): DeliveryLocationConnection
+  # A pagable collection of type `DeliveryPeriod`
+  deliveryPeriodCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: DeliveryPeriodFilter
+    # Sort order to apply to the collection
+    orderBy: [DeliveryPeriodOrderBy!]
+  ): DeliveryPeriodConnection
   # A pagable collection of type `Navigation`
   navigationCollection(
     # Query the first `n` records in the collection
@@ -3283,6 +3550,23 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [SiteOrderBy!]
   ): SiteConnection
+  # A pagable collection of type `SiteDeliveryLocation`
+  siteDeliveryLocationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: SiteDeliveryLocationFilter
+    # Sort order to apply to the collection
+    orderBy: [SiteDeliveryLocationOrderBy!]
+  ): SiteDeliveryLocationConnection
   # A pagable collection of type `SiteType`
   siteTypeCollection(
     # Query the first `n` records in the collection
@@ -3300,40 +3584,6 @@ type Query {
     # Sort order to apply to the collection
     orderBy: [SiteTypeOrderBy!]
   ): SiteTypeConnection
-  # A pagable collection of type `StationDeliveryLocationTimeslots`
-  stationDeliveryLocationTimeslotsCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: StationDeliveryLocationTimeslotsFilter
-    # Sort order to apply to the collection
-    orderBy: [StationDeliveryLocationTimeslotsOrderBy!]
-  ): StationDeliveryLocationTimeslotsConnection
-  # A pagable collection of type `StationDeliveryLocations`
-  stationDeliveryLocationsCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: StationDeliveryLocationsFilter
-    # Sort order to apply to the collection
-    orderBy: [StationDeliveryLocationsOrderBy!]
-  ): StationDeliveryLocationsConnection
   # A pagable collection of type `Stations`
   stationsCollection(
     # Query the first `n` records in the collection
@@ -3920,8 +4170,26 @@ type Site implements Node {
   data: JSON
   createdAt: Datetime!
   organizationId: UUID!
+  addressId: UUID
   organization: Organization!
   siteType: SiteType!
+  address: Address
+  siteDeliveryLocationCollection(
+    # Query the first `n` records in the collection
+    first: Int
+    # Query the last `n` records in the collection
+    last: Int
+    # Query values in the collection before the provided cursor
+    before: Cursor
+    # Query values in the collection after the provided cursor
+    after: Cursor
+    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
+    offset: Int
+    # Filters to apply to the results set when querying from the collection
+    filter: SiteDeliveryLocationFilter
+    # Sort order to apply to the collection
+    orderBy: [SiteDeliveryLocationOrderBy!]
+  ): SiteDeliveryLocationConnection
   stationsCollection(
     # Query the first `n` records in the collection
     first: Int
@@ -3952,6 +4220,83 @@ type SiteDeleteResponse {
   records: [Site!]!
 }
 
+type SiteDeliveryLocation implements Node {
+  # Globally Unique Record Identifier
+  nodeId: ID!
+  id: UUID!
+  siteId: UUID!
+  deliveryLocationId: UUID!
+  createdAt: Datetime!
+  site: Site!
+  deliveryLocation: DeliveryLocation!
+}
+
+type SiteDeliveryLocationConnection {
+  edges: [SiteDeliveryLocationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type SiteDeliveryLocationDeleteResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [SiteDeliveryLocation!]!
+}
+
+type SiteDeliveryLocationEdge {
+  cursor: String!
+  node: SiteDeliveryLocation!
+}
+
+input SiteDeliveryLocationFilter {
+  id: UUIDFilter
+  siteId: UUIDFilter
+  deliveryLocationId: UUIDFilter
+  createdAt: DatetimeFilter
+  nodeId: IDFilter
+  # Returns true only if all its inner filters are true, otherwise returns false
+  and: [SiteDeliveryLocationFilter!]
+  # Returns true if at least one of its inner filters is true, otherwise returns false
+  or: [SiteDeliveryLocationFilter!]
+  # Negates a filter
+  not: SiteDeliveryLocationFilter
+}
+
+input SiteDeliveryLocationInsertInput {
+  id: UUID
+  siteId: UUID
+  deliveryLocationId: UUID
+  createdAt: Datetime
+}
+
+type SiteDeliveryLocationInsertResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [SiteDeliveryLocation!]!
+}
+
+input SiteDeliveryLocationOrderBy {
+  id: OrderByDirection
+  siteId: OrderByDirection
+  deliveryLocationId: OrderByDirection
+  createdAt: OrderByDirection
+}
+
+input SiteDeliveryLocationUpdateInput {
+  id: UUID
+  siteId: UUID
+  deliveryLocationId: UUID
+  createdAt: Datetime
+}
+
+type SiteDeliveryLocationUpdateResponse {
+  # Count of the records impacted by the mutation
+  affectedCount: Int!
+  # Array of records impacted by the mutation
+  records: [SiteDeliveryLocation!]!
+}
+
 type SiteEdge {
   cursor: String!
   node: Site!
@@ -3963,6 +4308,7 @@ input SiteFilter {
   name: StringFilter
   createdAt: DatetimeFilter
   organizationId: UUIDFilter
+  addressId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [SiteFilter!]
@@ -3979,6 +4325,7 @@ input SiteInsertInput {
   data: JSON
   createdAt: Datetime
   organizationId: UUID
+  addressId: UUID
 }
 
 type SiteInsertResponse {
@@ -3994,6 +4341,7 @@ input SiteOrderBy {
   name: OrderByDirection
   createdAt: OrderByDirection
   organizationId: OrderByDirection
+  addressId: OrderByDirection
 }
 
 type SiteType implements Node {
@@ -4102,6 +4450,7 @@ input SiteUpdateInput {
   data: JSON
   createdAt: Datetime
   organizationId: UUID
+  addressId: UUID
 }
 
 type SiteUpdateResponse {
@@ -4111,180 +4460,6 @@ type SiteUpdateResponse {
   records: [Site!]!
 }
 
-type StationDeliveryLocations implements Node {
-  # Globally Unique Record Identifier
-  nodeId: ID!
-  id: UUID!
-  createdAt: Datetime!
-  stationId: UUID!
-  deliveryLocationId: UUID!
-  station: Stations!
-  deliveryLocation: DeliveryLocation!
-  stationDeliveryLocationTimeslotsCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: StationDeliveryLocationTimeslotsFilter
-    # Sort order to apply to the collection
-    orderBy: [StationDeliveryLocationTimeslotsOrderBy!]
-  ): StationDeliveryLocationTimeslotsConnection
-}
-
-type StationDeliveryLocationsConnection {
-  edges: [StationDeliveryLocationsEdge!]!
-  pageInfo: PageInfo!
-}
-
-type StationDeliveryLocationsDeleteResponse {
-  # Count of the records impacted by the mutation
-  affectedCount: Int!
-  # Array of records impacted by the mutation
-  records: [StationDeliveryLocations!]!
-}
-
-type StationDeliveryLocationsEdge {
-  cursor: String!
-  node: StationDeliveryLocations!
-}
-
-input StationDeliveryLocationsFilter {
-  id: UUIDFilter
-  createdAt: DatetimeFilter
-  stationId: UUIDFilter
-  deliveryLocationId: UUIDFilter
-  nodeId: IDFilter
-  # Returns true only if all its inner filters are true, otherwise returns false
-  and: [StationDeliveryLocationsFilter!]
-  # Returns true if at least one of its inner filters is true, otherwise returns false
-  or: [StationDeliveryLocationsFilter!]
-  # Negates a filter
-  not: StationDeliveryLocationsFilter
-}
-
-input StationDeliveryLocationsInsertInput {
-  id: UUID
-  createdAt: Datetime
-  stationId: UUID
-  deliveryLocationId: UUID
-}
-
-type StationDeliveryLocationsInsertResponse {
-  # Count of the records impacted by the mutation
-  affectedCount: Int!
-  # Array of records impacted by the mutation
-  records: [StationDeliveryLocations!]!
-}
-
-input StationDeliveryLocationsOrderBy {
-  id: OrderByDirection
-  createdAt: OrderByDirection
-  stationId: OrderByDirection
-  deliveryLocationId: OrderByDirection
-}
-
-input StationDeliveryLocationsUpdateInput {
-  id: UUID
-  createdAt: Datetime
-  stationId: UUID
-  deliveryLocationId: UUID
-}
-
-type StationDeliveryLocationsUpdateResponse {
-  # Count of the records impacted by the mutation
-  affectedCount: Int!
-  # Array of records impacted by the mutation
-  records: [StationDeliveryLocations!]!
-}
-
-type StationDeliveryLocationTimeslots implements Node {
-  # Globally Unique Record Identifier
-  nodeId: ID!
-  id: UUID!
-  createdAt: Datetime!
-  stationDeliveryLocationId: UUID!
-  beginAt: Datetime!
-  endAt: Datetime
-  stationDeliveryLocation: StationDeliveryLocations!
-}
-
-type StationDeliveryLocationTimeslotsConnection {
-  edges: [StationDeliveryLocationTimeslotsEdge!]!
-  pageInfo: PageInfo!
-}
-
-type StationDeliveryLocationTimeslotsDeleteResponse {
-  # Count of the records impacted by the mutation
-  affectedCount: Int!
-  # Array of records impacted by the mutation
-  records: [StationDeliveryLocationTimeslots!]!
-}
-
-type StationDeliveryLocationTimeslotsEdge {
-  cursor: String!
-  node: StationDeliveryLocationTimeslots!
-}
-
-input StationDeliveryLocationTimeslotsFilter {
-  id: UUIDFilter
-  createdAt: DatetimeFilter
-  stationDeliveryLocationId: UUIDFilter
-  beginAt: DatetimeFilter
-  endAt: DatetimeFilter
-  nodeId: IDFilter
-  # Returns true only if all its inner filters are true, otherwise returns false
-  and: [StationDeliveryLocationTimeslotsFilter!]
-  # Returns true if at least one of its inner filters is true, otherwise returns false
-  or: [StationDeliveryLocationTimeslotsFilter!]
-  # Negates a filter
-  not: StationDeliveryLocationTimeslotsFilter
-}
-
-input StationDeliveryLocationTimeslotsInsertInput {
-  id: UUID
-  createdAt: Datetime
-  stationDeliveryLocationId: UUID
-  beginAt: Datetime
-  endAt: Datetime
-}
-
-type StationDeliveryLocationTimeslotsInsertResponse {
-  # Count of the records impacted by the mutation
-  affectedCount: Int!
-  # Array of records impacted by the mutation
-  records: [StationDeliveryLocationTimeslots!]!
-}
-
-input StationDeliveryLocationTimeslotsOrderBy {
-  id: OrderByDirection
-  createdAt: OrderByDirection
-  stationDeliveryLocationId: OrderByDirection
-  beginAt: OrderByDirection
-  endAt: OrderByDirection
-}
-
-input StationDeliveryLocationTimeslotsUpdateInput {
-  id: UUID
-  createdAt: Datetime
-  stationDeliveryLocationId: UUID
-  beginAt: Datetime
-  endAt: Datetime
-}
-
-type StationDeliveryLocationTimeslotsUpdateResponse {
-  # Count of the records impacted by the mutation
-  affectedCount: Int!
-  # Array of records impacted by the mutation
-  records: [StationDeliveryLocationTimeslots!]!
-}
-
 type Stations implements Node {
   # Globally Unique Record Identifier
   nodeId: ID!
@@ -4292,19 +4467,14 @@ type Stations implements Node {
   name: String!
   number: Int
   createdAt: Datetime!
-  address: String!
-  address1: String
-  city: String!
-  state: String!
-  zip: String!
   imageUrl: String
   coverUrl: String
-  latitude: Float
-  longitude: Float
   description: String
   longDescription: String
   registrationCode: String!
   siteId: UUID!
+  addressId: UUID!
+  address: Address!
   site: Site!
   userStationsCollection(
     # Query the first `n` records in the collection
@@ -4338,22 +4508,6 @@ type Stations implements Node {
     # Sort order to apply to the collection
     orderBy: [UsersOrderBy!]
   ): UsersConnection
-  stationDeliveryLocationsCollection(
-    # Query the first `n` records in the collection
-    first: Int
-    # Query the last `n` records in the collection
-    last: Int
-    # Query values in the collection before the provided cursor
-    before: Cursor
-    # Query values in the collection after the provided cursor
-    after: Cursor
-    # Skip n values from the after cursor. Alternative to cursor pagination. Backward pagination not supported.
-    offset: Int
-    # Filters to apply to the results set when querying from the collection
-    filter: StationDeliveryLocationsFilter
-    # Sort order to apply to the collection
-    orderBy: [StationDeliveryLocationsOrderBy!]
-  ): StationDeliveryLocationsConnection
 }
 
 type StationsConnection {
@@ -4378,19 +4532,13 @@ input StationsFilter {
   name: StringFilter
   number: IntFilter
   createdAt: DatetimeFilter
-  address: StringFilter
-  address1: StringFilter
-  city: StringFilter
-  state: StringFilter
-  zip: StringFilter
   imageUrl: StringFilter
   coverUrl: StringFilter
-  latitude: FloatFilter
-  longitude: FloatFilter
   description: StringFilter
   longDescription: StringFilter
   registrationCode: StringFilter
   siteId: UUIDFilter
+  addressId: UUIDFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [StationsFilter!]
@@ -4405,19 +4553,13 @@ input StationsInsertInput {
   name: String
   number: Int
   createdAt: Datetime
-  address: String
-  address1: String
-  city: String
-  state: String
-  zip: String
   imageUrl: String
   coverUrl: String
-  latitude: Float
-  longitude: Float
   description: String
   longDescription: String
   registrationCode: String
   siteId: UUID
+  addressId: UUID
 }
 
 type StationsInsertResponse {
@@ -4432,19 +4574,13 @@ input StationsOrderBy {
   name: OrderByDirection
   number: OrderByDirection
   createdAt: OrderByDirection
-  address: OrderByDirection
-  address1: OrderByDirection
-  city: OrderByDirection
-  state: OrderByDirection
-  zip: OrderByDirection
   imageUrl: OrderByDirection
   coverUrl: OrderByDirection
-  latitude: OrderByDirection
-  longitude: OrderByDirection
   description: OrderByDirection
   longDescription: OrderByDirection
   registrationCode: OrderByDirection
   siteId: OrderByDirection
+  addressId: OrderByDirection
 }
 
 input StationsUpdateInput {
@@ -4452,19 +4588,13 @@ input StationsUpdateInput {
   name: String
   number: Int
   createdAt: Datetime
-  address: String
-  address1: String
-  city: String
-  state: String
-  zip: String
   imageUrl: String
   coverUrl: String
-  latitude: Float
-  longitude: Float
   description: String
   longDescription: String
   registrationCode: String
   siteId: UUID
+  addressId: UUID
 }
 
 type StationsUpdateResponse {
@@ -4869,6 +4999,7 @@ type Users implements Node {
   updatedAt: Datetime
   primaryStationId: UUID
   stripeCustomerId: String
+  phoneNumber: String
   primaryStation: Stations
   userRolesCollection(
     # Query the first `n` records in the collection
@@ -5029,6 +5160,7 @@ input UsersFilter {
   updatedAt: DatetimeFilter
   primaryStationId: UUIDFilter
   stripeCustomerId: StringFilter
+  phoneNumber: StringFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [UsersFilter!]
@@ -5051,6 +5183,7 @@ input UsersInsertInput {
   updatedAt: Datetime
   primaryStationId: UUID
   stripeCustomerId: String
+  phoneNumber: String
 }
 
 type UsersInsertResponse {
@@ -5072,6 +5205,7 @@ input UsersOrderBy {
   updatedAt: OrderByDirection
   primaryStationId: OrderByDirection
   stripeCustomerId: OrderByDirection
+  phoneNumber: OrderByDirection
 }
 
 type UserStations implements Node {
@@ -5164,6 +5298,7 @@ input UsersUpdateInput {
   updatedAt: Datetime
   primaryStationId: UUID
   stripeCustomerId: String
+  phoneNumber: String
 }
 
 type UsersUpdateResponse {

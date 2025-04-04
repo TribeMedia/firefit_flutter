@@ -2,6 +2,7 @@
 import 'package:core/core.dart';
 
 import 'package:firefit/features/commerce/domain/database/database.dart';
+import 'package:firefit/features/commerce/presentation/providers/delivery_location_provider.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/empty_view_state.dart';
 import 'package:firefit/features/menu/providers.dart';
@@ -75,33 +76,53 @@ class CartOverlay extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final deliveryLocations = ref.watch(siteDeliveryLocationProvider);
     final cartsAsync = ref.watch(productCartProvider);
     final theme = ShadTheme.of(context);
 
-    return cartsAsync.when(
-      data: (cart) {
-        final productsAsync =
-            ref.watch(productsMapProvider(cart.shoppingCartItems));
+    return deliveryLocations.when(
+        data: (locations){
+          return locations.fold(
+            (l) {
+              return ErrorScreen(errorMessage: l.error, onRetry: () {});
+            },
+            (r) {
+              if (r.isEmpty) {
+                return ErrorScreen(errorMessage: 'No delivery locations available', onRetry: () {
+                  Navigator.of(context).pop();
+                });
+              }
+              return cartsAsync.when(
+                data: (cart) {
+                  final productsAsync =
+                  ref.watch(productsMapProvider(cart.shoppingCartItems));
 
-        // Calculate total
-        final total = cart.shoppingCartItems.fold(
-          0.0,
-          (sum, item) => sum + (item.unitPrice * item.quantity),
-        );
+                  // Calculate total
+                  final total = cart.shoppingCartItems.fold(
+                    0.0,
+                        (sum, item) => sum + (item.unitPrice * item.quantity),
+                  );
 
-        return productsAsync.when(
-          data: (products) {
-            return products.fold(
-              (l) => const SizedBox.shrink(),
-              (r) => _buildCartOverlay(context, theme, r, cart, total),
-            );
-          },
-          error: (e, s) =>
-              ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
-          loading: () => const Center(child: CircularProgressIndicator()),
-        );
-      },
-      error: (e, s) => ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
+                  return productsAsync.when(
+                    data: (products) {
+                      return products.fold(
+                            (l) => const SizedBox.shrink(),
+                            (r) => _buildCartOverlay(context, theme, r, cart, total),
+                      );
+                    },
+                    error: (e, s) =>
+                        ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
+                    loading: () => const Center(child: CircularProgressIndicator()),
+                  );
+                },
+                error: (e, s) => ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
+                loading: () => const Center(child: CircularProgressIndicator()),
+              );
+            },
+          );
+        },
+      error: (e, s) =>
+          ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
       loading: () => const Center(child: CircularProgressIndicator()),
     );
   }
@@ -207,7 +228,7 @@ class CartOverlay extends ConsumerWidget {
                                               ),
                                               const SizedBox(height: 8),
                                               QuantitySelector(
-                                                itemId: item.id,
+                                                cartItem: item,
                                                 value: item.quantity,
                                                 onChanged: (value) =>
                                                     onUpdateQuantity(
@@ -288,13 +309,13 @@ class CartOverlay extends ConsumerWidget {
 class QuantitySelector extends ConsumerWidget {
   final int value;
   final ValueChanged<int> onChanged;
-  final int itemId;
+  final CartItem cartItem;
 
   const QuantitySelector({
     super.key,
     required this.value,
     required this.onChanged,
-    required this.itemId,
+    required this.cartItem,
   });
 
   @override
@@ -304,7 +325,8 @@ class QuantitySelector extends ConsumerWidget {
         ShadButton(
           icon: const Icon(Icons.remove),
           onPressed: () {
-            if (value < 1) {
+            final targetQuantity = value - 1;
+            if (targetQuantity < 1) {
               Fluttertoast.showToast(
                 msg: 'Quantity must be greater than 1',
                 toastLength: Toast.LENGTH_SHORT,

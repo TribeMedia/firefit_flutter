@@ -1,0 +1,59 @@
+fragment OrganizationType on OrganizationType {
+  id
+  name
+  key
+  schema
+  managingTable
+  createdAt
+}
+
+fragment Organization on Organization {
+    id
+    organizationTypeId
+    name
+    logoUrl
+    coverUrl
+    description
+    longDescriptionMarkdown
+    webUrl
+    data
+    createdAt
+    organizationType {
+        ...OrganizationType
+    }
+}
+
+fragment SiteType on SiteType {
+  id
+  name
+  key
+  schema
+  createdAt
+}
+
+fragment Site on Site {
+  id
+  siteTypeId
+  name
+  data
+  createdAt
+  organizationId
+  siteDeliveryLocationCollection {
+    edges {
+      node {
+        ...SiteDeliveryLocation
+      }
+    }
+  }
+ }
+
+ fragment SiteDeliveryLocation on SiteDeliveryLocation {
+   id
+   siteId
+   deliveryLocationId
+   createdAt
+   deliveryLocation {
+     ...DeliveryLocation
+   }
+ }
+

@@ -26,16 +26,19 @@ class OrderService implements OrderServiceInterface {
       // final shoppingCartItems = cart.shoppingCartItemsCollection!.edges;
       // Create order items (will be used when actual creation is implemented)
       // For now we're tracking it in a comment to document the planned functionality
-      /* 
-      final orderItems = shoppingCartItems.map((item) {
+
+      final orderItems = cart.shoppingCartItemsCollection?.edges.map((item) {
         return Input$OrderItemsInsertInput(
           productId: item.node.product.id,
           orderId: newOrderId,
           quantity: item.node.quantity,
           unitPrice: item.node.unitPrice,
         );
-      });
-      */
+      }).toList();
+
+      if (orderItems == null || orderItems.isEmpty) {
+        return fp.Either.left(Failure.unprocessableEntity(message: 'Order items not found'));
+      }
 
       final userResult = await userRepository.queryUsers(
         filter: Input$UsersFilter(
@@ -60,18 +63,15 @@ class OrderService implements OrderServiceInterface {
               id: newOrderId,
               userId: user.id,
               orderStatus: Enum$OrderStatus.placed,
-              deliveryAddress: station.address,
-              deliveryAddress1: station.address1,
-              deliveryCity: station.city,
-              deliveryZip: station.zip,
-              deliveryLocationName: station.name,
-              deliveryLat: station.latitude,
-              deliveryLong: station.longitude,
             ),
           );
           return result.fold(
             (l) => fp.Either.left(Failure.unprocessableEntity(message: l.toString())),
-            (r) {
+            (r) async {
+
+              await orderRepository.createOrderItems(
+                input: orderItems,
+              );
               return fp.Either.right(r);
             },
           );

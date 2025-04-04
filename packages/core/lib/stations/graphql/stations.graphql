@@ -2,17 +2,15 @@
 
 fragment Station on Stations {
   id
+  siteId
   name
   number
   description
   longDescription
-  address
-  address1
-  city
-  state
-  zip
-  latitude
-  longitude
+  addressId
+  address {
+    ...Address
+  }
   imageUrl
   coverUrl
   registrationCode

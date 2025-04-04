@@ -18,6 +18,9 @@ abstract class OrderRepositoryInterface {
   Future<fp.Either<Failure, Order>> createOrder(
       {required Input$OrdersInsertInput input});
 
+  Future<fp.Either<Failure, List<OrderItem>>> createOrderItems(
+      {required List<Input$OrderItemsInsertInput> input});
+
   Future<fp.Either<Failure, ShoppingCart>> createShoppingCart(
       {required Input$ShoppingCartsInsertInput input});
 
@@ -52,4 +55,11 @@ abstract class OrderRepositoryInterface {
       getShoppingCartItem({
     required String id,
   });
+
+  Future<fp.Either<Failure, List<DeliveryPeriod>>> getDeliveryPeriods();
+
+  Future<fp.Either<Failure, List<DeliveryLocation>>> getSiteDeliveryLocations({
+    required String siteId,
+    required String deliveryPeriodId,
+});
 }

@@ -9,6 +9,7 @@ import 'package:firefit/features/commerce/providers/providers.dart';
 import 'package:firefit/features/common/providers/providers.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'providers.g.dart';
 
@@ -72,13 +73,13 @@ class ProductCartModel {
   final String? error;
   final bool isLoading;
   final List<CartItem> shoppingCartItems;
-  final Cart? currentCart;
+  final Cart currentCart;
 
   ProductCartModel({
     this.error,
     this.isLoading = false,
     this.shoppingCartItems = const [],
-    this.currentCart,
+    required this.currentCart,
   });
 
   ProductCartModel copyWith({
@@ -99,7 +100,10 @@ class ProductCartModel {
 final emptyProductCartModel = ProductCartModel(
   isLoading: false,
   shoppingCartItems: const [],
-  currentCart: null,
+  currentCart: Cart(
+    id: -1,
+    userId: Uuid().v4(),
+  ),
   error: null,
 );
 
@@ -125,17 +129,17 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
         .watch();
   }
 
-  void addProductToCart(Product product, int quantity) {
+  void addProductToCart({required Product product, int quantity = 1}) {
     // Access the current state
     final currentState = state;
 
     currentState.whenData((model) async {
-      try {            
+      try {
         final cartItem = await _database
             .into(_database.cartItems)
             .insertReturning(CartItemsCompanion(
               id: Value.absent(),
-              cartId: Value(model.currentCart?.id ?? 0),
+              cartId: Value(model.currentCart.id),
               productId: Value(product.id),
               quantity: Value(quantity),
               unitPrice: Value(product.unitPrice),
@@ -146,8 +150,8 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
           shoppingCartItems: [...model.shoppingCartItems, cartItem],
         ));
       } catch (e) {
-        state = AsyncError(
-            'Failed to add product to cart: ${e.toString()}', StackTrace.current);
+        state = AsyncError('Failed to add product to cart: ${e.toString()}',
+            StackTrace.current);
       }
     });
   }
@@ -173,22 +177,39 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
     });
   }
 
+  CartItem? getCartItemById(int cartItemId) {
+    return state.value?.shoppingCartItems
+        .firstWhere((item) => item.id == cartItemId);
+  }
+
   void updateCartItemQuantity(int cartItemId, int quantity) {
     // Access the current state
     final currentState = state;
 
     currentState.whenData((model) async {
+      final cartItem = getCartItemById(cartItemId);
+      if (cartItem == null) {
+        return;
+      }
+
+      final targetQuantity = cartItem.quantity + quantity;
+      if (targetQuantity < 1) {
+        removeCartItem(cartItemId);
+        return;
+      }
+
       // Create the update query properly
       final updateQuery = _database.update(_database.cartItems)
         ..where((cartItem) => cartItem.id.equals(cartItemId));
 
       // Execute the write operation
-      await updateQuery.write(CartItemsCompanion(quantity: Value(quantity)));
+      await updateQuery
+          .write(CartItemsCompanion(quantity: Value(targetQuantity)));
 
       state = AsyncData(model.copyWith(
         shoppingCartItems: model.shoppingCartItems.map((cartItem) {
           if (cartItem.id == cartItemId) {
-            return cartItem.copyWith(quantity: quantity);
+            return cartItem.copyWith(quantity: targetQuantity);
           }
           return cartItem;
         }).toList(),
@@ -211,7 +232,7 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
     });
   }
 
-  Future<Either<Failure, Fragment$Order>> createOrder() async {
+  Future<Either<Failure, Fragment$Order>> createOrder(Fragment$DeliveryLocation location) async {
     final currentState = state;
 
     return currentState.when(
@@ -219,7 +240,8 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
         final orderRepository = ref.read(orderRepositoryProvider);
         final result = await orderRepository.createOrder(
           input: Input$OrdersInsertInput(
-            userId: data.currentCart!.userId,
+            userId: data.currentCart.userId,
+            deliveryLocationId: location.id
           ),
         );
 

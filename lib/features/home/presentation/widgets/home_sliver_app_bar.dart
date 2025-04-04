@@ -1,11 +1,19 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:core/commerce/graphql/orders.graphql.dart';
+import 'package:core/commerce/tax/domain/services/stripe_payment_service_interface.dart';
 import 'package:core/core.dart';
+import 'package:firefit/features/commerce/domain/database/database.dart';
 import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
+import 'package:firefit/features/commerce/presentation/widgets/delivery_location_selector.dart';
+import 'package:firefit/features/commerce/providers/providers.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/cart_badge.dart';
 import 'package:firefit/features/common/presentation/widgets/initials_avatar.dart';
 import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -149,7 +157,8 @@ class HomeSliverAppBar extends HookConsumerWidget {
 
     return cartResult.when(
       data: (cartModel) {
-        final cart = cartModel.currentCart!;
+        debugPrint('🛒 Cart model: $cartModel showing in home sliver app bar');
+        final cart = cartModel.currentCart;
         final items = cartModel.shoppingCartItems;
 
         // Get the cart information directly from the status
@@ -259,7 +268,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     station.name,
                     style: TextStyle(
                       color: state.currentTextColor,
@@ -322,38 +331,268 @@ class HomeSliverAppBar extends HookConsumerWidget {
   }
 }
 
+// Separate method to handle checkout logic
+Future<void> _handleCheckout(BuildContext context, List<CartItem> items,
+    User user, WidgetRef ref) async {
+  final productsMap = ref.read(productsMapProvider(items));
+  final productCartNotifier = ref.read(productCartProvider.notifier);
+
+  final chosenLocation = await showShadDialog<Fragment$DeliveryLocation?>(
+      context: context, 
+      builder: (context) {
+        return DeliveryLocationSelector(onDeliveryLocationSelected: (location){
+          Navigator.of(context).pop(location);
+        });
+      },
+      barrierDismissible: false,
+      );
+
+    if (chosenLocation == null) {
+      Fluttertoast.showToast(
+        msg: 'Please select a delivery location',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+      );
+      //Navigator.of(context).pop();
+      return;
+    }
+
+  productsMap.whenData((data) async {
+    if (data.isLeft()) {
+      return;
+    }
+
+    final products = data.getRight().toNullable();
+
+    if (products == null) {
+      return;
+    }
+
+    // Capture current context for later use
+    final currentContext = context;
+
+    try {
+      // Store the dialog context before async operation
+      if (!context.mounted) return;
+
+      // Use a local variable to store the dialog context
+      final dialogContext = currentContext;
+
+      // Show loading indicator
+      showDialog(
+        context: dialogContext,
+        barrierDismissible: false,
+        builder: (context) => const AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 16),
+              Text('Preparing checkout...'),
+            ],
+          ),
+        ),
+      );
+
+      if (!context.mounted) return;
+
+      // Calculate subtotal from cart items
+      final subtotal = items.fold(
+        0.0,
+        (sum, item) => sum + (item.unitPrice * item.quantity),
+      );
+      
+      // Get zip code from the chosen delivery location
+      final zipCode = chosenLocation.address.zip;
+      
+      // Calculate tax using the sales tax service
+      final taxResponse = await ref.read(salesTaxProvider(zipCode).future);
+      final taxRate = taxResponse.totalRate;
+      final tax = subtotal * taxRate;
+      
+      // Calculate total with tax
+      final totalAmount = subtotal + tax;
+
+      // Format items for metadata
+      List<Map<String, dynamic>> lineItems = [];
+      for (var item in items) {
+        final product = products[item.id];
+        if (product == null) {
+          continue;
+        }
+        lineItems.add({
+          'price': product.stripeProductId,
+          'productId': product.id,
+          'quantity': item.quantity,
+        });
+      }
+
+      // Create payment intent request - amount is already in dollars, no need to multiply by 100
+      final paymentIntentRequest = PaymentIntentRequest(
+        currency: 'usd',
+        amount: totalAmount,
+        metadata: {
+          'order_type': 'meal_payment',
+        },
+      );
+
+      // Create payment intent
+      final paymentIntentResponse = await ref
+          .read(stripePaymentIntentProvider(paymentIntentRequest).future);
+
+      // Add a mounted check before using context
+      if (!context.mounted) return;
+
+      // Close loading dialog
+      if (Navigator.canPop(dialogContext)) {
+        Navigator.pop(dialogContext);
+      }
+
+      if (paymentIntentResponse.success == null ||
+          paymentIntentResponse.success == false) {
+        // Show error message
+        if (currentContext.mounted) {
+          Fluttertoast.showToast(
+            msg:
+                'Error: ${paymentIntentResponse.errorMessage ?? "Unknown error creating payment intent"}',
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
+        }
+        return;
+      }
+
+      // Initialize the payment sheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          merchantDisplayName: 'FireFit Store',
+          paymentIntentClientSecret: paymentIntentResponse.clientSecret,
+          customerId: user.id,
+          style: ThemeMode.system,
+        ),
+      );
+
+      // Add a mounted check
+      if (!context.mounted) return;
+
+      // Present the payment sheet
+      final options = await Stripe.instance.presentPaymentSheet();
+
+      // Add a mounted check
+      if (!context.mounted) return;
+
+      // Handle payment result
+      if (options == null) {
+        Fluttertoast.showToast(
+          msg: 'Payment failed',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.red,
+        );
+        return;
+      }
+
+      final result = await productCartNotifier.createOrder(chosenLocation);
+
+      // Add a mounted check before using context
+      if (!context.mounted) return;
+
+      result.fold(
+        (failure) {
+          Fluttertoast.showToast(
+            msg: 'Error creating order: ${failure.error}',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.red,
+          );
+        },
+        (order) {
+          // Clear the cart using the method in ShoppingCartNotifier
+          ref.read(productCartProvider.notifier).clearCart();
+          final res = ref.refresh(productCartProvider);
+          res.whenData((data) {
+            debugPrint(data.toString());
+          });
+
+          Fluttertoast.showToast(
+            msg: 'Payment successful! Order created.',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.green,
+          );
+
+          // Close the cart overlay
+          if (currentContext.mounted) {
+            Navigator.of(currentContext).pop();
+          }
+        },
+      );
+    } catch (e) {
+      // Check if mounted before using context
+      if (!context.mounted) return;
+
+      // Close loading dialog if open
+      if (Navigator.canPop(currentContext)) {
+        Navigator.pop(currentContext);
+      }
+
+      // Handle errors
+      Fluttertoast.showToast(
+        msg: 'An error occurred: $e',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+      );
+    }
+  });
+}
+
 // Modified to fetch cart data when needed instead of requiring it upfront
 void showCartDrawer(
   BuildContext context,
   User user,
   WidgetRef ref,
 ) {
-  // Show cart overlay with the fetched cart
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    builder: (context) => DraggableScrollableSheet(
-      initialChildSize: 0.7,
-      minChildSize: 0.5,
-      maxChildSize: 0.9,
-      builder: (_, controller) => CartOverlay(
-        user: user,
-        onUpdateQuantity: (int itemId, int quantity) {
-          // Call the notifier to update the quantity
-          ref
-              .read(productCartProvider.notifier)
-              .updateCartItemQuantity(itemId, quantity);
-          final refresh = ref.refresh(productCartProvider);
-          refresh.whenData((data) {
-            debugPrint(data.toString());
-          });
-        },
-        onCheckout: () {},
-        onClose: () {
-          Navigator.pop(context);
-        },
+  // Get the cart items from the provider
+  final cartResult = ref.read(productCartProvider);
+
+  cartResult.whenData((cartModel) {
+    final items = cartModel.shoppingCartItems;
+
+    // Show cart overlay with the fetched cart
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.7,
+        minChildSize: 0.5,
+        maxChildSize: 0.9,
+        builder: (_, controller) => CartOverlay(
+          user: user,
+          onUpdateQuantity: (int itemId, int quantity) {
+            // Call the notifier to update the quantity
+            ref
+                .read(productCartProvider.notifier)
+                .updateCartItemQuantity(itemId, quantity);
+            final refresh = ref.refresh(productCartProvider);
+            refresh.whenData((data) {
+              debugPrint(data.toString());
+            });
+          },
+          onCheckout: () {
+            _handleCheckout(context, items, user, ref);
+          },
+          onClose: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
-    ),
-  );
+    );
+  });
 }
