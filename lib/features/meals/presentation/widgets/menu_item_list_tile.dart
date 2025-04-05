@@ -95,7 +95,7 @@ class MenuItemListTile extends StatelessWidget {
       children: [
         ShadButton.outline(
           size: ShadButtonSize.sm,
-          icon: Icon(Icons.remove, size: 16),
+          leading: Icon(Icons.remove, size: 16),
           onPressed: onRemoveFromCart,
         ),
         SizedBox(width: 8),
@@ -108,7 +108,7 @@ class MenuItemListTile extends StatelessWidget {
         SizedBox(width: 8),
         ShadButton.outline(
           size: ShadButtonSize.sm,
-          icon: Icon(Icons.add, size: 16),
+          leading: Icon(Icons.add, size: 16),
           onPressed: onAddToCart,
         ),
       ],

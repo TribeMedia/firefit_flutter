@@ -41,14 +41,14 @@ class MenuItemListTile extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ShadButton(
-              icon: Icon(Icons.remove),
+              leading: Icon(Icons.remove),
               onPressed: onRemoveFromCart,
             ),
             SizedBox(width: 8),
             Text('$quantity', style: Theme.of(context).textTheme.titleMedium),
             SizedBox(width: 8),
             ShadButton(
-              icon: Icon(Icons.add),
+              leading: Icon(Icons.add),
               onPressed: onAddToCart,
             ),
           ],

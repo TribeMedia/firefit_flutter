@@ -1,5 +1,4 @@
 import 'package:core/core.dart';
-import 'package:firefit/features/commerce/presentation/providers/delivery_location_provider.dart';
 import 'package:firefit/features/commerce/presentation/widgets/nutrition_info_widget.dart';
 import 'package:firefit/features/commerce/providers/providers.dart';
 //import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';

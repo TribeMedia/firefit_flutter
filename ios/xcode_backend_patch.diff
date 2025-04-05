@@ -1,0 +1,14 @@
+--- xcode_backend.dart.orig
++++ xcode_backend.dart
+@@ -217,7 +217,10 @@
+   final String frameworksPath = environment['FRAMEWORKS_FOLDER_PATH']!;
+   final String builtProductsPath = environment['BUILT_PRODUCTS_DIR']!;
+   final Directory frameworksDirectory = Directory(path.join(builtProductsPath, frameworksPath));
+-  final String flutterFrameworkPath = path.join(frameworksDirectory.path, 'Flutter.framework');
++  
++  // Create the frameworks directory if it doesn't exist
++  frameworksDirectory.createSync(recursive: true);
++  final String flutterFrameworkPath = path.join(frameworksDirectory.path, 'Flutter.framework');
+   final String appFrameworkPath = path.join(frameworksDirectory.path, 'App.framework');
+   final String flutterAssetsPath = path.join(appFrameworkPath, 'flutter_assets');
+ 

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/commerce/tax/domain/services/stripe_payment_service_interface.dart';
 import 'package:core/core.dart';
@@ -77,32 +80,46 @@ class HomeAppBarInput {
 class HomeAppBar extends _$HomeAppBar {
   static const double expandedHeight = 200.0;
 
+  // Debounce timer to limit updates
+  Timer? _debounceTimer;
+  Color? _lastColor;
+  
   @override
   FutureOr<HomeAppBarState> build(HomeAppBarInput input) {
+    // Clean up any previous timer when rebuilding
+    _debounceTimer?.cancel();
+    
     // Remove any existing listeners first
     input.scrollController.removeListener(() {});
 
-    // Add the scroll listener directly
+    // Add the scroll listener with debouncing
     input.scrollController.addListener(() {
       if (!state.hasValue || !input.scrollController.hasClients) return;
+      
+      // Cancel any existing timer
+      _debounceTimer?.cancel();
+      
+      // Set a new timer
+      _debounceTimer = Timer(const Duration(milliseconds: 16), () {
+        final double scrollPercentage =
+            (input.scrollController.offset / (expandedHeight - kToolbarHeight))
+                .clamp(0.0, 1.0);
 
-      final double scrollPercentage =
-          (input.scrollController.offset / (expandedHeight - kToolbarHeight))
-              .clamp(0.0, 1.0);
+        final Color newTextColor = Color.lerp(
+              input.startTextColor,
+              input.endTextColor,
+              scrollPercentage,
+            ) ??
+            input.startTextColor;
 
-      final Color newTextColor = Color.lerp(
-            input.startTextColor,
-            input.endTextColor,
-            scrollPercentage,
-          ) ??
-          input.startTextColor;
-
-      // Only update if color has changed
-      if (state.value!.currentTextColor != newTextColor) {
-        state = AsyncValue.data(state.value!.copyWith(
-          currentTextColor: newTextColor,
-        ));
-      }
+        // Only update if color has changed significantly
+        if (_lastColor == null || !_isColorClose(_lastColor!, newTextColor)) {
+          _lastColor = newTextColor;
+          state = AsyncValue.data(state.value!.copyWith(
+            currentTextColor: newTextColor,
+          ));
+        }
+      });
     });
 
     // Calculate initial color based on current scroll position
@@ -117,6 +134,13 @@ class HomeAppBar extends _$HomeAppBar {
           initialScrollPercentage,
         ) ??
         input.startTextColor;
+        
+    _lastColor = initialColor;
+
+    // Add disposal callback
+    ref.onDispose(() {
+      _debounceTimer?.cancel();
+    });
 
     return HomeAppBarState(
       scrollController: input.scrollController,
@@ -125,6 +149,15 @@ class HomeAppBar extends _$HomeAppBar {
       endTextColor: input.endTextColor,
       constraints: input.constraints,
     );
+  }
+  
+  // Helper method to check if colors are close enough to avoid unnecessary updates
+  bool _isColorClose(Color a, Color b) {
+    const threshold = 3; // Small threshold for color difference
+    return (a.r - b.r).abs() <= threshold &&
+           (a.g - b.g).abs() <= threshold &&
+           (a.b - b.b).abs() <= threshold &&
+           (a.a - b.a).abs() <= threshold;
   }
 }
 
@@ -278,9 +311,29 @@ class HomeSliverAppBar extends HookConsumerWidget {
                   background: Stack(
                     fit: StackFit.expand,
                     children: [
-                      Image.network(
-                        station.coverUrl ?? '',
+                      CachedNetworkImage(
+                        imageUrl: station.coverUrl ?? '',
                         fit: BoxFit.cover,
+                        placeholder: (context, url) => Container(
+                          color: Colors.grey.shade800,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Container(
+                          color: Colors.grey.shade800,
+                          child: Center(
+                            child: Icon(
+                              Icons.image_not_supported,
+                              size: 40,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                        ),
+                        memCacheWidth: 1080, // Limit memory cache size for cover image
                       ),
                       Container(
                         decoration: BoxDecoration(

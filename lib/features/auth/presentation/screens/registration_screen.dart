@@ -1,5 +1,6 @@
 import 'package:firefit/features/auth/providers/user_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
@@ -48,6 +49,10 @@ final formGroupProvider = StateProvider<FormGroup>((ref) {
         Validators.pattern(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$'),
       ],
     ),
+    'stationCode': FormControl<String>(
+      value: '',
+      validators: [Validators.required],
+    ),
     'pdsServer': FormControl<String>(
       value: 'bsky.social',
       disabled: true,
@@ -63,9 +68,7 @@ final formGroupProvider = StateProvider<FormGroup>((ref) {
 final customPdsEnabledProvider = StateProvider<bool>((ref) => false);
 
 class RegistrationScreen extends HookConsumerWidget {
-  final String stationCode;
-
-  const RegistrationScreen({super.key, required this.stationCode});
+  const RegistrationScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -102,26 +105,17 @@ class RegistrationScreen extends HookConsumerWidget {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   title: const Text('Register'),
-                  background: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.network(
-                        state.user!.user.primaryStation?.coverUrl ?? '',
-                        fit: BoxFit.cover,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black.withValues(alpha: 0.7),
-                            ],
-                          ),
+                  background: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: SizedBox(
+                        height: 100, // Reduced height for smaller logo
+                        child: Image.asset(
+                          'assets/images/fots-logo-color.png',
+                          fit: BoxFit.contain,
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -141,18 +135,18 @@ class RegistrationScreen extends HookConsumerWidget {
                             children: [
                               ReactiveTextField<String>(
                                 formControlName: 'firstName',
-                                decoration: InputDecoration(
-                                  labelText: 'First Name',
-                                  hintText: 'Enter your first name',
-                                  hintStyle: TextStyle(color: Colors.grey[600]),
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey[800]),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
+                                  decoration: InputDecoration(
+                                    labelText: 'First Name',
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey[200],
+                                    labelStyle: TextStyle(
+                                      color: Colors.grey[600],
+                                    ),
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey[900],
@@ -165,18 +159,18 @@ class RegistrationScreen extends HookConsumerWidget {
                               const SizedBox(height: 16),
                               ReactiveTextField<String>(
                                 formControlName: 'lastName',
-                                decoration: InputDecoration(
-                                  labelText: 'Last Name',
-                                  hintText: 'Enter your last name',
-                                  hintStyle: TextStyle(color: Colors.grey[600]),
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey[800]),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
+                                  decoration: InputDecoration(
+                                    labelText: 'Last Name',
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey[200],
+                                    labelStyle: TextStyle(
+                                      color: Colors.grey[600],
+                                    ),
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey[900],
@@ -189,18 +183,18 @@ class RegistrationScreen extends HookConsumerWidget {
                               const SizedBox(height: 16),
                               ReactiveTextField<String>(
                                 formControlName: 'email',
-                                decoration: InputDecoration(
-                                  labelText: 'Email',
-                                  hintText: 'Enter your email address',
-                                  hintStyle: TextStyle(color: Colors.grey[600]),
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey[800]),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
+                                  decoration: InputDecoration(
+                                    labelText: 'Email',
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey[200],
+                                    labelStyle: TextStyle(
+                                      color: Colors.grey[600],
+                                    ),
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey[900],
@@ -215,18 +209,18 @@ class RegistrationScreen extends HookConsumerWidget {
                               const SizedBox(height: 16),
                               ReactiveTextField<String>(
                                 formControlName: 'handle',
-                                decoration: InputDecoration(
-                                  labelText: 'Handle',
-                                  hintText: 'Enter your handle (username)',
-                                  hintStyle: TextStyle(color: Colors.grey[600]),
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey[800]),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
+                                  decoration: InputDecoration(
+                                    labelText: 'Handle',
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey[200],
+                                    labelStyle: TextStyle(
+                                      color: Colors.grey[600],
+                                    ),
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey[900],
@@ -238,19 +232,18 @@ class RegistrationScreen extends HookConsumerWidget {
                               const SizedBox(height: 16),
                               ReactiveTextField<String>(
                                 formControlName: 'password',
-                                decoration: InputDecoration(
-                                  labelText: 'Password',
-                                  hintText:
-                                      'Create a password (8+ chars with letters and numbers)',
-                                  hintStyle: TextStyle(color: Colors.grey[600]),
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey[800]),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
+                                  decoration: InputDecoration(
+                                    labelText: 'Password',
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey[200],
+                                    labelStyle: TextStyle(
+                                      color: Colors.grey[600],
+                                    ),
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey[900],
@@ -262,6 +255,30 @@ class RegistrationScreen extends HookConsumerWidget {
                                       'Password must be at least 8 characters long',
                                   'pattern': (error) =>
                                       'Password must contain at least one letter and one number',
+                                },
+                              ),
+                              const SizedBox(height: 16),
+                              ReactiveTextField<String>(
+                                formControlName: 'stationCode',
+                                  decoration: InputDecoration(
+                                    labelText: 'Station Code',
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.grey[200],
+                                    labelStyle: TextStyle(
+                                      color: Colors.grey[600],
+                                    ),
+                                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                                  ),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey[900],
+                                ),
+                                textCapitalization: TextCapitalization.characters,
+                                validationMessages: {
+                                  'required': (error) => 'Station code is required',
                                 },
                               ),
                               const SizedBox(height: 16),
@@ -298,20 +315,18 @@ class RegistrationScreen extends HookConsumerWidget {
                                     ),
                                   ReactiveTextField<String>(
                                     formControlName: 'pdsServer',
-                                    decoration: InputDecoration(
-                                      labelText: 'PDS Server',
-                                      hintText:
-                                          'bsky.social or https://bsky.social',
-                                      hintStyle:
-                                          TextStyle(color: Colors.grey[600]),
-                                      labelStyle:
-                                          TextStyle(color: Colors.grey[800]),
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.never,
-                                      border: InputBorder.none,
-                                      filled: true,
-                                      fillColor: Colors.grey[200],
-                                    ),
+                                      decoration: InputDecoration(
+                                        labelText: 'PDS Server',
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.grey[200],
+                                        labelStyle: TextStyle(
+                                          color: Colors.grey[600],
+                                        ),
+                                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                                      ),
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.grey[900],
@@ -327,18 +342,57 @@ class RegistrationScreen extends HookConsumerWidget {
                               ),
                               const SizedBox(height: 32),
                               ShadButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   if (formGroup.valid) {
                                     final formData = formGroup.value;
-                                    authNotifier.register(
+                                    final stationCode = formData['stationCode'].toString();
+                                    
+                                    // First validate the station code
+                                    final stationId = await authNotifier.validateStationCode(stationCode);
+                                    
+                                    if (stationId == null) {
+                                      // Show error for invalid station code
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                          content: Text('Invalid station code. Please try again.'),
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    
+                                    // If station code is valid, proceed with registration
+                                    // The station is already set in the state by validateStationCode
+                                    final userState = await authNotifier.register(
                                       email: formData['email'].toString(),
                                       password: formData['password'].toString(),
-                                      firstName:
-                                          formData['firstName'].toString(),
+                                      firstName: formData['firstName'].toString(),
                                       lastName: formData['lastName'].toString(),
                                       handle: formData['handle'].toString(),
-                                      stationCode: stationCode,
                                     );
+                                    if (userState.isLoggedIn) {
+                                      // Navigate to the next screen
+                                      if (context.mounted) {
+                                        context.go('/');
+                                      }
+                                    } else {
+                                      // Handle registration error
+                                      if (userState.error != null) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(userState.error!),
+                                          ),
+                                        );
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                                'Registration failed. Please try again.'),
+                                          ),
+                                        );
+                                      }
+                                    }
                                   } else {
                                     formGroup.markAllAsTouched();
                                   }
@@ -354,6 +408,15 @@ class RegistrationScreen extends HookConsumerWidget {
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
+                              const SizedBox(height: 16),
+                              TextButton(
+                                onPressed: () {
+                                  // Navigate back to login screen
+                                  context.go('/login');
+                                },
+                                child: const Text(
+                                    'Already have an account? Login'),
+                              ),
                             ],
                           ),
                         );

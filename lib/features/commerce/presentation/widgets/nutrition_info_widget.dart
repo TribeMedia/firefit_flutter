@@ -69,16 +69,16 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha((0.05 * 255).round()),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
         ],
         border: Border.all(
           color: Color.fromRGBO(
-            colorScheme.outline.red,
-            colorScheme.outline.green,
-            colorScheme.outline.blue,
+            colorScheme.outline.r.round(),
+            colorScheme.outline.g.round(),
+            colorScheme.outline.b.round(),
             0.2,
           ),
         ),
@@ -130,9 +130,9 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
                     height: 1,
                     thickness: 1,
                     color: Color.fromRGBO(
-                      colorScheme.outline.red,
-                      colorScheme.outline.green,
-                      colorScheme.outline.blue,
+                      colorScheme.outline.r.round(),
+                      colorScheme.outline.g.round(),
+                      colorScheme.outline.b.round(),
                       0.1,
                     ),
                   )
@@ -181,7 +181,7 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: colorScheme.primary.withOpacity(0.2),
+                color: colorScheme.primary.withAlpha((0.2 * 255).round()),
                 width: 2,
               ),
             ),
@@ -248,7 +248,7 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
               color: colorScheme.onSurface,
             ),
             tableBorder: TableBorder.all(
-              color: colorScheme.outline.withOpacity(0.3),
+              color: colorScheme.outline.withAlpha((0.3 * 255).round()),
               width: 1,
             ),
             tableCellsPadding: const EdgeInsets.symmetric(
@@ -263,16 +263,16 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
               decoration: TextDecoration.underline,
             ),
             blockquote: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.7),
+              color: colorScheme.onSurface.withAlpha((0.7 * 255).round()),
               fontStyle: FontStyle.italic,
-              backgroundColor: colorScheme.primary.withOpacity(0.05),
+              backgroundColor: colorScheme.primary.withAlpha((0.05 * 255).round()),
               height: 1.5,
             ),
             blockquotePadding: const EdgeInsets.all(8.0),
             blockquoteDecoration: BoxDecoration(
               border: Border(
                 left: BorderSide(
-                  color: colorScheme.primary.withOpacity(0.5),
+                  color: colorScheme.primary.withAlpha((0.5 * 255).round()),
                   width: 4,
                 ),
               ),
@@ -281,7 +281,7 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
             codeblockPadding: const EdgeInsets.all(8.0),
             code: theme.textTheme.bodySmall?.copyWith(
               fontFamily: 'monospace',
-              backgroundColor: colorScheme.surfaceVariant,
+              backgroundColor: colorScheme.surfaceContainerHighest,
               color: colorScheme.onSurfaceVariant,
             ),
           ),
@@ -296,7 +296,7 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
           child: Text(
             'Values are based on standard serving sizes and may vary.',
             style: theme.textTheme.bodySmall?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.6),
+              color: colorScheme.onSurface.withAlpha((0.6 * 255).round()),
               fontStyle: FontStyle.italic,
             ),
           ),
@@ -308,13 +308,12 @@ class _NutritionInfoWidgetState extends State<NutritionInfoWidget>
 
 /// Custom table builder for nutrition facts tables
 class NutritionTableBuilder extends MarkdownElementBuilder {
-  @override
   Widget? visitTable(Object table) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.grey.withOpacity(0.3),
+          color: Colors.grey.withAlpha((0.3 * 255).round()),
           width: 1,
         ),
         borderRadius: BorderRadius.circular(8),

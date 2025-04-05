@@ -8,7 +8,7 @@ part of 'home_sliver_app_bar.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeAppBarHash() => r'16a30e7ba5fda471289037582bdb640e4d409489';
+String _$homeAppBarHash() => r'd1cd758142183de475e6c16839f95e1d2513e0c3';
 
 /// Copied from Dart SDK
 class _SystemHash {

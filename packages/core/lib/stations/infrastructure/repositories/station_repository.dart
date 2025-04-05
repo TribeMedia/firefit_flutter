@@ -164,9 +164,16 @@ class StationRepository extends StationRepositoryInterface {
   Future<Either<Failure, Station>> getStationByCode(
       {required String id}) async {
     try {
-      final response = await graphqlClient.query$Station(
-        Options$Query$Station(
-          variables: Variables$Query$Station(id: id),
+      final response = await graphqlClient.query$StationCollection(
+        Options$Query$StationCollection(
+          variables: Variables$Query$StationCollection(
+            first: 1,
+            filter: Input$StationsFilter(
+              registrationCode: Input$StringFilter(
+                eq: id,
+              ),
+            ),
+          ),
         ),
       );
 

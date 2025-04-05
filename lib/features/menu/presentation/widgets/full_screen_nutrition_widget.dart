@@ -97,7 +97,7 @@ class FullScreenNutrition extends ConsumerWidget {
             // Divider
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Divider(color: colorScheme.outline.withOpacity(0.3)),
+              child: Divider(color: colorScheme.outline.withAlpha((0.3 * 255).round())),
             ),
 
             // Nutrition information in a scrollable container
@@ -136,14 +136,14 @@ class FullScreenNutrition extends ConsumerWidget {
                     decoration: TextDecoration.underline,
                   ),
                   blockquote: theme.textTheme.bodyLarge?.copyWith(
-                    color: colorScheme.onSurface.withOpacity(0.8),
+                    color: colorScheme.onSurface.withAlpha((0.8 * 255).round()),
                     fontStyle: FontStyle.italic,
                   ),
                   blockquoteDecoration: BoxDecoration(
-                    color: colorScheme.surfaceContainerHighest.withOpacity(0.3),
+                    color: colorScheme.surfaceContainerHighest.withAlpha((0.3 * 255).round()),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: colorScheme.primary.withOpacity(0.2),
+                      color: colorScheme.primary.withAlpha((0.2 * 255).round()),
                     ),
                   ),
                   blockquotePadding: const EdgeInsets.all(16),
@@ -155,7 +155,7 @@ class FullScreenNutrition extends ConsumerWidget {
                     color: colorScheme.onSurface,
                   ),
                   tableBorder: TableBorder.all(
-                    color: colorScheme.outline.withOpacity(0.3),
+                    color: colorScheme.outline.withAlpha((0.3 * 255).round()),
                     width: 1,
                     borderRadius: BorderRadius.circular(4),
                   ),
@@ -164,15 +164,15 @@ class FullScreenNutrition extends ConsumerWidget {
                   code: theme.textTheme.bodyMedium?.copyWith(
                     fontFamily: 'monospace',
                     backgroundColor: colorScheme.surfaceContainerHighest
-                        .withOpacity(0.5),
+                        .withAlpha((0.5 * 255).round()),
                     color: colorScheme.primary,
                   ),
                   codeblockDecoration: BoxDecoration(
                     color: colorScheme.surfaceContainerHighest
-                        .withOpacity(0.2),
+                        .withAlpha((0.2 * 255).round()),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: colorScheme.outline.withOpacity(0.2),
+                      color: colorScheme.outline.withAlpha((0.2 * 255).round()),
                     ),
                   ),
                   codeblockPadding: const EdgeInsets.all(16),
@@ -190,7 +190,7 @@ class FullScreenNutrition extends ConsumerWidget {
                   BoxShadow(
                     offset: const Offset(0, -2),
                     blurRadius: 6,
-                    color: Colors.black.withOpacity(0.06),
+                    color: Colors.black.withAlpha((0.06 * 255).round()),
                   ),
                 ],
               ),

@@ -1,4 +1,5 @@
 // cart_overlay.dart
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 
 import 'package:firefit/features/commerce/domain/database/database.dart';
@@ -146,7 +147,7 @@ class CartOverlay extends ConsumerWidget {
                   Text('Your Cart', style: theme.textTheme.h1),
                   const Spacer(),
                   ShadButton.outline(
-                    icon: const Icon(Icons.close),
+                    leading: const Icon(Icons.close),
                     onPressed: onClose,
                   ),
                 ],
@@ -177,18 +178,46 @@ class CartOverlay extends ConsumerWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
+                                        // Delete button
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.delete_outline,
+                                            color: theme.colorScheme.destructive,
+                                            size: 20,
+                                          ),
+                                          onPressed: () => onUpdateQuantity(item.id, 0 - item.quantity),
+                                          tooltip: 'Remove from cart',
+                                          padding: EdgeInsets.zero,
+                                          constraints: const BoxConstraints(),
+                                        ),
+                                        const SizedBox(width: 8),
                                         if (productForItem(item.id)?.photoUrl !=
                                             null)
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8),
-                                            child: Image.network(
-                                              productForItem(item.id)!
+                                            child: CachedNetworkImage(
+                                              imageUrl: productForItem(item.id)!
                                                   .photoUrl!,
                                               width: kImageSize,
                                               height: kImageSize,
                                               fit: BoxFit.cover,
-                                              errorBuilder: (context, error,
+                                              placeholder: (context, url) => Container(
+                                                width: kImageSize,
+                                                height: kImageSize,
+                                                color: theme.colorScheme.muted,
+                                                child: Center(
+                                                  child: SizedBox(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: CircularProgressIndicator(
+                                                      strokeWidth: 2,
+                                                      color: theme.colorScheme.primary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              errorWidget: (context, error,
                                                       stackTrace) =>
                                                   Container(
                                                 width: kImageSize,
@@ -200,6 +229,8 @@ class CartOverlay extends ConsumerWidget {
                                                       theme.colorScheme.muted,
                                                 ),
                                               ),
+                                              memCacheWidth: kImageSize.toInt(),
+                                              memCacheHeight: kImageSize.toInt(),
                                             ),
                                           ),
                                         const SizedBox(width: 12),
@@ -323,7 +354,7 @@ class QuantitySelector extends ConsumerWidget {
     return Row(
       children: [
         ShadButton(
-          icon: const Icon(Icons.remove),
+          leading: const Icon(Icons.remove),
           onPressed: () {
             final targetQuantity = value - 1;
             if (targetQuantity < 1) {
@@ -349,7 +380,7 @@ class QuantitySelector extends ConsumerWidget {
           ),
         ),
         ShadButton(
-          icon: const Icon(Icons.add),
+          leading: const Icon(Icons.add),
           onPressed: () {
             // Call the onChanged callback instead of directly calling the notifier
             onChanged(1);

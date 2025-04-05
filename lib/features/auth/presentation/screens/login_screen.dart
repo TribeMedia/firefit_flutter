@@ -99,6 +99,14 @@ class LoginScreen extends HookConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
+                            SizedBox(
+                              height: 100, // Reduced height for smaller logo
+                              child: Image.asset(
+                                'assets/images/fots-logo-color.png',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            const SizedBox(height: 24),
                             const Text(
                               'Login',
                               style: TextStyle(
@@ -110,17 +118,18 @@ class LoginScreen extends HookConsumerWidget {
                             const SizedBox(height: 32),
                             ReactiveTextField<String>(
                               formControlName: 'identifier',
-                              decoration: InputDecoration(
-                                labelText: 'Email or Handle',
-                                hintText: 'Enter your email or handle',
-                                hintStyle: TextStyle(color: Colors.grey[600]),
-                                labelStyle: TextStyle(color: Colors.grey[800]),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                filled: true,
-                                fillColor: Colors.grey[200],
-                              ),
+                                decoration: InputDecoration(
+                                  labelText: 'Email or Handle',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.grey[200],
+                                  labelStyle: TextStyle(
+                                    color: Colors.grey[600],
+                                  ),
+                                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                                ),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.grey[900],
@@ -133,17 +142,18 @@ class LoginScreen extends HookConsumerWidget {
                             const SizedBox(height: 16),
                             ReactiveTextField<String>(
                               formControlName: 'password',
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                hintText: 'Enter your password',
-                                hintStyle: TextStyle(color: Colors.grey[600]),
-                                labelStyle: TextStyle(color: Colors.grey[800]),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                filled: true,
-                                fillColor: Colors.grey[200],
-                              ),
+                                decoration: InputDecoration(
+                                  labelText: 'Password',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.grey[200],
+                                  labelStyle: TextStyle(
+                                    color: Colors.grey[600],
+                                  ),
+                                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                                ),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.grey[900],
@@ -178,20 +188,18 @@ class LoginScreen extends HookConsumerWidget {
                                         ),
                                       ReactiveTextField<String>(
                                         formControlName: 'pdsService',
-                                        decoration: InputDecoration(
-                                          labelText: 'PDS Service',
-                                          hintText:
-                                              'bsky.social or https://bsky.social',
-                                          hintStyle: TextStyle(
-                                              color: Colors.grey[600]),
-                                          labelStyle: TextStyle(
-                                              color: Colors.grey[800]),
-                                          floatingLabelBehavior:
-                                              FloatingLabelBehavior.never,
-                                          border: InputBorder.none,
-                                          filled: true,
-                                          fillColor: Colors.grey[200],
-                                        ),
+                                          decoration: InputDecoration(
+                                            labelText: 'PDS Service',
+                                            border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                            filled: true,
+                                            fillColor: Colors.grey[200],
+                                            labelStyle: TextStyle(
+                                              color: Colors.grey[600],
+                                            ),
+                                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                                          ),
                                         style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.grey[900],
@@ -242,7 +250,7 @@ class LoginScreen extends HookConsumerWidget {
                             TextButton(
                               onPressed: () {
                                 // Navigate to registration screen
-                                context.go('/station-code');
+                                context.go('/register');
                               },
                               child: const Text(
                                   'Don\'t have an account? Register'),

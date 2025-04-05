@@ -60,6 +60,56 @@ class ProfileScreen extends HookConsumerWidget {
                               ),
                             ),
                           ),
+                          // Avatar positioned in the middle of the top area
+                          Positioned(
+                            bottom: 50, // Positioned in the middle of the image
+                            left: 0,
+                            right: 0,
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: theme.colorScheme.surface,
+                                    width: 4,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color.fromRGBO(
+                                        theme.colorScheme.shadow.r.round(),
+                                        theme.colorScheme.shadow.g.round(),
+                                        theme.colorScheme.shadow.b.round(),
+                                        0.1
+                                      ),
+                                      blurRadius: 10,
+                                      spreadRadius: 2,
+                                    ),
+                                  ],
+                                ),
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  backgroundColor:
+                                      Color.fromRGBO(
+                                        theme.colorScheme.primary.r.round(),
+                                        theme.colorScheme.primary.g.round(),
+                                        theme.colorScheme.primary.b.round(),
+                                        0.1
+                                      ),
+                                  backgroundImage: user.profile.avatar != null
+                                      ? NetworkImage(user.profile.avatar!)
+                                      : null,
+                                  child: user.profile.avatar == null
+                                      ? Text(
+                                          user.profile.displayName?[0].toUpperCase() ?? '',
+                                          style: theme.textTheme.headlineMedium?.copyWith(
+                                            color: theme.colorScheme.primary,
+                                          ),
+                                        )
+                                      : null,
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -67,7 +117,7 @@ class ProfileScreen extends HookConsumerWidget {
                   SliverToBoxAdapter(
                     child: Column(
                       children: [
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 60), // Increased to accommodate the avatar
                         // Profile info
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -154,56 +204,7 @@ class ProfileScreen extends HookConsumerWidget {
                   ),
                 ],
               ),
-              // Avatar overlay
-              Positioned(
-                top: 175,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: theme.colorScheme.surface,
-                        width: 4,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromRGBO(
-                            theme.colorScheme.shadow.r.round(),
-                            theme.colorScheme.shadow.g.round(),
-                            theme.colorScheme.shadow.b.round(),
-                            0.1
-                          ),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundColor:
-                          Color.fromRGBO(
-                            theme.colorScheme.primary.r.round(),
-                            theme.colorScheme.primary.g.round(),
-                            theme.colorScheme.primary.b.round(),
-                            0.1
-                          ),
-                      backgroundImage: user.profile.avatar != null
-                          ? NetworkImage(user.profile.avatar!)
-                          : null,
-                      child: user.profile.avatar == null
-                          ? Text(
-                              user.profile.displayName?[0].toUpperCase() ?? '',
-                              style: theme.textTheme.headlineMedium?.copyWith(
-                                color: theme.colorScheme.primary,
-                              ),
-                            )
-                          : null,
-                    ),
-                  ),
-                ),
-              ),
+              // Avatar is now part of the SliverAppBar
             ],
           ),
         );

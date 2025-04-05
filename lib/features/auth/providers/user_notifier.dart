@@ -24,6 +24,22 @@ class UserState {
     required this.isLoading,
     required this.isLoggedIn,
   });
+
+  UserState copyWith({
+    String? error,
+    bool? isLoading,
+    bool? isLoggedIn,
+    AuthUser? user,
+    Station? station,
+  }) {
+    return UserState(
+      user: user ?? this.user,
+      error: error ?? this.error,
+      isLoading: isLoading ?? this.isLoading,
+      isLoggedIn: isLoggedIn ?? this.isLoggedIn,
+      station: station ?? this.station,
+    );
+  }
 }
 
 class UserNotifier extends AsyncNotifier<UserState> {
@@ -123,62 +139,63 @@ class UserNotifier extends AsyncNotifier<UserState> {
     }
   }
 
-  Future<Either<Failure, AuthUser>> register({
+  Future<UserState> register({
     required String email,
     required String password,
     required String handle,
-    required String stationCode,
     String? firstName,
     String? lastName,
   }) async {
     try {
-      state = const AsyncValue.loading();
-      final station = await stationRepository.getStationByCode(
-        id: stationCode,
-      );
+      return await update((previousState) async {
+        if (previousState.station == null) {
+          return previousState.copyWith(
+            error: 'No station found',
+            isLoading: false,
+            isLoggedIn: false,
+            user: null,
+            station: null,
+          );
+        }
 
-      return station.fold(
-        (l) => left(l),
-        (r) async {
-          final authResult = await authenticationService.register(
+        final authResult = await authenticationService.register(
             email: email,
             password: password,
             firstName: firstName ?? '',
             lastName: lastName ?? '',
             handle: handle,
-            stationId: r.id,
+            stationId: previousState.station!.id,
           );
           return authResult.fold(
-            (l) {
-              state = AsyncValue.data(
-                UserState(
-                  user: null,
-                  isLoading: false,
-                  isLoggedIn: false,
-                  error: l.error,
-                  station: r,
-                ),
+            (l) {          
+              return previousState.copyWith(
+                error: l.error,
+                isLoading: false,
+                isLoggedIn: false,
+                user: null,
+                station: previousState.station,
               );
-              return left(l);
             },
             (r) {
-              state = AsyncValue.data(
-                UserState(
+              // Ensure the user has the station associated with them
+              return UserState(
                   user: r,
                   isLoading: false,
                   isLoggedIn: true,
                   error: null,
-                  station: state.value?.station,
-                ),
-              );
-              return right(r);
+                  station: previousState.station, // Use the validated station
+                );
             },
           );
-        },
-      );
-    } catch (err, stackTrace) {
-      state = AsyncValue.error(err, stackTrace);
-      return left(Failure.unprocessableEntity(message: err.toString()));
+      });
+    } catch (err, _) {
+      return UserState(
+          isLoading: false, 
+          isLoggedIn: false,
+          user: null,
+          error: err.toString(),
+          station: state.value?.station,
+        );
     }
   }
 
@@ -201,7 +218,7 @@ class UserNotifier extends AsyncNotifier<UserState> {
     }
   }
 
-  Future<bool> validateStationCode(String code) async {
+  Future<String?> validateStationCode(String code) async {
     final logging = ref.read(loggingProvider);
     final stationRepository = ref.read(stationRepositoryProvider);
 
@@ -214,17 +231,29 @@ class UserNotifier extends AsyncNotifier<UserState> {
       );
 
       return stationResult.fold(
-        (l) => false,
+        (l) {
+          state = AsyncValue.data(
+            UserState(
+              user: state.value?.user,
+              error: 'Invalid station code. Please try again.',
+              isLoading: false,
+              isLoggedIn: state.value?.isLoggedIn ?? false,
+              station: null,
+            ),
+          );
+          return null;
+        },
         (r) {
           state = AsyncValue.data(
             UserState(
               user: state.value?.user,
+              error: null,
               isLoading: false,
               isLoggedIn: state.value?.isLoggedIn ?? false,
               station: r,
             ),
           );
-          return true;
+          return r.id;
         },
       );
     } catch (err, stackTrace) {
@@ -232,7 +261,7 @@ class UserNotifier extends AsyncNotifier<UserState> {
       logging.debug('Error: $err\nStackTrace: $stackTrace');
       state = AsyncValue.error(err, stackTrace);
     }
-    return false;
+    return null;
   }
 }
 

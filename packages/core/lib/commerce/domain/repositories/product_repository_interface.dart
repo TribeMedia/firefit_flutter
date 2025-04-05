@@ -14,4 +14,8 @@ abstract class ProductRepositoryInterface {
     Input$ProductsFilter? filter,
     List<Input$ProductsOrderBy>? orderBy,
   });
+  
+  /// Subscribe to product changes
+  /// Returns a stream of product lists that will emit when products are added, updated, or removed
+  Stream<List<Product>> subscribeToProducts();
 }

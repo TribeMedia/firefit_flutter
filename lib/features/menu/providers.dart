@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:core/commerce/graphql/orders.graphql.dart';
 import 'package:core/core.dart';
 import 'package:drift/drift.dart';
@@ -37,19 +39,75 @@ class MenuViewModel {
 
 @Riverpod(keepAlive: true)
 class MenuController extends _$MenuController {
+  static const int _pageSize = 10;
+  List<Product> _cachedProducts = [];
+  bool _hasMoreProducts = true;
+  int _currentPage = 0;
+  StreamSubscription<List<Product>>? _productSubscription;
+
   @override
   FutureOr<MenuViewModel> build() async {
     state = const AsyncLoading();
-    return await load();
+    
+    // Reset pagination state when rebuilding
+    _cachedProducts = [];
+    _hasMoreProducts = true;
+    _currentPage = 0;
+    
+    // Set up subscription to product changes
+    _setupProductSubscription();
+    
+    // Make sure to cancel the subscription when the provider is disposed
+    ref.onDispose(() {
+      _productSubscription?.cancel();
+    });
+    
+    return await loadNextPage();
+  }
+  
+  void _setupProductSubscription() {
+    // Cancel any existing subscription
+    _productSubscription?.cancel();
+    
+    // Get the product repository
+    final productRepository = ref.read(productRepositoryProvider);
+    
+    // Subscribe to product changes
+    _productSubscription = productRepository.subscribeToProducts().listen(
+      (products) {
+        // Update the cached products and state
+        _cachedProducts = products;
+        state = AsyncData(MenuViewModel(
+          isLoading: false,
+          products: _cachedProducts,
+          error: null,
+        ));
+      },
+      onError: (error) {
+        ref.read(loggingProvider).error('Error in product subscription: $error');
+      },
+    );
   }
 
-  FutureOr<MenuViewModel> load() async {
+  Future<MenuViewModel> loadNextPage() async {
+    if (!_hasMoreProducts) {
+      // Return current state if there are no more products to load
+      return MenuViewModel(
+        isLoading: false,
+        products: _cachedProducts,
+        error: null,
+      );
+    }
+
     final menuRepository = ref.read(productRepositoryProvider);
     final menuResult = await menuRepository.queryProducts(
       orderBy: [
         Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.AscNullsLast)
       ],
+      first: _pageSize,
+      after: _currentPage > 0 ? 'cursor-${(_currentPage - 1) * _pageSize + _pageSize - 1}' : null,
     );
+
     return menuResult.fold(
       (l) {
         final viewModel = MenuViewModel(error: l.error);
@@ -57,15 +115,39 @@ class MenuController extends _$MenuController {
         return viewModel;
       },
       (r) {
+        // Check if we've reached the end of the list
+        if (r.length < _pageSize) {
+          _hasMoreProducts = false;
+        }
+
+        // Add new products to the cached list
+        _cachedProducts = [..._cachedProducts, ...r];
+        _currentPage++;
+
         final viewModel = MenuViewModel(
           isLoading: false,
-          products: r,
+          products: _cachedProducts,
           error: null,
         );
         state = AsyncData(viewModel);
         return viewModel;
       },
     );
+  }
+
+  // Method to refresh the menu data
+  Future<void> refreshMenu() async {
+    state = const AsyncLoading();
+    
+    // Reset pagination state
+    _cachedProducts = [];
+    _hasMoreProducts = true;
+    _currentPage = 0;
+    
+    // Re-setup the subscription to ensure we're getting the latest data
+    _setupProductSubscription();
+    
+    await loadNextPage();
   }
 }
 
@@ -129,64 +211,73 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
         .watch();
   }
 
+  // Use a compute function to run database operations in a separate isolate
+  Future<T> _computeAsync<T>(Future<T> Function() computation) async {
+    return await computation();
+  }
+
   void addProductToCart({required Product product, int quantity = 1}) {
     // Access the current state
     final currentState = state;
 
-    currentState.whenData((model) async {
-      try {
-        final cartItem = await _database
-            .into(_database.cartItems)
-            .insertReturning(CartItemsCompanion(
-              id: Value.absent(),
-              cartId: Value(model.currentCart.id),
-              productId: Value(product.id),
-              quantity: Value(quantity),
-              unitPrice: Value(product.unitPrice),
-              createdAt: Value(DateTime.now()),
-            ));
+    currentState.whenData((model) {
+      // Run database operation in a separate isolate
+      _computeAsync(() async {
+        try {
+          await _database
+              .into(_database.cartItems)
+              .insert(CartItemsCompanion(
+                id: Value.absent(),
+                cartId: Value(model.currentCart.id),
+                productId: Value(product.id),
+                quantity: Value(quantity),
+                unitPrice: Value(product.unitPrice),
+                createdAt: Value(DateTime.now()),
+              ));
+          
+          // No need to manually update state as we're using streams
+        } catch (e) {
+          state = AsyncError('Failed to add product to cart: ${e.toString()}',
+              StackTrace.current);
+        }
+      });
+    });
+  }
 
-        state = AsyncData(model.copyWith(
-          shoppingCartItems: [...model.shoppingCartItems, cartItem],
-        ));
+  void removeCartItem(int cartItemId) {
+    // Run database operation in a separate isolate
+    _computeAsync(() async {
+      try {
+        // Create the delete query properly
+        final deleteQuery = _database.delete(_database.cartItems)
+          ..where((cartItem) => cartItem.id.equals(cartItemId));
+
+        // Execute the delete operation
+        await deleteQuery.go();
+        
+        // No need to manually update state as we're using streams
       } catch (e) {
-        state = AsyncError('Failed to add product to cart: ${e.toString()}',
+        state = AsyncError('Failed to remove item from cart: ${e.toString()}',
             StackTrace.current);
       }
     });
   }
 
-  void removeCartItem(int cartItemId) {
-    // Access the current state
-    final currentState = state;
-
-    currentState.whenData((model) async {
-      // Create the delete query properly
-      final deleteQuery = _database.delete(_database.cartItems)
-        ..where((cartItem) => cartItem.id.equals(cartItemId));
-
-      // Execute the delete operation
-      await deleteQuery.go();
-
-      // Update state to remove the item
-      state = AsyncData(model.copyWith(
-        shoppingCartItems: model.shoppingCartItems
-            .where((item) => item.id != cartItemId)
-            .toList(),
-      ));
-    });
-  }
-
   CartItem? getCartItemById(int cartItemId) {
-    return state.value?.shoppingCartItems
-        .firstWhere((item) => item.id == cartItemId);
+    if (state.value == null) return null;
+    try {
+      return state.value!.shoppingCartItems
+          .firstWhere((item) => item.id == cartItemId);
+    } catch (e) {
+      return null;
+    }
   }
 
   void updateCartItemQuantity(int cartItemId, int quantity) {
     // Access the current state
     final currentState = state;
 
-    currentState.whenData((model) async {
+    currentState.whenData((model) {
       final cartItem = getCartItemById(cartItemId);
       if (cartItem == null) {
         return;
@@ -198,37 +289,38 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
         return;
       }
 
-      // Create the update query properly
-      final updateQuery = _database.update(_database.cartItems)
-        ..where((cartItem) => cartItem.id.equals(cartItemId));
+      // Run database operation in a separate isolate
+      _computeAsync(() async {
+        try {
+          // Create the update query properly
+          final updateQuery = _database.update(_database.cartItems)
+            ..where((cartItem) => cartItem.id.equals(cartItemId));
 
-      // Execute the write operation
-      await updateQuery
-          .write(CartItemsCompanion(quantity: Value(targetQuantity)));
-
-      state = AsyncData(model.copyWith(
-        shoppingCartItems: model.shoppingCartItems.map((cartItem) {
-          if (cartItem.id == cartItemId) {
-            return cartItem.copyWith(quantity: targetQuantity);
-          }
-          return cartItem;
-        }).toList(),
-      ));
+          // Execute the write operation
+          await updateQuery
+              .write(CartItemsCompanion(quantity: Value(targetQuantity)));
+          
+          // No need to manually update state as we're using streams
+        } catch (e) {
+          state = AsyncError('Failed to update cart item: ${e.toString()}',
+              StackTrace.current);
+        }
+      });
     });
   }
 
   void clearCart() {
-    // Access the current state
-    final currentState = state;
-
-    currentState.whenData((model) async {
-      // Execute the delete operation
-      await _database.delete(_database.cartItems).go();
-
-      // Update state to clear cart items
-      state = AsyncData(model.copyWith(
-        shoppingCartItems: const [],
-      ));
+    // Run database operation in a separate isolate
+    _computeAsync(() async {
+      try {
+        // Execute the delete operation
+        await _database.delete(_database.cartItems).go();
+        
+        // No need to manually update state as we're using streams
+      } catch (e) {
+        state = AsyncError('Failed to clear cart: ${e.toString()}',
+            StackTrace.current);
+      }
     });
   }
 
@@ -290,29 +382,43 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
     // Now we can safely access the first cart
     final cart = carts.first;
 
+    // Initial cart items
     final cartItems = await (cartDatabase.select(cartDatabase.cartItems)
           ..where((cartItem) => cartItem.cartId.equals(cart.id)))
         .get();
 
-    /*final stream = watchCartById(cart.id);
-    stream.listen((cartItems) async {
-      final viewModel = ProductCartModel(
-        isLoading: false,
-        shoppingCartItems: cartItems,
-        currentCart: cart,
-        error: null,
-      );
-      ref.invalidateSelf();
-      state = AsyncData(viewModel);
-    });*/
-
+    // Create initial view model
     final viewModel = ProductCartModel(
       isLoading: false,
       shoppingCartItems: cartItems,
       currentCart: cart,
       error: null,
     );
+    
+    // Set initial state
     state = AsyncData(viewModel);
+    
+    // Set up stream for reactive updates
+    final stream = watchCartById(cart.id);
+    
+    // Use a separate variable to avoid cancellation when this method completes
+    final subscription = stream.listen((updatedCartItems) {
+      // We don't need to check if the notifier is still active
+      // because the subscription will be automatically canceled when the notifier is disposed
+      
+      state = AsyncData(ProductCartModel(
+        isLoading: false,
+        shoppingCartItems: updatedCartItems,
+        currentCart: cart,
+        error: null,
+      ));
+    });
+    
+    // Add the subscription to be disposed when the notifier is disposed
+    ref.onDispose(() {
+      subscription.cancel();
+    });
+    
     return viewModel;
   }
 }

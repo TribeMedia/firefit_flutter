@@ -55,10 +55,8 @@
       </dict>
     </array>
 	<key>NSCameraUsageDescription</key>
-	<string>Scan your card to add it automatically</string>
-	<key>NSCameraUsageDescription</key>
-	<string>To scan cards</string>
-
+	<string>To scan cards and add them automatically</string>
+	
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer> <!-- iPhone only -->

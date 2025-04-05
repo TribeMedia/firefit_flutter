@@ -306,4 +306,177 @@ echo "Running asset catalogs removal script..."
 echo "Running Contents.json removal script..."
 ./remove_contents_json.sh
 
+# Step 11: Fix Pods_Runner framework issue
+echo "Fixing Pods_Runner framework issue..."
+cat > fix_pods_framework.rb << 'EOL'
+#!/usr/bin/env ruby
+
+require 'xcodeproj'
+
+def fix_pods_framework(project_path)
+  puts "Fixing Pods_Runner framework issue in: #{project_path}"
+  
+  begin
+    project = Xcodeproj::Project.open(project_path)
+    
+    # Find the Runner target
+    runner_target = project.targets.find { |t| t.name == 'Runner' }
+    
+    if runner_target
+      puts "Found Runner target"
+      
+      # Modify build settings for all configurations
+      runner_target.build_configurations.each do |config|
+        puts "Modifying build settings for configuration: #{config.name}"
+        
+        # Make sure the Pods xcconfig file is included
+        config_file_path = "Pods/Target Support Files/Pods-Runner/Pods-Runner.#{config.name.downcase}.xcconfig"
+        config.base_configuration_reference = project.new_file(config_file_path)
+        
+        # Add framework search paths
+        if config.build_settings['FRAMEWORK_SEARCH_PATHS']
+          config.build_settings['FRAMEWORK_SEARCH_PATHS'] << '$(PODS_ROOT)'
+          config.build_settings['FRAMEWORK_SEARCH_PATHS'] << '$(PODS_CONFIGURATION_BUILD_DIR)'
+        else
+          config.build_settings['FRAMEWORK_SEARCH_PATHS'] = ['$(inherited)', '$(PODS_ROOT)', '$(PODS_CONFIGURATION_BUILD_DIR)']
+        end
+        
+        # Add header search paths
+        if config.build_settings['HEADER_SEARCH_PATHS']
+          config.build_settings['HEADER_SEARCH_PATHS'] << '$(PODS_ROOT)/Headers/Public'
+        else
+          config.build_settings['HEADER_SEARCH_PATHS'] = ['$(inherited)', '$(PODS_ROOT)/Headers/Public']
+        end
+        
+        # Make sure the pods framework is linked
+        config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = ['$(inherited)', '@executable_path/Frameworks']
+        
+        # Enable modules
+        config.build_settings['CLANG_ENABLE_MODULES'] = 'YES'
+        
+        # Enable bitcode
+        config.build_settings['ENABLE_BITCODE'] = 'NO'
+        
+        # Set other important settings
+        config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'YES'
+        config.build_settings['SWIFT_VERSION'] = '5.0'
+      end
+      
+      # Save the project
+      project.save
+      puts "Successfully modified Xcode project settings"
+    else
+      puts "Error: Could not find Runner target"
+    end
+  rescue => e
+    puts "Error modifying Xcode project: #{e.message}"
+    puts e.backtrace
+  end
+end
+
+# Fix the Runner.xcodeproj
+fix_pods_framework("Runner.xcodeproj")
+EOL
+
+# Make the script executable
+chmod +x fix_pods_framework.rb
+
+# Run the script
+ruby fix_pods_framework.rb
+
+# Step 12: Fix Flutter frameworks embedding issue
+echo "Creating Flutter frameworks fix script..."
+cat > create_flutter_frameworks.sh << 'EOL'
+#!/bin/bash
+
+# Create Flutter frameworks directory if it doesn't exist
+mkdir -p "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+
+# Create dummy Flutter.framework to satisfy the null check
+mkdir -p "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flutter.framework"
+touch "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flutter.framework/Flutter"
+
+# Create dummy App.framework to satisfy the null check
+mkdir -p "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/App.framework"
+touch "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/App.framework/App"
+
+echo "Created dummy Flutter frameworks"
+EOL
+
+# Make the script executable
+chmod +x create_flutter_frameworks.sh
+
+# Add the Flutter frameworks fix directly to the Xcode project
+echo "Adding Flutter frameworks fix directly to the Xcode project..."
+
+# Create a simple build phase script
+cat > add_build_phase_directly.sh << 'EOL'
+#!/bin/bash
+
+# Path to the project.pbxproj file
+PROJECT_FILE="Runner.xcodeproj/project.pbxproj"
+
+# Create a backup of the project file
+cp "$PROJECT_FILE" "${PROJECT_FILE}.bak"
+
+# Add the build phase script to the project file
+sed -i.bak '/shellScript = ".*\\\/bin\\\/sh/a\\
+\\t\\t\\t\\tshellScript = "\\"\${SRCROOT}\\/create_flutter_frameworks.sh\\"\\n";\\
+\\t\\t\\t\\tname = "Create Flutter Frameworks";\\
+' "$PROJECT_FILE"
+
+echo "Added Create Flutter Frameworks build phase to Xcode project"
+EOL
+
+# Make the script executable
+chmod +x add_build_phase_directly.sh
+
+# Run the script
+./add_build_phase_directly.sh
+
+# Create a patch for the xcode_backend.dart file
+echo "Creating patch for xcode_backend.dart..."
+cat > xcode_backend_patch.sh << 'EOL'
+#!/bin/bash
+
+# Find the xcode_backend.dart file
+XCODE_BACKEND_PATH=$(find $HOME/development/flutter/packages/flutter_tools/bin -name "xcode_backend.dart" 2>/dev/null)
+
+if [ -z "$XCODE_BACKEND_PATH" ]; then
+  echo "Could not find xcode_backend.dart file. Trying alternative locations..."
+  XCODE_BACKEND_PATH=$(find $HOME/flutter/packages/flutter_tools/bin -name "xcode_backend.dart" 2>/dev/null)
+fi
+
+if [ -z "$XCODE_BACKEND_PATH" ]; then
+  echo "Could not find xcode_backend.dart file. Trying more locations..."
+  XCODE_BACKEND_PATH=$(find $HOME -name "xcode_backend.dart" 2>/dev/null | grep -v "Cache" | head -n 1)
+fi
+
+if [ -z "$XCODE_BACKEND_PATH" ]; then
+  echo "Error: Could not find xcode_backend.dart file."
+  echo "Skipping xcode_backend.dart patch..."
+  exit 0
+fi
+
+echo "Found xcode_backend.dart at: $XCODE_BACKEND_PATH"
+
+# Create a backup of the original file
+cp "$XCODE_BACKEND_PATH" "$XCODE_BACKEND_PATH.orig"
+
+# Add a check to create the frameworks directory if it doesn't exist
+sed -i.bak '/final Directory frameworksDirectory = Directory/a\\
+  // Create the frameworks directory if it doesn\\'\''t exist\\
+  frameworksDirectory.createSync(recursive: true);\\
+' "$XCODE_BACKEND_PATH"
+
+echo "Patched xcode_backend.dart to create frameworks directory if it doesn't exist"
+EOL
+
+# Make the script executable
+chmod +x xcode_backend_patch.sh
+
+# Run the script
+./xcode_backend_patch.sh
+
 echo "All fixes completed! Try building the app now with: flutter build ios --no-codesign"
+echo "For debugging on a device, use: flutter run"

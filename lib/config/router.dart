@@ -2,7 +2,6 @@ import 'package:core/commerce/domain/models/product.dart';
 import 'package:firefit/config/router_notifier.dart';
 import 'package:firefit/features/auth/presentation/screens/login_screen.dart';
 import 'package:firefit/features/auth/presentation/screens/registration_screen.dart';
-import 'package:firefit/features/auth/presentation/screens/station_code_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/orders_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/payment_success_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
@@ -12,6 +11,7 @@ import 'package:firefit/features/menu/presentation/screens/menu_product_screen.d
 import 'package:firefit/features/menu/presentation/screens/menu_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/profile_screen.dart';
 import 'package:firefit/features/profiles/presentation/screens/settings_screen.dart';
+import 'package:firefit/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -24,19 +24,27 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     debugLogDiagnostics: true,
     navigatorKey: navigatorKey,
-    initialLocation: '/',
+    initialLocation: '/splash',
     refreshListenable: routerNotifier,
     redirect: (context, state) {
       final isAuthenticated = routerNotifier.isAuthenticated;
       final isAuthRoute = state.matchedLocation == '/login' ||
-          state.matchedLocation == '/register' ||
-          state.matchedLocation == '/station-code';
+          state.matchedLocation == '/register';
+      final isSplashRoute = state.matchedLocation == '/splash';
+
+      // Don't redirect if on splash screen
+      if (isSplashRoute) return null;
 
       if (!isAuthenticated && !isAuthRoute) return '/login';
       if (isAuthenticated && isAuthRoute) return '/';
       return null;
     },
     routes: [
+      // Splash Screen Route
+      GoRoute(
+        path: '/splash',
+        builder: (context, state) => const SplashScreen(),
+      ),
       ShellRoute(
         builder: (context, state, child) {
           return ApplicationContainer(
@@ -114,15 +122,8 @@ final routerProvider = Provider<GoRouter>((ref) {
             return PaymentSuccessScreen();
           }),
       GoRoute(
-        path: '/register/:stationCode',
-        builder: (context, state) {
-          final stationCode = state.pathParameters['stationCode'];
-          return RegistrationScreen(stationCode: stationCode!);
-        },
-      ),
-      GoRoute(
-        path: '/station-code',
-        builder: (context, state) => const StationCodeScreen(),
+        path: '/register',
+        builder: (context, state) => const RegistrationScreen(),
       ),
     ],
     errorBuilder: (context, state) => ErrorScreen(

@@ -1,21 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
-import 'package:firefit/features/menu/presentation/widgets/full_screen_instructions_widget.dart';
-import 'package:firefit/features/menu/presentation/widgets/full_screen_nutrition_widget.dart';
-// Timer import removed as it's no longer needed
+import 'package:firefit/features/menu/presentation/widgets/full_screen_tabbed_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-// TabController provider
-final tabControllerProvider =
-    Provider.autoDispose.family<TabController, BuildContext>((ref, context) {
-  final controller = TabController(length: 3, vsync: Scaffold.of(context));
-  ref.onDispose(() {
-    controller.dispose();
-  });
-  return controller;
-});
 
 // Quantity state provider
 final quantityProvider = StateProvider.autoDispose<int>((ref) => 1);
@@ -47,15 +36,9 @@ class MenuProductCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Timer state is no longer needed directly in this widget
-    // final timerState = ref.watch(timerProvider);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final quantity = ref.watch(quantityProvider);
-
-    // TabController is now managed by Riverpod
-    // We need to ensure we're in a valid context before accessing Scaffold.of
-    // Using Builder to get a valid BuildContext for the TabController
 
     return SafeArea(
       bottom: true,
@@ -82,146 +65,60 @@ class MenuProductCard extends ConsumerWidget {
         // Add persistent bottom button for cart
         bottomNavigationBar:
             _buildAddToCartBar(context, ref, colorScheme, theme, quantity),
-        body: Builder(builder: (scaffoldContext) {
-          // Get the TabController from the provider with the correct BuildContext
-          final tabController =
-              ref.watch(tabControllerProvider(scaffoldContext));
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Product Image
+                _buildProductImage(colorScheme),
 
-          return LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Product Image
-                  _buildProductImage(colorScheme),
+                // Product Details
+                _buildProductDetails(theme, colorScheme),
 
-                  // Product Details
-                  _buildProductDetails(theme, colorScheme),
-
-                  // Tab bar for Overview and Instructions
-                  if (productMenuItem.instructions != null &&
-                      productMenuItem.instructions!.isNotEmpty) ...[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(
-                              colorScheme.surfaceContainerHighest.r.round(),
-                              colorScheme.surfaceContainerHighest.g.round(),
-                              colorScheme.surfaceContainerHighest.b.round(),
-                              0.3),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: TabBar(
-                          controller: tabController,
-                          labelColor: colorScheme.primary,
-                          unselectedLabelColor: colorScheme.onSurfaceVariant,
-                          indicatorColor: colorScheme.primary,
-                          indicatorSize: TabBarIndicatorSize.tab,
-                          dividerColor: Colors.transparent,
-                          tabs: [
-                            // Simple text tab for Overview
-                            const Tab(text: 'Overview'),
-
-                            // Custom tab with text and button for Instructions
-                            Tab(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text('Instructions'),
-                                  const SizedBox(width: 8),
-                                  // Small button for fullscreen
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              FullScreenInstructions(
-                                            title: productMenuItem.name,
-                                            instructions:
-                                                productMenuItem.instructions ??
-                                                    '',
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    borderRadius: BorderRadius.circular(4),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Icon(
-                                        Icons.fullscreen,
-                                        size: 18,
-                                        color: colorScheme.primary,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                // Product details buttons
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                  child: Column(
+                    children: [
+                      // Full details button - improved with a more prominent style
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => FullScreenTabbedView(
+                                title: productMenuItem.name,
+                                description: productMenuItem.longDescription ?? 
+                                    'This product is prepared freshly for your enjoyment. Our dishes are made with high-quality ingredients sourced locally when possible.',
+                                instructions: productMenuItem.instructions ?? '',
+                                nutrition: productMenuItem.nutritionDetails ?? 
+                                    'Nutrition information not available.',
+                                imageUrl: productMenuItem.photoUrl,
                               ),
                             ),
-                            
-                            // Nutrition tab with fullscreen button
-                            Tab(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text('Nutrition'),
-                                  const SizedBox(width: 8),
-                                  // Small button for fullscreen
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              FullScreenNutrition(
-                                            title: productMenuItem.name,
-                                            nutrition:
-                                                productMenuItem.nutritionDetails ??
-                                                    'Nutrition information not available.',
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    borderRadius: BorderRadius.circular(4),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Icon(
-                                        Icons.fullscreen,
-                                        size: 18,
-                                        color: colorScheme.primary,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                          );
+                        },
+                        icon: const Icon(Icons.menu_book),
+                        label: const Text('View Full Details'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: colorScheme.primary,
+                          foregroundColor: colorScheme.onPrimary,
+                          minimumSize: const Size(double.infinity, 56), // Slightly taller
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          elevation: 2, // Add a slight shadow
+                          padding: const EdgeInsets.symmetric(vertical: 12), // More padding
                         ),
                       ),
-                    ),
-
-                    // Tab content - expanded to fill remaining space
-                    Expanded(
-                      child: TabBarView(
-                        controller: tabController,
-                        children: [
-                          // Overview Tab
-                          _buildOverviewTab(theme, colorScheme),
-
-                          // Instructions Tab
-                          _buildInstructionsTab(context, theme, colorScheme),
-
-                          // Nutrition Tab
-                          _buildNutritionTab(context, theme, colorScheme, 
-                              productMenuItem.nutritionDetails ?? 'Nutrition information not available.'),
-                        ],
-                      ),
-                    ),
-                  ],
-                ],
-              );
-            },
-          );
-        }),
+                    ],
+                  ),
+                ),
+                
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -232,20 +129,31 @@ class MenuProductCard extends ConsumerWidget {
             width: double.infinity,
             child: AspectRatio(
               aspectRatio: 16 / 9,
-              child: Image.network(
-                productMenuItem.photoUrl!,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  color: colorScheme.surfaceContainerHighest,
-                  child: Center(
-                    child: Icon(
-                      Icons.image_not_supported,
-                      size: 40,
-                      color: colorScheme.onSurfaceVariant,
+                  child: CachedNetworkImage(
+                    imageUrl: productMenuItem.photoUrl!,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(
+                      color: colorScheme.surfaceContainerHighest,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: colorScheme.primary,
+                        ),
+                      ),
                     ),
+                    errorWidget: (context, url, error) => Container(
+                      color: colorScheme.surfaceContainerHighest,
+                      child: Center(
+                        child: Icon(
+                          Icons.image_not_supported,
+                          size: 40,
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ),
+                    memCacheWidth: 800, // Limit memory cache size
+                    memCacheHeight: 450, // Based on 16:9 aspect ratio
                   ),
-                ),
-              ),
             ),
           )
         : AspectRatio(
@@ -277,13 +185,14 @@ class MenuProductCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(
+                child: AutoSizeText(
                   productMenuItem.name,
                   style: theme.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: colorScheme.onSurface,
                   ),
                   maxLines: 1,
+                  minFontSize: 14,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -324,200 +233,6 @@ class MenuProductCard extends ConsumerWidget {
             ),
           ],
         ],
-      ),
-    );
-  }
-
-  Widget _buildOverviewTab(ThemeData theme, ColorScheme colorScheme) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'About this item',
-            style: theme.textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: colorScheme.onSurface,
-            ),
-          ),
-          const SizedBox(height: 8),
-          // Add additional info here like ingredients, allergens, nutritional info
-          Text(
-            'This product is prepared freshly for your enjoyment. Our dishes are made with high-quality ingredients sourced locally when possible.',
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface,
-            ),
-          ),
-          const SizedBox(height: 16),
-          // Additional info cards can be added here
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNutritionTab(
-      BuildContext context, ThemeData theme,
-      ColorScheme colorScheme,
-      String nutrition,
-      ) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: colorScheme.surface,
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.05),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Markdown(
-          data: nutrition,
-          padding: const EdgeInsets.all(16),
-          styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
-            p: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface,
-              height: 1.5,
-            ),
-            h1: theme.textTheme.headlineSmall?.copyWith(
-              color: colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
-            h2: theme.textTheme.titleLarge?.copyWith(
-              color: colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
-            h3: theme.textTheme.titleMedium?.copyWith(
-              color: colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
-            listBullet: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.primary,
-            ),
-            a: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.primary,
-              decoration: TextDecoration.underline,
-            ),
-            blockquote: theme.textTheme.bodyMedium?.copyWith(
-              color: Color.fromRGBO(
-                  colorScheme.onSurface.r.round(),
-                  colorScheme.onSurface.g.round(),
-                  colorScheme.onSurface.b.round(),
-                  0.8),
-              fontStyle: FontStyle.italic,
-            ),
-            blockquoteDecoration: BoxDecoration(
-              color: Color.fromRGBO(
-                  colorScheme.surfaceContainerHighest.r.round(),
-                  colorScheme.surfaceContainerHighest.g.round(),
-                  colorScheme.surfaceContainerHighest.b.round(),
-                  0.3),
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(
-                color: Color.fromRGBO(
-                    colorScheme.primary.r.round(),
-                    colorScheme.primary.g.round(),
-                    colorScheme.primary.b.round(),
-                    0.2),
-              ),
-            ),
-            blockquotePadding: const EdgeInsets.all(16),
-            tableHead: theme.textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: colorScheme.onSurface,
-            ),
-            tableBody: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface,
-            ),
-          ),
-          shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInstructionsTab(
-      BuildContext context, ThemeData theme, ColorScheme colorScheme) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: colorScheme.surface,
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.05),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Markdown(
-          data: productMenuItem.instructions ?? '',
-          padding: const EdgeInsets.all(16),
-          styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
-            p: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface,
-              height: 1.5,
-            ),
-            h1: theme.textTheme.headlineSmall?.copyWith(
-              color: colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
-            h2: theme.textTheme.titleLarge?.copyWith(
-              color: colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
-            h3: theme.textTheme.titleMedium?.copyWith(
-              color: colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),
-            listBullet: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.primary,
-            ),
-            a: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.primary,
-              decoration: TextDecoration.underline,
-            ),
-            blockquote: theme.textTheme.bodyMedium?.copyWith(
-              color: Color.fromRGBO(
-                  colorScheme.onSurface.r.round(),
-                  colorScheme.onSurface.g.round(),
-                  colorScheme.onSurface.b.round(),
-                  0.8),
-              fontStyle: FontStyle.italic,
-            ),
-            blockquoteDecoration: BoxDecoration(
-              color: Color.fromRGBO(
-                  colorScheme.surfaceContainerHighest.r.round(),
-                  colorScheme.surfaceContainerHighest.g.round(),
-                  colorScheme.surfaceContainerHighest.b.round(),
-                  0.3),
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(
-                color: Color.fromRGBO(
-                    colorScheme.primary.r.round(),
-                    colorScheme.primary.g.round(),
-                    colorScheme.primary.b.round(),
-                    0.2),
-              ),
-            ),
-            blockquotePadding: const EdgeInsets.all(16),
-            tableHead: theme.textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: colorScheme.onSurface,
-            ),
-          ),
-          shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
-        ),
       ),
     );
   }

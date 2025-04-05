@@ -35,13 +35,17 @@ class DeliveryLocationSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final deliveryLocations = ref.watch(siteDeliveryLocationProvider);
+    final deliveryLocationsWithPeriod = ref.watch(siteDeliveryLocationWithPeriodProvider);
     
-    return deliveryLocations.when(
+    return deliveryLocationsWithPeriod.when(
       data: (locationsResult) {
         return locationsResult.fold(
           (failure) => _buildErrorState(context, failure),
-          (locations) => _buildLocationSelector(context, locations),
+          (locationsWithPeriods) {
+            // Extract just the locations for compatibility with existing code
+            final locations = locationsWithPeriods.map((lwp) => lwp.location).toList();
+            return _buildLocationSelector(context, locations, locationsWithPeriods);
+          },
         );
       },
       error: (e, s) => _buildErrorState(context, Failure.unprocessableEntity(message: e.toString())),
@@ -83,7 +87,11 @@ class DeliveryLocationSelector extends ConsumerWidget {
   }
 
   /// Builds the location selector widget
-  Widget _buildLocationSelector(BuildContext context, List<DeliveryLocation> locations) {
+  Widget _buildLocationSelector(
+    BuildContext context, 
+    List<DeliveryLocation> locations,
+    List<DeliveryLocationWithPeriod> locationsWithPeriods
+  ) {
     final theme = Theme.of(context);
     
     if (locations.isEmpty) {
@@ -155,6 +163,25 @@ class DeliveryLocationSelector extends ConsumerWidget {
             }
             
             final location = locations[index];
+            // Find the corresponding DeliveryLocationWithPeriod
+            DeliveryLocationWithPeriod? locationWithPeriod;
+            try {
+              locationWithPeriod = locationsWithPeriods.firstWhere(
+                (lwp) => lwp.location.id == location.id,
+              );
+            } catch (e) {
+              // If no matching period is found, use the first period if available
+              if (locationsWithPeriods.isNotEmpty) {
+                locationWithPeriod = DeliveryLocationWithPeriod(
+                  location: location,
+                  period: locationsWithPeriods.first.period,
+                );
+              } else {
+                // Skip this location if no period is available
+                return const SizedBox.shrink();
+              }
+            }
+            
             // Check if this location matches the selected location
             bool isSelected = selectedLocation != null && location.id == selectedLocation!.id;
             
@@ -163,6 +190,7 @@ class DeliveryLocationSelector extends ConsumerWidget {
               location,
               locationNumber: index + 1,
               isSelected: isSelected,
+              deliveryPeriod: locationWithPeriod.period,
             );
           },
         ),
@@ -174,7 +202,7 @@ class DeliveryLocationSelector extends ConsumerWidget {
   Widget _buildLocationCard(
     BuildContext context, 
     DeliveryLocation? location, 
-    {bool isNoneOption = false, bool isSelected = false, int? locationNumber}
+    {bool isNoneOption = false, bool isSelected = false, int? locationNumber, DeliveryPeriod? deliveryPeriod}
   ) {
     final theme = Theme.of(context);
     
@@ -182,6 +210,8 @@ class DeliveryLocationSelector extends ConsumerWidget {
     String locationName = 'None';
     String locationAddress = 'No delivery location selected';
     String? openHours;
+    String? deliveryTimeSlot;
+    String? deliveryDate;
     
     if (!isNoneOption && location != null) {
       locationName = location.name;
@@ -208,9 +238,29 @@ class DeliveryLocationSelector extends ConsumerWidget {
       
       locationAddress = addressParts.join(', ');
       
-      // Format open hours if available and requested
-      if (showOpenHours && location.startOpenTime != null && location.endOpenTime != null) {
-        openHours = 'Open: ${_formatTime(location.startOpenTime)} - ${_formatTime(location.endOpenTime)}';
+      // Format time slot information
+      if (location.startOpenTime != null && location.endOpenTime != null) {
+        deliveryTimeSlot = '${_formatTime(location.startOpenTime)} - ${_formatTime(location.endOpenTime)}';
+        
+        // Keep the original open hours format if needed
+        if (showOpenHours) {
+          openHours = 'Open: $deliveryTimeSlot';
+        }
+      }
+      
+      // Format delivery date from period if available
+      if (deliveryPeriod != null) {
+        final startDateStr = deliveryPeriod.startDate.toString();
+        if (startDateStr.isNotEmpty) {
+          try {
+            final date = DateTime.parse(startDateStr);
+            deliveryDate = DateFormat('EEEE, MMM d').format(date); // e.g. "Monday, Jan 15"
+          } catch (e) {
+            // If parsing fails, use the period title if available
+            final titleStr = deliveryPeriod.title.toString();
+            deliveryDate = titleStr.isNotEmpty ? titleStr : null;
+          }
+        }
       }
     }
     
@@ -222,7 +272,7 @@ class DeliveryLocationSelector extends ConsumerWidget {
         side: BorderSide(
           color: isSelected 
               ? theme.colorScheme.primary 
-              : theme.colorScheme.outline.withOpacity(0.2),
+              : theme.colorScheme.outline.withAlpha((0.2 * 255).round()),
           width: isSelected ? 2 : 1,
         ),
       ),
@@ -249,7 +299,7 @@ class DeliveryLocationSelector extends ConsumerWidget {
                       ? theme.colorScheme.errorContainer
                       : isSelected
                           ? theme.colorScheme.primaryContainer
-                          : theme.colorScheme.surfaceVariant,
+                          : theme.colorScheme.surfaceContainerHighest,
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -284,7 +334,47 @@ class DeliveryLocationSelector extends ConsumerWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    if (openHours != null && !compact) Padding(
+                    if (!isNoneOption && deliveryDate != null && !compact) Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_today,
+                            size: 16,
+                            color: theme.colorScheme.primary,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            deliveryDate,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (!isNoneOption && deliveryTimeSlot != null && !compact) Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.access_time,
+                            size: 16,
+                            color: theme.colorScheme.primary,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            deliveryTimeSlot,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (openHours != null && !compact && showOpenHours) Padding(
                       padding: const EdgeInsets.only(top: 4.0),
                       child: Text(
                         openHours,
