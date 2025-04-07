@@ -83,22 +83,22 @@ class HomeAppBar extends _$HomeAppBar {
   // Debounce timer to limit updates
   Timer? _debounceTimer;
   Color? _lastColor;
-  
+
   @override
   FutureOr<HomeAppBarState> build(HomeAppBarInput input) {
     // Clean up any previous timer when rebuilding
     _debounceTimer?.cancel();
-    
+
     // Remove any existing listeners first
     input.scrollController.removeListener(() {});
 
     // Add the scroll listener with debouncing
     input.scrollController.addListener(() {
       if (!state.hasValue || !input.scrollController.hasClients) return;
-      
+
       // Cancel any existing timer
       _debounceTimer?.cancel();
-      
+
       // Set a new timer
       _debounceTimer = Timer(const Duration(milliseconds: 16), () {
         final double scrollPercentage =
@@ -134,7 +134,7 @@ class HomeAppBar extends _$HomeAppBar {
           initialScrollPercentage,
         ) ??
         input.startTextColor;
-        
+
     _lastColor = initialColor;
 
     // Add disposal callback
@@ -150,14 +150,14 @@ class HomeAppBar extends _$HomeAppBar {
       constraints: input.constraints,
     );
   }
-  
+
   // Helper method to check if colors are close enough to avoid unnecessary updates
   bool _isColorClose(Color a, Color b) {
     const threshold = 3; // Small threshold for color difference
     return (a.r - b.r).abs() <= threshold &&
-           (a.g - b.g).abs() <= threshold &&
-           (a.b - b.b).abs() <= threshold &&
-           (a.a - b.a).abs() <= threshold;
+        (a.g - b.g).abs() <= threshold &&
+        (a.b - b.b).abs() <= threshold &&
+        (a.a - b.a).abs() <= threshold;
   }
 }
 
@@ -307,6 +307,8 @@ class HomeSliverAppBar extends HookConsumerWidget {
                       color: state.currentTextColor,
                       fontWeight: FontWeight.bold,
                     ),
+                    maxLines: 1,
+                    wrapWords: false,
                   ),
                   background: Stack(
                     fit: StackFit.expand,
@@ -333,7 +335,8 @@ class HomeSliverAppBar extends HookConsumerWidget {
                             ),
                           ),
                         ),
-                        memCacheWidth: 1080, // Limit memory cache size for cover image
+                        memCacheWidth:
+                            1080, // Limit memory cache size for cover image
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -391,25 +394,25 @@ Future<void> _handleCheckout(BuildContext context, List<CartItem> items,
   final productCartNotifier = ref.read(productCartProvider.notifier);
 
   final chosenLocation = await showShadDialog<Fragment$DeliveryLocation?>(
-      context: context, 
-      builder: (context) {
-        return DeliveryLocationSelector(onDeliveryLocationSelected: (location){
-          Navigator.of(context).pop(location);
-        });
-      },
-      barrierDismissible: false,
-      );
+    context: context,
+    builder: (context) {
+      return DeliveryLocationSelector(onDeliveryLocationSelected: (location) {
+        Navigator.of(context).pop(location);
+      });
+    },
+    barrierDismissible: false,
+  );
 
-    if (chosenLocation == null) {
-      Fluttertoast.showToast(
-        msg: 'Please select a delivery location',
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.red,
-      );
-      //Navigator.of(context).pop();
-      return;
-    }
+  if (chosenLocation == null) {
+    Fluttertoast.showToast(
+      msg: 'Please select a delivery location',
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.red,
+    );
+    //Navigator.of(context).pop();
+    return;
+  }
 
   productsMap.whenData((data) async {
     if (data.isLeft()) {
@@ -455,15 +458,15 @@ Future<void> _handleCheckout(BuildContext context, List<CartItem> items,
         0.0,
         (sum, item) => sum + (item.unitPrice * item.quantity),
       );
-      
+
       // Get zip code from the chosen delivery location
       final zipCode = chosenLocation.address.zip;
-      
+
       // Calculate tax using the sales tax service
       final taxResponse = await ref.read(salesTaxProvider(zipCode).future);
       final taxRate = taxResponse.totalRate;
       final tax = subtotal * taxRate;
-      
+
       // Calculate total with tax
       final totalAmount = subtotal + tax;
 

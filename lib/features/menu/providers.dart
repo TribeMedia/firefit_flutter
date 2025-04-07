@@ -29,11 +29,13 @@ class MenuViewModel {
   final String? error;
   final bool isLoading;
   final List<Product> products;
+  final List<Product> featuredProducts;
 
   MenuViewModel({
     this.error,
     this.isLoading = false,
     this.products = const [],
+    this.featuredProducts = const [],
   });
 }
 
@@ -41,6 +43,7 @@ class MenuViewModel {
 class MenuController extends _$MenuController {
   static const int _pageSize = 10;
   List<Product> _cachedProducts = [];
+  List<Product> _cachedFeaturedProducts = [];
   bool _hasMoreProducts = true;
   int _currentPage = 0;
   StreamSubscription<List<Product>>? _productSubscription;
@@ -48,43 +51,63 @@ class MenuController extends _$MenuController {
   @override
   FutureOr<MenuViewModel> build() async {
     state = const AsyncLoading();
-    
+
     // Reset pagination state when rebuilding
     _cachedProducts = [];
+    _cachedFeaturedProducts = [];
     _hasMoreProducts = true;
     _currentPage = 0;
-    
+
     // Set up subscription to product changes
     _setupProductSubscription();
-    
+
     // Make sure to cancel the subscription when the provider is disposed
     ref.onDispose(() {
       _productSubscription?.cancel();
     });
-    
+
+    await loadFeaturedProducts();
+
     return await loadNextPage();
   }
-  
+
+  // Helper method to deduplicate products by ID
+  List<Product> _deduplicateProducts(List<Product> products) {
+    final uniqueProducts = <String, Product>{};
+    for (final product in products) {
+      uniqueProducts[product.id] = product;
+    }
+    return uniqueProducts.values.toList();
+  }
+
   void _setupProductSubscription() {
     // Cancel any existing subscription
     _productSubscription?.cancel();
-    
+
     // Get the product repository
     final productRepository = ref.read(productRepositoryProvider);
-    
+
     // Subscribe to product changes
     _productSubscription = productRepository.subscribeToProducts().listen(
       (products) {
+        // Update featured products with deduplication
+        final newFeaturedProducts =
+            products.where((product) => product.isFeatured).toList();
+        _cachedFeaturedProducts = _deduplicateProducts(newFeaturedProducts);
+
         // Update the cached products and state
         _cachedProducts = products;
         state = AsyncData(MenuViewModel(
           isLoading: false,
           products: _cachedProducts,
+          featuredProducts: _cachedFeaturedProducts,
           error: null,
         ));
       },
       onError: (error) {
-        ref.read(loggingProvider).error('Error in product subscription: $error');
+        ref
+            .read(loggingProvider)
+            .error('Error in product subscription: $error');
       },
     );
   }
@@ -105,7 +128,9 @@ class MenuController extends _$MenuController {
         Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.AscNullsLast)
       ],
       first: _pageSize,
-      after: _currentPage > 0 ? 'cursor-${(_currentPage - 1) * _pageSize + _pageSize - 1}' : null,
+      after: _currentPage > 0
+          ? 'cursor-${(_currentPage - 1) * _pageSize + _pageSize - 1}'
+          : null,
     );
 
     return menuResult.fold(
@@ -120,6 +145,13 @@ class MenuController extends _$MenuController {
           _hasMoreProducts = false;
         }
 
+        final newFeaturedProducts =
+            r.where((product) => product.isFeatured).toList();
+
+        // Update cached featured products with deduplication
+        _cachedFeaturedProducts = _deduplicateProducts(
+            [..._cachedFeaturedProducts, ...newFeaturedProducts]);
+
         // Add new products to the cached list
         _cachedProducts = [..._cachedProducts, ...r];
         _currentPage++;
@@ -127,6 +159,7 @@ class MenuController extends _$MenuController {
         final viewModel = MenuViewModel(
           isLoading: false,
           products: _cachedProducts,
+          featuredProducts: _cachedFeaturedProducts,
           error: null,
         );
         state = AsyncData(viewModel);
@@ -135,18 +168,36 @@ class MenuController extends _$MenuController {
     );
   }
 
+  Future<MenuViewModel> loadFeaturedProducts() async {
+    final menuRepository = ref.read(productRepositoryProvider);
+    final menuResult = await menuRepository.queryFeaturedProducts();
+    return menuResult.fold(
+      (l) => MenuViewModel(error: l.error),
+      (r) {
+        // Update cached featured products with deduplication
+        _cachedFeaturedProducts = _deduplicateProducts(r);
+        state = AsyncData(MenuViewModel(
+          isLoading: false,
+          featuredProducts: _cachedFeaturedProducts,
+          error: null,
+        ));
+        return MenuViewModel(featuredProducts: _cachedFeaturedProducts);
+      },
+    );
+  }
+
   // Method to refresh the menu data
   Future<void> refreshMenu() async {
     state = const AsyncLoading();
-    
+
     // Reset pagination state
     _cachedProducts = [];
     _hasMoreProducts = true;
     _currentPage = 0;
-    
+
     // Re-setup the subscription to ensure we're getting the latest data
     _setupProductSubscription();
-    
+
     await loadNextPage();
   }
 }
@@ -224,9 +275,7 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
       // Run database operation in a separate isolate
       _computeAsync(() async {
         try {
-          await _database
-              .into(_database.cartItems)
-              .insert(CartItemsCompanion(
+          await _database.into(_database.cartItems).insert(CartItemsCompanion(
                 id: Value.absent(),
                 cartId: Value(model.currentCart.id),
                 productId: Value(product.id),
@@ -234,7 +283,7 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
                 unitPrice: Value(product.unitPrice),
                 createdAt: Value(DateTime.now()),
               ));
-          
+
           // No need to manually update state as we're using streams
         } catch (e) {
           state = AsyncError('Failed to add product to cart: ${e.toString()}',
@@ -254,7 +303,7 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
 
         // Execute the delete operation
         await deleteQuery.go();
-        
+
         // No need to manually update state as we're using streams
       } catch (e) {
         state = AsyncError('Failed to remove item from cart: ${e.toString()}',
@@ -299,7 +348,7 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
           // Execute the write operation
           await updateQuery
               .write(CartItemsCompanion(quantity: Value(targetQuantity)));
-          
+
           // No need to manually update state as we're using streams
         } catch (e) {
           state = AsyncError('Failed to update cart item: ${e.toString()}',
@@ -315,16 +364,17 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
       try {
         // Execute the delete operation
         await _database.delete(_database.cartItems).go();
-        
+
         // No need to manually update state as we're using streams
       } catch (e) {
-        state = AsyncError('Failed to clear cart: ${e.toString()}',
-            StackTrace.current);
+        state = AsyncError(
+            'Failed to clear cart: ${e.toString()}', StackTrace.current);
       }
     });
   }
 
-  Future<Either<Failure, Fragment$Order>> createOrder(Fragment$DeliveryLocation location) async {
+  Future<Either<Failure, Fragment$Order>> createOrder(
+      Fragment$DeliveryLocation location) async {
     final currentState = state;
 
     return currentState.when(
@@ -332,9 +382,7 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
         final orderRepository = ref.read(orderRepositoryProvider);
         final result = await orderRepository.createOrder(
           input: Input$OrdersInsertInput(
-            userId: data.currentCart.userId,
-            deliveryLocationId: location.id
-          ),
+              userId: data.currentCart.userId, deliveryLocationId: location.id),
         );
 
         return result.fold(
@@ -394,18 +442,18 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
       currentCart: cart,
       error: null,
     );
-    
+
     // Set initial state
     state = AsyncData(viewModel);
-    
+
     // Set up stream for reactive updates
     final stream = watchCartById(cart.id);
-    
+
     // Use a separate variable to avoid cancellation when this method completes
     final subscription = stream.listen((updatedCartItems) {
       // We don't need to check if the notifier is still active
       // because the subscription will be automatically canceled when the notifier is disposed
-      
+
       state = AsyncData(ProductCartModel(
         isLoading: false,
         shoppingCartItems: updatedCartItems,
@@ -413,12 +461,12 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
         error: null,
       ));
     });
-    
+
     // Add the subscription to be disposed when the notifier is disposed
     ref.onDispose(() {
       subscription.cancel();
     });
-    
+
     return viewModel;
   }
 }

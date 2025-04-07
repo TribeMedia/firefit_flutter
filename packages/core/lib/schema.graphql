@@ -2617,6 +2617,7 @@ type Products implements Node {
   instructions: String
   stripeProductId: String
   nutritionDetails: String
+  isFeatured: Boolean!
   productType: ProductTypes
   shoppingCartItemsCollection(
     # Query the first `n` records in the collection
@@ -2700,6 +2701,7 @@ input ProductsFilter {
   instructions: StringFilter
   stripeProductId: StringFilter
   nutritionDetails: StringFilter
+  isFeatured: BooleanFilter
   nodeId: IDFilter
   # Returns true only if all its inner filters are true, otherwise returns false
   and: [ProductsFilter!]
@@ -2724,6 +2726,7 @@ input ProductsInsertInput {
   instructions: String
   stripeProductId: String
   nutritionDetails: String
+  isFeatured: Boolean
 }
 
 type ProductsInsertResponse {
@@ -2747,6 +2750,7 @@ input ProductsOrderBy {
   instructions: OrderByDirection
   stripeProductId: OrderByDirection
   nutritionDetails: OrderByDirection
+  isFeatured: OrderByDirection
 }
 
 input ProductsUpdateInput {
@@ -2764,6 +2768,7 @@ input ProductsUpdateInput {
   instructions: String
   stripeProductId: String
   nutritionDetails: String
+  isFeatured: Boolean
 }
 
 type ProductsUpdateResponse {

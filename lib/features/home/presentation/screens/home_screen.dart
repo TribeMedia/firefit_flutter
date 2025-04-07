@@ -11,23 +11,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'home_screen.g.dart';
 
-final featuredMenuItemsProvider =
-    FutureProvider.autoDispose<List<Product>>((ref) async {
-  final productRepository = ref.read(productRepositoryProvider);
-  final result = await productRepository.queryProducts(
-    first: 4,
-    orderBy: [
-      Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.DescNullsLast)
-    ],
-  );
-  return result.fold(
-    (failure) => [],
-    (menuItems) {
-      return menuItems;
-    },
-  );
-});
-
 @riverpod
 class HomeAppBarScrollController extends _$HomeAppBarScrollController {
   @override
@@ -115,7 +98,6 @@ class HomeContent extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(menuControllerProvider.notifier);
-    final featuredMenuItemsValue = ref.watch(featuredMenuItemsProvider);
 
     // Just listen to cart state directly in build (this is allowed)
     final cartState = ref.watch(productCartProvider);
@@ -139,8 +121,12 @@ class HomeContent extends HookConsumerWidget {
       return null;
     }, []);
 
-    return featuredMenuItemsValue.when(
-      data: (featuredMenuItems) {
+    // Use the featuredProducts from menuScreenViewModel directly
+    final featuredMenuItems = menuScreenViewModel.featuredProducts;
+
+    // Check if we have the home state model
+    return AsyncValue.data(featuredMenuItems).when(
+      data: (_) {
         if (homeStateModel.user == null) {
           return ErrorScreen(
             errorMessage: 'No first responder found',

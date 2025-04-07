@@ -73,12 +73,34 @@ class ProductRepository extends ProductRepositoryInterface {
       return Left(Failure.unprocessableEntity(message: e.toString()));
     }
   }
-  
+
+  @override
+  Future<Either<Failure, List<Product>>> queryFeaturedProducts() async {
+    try {
+      final response = await graphqlClient.query$FeaturedProducts();
+      if (response.hasException) {
+        debugPrint('${response.exception}');
+        return Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+      if (response.parsedData != null &&
+          response.parsedData!.productsCollection != null &&
+          response.parsedData!.productsCollection!.edges.isNotEmpty) {
+        return Right(List<Product>.from(
+            response.parsedData!.productsCollection!.edges.map((e) => e.node)));
+      }
+      return const Right([]);
+    } catch (e) {
+      debugPrint('$e');
+      return Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+
   @override
   Stream<List<Product>> subscribeToProducts() {
     // Create a StreamController to manage the product stream
     final controller = StreamController<List<Product>>.broadcast();
-    
+
     try {
       // Set up Supabase subscription to the products table
       final subscription = _supabase
@@ -89,18 +111,20 @@ class ProductRepository extends ProductRepositoryInterface {
             table: 'products',
             callback: (payload) async {
               talker.debug('Product change detected: ${payload.toString()}');
-              
+
               // When a change is detected, fetch the latest products
               final result = await queryProducts(
                 orderBy: [
-                  Input$ProductsOrderBy(createdAt: Enum$OrderByDirection.AscNullsLast)
+                  Input$ProductsOrderBy(
+                      createdAt: Enum$OrderByDirection.AscNullsLast)
                 ],
               );
-              
+
               // Add the updated product list to the stream
               result.fold(
                 (failure) {
-                  talker.error('Failed to fetch updated products: ${failure.error}');
+                  talker.error(
+                      'Failed to fetch updated products: ${failure.error}');
                 },
                 (products) {
                   controller.add(products);
@@ -109,12 +133,12 @@ class ProductRepository extends ProductRepositoryInterface {
             },
           )
           .subscribe();
-      
+
       // Clean up the subscription when the stream is closed
       controller.onCancel = () {
         subscription.unsubscribe();
       };
-      
+
       // Initial fetch to populate the stream
       queryProducts(
         orderBy: [
@@ -134,7 +158,7 @@ class ProductRepository extends ProductRepositoryInterface {
       talker.error('Error setting up product subscription: $e');
       controller.addError(e);
     }
-    
+
     return controller.stream;
   }
 }

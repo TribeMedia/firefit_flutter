@@ -195,3 +195,480 @@ rules:
       severity: "info"
     - rule: "Apply methodical problem-solving approach from docs/AI_PERSONALITY.md"
       severity: "info"
+
+
+# Flutter Responsive UI Design Guidelines
+
+These guidelines ensure Flutter applications feel instantly responsive, even when waiting for backend operations. The key principle is that perceived performance is just as important as actual performance.
+
+## Core Principles for Responsive UI
+
+1. **Instant Feedback**: Always provide immediate visual feedback when users interact with the UI
+2. **Prevent Layout Shifts**: Reserve space for dynamic content to avoid jarring layout changes
+3. **Use Skeleton Loaders**: Show content-shaped placeholders during loading instead of spinners
+4. **Optimize Event Handling**: Debounce input and throttle scroll events to prevent jank
+5. **Add Micro-interactions**: Include subtle animations and transitions for a more responsive feel
+6. **Handle Errors Gracefully**: Provide clear error states and recovery options
+
+## AsyncNotifier Implementation Best Practices
+
+When implementing AsyncNotifiers with GraphQL in hooks_riverpod, follow these patterns:
+
+```dart
+// CORRECT: AsyncNotifier with immediate loading feedback
+class ProductsNotifier extends AsyncNotifier<List<Product>> {
+  @override
+  Future<List<Product>> build() async {
+    // Set loading state IMMEDIATELY for responsive UI
+    state = const AsyncValue.loading();
+    
+    return AsyncValue.guard(() async {
+      final result = await _repository.queryProducts();
+      return result.fold(
+        (failure) => throw failure, // AsyncValue.guard will catch this
+        (data) => data,
+      );
+    }).then((value) => value.hasValue ? value.value! : []);
+  }
+  
+  // CORRECT: Optimistic update pattern for mutations
+  Future<void> createProduct(ProductInput input) async {
+    // Store previous state for rollback
+    final previous = state;
+    
+    // Optimistically update UI before API call
+    final optimisticProduct = Product.fromInput(input);
+    state = AsyncValue.data([...previous.asData!.value, optimisticProduct]);
+    
+    // Perform actual mutation
+    final result = await _repository.createProduct(input: input);
+    
+    // Handle result
+    result.fold(
+      (failure) {
+        // Revert to previous state on failure
+        state = previous;
+      },
+      (product) {
+        // Update with actual data from server
+        final currentList = [...previous.asData!.value];
+        currentList.removeWhere((e) => e.id == optimisticProduct.id);
+        state = AsyncValue.data([...currentList, product]);
+      },
+    );
+  }
+}
+```
+
+## Reactive Forms Implementation
+
+For Flutter Reactive Forms, implement these patterns for better responsiveness:
+
+```dart
+// CORRECT: Form with loading state and optimistic updates
+class ProductFormView extends ConsumerStatefulWidget {
+  final String? productId; // Null for create, non-null for edit
+  
+  const ProductFormView({Key? key, this.productId}) : super(key: key);
+  
+  @override
+  _ProductFormViewState createState() => _ProductFormViewState();
+}
+
+class _ProductFormViewState extends ConsumerState<ProductFormView> {
+  late FormGroup _form;
+  bool _isSubmitting = false;
+  
+  @override
+  void initState() {
+    super.initState();
+    _form = FormGroup({
+      'name': FormControl<String>(
+        value: '',
+        validators: [Validators.required],
+      ),
+      'description': FormControl<String>(value: ''),
+      'price': FormControl<double>(value: 0.0),
+    });
+    
+    // Load entity data if editing
+    if (widget.productId != null) {
+      _loadProductData();
+    }
+  }
+  
+  Future<void> _loadProductData() async {
+    // Show loading state immediately
+    setState(() {
+      _form.markAsPending();
+    });
+    
+    // Load data
+    final productDetail = ref.read(productDetailProvider.notifier);
+    productDetail.initialize(widget.productId!);
+  }
+  
+  // CORRECT: Form submission with loading state feedback
+  Future<void> _submitForm() async {
+    if (!_form.valid) {
+      _form.markAllAsTouched();
+      return;
+    }
+    
+    // Show submitting state immediately
+    setState(() {
+      _isSubmitting = true;
+    });
+    
+    try {
+      final formValues = _form.rawValue;
+      final input = ProductInput(
+        name: formValues['name'] as String,
+        description: formValues['description'] as String,
+        price: formValues['price'] as double,
+      );
+      
+      if (widget.productId != null) {
+        // Update existing
+        await ref.read(productDetailProvider.notifier).update(input);
+      } else {
+        // Create new
+        await ref.read(productCollectionProvider.notifier).create(input);
+      }
+      
+      if (mounted) {
+        // Show success and navigate back
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Product saved successfully')),
+        );
+        Navigator.of(context).pop();
+      }
+    } catch (e) {
+      if (mounted) {
+        // Show error
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isSubmitting = false;
+        });
+      }
+    }
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    // ...form UI implementation with proper loading states
+  }
+}
+```
+
+## UI Components Best Practices
+
+### ListView Implementation
+
+```dart
+// CORRECT: ListView with skeleton loading
+class ProductListView extends ConsumerWidget {
+  const ProductListView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(productCollectionProvider);
+    
+    // Use when pattern for all AsyncValue states
+    return RefreshIndicator(
+      onRefresh: () => ref.read(productCollectionProvider.notifier).reload(),
+      child: products.when(
+        data: (items) {
+          if (items.isEmpty) {
+            return const EmptyProductList();
+          }
+          
+          return ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              final product = items[index];
+              return ProductListTile(product: product);
+            },
+          );
+        },
+        loading: () => const ProductListSkeleton(),
+        error: (error, stack) => ProductErrorView(
+          error: error,
+          onRetry: () => ref.refresh(productCollectionProvider),
+        ),
+      ),
+    );
+  }
+}
+
+// CORRECT: Skeleton loader matching content shape
+class ProductListSkeleton extends StatelessWidget {
+  const ProductListSkeleton({Key? key}) : super(key: key);
+  
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        child: Row(
+          children: [
+            // Product image placeholder
+            Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Title placeholder
+                  Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      width: double.infinity,
+                      height: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  // Price placeholder
+                  Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      width: 80,
+                      height: 14,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+### Detail View Implementation
+
+```dart
+// CORRECT: Detail view with proper loading states
+class ProductDetailView extends ConsumerStatefulWidget {
+  final String productId;
+  
+  const ProductDetailView({
+    Key? key, 
+    required this.productId,
+  }) : super(key: key);
+
+  @override
+  _ProductDetailViewState createState() => _ProductDetailViewState();
+}
+
+class _ProductDetailViewState extends ConsumerState<ProductDetailView> {
+  @override
+  void initState() {
+    super.initState();
+    // Initialize with ID immediately
+    Future.microtask(() {
+      ref.read(productDetailProvider.notifier).initialize(widget.productId);
+    });
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    final productDetail = ref.watch(productDetailProvider);
+    
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Product Details'),
+        actions: [
+          // Show action buttons only when data is loaded
+          productDetail.maybeWhen(
+            data: (product) => product != null ? IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () => _navigateToEdit(context, product),
+            ) : const SizedBox.shrink(),
+            orElse: () => const SizedBox.shrink(),
+          ),
+        ],
+      ),
+      body: productDetail.when(
+        data: (product) => product != null 
+          ? ProductDetailContent(product: product)
+          : const Center(child: Text('Product not found')),
+        loading: () => const ProductDetailSkeleton(),
+        error: (error, stack) => ProductErrorView(
+          error: error,
+          onRetry: () => ref.refresh(productDetailProvider),
+        ),
+      ),
+    );
+  }
+  
+  void _navigateToEdit(BuildContext context, Product product) {
+    // Navigate to edit screen
+  }
+}
+```
+
+## GraphQL Repository Patterns
+
+For GraphQL repositories, follow these patterns:
+
+```dart
+// CORRECT: Repository with proper error handling
+class ProductRepository implements ProductRepositoryInterface {
+  ProductRepository({required this.talker, required this.env}) {
+    graphQLRepository = GraphQLRepository(talker: talker, env: env);
+    graphqlClient = graphQLRepository.graphqlClient;
+  }
+  
+  late GraphQLRepository graphQLRepository;
+  late GraphQLClient graphqlClient;
+  final EnvInterface env;
+  final Talker talker;
+  
+  @override
+  Future<fp.Either<Failure, List<Product>>> queryProducts({
+    int? first,
+    int? last,
+    String? before,
+    String? after,
+    Input$ProductFilter? filter,
+    List<Input$ProductOrderBy>? orderBy,
+  }) async {
+    try {
+      final response = await graphqlClient.query$ProductCollection(
+        Options$Query$ProductCollection(
+          variables: Variables$Query$ProductCollection(
+            first: first ?? 10,
+            last: last,
+            before: before,
+            after: after,
+            filter: filter,
+            orderBy: orderBy,
+          ),
+        ),
+      );
+
+      if (response.hasException) {
+        talker.error('GraphQL Error', response.exception);
+        return fp.Left(Failure.unprocessableEntity(
+            message: response.exception.toString()));
+      }
+
+      if (response.parsedData?.productCollection?.edges.isNotEmpty == true) {
+        return fp.Right(response.parsedData!.productCollection!.edges
+            .map((e) => e.node)
+            .toList());
+      }
+      return const fp.Right([]);
+    } catch (e, stack) {
+      talker.error('Repository Error', e, stack);
+      return fp.Left(Failure.unprocessableEntity(message: e.toString()));
+    }
+  }
+}
+```
+
+## Button and UI Element Feedback
+
+Always provide immediate visual feedback on user interactions:
+
+```dart
+// CORRECT: Button with visual feedback
+ElevatedButton(
+  onPressed: _isLoading ? null : _onSubmit,
+  style: ElevatedButton.styleFrom(
+    // Add subtle scale effect on tap
+    foregroundColor: Theme.of(context).colorScheme.onPrimary,
+    backgroundColor: Theme.of(context).colorScheme.primary,
+  ).copyWith(
+    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.pressed)) {
+          return Theme.of(context).colorScheme.onPrimary.withOpacity(0.1);
+        }
+        return null;
+      },
+    ),
+  ),
+  child: _isLoading
+    ? Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
+          const SizedBox(width: 8),
+          const Text("Saving..."),
+        ],
+      )
+    : const Text("Save"),
+)
+```
+
+## Feature-Based CLEAN Architecture Structure
+
+Your Flutter applications should follow this directory structure for optimal organization:
+
+```
+lib/
+├── core/                          // Core package
+│   ├── commerce/                  // Feature module  
+│   │   ├── domain/                // Domain layer
+│   │   │   ├── models/            // Domain entities
+│   │   │   │   └── order.dart     // Type aliases for GraphQL fragments
+│   │   │   └── repositories/      // Repository interfaces
+│   │   │       └── order_repository_interface.dart
+│   │   ├── infrastructure/        // Infrastructure layer
+│   │   │   └── repositories/      // Repository implementations
+│   │   │       └── order_repository.dart
+│   │   └── graphql/               // GraphQL queries/mutations
+│   │       └── orders.graphql     // Source GraphQL
+│   │       └── orders.graphql.dart // Generated code
+│   └── common/                    // Common utilities & failures
+├── features/                      // Application features
+│   └── shop/                      // Shop feature
+│       ├── providers/             // Riverpod providers
+│       │   └── cart_provider.dart // AsyncNotifier providers
+│       ├── screens/               // UI screens
+│       │   ├── cart_screen.dart
+│       │   └── product_screen.dart
+│       └── widgets/               // Reusable widgets
+│           └── product_card.dart
+└── main.dart
+```
+
+Remember these key principles:
+- Domain should never depend on infrastructure
+- Use interfaces for repositories
+- Define type aliases for GraphQL fragments in domain/models
+- Keep state management (Riverpod) in the application layer, not the core package
+- Use AsyncNotifier for all async operations with proper loading, error, and success states
+- Always provide immediate visual feedback for user interactions

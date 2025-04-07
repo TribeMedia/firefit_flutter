@@ -1,16 +1,14 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Provider that manages the splash screen state and navigation
 final splashProvider = Provider<SplashController>((ref) {
-  return SplashController(ref);
+  return SplashController();
 });
 
 class SplashController {
-  final Ref _ref;
-  
-  SplashController(this._ref);
+  SplashController();
   
   /// Initializes the app and navigates to the appropriate screen
   /// after initialization is complete

@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:firefit/features/splash/presentation/providers/splash_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SplashScreen extends HookConsumerWidget {
   const SplashScreen({super.key});
@@ -17,7 +17,7 @@ class SplashScreen extends HookConsumerWidget {
     }, const []);
     
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

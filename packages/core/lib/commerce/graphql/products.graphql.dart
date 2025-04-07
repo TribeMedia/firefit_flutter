@@ -22,6 +22,7 @@ class Fragment$Product {
     this.unit,
     this.instructions,
     this.stripeProductId,
+    required this.isFeatured,
     this.$__typename = 'Products',
   });
 
@@ -40,6 +41,7 @@ class Fragment$Product {
     final l$unit = json['unit'];
     final l$instructions = json['instructions'];
     final l$stripeProductId = json['stripeProductId'];
+    final l$isFeatured = json['isFeatured'];
     final l$$__typename = json['__typename'];
     return Fragment$Product(
       id: (l$id as String),
@@ -57,6 +59,7 @@ class Fragment$Product {
       unit: (l$unit as String?),
       instructions: (l$instructions as String?),
       stripeProductId: (l$stripeProductId as String?),
+      isFeatured: (l$isFeatured as bool),
       $__typename: (l$$__typename as String),
     );
   }
@@ -88,6 +91,8 @@ class Fragment$Product {
   final String? instructions;
 
   final String? stripeProductId;
+
+  final bool isFeatured;
 
   final String $__typename;
 
@@ -121,6 +126,8 @@ class Fragment$Product {
     _resultData['instructions'] = l$instructions;
     final l$stripeProductId = stripeProductId;
     _resultData['stripeProductId'] = l$stripeProductId;
+    final l$isFeatured = isFeatured;
+    _resultData['isFeatured'] = l$isFeatured;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -142,6 +149,7 @@ class Fragment$Product {
     final l$unit = unit;
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
+    final l$isFeatured = isFeatured;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
@@ -158,6 +166,7 @@ class Fragment$Product {
       l$unit,
       l$instructions,
       l$stripeProductId,
+      l$isFeatured,
       l$$__typename,
     ]);
   }
@@ -240,6 +249,11 @@ class Fragment$Product {
     if (l$stripeProductId != lOther$stripeProductId) {
       return false;
     }
+    final l$isFeatured = isFeatured;
+    final lOther$isFeatured = other.isFeatured;
+    if (l$isFeatured != lOther$isFeatured) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -281,6 +295,7 @@ abstract class CopyWith$Fragment$Product<TRes> {
     String? unit,
     String? instructions,
     String? stripeProductId,
+    bool? isFeatured,
     String? $__typename,
   });
 }
@@ -313,6 +328,7 @@ class _CopyWithImpl$Fragment$Product<TRes>
     Object? unit = _undefined,
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
+    Object? isFeatured = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$Product(
@@ -353,6 +369,9 @@ class _CopyWithImpl$Fragment$Product<TRes>
         stripeProductId: stripeProductId == _undefined
             ? _instance.stripeProductId
             : (stripeProductId as String?),
+        isFeatured: isFeatured == _undefined || isFeatured == null
+            ? _instance.isFeatured
+            : (isFeatured as bool),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
@@ -380,6 +399,7 @@ class _CopyWithStubImpl$Fragment$Product<TRes>
     String? unit,
     String? instructions,
     String? stripeProductId,
+    bool? isFeatured,
     String? $__typename,
   }) =>
       _res;
@@ -487,6 +507,13 @@ const fragmentDefinitionProduct = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'stripeProductId'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'isFeatured'),
       alias: null,
       arguments: [],
       directives: [],
@@ -4024,4 +4051,667 @@ class _CopyWithStubImpl$Mutation$DeleteProduct$deleteFromProductsCollection<
       _res;
 
   records(_fn) => _res;
+}
+
+class Query$FeaturedProducts {
+  Query$FeaturedProducts({
+    this.productsCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$FeaturedProducts.fromJson(Map<String, dynamic> json) {
+    final l$productsCollection = json['productsCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$FeaturedProducts(
+      productsCollection: l$productsCollection == null
+          ? null
+          : Query$FeaturedProducts$productsCollection.fromJson(
+              (l$productsCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$FeaturedProducts$productsCollection? productsCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$productsCollection = productsCollection;
+    _resultData['productsCollection'] = l$productsCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$productsCollection = productsCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$productsCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$FeaturedProducts || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$productsCollection = productsCollection;
+    final lOther$productsCollection = other.productsCollection;
+    if (l$productsCollection != lOther$productsCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$FeaturedProducts on Query$FeaturedProducts {
+  CopyWith$Query$FeaturedProducts<Query$FeaturedProducts> get copyWith =>
+      CopyWith$Query$FeaturedProducts(
+        this,
+        (i) => i,
+      );
+}
+
+abstract class CopyWith$Query$FeaturedProducts<TRes> {
+  factory CopyWith$Query$FeaturedProducts(
+    Query$FeaturedProducts instance,
+    TRes Function(Query$FeaturedProducts) then,
+  ) = _CopyWithImpl$Query$FeaturedProducts;
+
+  factory CopyWith$Query$FeaturedProducts.stub(TRes res) =
+      _CopyWithStubImpl$Query$FeaturedProducts;
+
+  TRes call({
+    Query$FeaturedProducts$productsCollection? productsCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$FeaturedProducts$productsCollection<TRes>
+      get productsCollection;
+}
+
+class _CopyWithImpl$Query$FeaturedProducts<TRes>
+    implements CopyWith$Query$FeaturedProducts<TRes> {
+  _CopyWithImpl$Query$FeaturedProducts(
+    this._instance,
+    this._then,
+  );
+
+  final Query$FeaturedProducts _instance;
+
+  final TRes Function(Query$FeaturedProducts) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? productsCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$FeaturedProducts(
+        productsCollection: productsCollection == _undefined
+            ? _instance.productsCollection
+            : (productsCollection
+                as Query$FeaturedProducts$productsCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$FeaturedProducts$productsCollection<TRes>
+      get productsCollection {
+    final local$productsCollection = _instance.productsCollection;
+    return local$productsCollection == null
+        ? CopyWith$Query$FeaturedProducts$productsCollection.stub(
+            _then(_instance))
+        : CopyWith$Query$FeaturedProducts$productsCollection(
+            local$productsCollection, (e) => call(productsCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$FeaturedProducts<TRes>
+    implements CopyWith$Query$FeaturedProducts<TRes> {
+  _CopyWithStubImpl$Query$FeaturedProducts(this._res);
+
+  TRes _res;
+
+  call({
+    Query$FeaturedProducts$productsCollection? productsCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$FeaturedProducts$productsCollection<TRes>
+      get productsCollection =>
+          CopyWith$Query$FeaturedProducts$productsCollection.stub(_res);
+}
+
+const documentNodeQueryFeaturedProducts = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'FeaturedProducts'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'productsCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'isFeatured'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: BooleanValueNode(value: true),
+                  )
+                ]),
+              )
+            ]),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'Product'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionProduct,
+]);
+Query$FeaturedProducts _parserFn$Query$FeaturedProducts(
+        Map<String, dynamic> data) =>
+    Query$FeaturedProducts.fromJson(data);
+typedef OnQueryComplete$Query$FeaturedProducts = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$FeaturedProducts?,
+);
+
+class Options$Query$FeaturedProducts
+    extends graphql.QueryOptions<Query$FeaturedProducts> {
+  Options$Query$FeaturedProducts({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$FeaturedProducts? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$FeaturedProducts? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$FeaturedProducts(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryFeaturedProducts,
+          parserFn: _parserFn$Query$FeaturedProducts,
+        );
+
+  final OnQueryComplete$Query$FeaturedProducts? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$FeaturedProducts
+    extends graphql.WatchQueryOptions<Query$FeaturedProducts> {
+  WatchOptions$Query$FeaturedProducts({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$FeaturedProducts? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryFeaturedProducts,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$FeaturedProducts,
+        );
+}
+
+class FetchMoreOptions$Query$FeaturedProducts extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$FeaturedProducts(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQueryFeaturedProducts,
+        );
+}
+
+extension ClientExtension$Query$FeaturedProducts on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$FeaturedProducts>> query$FeaturedProducts(
+          [Options$Query$FeaturedProducts? options]) async =>
+      await this.query(options ?? Options$Query$FeaturedProducts());
+  graphql.ObservableQuery<Query$FeaturedProducts> watchQuery$FeaturedProducts(
+          [WatchOptions$Query$FeaturedProducts? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$FeaturedProducts());
+  void writeQuery$FeaturedProducts({
+    required Query$FeaturedProducts data,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQueryFeaturedProducts)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$FeaturedProducts? readQuery$FeaturedProducts({bool optimistic = true}) {
+    final result = this.readQuery(
+      graphql.Request(
+          operation:
+              graphql.Operation(document: documentNodeQueryFeaturedProducts)),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$FeaturedProducts.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$FeaturedProducts>
+    useQuery$FeaturedProducts([Options$Query$FeaturedProducts? options]) =>
+        graphql_flutter.useQuery(options ?? Options$Query$FeaturedProducts());
+graphql.ObservableQuery<Query$FeaturedProducts> useWatchQuery$FeaturedProducts(
+        [WatchOptions$Query$FeaturedProducts? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$FeaturedProducts());
+
+class Query$FeaturedProducts$Widget
+    extends graphql_flutter.Query<Query$FeaturedProducts> {
+  Query$FeaturedProducts$Widget({
+    widgets.Key? key,
+    Options$Query$FeaturedProducts? options,
+    required graphql_flutter.QueryBuilder<Query$FeaturedProducts> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$FeaturedProducts(),
+          builder: builder,
+        );
+}
+
+class Query$FeaturedProducts$productsCollection {
+  Query$FeaturedProducts$productsCollection({
+    required this.edges,
+    this.$__typename = 'ProductsConnection',
+  });
+
+  factory Query$FeaturedProducts$productsCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$FeaturedProducts$productsCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) => Query$FeaturedProducts$productsCollection$edges.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$FeaturedProducts$productsCollection$edges> edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$FeaturedProducts$productsCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$FeaturedProducts$productsCollection
+    on Query$FeaturedProducts$productsCollection {
+  CopyWith$Query$FeaturedProducts$productsCollection<
+          Query$FeaturedProducts$productsCollection>
+      get copyWith => CopyWith$Query$FeaturedProducts$productsCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$FeaturedProducts$productsCollection<TRes> {
+  factory CopyWith$Query$FeaturedProducts$productsCollection(
+    Query$FeaturedProducts$productsCollection instance,
+    TRes Function(Query$FeaturedProducts$productsCollection) then,
+  ) = _CopyWithImpl$Query$FeaturedProducts$productsCollection;
+
+  factory CopyWith$Query$FeaturedProducts$productsCollection.stub(TRes res) =
+      _CopyWithStubImpl$Query$FeaturedProducts$productsCollection;
+
+  TRes call({
+    List<Query$FeaturedProducts$productsCollection$edges>? edges,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$FeaturedProducts$productsCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$FeaturedProducts$productsCollection$edges<
+                      Query$FeaturedProducts$productsCollection$edges>>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$FeaturedProducts$productsCollection<TRes>
+    implements CopyWith$Query$FeaturedProducts$productsCollection<TRes> {
+  _CopyWithImpl$Query$FeaturedProducts$productsCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$FeaturedProducts$productsCollection _instance;
+
+  final TRes Function(Query$FeaturedProducts$productsCollection) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$FeaturedProducts$productsCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<Query$FeaturedProducts$productsCollection$edges>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$FeaturedProducts$productsCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$FeaturedProducts$productsCollection$edges<
+                          Query$FeaturedProducts$productsCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map(
+              (e) => CopyWith$Query$FeaturedProducts$productsCollection$edges(
+                    e,
+                    (i) => i,
+                  ))).toList());
+}
+
+class _CopyWithStubImpl$Query$FeaturedProducts$productsCollection<TRes>
+    implements CopyWith$Query$FeaturedProducts$productsCollection<TRes> {
+  _CopyWithStubImpl$Query$FeaturedProducts$productsCollection(this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$FeaturedProducts$productsCollection$edges>? edges,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+}
+
+class Query$FeaturedProducts$productsCollection$edges {
+  Query$FeaturedProducts$productsCollection$edges({
+    required this.node,
+    this.$__typename = 'ProductsEdge',
+  });
+
+  factory Query$FeaturedProducts$productsCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$FeaturedProducts$productsCollection$edges(
+      node: Fragment$Product.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$Product node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$FeaturedProducts$productsCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$FeaturedProducts$productsCollection$edges
+    on Query$FeaturedProducts$productsCollection$edges {
+  CopyWith$Query$FeaturedProducts$productsCollection$edges<
+          Query$FeaturedProducts$productsCollection$edges>
+      get copyWith => CopyWith$Query$FeaturedProducts$productsCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$FeaturedProducts$productsCollection$edges<TRes> {
+  factory CopyWith$Query$FeaturedProducts$productsCollection$edges(
+    Query$FeaturedProducts$productsCollection$edges instance,
+    TRes Function(Query$FeaturedProducts$productsCollection$edges) then,
+  ) = _CopyWithImpl$Query$FeaturedProducts$productsCollection$edges;
+
+  factory CopyWith$Query$FeaturedProducts$productsCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$FeaturedProducts$productsCollection$edges;
+
+  TRes call({
+    Fragment$Product? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$Product<TRes> get node;
+}
+
+class _CopyWithImpl$Query$FeaturedProducts$productsCollection$edges<TRes>
+    implements CopyWith$Query$FeaturedProducts$productsCollection$edges<TRes> {
+  _CopyWithImpl$Query$FeaturedProducts$productsCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$FeaturedProducts$productsCollection$edges _instance;
+
+  final TRes Function(Query$FeaturedProducts$productsCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$FeaturedProducts$productsCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$Product),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$Product<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$Product(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$FeaturedProducts$productsCollection$edges<TRes>
+    implements CopyWith$Query$FeaturedProducts$productsCollection$edges<TRes> {
+  _CopyWithStubImpl$Query$FeaturedProducts$productsCollection$edges(this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$Product? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$Product<TRes> get node =>
+      CopyWith$Fragment$Product.stub(_res);
 }

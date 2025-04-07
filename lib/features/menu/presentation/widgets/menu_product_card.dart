@@ -65,57 +65,45 @@ class MenuProductCard extends ConsumerWidget {
         // Add persistent bottom button for cart
         bottomNavigationBar:
             _buildAddToCartBar(context, ref, colorScheme, theme, quantity),
+        // Add a floating action button for View Details that's always accessible
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FullScreenTabbedView(
+                  title: productMenuItem.name,
+                  description: productMenuItem.longDescription ??
+                      'This product is prepared freshly for your enjoyment. Our dishes are made with high-quality ingredients sourced locally when possible.',
+                  instructions: productMenuItem.instructions ?? '',
+                  nutrition: productMenuItem.nutritionDetails ??
+                      'Nutrition information not available.',
+                  imageUrl: productMenuItem.photoUrl,
+                ),
+              ),
+            );
+          },
+          icon: const Icon(Icons.menu_book),
+          label: const Text('View Details'),
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+        ),
         body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Product Image
-                _buildProductImage(colorScheme),
+            return SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Product Image
+                  _buildProductImage(colorScheme),
 
-                // Product Details
-                _buildProductDetails(theme, colorScheme),
+                  // Product Details
+                  _buildProductDetails(theme, colorScheme),
 
-                // Product details buttons
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                  child: Column(
-                    children: [
-                      // Full details button - improved with a more prominent style
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => FullScreenTabbedView(
-                                title: productMenuItem.name,
-                                description: productMenuItem.longDescription ?? 
-                                    'This product is prepared freshly for your enjoyment. Our dishes are made with high-quality ingredients sourced locally when possible.',
-                                instructions: productMenuItem.instructions ?? '',
-                                nutrition: productMenuItem.nutritionDetails ?? 
-                                    'Nutrition information not available.',
-                                imageUrl: productMenuItem.photoUrl,
-                              ),
-                            ),
-                          );
-                        },
-                        icon: const Icon(Icons.menu_book),
-                        label: const Text('View Full Details'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: colorScheme.primary,
-                          foregroundColor: colorScheme.onPrimary,
-                          minimumSize: const Size(double.infinity, 56), // Slightly taller
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          elevation: 2, // Add a slight shadow
-                          padding: const EdgeInsets.symmetric(vertical: 12), // More padding
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                
-              ],
+                  // Add some bottom padding to ensure content isn't hidden behind the FAB
+                  const SizedBox(height: 80),
+                ],
+              ),
             );
           },
         ),
@@ -129,31 +117,31 @@ class MenuProductCard extends ConsumerWidget {
             width: double.infinity,
             child: AspectRatio(
               aspectRatio: 16 / 9,
-                  child: CachedNetworkImage(
-                    imageUrl: productMenuItem.photoUrl!,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      color: colorScheme.surfaceContainerHighest,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: colorScheme.primary,
-                        ),
-                      ),
+              child: CachedNetworkImage(
+                imageUrl: productMenuItem.photoUrl!,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => Container(
+                  color: colorScheme.surfaceContainerHighest,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: colorScheme.primary,
                     ),
-                    errorWidget: (context, url, error) => Container(
-                      color: colorScheme.surfaceContainerHighest,
-                      child: Center(
-                        child: Icon(
-                          Icons.image_not_supported,
-                          size: 40,
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
-                    memCacheWidth: 800, // Limit memory cache size
-                    memCacheHeight: 450, // Based on 16:9 aspect ratio
                   ),
+                ),
+                errorWidget: (context, url, error) => Container(
+                  color: colorScheme.surfaceContainerHighest,
+                  child: Center(
+                    child: Icon(
+                      Icons.image_not_supported,
+                      size: 40,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+                memCacheWidth: 800, // Limit memory cache size
+                memCacheHeight: 450, // Based on 16:9 aspect ratio
+              ),
             ),
           )
         : AspectRatio(

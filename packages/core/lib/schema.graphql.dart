@@ -26955,6 +26955,7 @@ class Input$ProductsFilter {
     Input$StringFilter? instructions,
     Input$StringFilter? stripeProductId,
     Input$StringFilter? nutritionDetails,
+    Input$BooleanFilter? isFeatured,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -26974,6 +26975,7 @@ class Input$ProductsFilter {
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
         if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
+        if (isFeatured != null) r'isFeatured': isFeatured,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -27070,6 +27072,13 @@ class Input$ProductsFilter {
           : Input$StringFilter.fromJson(
               (l$nutritionDetails as Map<String, dynamic>));
     }
+    if (data.containsKey('isFeatured')) {
+      final l$isFeatured = data['isFeatured'];
+      result$data['isFeatured'] = l$isFeatured == null
+          ? null
+          : Input$BooleanFilter.fromJson(
+              (l$isFeatured as Map<String, dynamic>));
+    }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
       result$data['nodeId'] = l$nodeId == null
@@ -27137,6 +27146,9 @@ class Input$ProductsFilter {
   Input$StringFilter? get nutritionDetails =>
       (_$data['nutritionDetails'] as Input$StringFilter?);
 
+  Input$BooleanFilter? get isFeatured =>
+      (_$data['isFeatured'] as Input$BooleanFilter?);
+
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
   List<Input$ProductsFilter>? get and =>
@@ -27200,6 +27212,10 @@ class Input$ProductsFilter {
     if (_$data.containsKey('nutritionDetails')) {
       final l$nutritionDetails = nutritionDetails;
       result$data['nutritionDetails'] = l$nutritionDetails?.toJson();
+    }
+    if (_$data.containsKey('isFeatured')) {
+      final l$isFeatured = isFeatured;
+      result$data['isFeatured'] = l$isFeatured?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -27348,6 +27364,15 @@ class Input$ProductsFilter {
     if (l$nutritionDetails != lOther$nutritionDetails) {
       return false;
     }
+    final l$isFeatured = isFeatured;
+    final lOther$isFeatured = other.isFeatured;
+    if (_$data.containsKey('isFeatured') !=
+        other._$data.containsKey('isFeatured')) {
+      return false;
+    }
+    if (l$isFeatured != lOther$isFeatured) {
+      return false;
+    }
     final l$nodeId = nodeId;
     final lOther$nodeId = other.nodeId;
     if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
@@ -27420,6 +27445,7 @@ class Input$ProductsFilter {
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
     final l$nutritionDetails = nutritionDetails;
+    final l$isFeatured = isFeatured;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -27438,6 +27464,7 @@ class Input$ProductsFilter {
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
       _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
+      _$data.containsKey('isFeatured') ? l$isFeatured : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -27477,6 +27504,7 @@ abstract class CopyWith$Input$ProductsFilter<TRes> {
     Input$StringFilter? instructions,
     Input$StringFilter? stripeProductId,
     Input$StringFilter? nutritionDetails,
+    Input$BooleanFilter? isFeatured,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -27495,6 +27523,7 @@ abstract class CopyWith$Input$ProductsFilter<TRes> {
   CopyWith$Input$StringFilter<TRes> get instructions;
   CopyWith$Input$StringFilter<TRes> get stripeProductId;
   CopyWith$Input$StringFilter<TRes> get nutritionDetails;
+  CopyWith$Input$BooleanFilter<TRes> get isFeatured;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$ProductsFilter>? Function(
@@ -27534,6 +27563,7 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
     Object? nutritionDetails = _undefined,
+    Object? isFeatured = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -27564,6 +27594,8 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
           'stripeProductId': (stripeProductId as Input$StringFilter?),
         if (nutritionDetails != _undefined)
           'nutritionDetails': (nutritionDetails as Input$StringFilter?),
+        if (isFeatured != _undefined)
+          'isFeatured': (isFeatured as Input$BooleanFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined) 'and': (and as List<Input$ProductsFilter>?),
         if (or != _undefined) 'or': (or as List<Input$ProductsFilter>?),
@@ -27670,6 +27702,14 @@ class _CopyWithImpl$Input$ProductsFilter<TRes>
             local$nutritionDetails, (e) => call(nutritionDetails: e));
   }
 
+  CopyWith$Input$BooleanFilter<TRes> get isFeatured {
+    final local$isFeatured = _instance.isFeatured;
+    return local$isFeatured == null
+        ? CopyWith$Input$BooleanFilter.stub(_then(_instance))
+        : CopyWith$Input$BooleanFilter(
+            local$isFeatured, (e) => call(isFeatured: e));
+  }
+
   CopyWith$Input$IDFilter<TRes> get nodeId {
     final local$nodeId = _instance.nodeId;
     return local$nodeId == null
@@ -27727,6 +27767,7 @@ class _CopyWithStubImpl$Input$ProductsFilter<TRes>
     Input$StringFilter? instructions,
     Input$StringFilter? stripeProductId,
     Input$StringFilter? nutritionDetails,
+    Input$BooleanFilter? isFeatured,
     Input$IDFilter? nodeId,
     List<Input$ProductsFilter>? and,
     List<Input$ProductsFilter>? or,
@@ -27773,6 +27814,9 @@ class _CopyWithStubImpl$Input$ProductsFilter<TRes>
   CopyWith$Input$StringFilter<TRes> get nutritionDetails =>
       CopyWith$Input$StringFilter.stub(_res);
 
+  CopyWith$Input$BooleanFilter<TRes> get isFeatured =>
+      CopyWith$Input$BooleanFilter.stub(_res);
+
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
 
@@ -27800,6 +27844,7 @@ class Input$ProductsInsertInput {
     String? instructions,
     String? stripeProductId,
     String? nutritionDetails,
+    bool? isFeatured,
   }) =>
       Input$ProductsInsertInput._({
         if (id != null) r'id': id,
@@ -27816,6 +27861,7 @@ class Input$ProductsInsertInput {
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
         if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
+        if (isFeatured != null) r'isFeatured': isFeatured,
       });
 
   Input$ProductsInsertInput._(this._$data);
@@ -27880,6 +27926,10 @@ class Input$ProductsInsertInput {
       final l$nutritionDetails = data['nutritionDetails'];
       result$data['nutritionDetails'] = (l$nutritionDetails as String?);
     }
+    if (data.containsKey('isFeatured')) {
+      final l$isFeatured = data['isFeatured'];
+      result$data['isFeatured'] = (l$isFeatured as bool?);
+    }
     return Input$ProductsInsertInput._(result$data);
   }
 
@@ -27912,6 +27962,8 @@ class Input$ProductsInsertInput {
   String? get stripeProductId => (_$data['stripeProductId'] as String?);
 
   String? get nutritionDetails => (_$data['nutritionDetails'] as String?);
+
+  bool? get isFeatured => (_$data['isFeatured'] as bool?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -27970,6 +28022,10 @@ class Input$ProductsInsertInput {
     if (_$data.containsKey('nutritionDetails')) {
       final l$nutritionDetails = nutritionDetails;
       result$data['nutritionDetails'] = l$nutritionDetails;
+    }
+    if (_$data.containsKey('isFeatured')) {
+      final l$isFeatured = isFeatured;
+      result$data['isFeatured'] = l$isFeatured;
     }
     return result$data;
   }
@@ -28111,6 +28167,15 @@ class Input$ProductsInsertInput {
     if (l$nutritionDetails != lOther$nutritionDetails) {
       return false;
     }
+    final l$isFeatured = isFeatured;
+    final lOther$isFeatured = other.isFeatured;
+    if (_$data.containsKey('isFeatured') !=
+        other._$data.containsKey('isFeatured')) {
+      return false;
+    }
+    if (l$isFeatured != lOther$isFeatured) {
+      return false;
+    }
     return true;
   }
 
@@ -28130,6 +28195,7 @@ class Input$ProductsInsertInput {
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
     final l$nutritionDetails = nutritionDetails;
+    final l$isFeatured = isFeatured;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -28145,6 +28211,7 @@ class Input$ProductsInsertInput {
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
       _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
+      _$data.containsKey('isFeatured') ? l$isFeatured : const {},
     ]);
   }
 }
@@ -28173,6 +28240,7 @@ abstract class CopyWith$Input$ProductsInsertInput<TRes> {
     String? instructions,
     String? stripeProductId,
     String? nutritionDetails,
+    bool? isFeatured,
   });
 }
 
@@ -28204,6 +28272,7 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
     Object? nutritionDetails = _undefined,
+    Object? isFeatured = _undefined,
   }) =>
       _then(Input$ProductsInsertInput._({
         ..._instance._$data,
@@ -28227,6 +28296,7 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
           'stripeProductId': (stripeProductId as String?),
         if (nutritionDetails != _undefined)
           'nutritionDetails': (nutritionDetails as String?),
+        if (isFeatured != _undefined) 'isFeatured': (isFeatured as bool?),
       }));
 }
 
@@ -28251,6 +28321,7 @@ class _CopyWithStubImpl$Input$ProductsInsertInput<TRes>
     String? instructions,
     String? stripeProductId,
     String? nutritionDetails,
+    bool? isFeatured,
   }) =>
       _res;
 }
@@ -28270,6 +28341,7 @@ class Input$ProductsOrderBy {
     Enum$OrderByDirection? instructions,
     Enum$OrderByDirection? stripeProductId,
     Enum$OrderByDirection? nutritionDetails,
+    Enum$OrderByDirection? isFeatured,
   }) =>
       Input$ProductsOrderBy._({
         if (id != null) r'id': id,
@@ -28285,6 +28357,7 @@ class Input$ProductsOrderBy {
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
         if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
+        if (isFeatured != null) r'isFeatured': isFeatured,
       });
 
   Input$ProductsOrderBy._(this._$data);
@@ -28369,6 +28442,12 @@ class Input$ProductsOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$nutritionDetails as String));
     }
+    if (data.containsKey('isFeatured')) {
+      final l$isFeatured = data['isFeatured'];
+      result$data['isFeatured'] = l$isFeatured == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$isFeatured as String));
+    }
     return Input$ProductsOrderBy._(result$data);
   }
 
@@ -28409,6 +28488,9 @@ class Input$ProductsOrderBy {
 
   Enum$OrderByDirection? get nutritionDetails =>
       (_$data['nutritionDetails'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get isFeatured =>
+      (_$data['isFeatured'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -28485,6 +28567,12 @@ class Input$ProductsOrderBy {
       result$data['nutritionDetails'] = l$nutritionDetails == null
           ? null
           : toJson$Enum$OrderByDirection(l$nutritionDetails);
+    }
+    if (_$data.containsKey('isFeatured')) {
+      final l$isFeatured = isFeatured;
+      result$data['isFeatured'] = l$isFeatured == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$isFeatured);
     }
     return result$data;
   }
@@ -28617,6 +28705,15 @@ class Input$ProductsOrderBy {
     if (l$nutritionDetails != lOther$nutritionDetails) {
       return false;
     }
+    final l$isFeatured = isFeatured;
+    final lOther$isFeatured = other.isFeatured;
+    if (_$data.containsKey('isFeatured') !=
+        other._$data.containsKey('isFeatured')) {
+      return false;
+    }
+    if (l$isFeatured != lOther$isFeatured) {
+      return false;
+    }
     return true;
   }
 
@@ -28635,6 +28732,7 @@ class Input$ProductsOrderBy {
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
     final l$nutritionDetails = nutritionDetails;
+    final l$isFeatured = isFeatured;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -28649,6 +28747,7 @@ class Input$ProductsOrderBy {
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
       _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
+      _$data.containsKey('isFeatured') ? l$isFeatured : const {},
     ]);
   }
 }
@@ -28676,6 +28775,7 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
     Enum$OrderByDirection? instructions,
     Enum$OrderByDirection? stripeProductId,
     Enum$OrderByDirection? nutritionDetails,
+    Enum$OrderByDirection? isFeatured,
   });
 }
 
@@ -28706,6 +28806,7 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
     Object? nutritionDetails = _undefined,
+    Object? isFeatured = _undefined,
   }) =>
       _then(Input$ProductsOrderBy._({
         ..._instance._$data,
@@ -28732,6 +28833,8 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
           'stripeProductId': (stripeProductId as Enum$OrderByDirection?),
         if (nutritionDetails != _undefined)
           'nutritionDetails': (nutritionDetails as Enum$OrderByDirection?),
+        if (isFeatured != _undefined)
+          'isFeatured': (isFeatured as Enum$OrderByDirection?),
       }));
 }
 
@@ -28755,6 +28858,7 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
     Enum$OrderByDirection? instructions,
     Enum$OrderByDirection? stripeProductId,
     Enum$OrderByDirection? nutritionDetails,
+    Enum$OrderByDirection? isFeatured,
   }) =>
       _res;
 }
@@ -28775,6 +28879,7 @@ class Input$ProductsUpdateInput {
     String? instructions,
     String? stripeProductId,
     String? nutritionDetails,
+    bool? isFeatured,
   }) =>
       Input$ProductsUpdateInput._({
         if (id != null) r'id': id,
@@ -28791,6 +28896,7 @@ class Input$ProductsUpdateInput {
         if (instructions != null) r'instructions': instructions,
         if (stripeProductId != null) r'stripeProductId': stripeProductId,
         if (nutritionDetails != null) r'nutritionDetails': nutritionDetails,
+        if (isFeatured != null) r'isFeatured': isFeatured,
       });
 
   Input$ProductsUpdateInput._(this._$data);
@@ -28855,6 +28961,10 @@ class Input$ProductsUpdateInput {
       final l$nutritionDetails = data['nutritionDetails'];
       result$data['nutritionDetails'] = (l$nutritionDetails as String?);
     }
+    if (data.containsKey('isFeatured')) {
+      final l$isFeatured = data['isFeatured'];
+      result$data['isFeatured'] = (l$isFeatured as bool?);
+    }
     return Input$ProductsUpdateInput._(result$data);
   }
 
@@ -28887,6 +28997,8 @@ class Input$ProductsUpdateInput {
   String? get stripeProductId => (_$data['stripeProductId'] as String?);
 
   String? get nutritionDetails => (_$data['nutritionDetails'] as String?);
+
+  bool? get isFeatured => (_$data['isFeatured'] as bool?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -28945,6 +29057,10 @@ class Input$ProductsUpdateInput {
     if (_$data.containsKey('nutritionDetails')) {
       final l$nutritionDetails = nutritionDetails;
       result$data['nutritionDetails'] = l$nutritionDetails;
+    }
+    if (_$data.containsKey('isFeatured')) {
+      final l$isFeatured = isFeatured;
+      result$data['isFeatured'] = l$isFeatured;
     }
     return result$data;
   }
@@ -29086,6 +29202,15 @@ class Input$ProductsUpdateInput {
     if (l$nutritionDetails != lOther$nutritionDetails) {
       return false;
     }
+    final l$isFeatured = isFeatured;
+    final lOther$isFeatured = other.isFeatured;
+    if (_$data.containsKey('isFeatured') !=
+        other._$data.containsKey('isFeatured')) {
+      return false;
+    }
+    if (l$isFeatured != lOther$isFeatured) {
+      return false;
+    }
     return true;
   }
 
@@ -29105,6 +29230,7 @@ class Input$ProductsUpdateInput {
     final l$instructions = instructions;
     final l$stripeProductId = stripeProductId;
     final l$nutritionDetails = nutritionDetails;
+    final l$isFeatured = isFeatured;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('productTypeId') ? l$productTypeId : const {},
@@ -29120,6 +29246,7 @@ class Input$ProductsUpdateInput {
       _$data.containsKey('instructions') ? l$instructions : const {},
       _$data.containsKey('stripeProductId') ? l$stripeProductId : const {},
       _$data.containsKey('nutritionDetails') ? l$nutritionDetails : const {},
+      _$data.containsKey('isFeatured') ? l$isFeatured : const {},
     ]);
   }
 }
@@ -29148,6 +29275,7 @@ abstract class CopyWith$Input$ProductsUpdateInput<TRes> {
     String? instructions,
     String? stripeProductId,
     String? nutritionDetails,
+    bool? isFeatured,
   });
 }
 
@@ -29179,6 +29307,7 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
     Object? instructions = _undefined,
     Object? stripeProductId = _undefined,
     Object? nutritionDetails = _undefined,
+    Object? isFeatured = _undefined,
   }) =>
       _then(Input$ProductsUpdateInput._({
         ..._instance._$data,
@@ -29202,6 +29331,7 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
           'stripeProductId': (stripeProductId as String?),
         if (nutritionDetails != _undefined)
           'nutritionDetails': (nutritionDetails as String?),
+        if (isFeatured != _undefined) 'isFeatured': (isFeatured as bool?),
       }));
 }
 
@@ -29226,6 +29356,7 @@ class _CopyWithStubImpl$Input$ProductsUpdateInput<TRes>
     String? instructions,
     String? stripeProductId,
     String? nutritionDetails,
+    bool? isFeatured,
   }) =>
       _res;
 }
