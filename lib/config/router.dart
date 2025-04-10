@@ -5,6 +5,7 @@ import 'package:firefit/features/auth/presentation/screens/registration_screen.d
 import 'package:firefit/features/commerce/presentation/screens/orders_screen.dart';
 import 'package:firefit/features/commerce/presentation/screens/payment_success_screen.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
+import 'package:firefit/features/common/presentation/screens/request_password_reset_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/application_container.dart';
 import 'package:firefit/features/home/presentation/screens/home_screen.dart';
 import 'package:firefit/features/menu/presentation/screens/menu_product_screen.dart';
@@ -29,14 +30,17 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final isAuthenticated = routerNotifier.isAuthenticated;
       final isAuthRoute = state.matchedLocation == '/login' ||
-          state.matchedLocation == '/register';
+          state.matchedLocation == '/register' ||
+          state.matchedLocation == '/reset-password';
       final isSplashRoute = state.matchedLocation == '/splash';
 
       // Don't redirect if on splash screen
       if (isSplashRoute) return null;
 
       if (!isAuthenticated && !isAuthRoute) return '/login';
-      if (isAuthenticated && isAuthRoute) return '/';
+      if (isAuthenticated &&
+          isAuthRoute &&
+          state.matchedLocation != '/reset-password') return '/';
       return null;
     },
     routes: [
@@ -116,6 +120,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
       GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
+      GoRoute(
+        path: '/reset-password',
+        builder: (context, state) => const RequestPasswordResetScreen(),
+      ),
       GoRoute(
           path: '/success',
           builder: (context, state) {

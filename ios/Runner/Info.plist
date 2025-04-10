@@ -57,6 +57,12 @@
 	<key>NSCameraUsageDescription</key>
 	<string>To scan cards and add them automatically</string>
 	
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>https</string>
+		<string>http</string>
+	</array>
+	
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer> <!-- iPhone only -->

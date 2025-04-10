@@ -275,14 +275,33 @@ class ProductCartNotifier extends AsyncNotifier<ProductCartModel> {
       // Run database operation in a separate isolate
       _computeAsync(() async {
         try {
-          await _database.into(_database.cartItems).insert(CartItemsCompanion(
-                id: Value.absent(),
-                cartId: Value(model.currentCart.id),
-                productId: Value(product.id),
-                quantity: Value(quantity),
-                unitPrice: Value(product.unitPrice),
-                createdAt: Value(DateTime.now()),
-              ));
+          // Check if the product is already in the cart
+          final existingItems = await (_database.select(_database.cartItems)
+                ..where((item) =>
+                    item.productId.equals(product.id) &
+                    item.cartId.equals(model.currentCart.id)))
+              .get();
+
+          if (existingItems.isNotEmpty) {
+            // Product already in cart, update quantity
+            final existingItem = existingItems.first;
+            final updateQuery = _database.update(_database.cartItems)
+              ..where((item) => item.id.equals(existingItem.id));
+
+            await updateQuery.write(CartItemsCompanion(
+              quantity: Value(existingItem.quantity + quantity),
+            ));
+          } else {
+            // Product not in cart, add new item
+            await _database.into(_database.cartItems).insert(CartItemsCompanion(
+                  id: Value.absent(),
+                  cartId: Value(model.currentCart.id),
+                  productId: Value(product.id),
+                  quantity: Value(quantity),
+                  unitPrice: Value(product.unitPrice),
+                  createdAt: Value(DateTime.now()),
+                ));
+          }
 
           // No need to manually update state as we're using streams
         } catch (e) {

@@ -118,18 +118,19 @@ class LoginScreen extends HookConsumerWidget {
                             const SizedBox(height: 32),
                             ReactiveTextField<String>(
                               formControlName: 'identifier',
-                                decoration: InputDecoration(
-                                  labelText: 'Email or Handle',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey[600],
-                                  ),
-                                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                              decoration: InputDecoration(
+                                labelText: 'Email or Handle',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
+                                filled: true,
+                                fillColor: Colors.grey[200],
+                                labelStyle: TextStyle(
+                                  color: Colors.grey[600],
+                                ),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never,
+                              ),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.grey[900],
@@ -142,18 +143,19 @@ class LoginScreen extends HookConsumerWidget {
                             const SizedBox(height: 16),
                             ReactiveTextField<String>(
                               formControlName: 'password',
-                                decoration: InputDecoration(
-                                  labelText: 'Password',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey[600],
-                                  ),
-                                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
+                                filled: true,
+                                fillColor: Colors.grey[200],
+                                labelStyle: TextStyle(
+                                  color: Colors.grey[600],
+                                ),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never,
+                              ),
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.grey[900],
@@ -188,18 +190,20 @@ class LoginScreen extends HookConsumerWidget {
                                         ),
                                       ReactiveTextField<String>(
                                         formControlName: 'pdsService',
-                                          decoration: InputDecoration(
-                                            labelText: 'PDS Service',
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(8),
-                                            ),
-                                            filled: true,
-                                            fillColor: Colors.grey[200],
-                                            labelStyle: TextStyle(
-                                              color: Colors.grey[600],
-                                            ),
-                                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                                        decoration: InputDecoration(
+                                          labelText: 'PDS Service',
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
                                           ),
+                                          filled: true,
+                                          fillColor: Colors.grey[200],
+                                          labelStyle: TextStyle(
+                                            color: Colors.grey[600],
+                                          ),
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.never,
+                                        ),
                                         style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.grey[900],
@@ -247,13 +251,25 @@ class LoginScreen extends HookConsumerWidget {
                                 ),
                               ),
                             const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    // Navigate to registration screen
+                                    context.go('/register');
+                                  },
+                                  child: const Text(
+                                      'Don\'t have an account? Register'),
+                                ),
+                              ],
+                            ),
                             TextButton(
                               onPressed: () {
-                                // Navigate to registration screen
-                                context.go('/register');
+                                // Navigate to password reset screen
+                                context.go('/reset-password');
                               },
-                              child: const Text(
-                                  'Don\'t have an account? Register'),
+                              child: const Text('Forgot Password?'),
                             ),
                           ],
                         ),

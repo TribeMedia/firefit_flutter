@@ -317,14 +317,14 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
     final productCartNotifier = ref.read(productCartProvider.notifier);
 
     final chosenLocation = await showShadDialog<Fragment$DeliveryLocation?>(
-      context: context, 
+      context: context,
       builder: (context) {
-        return DeliveryLocationSelector(onDeliveryLocationSelected: (location){
+        return DeliveryLocationSelector(onDeliveryLocationSelected: (location) {
           Navigator.of(context).pop(location);
         });
       },
       barrierDismissible: false,
-      );
+    );
 
     if (chosenLocation == null) {
       Fluttertoast.showToast(
@@ -380,15 +380,15 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
           0.0,
           (sum, item) => sum + (item.unitPrice * item.quantity),
         );
-        
+
         // Get zip code from the chosen delivery location
         final zipCode = chosenLocation.address.zip;
-        
+
         // Calculate tax using the sales tax service
         final taxResponse = await ref.read(salesTaxProvider(zipCode).future);
         final taxRate = taxResponse.totalRate;
         final tax = subtotal * taxRate;
-        
+
         // Calculate total with tax
         final totalAmount = subtotal + tax;
 
@@ -467,11 +467,22 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
         // Handle payment result
         if (options == null) {
           Fluttertoast.showToast(
-            msg: 'Payment failed',
+            msg: 'Payment cancelled',
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             backgroundColor: Colors.red,
           );
+
+          // Close the "Preparing" popup if it's still open
+          if (Navigator.canPop(dialogContext)) {
+            Navigator.pop(dialogContext);
+          }
+
+          // Close the cart overlay
+          if (currentContext.mounted) {
+            Navigator.pop(currentContext);
+          }
+
           return;
         }
 

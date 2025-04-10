@@ -291,4 +291,35 @@ class AuthenticationService implements AuthenticationServiceInterface {
       return Left(Failure.unprocessableEntity(message: e.toString()));
     }
   }
+
+  @override
+  Future<Failure?> requestPasswordReset(String email) async {
+    final atproto = ATProto.anonymous();
+    try {
+      await atproto.server.requestPasswordReset(email: email);
+      return null;
+    } catch (e) {
+      return Failure.unprocessableEntity(message: e.toString());
+    }
+  }
+
+  @override
+  Future<Failure?> resetPassword(String token, String newPassword) async {
+    final atproto = ATProto.anonymous();
+    try {
+      await atproto.server.resetPassword(
+        token: token,
+        password: newPassword,
+      );
+      return null;
+    } catch (e) {
+      if (e.toString().contains('ExpiredToken')) {
+        return Failure.unprocessableEntity(message: 'Expired token');
+      } else if (e.toString().contains('InvalidToken')) {
+        return Failure.unprocessableEntity(message: 'Invalid token');
+      } else {
+        return Failure.unprocessableEntity(message: e.toString());
+      }
+    }
+  }
 }

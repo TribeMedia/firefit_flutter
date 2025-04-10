@@ -20,4 +20,10 @@ abstract class AuthenticationServiceInterface {
     required String stationId,
   });
   Future<Either<Failure, bool>> logout();
+
+  /// Request a password reset for the given email address
+  Future<Failure?> requestPasswordReset(String email);
+
+  /// Reset password using the token received via email
+  Future<Failure?> resetPassword(String token, String newPassword);
 }

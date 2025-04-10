@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:forui/forui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // Providers for various settings
 final notificationsEnabledProvider = StateProvider<bool>((ref) => true);
@@ -21,7 +22,7 @@ class SettingsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notificationsEnabled = ref.watch(notificationsEnabledProvider);
-    final darkMode = ref.watch(darkModeProvider);
+    //final darkMode = ref.watch(darkModeProvider);
     final theme = Theme.of(context);
 
     return FScaffold(
@@ -75,7 +76,7 @@ class SettingsScreen extends HookConsumerWidget {
               ],
             ),
           ),
-          _buildSectionHeader(context, 'App Settings'),
+          /*_buildSectionHeader(context, 'App Settings'),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
@@ -98,7 +99,7 @@ class SettingsScreen extends HookConsumerWidget {
                 ),
               ],
             ),
-          ),
+          ),*/
           _buildSectionHeader(context, 'Account'),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -134,8 +135,16 @@ class SettingsScreen extends HookConsumerWidget {
                     Icons.chevron_right,
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
-                  onTap: () {
-                    // Navigate to privacy policy screen
+                  onTap: () async {
+                    final Uri url =
+                        Uri.parse('https://foodonthestove.org/privacy-policy/');
+                    if (!await launchUrl(url,
+                        mode: LaunchMode.externalApplication)) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text('Could not open privacy policy')),
+                      );
+                    }
                   },
                 ),
                 ListTile(
@@ -149,8 +158,17 @@ class SettingsScreen extends HookConsumerWidget {
                     Icons.chevron_right,
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
-                  onTap: () {
-                    // Navigate to terms of service screen
+                  onTap: () async {
+                    final Uri url = Uri.parse(
+                        'https://foodonthestove.org/terms-and-conditions/');
+                    if (!await launchUrl(url,
+                        mode: LaunchMode.externalApplication)) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content:
+                                Text('Could not open terms and conditions')),
+                      );
+                    }
                   },
                 ),
                 ListTile(

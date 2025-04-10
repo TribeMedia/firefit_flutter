@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/home/presentation/providers/home_state.dart';
 import 'package:firefit/features/home/presentation/widgets/home_sliver_app_bar.dart';
+import 'package:firefit/features/menu/presentation/widgets/featured_item_menu_card.dart';
 import 'package:firefit/features/menu/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -202,77 +203,7 @@ class HomeContent extends HookConsumerWidget {
             final Product menuItem = featuredItems[index];
             return GestureDetector(
               onTap: () => _handleMenuTap(context, menuItem),
-              child: Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.black,
-                ),
-                clipBehavior: Clip.hardEdge,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.network(
-                      menuItem.photoUrl ?? '',
-                      fit: BoxFit.cover,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withAlpha((255 * 0.1).round()),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: 16,
-                      right: 16,
-                      bottom: 16,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            menuItem.name,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            menuItem.shortDescription ?? '',
-                            style: TextStyle(
-                              color:
-                                  Colors.white.withAlpha((255 * 0.8).round()),
-                              fontSize: 14,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            '\$${menuItem.unitPrice.toStringAsFixed(2)}',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: FeaturedMenuItemCard(menuItem: menuItem),
             );
           },
         ),

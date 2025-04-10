@@ -281,11 +281,16 @@ class HomeSliverAppBar extends HookConsumerWidget {
                   padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
                   child: ColorFiltered(
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context)
-                          .colorScheme
-                          .primary
-                          .withAlpha((255 * 0.1).round()),
-                      BlendMode.srcATop,
+                      brightness == Brightness.dark
+                          ? Colors.white
+                              .withOpacity(0.8) // Lighter in dark mode
+                          : Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withAlpha((255 * 0.1).round()),
+                      brightness == Brightness.dark
+                          ? BlendMode.srcIn // Replace colors in dark mode
+                          : BlendMode.srcATop, // Overlay in light mode
                     ),
                     child: IconButton(
                       onPressed: () {},
@@ -545,11 +550,22 @@ Future<void> _handleCheckout(BuildContext context, List<CartItem> items,
       // Handle payment result
       if (options == null) {
         Fluttertoast.showToast(
-          msg: 'Payment failed',
+          msg: 'Payment cancelled',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           backgroundColor: Colors.red,
         );
+
+        // Close the "Preparing" popup if it's still open
+        if (Navigator.canPop(dialogContext)) {
+          Navigator.pop(dialogContext);
+        }
+
+        // Close the cart overlay
+        if (currentContext.mounted) {
+          Navigator.pop(currentContext);
+        }
+
         return;
       }
 
