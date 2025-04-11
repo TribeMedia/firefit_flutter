@@ -38,22 +38,6 @@ fragment Site on Site {
   data
   createdAt
   organizationId
-  siteDeliveryLocationCollection {
-    edges {
-      node {
-        ...SiteDeliveryLocation
-      }
-    }
-  }
  }
 
- fragment SiteDeliveryLocation on SiteDeliveryLocation {
-   id
-   siteId
-   deliveryLocationId
-   createdAt
-   deliveryLocation {
-     ...DeliveryLocation
-   }
- }
 

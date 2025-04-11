@@ -195,11 +195,3 @@ final cartDatabaseProvider = Provider<AppDatabase>((ref) {
   // Force a completely new database instance with our updated schema
   return AppDatabase();
 });
-
-final deliveryLocationsAvailableProvider = FutureProvider<bool>((ref) async {
-  final deliveryLocations = await ref.watch(siteDeliveryLocationProvider.future);
-  return deliveryLocations.fold(
-      (l) => false,
-      (r) => r.isNotEmpty,
-  );
-});

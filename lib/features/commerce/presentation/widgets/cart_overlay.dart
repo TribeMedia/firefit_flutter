@@ -4,6 +4,7 @@ import 'package:core/core.dart';
 
 import 'package:firefit/features/commerce/domain/database/database.dart';
 import 'package:firefit/features/commerce/presentation/providers/delivery_location_provider.dart';
+import 'package:firefit/features/commerce/presentation/providers/providers.dart';
 import 'package:firefit/features/common/presentation/screens/error_screen.dart';
 import 'package:firefit/features/common/presentation/widgets/empty_view_state.dart';
 import 'package:firefit/features/menu/providers.dart';
@@ -12,6 +13,16 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+
+final deliveryLocationProvider = FutureProvider<List<DeliveryLocation>>((ref) async {
+  final repository = ref.read(orderRepositoryProvider);
+  final result = await repository.getValidDeliveryLocations();
+
+  return result.fold(
+    (l) => [],
+    (r) => r,
+  );
+});
 
 final productsMapProvider =
     FutureProvider.family<Either<Failure, Map<int, Product>>, List<CartItem>>(
@@ -77,49 +88,37 @@ class CartOverlay extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final deliveryLocations = ref.watch(siteDeliveryLocationProvider);
+    final deliveryLocations = ref.watch(deliveryLocationProvider);
     final cartsAsync = ref.watch(productCartProvider);
     final theme = ShadTheme.of(context);
 
     return deliveryLocations.when(
         data: (locations){
-          return locations.fold(
-            (l) {
-              return ErrorScreen(errorMessage: l.error, onRetry: () {});
-            },
-            (r) {
-              if (r.isEmpty) {
-                return ErrorScreen(errorMessage: 'No delivery locations available', onRetry: () {
-                  Navigator.of(context).pop();
-                });
-              }
-              return cartsAsync.when(
-                data: (cart) {
-                  final productsAsync =
-                  ref.watch(productsMapProvider(cart.shoppingCartItems));
+          return cartsAsync.when(
+            data: (cart) {
+              final productsAsync =
+              ref.watch(productsMapProvider(cart.shoppingCartItems));
 
-                  // Calculate total
-                  final total = cart.shoppingCartItems.fold(
-                    0.0,
-                        (sum, item) => sum + (item.unitPrice * item.quantity),
-                  );
+              // Calculate total
+              final total = cart.shoppingCartItems.fold(
+                0.0,
+                    (sum, item) => sum + (item.unitPrice * item.quantity),
+              );
 
-                  return productsAsync.when(
-                    data: (products) {
-                      return products.fold(
-                            (l) => const SizedBox.shrink(),
-                            (r) => _buildCartOverlay(context, theme, r, cart, total),
-                      );
-                    },
-                    error: (e, s) =>
-                        ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
-                    loading: () => const Center(child: CircularProgressIndicator()),
+              return productsAsync.when(
+                data: (products) {
+                  return products.fold(
+                        (l) => const SizedBox.shrink(),
+                        (r) => _buildCartOverlay(context, theme, r, cart, total),
                   );
                 },
-                error: (e, s) => ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
+                error: (e, s) =>
+                    ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
                 loading: () => const Center(child: CircularProgressIndicator()),
               );
             },
+            error: (e, s) => ErrorScreen(errorMessage: e.toString(), onRetry: () {}),
+            loading: () => const Center(child: CircularProgressIndicator()),
           );
         },
       error: (e, s) =>

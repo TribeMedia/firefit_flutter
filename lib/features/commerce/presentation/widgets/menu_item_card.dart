@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:firefit/features/commerce/presentation/widgets/cart_overlay.dart';
 import 'package:firefit/features/commerce/presentation/widgets/nutrition_info_widget.dart';
 import 'package:firefit/features/commerce/providers/providers.dart';
 //import 'package:core/meals/domain/models/nutrition/menu_item_nutrition_extension.dart';
@@ -23,7 +24,7 @@ class MenuItemCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final deliveryLocations = ref.watch(deliveryLocationsAvailableProvider);
+    final deliveryLocations = ref.watch(deliveryLocationProvider);
     return deliveryLocations.when(
         data: (isAvailable) {
           return ShadCard(

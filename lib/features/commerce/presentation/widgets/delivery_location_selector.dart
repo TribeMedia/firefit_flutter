@@ -223,41 +223,21 @@ class _DeliveryLocationSelectorState
     String locationAddress = location.address.address;
 
     // Format delivery date
-    String startDateStr = '';
+    String dateStr = '';
     if (location.startOpenTime.toString().isNotEmpty) {
       try {
         final date = DateTime.parse(location.startOpenTime.toString());
-        startDateStr = DateFormat('EEEE, MMMM d')
+        dateStr = DateFormat('EEEE, MMMM d')
             .format(date); // e.g. "Monday, January 15"
       } catch (e) {
-        startDateStr = 'Unknown';
+        dateStr = 'Unknown';
       }
-    }
-
-    String endDateStr = '';
-    if (location.endOpenTime.toString().isNotEmpty) {
-      try {
-        final date = DateTime.parse(location.endOpenTime.toString());
-        endDateStr = DateFormat('EEEE, MMMM d')
-            .format(date); // e.g. "Monday, January 15"
-      } catch (e) {
-        endDateStr = 'Unknown';
-      }
-    }
-
-    String dateStr = '';
-    if (startDateStr.isNotEmpty && endDateStr.isNotEmpty) {
-      dateStr = '$startDateStr - $endDateStr';
-    } else {
-      dateStr = startDateStr;
     }
 
     // Format time slot
-    String timeSlot = '';
-    if (location.startOpenTime != null && location.endOpenTime != null) {
-      timeSlot =
-          '${_formatTime(location.startOpenTime)} – ${_formatTime(location.endOpenTime)}';
-    }
+    final timeFormat = DateFormat('h:mm a');
+    String timeSlot =
+        '${_formatTime(timeFormat.format(location.startOpenTime.toLocal()))} – ${_formatTime(timeFormat.format(location.endOpenTime.toLocal()))}';
 
     // We don't need to combine date and time anymore since they're on separate lines
 

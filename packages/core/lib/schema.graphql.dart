@@ -4660,12 +4660,12 @@ class Input$DeliveryLocationFilter {
   factory Input$DeliveryLocationFilter({
     Input$UUIDFilter? id,
     Input$StringFilter? name,
+    Input$DatetimeFilter? startOpenTime,
+    Input$DatetimeFilter? endOpenTime,
     Input$DatetimeFilter? createdAt,
-    Input$OpaqueFilter? startOpenTime,
-    Input$OpaqueFilter? endOpenTime,
     Input$UUIDFilter? providerId,
-    Input$UUIDFilter? deliveryPeriodId,
     Input$UUIDFilter? addressId,
+    Input$BooleanFilter? active,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -4674,12 +4674,12 @@ class Input$DeliveryLocationFilter {
       Input$DeliveryLocationFilter._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
-        if (createdAt != null) r'createdAt': createdAt,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (createdAt != null) r'createdAt': createdAt,
         if (providerId != null) r'providerId': providerId,
-        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
         if (addressId != null) r'addressId': addressId,
+        if (active != null) r'active': active,
         if (nodeId != null) r'nodeId': nodeId,
         if (and != null) r'and': and,
         if (or != null) r'or': or,
@@ -4702,6 +4702,20 @@ class Input$DeliveryLocationFilter {
           ? null
           : Input$StringFilter.fromJson((l$name as Map<String, dynamic>));
     }
+    if (data.containsKey('startOpenTime')) {
+      final l$startOpenTime = data['startOpenTime'];
+      result$data['startOpenTime'] = l$startOpenTime == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$startOpenTime as Map<String, dynamic>));
+    }
+    if (data.containsKey('endOpenTime')) {
+      final l$endOpenTime = data['endOpenTime'];
+      result$data['endOpenTime'] = l$endOpenTime == null
+          ? null
+          : Input$DatetimeFilter.fromJson(
+              (l$endOpenTime as Map<String, dynamic>));
+    }
     if (data.containsKey('createdAt')) {
       final l$createdAt = data['createdAt'];
       result$data['createdAt'] = l$createdAt == null
@@ -4709,38 +4723,23 @@ class Input$DeliveryLocationFilter {
           : Input$DatetimeFilter.fromJson(
               (l$createdAt as Map<String, dynamic>));
     }
-    if (data.containsKey('startOpenTime')) {
-      final l$startOpenTime = data['startOpenTime'];
-      result$data['startOpenTime'] = l$startOpenTime == null
-          ? null
-          : Input$OpaqueFilter.fromJson(
-              (l$startOpenTime as Map<String, dynamic>));
-    }
-    if (data.containsKey('endOpenTime')) {
-      final l$endOpenTime = data['endOpenTime'];
-      result$data['endOpenTime'] = l$endOpenTime == null
-          ? null
-          : Input$OpaqueFilter.fromJson(
-              (l$endOpenTime as Map<String, dynamic>));
-    }
     if (data.containsKey('providerId')) {
       final l$providerId = data['providerId'];
       result$data['providerId'] = l$providerId == null
           ? null
           : Input$UUIDFilter.fromJson((l$providerId as Map<String, dynamic>));
     }
-    if (data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = data['deliveryPeriodId'];
-      result$data['deliveryPeriodId'] = l$deliveryPeriodId == null
-          ? null
-          : Input$UUIDFilter.fromJson(
-              (l$deliveryPeriodId as Map<String, dynamic>));
-    }
     if (data.containsKey('addressId')) {
       final l$addressId = data['addressId'];
       result$data['addressId'] = l$addressId == null
           ? null
           : Input$UUIDFilter.fromJson((l$addressId as Map<String, dynamic>));
+    }
+    if (data.containsKey('active')) {
+      final l$active = data['active'];
+      result$data['active'] = l$active == null
+          ? null
+          : Input$BooleanFilter.fromJson((l$active as Map<String, dynamic>));
     }
     if (data.containsKey('nodeId')) {
       final l$nodeId = data['nodeId'];
@@ -4778,22 +4777,21 @@ class Input$DeliveryLocationFilter {
 
   Input$StringFilter? get name => (_$data['name'] as Input$StringFilter?);
 
+  Input$DatetimeFilter? get startOpenTime =>
+      (_$data['startOpenTime'] as Input$DatetimeFilter?);
+
+  Input$DatetimeFilter? get endOpenTime =>
+      (_$data['endOpenTime'] as Input$DatetimeFilter?);
+
   Input$DatetimeFilter? get createdAt =>
       (_$data['createdAt'] as Input$DatetimeFilter?);
-
-  Input$OpaqueFilter? get startOpenTime =>
-      (_$data['startOpenTime'] as Input$OpaqueFilter?);
-
-  Input$OpaqueFilter? get endOpenTime =>
-      (_$data['endOpenTime'] as Input$OpaqueFilter?);
 
   Input$UUIDFilter? get providerId =>
       (_$data['providerId'] as Input$UUIDFilter?);
 
-  Input$UUIDFilter? get deliveryPeriodId =>
-      (_$data['deliveryPeriodId'] as Input$UUIDFilter?);
-
   Input$UUIDFilter? get addressId => (_$data['addressId'] as Input$UUIDFilter?);
+
+  Input$BooleanFilter? get active => (_$data['active'] as Input$BooleanFilter?);
 
   Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
 
@@ -4816,10 +4814,6 @@ class Input$DeliveryLocationFilter {
       final l$name = name;
       result$data['name'] = l$name?.toJson();
     }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toJson();
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
       result$data['startOpenTime'] = l$startOpenTime?.toJson();
@@ -4828,17 +4822,21 @@ class Input$DeliveryLocationFilter {
       final l$endOpenTime = endOpenTime;
       result$data['endOpenTime'] = l$endOpenTime?.toJson();
     }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
     if (_$data.containsKey('providerId')) {
       final l$providerId = providerId;
       result$data['providerId'] = l$providerId?.toJson();
     }
-    if (_$data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = deliveryPeriodId;
-      result$data['deliveryPeriodId'] = l$deliveryPeriodId?.toJson();
-    }
     if (_$data.containsKey('addressId')) {
       final l$addressId = addressId;
       result$data['addressId'] = l$addressId?.toJson();
+    }
+    if (_$data.containsKey('active')) {
+      final l$active = active;
+      result$data['active'] = l$active?.toJson();
     }
     if (_$data.containsKey('nodeId')) {
       final l$nodeId = nodeId;
@@ -4890,15 +4888,6 @@ class Input$DeliveryLocationFilter {
     if (l$name != lOther$name) {
       return false;
     }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -4917,6 +4906,15 @@ class Input$DeliveryLocationFilter {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
     final l$providerId = providerId;
     final lOther$providerId = other.providerId;
     if (_$data.containsKey('providerId') !=
@@ -4926,15 +4924,6 @@ class Input$DeliveryLocationFilter {
     if (l$providerId != lOther$providerId) {
       return false;
     }
-    final l$deliveryPeriodId = deliveryPeriodId;
-    final lOther$deliveryPeriodId = other.deliveryPeriodId;
-    if (_$data.containsKey('deliveryPeriodId') !=
-        other._$data.containsKey('deliveryPeriodId')) {
-      return false;
-    }
-    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
-      return false;
-    }
     final l$addressId = addressId;
     final lOther$addressId = other.addressId;
     if (_$data.containsKey('addressId') !=
@@ -4942,6 +4931,14 @@ class Input$DeliveryLocationFilter {
       return false;
     }
     if (l$addressId != lOther$addressId) {
+      return false;
+    }
+    final l$active = active;
+    final lOther$active = other.active;
+    if (_$data.containsKey('active') != other._$data.containsKey('active')) {
+      return false;
+    }
+    if (l$active != lOther$active) {
       return false;
     }
     final l$nodeId = nodeId;
@@ -5005,12 +5002,12 @@ class Input$DeliveryLocationFilter {
   int get hashCode {
     final l$id = id;
     final l$name = name;
-    final l$createdAt = createdAt;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$createdAt = createdAt;
     final l$providerId = providerId;
-    final l$deliveryPeriodId = deliveryPeriodId;
     final l$addressId = addressId;
+    final l$active = active;
     final l$nodeId = nodeId;
     final l$and = and;
     final l$or = or;
@@ -5018,12 +5015,12 @@ class Input$DeliveryLocationFilter {
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
-      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
       _$data.containsKey('addressId') ? l$addressId : const {},
+      _$data.containsKey('active') ? l$active : const {},
       _$data.containsKey('nodeId') ? l$nodeId : const {},
       _$data.containsKey('and')
           ? l$and == null
@@ -5052,12 +5049,12 @@ abstract class CopyWith$Input$DeliveryLocationFilter<TRes> {
   TRes call({
     Input$UUIDFilter? id,
     Input$StringFilter? name,
+    Input$DatetimeFilter? startOpenTime,
+    Input$DatetimeFilter? endOpenTime,
     Input$DatetimeFilter? createdAt,
-    Input$OpaqueFilter? startOpenTime,
-    Input$OpaqueFilter? endOpenTime,
     Input$UUIDFilter? providerId,
-    Input$UUIDFilter? deliveryPeriodId,
     Input$UUIDFilter? addressId,
+    Input$BooleanFilter? active,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -5065,12 +5062,12 @@ abstract class CopyWith$Input$DeliveryLocationFilter<TRes> {
   });
   CopyWith$Input$UUIDFilter<TRes> get id;
   CopyWith$Input$StringFilter<TRes> get name;
+  CopyWith$Input$DatetimeFilter<TRes> get startOpenTime;
+  CopyWith$Input$DatetimeFilter<TRes> get endOpenTime;
   CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$OpaqueFilter<TRes> get startOpenTime;
-  CopyWith$Input$OpaqueFilter<TRes> get endOpenTime;
   CopyWith$Input$UUIDFilter<TRes> get providerId;
-  CopyWith$Input$UUIDFilter<TRes> get deliveryPeriodId;
   CopyWith$Input$UUIDFilter<TRes> get addressId;
+  CopyWith$Input$BooleanFilter<TRes> get active;
   CopyWith$Input$IDFilter<TRes> get nodeId;
   TRes and(
       Iterable<Input$DeliveryLocationFilter>? Function(
@@ -5103,12 +5100,12 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
-    Object? createdAt = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? createdAt = _undefined,
     Object? providerId = _undefined,
-    Object? deliveryPeriodId = _undefined,
     Object? addressId = _undefined,
+    Object? active = _undefined,
     Object? nodeId = _undefined,
     Object? and = _undefined,
     Object? or = _undefined,
@@ -5118,18 +5115,17 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
         ..._instance._$data,
         if (id != _undefined) 'id': (id as Input$UUIDFilter?),
         if (name != _undefined) 'name': (name as Input$StringFilter?),
+        if (startOpenTime != _undefined)
+          'startOpenTime': (startOpenTime as Input$DatetimeFilter?),
+        if (endOpenTime != _undefined)
+          'endOpenTime': (endOpenTime as Input$DatetimeFilter?),
         if (createdAt != _undefined)
           'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (startOpenTime != _undefined)
-          'startOpenTime': (startOpenTime as Input$OpaqueFilter?),
-        if (endOpenTime != _undefined)
-          'endOpenTime': (endOpenTime as Input$OpaqueFilter?),
         if (providerId != _undefined)
           'providerId': (providerId as Input$UUIDFilter?),
-        if (deliveryPeriodId != _undefined)
-          'deliveryPeriodId': (deliveryPeriodId as Input$UUIDFilter?),
         if (addressId != _undefined)
           'addressId': (addressId as Input$UUIDFilter?),
+        if (active != _undefined) 'active': (active as Input$BooleanFilter?),
         if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
         if (and != _undefined)
           'and': (and as List<Input$DeliveryLocationFilter>?),
@@ -5151,28 +5147,28 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
         : CopyWith$Input$StringFilter(local$name, (e) => call(name: e));
   }
 
+  CopyWith$Input$DatetimeFilter<TRes> get startOpenTime {
+    final local$startOpenTime = _instance.startOpenTime;
+    return local$startOpenTime == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$startOpenTime, (e) => call(startOpenTime: e));
+  }
+
+  CopyWith$Input$DatetimeFilter<TRes> get endOpenTime {
+    final local$endOpenTime = _instance.endOpenTime;
+    return local$endOpenTime == null
+        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
+        : CopyWith$Input$DatetimeFilter(
+            local$endOpenTime, (e) => call(endOpenTime: e));
+  }
+
   CopyWith$Input$DatetimeFilter<TRes> get createdAt {
     final local$createdAt = _instance.createdAt;
     return local$createdAt == null
         ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
         : CopyWith$Input$DatetimeFilter(
             local$createdAt, (e) => call(createdAt: e));
-  }
-
-  CopyWith$Input$OpaqueFilter<TRes> get startOpenTime {
-    final local$startOpenTime = _instance.startOpenTime;
-    return local$startOpenTime == null
-        ? CopyWith$Input$OpaqueFilter.stub(_then(_instance))
-        : CopyWith$Input$OpaqueFilter(
-            local$startOpenTime, (e) => call(startOpenTime: e));
-  }
-
-  CopyWith$Input$OpaqueFilter<TRes> get endOpenTime {
-    final local$endOpenTime = _instance.endOpenTime;
-    return local$endOpenTime == null
-        ? CopyWith$Input$OpaqueFilter.stub(_then(_instance))
-        : CopyWith$Input$OpaqueFilter(
-            local$endOpenTime, (e) => call(endOpenTime: e));
   }
 
   CopyWith$Input$UUIDFilter<TRes> get providerId {
@@ -5183,19 +5179,18 @@ class _CopyWithImpl$Input$DeliveryLocationFilter<TRes>
             local$providerId, (e) => call(providerId: e));
   }
 
-  CopyWith$Input$UUIDFilter<TRes> get deliveryPeriodId {
-    final local$deliveryPeriodId = _instance.deliveryPeriodId;
-    return local$deliveryPeriodId == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(
-            local$deliveryPeriodId, (e) => call(deliveryPeriodId: e));
-  }
-
   CopyWith$Input$UUIDFilter<TRes> get addressId {
     final local$addressId = _instance.addressId;
     return local$addressId == null
         ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
         : CopyWith$Input$UUIDFilter(local$addressId, (e) => call(addressId: e));
+  }
+
+  CopyWith$Input$BooleanFilter<TRes> get active {
+    final local$active = _instance.active;
+    return local$active == null
+        ? CopyWith$Input$BooleanFilter.stub(_then(_instance))
+        : CopyWith$Input$BooleanFilter(local$active, (e) => call(active: e));
   }
 
   CopyWith$Input$IDFilter<TRes> get nodeId {
@@ -5248,12 +5243,12 @@ class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
   call({
     Input$UUIDFilter? id,
     Input$StringFilter? name,
+    Input$DatetimeFilter? startOpenTime,
+    Input$DatetimeFilter? endOpenTime,
     Input$DatetimeFilter? createdAt,
-    Input$OpaqueFilter? startOpenTime,
-    Input$OpaqueFilter? endOpenTime,
     Input$UUIDFilter? providerId,
-    Input$UUIDFilter? deliveryPeriodId,
     Input$UUIDFilter? addressId,
+    Input$BooleanFilter? active,
     Input$IDFilter? nodeId,
     List<Input$DeliveryLocationFilter>? and,
     List<Input$DeliveryLocationFilter>? or,
@@ -5267,23 +5262,23 @@ class _CopyWithStubImpl$Input$DeliveryLocationFilter<TRes>
   CopyWith$Input$StringFilter<TRes> get name =>
       CopyWith$Input$StringFilter.stub(_res);
 
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+  CopyWith$Input$DatetimeFilter<TRes> get startOpenTime =>
       CopyWith$Input$DatetimeFilter.stub(_res);
 
-  CopyWith$Input$OpaqueFilter<TRes> get startOpenTime =>
-      CopyWith$Input$OpaqueFilter.stub(_res);
+  CopyWith$Input$DatetimeFilter<TRes> get endOpenTime =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
 
-  CopyWith$Input$OpaqueFilter<TRes> get endOpenTime =>
-      CopyWith$Input$OpaqueFilter.stub(_res);
+  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
+      CopyWith$Input$DatetimeFilter.stub(_res);
 
   CopyWith$Input$UUIDFilter<TRes> get providerId =>
       CopyWith$Input$UUIDFilter.stub(_res);
 
-  CopyWith$Input$UUIDFilter<TRes> get deliveryPeriodId =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
   CopyWith$Input$UUIDFilter<TRes> get addressId =>
       CopyWith$Input$UUIDFilter.stub(_res);
+
+  CopyWith$Input$BooleanFilter<TRes> get active =>
+      CopyWith$Input$BooleanFilter.stub(_res);
 
   CopyWith$Input$IDFilter<TRes> get nodeId =>
       CopyWith$Input$IDFilter.stub(_res);
@@ -5300,22 +5295,22 @@ class Input$DeliveryLocationInsertInput {
   factory Input$DeliveryLocationInsertInput({
     String? id,
     String? name,
+    DateTime? startOpenTime,
+    DateTime? endOpenTime,
     DateTime? createdAt,
-    dynamic? startOpenTime,
-    dynamic? endOpenTime,
     String? providerId,
-    String? deliveryPeriodId,
     String? addressId,
+    bool? active,
   }) =>
       Input$DeliveryLocationInsertInput._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
-        if (createdAt != null) r'createdAt': createdAt,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (createdAt != null) r'createdAt': createdAt,
         if (providerId != null) r'providerId': providerId,
-        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
         if (addressId != null) r'addressId': addressId,
+        if (active != null) r'active': active,
       });
 
   Input$DeliveryLocationInsertInput._(this._$data);
@@ -5331,30 +5326,34 @@ class Input$DeliveryLocationInsertInput {
       final l$name = data['name'];
       result$data['name'] = (l$name as String?);
     }
+    if (data.containsKey('startOpenTime')) {
+      final l$startOpenTime = data['startOpenTime'];
+      result$data['startOpenTime'] = l$startOpenTime == null
+          ? null
+          : DateTime.parse((l$startOpenTime as String));
+    }
+    if (data.containsKey('endOpenTime')) {
+      final l$endOpenTime = data['endOpenTime'];
+      result$data['endOpenTime'] = l$endOpenTime == null
+          ? null
+          : DateTime.parse((l$endOpenTime as String));
+    }
     if (data.containsKey('createdAt')) {
       final l$createdAt = data['createdAt'];
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('startOpenTime')) {
-      final l$startOpenTime = data['startOpenTime'];
-      result$data['startOpenTime'] = (l$startOpenTime as dynamic?);
-    }
-    if (data.containsKey('endOpenTime')) {
-      final l$endOpenTime = data['endOpenTime'];
-      result$data['endOpenTime'] = (l$endOpenTime as dynamic?);
-    }
     if (data.containsKey('providerId')) {
       final l$providerId = data['providerId'];
       result$data['providerId'] = (l$providerId as String?);
     }
-    if (data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = data['deliveryPeriodId'];
-      result$data['deliveryPeriodId'] = (l$deliveryPeriodId as String?);
-    }
     if (data.containsKey('addressId')) {
       final l$addressId = data['addressId'];
       result$data['addressId'] = (l$addressId as String?);
+    }
+    if (data.containsKey('active')) {
+      final l$active = data['active'];
+      result$data['active'] = (l$active as bool?);
     }
     return Input$DeliveryLocationInsertInput._(result$data);
   }
@@ -5365,17 +5364,17 @@ class Input$DeliveryLocationInsertInput {
 
   String? get name => (_$data['name'] as String?);
 
+  DateTime? get startOpenTime => (_$data['startOpenTime'] as DateTime?);
+
+  DateTime? get endOpenTime => (_$data['endOpenTime'] as DateTime?);
+
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
-
-  dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
 
   String? get providerId => (_$data['providerId'] as String?);
 
-  String? get deliveryPeriodId => (_$data['deliveryPeriodId'] as String?);
-
   String? get addressId => (_$data['addressId'] as String?);
+
+  bool? get active => (_$data['active'] as bool?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -5387,29 +5386,29 @@ class Input$DeliveryLocationInsertInput {
       final l$name = name;
       result$data['name'] = l$name;
     }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
-      result$data['startOpenTime'] = l$startOpenTime;
+      result$data['startOpenTime'] = l$startOpenTime?.toIso8601String();
     }
     if (_$data.containsKey('endOpenTime')) {
       final l$endOpenTime = endOpenTime;
-      result$data['endOpenTime'] = l$endOpenTime;
+      result$data['endOpenTime'] = l$endOpenTime?.toIso8601String();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
     if (_$data.containsKey('providerId')) {
       final l$providerId = providerId;
       result$data['providerId'] = l$providerId;
     }
-    if (_$data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = deliveryPeriodId;
-      result$data['deliveryPeriodId'] = l$deliveryPeriodId;
-    }
     if (_$data.containsKey('addressId')) {
       final l$addressId = addressId;
       result$data['addressId'] = l$addressId;
+    }
+    if (_$data.containsKey('active')) {
+      final l$active = active;
+      result$data['active'] = l$active;
     }
     return result$data;
   }
@@ -5445,15 +5444,6 @@ class Input$DeliveryLocationInsertInput {
     if (l$name != lOther$name) {
       return false;
     }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -5472,6 +5462,15 @@ class Input$DeliveryLocationInsertInput {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
     final l$providerId = providerId;
     final lOther$providerId = other.providerId;
     if (_$data.containsKey('providerId') !=
@@ -5479,15 +5478,6 @@ class Input$DeliveryLocationInsertInput {
       return false;
     }
     if (l$providerId != lOther$providerId) {
-      return false;
-    }
-    final l$deliveryPeriodId = deliveryPeriodId;
-    final lOther$deliveryPeriodId = other.deliveryPeriodId;
-    if (_$data.containsKey('deliveryPeriodId') !=
-        other._$data.containsKey('deliveryPeriodId')) {
-      return false;
-    }
-    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
       return false;
     }
     final l$addressId = addressId;
@@ -5499,6 +5489,14 @@ class Input$DeliveryLocationInsertInput {
     if (l$addressId != lOther$addressId) {
       return false;
     }
+    final l$active = active;
+    final lOther$active = other.active;
+    if (_$data.containsKey('active') != other._$data.containsKey('active')) {
+      return false;
+    }
+    if (l$active != lOther$active) {
+      return false;
+    }
     return true;
   }
 
@@ -5506,21 +5504,21 @@ class Input$DeliveryLocationInsertInput {
   int get hashCode {
     final l$id = id;
     final l$name = name;
-    final l$createdAt = createdAt;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$createdAt = createdAt;
     final l$providerId = providerId;
-    final l$deliveryPeriodId = deliveryPeriodId;
     final l$addressId = addressId;
+    final l$active = active;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
-      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
       _$data.containsKey('addressId') ? l$addressId : const {},
+      _$data.containsKey('active') ? l$active : const {},
     ]);
   }
 }
@@ -5537,12 +5535,12 @@ abstract class CopyWith$Input$DeliveryLocationInsertInput<TRes> {
   TRes call({
     String? id,
     String? name,
+    DateTime? startOpenTime,
+    DateTime? endOpenTime,
     DateTime? createdAt,
-    dynamic? startOpenTime,
-    dynamic? endOpenTime,
     String? providerId,
-    String? deliveryPeriodId,
     String? addressId,
+    bool? active,
   });
 }
 
@@ -5562,25 +5560,25 @@ class _CopyWithImpl$Input$DeliveryLocationInsertInput<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
-    Object? createdAt = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? createdAt = _undefined,
     Object? providerId = _undefined,
-    Object? deliveryPeriodId = _undefined,
     Object? addressId = _undefined,
+    Object? active = _undefined,
   }) =>
       _then(Input$DeliveryLocationInsertInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
         if (name != _undefined) 'name': (name as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
         if (startOpenTime != _undefined)
-          'startOpenTime': (startOpenTime as dynamic?),
-        if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
+          'startOpenTime': (startOpenTime as DateTime?),
+        if (endOpenTime != _undefined)
+          'endOpenTime': (endOpenTime as DateTime?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
         if (providerId != _undefined) 'providerId': (providerId as String?),
-        if (deliveryPeriodId != _undefined)
-          'deliveryPeriodId': (deliveryPeriodId as String?),
         if (addressId != _undefined) 'addressId': (addressId as String?),
+        if (active != _undefined) 'active': (active as bool?),
       }));
 }
 
@@ -5593,12 +5591,12 @@ class _CopyWithStubImpl$Input$DeliveryLocationInsertInput<TRes>
   call({
     String? id,
     String? name,
+    DateTime? startOpenTime,
+    DateTime? endOpenTime,
     DateTime? createdAt,
-    dynamic? startOpenTime,
-    dynamic? endOpenTime,
     String? providerId,
-    String? deliveryPeriodId,
     String? addressId,
+    bool? active,
   }) =>
       _res;
 }
@@ -5607,22 +5605,22 @@ class Input$DeliveryLocationOrderBy {
   factory Input$DeliveryLocationOrderBy({
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? name,
-    Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
+    Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? providerId,
-    Enum$OrderByDirection? deliveryPeriodId,
     Enum$OrderByDirection? addressId,
+    Enum$OrderByDirection? active,
   }) =>
       Input$DeliveryLocationOrderBy._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
-        if (createdAt != null) r'createdAt': createdAt,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (createdAt != null) r'createdAt': createdAt,
         if (providerId != null) r'providerId': providerId,
-        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
         if (addressId != null) r'addressId': addressId,
+        if (active != null) r'active': active,
       });
 
   Input$DeliveryLocationOrderBy._(this._$data);
@@ -5641,12 +5639,6 @@ class Input$DeliveryLocationOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$name as String));
     }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$createdAt as String));
-    }
     if (data.containsKey('startOpenTime')) {
       final l$startOpenTime = data['startOpenTime'];
       result$data['startOpenTime'] = l$startOpenTime == null
@@ -5659,23 +5651,29 @@ class Input$DeliveryLocationOrderBy {
           ? null
           : fromJson$Enum$OrderByDirection((l$endOpenTime as String));
     }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$createdAt as String));
+    }
     if (data.containsKey('providerId')) {
       final l$providerId = data['providerId'];
       result$data['providerId'] = l$providerId == null
           ? null
           : fromJson$Enum$OrderByDirection((l$providerId as String));
     }
-    if (data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = data['deliveryPeriodId'];
-      result$data['deliveryPeriodId'] = l$deliveryPeriodId == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryPeriodId as String));
-    }
     if (data.containsKey('addressId')) {
       final l$addressId = data['addressId'];
       result$data['addressId'] = l$addressId == null
           ? null
           : fromJson$Enum$OrderByDirection((l$addressId as String));
+    }
+    if (data.containsKey('active')) {
+      final l$active = data['active'];
+      result$data['active'] = l$active == null
+          ? null
+          : fromJson$Enum$OrderByDirection((l$active as String));
     }
     return Input$DeliveryLocationOrderBy._(result$data);
   }
@@ -5686,23 +5684,23 @@ class Input$DeliveryLocationOrderBy {
 
   Enum$OrderByDirection? get name => (_$data['name'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get createdAt =>
-      (_$data['createdAt'] as Enum$OrderByDirection?);
-
   Enum$OrderByDirection? get startOpenTime =>
       (_$data['startOpenTime'] as Enum$OrderByDirection?);
 
   Enum$OrderByDirection? get endOpenTime =>
       (_$data['endOpenTime'] as Enum$OrderByDirection?);
 
+  Enum$OrderByDirection? get createdAt =>
+      (_$data['createdAt'] as Enum$OrderByDirection?);
+
   Enum$OrderByDirection? get providerId =>
       (_$data['providerId'] as Enum$OrderByDirection?);
 
-  Enum$OrderByDirection? get deliveryPeriodId =>
-      (_$data['deliveryPeriodId'] as Enum$OrderByDirection?);
-
   Enum$OrderByDirection? get addressId =>
       (_$data['addressId'] as Enum$OrderByDirection?);
+
+  Enum$OrderByDirection? get active =>
+      (_$data['active'] as Enum$OrderByDirection?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -5716,12 +5714,6 @@ class Input$DeliveryLocationOrderBy {
       result$data['name'] =
           l$name == null ? null : toJson$Enum$OrderByDirection(l$name);
     }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$createdAt);
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
       result$data['startOpenTime'] = l$startOpenTime == null
@@ -5734,23 +5726,28 @@ class Input$DeliveryLocationOrderBy {
           ? null
           : toJson$Enum$OrderByDirection(l$endOpenTime);
     }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : toJson$Enum$OrderByDirection(l$createdAt);
+    }
     if (_$data.containsKey('providerId')) {
       final l$providerId = providerId;
       result$data['providerId'] = l$providerId == null
           ? null
           : toJson$Enum$OrderByDirection(l$providerId);
     }
-    if (_$data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = deliveryPeriodId;
-      result$data['deliveryPeriodId'] = l$deliveryPeriodId == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryPeriodId);
-    }
     if (_$data.containsKey('addressId')) {
       final l$addressId = addressId;
       result$data['addressId'] = l$addressId == null
           ? null
           : toJson$Enum$OrderByDirection(l$addressId);
+    }
+    if (_$data.containsKey('active')) {
+      final l$active = active;
+      result$data['active'] =
+          l$active == null ? null : toJson$Enum$OrderByDirection(l$active);
     }
     return result$data;
   }
@@ -5786,15 +5783,6 @@ class Input$DeliveryLocationOrderBy {
     if (l$name != lOther$name) {
       return false;
     }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -5813,6 +5801,15 @@ class Input$DeliveryLocationOrderBy {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
     final l$providerId = providerId;
     final lOther$providerId = other.providerId;
     if (_$data.containsKey('providerId') !=
@@ -5820,15 +5817,6 @@ class Input$DeliveryLocationOrderBy {
       return false;
     }
     if (l$providerId != lOther$providerId) {
-      return false;
-    }
-    final l$deliveryPeriodId = deliveryPeriodId;
-    final lOther$deliveryPeriodId = other.deliveryPeriodId;
-    if (_$data.containsKey('deliveryPeriodId') !=
-        other._$data.containsKey('deliveryPeriodId')) {
-      return false;
-    }
-    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
       return false;
     }
     final l$addressId = addressId;
@@ -5840,6 +5828,14 @@ class Input$DeliveryLocationOrderBy {
     if (l$addressId != lOther$addressId) {
       return false;
     }
+    final l$active = active;
+    final lOther$active = other.active;
+    if (_$data.containsKey('active') != other._$data.containsKey('active')) {
+      return false;
+    }
+    if (l$active != lOther$active) {
+      return false;
+    }
     return true;
   }
 
@@ -5847,21 +5843,21 @@ class Input$DeliveryLocationOrderBy {
   int get hashCode {
     final l$id = id;
     final l$name = name;
-    final l$createdAt = createdAt;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$createdAt = createdAt;
     final l$providerId = providerId;
-    final l$deliveryPeriodId = deliveryPeriodId;
     final l$addressId = addressId;
+    final l$active = active;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
-      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
       _$data.containsKey('addressId') ? l$addressId : const {},
+      _$data.containsKey('active') ? l$active : const {},
     ]);
   }
 }
@@ -5878,12 +5874,12 @@ abstract class CopyWith$Input$DeliveryLocationOrderBy<TRes> {
   TRes call({
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? name,
-    Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
+    Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? providerId,
-    Enum$OrderByDirection? deliveryPeriodId,
     Enum$OrderByDirection? addressId,
+    Enum$OrderByDirection? active,
   });
 }
 
@@ -5903,29 +5899,28 @@ class _CopyWithImpl$Input$DeliveryLocationOrderBy<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
-    Object? createdAt = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? createdAt = _undefined,
     Object? providerId = _undefined,
-    Object? deliveryPeriodId = _undefined,
     Object? addressId = _undefined,
+    Object? active = _undefined,
   }) =>
       _then(Input$DeliveryLocationOrderBy._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
         if (name != _undefined) 'name': (name as Enum$OrderByDirection?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Enum$OrderByDirection?),
         if (startOpenTime != _undefined)
           'startOpenTime': (startOpenTime as Enum$OrderByDirection?),
         if (endOpenTime != _undefined)
           'endOpenTime': (endOpenTime as Enum$OrderByDirection?),
+        if (createdAt != _undefined)
+          'createdAt': (createdAt as Enum$OrderByDirection?),
         if (providerId != _undefined)
           'providerId': (providerId as Enum$OrderByDirection?),
-        if (deliveryPeriodId != _undefined)
-          'deliveryPeriodId': (deliveryPeriodId as Enum$OrderByDirection?),
         if (addressId != _undefined)
           'addressId': (addressId as Enum$OrderByDirection?),
+        if (active != _undefined) 'active': (active as Enum$OrderByDirection?),
       }));
 }
 
@@ -5938,12 +5933,12 @@ class _CopyWithStubImpl$Input$DeliveryLocationOrderBy<TRes>
   call({
     Enum$OrderByDirection? id,
     Enum$OrderByDirection? name,
-    Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? startOpenTime,
     Enum$OrderByDirection? endOpenTime,
+    Enum$OrderByDirection? createdAt,
     Enum$OrderByDirection? providerId,
-    Enum$OrderByDirection? deliveryPeriodId,
     Enum$OrderByDirection? addressId,
+    Enum$OrderByDirection? active,
   }) =>
       _res;
 }
@@ -5952,22 +5947,22 @@ class Input$DeliveryLocationUpdateInput {
   factory Input$DeliveryLocationUpdateInput({
     String? id,
     String? name,
+    DateTime? startOpenTime,
+    DateTime? endOpenTime,
     DateTime? createdAt,
-    dynamic? startOpenTime,
-    dynamic? endOpenTime,
     String? providerId,
-    String? deliveryPeriodId,
     String? addressId,
+    bool? active,
   }) =>
       Input$DeliveryLocationUpdateInput._({
         if (id != null) r'id': id,
         if (name != null) r'name': name,
-        if (createdAt != null) r'createdAt': createdAt,
         if (startOpenTime != null) r'startOpenTime': startOpenTime,
         if (endOpenTime != null) r'endOpenTime': endOpenTime,
+        if (createdAt != null) r'createdAt': createdAt,
         if (providerId != null) r'providerId': providerId,
-        if (deliveryPeriodId != null) r'deliveryPeriodId': deliveryPeriodId,
         if (addressId != null) r'addressId': addressId,
+        if (active != null) r'active': active,
       });
 
   Input$DeliveryLocationUpdateInput._(this._$data);
@@ -5983,30 +5978,34 @@ class Input$DeliveryLocationUpdateInput {
       final l$name = data['name'];
       result$data['name'] = (l$name as String?);
     }
+    if (data.containsKey('startOpenTime')) {
+      final l$startOpenTime = data['startOpenTime'];
+      result$data['startOpenTime'] = l$startOpenTime == null
+          ? null
+          : DateTime.parse((l$startOpenTime as String));
+    }
+    if (data.containsKey('endOpenTime')) {
+      final l$endOpenTime = data['endOpenTime'];
+      result$data['endOpenTime'] = l$endOpenTime == null
+          ? null
+          : DateTime.parse((l$endOpenTime as String));
+    }
     if (data.containsKey('createdAt')) {
       final l$createdAt = data['createdAt'];
       result$data['createdAt'] =
           l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
     }
-    if (data.containsKey('startOpenTime')) {
-      final l$startOpenTime = data['startOpenTime'];
-      result$data['startOpenTime'] = (l$startOpenTime as dynamic?);
-    }
-    if (data.containsKey('endOpenTime')) {
-      final l$endOpenTime = data['endOpenTime'];
-      result$data['endOpenTime'] = (l$endOpenTime as dynamic?);
-    }
     if (data.containsKey('providerId')) {
       final l$providerId = data['providerId'];
       result$data['providerId'] = (l$providerId as String?);
     }
-    if (data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = data['deliveryPeriodId'];
-      result$data['deliveryPeriodId'] = (l$deliveryPeriodId as String?);
-    }
     if (data.containsKey('addressId')) {
       final l$addressId = data['addressId'];
       result$data['addressId'] = (l$addressId as String?);
+    }
+    if (data.containsKey('active')) {
+      final l$active = data['active'];
+      result$data['active'] = (l$active as bool?);
     }
     return Input$DeliveryLocationUpdateInput._(result$data);
   }
@@ -6017,17 +6016,17 @@ class Input$DeliveryLocationUpdateInput {
 
   String? get name => (_$data['name'] as String?);
 
+  DateTime? get startOpenTime => (_$data['startOpenTime'] as DateTime?);
+
+  DateTime? get endOpenTime => (_$data['endOpenTime'] as DateTime?);
+
   DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  dynamic? get startOpenTime => (_$data['startOpenTime'] as dynamic?);
-
-  dynamic? get endOpenTime => (_$data['endOpenTime'] as dynamic?);
 
   String? get providerId => (_$data['providerId'] as String?);
 
-  String? get deliveryPeriodId => (_$data['deliveryPeriodId'] as String?);
-
   String? get addressId => (_$data['addressId'] as String?);
+
+  bool? get active => (_$data['active'] as bool?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -6039,29 +6038,29 @@ class Input$DeliveryLocationUpdateInput {
       final l$name = name;
       result$data['name'] = l$name;
     }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
     if (_$data.containsKey('startOpenTime')) {
       final l$startOpenTime = startOpenTime;
-      result$data['startOpenTime'] = l$startOpenTime;
+      result$data['startOpenTime'] = l$startOpenTime?.toIso8601String();
     }
     if (_$data.containsKey('endOpenTime')) {
       final l$endOpenTime = endOpenTime;
-      result$data['endOpenTime'] = l$endOpenTime;
+      result$data['endOpenTime'] = l$endOpenTime?.toIso8601String();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toIso8601String();
     }
     if (_$data.containsKey('providerId')) {
       final l$providerId = providerId;
       result$data['providerId'] = l$providerId;
     }
-    if (_$data.containsKey('deliveryPeriodId')) {
-      final l$deliveryPeriodId = deliveryPeriodId;
-      result$data['deliveryPeriodId'] = l$deliveryPeriodId;
-    }
     if (_$data.containsKey('addressId')) {
       final l$addressId = addressId;
       result$data['addressId'] = l$addressId;
+    }
+    if (_$data.containsKey('active')) {
+      final l$active = active;
+      result$data['active'] = l$active;
     }
     return result$data;
   }
@@ -6097,15 +6096,6 @@ class Input$DeliveryLocationUpdateInput {
     if (l$name != lOther$name) {
       return false;
     }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
     final l$startOpenTime = startOpenTime;
     final lOther$startOpenTime = other.startOpenTime;
     if (_$data.containsKey('startOpenTime') !=
@@ -6124,6 +6114,15 @@ class Input$DeliveryLocationUpdateInput {
     if (l$endOpenTime != lOther$endOpenTime) {
       return false;
     }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
     final l$providerId = providerId;
     final lOther$providerId = other.providerId;
     if (_$data.containsKey('providerId') !=
@@ -6131,15 +6130,6 @@ class Input$DeliveryLocationUpdateInput {
       return false;
     }
     if (l$providerId != lOther$providerId) {
-      return false;
-    }
-    final l$deliveryPeriodId = deliveryPeriodId;
-    final lOther$deliveryPeriodId = other.deliveryPeriodId;
-    if (_$data.containsKey('deliveryPeriodId') !=
-        other._$data.containsKey('deliveryPeriodId')) {
-      return false;
-    }
-    if (l$deliveryPeriodId != lOther$deliveryPeriodId) {
       return false;
     }
     final l$addressId = addressId;
@@ -6151,6 +6141,14 @@ class Input$DeliveryLocationUpdateInput {
     if (l$addressId != lOther$addressId) {
       return false;
     }
+    final l$active = active;
+    final lOther$active = other.active;
+    if (_$data.containsKey('active') != other._$data.containsKey('active')) {
+      return false;
+    }
+    if (l$active != lOther$active) {
+      return false;
+    }
     return true;
   }
 
@@ -6158,21 +6156,21 @@ class Input$DeliveryLocationUpdateInput {
   int get hashCode {
     final l$id = id;
     final l$name = name;
-    final l$createdAt = createdAt;
     final l$startOpenTime = startOpenTime;
     final l$endOpenTime = endOpenTime;
+    final l$createdAt = createdAt;
     final l$providerId = providerId;
-    final l$deliveryPeriodId = deliveryPeriodId;
     final l$addressId = addressId;
+    final l$active = active;
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('startOpenTime') ? l$startOpenTime : const {},
       _$data.containsKey('endOpenTime') ? l$endOpenTime : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('providerId') ? l$providerId : const {},
-      _$data.containsKey('deliveryPeriodId') ? l$deliveryPeriodId : const {},
       _$data.containsKey('addressId') ? l$addressId : const {},
+      _$data.containsKey('active') ? l$active : const {},
     ]);
   }
 }
@@ -6189,12 +6187,12 @@ abstract class CopyWith$Input$DeliveryLocationUpdateInput<TRes> {
   TRes call({
     String? id,
     String? name,
+    DateTime? startOpenTime,
+    DateTime? endOpenTime,
     DateTime? createdAt,
-    dynamic? startOpenTime,
-    dynamic? endOpenTime,
     String? providerId,
-    String? deliveryPeriodId,
     String? addressId,
+    bool? active,
   });
 }
 
@@ -6214,25 +6212,25 @@ class _CopyWithImpl$Input$DeliveryLocationUpdateInput<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
-    Object? createdAt = _undefined,
     Object? startOpenTime = _undefined,
     Object? endOpenTime = _undefined,
+    Object? createdAt = _undefined,
     Object? providerId = _undefined,
-    Object? deliveryPeriodId = _undefined,
     Object? addressId = _undefined,
+    Object? active = _undefined,
   }) =>
       _then(Input$DeliveryLocationUpdateInput._({
         ..._instance._$data,
         if (id != _undefined) 'id': (id as String?),
         if (name != _undefined) 'name': (name as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
         if (startOpenTime != _undefined)
-          'startOpenTime': (startOpenTime as dynamic?),
-        if (endOpenTime != _undefined) 'endOpenTime': (endOpenTime as dynamic?),
+          'startOpenTime': (startOpenTime as DateTime?),
+        if (endOpenTime != _undefined)
+          'endOpenTime': (endOpenTime as DateTime?),
+        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
         if (providerId != _undefined) 'providerId': (providerId as String?),
-        if (deliveryPeriodId != _undefined)
-          'deliveryPeriodId': (deliveryPeriodId as String?),
         if (addressId != _undefined) 'addressId': (addressId as String?),
+        if (active != _undefined) 'active': (active as bool?),
       }));
 }
 
@@ -6245,1343 +6243,12 @@ class _CopyWithStubImpl$Input$DeliveryLocationUpdateInput<TRes>
   call({
     String? id,
     String? name,
+    DateTime? startOpenTime,
+    DateTime? endOpenTime,
     DateTime? createdAt,
-    dynamic? startOpenTime,
-    dynamic? endOpenTime,
     String? providerId,
-    String? deliveryPeriodId,
     String? addressId,
-  }) =>
-      _res;
-}
-
-class Input$DeliveryPeriodFilter {
-  factory Input$DeliveryPeriodFilter({
-    Input$UUIDFilter? id,
-    Input$StringFilter? title,
-    Input$DatetimeFilter? startDate,
-    Input$DatetimeFilter? endDate,
-    Input$DatetimeFilter? createdAt,
-    Input$BooleanFilter? isCurrent,
-    Input$IDFilter? nodeId,
-    List<Input$DeliveryPeriodFilter>? and,
-    List<Input$DeliveryPeriodFilter>? or,
-    Input$DeliveryPeriodFilter? not,
-  }) =>
-      Input$DeliveryPeriodFilter._({
-        if (id != null) r'id': id,
-        if (title != null) r'title': title,
-        if (startDate != null) r'startDate': startDate,
-        if (endDate != null) r'endDate': endDate,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (isCurrent != null) r'isCurrent': isCurrent,
-        if (nodeId != null) r'nodeId': nodeId,
-        if (and != null) r'and': and,
-        if (or != null) r'or': or,
-        if (not != null) r'not': not,
-      });
-
-  Input$DeliveryPeriodFilter._(this._$data);
-
-  factory Input$DeliveryPeriodFilter.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
-    }
-    if (data.containsKey('title')) {
-      final l$title = data['title'];
-      result$data['title'] = l$title == null
-          ? null
-          : Input$StringFilter.fromJson((l$title as Map<String, dynamic>));
-    }
-    if (data.containsKey('startDate')) {
-      final l$startDate = data['startDate'];
-      result$data['startDate'] = l$startDate == null
-          ? null
-          : Input$DatetimeFilter.fromJson(
-              (l$startDate as Map<String, dynamic>));
-    }
-    if (data.containsKey('endDate')) {
-      final l$endDate = data['endDate'];
-      result$data['endDate'] = l$endDate == null
-          ? null
-          : Input$DatetimeFilter.fromJson((l$endDate as Map<String, dynamic>));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : Input$DatetimeFilter.fromJson(
-              (l$createdAt as Map<String, dynamic>));
-    }
-    if (data.containsKey('isCurrent')) {
-      final l$isCurrent = data['isCurrent'];
-      result$data['isCurrent'] = l$isCurrent == null
-          ? null
-          : Input$BooleanFilter.fromJson((l$isCurrent as Map<String, dynamic>));
-    }
-    if (data.containsKey('nodeId')) {
-      final l$nodeId = data['nodeId'];
-      result$data['nodeId'] = l$nodeId == null
-          ? null
-          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
-    }
-    if (data.containsKey('and')) {
-      final l$and = data['and'];
-      result$data['and'] = (l$and as List<dynamic>?)
-          ?.map((e) =>
-              Input$DeliveryPeriodFilter.fromJson((e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('or')) {
-      final l$or = data['or'];
-      result$data['or'] = (l$or as List<dynamic>?)
-          ?.map((e) =>
-              Input$DeliveryPeriodFilter.fromJson((e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('not')) {
-      final l$not = data['not'];
-      result$data['not'] = l$not == null
-          ? null
-          : Input$DeliveryPeriodFilter.fromJson(
-              (l$not as Map<String, dynamic>));
-    }
-    return Input$DeliveryPeriodFilter._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
-
-  Input$StringFilter? get title => (_$data['title'] as Input$StringFilter?);
-
-  Input$DatetimeFilter? get startDate =>
-      (_$data['startDate'] as Input$DatetimeFilter?);
-
-  Input$DatetimeFilter? get endDate =>
-      (_$data['endDate'] as Input$DatetimeFilter?);
-
-  Input$DatetimeFilter? get createdAt =>
-      (_$data['createdAt'] as Input$DatetimeFilter?);
-
-  Input$BooleanFilter? get isCurrent =>
-      (_$data['isCurrent'] as Input$BooleanFilter?);
-
-  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
-
-  List<Input$DeliveryPeriodFilter>? get and =>
-      (_$data['and'] as List<Input$DeliveryPeriodFilter>?);
-
-  List<Input$DeliveryPeriodFilter>? get or =>
-      (_$data['or'] as List<Input$DeliveryPeriodFilter>?);
-
-  Input$DeliveryPeriodFilter? get not =>
-      (_$data['not'] as Input$DeliveryPeriodFilter?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id?.toJson();
-    }
-    if (_$data.containsKey('title')) {
-      final l$title = title;
-      result$data['title'] = l$title?.toJson();
-    }
-    if (_$data.containsKey('startDate')) {
-      final l$startDate = startDate;
-      result$data['startDate'] = l$startDate?.toJson();
-    }
-    if (_$data.containsKey('endDate')) {
-      final l$endDate = endDate;
-      result$data['endDate'] = l$endDate?.toJson();
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toJson();
-    }
-    if (_$data.containsKey('isCurrent')) {
-      final l$isCurrent = isCurrent;
-      result$data['isCurrent'] = l$isCurrent?.toJson();
-    }
-    if (_$data.containsKey('nodeId')) {
-      final l$nodeId = nodeId;
-      result$data['nodeId'] = l$nodeId?.toJson();
-    }
-    if (_$data.containsKey('and')) {
-      final l$and = and;
-      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('or')) {
-      final l$or = or;
-      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('not')) {
-      final l$not = not;
-      result$data['not'] = l$not?.toJson();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$DeliveryPeriodFilter<Input$DeliveryPeriodFilter>
-      get copyWith => CopyWith$Input$DeliveryPeriodFilter(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$DeliveryPeriodFilter ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$title = title;
-    final lOther$title = other.title;
-    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
-      return false;
-    }
-    if (l$title != lOther$title) {
-      return false;
-    }
-    final l$startDate = startDate;
-    final lOther$startDate = other.startDate;
-    if (_$data.containsKey('startDate') !=
-        other._$data.containsKey('startDate')) {
-      return false;
-    }
-    if (l$startDate != lOther$startDate) {
-      return false;
-    }
-    final l$endDate = endDate;
-    final lOther$endDate = other.endDate;
-    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
-      return false;
-    }
-    if (l$endDate != lOther$endDate) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$isCurrent = isCurrent;
-    final lOther$isCurrent = other.isCurrent;
-    if (_$data.containsKey('isCurrent') !=
-        other._$data.containsKey('isCurrent')) {
-      return false;
-    }
-    if (l$isCurrent != lOther$isCurrent) {
-      return false;
-    }
-    final l$nodeId = nodeId;
-    final lOther$nodeId = other.nodeId;
-    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
-      return false;
-    }
-    if (l$nodeId != lOther$nodeId) {
-      return false;
-    }
-    final l$and = and;
-    final lOther$and = other.and;
-    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
-      return false;
-    }
-    if (l$and != null && lOther$and != null) {
-      if (l$and.length != lOther$and.length) {
-        return false;
-      }
-      for (int i = 0; i < l$and.length; i++) {
-        final l$and$entry = l$and[i];
-        final lOther$and$entry = lOther$and[i];
-        if (l$and$entry != lOther$and$entry) {
-          return false;
-        }
-      }
-    } else if (l$and != lOther$and) {
-      return false;
-    }
-    final l$or = or;
-    final lOther$or = other.or;
-    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
-      return false;
-    }
-    if (l$or != null && lOther$or != null) {
-      if (l$or.length != lOther$or.length) {
-        return false;
-      }
-      for (int i = 0; i < l$or.length; i++) {
-        final l$or$entry = l$or[i];
-        final lOther$or$entry = lOther$or[i];
-        if (l$or$entry != lOther$or$entry) {
-          return false;
-        }
-      }
-    } else if (l$or != lOther$or) {
-      return false;
-    }
-    final l$not = not;
-    final lOther$not = other.not;
-    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
-      return false;
-    }
-    if (l$not != lOther$not) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$title = title;
-    final l$startDate = startDate;
-    final l$endDate = endDate;
-    final l$createdAt = createdAt;
-    final l$isCurrent = isCurrent;
-    final l$nodeId = nodeId;
-    final l$and = and;
-    final l$or = or;
-    final l$not = not;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('title') ? l$title : const {},
-      _$data.containsKey('startDate') ? l$startDate : const {},
-      _$data.containsKey('endDate') ? l$endDate : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
-      _$data.containsKey('nodeId') ? l$nodeId : const {},
-      _$data.containsKey('and')
-          ? l$and == null
-              ? null
-              : Object.hashAll(l$and.map((v) => v))
-          : const {},
-      _$data.containsKey('or')
-          ? l$or == null
-              ? null
-              : Object.hashAll(l$or.map((v) => v))
-          : const {},
-      _$data.containsKey('not') ? l$not : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$DeliveryPeriodFilter<TRes> {
-  factory CopyWith$Input$DeliveryPeriodFilter(
-    Input$DeliveryPeriodFilter instance,
-    TRes Function(Input$DeliveryPeriodFilter) then,
-  ) = _CopyWithImpl$Input$DeliveryPeriodFilter;
-
-  factory CopyWith$Input$DeliveryPeriodFilter.stub(TRes res) =
-      _CopyWithStubImpl$Input$DeliveryPeriodFilter;
-
-  TRes call({
-    Input$UUIDFilter? id,
-    Input$StringFilter? title,
-    Input$DatetimeFilter? startDate,
-    Input$DatetimeFilter? endDate,
-    Input$DatetimeFilter? createdAt,
-    Input$BooleanFilter? isCurrent,
-    Input$IDFilter? nodeId,
-    List<Input$DeliveryPeriodFilter>? and,
-    List<Input$DeliveryPeriodFilter>? or,
-    Input$DeliveryPeriodFilter? not,
-  });
-  CopyWith$Input$UUIDFilter<TRes> get id;
-  CopyWith$Input$StringFilter<TRes> get title;
-  CopyWith$Input$DatetimeFilter<TRes> get startDate;
-  CopyWith$Input$DatetimeFilter<TRes> get endDate;
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$BooleanFilter<TRes> get isCurrent;
-  CopyWith$Input$IDFilter<TRes> get nodeId;
-  TRes and(
-      Iterable<Input$DeliveryPeriodFilter>? Function(
-              Iterable<
-                  CopyWith$Input$DeliveryPeriodFilter<
-                      Input$DeliveryPeriodFilter>>?)
-          _fn);
-  TRes or(
-      Iterable<Input$DeliveryPeriodFilter>? Function(
-              Iterable<
-                  CopyWith$Input$DeliveryPeriodFilter<
-                      Input$DeliveryPeriodFilter>>?)
-          _fn);
-  CopyWith$Input$DeliveryPeriodFilter<TRes> get not;
-}
-
-class _CopyWithImpl$Input$DeliveryPeriodFilter<TRes>
-    implements CopyWith$Input$DeliveryPeriodFilter<TRes> {
-  _CopyWithImpl$Input$DeliveryPeriodFilter(
-    this._instance,
-    this._then,
-  );
-
-  final Input$DeliveryPeriodFilter _instance;
-
-  final TRes Function(Input$DeliveryPeriodFilter) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? title = _undefined,
-    Object? startDate = _undefined,
-    Object? endDate = _undefined,
-    Object? createdAt = _undefined,
-    Object? isCurrent = _undefined,
-    Object? nodeId = _undefined,
-    Object? and = _undefined,
-    Object? or = _undefined,
-    Object? not = _undefined,
-  }) =>
-      _then(Input$DeliveryPeriodFilter._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
-        if (title != _undefined) 'title': (title as Input$StringFilter?),
-        if (startDate != _undefined)
-          'startDate': (startDate as Input$DatetimeFilter?),
-        if (endDate != _undefined)
-          'endDate': (endDate as Input$DatetimeFilter?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (isCurrent != _undefined)
-          'isCurrent': (isCurrent as Input$BooleanFilter?),
-        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
-        if (and != _undefined)
-          'and': (and as List<Input$DeliveryPeriodFilter>?),
-        if (or != _undefined) 'or': (or as List<Input$DeliveryPeriodFilter>?),
-        if (not != _undefined) 'not': (not as Input$DeliveryPeriodFilter?),
-      }));
-
-  CopyWith$Input$UUIDFilter<TRes> get id {
-    final local$id = _instance.id;
-    return local$id == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
-  }
-
-  CopyWith$Input$StringFilter<TRes> get title {
-    final local$title = _instance.title;
-    return local$title == null
-        ? CopyWith$Input$StringFilter.stub(_then(_instance))
-        : CopyWith$Input$StringFilter(local$title, (e) => call(title: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get startDate {
-    final local$startDate = _instance.startDate;
-    return local$startDate == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(
-            local$startDate, (e) => call(startDate: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get endDate {
-    final local$endDate = _instance.endDate;
-    return local$endDate == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(local$endDate, (e) => call(endDate: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
-    final local$createdAt = _instance.createdAt;
-    return local$createdAt == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(
-            local$createdAt, (e) => call(createdAt: e));
-  }
-
-  CopyWith$Input$BooleanFilter<TRes> get isCurrent {
-    final local$isCurrent = _instance.isCurrent;
-    return local$isCurrent == null
-        ? CopyWith$Input$BooleanFilter.stub(_then(_instance))
-        : CopyWith$Input$BooleanFilter(
-            local$isCurrent, (e) => call(isCurrent: e));
-  }
-
-  CopyWith$Input$IDFilter<TRes> get nodeId {
-    final local$nodeId = _instance.nodeId;
-    return local$nodeId == null
-        ? CopyWith$Input$IDFilter.stub(_then(_instance))
-        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
-  }
-
-  TRes and(
-          Iterable<Input$DeliveryPeriodFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$DeliveryPeriodFilter<
-                          Input$DeliveryPeriodFilter>>?)
-              _fn) =>
-      call(
-          and:
-              _fn(_instance.and?.map((e) => CopyWith$Input$DeliveryPeriodFilter(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  TRes or(
-          Iterable<Input$DeliveryPeriodFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$DeliveryPeriodFilter<
-                          Input$DeliveryPeriodFilter>>?)
-              _fn) =>
-      call(
-          or: _fn(_instance.or?.map((e) => CopyWith$Input$DeliveryPeriodFilter(
-                e,
-                (i) => i,
-              )))?.toList());
-
-  CopyWith$Input$DeliveryPeriodFilter<TRes> get not {
-    final local$not = _instance.not;
-    return local$not == null
-        ? CopyWith$Input$DeliveryPeriodFilter.stub(_then(_instance))
-        : CopyWith$Input$DeliveryPeriodFilter(local$not, (e) => call(not: e));
-  }
-}
-
-class _CopyWithStubImpl$Input$DeliveryPeriodFilter<TRes>
-    implements CopyWith$Input$DeliveryPeriodFilter<TRes> {
-  _CopyWithStubImpl$Input$DeliveryPeriodFilter(this._res);
-
-  TRes _res;
-
-  call({
-    Input$UUIDFilter? id,
-    Input$StringFilter? title,
-    Input$DatetimeFilter? startDate,
-    Input$DatetimeFilter? endDate,
-    Input$DatetimeFilter? createdAt,
-    Input$BooleanFilter? isCurrent,
-    Input$IDFilter? nodeId,
-    List<Input$DeliveryPeriodFilter>? and,
-    List<Input$DeliveryPeriodFilter>? or,
-    Input$DeliveryPeriodFilter? not,
-  }) =>
-      _res;
-
-  CopyWith$Input$UUIDFilter<TRes> get id =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$StringFilter<TRes> get title =>
-      CopyWith$Input$StringFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get startDate =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get endDate =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$BooleanFilter<TRes> get isCurrent =>
-      CopyWith$Input$BooleanFilter.stub(_res);
-
-  CopyWith$Input$IDFilter<TRes> get nodeId =>
-      CopyWith$Input$IDFilter.stub(_res);
-
-  and(_fn) => _res;
-
-  or(_fn) => _res;
-
-  CopyWith$Input$DeliveryPeriodFilter<TRes> get not =>
-      CopyWith$Input$DeliveryPeriodFilter.stub(_res);
-}
-
-class Input$DeliveryPeriodInsertInput {
-  factory Input$DeliveryPeriodInsertInput({
-    String? id,
-    String? title,
-    DateTime? startDate,
-    DateTime? endDate,
-    DateTime? createdAt,
-    bool? isCurrent,
-  }) =>
-      Input$DeliveryPeriodInsertInput._({
-        if (id != null) r'id': id,
-        if (title != null) r'title': title,
-        if (startDate != null) r'startDate': startDate,
-        if (endDate != null) r'endDate': endDate,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (isCurrent != null) r'isCurrent': isCurrent,
-      });
-
-  Input$DeliveryPeriodInsertInput._(this._$data);
-
-  factory Input$DeliveryPeriodInsertInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('title')) {
-      final l$title = data['title'];
-      result$data['title'] = (l$title as String?);
-    }
-    if (data.containsKey('startDate')) {
-      final l$startDate = data['startDate'];
-      result$data['startDate'] =
-          l$startDate == null ? null : DateTime.parse((l$startDate as String));
-    }
-    if (data.containsKey('endDate')) {
-      final l$endDate = data['endDate'];
-      result$data['endDate'] =
-          l$endDate == null ? null : DateTime.parse((l$endDate as String));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    if (data.containsKey('isCurrent')) {
-      final l$isCurrent = data['isCurrent'];
-      result$data['isCurrent'] = (l$isCurrent as bool?);
-    }
-    return Input$DeliveryPeriodInsertInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  String? get title => (_$data['title'] as String?);
-
-  DateTime? get startDate => (_$data['startDate'] as DateTime?);
-
-  DateTime? get endDate => (_$data['endDate'] as DateTime?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  bool? get isCurrent => (_$data['isCurrent'] as bool?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('title')) {
-      final l$title = title;
-      result$data['title'] = l$title;
-    }
-    if (_$data.containsKey('startDate')) {
-      final l$startDate = startDate;
-      result$data['startDate'] = l$startDate?.toIso8601String();
-    }
-    if (_$data.containsKey('endDate')) {
-      final l$endDate = endDate;
-      result$data['endDate'] = l$endDate?.toIso8601String();
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    if (_$data.containsKey('isCurrent')) {
-      final l$isCurrent = isCurrent;
-      result$data['isCurrent'] = l$isCurrent;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$DeliveryPeriodInsertInput<Input$DeliveryPeriodInsertInput>
-      get copyWith => CopyWith$Input$DeliveryPeriodInsertInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$DeliveryPeriodInsertInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$title = title;
-    final lOther$title = other.title;
-    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
-      return false;
-    }
-    if (l$title != lOther$title) {
-      return false;
-    }
-    final l$startDate = startDate;
-    final lOther$startDate = other.startDate;
-    if (_$data.containsKey('startDate') !=
-        other._$data.containsKey('startDate')) {
-      return false;
-    }
-    if (l$startDate != lOther$startDate) {
-      return false;
-    }
-    final l$endDate = endDate;
-    final lOther$endDate = other.endDate;
-    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
-      return false;
-    }
-    if (l$endDate != lOther$endDate) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$isCurrent = isCurrent;
-    final lOther$isCurrent = other.isCurrent;
-    if (_$data.containsKey('isCurrent') !=
-        other._$data.containsKey('isCurrent')) {
-      return false;
-    }
-    if (l$isCurrent != lOther$isCurrent) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$title = title;
-    final l$startDate = startDate;
-    final l$endDate = endDate;
-    final l$createdAt = createdAt;
-    final l$isCurrent = isCurrent;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('title') ? l$title : const {},
-      _$data.containsKey('startDate') ? l$startDate : const {},
-      _$data.containsKey('endDate') ? l$endDate : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$DeliveryPeriodInsertInput<TRes> {
-  factory CopyWith$Input$DeliveryPeriodInsertInput(
-    Input$DeliveryPeriodInsertInput instance,
-    TRes Function(Input$DeliveryPeriodInsertInput) then,
-  ) = _CopyWithImpl$Input$DeliveryPeriodInsertInput;
-
-  factory CopyWith$Input$DeliveryPeriodInsertInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$DeliveryPeriodInsertInput;
-
-  TRes call({
-    String? id,
-    String? title,
-    DateTime? startDate,
-    DateTime? endDate,
-    DateTime? createdAt,
-    bool? isCurrent,
-  });
-}
-
-class _CopyWithImpl$Input$DeliveryPeriodInsertInput<TRes>
-    implements CopyWith$Input$DeliveryPeriodInsertInput<TRes> {
-  _CopyWithImpl$Input$DeliveryPeriodInsertInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$DeliveryPeriodInsertInput _instance;
-
-  final TRes Function(Input$DeliveryPeriodInsertInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? title = _undefined,
-    Object? startDate = _undefined,
-    Object? endDate = _undefined,
-    Object? createdAt = _undefined,
-    Object? isCurrent = _undefined,
-  }) =>
-      _then(Input$DeliveryPeriodInsertInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (title != _undefined) 'title': (title as String?),
-        if (startDate != _undefined) 'startDate': (startDate as DateTime?),
-        if (endDate != _undefined) 'endDate': (endDate as DateTime?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (isCurrent != _undefined) 'isCurrent': (isCurrent as bool?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$DeliveryPeriodInsertInput<TRes>
-    implements CopyWith$Input$DeliveryPeriodInsertInput<TRes> {
-  _CopyWithStubImpl$Input$DeliveryPeriodInsertInput(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    String? title,
-    DateTime? startDate,
-    DateTime? endDate,
-    DateTime? createdAt,
-    bool? isCurrent,
-  }) =>
-      _res;
-}
-
-class Input$DeliveryPeriodOrderBy {
-  factory Input$DeliveryPeriodOrderBy({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? title,
-    Enum$OrderByDirection? startDate,
-    Enum$OrderByDirection? endDate,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? isCurrent,
-  }) =>
-      Input$DeliveryPeriodOrderBy._({
-        if (id != null) r'id': id,
-        if (title != null) r'title': title,
-        if (startDate != null) r'startDate': startDate,
-        if (endDate != null) r'endDate': endDate,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (isCurrent != null) r'isCurrent': isCurrent,
-      });
-
-  Input$DeliveryPeriodOrderBy._(this._$data);
-
-  factory Input$DeliveryPeriodOrderBy.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$id as String));
-    }
-    if (data.containsKey('title')) {
-      final l$title = data['title'];
-      result$data['title'] = l$title == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$title as String));
-    }
-    if (data.containsKey('startDate')) {
-      final l$startDate = data['startDate'];
-      result$data['startDate'] = l$startDate == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$startDate as String));
-    }
-    if (data.containsKey('endDate')) {
-      final l$endDate = data['endDate'];
-      result$data['endDate'] = l$endDate == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$endDate as String));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$createdAt as String));
-    }
-    if (data.containsKey('isCurrent')) {
-      final l$isCurrent = data['isCurrent'];
-      result$data['isCurrent'] = l$isCurrent == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$isCurrent as String));
-    }
-    return Input$DeliveryPeriodOrderBy._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get title =>
-      (_$data['title'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get startDate =>
-      (_$data['startDate'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get endDate =>
-      (_$data['endDate'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get createdAt =>
-      (_$data['createdAt'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get isCurrent =>
-      (_$data['isCurrent'] as Enum$OrderByDirection?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] =
-          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
-    }
-    if (_$data.containsKey('title')) {
-      final l$title = title;
-      result$data['title'] =
-          l$title == null ? null : toJson$Enum$OrderByDirection(l$title);
-    }
-    if (_$data.containsKey('startDate')) {
-      final l$startDate = startDate;
-      result$data['startDate'] = l$startDate == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$startDate);
-    }
-    if (_$data.containsKey('endDate')) {
-      final l$endDate = endDate;
-      result$data['endDate'] =
-          l$endDate == null ? null : toJson$Enum$OrderByDirection(l$endDate);
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$createdAt);
-    }
-    if (_$data.containsKey('isCurrent')) {
-      final l$isCurrent = isCurrent;
-      result$data['isCurrent'] = l$isCurrent == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$isCurrent);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$DeliveryPeriodOrderBy<Input$DeliveryPeriodOrderBy>
-      get copyWith => CopyWith$Input$DeliveryPeriodOrderBy(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$DeliveryPeriodOrderBy ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$title = title;
-    final lOther$title = other.title;
-    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
-      return false;
-    }
-    if (l$title != lOther$title) {
-      return false;
-    }
-    final l$startDate = startDate;
-    final lOther$startDate = other.startDate;
-    if (_$data.containsKey('startDate') !=
-        other._$data.containsKey('startDate')) {
-      return false;
-    }
-    if (l$startDate != lOther$startDate) {
-      return false;
-    }
-    final l$endDate = endDate;
-    final lOther$endDate = other.endDate;
-    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
-      return false;
-    }
-    if (l$endDate != lOther$endDate) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$isCurrent = isCurrent;
-    final lOther$isCurrent = other.isCurrent;
-    if (_$data.containsKey('isCurrent') !=
-        other._$data.containsKey('isCurrent')) {
-      return false;
-    }
-    if (l$isCurrent != lOther$isCurrent) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$title = title;
-    final l$startDate = startDate;
-    final l$endDate = endDate;
-    final l$createdAt = createdAt;
-    final l$isCurrent = isCurrent;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('title') ? l$title : const {},
-      _$data.containsKey('startDate') ? l$startDate : const {},
-      _$data.containsKey('endDate') ? l$endDate : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$DeliveryPeriodOrderBy<TRes> {
-  factory CopyWith$Input$DeliveryPeriodOrderBy(
-    Input$DeliveryPeriodOrderBy instance,
-    TRes Function(Input$DeliveryPeriodOrderBy) then,
-  ) = _CopyWithImpl$Input$DeliveryPeriodOrderBy;
-
-  factory CopyWith$Input$DeliveryPeriodOrderBy.stub(TRes res) =
-      _CopyWithStubImpl$Input$DeliveryPeriodOrderBy;
-
-  TRes call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? title,
-    Enum$OrderByDirection? startDate,
-    Enum$OrderByDirection? endDate,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? isCurrent,
-  });
-}
-
-class _CopyWithImpl$Input$DeliveryPeriodOrderBy<TRes>
-    implements CopyWith$Input$DeliveryPeriodOrderBy<TRes> {
-  _CopyWithImpl$Input$DeliveryPeriodOrderBy(
-    this._instance,
-    this._then,
-  );
-
-  final Input$DeliveryPeriodOrderBy _instance;
-
-  final TRes Function(Input$DeliveryPeriodOrderBy) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? title = _undefined,
-    Object? startDate = _undefined,
-    Object? endDate = _undefined,
-    Object? createdAt = _undefined,
-    Object? isCurrent = _undefined,
-  }) =>
-      _then(Input$DeliveryPeriodOrderBy._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
-        if (title != _undefined) 'title': (title as Enum$OrderByDirection?),
-        if (startDate != _undefined)
-          'startDate': (startDate as Enum$OrderByDirection?),
-        if (endDate != _undefined)
-          'endDate': (endDate as Enum$OrderByDirection?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Enum$OrderByDirection?),
-        if (isCurrent != _undefined)
-          'isCurrent': (isCurrent as Enum$OrderByDirection?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$DeliveryPeriodOrderBy<TRes>
-    implements CopyWith$Input$DeliveryPeriodOrderBy<TRes> {
-  _CopyWithStubImpl$Input$DeliveryPeriodOrderBy(this._res);
-
-  TRes _res;
-
-  call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? title,
-    Enum$OrderByDirection? startDate,
-    Enum$OrderByDirection? endDate,
-    Enum$OrderByDirection? createdAt,
-    Enum$OrderByDirection? isCurrent,
-  }) =>
-      _res;
-}
-
-class Input$DeliveryPeriodUpdateInput {
-  factory Input$DeliveryPeriodUpdateInput({
-    String? id,
-    String? title,
-    DateTime? startDate,
-    DateTime? endDate,
-    DateTime? createdAt,
-    bool? isCurrent,
-  }) =>
-      Input$DeliveryPeriodUpdateInput._({
-        if (id != null) r'id': id,
-        if (title != null) r'title': title,
-        if (startDate != null) r'startDate': startDate,
-        if (endDate != null) r'endDate': endDate,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (isCurrent != null) r'isCurrent': isCurrent,
-      });
-
-  Input$DeliveryPeriodUpdateInput._(this._$data);
-
-  factory Input$DeliveryPeriodUpdateInput.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('title')) {
-      final l$title = data['title'];
-      result$data['title'] = (l$title as String?);
-    }
-    if (data.containsKey('startDate')) {
-      final l$startDate = data['startDate'];
-      result$data['startDate'] =
-          l$startDate == null ? null : DateTime.parse((l$startDate as String));
-    }
-    if (data.containsKey('endDate')) {
-      final l$endDate = data['endDate'];
-      result$data['endDate'] =
-          l$endDate == null ? null : DateTime.parse((l$endDate as String));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    if (data.containsKey('isCurrent')) {
-      final l$isCurrent = data['isCurrent'];
-      result$data['isCurrent'] = (l$isCurrent as bool?);
-    }
-    return Input$DeliveryPeriodUpdateInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  String? get title => (_$data['title'] as String?);
-
-  DateTime? get startDate => (_$data['startDate'] as DateTime?);
-
-  DateTime? get endDate => (_$data['endDate'] as DateTime?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  bool? get isCurrent => (_$data['isCurrent'] as bool?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('title')) {
-      final l$title = title;
-      result$data['title'] = l$title;
-    }
-    if (_$data.containsKey('startDate')) {
-      final l$startDate = startDate;
-      result$data['startDate'] = l$startDate?.toIso8601String();
-    }
-    if (_$data.containsKey('endDate')) {
-      final l$endDate = endDate;
-      result$data['endDate'] = l$endDate?.toIso8601String();
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    if (_$data.containsKey('isCurrent')) {
-      final l$isCurrent = isCurrent;
-      result$data['isCurrent'] = l$isCurrent;
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$DeliveryPeriodUpdateInput<Input$DeliveryPeriodUpdateInput>
-      get copyWith => CopyWith$Input$DeliveryPeriodUpdateInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$DeliveryPeriodUpdateInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$title = title;
-    final lOther$title = other.title;
-    if (_$data.containsKey('title') != other._$data.containsKey('title')) {
-      return false;
-    }
-    if (l$title != lOther$title) {
-      return false;
-    }
-    final l$startDate = startDate;
-    final lOther$startDate = other.startDate;
-    if (_$data.containsKey('startDate') !=
-        other._$data.containsKey('startDate')) {
-      return false;
-    }
-    if (l$startDate != lOther$startDate) {
-      return false;
-    }
-    final l$endDate = endDate;
-    final lOther$endDate = other.endDate;
-    if (_$data.containsKey('endDate') != other._$data.containsKey('endDate')) {
-      return false;
-    }
-    if (l$endDate != lOther$endDate) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$isCurrent = isCurrent;
-    final lOther$isCurrent = other.isCurrent;
-    if (_$data.containsKey('isCurrent') !=
-        other._$data.containsKey('isCurrent')) {
-      return false;
-    }
-    if (l$isCurrent != lOther$isCurrent) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$title = title;
-    final l$startDate = startDate;
-    final l$endDate = endDate;
-    final l$createdAt = createdAt;
-    final l$isCurrent = isCurrent;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('title') ? l$title : const {},
-      _$data.containsKey('startDate') ? l$startDate : const {},
-      _$data.containsKey('endDate') ? l$endDate : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('isCurrent') ? l$isCurrent : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$DeliveryPeriodUpdateInput<TRes> {
-  factory CopyWith$Input$DeliveryPeriodUpdateInput(
-    Input$DeliveryPeriodUpdateInput instance,
-    TRes Function(Input$DeliveryPeriodUpdateInput) then,
-  ) = _CopyWithImpl$Input$DeliveryPeriodUpdateInput;
-
-  factory CopyWith$Input$DeliveryPeriodUpdateInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$DeliveryPeriodUpdateInput;
-
-  TRes call({
-    String? id,
-    String? title,
-    DateTime? startDate,
-    DateTime? endDate,
-    DateTime? createdAt,
-    bool? isCurrent,
-  });
-}
-
-class _CopyWithImpl$Input$DeliveryPeriodUpdateInput<TRes>
-    implements CopyWith$Input$DeliveryPeriodUpdateInput<TRes> {
-  _CopyWithImpl$Input$DeliveryPeriodUpdateInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$DeliveryPeriodUpdateInput _instance;
-
-  final TRes Function(Input$DeliveryPeriodUpdateInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? title = _undefined,
-    Object? startDate = _undefined,
-    Object? endDate = _undefined,
-    Object? createdAt = _undefined,
-    Object? isCurrent = _undefined,
-  }) =>
-      _then(Input$DeliveryPeriodUpdateInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (title != _undefined) 'title': (title as String?),
-        if (startDate != _undefined) 'startDate': (startDate as DateTime?),
-        if (endDate != _undefined) 'endDate': (endDate as DateTime?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-        if (isCurrent != _undefined) 'isCurrent': (isCurrent as bool?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$DeliveryPeriodUpdateInput<TRes>
-    implements CopyWith$Input$DeliveryPeriodUpdateInput<TRes> {
-  _CopyWithStubImpl$Input$DeliveryPeriodUpdateInput(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    String? title,
-    DateTime? startDate,
-    DateTime? endDate,
-    DateTime? createdAt,
-    bool? isCurrent,
+    bool? active,
   }) =>
       _res;
 }
@@ -39432,1102 +38099,6 @@ class _CopyWithStubImpl$Input$ShoppingCartsUpdateInput<TRes>
       _res;
 }
 
-class Input$SiteDeliveryLocationFilter {
-  factory Input$SiteDeliveryLocationFilter({
-    Input$UUIDFilter? id,
-    Input$UUIDFilter? siteId,
-    Input$UUIDFilter? deliveryLocationId,
-    Input$DatetimeFilter? createdAt,
-    Input$IDFilter? nodeId,
-    List<Input$SiteDeliveryLocationFilter>? and,
-    List<Input$SiteDeliveryLocationFilter>? or,
-    Input$SiteDeliveryLocationFilter? not,
-  }) =>
-      Input$SiteDeliveryLocationFilter._({
-        if (id != null) r'id': id,
-        if (siteId != null) r'siteId': siteId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-        if (createdAt != null) r'createdAt': createdAt,
-        if (nodeId != null) r'nodeId': nodeId,
-        if (and != null) r'and': and,
-        if (or != null) r'or': or,
-        if (not != null) r'not': not,
-      });
-
-  Input$SiteDeliveryLocationFilter._(this._$data);
-
-  factory Input$SiteDeliveryLocationFilter.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : Input$UUIDFilter.fromJson((l$id as Map<String, dynamic>));
-    }
-    if (data.containsKey('siteId')) {
-      final l$siteId = data['siteId'];
-      result$data['siteId'] = l$siteId == null
-          ? null
-          : Input$UUIDFilter.fromJson((l$siteId as Map<String, dynamic>));
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = l$deliveryLocationId == null
-          ? null
-          : Input$UUIDFilter.fromJson(
-              (l$deliveryLocationId as Map<String, dynamic>));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : Input$DatetimeFilter.fromJson(
-              (l$createdAt as Map<String, dynamic>));
-    }
-    if (data.containsKey('nodeId')) {
-      final l$nodeId = data['nodeId'];
-      result$data['nodeId'] = l$nodeId == null
-          ? null
-          : Input$IDFilter.fromJson((l$nodeId as Map<String, dynamic>));
-    }
-    if (data.containsKey('and')) {
-      final l$and = data['and'];
-      result$data['and'] = (l$and as List<dynamic>?)
-          ?.map((e) => Input$SiteDeliveryLocationFilter.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('or')) {
-      final l$or = data['or'];
-      result$data['or'] = (l$or as List<dynamic>?)
-          ?.map((e) => Input$SiteDeliveryLocationFilter.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList();
-    }
-    if (data.containsKey('not')) {
-      final l$not = data['not'];
-      result$data['not'] = l$not == null
-          ? null
-          : Input$SiteDeliveryLocationFilter.fromJson(
-              (l$not as Map<String, dynamic>));
-    }
-    return Input$SiteDeliveryLocationFilter._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Input$UUIDFilter? get id => (_$data['id'] as Input$UUIDFilter?);
-
-  Input$UUIDFilter? get siteId => (_$data['siteId'] as Input$UUIDFilter?);
-
-  Input$UUIDFilter? get deliveryLocationId =>
-      (_$data['deliveryLocationId'] as Input$UUIDFilter?);
-
-  Input$DatetimeFilter? get createdAt =>
-      (_$data['createdAt'] as Input$DatetimeFilter?);
-
-  Input$IDFilter? get nodeId => (_$data['nodeId'] as Input$IDFilter?);
-
-  List<Input$SiteDeliveryLocationFilter>? get and =>
-      (_$data['and'] as List<Input$SiteDeliveryLocationFilter>?);
-
-  List<Input$SiteDeliveryLocationFilter>? get or =>
-      (_$data['or'] as List<Input$SiteDeliveryLocationFilter>?);
-
-  Input$SiteDeliveryLocationFilter? get not =>
-      (_$data['not'] as Input$SiteDeliveryLocationFilter?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id?.toJson();
-    }
-    if (_$data.containsKey('siteId')) {
-      final l$siteId = siteId;
-      result$data['siteId'] = l$siteId?.toJson();
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId?.toJson();
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toJson();
-    }
-    if (_$data.containsKey('nodeId')) {
-      final l$nodeId = nodeId;
-      result$data['nodeId'] = l$nodeId?.toJson();
-    }
-    if (_$data.containsKey('and')) {
-      final l$and = and;
-      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('or')) {
-      final l$or = or;
-      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('not')) {
-      final l$not = not;
-      result$data['not'] = l$not?.toJson();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$SiteDeliveryLocationFilter<Input$SiteDeliveryLocationFilter>
-      get copyWith => CopyWith$Input$SiteDeliveryLocationFilter(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$SiteDeliveryLocationFilter ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$siteId = siteId;
-    final lOther$siteId = other.siteId;
-    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
-      return false;
-    }
-    if (l$siteId != lOther$siteId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    final l$nodeId = nodeId;
-    final lOther$nodeId = other.nodeId;
-    if (_$data.containsKey('nodeId') != other._$data.containsKey('nodeId')) {
-      return false;
-    }
-    if (l$nodeId != lOther$nodeId) {
-      return false;
-    }
-    final l$and = and;
-    final lOther$and = other.and;
-    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
-      return false;
-    }
-    if (l$and != null && lOther$and != null) {
-      if (l$and.length != lOther$and.length) {
-        return false;
-      }
-      for (int i = 0; i < l$and.length; i++) {
-        final l$and$entry = l$and[i];
-        final lOther$and$entry = lOther$and[i];
-        if (l$and$entry != lOther$and$entry) {
-          return false;
-        }
-      }
-    } else if (l$and != lOther$and) {
-      return false;
-    }
-    final l$or = or;
-    final lOther$or = other.or;
-    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
-      return false;
-    }
-    if (l$or != null && lOther$or != null) {
-      if (l$or.length != lOther$or.length) {
-        return false;
-      }
-      for (int i = 0; i < l$or.length; i++) {
-        final l$or$entry = l$or[i];
-        final lOther$or$entry = lOther$or[i];
-        if (l$or$entry != lOther$or$entry) {
-          return false;
-        }
-      }
-    } else if (l$or != lOther$or) {
-      return false;
-    }
-    final l$not = not;
-    final lOther$not = other.not;
-    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
-      return false;
-    }
-    if (l$not != lOther$not) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$siteId = siteId;
-    final l$deliveryLocationId = deliveryLocationId;
-    final l$createdAt = createdAt;
-    final l$nodeId = nodeId;
-    final l$and = and;
-    final l$or = or;
-    final l$not = not;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('siteId') ? l$siteId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-      _$data.containsKey('nodeId') ? l$nodeId : const {},
-      _$data.containsKey('and')
-          ? l$and == null
-              ? null
-              : Object.hashAll(l$and.map((v) => v))
-          : const {},
-      _$data.containsKey('or')
-          ? l$or == null
-              ? null
-              : Object.hashAll(l$or.map((v) => v))
-          : const {},
-      _$data.containsKey('not') ? l$not : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$SiteDeliveryLocationFilter<TRes> {
-  factory CopyWith$Input$SiteDeliveryLocationFilter(
-    Input$SiteDeliveryLocationFilter instance,
-    TRes Function(Input$SiteDeliveryLocationFilter) then,
-  ) = _CopyWithImpl$Input$SiteDeliveryLocationFilter;
-
-  factory CopyWith$Input$SiteDeliveryLocationFilter.stub(TRes res) =
-      _CopyWithStubImpl$Input$SiteDeliveryLocationFilter;
-
-  TRes call({
-    Input$UUIDFilter? id,
-    Input$UUIDFilter? siteId,
-    Input$UUIDFilter? deliveryLocationId,
-    Input$DatetimeFilter? createdAt,
-    Input$IDFilter? nodeId,
-    List<Input$SiteDeliveryLocationFilter>? and,
-    List<Input$SiteDeliveryLocationFilter>? or,
-    Input$SiteDeliveryLocationFilter? not,
-  });
-  CopyWith$Input$UUIDFilter<TRes> get id;
-  CopyWith$Input$UUIDFilter<TRes> get siteId;
-  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId;
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt;
-  CopyWith$Input$IDFilter<TRes> get nodeId;
-  TRes and(
-      Iterable<Input$SiteDeliveryLocationFilter>? Function(
-              Iterable<
-                  CopyWith$Input$SiteDeliveryLocationFilter<
-                      Input$SiteDeliveryLocationFilter>>?)
-          _fn);
-  TRes or(
-      Iterable<Input$SiteDeliveryLocationFilter>? Function(
-              Iterable<
-                  CopyWith$Input$SiteDeliveryLocationFilter<
-                      Input$SiteDeliveryLocationFilter>>?)
-          _fn);
-  CopyWith$Input$SiteDeliveryLocationFilter<TRes> get not;
-}
-
-class _CopyWithImpl$Input$SiteDeliveryLocationFilter<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationFilter<TRes> {
-  _CopyWithImpl$Input$SiteDeliveryLocationFilter(
-    this._instance,
-    this._then,
-  );
-
-  final Input$SiteDeliveryLocationFilter _instance;
-
-  final TRes Function(Input$SiteDeliveryLocationFilter) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? siteId = _undefined,
-    Object? deliveryLocationId = _undefined,
-    Object? createdAt = _undefined,
-    Object? nodeId = _undefined,
-    Object? and = _undefined,
-    Object? or = _undefined,
-    Object? not = _undefined,
-  }) =>
-      _then(Input$SiteDeliveryLocationFilter._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Input$UUIDFilter?),
-        if (siteId != _undefined) 'siteId': (siteId as Input$UUIDFilter?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as Input$UUIDFilter?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Input$DatetimeFilter?),
-        if (nodeId != _undefined) 'nodeId': (nodeId as Input$IDFilter?),
-        if (and != _undefined)
-          'and': (and as List<Input$SiteDeliveryLocationFilter>?),
-        if (or != _undefined)
-          'or': (or as List<Input$SiteDeliveryLocationFilter>?),
-        if (not != _undefined)
-          'not': (not as Input$SiteDeliveryLocationFilter?),
-      }));
-
-  CopyWith$Input$UUIDFilter<TRes> get id {
-    final local$id = _instance.id;
-    return local$id == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$id, (e) => call(id: e));
-  }
-
-  CopyWith$Input$UUIDFilter<TRes> get siteId {
-    final local$siteId = _instance.siteId;
-    return local$siteId == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(local$siteId, (e) => call(siteId: e));
-  }
-
-  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId {
-    final local$deliveryLocationId = _instance.deliveryLocationId;
-    return local$deliveryLocationId == null
-        ? CopyWith$Input$UUIDFilter.stub(_then(_instance))
-        : CopyWith$Input$UUIDFilter(
-            local$deliveryLocationId, (e) => call(deliveryLocationId: e));
-  }
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt {
-    final local$createdAt = _instance.createdAt;
-    return local$createdAt == null
-        ? CopyWith$Input$DatetimeFilter.stub(_then(_instance))
-        : CopyWith$Input$DatetimeFilter(
-            local$createdAt, (e) => call(createdAt: e));
-  }
-
-  CopyWith$Input$IDFilter<TRes> get nodeId {
-    final local$nodeId = _instance.nodeId;
-    return local$nodeId == null
-        ? CopyWith$Input$IDFilter.stub(_then(_instance))
-        : CopyWith$Input$IDFilter(local$nodeId, (e) => call(nodeId: e));
-  }
-
-  TRes and(
-          Iterable<Input$SiteDeliveryLocationFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$SiteDeliveryLocationFilter<
-                          Input$SiteDeliveryLocationFilter>>?)
-              _fn) =>
-      call(
-          and: _fn(_instance.and
-              ?.map((e) => CopyWith$Input$SiteDeliveryLocationFilter(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  TRes or(
-          Iterable<Input$SiteDeliveryLocationFilter>? Function(
-                  Iterable<
-                      CopyWith$Input$SiteDeliveryLocationFilter<
-                          Input$SiteDeliveryLocationFilter>>?)
-              _fn) =>
-      call(
-          or: _fn(_instance.or
-              ?.map((e) => CopyWith$Input$SiteDeliveryLocationFilter(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  CopyWith$Input$SiteDeliveryLocationFilter<TRes> get not {
-    final local$not = _instance.not;
-    return local$not == null
-        ? CopyWith$Input$SiteDeliveryLocationFilter.stub(_then(_instance))
-        : CopyWith$Input$SiteDeliveryLocationFilter(
-            local$not, (e) => call(not: e));
-  }
-}
-
-class _CopyWithStubImpl$Input$SiteDeliveryLocationFilter<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationFilter<TRes> {
-  _CopyWithStubImpl$Input$SiteDeliveryLocationFilter(this._res);
-
-  TRes _res;
-
-  call({
-    Input$UUIDFilter? id,
-    Input$UUIDFilter? siteId,
-    Input$UUIDFilter? deliveryLocationId,
-    Input$DatetimeFilter? createdAt,
-    Input$IDFilter? nodeId,
-    List<Input$SiteDeliveryLocationFilter>? and,
-    List<Input$SiteDeliveryLocationFilter>? or,
-    Input$SiteDeliveryLocationFilter? not,
-  }) =>
-      _res;
-
-  CopyWith$Input$UUIDFilter<TRes> get id =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$UUIDFilter<TRes> get siteId =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$UUIDFilter<TRes> get deliveryLocationId =>
-      CopyWith$Input$UUIDFilter.stub(_res);
-
-  CopyWith$Input$DatetimeFilter<TRes> get createdAt =>
-      CopyWith$Input$DatetimeFilter.stub(_res);
-
-  CopyWith$Input$IDFilter<TRes> get nodeId =>
-      CopyWith$Input$IDFilter.stub(_res);
-
-  and(_fn) => _res;
-
-  or(_fn) => _res;
-
-  CopyWith$Input$SiteDeliveryLocationFilter<TRes> get not =>
-      CopyWith$Input$SiteDeliveryLocationFilter.stub(_res);
-}
-
-class Input$SiteDeliveryLocationInsertInput {
-  factory Input$SiteDeliveryLocationInsertInput({
-    String? id,
-    String? siteId,
-    String? deliveryLocationId,
-    DateTime? createdAt,
-  }) =>
-      Input$SiteDeliveryLocationInsertInput._({
-        if (id != null) r'id': id,
-        if (siteId != null) r'siteId': siteId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-        if (createdAt != null) r'createdAt': createdAt,
-      });
-
-  Input$SiteDeliveryLocationInsertInput._(this._$data);
-
-  factory Input$SiteDeliveryLocationInsertInput.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('siteId')) {
-      final l$siteId = data['siteId'];
-      result$data['siteId'] = (l$siteId as String?);
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    return Input$SiteDeliveryLocationInsertInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  String? get siteId => (_$data['siteId'] as String?);
-
-  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('siteId')) {
-      final l$siteId = siteId;
-      result$data['siteId'] = l$siteId;
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId;
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$SiteDeliveryLocationInsertInput<
-          Input$SiteDeliveryLocationInsertInput>
-      get copyWith => CopyWith$Input$SiteDeliveryLocationInsertInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$SiteDeliveryLocationInsertInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$siteId = siteId;
-    final lOther$siteId = other.siteId;
-    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
-      return false;
-    }
-    if (l$siteId != lOther$siteId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$siteId = siteId;
-    final l$deliveryLocationId = deliveryLocationId;
-    final l$createdAt = createdAt;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('siteId') ? l$siteId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$SiteDeliveryLocationInsertInput<TRes> {
-  factory CopyWith$Input$SiteDeliveryLocationInsertInput(
-    Input$SiteDeliveryLocationInsertInput instance,
-    TRes Function(Input$SiteDeliveryLocationInsertInput) then,
-  ) = _CopyWithImpl$Input$SiteDeliveryLocationInsertInput;
-
-  factory CopyWith$Input$SiteDeliveryLocationInsertInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$SiteDeliveryLocationInsertInput;
-
-  TRes call({
-    String? id,
-    String? siteId,
-    String? deliveryLocationId,
-    DateTime? createdAt,
-  });
-}
-
-class _CopyWithImpl$Input$SiteDeliveryLocationInsertInput<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationInsertInput<TRes> {
-  _CopyWithImpl$Input$SiteDeliveryLocationInsertInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$SiteDeliveryLocationInsertInput _instance;
-
-  final TRes Function(Input$SiteDeliveryLocationInsertInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? siteId = _undefined,
-    Object? deliveryLocationId = _undefined,
-    Object? createdAt = _undefined,
-  }) =>
-      _then(Input$SiteDeliveryLocationInsertInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (siteId != _undefined) 'siteId': (siteId as String?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$SiteDeliveryLocationInsertInput<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationInsertInput<TRes> {
-  _CopyWithStubImpl$Input$SiteDeliveryLocationInsertInput(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    String? siteId,
-    String? deliveryLocationId,
-    DateTime? createdAt,
-  }) =>
-      _res;
-}
-
-class Input$SiteDeliveryLocationOrderBy {
-  factory Input$SiteDeliveryLocationOrderBy({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? siteId,
-    Enum$OrderByDirection? deliveryLocationId,
-    Enum$OrderByDirection? createdAt,
-  }) =>
-      Input$SiteDeliveryLocationOrderBy._({
-        if (id != null) r'id': id,
-        if (siteId != null) r'siteId': siteId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-        if (createdAt != null) r'createdAt': createdAt,
-      });
-
-  Input$SiteDeliveryLocationOrderBy._(this._$data);
-
-  factory Input$SiteDeliveryLocationOrderBy.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = l$id == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$id as String));
-    }
-    if (data.containsKey('siteId')) {
-      final l$siteId = data['siteId'];
-      result$data['siteId'] = l$siteId == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$siteId as String));
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = l$deliveryLocationId == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$deliveryLocationId as String));
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : fromJson$Enum$OrderByDirection((l$createdAt as String));
-    }
-    return Input$SiteDeliveryLocationOrderBy._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Enum$OrderByDirection? get id => (_$data['id'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get siteId =>
-      (_$data['siteId'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get deliveryLocationId =>
-      (_$data['deliveryLocationId'] as Enum$OrderByDirection?);
-
-  Enum$OrderByDirection? get createdAt =>
-      (_$data['createdAt'] as Enum$OrderByDirection?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] =
-          l$id == null ? null : toJson$Enum$OrderByDirection(l$id);
-    }
-    if (_$data.containsKey('siteId')) {
-      final l$siteId = siteId;
-      result$data['siteId'] =
-          l$siteId == null ? null : toJson$Enum$OrderByDirection(l$siteId);
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$deliveryLocationId);
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt == null
-          ? null
-          : toJson$Enum$OrderByDirection(l$createdAt);
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$SiteDeliveryLocationOrderBy<Input$SiteDeliveryLocationOrderBy>
-      get copyWith => CopyWith$Input$SiteDeliveryLocationOrderBy(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$SiteDeliveryLocationOrderBy ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$siteId = siteId;
-    final lOther$siteId = other.siteId;
-    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
-      return false;
-    }
-    if (l$siteId != lOther$siteId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$siteId = siteId;
-    final l$deliveryLocationId = deliveryLocationId;
-    final l$createdAt = createdAt;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('siteId') ? l$siteId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$SiteDeliveryLocationOrderBy<TRes> {
-  factory CopyWith$Input$SiteDeliveryLocationOrderBy(
-    Input$SiteDeliveryLocationOrderBy instance,
-    TRes Function(Input$SiteDeliveryLocationOrderBy) then,
-  ) = _CopyWithImpl$Input$SiteDeliveryLocationOrderBy;
-
-  factory CopyWith$Input$SiteDeliveryLocationOrderBy.stub(TRes res) =
-      _CopyWithStubImpl$Input$SiteDeliveryLocationOrderBy;
-
-  TRes call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? siteId,
-    Enum$OrderByDirection? deliveryLocationId,
-    Enum$OrderByDirection? createdAt,
-  });
-}
-
-class _CopyWithImpl$Input$SiteDeliveryLocationOrderBy<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationOrderBy<TRes> {
-  _CopyWithImpl$Input$SiteDeliveryLocationOrderBy(
-    this._instance,
-    this._then,
-  );
-
-  final Input$SiteDeliveryLocationOrderBy _instance;
-
-  final TRes Function(Input$SiteDeliveryLocationOrderBy) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? siteId = _undefined,
-    Object? deliveryLocationId = _undefined,
-    Object? createdAt = _undefined,
-  }) =>
-      _then(Input$SiteDeliveryLocationOrderBy._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Enum$OrderByDirection?),
-        if (siteId != _undefined) 'siteId': (siteId as Enum$OrderByDirection?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as Enum$OrderByDirection?),
-        if (createdAt != _undefined)
-          'createdAt': (createdAt as Enum$OrderByDirection?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$SiteDeliveryLocationOrderBy<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationOrderBy<TRes> {
-  _CopyWithStubImpl$Input$SiteDeliveryLocationOrderBy(this._res);
-
-  TRes _res;
-
-  call({
-    Enum$OrderByDirection? id,
-    Enum$OrderByDirection? siteId,
-    Enum$OrderByDirection? deliveryLocationId,
-    Enum$OrderByDirection? createdAt,
-  }) =>
-      _res;
-}
-
-class Input$SiteDeliveryLocationUpdateInput {
-  factory Input$SiteDeliveryLocationUpdateInput({
-    String? id,
-    String? siteId,
-    String? deliveryLocationId,
-    DateTime? createdAt,
-  }) =>
-      Input$SiteDeliveryLocationUpdateInput._({
-        if (id != null) r'id': id,
-        if (siteId != null) r'siteId': siteId,
-        if (deliveryLocationId != null)
-          r'deliveryLocationId': deliveryLocationId,
-        if (createdAt != null) r'createdAt': createdAt,
-      });
-
-  Input$SiteDeliveryLocationUpdateInput._(this._$data);
-
-  factory Input$SiteDeliveryLocationUpdateInput.fromJson(
-      Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    if (data.containsKey('id')) {
-      final l$id = data['id'];
-      result$data['id'] = (l$id as String?);
-    }
-    if (data.containsKey('siteId')) {
-      final l$siteId = data['siteId'];
-      result$data['siteId'] = (l$siteId as String?);
-    }
-    if (data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = data['deliveryLocationId'];
-      result$data['deliveryLocationId'] = (l$deliveryLocationId as String?);
-    }
-    if (data.containsKey('createdAt')) {
-      final l$createdAt = data['createdAt'];
-      result$data['createdAt'] =
-          l$createdAt == null ? null : DateTime.parse((l$createdAt as String));
-    }
-    return Input$SiteDeliveryLocationUpdateInput._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  String? get id => (_$data['id'] as String?);
-
-  String? get siteId => (_$data['siteId'] as String?);
-
-  String? get deliveryLocationId => (_$data['deliveryLocationId'] as String?);
-
-  DateTime? get createdAt => (_$data['createdAt'] as DateTime?);
-
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    if (_$data.containsKey('id')) {
-      final l$id = id;
-      result$data['id'] = l$id;
-    }
-    if (_$data.containsKey('siteId')) {
-      final l$siteId = siteId;
-      result$data['siteId'] = l$siteId;
-    }
-    if (_$data.containsKey('deliveryLocationId')) {
-      final l$deliveryLocationId = deliveryLocationId;
-      result$data['deliveryLocationId'] = l$deliveryLocationId;
-    }
-    if (_$data.containsKey('createdAt')) {
-      final l$createdAt = createdAt;
-      result$data['createdAt'] = l$createdAt?.toIso8601String();
-    }
-    return result$data;
-  }
-
-  CopyWith$Input$SiteDeliveryLocationUpdateInput<
-          Input$SiteDeliveryLocationUpdateInput>
-      get copyWith => CopyWith$Input$SiteDeliveryLocationUpdateInput(
-            this,
-            (i) => i,
-          );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Input$SiteDeliveryLocationUpdateInput ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
-      return false;
-    }
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$siteId = siteId;
-    final lOther$siteId = other.siteId;
-    if (_$data.containsKey('siteId') != other._$data.containsKey('siteId')) {
-      return false;
-    }
-    if (l$siteId != lOther$siteId) {
-      return false;
-    }
-    final l$deliveryLocationId = deliveryLocationId;
-    final lOther$deliveryLocationId = other.deliveryLocationId;
-    if (_$data.containsKey('deliveryLocationId') !=
-        other._$data.containsKey('deliveryLocationId')) {
-      return false;
-    }
-    if (l$deliveryLocationId != lOther$deliveryLocationId) {
-      return false;
-    }
-    final l$createdAt = createdAt;
-    final lOther$createdAt = other.createdAt;
-    if (_$data.containsKey('createdAt') !=
-        other._$data.containsKey('createdAt')) {
-      return false;
-    }
-    if (l$createdAt != lOther$createdAt) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$siteId = siteId;
-    final l$deliveryLocationId = deliveryLocationId;
-    final l$createdAt = createdAt;
-    return Object.hashAll([
-      _$data.containsKey('id') ? l$id : const {},
-      _$data.containsKey('siteId') ? l$siteId : const {},
-      _$data.containsKey('deliveryLocationId')
-          ? l$deliveryLocationId
-          : const {},
-      _$data.containsKey('createdAt') ? l$createdAt : const {},
-    ]);
-  }
-}
-
-abstract class CopyWith$Input$SiteDeliveryLocationUpdateInput<TRes> {
-  factory CopyWith$Input$SiteDeliveryLocationUpdateInput(
-    Input$SiteDeliveryLocationUpdateInput instance,
-    TRes Function(Input$SiteDeliveryLocationUpdateInput) then,
-  ) = _CopyWithImpl$Input$SiteDeliveryLocationUpdateInput;
-
-  factory CopyWith$Input$SiteDeliveryLocationUpdateInput.stub(TRes res) =
-      _CopyWithStubImpl$Input$SiteDeliveryLocationUpdateInput;
-
-  TRes call({
-    String? id,
-    String? siteId,
-    String? deliveryLocationId,
-    DateTime? createdAt,
-  });
-}
-
-class _CopyWithImpl$Input$SiteDeliveryLocationUpdateInput<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationUpdateInput<TRes> {
-  _CopyWithImpl$Input$SiteDeliveryLocationUpdateInput(
-    this._instance,
-    this._then,
-  );
-
-  final Input$SiteDeliveryLocationUpdateInput _instance;
-
-  final TRes Function(Input$SiteDeliveryLocationUpdateInput) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? siteId = _undefined,
-    Object? deliveryLocationId = _undefined,
-    Object? createdAt = _undefined,
-  }) =>
-      _then(Input$SiteDeliveryLocationUpdateInput._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (siteId != _undefined) 'siteId': (siteId as String?),
-        if (deliveryLocationId != _undefined)
-          'deliveryLocationId': (deliveryLocationId as String?),
-        if (createdAt != _undefined) 'createdAt': (createdAt as DateTime?),
-      }));
-}
-
-class _CopyWithStubImpl$Input$SiteDeliveryLocationUpdateInput<TRes>
-    implements CopyWith$Input$SiteDeliveryLocationUpdateInput<TRes> {
-  _CopyWithStubImpl$Input$SiteDeliveryLocationUpdateInput(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    String? siteId,
-    String? deliveryLocationId,
-    DateTime? createdAt,
-  }) =>
-      _res;
-}
-
 class Input$SiteFilter {
   factory Input$SiteFilter({
     Input$UUIDFilter? id,
@@ -55233,7 +52804,6 @@ const possibleTypesMap = <String, Set<String>>{
   'Node': {
     'Address',
     'DeliveryLocation',
-    'DeliveryPeriod',
     'Navigation',
     'NavigationItems',
     'Notifications',
@@ -55256,7 +52826,6 @@ const possibleTypesMap = <String, Set<String>>{
     'ShoppingCartItems',
     'ShoppingCarts',
     'Site',
-    'SiteDeliveryLocation',
     'SiteType',
     'Stations',
     'UserOrganization',
