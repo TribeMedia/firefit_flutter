@@ -27830,3 +27830,1136 @@ class _CopyWithStubImpl$Query$StationWithSiteDeliveryLocationsForPeriod$delivery
   CopyWith$Fragment$DeliveryPeriod<TRes> get node =>
       CopyWith$Fragment$DeliveryPeriod.stub(_res);
 }
+
+class Variables$Query$ValidDeliveryLocations {
+  factory Variables$Query$ValidDeliveryLocations(
+          {required DateTime startDate}) =>
+      Variables$Query$ValidDeliveryLocations._({
+        r'startDate': startDate,
+      });
+
+  Variables$Query$ValidDeliveryLocations._(this._$data);
+
+  factory Variables$Query$ValidDeliveryLocations.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$startDate = data['startDate'];
+    result$data['startDate'] = DateTime.parse((l$startDate as String));
+    return Variables$Query$ValidDeliveryLocations._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  DateTime get startDate => (_$data['startDate'] as DateTime);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$startDate = startDate;
+    result$data['startDate'] = l$startDate.toIso8601String();
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$ValidDeliveryLocations<
+          Variables$Query$ValidDeliveryLocations>
+      get copyWith => CopyWith$Variables$Query$ValidDeliveryLocations(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Variables$Query$ValidDeliveryLocations ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$startDate = startDate;
+    final lOther$startDate = other.startDate;
+    if (l$startDate != lOther$startDate) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$startDate = startDate;
+    return Object.hashAll([l$startDate]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$ValidDeliveryLocations<TRes> {
+  factory CopyWith$Variables$Query$ValidDeliveryLocations(
+    Variables$Query$ValidDeliveryLocations instance,
+    TRes Function(Variables$Query$ValidDeliveryLocations) then,
+  ) = _CopyWithImpl$Variables$Query$ValidDeliveryLocations;
+
+  factory CopyWith$Variables$Query$ValidDeliveryLocations.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$ValidDeliveryLocations;
+
+  TRes call({DateTime? startDate});
+}
+
+class _CopyWithImpl$Variables$Query$ValidDeliveryLocations<TRes>
+    implements CopyWith$Variables$Query$ValidDeliveryLocations<TRes> {
+  _CopyWithImpl$Variables$Query$ValidDeliveryLocations(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$ValidDeliveryLocations _instance;
+
+  final TRes Function(Variables$Query$ValidDeliveryLocations) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? startDate = _undefined}) =>
+      _then(Variables$Query$ValidDeliveryLocations._({
+        ..._instance._$data,
+        if (startDate != _undefined && startDate != null)
+          'startDate': (startDate as DateTime),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$ValidDeliveryLocations<TRes>
+    implements CopyWith$Variables$Query$ValidDeliveryLocations<TRes> {
+  _CopyWithStubImpl$Variables$Query$ValidDeliveryLocations(this._res);
+
+  TRes _res;
+
+  call({DateTime? startDate}) => _res;
+}
+
+class Query$ValidDeliveryLocations {
+  Query$ValidDeliveryLocations({
+    this.deliveryLocationCollection,
+    this.$__typename = 'Query',
+  });
+
+  factory Query$ValidDeliveryLocations.fromJson(Map<String, dynamic> json) {
+    final l$deliveryLocationCollection = json['deliveryLocationCollection'];
+    final l$$__typename = json['__typename'];
+    return Query$ValidDeliveryLocations(
+      deliveryLocationCollection: l$deliveryLocationCollection == null
+          ? null
+          : Query$ValidDeliveryLocations$deliveryLocationCollection.fromJson(
+              (l$deliveryLocationCollection as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$ValidDeliveryLocations$deliveryLocationCollection?
+      deliveryLocationCollection;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$deliveryLocationCollection = deliveryLocationCollection;
+    _resultData['deliveryLocationCollection'] =
+        l$deliveryLocationCollection?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$deliveryLocationCollection = deliveryLocationCollection;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$deliveryLocationCollection,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$ValidDeliveryLocations ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$deliveryLocationCollection = deliveryLocationCollection;
+    final lOther$deliveryLocationCollection = other.deliveryLocationCollection;
+    if (l$deliveryLocationCollection != lOther$deliveryLocationCollection) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ValidDeliveryLocations
+    on Query$ValidDeliveryLocations {
+  CopyWith$Query$ValidDeliveryLocations<Query$ValidDeliveryLocations>
+      get copyWith => CopyWith$Query$ValidDeliveryLocations(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ValidDeliveryLocations<TRes> {
+  factory CopyWith$Query$ValidDeliveryLocations(
+    Query$ValidDeliveryLocations instance,
+    TRes Function(Query$ValidDeliveryLocations) then,
+  ) = _CopyWithImpl$Query$ValidDeliveryLocations;
+
+  factory CopyWith$Query$ValidDeliveryLocations.stub(TRes res) =
+      _CopyWithStubImpl$Query$ValidDeliveryLocations;
+
+  TRes call({
+    Query$ValidDeliveryLocations$deliveryLocationCollection?
+        deliveryLocationCollection,
+    String? $__typename,
+  });
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection<TRes>
+      get deliveryLocationCollection;
+}
+
+class _CopyWithImpl$Query$ValidDeliveryLocations<TRes>
+    implements CopyWith$Query$ValidDeliveryLocations<TRes> {
+  _CopyWithImpl$Query$ValidDeliveryLocations(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ValidDeliveryLocations _instance;
+
+  final TRes Function(Query$ValidDeliveryLocations) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? deliveryLocationCollection = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ValidDeliveryLocations(
+        deliveryLocationCollection: deliveryLocationCollection == _undefined
+            ? _instance.deliveryLocationCollection
+            : (deliveryLocationCollection
+                as Query$ValidDeliveryLocations$deliveryLocationCollection?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection<TRes>
+      get deliveryLocationCollection {
+    final local$deliveryLocationCollection =
+        _instance.deliveryLocationCollection;
+    return local$deliveryLocationCollection == null
+        ? CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection.stub(
+            _then(_instance))
+        : CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection(
+            local$deliveryLocationCollection,
+            (e) => call(deliveryLocationCollection: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$ValidDeliveryLocations<TRes>
+    implements CopyWith$Query$ValidDeliveryLocations<TRes> {
+  _CopyWithStubImpl$Query$ValidDeliveryLocations(this._res);
+
+  TRes _res;
+
+  call({
+    Query$ValidDeliveryLocations$deliveryLocationCollection?
+        deliveryLocationCollection,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection<TRes>
+      get deliveryLocationCollection =>
+          CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection.stub(
+              _res);
+}
+
+const documentNodeQueryValidDeliveryLocations = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'ValidDeliveryLocations'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'startDate')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Datetime'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'deliveryLocationCollection'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'filter'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'active'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'eq'),
+                    value: BooleanValueNode(value: true),
+                  )
+                ]),
+              ),
+              ObjectFieldNode(
+                name: NameNode(value: 'startOpenTime'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'gte'),
+                    value: VariableNode(name: NameNode(value: 'startDate')),
+                  )
+                ]),
+              ),
+            ]),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'orderBy'),
+            value: ListValueNode(values: [
+              ObjectValueNode(fields: [
+                ObjectFieldNode(
+                  name: NameNode(value: 'startOpenTime'),
+                  value: EnumValueNode(name: NameNode(value: 'AscNullsLast')),
+                )
+              ])
+            ]),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'DeliveryLocation'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'pageInfo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'hasPreviousPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hasNextPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'startCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'endCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionDeliveryLocation,
+]);
+Query$ValidDeliveryLocations _parserFn$Query$ValidDeliveryLocations(
+        Map<String, dynamic> data) =>
+    Query$ValidDeliveryLocations.fromJson(data);
+typedef OnQueryComplete$Query$ValidDeliveryLocations = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$ValidDeliveryLocations?,
+);
+
+class Options$Query$ValidDeliveryLocations
+    extends graphql.QueryOptions<Query$ValidDeliveryLocations> {
+  Options$Query$ValidDeliveryLocations({
+    String? operationName,
+    required Variables$Query$ValidDeliveryLocations variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$ValidDeliveryLocations? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$ValidDeliveryLocations? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$ValidDeliveryLocations(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryValidDeliveryLocations,
+          parserFn: _parserFn$Query$ValidDeliveryLocations,
+        );
+
+  final OnQueryComplete$Query$ValidDeliveryLocations? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$ValidDeliveryLocations
+    extends graphql.WatchQueryOptions<Query$ValidDeliveryLocations> {
+  WatchOptions$Query$ValidDeliveryLocations({
+    String? operationName,
+    required Variables$Query$ValidDeliveryLocations variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$ValidDeliveryLocations? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryValidDeliveryLocations,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$ValidDeliveryLocations,
+        );
+}
+
+class FetchMoreOptions$Query$ValidDeliveryLocations
+    extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$ValidDeliveryLocations({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$ValidDeliveryLocations variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryValidDeliveryLocations,
+        );
+}
+
+extension ClientExtension$Query$ValidDeliveryLocations
+    on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$ValidDeliveryLocations>>
+      query$ValidDeliveryLocations(
+              Options$Query$ValidDeliveryLocations options) async =>
+          await this.query(options);
+  graphql.ObservableQuery<Query$ValidDeliveryLocations>
+      watchQuery$ValidDeliveryLocations(
+              WatchOptions$Query$ValidDeliveryLocations options) =>
+          this.watchQuery(options);
+  void writeQuery$ValidDeliveryLocations({
+    required Query$ValidDeliveryLocations data,
+    required Variables$Query$ValidDeliveryLocations variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(
+              document: documentNodeQueryValidDeliveryLocations),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$ValidDeliveryLocations? readQuery$ValidDeliveryLocations({
+    required Variables$Query$ValidDeliveryLocations variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(
+            document: documentNodeQueryValidDeliveryLocations),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null
+        ? null
+        : Query$ValidDeliveryLocations.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$ValidDeliveryLocations>
+    useQuery$ValidDeliveryLocations(
+            Options$Query$ValidDeliveryLocations options) =>
+        graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$ValidDeliveryLocations>
+    useWatchQuery$ValidDeliveryLocations(
+            WatchOptions$Query$ValidDeliveryLocations options) =>
+        graphql_flutter.useWatchQuery(options);
+
+class Query$ValidDeliveryLocations$Widget
+    extends graphql_flutter.Query<Query$ValidDeliveryLocations> {
+  Query$ValidDeliveryLocations$Widget({
+    widgets.Key? key,
+    required Options$Query$ValidDeliveryLocations options,
+    required graphql_flutter.QueryBuilder<Query$ValidDeliveryLocations> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
+}
+
+class Query$ValidDeliveryLocations$deliveryLocationCollection {
+  Query$ValidDeliveryLocations$deliveryLocationCollection({
+    required this.edges,
+    required this.pageInfo,
+    this.$__typename = 'DeliveryLocationConnection',
+  });
+
+  factory Query$ValidDeliveryLocations$deliveryLocationCollection.fromJson(
+      Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$ValidDeliveryLocations$deliveryLocationCollection(
+      edges: (l$edges as List<dynamic>)
+          .map((e) =>
+              Query$ValidDeliveryLocations$deliveryLocationCollection$edges
+                  .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo: Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo
+          .fromJson((l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final List<Query$ValidDeliveryLocations$deliveryLocationCollection$edges>
+      edges;
+
+  final Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo
+      pageInfo;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges.map((e) => e.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Query$ValidDeliveryLocations$deliveryLocationCollection ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges.length != lOther$edges.length) {
+      return false;
+    }
+    for (int i = 0; i < l$edges.length; i++) {
+      final l$edges$entry = l$edges[i];
+      final lOther$edges$entry = lOther$edges[i];
+      if (l$edges$entry != lOther$edges$entry) {
+        return false;
+      }
+    }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ValidDeliveryLocations$deliveryLocationCollection
+    on Query$ValidDeliveryLocations$deliveryLocationCollection {
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection<
+          Query$ValidDeliveryLocations$deliveryLocationCollection>
+      get copyWith =>
+          CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection<
+    TRes> {
+  factory CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection(
+    Query$ValidDeliveryLocations$deliveryLocationCollection instance,
+    TRes Function(Query$ValidDeliveryLocations$deliveryLocationCollection) then,
+  ) = _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection;
+
+  factory CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection;
+
+  TRes call({
+    List<Query$ValidDeliveryLocations$deliveryLocationCollection$edges>? edges,
+    Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo? pageInfo,
+    String? $__typename,
+  });
+  TRes edges(
+      Iterable<Query$ValidDeliveryLocations$deliveryLocationCollection$edges> Function(
+              Iterable<
+                  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+                      Query$ValidDeliveryLocations$deliveryLocationCollection$edges>>)
+          _fn);
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+      TRes> get pageInfo;
+}
+
+class _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection<
+        TRes>
+    implements
+        CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection<TRes> {
+  _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ValidDeliveryLocations$deliveryLocationCollection _instance;
+
+  final TRes Function(Query$ValidDeliveryLocations$deliveryLocationCollection)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ValidDeliveryLocations$deliveryLocationCollection(
+        edges: edges == _undefined || edges == null
+            ? _instance.edges
+            : (edges as List<
+                Query$ValidDeliveryLocations$deliveryLocationCollection$edges>),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo
+                as Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  TRes edges(
+          Iterable<Query$ValidDeliveryLocations$deliveryLocationCollection$edges> Function(
+                  Iterable<
+                      CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+                          Query$ValidDeliveryLocations$deliveryLocationCollection$edges>>)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges.map((e) =>
+              CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges(
+                e,
+                (i) => i,
+              ))).toList());
+
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+      TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection<
+        TRes>
+    implements
+        CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection<TRes> {
+  _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection(
+      this._res);
+
+  TRes _res;
+
+  call({
+    List<Query$ValidDeliveryLocations$deliveryLocationCollection$edges>? edges,
+    Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo? pageInfo,
+    String? $__typename,
+  }) =>
+      _res;
+
+  edges(_fn) => _res;
+
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+          TRes>
+      get pageInfo =>
+          CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo
+              .stub(_res);
+}
+
+class Query$ValidDeliveryLocations$deliveryLocationCollection$edges {
+  Query$ValidDeliveryLocations$deliveryLocationCollection$edges({
+    required this.node,
+    this.$__typename = 'DeliveryLocationEdge',
+  });
+
+  factory Query$ValidDeliveryLocations$deliveryLocationCollection$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$ValidDeliveryLocations$deliveryLocationCollection$edges(
+      node:
+          Fragment$DeliveryLocation.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Fragment$DeliveryLocation node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$ValidDeliveryLocations$deliveryLocationCollection$edges ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ValidDeliveryLocations$deliveryLocationCollection$edges
+    on Query$ValidDeliveryLocations$deliveryLocationCollection$edges {
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+          Query$ValidDeliveryLocations$deliveryLocationCollection$edges>
+      get copyWith =>
+          CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+    TRes> {
+  factory CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges(
+    Query$ValidDeliveryLocations$deliveryLocationCollection$edges instance,
+    TRes Function(Query$ValidDeliveryLocations$deliveryLocationCollection$edges)
+        then,
+  ) = _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$edges;
+
+  factory CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$edges;
+
+  TRes call({
+    Fragment$DeliveryLocation? node,
+    String? $__typename,
+  });
+  CopyWith$Fragment$DeliveryLocation<TRes> get node;
+}
+
+class _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$edges(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ValidDeliveryLocations$deliveryLocationCollection$edges _instance;
+
+  final TRes Function(
+      Query$ValidDeliveryLocations$deliveryLocationCollection$edges) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ValidDeliveryLocations$deliveryLocationCollection$edges(
+        node: node == _undefined || node == null
+            ? _instance.node
+            : (node as Fragment$DeliveryLocation),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get node {
+    final local$node = _instance.node;
+    return CopyWith$Fragment$DeliveryLocation(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+        TRes>
+    implements
+        CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$edges<
+            TRes> {
+  _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$edges(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Fragment$DeliveryLocation? node,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Fragment$DeliveryLocation<TRes> get node =>
+      CopyWith$Fragment$DeliveryLocation.stub(_res);
+}
+
+class Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo {
+  Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo({
+    required this.hasPreviousPage,
+    required this.hasNextPage,
+    this.startCursor,
+    this.endCursor,
+    this.$__typename = 'PageInfo',
+  });
+
+  factory Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$hasPreviousPage = json['hasPreviousPage'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$startCursor = json['startCursor'];
+    final l$endCursor = json['endCursor'];
+    final l$$__typename = json['__typename'];
+    return Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo(
+      hasPreviousPage: (l$hasPreviousPage as bool),
+      hasNextPage: (l$hasNextPage as bool),
+      startCursor: (l$startCursor as String?),
+      endCursor: (l$endCursor as String?),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final bool hasPreviousPage;
+
+  final bool hasNextPage;
+
+  final String? startCursor;
+
+  final String? endCursor;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$hasPreviousPage = hasPreviousPage;
+    _resultData['hasPreviousPage'] = l$hasPreviousPage;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$startCursor = startCursor;
+    _resultData['startCursor'] = l$startCursor;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$hasPreviousPage = hasPreviousPage;
+    final l$hasNextPage = hasNextPage;
+    final l$startCursor = startCursor;
+    final l$endCursor = endCursor;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$hasPreviousPage,
+      l$hasNextPage,
+      l$startCursor,
+      l$endCursor,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other
+            is! Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$hasPreviousPage = hasPreviousPage;
+    final lOther$hasPreviousPage = other.hasPreviousPage;
+    if (l$hasPreviousPage != lOther$hasPreviousPage) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$startCursor = startCursor;
+    final lOther$startCursor = other.startCursor;
+    if (l$startCursor != lOther$startCursor) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo
+    on Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo {
+  CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+          Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo>
+      get copyWith =>
+          CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+    TRes> {
+  factory CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo(
+    Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo instance,
+    TRes Function(
+            Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo)
+        then,
+  ) = _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo;
+
+  factory CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo;
+
+  TRes call({
+    bool? hasPreviousPage,
+    bool? hasNextPage,
+    String? startCursor,
+    String? endCursor,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+            TRes> {
+  _CopyWithImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo(
+    this._instance,
+    this._then,
+  );
+
+  final Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo
+      _instance;
+
+  final TRes Function(
+      Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? hasPreviousPage = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? startCursor = _undefined,
+    Object? endCursor = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo(
+        hasPreviousPage:
+            hasPreviousPage == _undefined || hasPreviousPage == null
+                ? _instance.hasPreviousPage
+                : (hasPreviousPage as bool),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        startCursor: startCursor == _undefined
+            ? _instance.startCursor
+            : (startCursor as String?),
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+        TRes>
+    implements
+        CopyWith$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo<
+            TRes> {
+  _CopyWithStubImpl$Query$ValidDeliveryLocations$deliveryLocationCollection$pageInfo(
+      this._res);
+
+  TRes _res;
+
+  call({
+    bool? hasPreviousPage,
+    bool? hasNextPage,
+    String? startCursor,
+    String? endCursor,
+    String? $__typename,
+  }) =>
+      _res;
+}

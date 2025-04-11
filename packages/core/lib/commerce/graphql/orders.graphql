@@ -536,3 +536,24 @@ query StationWithSiteDeliveryLocationsForPeriod(
     }
   }
 }
+
+query ValidDeliveryLocations($startDate: Datetime!) {
+  deliveryLocationCollection(filter: { 
+    active: { eq: true } 
+    startOpenTime: { gte: $startDate }
+    }
+    orderBy: [ { startOpenTime: AscNullsLast } ]
+    ) {
+    edges {
+      node {
+        ...DeliveryLocation
+      }
+    }
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+  }
+}

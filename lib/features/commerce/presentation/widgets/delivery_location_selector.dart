@@ -142,8 +142,8 @@ class _DeliveryLocationSelectorState
   }
 
   /// Builds the location selector widget
-  Widget _buildLocationSelector(BuildContext context,
-      List<DeliveryLocationWithPeriod> locationsWithPeriods) {
+  Widget _buildLocationSelector(
+      BuildContext context, List<DeliveryLocation> locationsWithPeriods) {
     final theme = Theme.of(context);
     final mediaQuery = MediaQuery.of(context);
 
@@ -156,8 +156,7 @@ class _DeliveryLocationSelectorState
               itemCount: locationsWithPeriods.length,
               itemBuilder: (context, index) {
                 final locationWithPeriod = locationsWithPeriods[index];
-                final location = locationWithPeriod.location;
-                final period = locationWithPeriod.period;
+                final location = locationWithPeriod;
 
                 // Check if this location is selected
                 final isSelected = _selectedLocation?.id == location.id;
@@ -165,7 +164,6 @@ class _DeliveryLocationSelectorState
                 return _buildLocationCard(
                   context,
                   location,
-                  period,
                   isSelected: isSelected,
                 );
               },
@@ -214,8 +212,7 @@ class _DeliveryLocationSelectorState
   }
 
   /// Builds a card for a single delivery location
-  Widget _buildLocationCard(
-      BuildContext context, DeliveryLocation location, DeliveryPeriod period,
+  Widget _buildLocationCard(BuildContext context, DeliveryLocation location,
       {bool isSelected = false}) {
     final theme = Theme.of(context);
 
@@ -227,24 +224,24 @@ class _DeliveryLocationSelectorState
 
     // Format delivery date
     String startDateStr = '';
-    if (period.startDate.toString().isNotEmpty) {
+    if (location.startOpenTime.toString().isNotEmpty) {
       try {
-        final date = DateTime.parse(period.startDate.toString());
+        final date = DateTime.parse(location.startOpenTime.toString());
         startDateStr = DateFormat('EEEE, MMMM d')
             .format(date); // e.g. "Monday, January 15"
       } catch (e) {
-        startDateStr = period.title ?? '';
+        startDateStr = 'Unknown';
       }
     }
 
     String endDateStr = '';
-    if (period.endDate.toString().isNotEmpty) {
+    if (location.endOpenTime.toString().isNotEmpty) {
       try {
-        final date = DateTime.parse(period.endDate.toString());
+        final date = DateTime.parse(location.endOpenTime.toString());
         endDateStr = DateFormat('EEEE, MMMM d')
             .format(date); // e.g. "Monday, January 15"
       } catch (e) {
-        endDateStr = period.title ?? '';
+        endDateStr = 'Unknown';
       }
     }
 

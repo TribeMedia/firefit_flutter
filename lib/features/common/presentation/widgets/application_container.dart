@@ -486,6 +486,11 @@ class _ApplicationContainerState extends ConsumerState<ApplicationContainer> {
           return;
         }
 
+        // Close the "Preparing" popup if it's still open after successful payment
+        if (Navigator.canPop(dialogContext)) {
+          Navigator.pop(dialogContext);
+        }
+
         final result = await productCartNotifier.createOrder(chosenLocation);
 
         // Add a mounted check before using context

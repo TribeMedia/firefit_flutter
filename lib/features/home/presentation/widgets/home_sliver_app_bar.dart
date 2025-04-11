@@ -306,6 +306,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
                   title: AutoSizeText(
                     station.name,
                     style: TextStyle(
@@ -364,6 +365,7 @@ class HomeSliverAppBar extends HookConsumerWidget {
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
                   title: Text(
                     station.name,
                     style: TextStyle(
@@ -567,6 +569,11 @@ Future<void> _handleCheckout(BuildContext context, List<CartItem> items,
         }
 
         return;
+      }
+
+      // Close the "Preparing" popup if it's still open after successful payment
+      if (Navigator.canPop(dialogContext)) {
+        Navigator.pop(dialogContext);
       }
 
       final result = await productCartNotifier.createOrder(chosenLocation);

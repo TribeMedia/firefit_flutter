@@ -121,7 +121,8 @@ class SettingsScreen extends HookConsumerWidget {
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                   onTap: () {
-                    // Navigate to change password screen
+                    // Navigate to password reset screen
+                    context.go('/reset-password');
                   },
                 ),
                 ListTile(

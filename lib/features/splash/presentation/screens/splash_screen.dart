@@ -9,13 +9,13 @@ class SplashScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final splashController = ref.read(splashProvider);
-    
+
     // Initialize and navigate when the screen is first built
     useEffect(() {
       splashController.initializeAndNavigate(context);
       return null;
     }, const []);
-    
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
@@ -25,22 +25,11 @@ class SplashScreen extends HookConsumerWidget {
             // App logo
             Image.asset(
               'assets/images/fots-logo-color.png',
-              width: 200,
-              height: 200,
+              width: 400,
+              height: 400,
             ),
-            const SizedBox(height: 24),
-            
-            // App name
-            Text(
-              'FireFit',
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-            
             const SizedBox(height: 48),
-            
+
             // Loading indicator
             const CircularProgressIndicator(),
           ],

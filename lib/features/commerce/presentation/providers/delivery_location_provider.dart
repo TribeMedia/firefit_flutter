@@ -17,10 +17,14 @@ class DeliveryLocationWithPeriod {
 }
 
 /// Provider that fetches delivery locations for the current user's site and delivery period
-final siteDeliveryLocationProvider = FutureProvider<Either<Failure, List<DeliveryLocation>>>((ref) async {
+final siteDeliveryLocationProvider =
+    FutureProvider<Either<Failure, List<DeliveryLocation>>>((ref) async {
   final repository = ref.read(orderRepositoryProvider);
   final deliveryPeriod = await repository.getDeliveryPeriods();
-  final currentUser = await ref.read(userNotifierProvider.notifier).authenticationService.getCurrentUser();
+  final currentUser = await ref
+      .read(userNotifierProvider.notifier)
+      .authenticationService
+      .getCurrentUser();
 
   if (currentUser == null) {
     return Left(Failure.unauthorized());
@@ -58,9 +62,13 @@ final siteDeliveryLocationProvider = FutureProvider<Either<Failure, List<Deliver
 });
 
 /// Provider that fetches delivery locations with their associated delivery periods
-final siteDeliveryLocationWithPeriodProvider = FutureProvider<Either<Failure, List<DeliveryLocationWithPeriod>>>((ref) async {
+final siteDeliveryLocationWithPeriodProvider =
+    FutureProvider<Either<Failure, List<DeliveryLocation>>>((ref) async {
   final repository = ref.read(orderRepositoryProvider);
-  final currentUser = await ref.read(userNotifierProvider.notifier).authenticationService.getCurrentUser();
+  final currentUser = await ref
+      .read(userNotifierProvider.notifier)
+      .authenticationService
+      .getCurrentUser();
 
   if (currentUser == null) {
     return Left(Failure.unauthorized());
@@ -70,40 +78,10 @@ final siteDeliveryLocationWithPeriodProvider = FutureProvider<Either<Failure, Li
     return Left(Failure.unauthorized());
   }
 
-  final siteId = currentUser.user.primaryStation!.siteId;
-  final deliveryPeriods = await repository.getDeliveryPeriods();
+  final result = await repository.getValidDeliveryLocations();
 
-  return deliveryPeriods.fold(
+  return result.fold(
     (l) => Left(l),
-    (periods) async {
-      if (periods.isEmpty) {
-        return const Right([]);
-      }
-
-      final locationsWithPeriods = <DeliveryLocationWithPeriod>[];
-      
-      for (var period in periods) {
-        final result = await repository.getSiteDeliveryLocations(
-          siteId: siteId,
-          deliveryPeriodId: period.id,
-        );
-        
-        result.fold(
-          (l) {},
-          (locations) {
-            for (var location in locations) {
-              locationsWithPeriods.add(
-                DeliveryLocationWithPeriod(
-                  location: location,
-                  period: period,
-                ),
-              );
-            }
-          },
-        );
-      }
-      
-      return Right(locationsWithPeriods);
-    },
+    (r) => Right(r),
   );
 });

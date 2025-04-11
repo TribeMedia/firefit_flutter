@@ -61,5 +61,8 @@ abstract class OrderRepositoryInterface {
   Future<fp.Either<Failure, List<DeliveryLocation>>> getSiteDeliveryLocations({
     required String siteId,
     required String deliveryPeriodId,
-});
+  });
+
+  Future<fp.Either<Failure, List<DeliveryLocation>>>
+      getValidDeliveryLocations();
 }
