@@ -15,7 +15,8 @@ class DarkThemeData {
   // Background Colors
   static const Color background = Color(0xFF121212); // Dark background
   static const Color surface = Color(0xFF1E1E1E); // Slightly lighter dark
-  static const Color surfaceContainer = Color(0xFF2D2D2D); // Adjusted for better contrast
+  static const Color surfaceContainer =
+      Color(0xFF2D2D2D); // Adjusted for better contrast
 
   // Text Colors
   static const Color onPrimary = Color(0xFFFFFFFF); // White
@@ -226,7 +227,7 @@ class DarkThemeData {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -234,14 +235,18 @@ class DarkThemeData {
           side: BorderSide.none,
         ),
         margin: EdgeInsets.zero,
+        shadowColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
       ),
 
-      // Dialog Theme
-      dialogTheme: DialogTheme(
+// Dialog Theme
+      dialogTheme: DialogThemeData(
         backgroundColor: surface,
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
+          side: BorderSide.none, // Add this to ensure no border
         ),
       ),
 
@@ -297,7 +302,7 @@ class DarkThemeData {
       ),
 
       // Tab Bar Theme
-      tabBarTheme: const TabBarTheme(
+      tabBarTheme: TabBarThemeData(
         labelColor: primary,
         unselectedLabelColor: mutedForeground,
         indicatorColor: primary,

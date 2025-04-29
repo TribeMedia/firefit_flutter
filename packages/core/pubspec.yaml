@@ -19,10 +19,10 @@ dependencies:
   hive: ^2.2.3  # add explicit hive dependency
   json_annotation: ^4.9.0
   # shared_preferences: ^2.3.2
-  supabase: ^2.6.3
-  supabase_flutter: ^2.8.4
-  talker_dio_logger: ^4.7.1
-  talker_flutter: ^4.7.1
+  supabase: ^2.7.0
+  supabase_flutter: ^2.9.0
+  talker_dio_logger: ^4.7.2
+  talker_flutter: ^4.7.2
   path: ^1.9.1
   path_provider: ^2.1.5
   gql: ^1.0.1-alpha+1730759315362
@@ -30,19 +30,19 @@ dependencies:
   freezed_annotation: ^3.0.0
   uuid: ^4.5.1
   purchases_dart_stripe: ^1.0.5
-  flutter_stripe: ^11.4.0
+  flutter_stripe: ^11.5.0
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
   graphql_codegen: ^1.2.3
-  json_serializable: ^6.9.4
+  json_serializable: ^6.9.5
   build_runner: ^2.4.15
-  freezed: ^3.0.4
+  freezed: ^3.0.6
 
 dependency_overrides: 
-  web_socket_channel: ^3.0.2
+  web_socket_channel: ^3.0.3
   xrpc: ^0.6.1
   freezed_annotation: ^3.0.0
 

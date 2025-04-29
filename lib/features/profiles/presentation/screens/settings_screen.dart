@@ -22,7 +22,7 @@ class SettingsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notificationsEnabled = ref.watch(notificationsEnabledProvider);
-    //final darkMode = ref.watch(darkModeProvider);
+    final darkMode = ref.watch(darkModeProvider);
     final theme = Theme.of(context);
 
     return FScaffold(
@@ -76,7 +76,7 @@ class SettingsScreen extends HookConsumerWidget {
               ],
             ),
           ),
-          /*_buildSectionHeader(context, 'App Settings'),
+          _buildSectionHeader(context, 'App Settings'),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
@@ -99,7 +99,7 @@ class SettingsScreen extends HookConsumerWidget {
                 ),
               ],
             ),
-          ),*/
+          ),
           _buildSectionHeader(context, 'Account'),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),

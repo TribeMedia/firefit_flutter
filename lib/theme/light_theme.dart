@@ -227,7 +227,7 @@ class LightThemeData {
       ),
 
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -238,7 +238,7 @@ class LightThemeData {
       ),
 
       // Dialog Theme
-      dialogTheme: DialogTheme(
+      dialogTheme: DialogThemeData(
         backgroundColor: background,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -295,7 +295,7 @@ class LightThemeData {
       ),
 
       // Tab Bar Theme
-      tabBarTheme: const TabBarTheme(
+      tabBarTheme: const TabBarThemeData(
         labelColor: primary,
         unselectedLabelColor: mutedForeground,
         indicatorColor: primary,
