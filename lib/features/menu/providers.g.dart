@@ -8,7 +8,7 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$menuControllerHash() => r'5129f4d605e90c538b4ed33b8ac16de185075810';
+String _$menuControllerHash() => r'7f397cdb2ff125eccab576a8c065a4f4a1f9fcaf';
 
 /// See also [MenuController].
 @ProviderFor(MenuController)

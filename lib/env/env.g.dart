@@ -20,10 +20,10 @@ final class _Env {
   static const String pdsServiceUrl = 'https://bsky.social';
 
   static const String stripePublishableKey =
-      'pk_test_51R2stKQNT3BJOHnIXcnC95l3d1Vy6gwF7X83GFeQiCx3vnkVm9xPCD6lL6GFN8y6dDt0PG6rXfnNtamVQSJlP2Sg00REFdcmBn';
+      'pk_live_51EbVG9J7oAWno3LZkgStM9jTtngeHHV7JvVANcCfI3NBoJWwwcaQCtb7PcnJGn1dJekwQxFcsaOeMPRQwvU9Cg3Y0018MqDcxD';
 
   static const String stripeSecretKey =
-      'sk_test_51R2stKQNT3BJOHnId66x1CtiahHU94h5TxUw1HCJXq3p1Dbs3l0XMuHGOqFqDKGMjqGQ8gAdbXjiXEXRn9zoPvJi000KiDJekw';
+      'sk_live_sQmytKLmZsAray9pX2RU2FEX00LKHCRnjE';
 
   static const String apiNinjasKey = '6E9wKIOmN+pX9DalcOby4w==eRishbghsYR4Vub5';
 

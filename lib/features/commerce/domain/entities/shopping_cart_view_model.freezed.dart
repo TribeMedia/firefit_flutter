@@ -271,7 +271,7 @@ abstract mixin class $ShoppingCartViewModelCopyWith<$Res> {
   $Res call(
       {String id,
       List<MenuItemViewModel> items,
-      List<Fragment$ShoppingCartItem> shoppingCartItems,
+      List<ShoppingCartItem> shoppingCartItems,
       double? subtotal,
       double? total,
       int? itemCount});
@@ -307,9 +307,9 @@ class _$ShoppingCartViewModelCopyWithImpl<$Res>
           : items // ignore: cast_nullable_to_non_nullable
               as List<MenuItemViewModel>,
       shoppingCartItems: null == shoppingCartItems
-          ? _self.shoppingCartItems!
+          ? _self.shoppingCartItems
           : shoppingCartItems // ignore: cast_nullable_to_non_nullable
-              as List<Fragment$ShoppingCartItem>,
+              as List<ShoppingCartItem>,
       subtotal: freezed == subtotal
           ? _self.subtotal
           : subtotal // ignore: cast_nullable_to_non_nullable
@@ -332,7 +332,7 @@ class _ShoppingCartViewModel extends ShoppingCartViewModel {
   const _ShoppingCartViewModel(
       {required this.id,
       required final List<MenuItemViewModel> items,
-      required final List<Fragment$ShoppingCartItem> shoppingCartItems,
+      required final List<ShoppingCartItem> shoppingCartItems,
       this.subtotal,
       this.total,
       this.itemCount})
@@ -352,9 +352,9 @@ class _ShoppingCartViewModel extends ShoppingCartViewModel {
     return EqualUnmodifiableListView(_items);
   }
 
-  final List<Fragment$ShoppingCartItem> _shoppingCartItems;
+  final List<ShoppingCartItem> _shoppingCartItems;
   @override
-  List<Fragment$ShoppingCartItem> get shoppingCartItems {
+  List<ShoppingCartItem> get shoppingCartItems {
     if (_shoppingCartItems is EqualUnmodifiableListView)
       return _shoppingCartItems;
     // ignore: implicit_dynamic_type
@@ -428,7 +428,7 @@ abstract mixin class _$ShoppingCartViewModelCopyWith<$Res>
   $Res call(
       {String id,
       List<MenuItemViewModel> items,
-      List<Fragment$ShoppingCartItem> shoppingCartItems,
+      List<ShoppingCartItem> shoppingCartItems,
       double? subtotal,
       double? total,
       int? itemCount});
@@ -466,7 +466,7 @@ class __$ShoppingCartViewModelCopyWithImpl<$Res>
       shoppingCartItems: null == shoppingCartItems
           ? _self._shoppingCartItems
           : shoppingCartItems // ignore: cast_nullable_to_non_nullable
-              as List<Fragment$ShoppingCartItem>,
+              as List<ShoppingCartItem>,
       subtotal: freezed == subtotal
           ? _self.subtotal
           : subtotal // ignore: cast_nullable_to_non_nullable

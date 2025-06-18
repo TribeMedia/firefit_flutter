@@ -25,8 +25,9 @@ class SettingsScreen extends HookConsumerWidget {
     final darkMode = ref.watch(darkModeProvider);
     final theme = Theme.of(context);
 
-    return FScaffold(
-      header: FHeader(
+    return Scaffold(
+      backgroundColor: theme.colorScheme.surface,
+      appBar: AppBar(
         title: Text(
           'Settings',
           style: theme.textTheme.headlineMedium?.copyWith(
@@ -34,22 +35,17 @@ class SettingsScreen extends HookConsumerWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-      ),
-      style: FScaffoldStyle(
-          backgroundColor: theme.colorScheme.surface,
-          contentPadding: const EdgeInsets.all(0),
-          headerDecoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            border: Border(
-              bottom: BorderSide(
-                color: theme.colorScheme.surfaceContainer,
-                width: 1,
-              ),
-            ),
+        backgroundColor: theme.colorScheme.surface,
+        elevation: 0,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            height: 1,
+            color: theme.colorScheme.surfaceContainer,
           ),
-          footerDecoration: BoxDecoration(borderRadius: BorderRadius.zero)),
-      contentPad: false,
-      content: ListView(
+        ),
+      ),
+      body: ListView(
         children: [
           _buildSectionHeader(context, 'Notifications'),
           Container(
@@ -118,7 +114,7 @@ class SettingsScreen extends HookConsumerWidget {
                   ),
                   trailing: Icon(
                     Icons.chevron_right,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: theme.colorScheme.onSurface.withOpacity(0.7),
                   ),
                   onTap: () {
                     // Navigate to password reset screen
@@ -134,7 +130,7 @@ class SettingsScreen extends HookConsumerWidget {
                   ),
                   trailing: Icon(
                     Icons.chevron_right,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: theme.colorScheme.onSurface.withOpacity(0.7),
                   ),
                   onTap: () async {
                     final Uri url =
@@ -157,7 +153,7 @@ class SettingsScreen extends HookConsumerWidget {
                   ),
                   trailing: Icon(
                     Icons.chevron_right,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: theme.colorScheme.onSurface.withOpacity(0.7),
                   ),
                   onTap: () async {
                     final Uri url = Uri.parse(
